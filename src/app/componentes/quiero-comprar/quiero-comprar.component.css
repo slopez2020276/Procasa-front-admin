@@ -1,0 +1,91 @@
+
+body {
+    width: 100vw;
+    height: auto;
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+
+
+div#section-2 {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    position: relative;
+    color: #FFF;
+    height: 100vh;
+    margin-top: 65px;
+    padding-top: 3rem;
+}
+
+.column {
+    width: 500px;
+    height: 100%;
+    text-align: center;
+    display: block;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    transition: .2s;
+    transform: scale(1);
+}
+
+.column:hover {transform: scale(1.05);}
+
+.column h2{
+    margin: 40px;
+    font-size: 30pt;
+}
+
+.column img {
+    width: 200px;
+    height: auto;
+    margin: auto;
+    margin-top: 40px;
+    position: relative;
+    display: block;
+}
+
+.button {
+    display: block;
+    width: 100%;
+    margin-top: 10px;
+    padding: 20px;
+    cursor: pointer;
+    font-size: 18px;
+    border-radius: 40px;
+}
+
+.white-button,
+.red-button {
+    width: 60%;
+    margin: auto;
+    margin-top: 10px;
+    padding: 20px;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+.white-button {
+    width: 60%;
+    margin: auto;
+    margin-top: 10px;
+    padding: 20px;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+.red-button {
+    background-color: #ab182d;
+    color: white;
+}
+
+@media (max-width: 550px) {
+  .column { width: 400px; }
+}
+
+

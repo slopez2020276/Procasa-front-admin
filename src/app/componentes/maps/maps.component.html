@@ -1,0 +1,159 @@
+<!-- https://r7qjvd13-4200.use2.devtunnels.ms/ -->
+<img src="../../../assets/img/textura-fon.png" id="background-texture">
+<div id="container-map">
+
+  <div id="mapa-principal">
+      <div id="cont-sucursales">
+        <div class="item-sucursal" (click)="mostarMapas('procasa')" >
+          <div class="check-sucursal">
+            <input name="ck" type="radio" class="checked" (click)="mostarMapas('procasa')"  >
+          </div>
+            <img src="../../assets/img/Logo Procasa original vertocal B.png" alt="">
+        </div>
+        <div class="item-sucursal" (click)="mostarMapas('meath')" >
+          <div class="check-sucursal"  >
+            <input name="ck" type="radio" class="checked"  (click)="mostarMapas('meath')"  >
+          </div>
+            <img src="../../../assets/img/Logo MH blanco.png" alt="">
+        </div>
+        <div class="item-sucursal">
+          <div class="check-sucursal">
+            <div class="checked"></div>
+          </div>
+            <img src="../../../assets/img/Logo MH blanco.png" alt="">
+        </div>
+        <div class="item-sucursal">
+          <div class="check-sucursal">
+            <div class="checked"></div>
+          </div>
+            <img src="../../../assets/img/Logo MH blanco.png" alt="">
+        </div>
+        <div class="item-sucursal">
+          <div class="check-sucursal">
+            <div class="checked"></div>
+          </div>
+            <img src="../../../assets/img/Logo MH blanco.png" alt="">
+        </div>
+      </div>
+
+      <div class="map-wrap">
+        <div class="map" #map></div>
+
+      </div>
+
+      <div id="cont-img-sucursales">
+
+      @switch (tienda) {
+        @case ('1') {
+          <img src="../../assets/img/Huehuetenango.png" alt="">
+          <div class="desc-img">
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Obcaecati, dolore sunt! Eius officiis sed ab corporis modi earum, ipsam facere minus animi dicta et, minima nisi id, laudantium non voluptatem.
+          </div>
+
+          <button (click)="cerrarUbicacionIndivudal('procasa')" >cerrar</button>
+
+        }
+        @case ('2') {
+          <img src="../../assets/img/procasa xela.png" alt="">
+          <div class="desc-img">
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Obcaecati, dolore sunt! Eius officiis sed ab corporis modi earum, ipsam facere minus animi dicta et, minima nisi id, laudantium non voluptatem.
+          </div>
+          <button (click)="cerrarUbicacionIndivudal('procasa')" >cerrar</button>
+        }
+        @case ('3') {
+          <img src="../../assets/img/Procasa Zona 2.PNG" alt="">
+          <div class="desc-img">
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Obcaecati, dolore sunt! Eius officiis sed ab corporis modi earum, ipsam facere minus animi dicta et, minima nisi id, laudantium non voluptatem.
+          </div>
+
+
+          <button (click)="cerrarUbicacionIndivudal('procasa')" >cerrar</button>
+        }
+        @case ('4') {
+          <img src="../../assets/img/procasa xela.png" alt="">
+          <div class="desc-img">
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Obcaecati, dolore sunt! Eius officiis sed ab corporis modi earum, ipsam facere minus animi dicta et, minima nisi id, laudantium non voluptatem.
+          </div>
+          <button (click)="cerrarUbicacionIndivudal('procasa')" >cerrar</button>
+        }
+        @case ('5') {
+          <img src="../../assets/img/procasa xela.png" alt="">
+          <div class="desc-img">
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Obcaecati, dolore sunt! Eius officiis sed ab corporis modi earum, ipsam facere minus animi dicta et, minima nisi id, laudantium non voluptatem.
+          </div>
+          <button (click)="cerrarUbicacionIndivudal('procasa')" >cerrar</button>
+        }
+        @case ('6') {
+          <img src="../../assets/img/procasa xela.png" alt="">
+          <div class="desc-img">
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Obcaecati, dolore sunt! Eius officiis sed ab corporis modi earum, ipsam facere minus animi dicta et, minima nisi id, laudantium non voluptatem.
+          </div>
+          <button (click)="cerrarUbicacionIndivudal('meath')" >cerrar</button>
+        }
+        @case ('7') {
+          <img src="../../assets/img/procasa xela.png" alt="">
+          <div class="desc-img">
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Obcaecati, dolore sunt! Eius officiis sed ab corporis modi earum, ipsam facere minus animi dicta et, minima nisi id, laudantium non voluptatem.
+          </div>
+          <button (click)="cerrarUbicacionIndivudal('meath')" >cerrar</button>
+        }
+        @case ('8') {
+          <img src="../../assets/img/procasa xela.png" alt="">
+          <div class="desc-img">
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Obcaecati, dolore sunt! Eius officiis sed ab corporis modi earum, ipsam facere minus animi dicta et, minima nisi id, laudantium non voluptatem.
+          </div>
+          <button (click)="cerrarUbicacionIndivudal('meath')" >cerrar</button>
+        }
+        @case ('9') {
+          <img src="../../assets/img/procasa xela.png" alt="">
+          <div class="desc-img">
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Obcaecati, dolore sunt! Eius officiis sed ab corporis modi earum, ipsam facere minus animi dicta et, minima nisi id, laudantium non voluptatem.
+          </div>
+          <button (click)="cerrarUbicacionIndivudal('meath')" >cerrar</button>
+        }
+        @case ('10') {
+          <img src="../../assets/img/procasa xela.png" alt="">
+          <div class="desc-img">
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Obcaecati, dolore sunt! Eius officiis sed ab corporis modi earum, ipsam facere minus animi dicta et, minima nisi id, laudantium non voluptatem.
+          </div>
+          <button (click)="cerrarUbicacionIndivudal('meath')" >cerrar</button>
+
+        }
+        @default {
+
+        }
+      }
+    </div>
+    <!-- CIERRE DE CONTENEDOR DE IMÁGENES -->
+      @switch (mostrarUbicaciones) {
+        @case ("procasa") {
+
+
+
+          <div id="list-locations">
+            <div class="item-location bold" (click)="mostrasUbicacionIndividual(-90.58750148105256, 14.612134851341485,'PR','1')" >Procasa San Cristobal</div>
+            <div class="item-location bold" (click)="mostrasUbicacionIndividual(-90.52819945504122, 14.6073388602745,'PR','2')" >Procasa zona 13 Centro de distribución</div>
+            <div class="item-location bold" (click)="mostrasUbicacionIndividual(-90.5216741781541, 14.614655501025824,'PR','3')" >Procasa Zona 2</div>
+            <div class="item-location bold" (click)="mostrasUbicacionIndividual(-90.5087995751424, 14.593060502876403,'PR','4')"  >Tiendas de procasa</div>
+            <div class="item-location bold" (click)="mostrasUbicacionIndividual(-90.45764448505608, 14.55750719849885,'PR','5')" >Procasa concepcion</div>
+          </div>
+        }
+        @case ("meath") {
+          <div id="list-locations">
+            <div class="item-location bold"  (click)="mostrasUbicacionIndividual(-90.58690824328646, 14.608536464013127,'MH','6')" >Meat House San Cristobal  </div>
+            <div class="item-location bold"  (click)="mostrasUbicacionIndividual(-90.58090009499428, 14.636939751825205,'MH','7')" >Meat House Plaza Madero Roosevelt</div>
+            <div class="item-location bold"  (click)="mostrasUbicacionIndividual(-90.55789747010412, 14.626641908277852,'MH','8')" >Tiendas de Meat House Majadas</div>
+            <div class="item-location bold" (click)="mostrasUbicacionIndividual(-90.54948606249503, 14.61052979701638,'MH','9')" >Tiendas de Meat House Zona 11</div>
+            <div class="item-location bold" (click)="mostrasUbicacionIndividual(-90.50845899272827,14.593918136505467,'MH','10')" >Tiendas de Meat House Zona 10 </div>
+          </div>
+        }@default {
+
+        }
+      }
+
+
+
+
+
+  </div>
+</div>

@@ -1,0 +1,96 @@
+
+body {
+    width: 100vw;
+    min-width: 100vw;
+    height: auto;
+    background: #FFF;
+    min-height: 100vh;
+    position: relative;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    background-color: #252525;
+    background: transparent;
+}
+
+/*=============================================================================================*/
+/*=============================================================================================*/
+
+
+
+div#section-1 {
+    position: relative;
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+    color: #FFF;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+
+div#sub {
+    margin-top: 2rem;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+div#sub div#video {
+    width: 40%;
+    height: 400px;
+    box-shadow: 1px 1px 15px rgba(0,0,0,.9);
+}
+
+div#video iframe {
+    width: 100%;
+    height: 100%;
+}
+
+div#sub div#quote {
+    text-align: justify;
+    width: 50%;
+}
+
+div#sub div#quote h1 {
+    width: 100%;
+    text-align: center;
+    padding: 50px;
+    display: block;
+    font-size: 19pt;
+}
+
+div#sub div#quote p {
+    padding: 0px 50px 0 50px;
+    font-size: 14pt;
+}
+
+
+
+div#section-2 {
+    width: 100%;
+    height: 500px;
+    position: relative;
+}
+
+@media (max-width: 1024px) {
+    div#sub div#video {
+        width: 80%;
+        height: 550px;
+        box-shadow: 1px 1px 15px rgba(0,0,0,.9);
+    }
+    div#sub div#quote { width: 80%; }
+  }
+
+
+  @media (max-width: 700px) {
+    div#sub div#video {
+      width: 100%;
+      height: 400px;
+      box-shadow: 1px 1px 15px rgba(0,0,0,.9);
+    }
+    div#sub div#quote { width: 100%; }
+}

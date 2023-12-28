@@ -1,0 +1,36 @@
+
+img#container-principal-img {
+    width: 100vw;
+    height: auto;
+    margin-top: 0;
+    justify-content: center;
+    align-items: center;
+    background: transparent;
+    position: relative;
+    z-index: 10;
+    top: 0;
+    left: 0;
+    border: none;
+    /* filter: invert(100%); */
+  }
+
+
+  div#loader {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: -500;
+    background: rgba(252,252,247,1);
+    transition: .5s;
+    animation: loader 1.5s linear;
+  }
+
+  @keyframes loader {
+     0% { background: rgba(252,252,247,1);  z-index: 500; }
+    80% { background: rgba(252,252,247,0);  z-index: 500; }
+  100% { background: rgba(252,252,247,0);  z-index: -500; }
+
+  }
+

@@ -1,0 +1,101 @@
+<app-admin-navbar></app-admin-navbar>
+<div id="container-1"></div>
+
+<div id="modal-add-location">
+  <button id="close-modal" (click)="OpenModal()">cerrar</button>
+  <h1>Agregar Promoción</h1>
+
+  <div class="item">
+    <label for="nombre">Nombre</label>
+    <input type="text" class="bold" placeholder="" name="nombre" title="nombre de promoción">
+  </div>
+  <div class="item">
+    <label for="nombre">Fecha</label>
+    <input type="date" class="bold" title="fecha de la promoción">
+  </div>
+  <div class="item">
+    <label for="nombre">ID producto</label>
+    <input type="text" class="bold" placeholder="" title="ID del producto">
+  </div>
+
+  <button id="save-modal" >GUARDAR</button>
+</div>
+
+<div id="container-2">
+  <h1>Promociones</h1>
+    <h2></h2>
+    <button id="add-location" (click)="OpenModal()">+ Agregar promoción</button>
+
+    <div id="bar-search">
+      <label for="search">Buscar</label>
+      <input class="bold" type="text" name="search" placeholder="" title="buscar">
+      <button>[icon lupa]</button>
+    </div>
+</div>
+
+<div id="container-3">
+  <table>
+    <thead>
+      <tr>
+        <td class="bold tb-number">#</td>
+        <td class="bold tb-img"></td>
+        <td class="bold tb-name">Nombre</td>
+        <td class="bold tb-date">Fecha de creación</td>
+        <td class="bold tb-id">ID de producto</td>
+        <td class="bold tb-actions">Acciones</td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="tb-number">1</td>
+        <td class="tb-img"><img src="../../../assets/img/MeatHouseTiny.jpg" alt="imagen promoción"></td>
+        <td class="tb-name">Promoción 1</td>
+        <td class="tb-date">23-12-2023</td>
+        <td class="tb-id">A1001</td>
+        <td class="tb-actions actions-center"><button class="tb-edit" >editar</button> <button class="tb-delete" >borrar</button></td>
+      </tr>
+      <tr>
+        <td class="tb-number">2</td>
+        <td class="tb-img"><img src="../../../assets/img/MeatHouseTiny.jpg" alt="imagen promoción"></td>
+        <td class="tb-name">Promoción 1</td>
+        <td class="tb-date">23-12-2023</td>
+        <td class="tb-id">A1001</td>
+        <td class="tb-actions actions-center"><button class="tb-edit" >editar</button> <button class="tb-delete" >borrar</button></td>
+      </tr>
+      <tr>
+        <td class="tb-number">3</td>
+        <td class="tb-img"><img src="../../../assets/img/MeatHouseTiny.jpg" alt="imagen promoción"></td>
+        <td class="tb-name">Promoción 1</td>
+        <td class="tb-date">23-12-2023</td>
+        <td class="tb-id">A1001</td>
+        <td class="tb-actions actions-center"><button class="tb-edit" >editar</button> <button class="tb-delete" >borrar</button></td>
+      </tr>
+      <tr>
+        <td class="tb-number">4</td>
+        <td class="tb-img"><img src="../../../assets/img/MeatHouseTiny.jpg" alt="imagen promoción"></td>
+        <td class="tb-name">Promoción 1</td>
+        <td class="tb-date">23-12-2023</td>
+        <td class="tb-id">A1001</td>
+        <td class="tb-actions actions-center"><button class="tb-edit" >editar</button> <button class="tb-delete" >borrar</button></td>
+      </tr>
+      <tr>
+        <td class="tb-number">5</td>
+        <td class="tb-img"><img src="../../../assets/img/MeatHouseTiny.jpg" alt="imagen promoción"></td>
+        <td class="tb-name">Promoción 1</td>
+        <td class="tb-date">23-12-2023</td>
+        <td class="tb-id">A1001</td>
+        <td class="tb-actions actions-center"><button class="tb-edit" >editar</button> <button class="tb-delete" >borrar</button></td>
+      </tr>
+      <tr>
+        <td class="tb-number">6</td>
+        <td class="tb-img"><img src="../../../assets/img/MeatHouseTiny.jpg" alt="imagen promoción"></td>
+        <td class="tb-name">Promoción 1</td>
+        <td class="tb-date">23-12-2023</td>
+        <td class="tb-id">A1001</td>
+        <td class="tb-actions actions-center"><button class="tb-edit" >editar</button> <button class="tb-delete" >borrar</button></td>
+      </tr>
+  </tbody>
+
+  </table>
+
+</div>

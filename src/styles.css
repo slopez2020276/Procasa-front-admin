@@ -1,0 +1,46 @@
+@font-face { font-family: 'realeway_light'; src: url('./assets/font/static/Raleway-Light.ttf'); }
+@font-face { font-family: 'realeway_normal'; src: url('./assets/font/static/Raleway-Medium.ttf'); }
+@font-face { font-family: 'realeway_bold'; src: url('./assets/font/static/Raleway-Bold.ttf'); }
+
+* {box-sizing: border-box; outline: none; padding: 0; margin: 0; border: none; font-family: realeway_light;}
+
+body {
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+
+
+.bold {font-family: realeway_bold;}
+.light {font-family: realeway_light;}
+.normal {font-family: realeway_normal;}
+
+
+h1.container-h1 {
+  width: 100%;
+  padding: 2rem;
+  text-align: center;
+  font-size: 40pt;
+  color: #FFF;
+  margin-top: 30vh;
+}
+
+* {transition: .3s ease;}
+
+img#background-texture {
+  width: auto;
+  min-width: 100vw;
+  height: 120vh;
+  min-height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+div.container {
+  position: relative;
+  width: 100%;
+  height: auto;
+  /* border: 1px solid red; */
+  z-index: 0;
+}
+

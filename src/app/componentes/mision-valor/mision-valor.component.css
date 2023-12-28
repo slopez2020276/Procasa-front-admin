@@ -1,0 +1,231 @@
+
+
+/*=============================================================================================*/
+/*=============================================================================================*/
+
+div#section-1 {
+    position: relative;
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+    margin-top: 80px;
+    color: #FFF;
+    padding-top: 10vh;
+}
+
+div#sub-section-1 {
+    position: relative;
+    width: 100%;
+    height: auto;
+    min-height: 50vh;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+div#sub-section-1 div.sub {
+    width: 350px;
+    min-width: 350px;
+    height: auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    text-align: center;
+    padding: 1rem;
+}
+
+div#sub-section-1 div.sub img {
+    display: block;
+    width: 100px;
+    position: relative;
+}
+
+div#sub-section-1 div.sub h1 {
+    background-color: #AA182C;
+    border-radius: 10px;
+    display: block;
+    height: 40px;
+    position: relative;
+}
+
+div#sub-section-2 {
+    position: relative;
+    width: 100%;
+    margin-left: 0;
+    height: auto;
+    min-height: 50vh;
+    margin-bottom: 100px;
+}
+
+div#sub-section-2 div#sub-valores div img {
+    width: 120px;
+    height: auto;
+    display: block;
+}
+
+
+div#sub-section-2 h1 {
+    text-align: center;
+    width: 100%;
+}
+
+div#sub-valores {
+    position: relative;
+    padding-top: 10vh;
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-wrap: wrap;
+    position: static;
+    justify-content: space-around;
+}
+
+div#sub-valores div {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  transform: scale(1);
+  transition: .5s ease;
+  width: 260px;
+  margin-bottom: 50px;
+  position: static;
+  cursor: pointer;
+}
+
+div#sub-valores div:hover  {
+    transform: scale(1.1);
+}
+
+div#sub-valores div img {
+    position: relative;
+    display: block;
+}
+
+div#sub-valores h6 {
+    font-size: 19pt;
+    padding: 0;
+    width: 100%;
+    min-width: 100%;
+    text-align: center;
+  }
+
+  div#sub-valores p {
+    position: relative;
+    width: 100%;
+    padding: 0 1rem;
+    text-align: center;
+    opacity: 0;
+    transition: .5s ease;
+    top: 0;
+    left: 0;
+    background: transparent;
+    z-index: 0;
+}
+
+div#sub-valores div:hover p {
+    opacity: 1;
+}
+
+div#valor-def {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,.6);
+  z-index: 500;
+  top: 0;
+  left: 0;
+  z-index: -10;
+}
+
+
+div#open-val {
+  position: fixed;
+  top: 25%;
+  border-radius: 5px;
+  left: 5%;
+  width: 90%;
+  height: 50%;
+  z-index: 200;
+  background: rgba(0,0,0,.9);
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 1rem;
+  display: none;
+  border: 1px solid #555555;
+}
+
+div#open-val.show {display: flex;}
+
+div#open-val { font-size: 12pt; }
+div#open-val h1 { font-size: 14pt; padding-bottom: 1rem;}
+
+div.valhide { display: none; }
+div.valhide.show { display: block; }
+
+
+
+
+div#close-valor-def {
+  position: absolute;
+  width: auto;
+  height: auto;
+  background: whitesmoke;
+  right: 1rem;
+  top: 1rem;
+  cursor: pointer;
+  border-radius: 4px;
+  padding: .3rem .5rem;
+  color: #222;
+  transform: scale(1);
+  transition: .2s;
+}
+
+div#close-valor-def:active {
+  transform: scale(.9);
+}
+
+
+
+@media (max-width: 680px) {
+
+  div#sub-section-2 div#sub-valores div img {
+    width: 80px;
+    height: auto;
+    min-height: 80px;
+    display: block;
+}
+
+div#sub-valores h6 {
+  font-size: 14pt;
+}
+
+
+  div#sub-valores div {
+    /* display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    transform: scale(1);
+    transition: .5s ease;
+    border: 1px solid goldenrod;
+    position: relative; */
+    margin-bottom: 1rem;
+    width: 200px;
+    position: relative;
+  }
+
+  div#sub-valores p {
+    width: 300px;
+    background: navy;
+    padding: 0 1rem;
+    text-align: center;
+    opacity: 0;
+    transition: .5s ease;
+    top: 0;
+    left: 0;
+    /* background: transparent; */
+    position: absolute;
+    display: none;
+  }
+
+}
