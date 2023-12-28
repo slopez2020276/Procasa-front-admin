@@ -7,11 +7,13 @@ import { CommonModule } from '@angular/common';
   styleUrl: './footer.component.css'
 })
 export class FooterComponent {
-  
 
- 
-  
+
+
+
   ngAfterViewInit(){
+    console.log("FOOTER its working!");
+
     window.onload = function () {
       const footer = document.getElementById('footer');
       let scrollywindow:number = 0;
@@ -27,12 +29,12 @@ export class FooterComponent {
                 footer?.classList.remove("ftofoot");
             }
       },false);
-  
+
   }
   }
-  
-  
-  
+
+
+
   OpenForm(){
     document.getElementById('formulario')?.classList.add('open');
     const transparent = document.getElementById('transparence');
@@ -42,7 +44,7 @@ export class FooterComponent {
         // transparent.classList.remove('open');
     // },false);
   }
-  
-  
+
+
 
 }

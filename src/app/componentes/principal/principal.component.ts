@@ -7,19 +7,25 @@ import { MainpageService } from '../../services/mainpage.service';
   styleUrl: './principal.component.css'
 })
 export class PrincipalComponent implements OnInit {
-  data 
+  data
   mainPageService = inject(MainpageService)
 
   async onSubmit(){
-   
+
 
   }
-  
+
   async ngOnInit() {
      const response = await this.mainPageService.obtenerMainPage()
     console.log(response.MainPage[0].textHistoria)
     this.data = response.MainPage[0]
-    
+
   }
-  
+
+
+
+
+// Test(){ alert("WORKING!"); }
+
+
 }
