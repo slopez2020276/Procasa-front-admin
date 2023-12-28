@@ -19,6 +19,8 @@ import { AdminUbicacionesComponent } from './componentes/admin-ubicaciones/admin
 import { MenuComponent } from './componentes/menu/menu.component';
 import { AdminNavbarComponent } from './componentes/admin-navbar/admin-navbar.component';
 import { PromocionesComponent } from './componentes/promociones/promociones.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -42,7 +44,9 @@ import { PromocionesComponent } from './componentes/promociones/promociones.comp
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
