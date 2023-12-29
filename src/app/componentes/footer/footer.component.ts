@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -8,12 +8,7 @@ import { CommonModule } from '@angular/common';
 })
 export class FooterComponent {
 
-
-
-
-  ngAfterViewInit(){
-    console.log("FOOTER its working!");
-
+OnInit(){
     window.onload = function () {
       const footer = document.getElementById('footer');
       let scrollywindow:number = 0;
@@ -29,7 +24,6 @@ export class FooterComponent {
                 footer?.classList.remove("ftofoot");
             }
       },false);
-
   }
   }
 

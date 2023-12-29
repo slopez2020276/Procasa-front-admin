@@ -1,21 +1,4 @@
 
-body {
-    width: 100vw;
-    min-width: 100vw;
-    height: auto;
-    background: #FFF;
-    min-height: 100vh;
-    position: relative;
-    overflow-x: hidden;
-    overflow-y: scroll;
-    background-color: #252525;
-    background: transparent;
-}
-
-/*=============================================================================================*/
-/*=============================================================================================*/
-
-
 
 div#section-1 {
     position: relative;
@@ -28,6 +11,7 @@ div#section-1 {
     align-items: center;
     flex-wrap: wrap;
 }
+
 
 
 div#sub {
