@@ -6,6 +6,8 @@ import { HistoriaService } from '../../services/historia.service';
   templateUrl: './historia.component.html',
   styleUrl: './historia.component.css'
 })
+
+
 export class HistoriaComponent implements OnInit {
   data 
   historiaService = inject(HistoriaService)

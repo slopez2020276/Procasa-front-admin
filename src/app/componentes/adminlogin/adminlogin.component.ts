@@ -1,6 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { UsersService } from '../../services/users.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-adminlogin',
@@ -10,9 +11,10 @@ import { UsersService } from '../../services/users.service';
 export class AdminloginComponent {
 
   formulario: FormGroup 
-  data:string= 'aa'
+  data:string = 'aa'
 
   usersService = inject(UsersService)
+  router  = inject(Router)
 
 
   constructor(){
@@ -26,9 +28,20 @@ export class AdminloginComponent {
   }
 
   async onSubmit(){
+
+    
     const response = await this.usersService.login(this.formulario.value)
-    console.log(response.token)
+   
     this.data = response.token
+    if(response.message ){
+      console.log(response.message )
+
+    }else if (response.token){
+      localStorage.setItem('token', response.token)
+
+    }
+
+    
 
   }
   
