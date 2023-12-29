@@ -18,21 +18,21 @@ div#modal-add-location {
     transform: scale(.8);
     z-index: -200;
   }
-  
+
   div#modal-add-location.openmodal {
     transform: scale(1);
     top: 20vh;
     opacity: 1;
     z-index: 100;
   }
-  
+
   div#modal-add-location h1 {
     font-size: 19pt;
     padding-top: 1rem;
     width: 100%;
     text-align: center;
   }
-  
+
   div#modal-add-location button#close-modal {
     padding: .5rem 1rem;
     float: right;
@@ -44,11 +44,11 @@ div#modal-add-location {
     cursor: pointer;
     transform: scale(1);
   }
-  
+
   div#modal-add-location button#close-modal:active {
     transform: scale(.8);
   }
-  
+
   div.item {
     width: 80%;
     display: flex;
@@ -58,14 +58,14 @@ div#modal-add-location {
     padding: .5rem;
     border-radius: 4px;
   }
-  
+
   div.item input {
     border: 1px solid #BBB;
     width: 70%;
     padding: .5rem 1rem;
     border-radius: 4px;
   }
-  
+
   button#save-modal {
     background: #AA182C;
     color: #FFF;
@@ -73,17 +73,17 @@ div#modal-add-location {
     border-radius: 10rem;
     cursor: pointer;
   }
-  
-  
-  
-  
-  
+
+
+
+
+
   div#container-1 {
     width: 100vw;
     height: 0;
     position: relative;
   }
-  
+
   div#container-2 {
     position: fixed;
     top: 0;
@@ -94,7 +94,7 @@ div#modal-add-location {
     box-shadow: 0px 1px 10px rgba(0,0,0,.2);
     z-index: 100;
   }
-  
+
   div#container-2 h1 {
     color: #AA182C;
     font-size: 19pt;
@@ -102,13 +102,13 @@ div#modal-add-location {
     padding: 1rem;
     display: inline-block;
   }
-  
+
   div#container-2 h2 {
     display: inline-block;
     padding: 1rem;
     font-size: 14pt;
   }
-  
+
   div#container-2 button#add-location {
     background: #AA182C;
     color: #FFF;
@@ -125,7 +125,7 @@ div#modal-add-location {
     transition: .2s;
     opacity: 1;
   }
-  
+
   div#container-2 button#add-location:active {
     transform: scale(.9);
     opacity: .8;
@@ -138,34 +138,34 @@ div#modal-add-location {
     justify-content: space-around;
     align-items: center;
   }
-  
+
   div#bar-search label {
     width: 10%;
     font-size: 12pt;
   }
-  
+
   div#bar-search input {
     width: 80%;
-    padding: .5rem 1rem;
+    padding: .5rem 2rem;
     border-radius: 10rem;
     font-size: 14pt;
     border: 1px solid #DDD;
   }
-  
+
   div#bar-search button {
     width: 10%;
     background: transparent;
   }
-  
+
   div#container-3 {
     width: 100vw;
     height: auto;
   }
-  
+
   thead {
     background: rgba(0,0,0,.2);
   }
-  
+
   table {
     width: 80%;
     margin-left: 10%;
@@ -175,7 +175,7 @@ div#modal-add-location {
     z-index: 0;
     padding-bottom: 10rem;
   }
-  
+
   tr {
     width: 100%;
     transition: .2s;
@@ -183,11 +183,11 @@ div#modal-add-location {
     overflow: visible;
     position: relative;
   }
-  
+
   tr:nth-child(even) {
     background: rgba(0,0,0,.1);
   }
-  
+
   tr td {
     padding: 1rem;
     width: auto;
@@ -196,24 +196,24 @@ div#modal-add-location {
     /* border-bottom: 1px solid #AAA; */
     cursor: pointer;
   }
-  
+
   td button {
     padding: .2rem 1rem;
     cursor: pointer;
     margin-left: .5rem;
   }
-  
-  
+
+
   td button:nth-child(2) {
     background: #f5b8c0;
     border-radius: 4px;
     color: #FFF;
   }
-  
+
   td.mouseover {
     opacity: .1;
   }
-  
+
   td.actions-center {
     position: relative;
     display: flex;
@@ -221,24 +221,23 @@ div#modal-add-location {
     align-items: stretch;
     height: 100%;
   }
-  
-  
+
+
   tr:hover {
     background: #FFF;
     transform: scale(1.04);
     box-shadow: 0px 0px 15px rgba(0,0,0,.2);
   }
-  
-  
-  
+
+
+
   td img {
     width: auto;
     height: 60px;
   }
-  
+
   td.tb-img {
     padding: 0;
   }
-  
-  
-  
+
+

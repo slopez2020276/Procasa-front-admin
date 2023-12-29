@@ -1,21 +1,19 @@
 div#container-menu {
-  width: 250px;
+  width: 270px;
   position: fixed;
   height: 100vh;
-  background: #454545;
+  background: #252525;
   /* left: -200px; */
   top: 0;
-  left: -250px;
+  left: -270px;
   transition: .2s;
-  border-radius: 0 10px 10px 0;
+  /* border-radius: 0 10px 10px 0; */
   z-index: 200;
 }
 
 div#container-menu.openmenu {
   left: 0;
 }
-
-
 
 div#container-menu h1 {
   width: 100%;
@@ -24,11 +22,20 @@ div#container-menu h1 {
   text-align: center;
   padding-top: 2rem;
   text-decoration: none;
-
 }
-div#container-menu a{
+
+
+div#container-menu a.light {
   text-decoration: none;
   color: #FFF;
+  transition: .2s ease;
+  padding: 1rem;
+  text-align: left;
+  width: 100%;
+}
+
+div#container-menu a.light:hover {
+  padding-left: 2rem;
 }
 
 
@@ -52,7 +59,7 @@ div.bar {
   width: 100%;
   position: relative;
   height: 23%;
-  background: #AAA;
+  background: #656565;
   border-radius: 2px;
 }
 
@@ -63,6 +70,33 @@ div#cont-menu-bar:active {
 
 div#list-menu {
   width: 100%;
-  height: 80%;
+  height: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  flex-wrap: wrap;
+  position: relative;
+  margin-top: 50px;
+  padding-left: 2rem;
   /* border: 1px solid yellow; */
+}
+
+h1#title {
+  border-bottom: 2px solid #444;
+  padding-bottom: 30px;
+  margin-top: 20px;
+  width: 80%;
+}
+
+
+a#close-session {
+  width: 100%;
+  text-align: center;
+  position: absolute;
+  bottom: 3rem;
+  color: #FFF;
+}
+
+a#close-session:hover {
+  color: #AA182C;
 }

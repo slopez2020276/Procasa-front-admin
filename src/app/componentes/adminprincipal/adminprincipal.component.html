@@ -18,11 +18,18 @@
 
 <h1 class="bold" id="title-admin">ADMINISTRACIÓN <div class="clip"></div> <p class="light">QUIÉNES SOMOS</p></h1>
 
+<div id="cont-btn-preview">
+  <!-- <button id="init-preview" class="bold">PREVISUALIZAR</button> -->
+</div>
+
 <div class="container" id="container-1">
   <h1 class="bold">PORTADA PRINCIPAL</h1>
   <div class="sub-container-1">
-    <p>Cambiar imagen de "Portada Principal" </p> <input type="file" title="seleccionar archivo">
-    <div class="prewiew"></div>
+    <p>Cambiar imagen de "Portada Principal" </p> <input (change)="InputFile()" id="file-portada" type="file" title="seleccionar archivo" [defaultValue]="null" data-content="seleccionar archivo">
+
+    <div class="prewiew" (click)="DeleteImg()">
+          <img id="preview-portada" src="" alt="portada" title="previsualización de imagen de portada">
+    </div>
   </div>
 
   <div class="foot-cont">
@@ -72,6 +79,19 @@
 
 <div class="container" id="container-4">
   <h1 class="bold">MISIÓN y VISIÓN</h1>
+
+<div id="cont-textareas">
+
+  <div class="cont-inter">
+    <textarea title="Misión" name="" id="" cols="30" rows="10"></textarea>
+  </div>
+
+  <div class="cont-inter">
+    <textarea title="Visión" name="" id="" cols="30" rows="10"></textarea>
+  </div>
+
+</div>
+
 
 <div class="foot-cont">
   <div class="status">estado: sin editar</div>

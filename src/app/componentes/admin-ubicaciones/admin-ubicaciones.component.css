@@ -146,7 +146,7 @@ div#bar-search label {
 
 div#bar-search input {
   width: 80%;
-  padding: .5rem 1rem;
+  padding: .5rem 2rem;
   border-radius: 10rem;
   font-size: 14pt;
   border: 1px solid #DDD;
@@ -180,9 +180,6 @@ table tr {
   width: 100%;
 }
 
-table tr td:hover  {
-  background: rgba(0,0,0,.2);
-}
 
 table tr:nth-child(even) {
   background: rgba(0,0,0,.1);
@@ -217,3 +214,12 @@ td.actions-center {
 display: flex;
 justify-content: center;
 }
+
+
+
+tr:hover {
+  background: #FFF;
+  transform: scale(1.04);
+  box-shadow: 0px 0px 15px rgba(0,0,0,.2);
+}
+
