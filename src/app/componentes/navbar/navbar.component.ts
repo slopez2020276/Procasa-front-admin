@@ -16,10 +16,6 @@ export class NavbarComponent {
     document.getElementById("noticias")?.scrollIntoView({behavior:"smooth"});
   }
 
-  toHome(){
-    document.getElementById("body")?.scrollIntoView({behavior:"smooth"});
-  }
-
   MenuToggle(){
     document.getElementById('cont-menu')?.classList.toggle('activate');
     document.getElementById('cont-menu-list')?.classList.toggle('activate');

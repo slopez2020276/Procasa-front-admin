@@ -28,6 +28,7 @@ footer {
       align-items: center;
       flex-wrap: nowrap;
       overflow: hidden;
+      z-index: 100;
       transform: translateY(1000px);
     }
 
@@ -169,15 +170,16 @@ footer.toBottom {
 
   div#formulario {
       position: fixed;
-      right: 30px;
-      background: var(--blanco);
+      right: -300px;
+      background: #FFF;
       width: 300px;
       height: 400px;
       border-radius: .5rem;
-      bottom: -500px;
-      opacity: 0;
+      bottom: 0px;
+      opacity: 1;
       transition: .4s ease;
-      z-index: 120;
+      z-index: -120;
+      /* display: none; */
   }
 
   div#formulario.open {
@@ -237,7 +239,8 @@ footer.toBottom {
         height: auto;
         justify-content: center;
         flex-wrap: wrap;
-        padding-bottom: 3rem;
+        padding-bottom: 0;
+        position: relative;
       }
 
       div.footer-sub {

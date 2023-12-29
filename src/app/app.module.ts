@@ -21,6 +21,7 @@ import { AdminNavbarComponent } from './componentes/admin-navbar/admin-navbar.co
 import { PromocionesComponent } from './componentes/promociones/promociones.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { FlechaComponent } from './componentes/flecha/flecha.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { HttpClientModule } from '@angular/common/http';
     AdminUbicacionesComponent,
     MenuComponent,
     AdminNavbarComponent,
-    PromocionesComponent
+    PromocionesComponent,
+    FlechaComponent
   ],
   imports: [
     BrowserModule,

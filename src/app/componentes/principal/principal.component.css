@@ -2,14 +2,13 @@
 img#container-principal-img {
     width: 100vw;
     height: auto;
-    margin-top: 0;
-    justify-content: center;
-    align-items: center;
+    margin-top: 63px;
     background: transparent;
     position: relative;
     z-index: 10;
     top: 0;
     left: 0;
+    display: block;
     border: none;
   }
 
