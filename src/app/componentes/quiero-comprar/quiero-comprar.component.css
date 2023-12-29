@@ -1,12 +1,4 @@
 
-body {
-    width: 100vw;
-    height: auto;
-    overflow-x: hidden;
-    overflow-y: scroll;
-}
-
-
 div#section-2 {
     width: 100%;
     display: flex;
@@ -22,7 +14,7 @@ div#section-2 {
 
 .column {
     width: 500px;
-    height: 100%;
+    height: auto;
     text-align: center;
     display: block;
     flex-wrap: wrap;

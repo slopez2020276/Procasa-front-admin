@@ -22,7 +22,7 @@ import { PromocionesComponent } from './componentes/promociones/promociones.comp
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { FlechaComponent } from './componentes/flecha/flecha.component';
-
+import { FooterMainComponent } from './componentes/footer-main/footer-main.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -42,7 +42,9 @@ import { FlechaComponent } from './componentes/flecha/flecha.component';
     MenuComponent,
     AdminNavbarComponent,
     PromocionesComponent,
-    FlechaComponent
+    FlechaComponent,
+    FooterMainComponent,
+
   ],
   imports: [
     BrowserModule,
