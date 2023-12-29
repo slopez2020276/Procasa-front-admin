@@ -62,7 +62,28 @@ div.bar {
   height: 23%;
   background: #656565;
   border-radius: 2px;
+  transition: .2s;
+  transform: translateX(0);
 }
+
+div.bar:nth-child(1).fx { animation: fx .3s ease;  animation-delay: 0ms; }
+div.bar:nth-child(2).fx { animation: fx .3s ease;  animation-delay: 100ms; }
+div.bar:nth-child(3).fx { animation: fx .3s ease;  animation-delay: 200ms; }
+
+@keyframes fx {
+  0%   { transform: translateX(0px); }
+  50%  { transform: translateX(25px); }
+  100% { transform: translateX(0px); }
+}
+
+
+
+
+
+
+
+
+
 
 div#cont-menu-bar:active {
   transform: scale(.8);
