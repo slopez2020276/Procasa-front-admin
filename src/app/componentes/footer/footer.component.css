@@ -183,7 +183,7 @@ footer {
       border: 1px solid #DDD;
   }
 
-  div#formulario button {
+  div#formulario button#send {
       padding: .5rem 2rem;
       background: #AA182C;
       border-radius: .5rem;
@@ -198,10 +198,31 @@ footer {
       transform: scale(1);
     }
 
-div#formulario button:active {
+div#formulario button#send:active {
   box-shadow: 0px 3px 0px rgba(0,0,0,0);
   transform: scale(0.97);
 }
+
+
+button#close-form-modal {
+  position: absolute;
+  top: .1rem;
+  right: .1rem;
+  padding: .5rem 1rem;
+  background: #F4F4F4;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 10pt;
+  transition: .2s ease;
+  transform: scale(1);
+}
+
+button#close-form-modal:active {
+  transform: scale(.95);
+}
+
+
+
 
 
 

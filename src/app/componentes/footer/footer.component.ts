@@ -9,5 +9,8 @@ import { CommonModule } from '@angular/common';
 export class FooterComponent {
 
   OpenForm(){ document.getElementById('formulario')?.classList.toggle('open'); }
+  CloseForm(){ document.getElementById('formulario')?.classList.toggle('open'); }
+
+
 
 }

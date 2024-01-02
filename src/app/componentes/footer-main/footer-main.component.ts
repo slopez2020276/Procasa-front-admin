@@ -27,4 +27,5 @@ constructor(){
 }
 
 OpenForm(){ document.getElementById('formulario')?.classList.toggle('open'); }
+CloseForm(){ document.getElementById('formulario')?.classList.toggle('open'); }
 }
