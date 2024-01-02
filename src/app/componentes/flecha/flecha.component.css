@@ -4,10 +4,11 @@ div#to-home-scroll {
   position: relative;
   position: fixed;
   cursor: pointer;
-  bottom: 40px;
+  bottom: -400px;
   right: 50px;
   z-index: 600;
   transform: scale(1);
+  transition: .2s ease;
 }
 
 div#to-home-scroll img {
@@ -19,5 +20,7 @@ div#to-home-scroll:active {
   transform: scale(.8);
 }
 
-
+div#to-home-scroll.toshow {
+  bottom: 40px;
+}
 
