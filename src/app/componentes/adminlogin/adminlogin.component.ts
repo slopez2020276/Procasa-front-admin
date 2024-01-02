@@ -36,9 +36,13 @@ export class AdminloginComponent {
     if(response.message ){
       console.log(response.message )
 
+
+//error con alertas      
+
     }else if (response.token){
       localStorage.setItem('token', response.token)
       this.router.navigate(['admin/Principal'])
+      
     }
 
 
