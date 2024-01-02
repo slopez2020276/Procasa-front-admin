@@ -11,7 +11,7 @@
   flex-wrap: nowrap;
   overflow: visible;
   transition: .4s ease;
-  z-index: 500;
+  z-index: 400;
   opacity: 1;
   transform: translateY(0);
 }
@@ -157,15 +157,17 @@ div#formulario {
     height: 400px;
     border-radius: .5rem;
     bottom: 0px;
-    opacity: 1;
-    transition: .4s ease;
-    z-index: -120;
+    opacity: 0;
+    transition: .2s ease;
+    z-index: 0;
     /* display: none; */
 }
 
 div#formulario.open {
     bottom: 30px;
     opacity: 1;
+    right: 40px;
+    z-index: 100;
 }
 
 div#formulario h1 {

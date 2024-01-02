@@ -22,5 +22,16 @@ constructor(){
 
 }
 
+OpenForm(){
+  document.getElementById('formulario')?.classList.toggle('open');
+  // const transparent = document.getElementById('transparence');
+  document.getElementById('transparence')?.classList.add('open');
+  document.getElementById('transparence')?.addEventListener('click',function(){
+      document.getElementById('formulario')?.classList.remove('open');
+      document.getElementById('transparence')?.classList.remove('open');
+  },false);
+}
+
+
 
 }
