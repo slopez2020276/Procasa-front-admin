@@ -137,33 +137,33 @@ footer {
 
   div#formulario {
       position: fixed;
-      right: -300px;
+      right: 100px;
       background: #FFF;
       width: 300px;
       height: 400px;
       border-radius: .5rem;
-      bottom: 0px;
-      opacity: 1;
+      bottom: -400px;
+      opacity: 0;
       transition: .4s ease;
-      z-index: -120;
+      z-index: 700;
       /* display: none; */
   }
 
   div#formulario.open {
       bottom: 30px;
       opacity: 1;
-      right: 10px;
-      z-index: 200;
+      z-index: 610;
   }
 
   div#formulario h1 {
       width: 100%;
       text-align: center;
-      background-color: var(--rojo);
-      font-size: 14pt;
+      background-color: #AA182C;
+      font-size: 12pt;
       color: #FFF;
       margin-top: 1rem;
       padding: 1rem;
+      margin-bottom: 2rem;
   }
 
   div#formulario label {
@@ -171,27 +171,37 @@ footer {
       display: block;
       padding-left: 10%;
       margin-top: 1rem;
-      font-size: 14pt;
+      font-size: 12pt;
   }
 
   div#formulario input {
       width: 80%;
       margin-left: 10%;
       padding: .5rem;
-      font-size: 9pt;
+      font-size: 10pt;
       font-weight: bold;
+      border: 1px solid #DDD;
   }
 
   div#formulario button {
-      padding: 1rem;
-      background: var(--rojo);
+      padding: .5rem 2rem;
+      background: #AA182C;
       border-radius: .5rem;
       color: #FFF;
       border: none;
       float: right;
       margin-right: 10%;
       margin-top: 1rem;
-  }
+      cursor: pointer;
+      transition: .2s ease;
+      box-shadow: 0px 3px 0px rgba(0,0,0,.6);
+      transform: scale(1);
+    }
+
+div#formulario button:active {
+  box-shadow: 0px 3px 0px rgba(0,0,0,0);
+  transform: scale(0.97);
+}
 
 
 

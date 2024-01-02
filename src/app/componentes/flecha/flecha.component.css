@@ -6,7 +6,7 @@ div#to-home-scroll {
   cursor: pointer;
   bottom: -400px;
   right: 50px;
-  z-index: 600;
+  z-index: 500;
   transform: scale(1);
   transition: .2s ease;
 }
