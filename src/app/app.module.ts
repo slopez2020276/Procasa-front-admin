@@ -23,6 +23,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { FlechaComponent } from './componentes/flecha/flecha.component';
 import { FooterMainComponent } from './componentes/footer-main/footer-main.component';
+import { AlertComponent } from './componentes/alert/alert.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -44,6 +45,7 @@ import { FooterMainComponent } from './componentes/footer-main/footer-main.compo
     PromocionesComponent,
     FlechaComponent,
     FooterMainComponent,
+    AlertComponent,
 
   ],
   imports: [
