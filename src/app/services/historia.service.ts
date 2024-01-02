@@ -29,16 +29,20 @@ export class HistoriaService {
 
   editarHistoria(fromValue:any,idhistoria){
 
-    const httpOption = {
-      headers: new HttpHeaders ({
-        'Authorization': localStorage.getItem('token')!
-      })
-    }
+   
    
     let id = idhistoria
     console.log(idhistoria)
     return firstValueFrom(
-      this.httpClient.put<any>(`${this.baseUrl}/editarHistoria/${id}`,fromValue,httpOption)
+      this.httpClient.put<any>(`${this.baseUrl}/editarHistoria/${id}`,fromValue, this.createHeaders())
     )
+  }
+
+  createHeaders(){
+     return   {
+      headers: new HttpHeaders ({
+        'Authorization': localStorage.getItem('token')!
+      })
+    }
   }
 }
