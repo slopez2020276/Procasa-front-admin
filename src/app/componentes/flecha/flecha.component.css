@@ -21,6 +21,6 @@ div#to-home-scroll:active {
 }
 
 div#to-home-scroll.toshow {
-  bottom: 40px;
+  bottom: 100px;
 }
 

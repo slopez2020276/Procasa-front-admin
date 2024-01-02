@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 })
 export class AdminloginComponent {
 
-  formulario: FormGroup 
+  formulario: FormGroup
   data:string= 'aa'
 
   usersService = inject(UsersService)
@@ -25,6 +25,8 @@ export class AdminloginComponent {
     })
 
   }
+
+
 
   async onSubmit(){
     const response = await this.usersService.login(this.formulario.value)
@@ -41,6 +43,6 @@ export class AdminloginComponent {
 
 
   }
-  
+
 
 }
