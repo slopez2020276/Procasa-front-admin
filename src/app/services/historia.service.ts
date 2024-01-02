@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHandler, HttpHeaders } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
 import { firstValueFrom } from 'rxjs';
 
@@ -13,9 +13,32 @@ export class HistoriaService {
     this.baseUrl = 'http://localhost:3002/api'
    }
 
+   
+
    obtenerMainPage(){
     return firstValueFrom(
       this.httpClient.get<any>(`${this.baseUrl}/mostrarPaginaPrincipal`)
+    )
+  }
+
+  obtenerHistoria(){
+    return firstValueFrom(
+      this.httpClient.get<any>(`${this.baseUrl}/mostrarHistoria`)
+    )
+  }
+
+  editarHistoria(fromValue:any,idhistoria){
+
+    const httpOption = {
+      headers: new HttpHeaders ({
+        'Authorization': localStorage.getItem('token')!
+      })
+    }
+   
+    let id = idhistoria
+    console.log(idhistoria)
+    return firstValueFrom(
+      this.httpClient.put<any>(`${this.baseUrl}/editarHistoria/${id}`,fromValue,httpOption)
     )
   }
 }

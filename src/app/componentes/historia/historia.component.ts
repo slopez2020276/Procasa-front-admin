@@ -8,28 +8,20 @@ import { HistoriaService } from '../../services/historia.service';
 })
 export class HistoriaComponent implements OnInit {
   data
+  enlace :string = ''
   historiaService = inject(HistoriaService)
+  descricion: string = ''
+
+    async ngOnInit()  {
+       const response = await this.historiaService.obtenerHistoria()
+       this.data = response.historia[0]
+      this.enlace = this.data.EncalceVideo
+      this.descricion = response.historia[0].DescripcionHistoria
+
+       console.log(this.data)
+       console.log(this.enlace)
 
 
-    ngOnInit()  {
-
-
-    window.onload = function () {
-      const footer = document.getElementById('footer');
-      let scrollywindow:number = 0;
-      window.addEventListener('scroll',function(){
-              scrollywindow=this.scrollY;
-            if(scrollywindow>=1){
-                footer?.classList.add('fdown');
-                if(scrollywindow>=300){
-                  footer?.classList.add("ftofoot");
-                }
-              }else{
-                footer?.classList.remove('fdown');
-                footer?.classList.remove("ftofoot");
-            }
-      },false);
-  }
 
   }
 

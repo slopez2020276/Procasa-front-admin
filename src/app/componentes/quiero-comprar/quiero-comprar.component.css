@@ -12,6 +12,8 @@ div#section-2 {
     padding-top: 3rem;
 }
 
+a {text-decoration: none;}
+
 .column {
     width: 500px;
     height: auto;
