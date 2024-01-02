@@ -19,41 +19,6 @@ div#trans {
   display: none;
 }
 
-div#container-alert {
-  width: 100vw;
-  height: 100vh;
-  position: fixed;
-  z-index: 900;
-  transition: .2s ease;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: rgba(252,252,252,.8);
-  text-align: center;
-  z-index: -100;
-}
-
-div#container-alert div#alert {
-  width: 300px;
-  height: auto;
-  background: #F4F4F4;
-  padding: 1rem 2rem;
-  border-radius: 4px;
-}
-
-div#alert p {
-  font-size: 14pt;
-}
-
-div#alert button {
-  padding: .5rem 1rem;
-  text-decoration: underline;
-  font-size: 12pt;
-  color: #252525;
-  margin-top: 1rem;
-}
-
-
 
 div#navbar {
   width: 100vw;

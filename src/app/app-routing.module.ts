@@ -7,6 +7,7 @@ import { AdminloginComponent } from './componentes/adminlogin/adminlogin.compone
 import { AdminUbicacionesComponent } from './componentes/admin-ubicaciones/admin-ubicaciones.component';
 import { AdminprincipalComponent } from './componentes/adminprincipal/adminprincipal.component';
 import { PromocionesComponent } from './componentes/promociones/promociones.component';
+import { AlertComponent } from './componentes/alert/alert.component';
 
 const routes: Routes = [
   {path:'',title:'Inicio',component:PrincipalComponent},
@@ -15,8 +16,8 @@ const routes: Routes = [
   {path:'admin',title:'Administrador', component: AdminloginComponent},
   {path:'admin/Ubicaciones',title:'Administrador-Ubicaciones', component:AdminUbicacionesComponent},
   {path:'admin/Principal',title:'Principal-Admin',component:AdminprincipalComponent},
-  {path:'admin/Promociones',title:'Principal-Admin',component:PromocionesComponent}
-
+  {path:'admin/Promociones',title:'Principal-Admin',component:PromocionesComponent},
+  {path:'alert',title:'alert',component:AlertComponent}
 ];
 
 @NgModule({
