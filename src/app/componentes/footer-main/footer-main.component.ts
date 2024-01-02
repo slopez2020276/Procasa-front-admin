@@ -7,8 +7,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FooterMainComponent {
 
+  SendForm(){
+    console.log("CLICKED SUBMIT FORM");
+}
 
 constructor(){
+
       const footer = document.getElementById('foot');
       let scrollywindow:number = 0;
       window.addEventListener('scroll',function(){
@@ -22,16 +26,5 @@ constructor(){
 
 }
 
-OpenForm(){
-  document.getElementById('formulario')?.classList.toggle('open');
-  // const transparent = document.getElementById('transparence');
-  document.getElementById('transparence')?.classList.add('open');
-  document.getElementById('transparence')?.addEventListener('click',function(){
-      document.getElementById('formulario')?.classList.remove('open');
-      document.getElementById('transparence')?.classList.remove('open');
-  },false);
-}
-
-
-
+OpenForm(){ document.getElementById('formulario')?.classList.toggle('open'); }
 }

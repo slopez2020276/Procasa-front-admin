@@ -105,18 +105,21 @@ div#sharp {
     background: #AA182C;
     color: #FFF;
     padding: 1rem 3rem;
-    border-radius: 2rem;
+    /* border-radius: 2rem; */
+    border-radius: 4px;
     cursor: pointer;
     opacity: 1;
     font-size: 12pt;
     border: 1px solid #AA182C;
+    box-shadow: 0px 4px 0px rgba(0,0,0,.5);
+    transform: scale(1);
+    transition: .2s;
   }
-  button:hover {opacity: .8;}
+  button:hover {opacity: .9;}
   button:active {
-    padding: 1rem 4rem;
+    box-shadow: 0px 0px 0px rgba(0,0,0,.5);
     opacity: .8;
-    background: transparent;
-    color: #AA182C;
+    transform: scale(.95);
   }
 
 

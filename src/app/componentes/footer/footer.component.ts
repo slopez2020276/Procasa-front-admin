@@ -8,14 +8,6 @@ import { CommonModule } from '@angular/common';
 })
 export class FooterComponent {
 
-  OpenForm(){
-    document.getElementById('formulario')?.classList.toggle('open');
-    // const transparent = document.getElementById('transparence');
-    document.getElementById('transparence')?.classList.add('open');
-    document.getElementById('transparence')?.addEventListener('click',function(){
-        document.getElementById('formulario')?.classList.remove('open');
-        document.getElementById('transparence')?.classList.remove('open');
-    },false);
-  }
+  OpenForm(){ document.getElementById('formulario')?.classList.toggle('open'); }
 
 }
