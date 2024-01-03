@@ -126,6 +126,9 @@ button#init-preview:active {
 div.cont-inter {
   position: relative;
   flex-wrap: wrap;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 div.sub-container-1 {
@@ -396,6 +399,17 @@ button#cont-3-see-all:active {
   box-shadow: 0px 0px 0px rgba(0,0,0,.1);
   color: #AAA;
 }
+
+
+
+
+
+div#cantainer-4 {
+  border: 1px solid red;
+}
+
+
+
 
 
 
