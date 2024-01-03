@@ -44,9 +44,9 @@
 </div>
 
 
-<form  [formGroup]="formulario" (ngSubmit)="onSubmit()" >
 
 <div class="container" id="container-2">
+<form  [formGroup]="formulario" (ngSubmit)="onSubmit()" >
   <h1 class="bold">HISTORIA</h1>
   <div class="sub-cont-2">
       <label for="enlace">Enlace del video:</label>
@@ -62,10 +62,9 @@
     <div class="sub-cont-2">
             <label for="historia">Desgloce de Historia:</label>
             <textarea name="historia" id="" cols="40" rows="10" formControlName="DescripcionHistoria" title="descripción"></textarea>
-      </div>
-    </div>
+          </div>
 
-<div class="foot-cont">
+      <div class="foot-cont">
   <div class="status">estado: sin editar</div>
   <div class="cont-buttons">
     <button class="normal">deshacer</button>
@@ -75,6 +74,7 @@
 
 </div>
 </form>
+</div>
 
 
 
