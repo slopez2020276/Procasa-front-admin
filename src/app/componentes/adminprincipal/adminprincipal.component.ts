@@ -9,21 +9,29 @@ import { FormControl, FormGroup } from '@angular/forms';
 })
 export class AdminprincipalComponent implements OnInit {
 
-  formulario: FormGroup 
+  formulario: FormGroup
   historiaService = inject(HistoriaService)
   data: any
   _idhistoria: any
-  textoHistoria 
+  textoHistoria
 
 
   constructor(){
     this.formulario = new FormGroup({
-      DescripcionHistoria: new FormControl('ingrese la historia por favor '),
+      DescripcionHistoria: new FormControl('ingrese la historia por favor ')
     })
 
   }
 
-  
+
+  IframeVideo() {
+    const src: any = (document.getElementById('iframe-value') as HTMLInputElement | null)?.value;
+          document.getElementById('iframe-preview')?.removeAttribute('src')
+          document.getElementById('iframe-preview')?.setAttribute('src', src)
+          // console.log(document.getElementById('iframe-preview'));
+  }
+
+
   async ngOnInit()  {
     const responsive = await this.historiaService.obtenerHistoria()
     this.data = responsive.historia[0]
@@ -48,10 +56,17 @@ export class AdminprincipalComponent implements OnInit {
 EditarHistoria(){
 
 }
+
+
+Modal() {
+  document.getElementById('modal-time-line')?.classList.toggle('modal')
+}
+
+
  async onSubmit(){
     const response = await this.historiaService.editarHistoria(this.formulario.value,this._idhistoria)
-    console.log(response) 
+    console.log(response)
   }
-  
+
 
 }

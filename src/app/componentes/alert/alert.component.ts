@@ -8,8 +8,12 @@ import { Component } from '@angular/core';
 export class AlertComponent {
 
   constructor(){
-    document.getElementById("time")?.classList.add("timeoff")
   }
 
+
+  ngOnInit(){
+  document.getElementById("time")?.classList.add("timeoff")
+  // document.getElementById("container-alert")?.classList.add("hide")
+}
 
 }

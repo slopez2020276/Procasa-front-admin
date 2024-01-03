@@ -17,7 +17,7 @@ const routes: Routes = [
   {path:'admin/Ubicaciones',title:'Administrador-Ubicaciones', component:AdminUbicacionesComponent},
   {path:'admin/Principal',title:'Principal-Admin',component:AdminprincipalComponent},
   {path:'admin/Promociones',title:'Principal-Admin',component:PromocionesComponent},
-  {path:'alert',title:'alert',component:AlertComponent}
+  {path:'alert',title:'alert',component:AlertComponent},
 ];
 
 @NgModule({

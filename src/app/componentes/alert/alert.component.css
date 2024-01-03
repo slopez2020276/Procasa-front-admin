@@ -4,13 +4,19 @@ div#container-alert {
   width: 100vw;
   height: 100vh;
   position: fixed;
-  z-index: 900;
+  z-index: -100;
+  opacity: 0;
   transition: .2s ease;
   display: flex;
   justify-content: center;
   align-items: start;
   background: rgba(0,0,0,.2);
   text-align: center;
+}
+
+div#container-alert.hide {
+  z-index: 900;
+  opacity: 1;
 }
 
 div.alert-model {

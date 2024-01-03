@@ -17,6 +17,7 @@
 
 <div id="space-esp"></div>
 
+
 <h1 class="bold" id="title-admin">ADMINISTRACIÓN <div class="clip"></div> <p class="light">PÁGINA PRINCIPAL</p></h1>
 
 <div id="cont-btn-preview">
@@ -47,11 +48,21 @@
 
 <div class="container" id="container-2">
   <h1 class="bold">HISTORIA</h1>
-    <div class="sub-container-2">
-      <label for="enlace">Enlace del video</label>
-      <input name="enlace" type="text"  placeholder="enlace del video" value="https://youtu.be/f0hN3s9XvI0">
-        <label for="historia">Desgloce de Historia</label>
-      <textarea name="historia" id="" cols="40" rows="10" formControlName="DescripcionHistoria" title="descripción"></textarea>
+  <div class="sub-cont-2">
+      <label for="enlace">Enlace del video:</label>
+      <input id="iframe-value" name="enlace" type="text" (change)="IframeVideo()"  placeholder="enlace del video" value="">
+
+    <iframe id="iframe-preview" width="560" height="315" src=""
+    title="YouTube video player"
+    frameborder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+    allowfullscreen></iframe>
+  </div>
+
+    <div class="sub-cont-2">
+            <label for="historia">Desgloce de Historia:</label>
+            <textarea name="historia" id="" cols="40" rows="10" formControlName="DescripcionHistoria" title="descripción"></textarea>
+      </div>
     </div>
 
 <div class="foot-cont">
@@ -63,22 +74,36 @@
 
 
 </div>
-</div>
 </form>
 
 
 
 
 <div class="container" id="container-3">
+
+  <div id="modal-time-line">
+    <div id="cont-close-button">
+      <button id="close-modal-3" (click)="Modal()">cerrar</button>
+    </div>
+    <label for="file">Imagen</label>
+      <input type="file" name="file" title="imagen">
+    <label for="title">Título</label>
+      <input type="text" name="title" title="título">
+    <label for="description">Descripción</label>
+      <input type="text" title="description">
+
+      <button type="submit" class="bold">guardar</button>
+  </div>
+
   <h1 class="bold">LÍNEA DE TIEMPO</h1>
 
-
 <div class="cont-3-timeline">
   <input type="file" name="file img" title="seleccionar imagen">
   <img src="../../../assets/img/Fondo-ham.png" alt="item 1" title="item 1">
 
         <input type="text" title="titulo de primer contenido" name="title" placeholder="Título">
               <input type="text" name="description" title="descripción de contenido" placeholder="descripción">
+              <button class="edit-timeline" type="button" (click)="Modal()">editar</button>
 </div>
 
 <div class="cont-3-timeline">
@@ -87,7 +112,8 @@
 
         <input type="text" title="titulo de primer contenido" name="title" placeholder="Título">
               <input type="text" name="description" title="descripción de contenido" placeholder="descripción">
-</div>
+              <button class="edit-timeline" type="button" (click)="Modal()">editar</button>
+            </div>
 
 <button id="cont-3-see-all" class="bold">Mostrar todo</button>
 
