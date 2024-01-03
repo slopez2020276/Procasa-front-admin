@@ -42,8 +42,9 @@ export class AdminprincipalComponent implements OnInit {
     this._idhistoria = responsive.historia[0]._id
     console.log(this.textoHistoria)
     console.log(this.data)
-    const repuestaLina = await this.lineaService.obtenerLineaTiempo()
-     this.dataLinea = repuestaLina
+    const repuestaLinea = await this.lineaService.obtenerLineaTiempo()
+     this.dataLinea = repuestaLinea.lineFiended
+     console.log(this.dataLinea)
 
 
 

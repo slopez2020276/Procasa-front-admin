@@ -98,23 +98,21 @@
 
   <h1 class="bold">LÍNEA DE TIEMPO</h1>
 
-<div class="cont-3-timeline">
-  <input type="file" name="file img" title="seleccionar imagen">
-  <img src="../../../assets/img/Fondo-ham.png" alt="item 1" title="item 1">
 
-        <input type="text" title="titulo de primer contenido" name="title" placeholder="Título">
-              <input type="text" name="description" title="descripción de contenido" placeholder="descripción">
-              <button class="edit-timeline" type="button" (click)="Modal()">editar</button>
-</div>
 
-<div class="cont-3-timeline">
-  <input type="file" name="file img" title="seleccionar imagen">
-  <img src="../../../assets/img/Fondo-ham.png" alt="item 1" title="item 1">
+  @for (os of dataLinea; track os._id) {
+    <li (mouseover)="onMouseOver(os.descriptionLineaTiempo)">{{os.descriptionLineaTiempo | uppercase}}</li>
+    <div class="cont-3-timeline">
+      <input type="file" name="file img" title="seleccionar imagen">
+      <img src="../../../assets/img/Fondo-ham.png" alt="item 1" title="item 1">
+    
+            <input type="text" title="titulo de primer contenido" name="title" placeholder="Título">
+                  <input type="text" name="description" title="descripción de contenido" placeholder="descripción">
+                  <button class="edit-timeline" type="button" (click)="Modal()">editar</button>
+                </div>
+}
 
-        <input type="text" title="titulo de primer contenido" name="title" placeholder="Título">
-              <input type="text" name="description" title="descripción de contenido" placeholder="descripción">
-              <button class="edit-timeline" type="button" (click)="Modal()">editar</button>
-            </div>
+
 
 <button id="cont-3-see-all" class="bold">Mostrar todo</button>
 
