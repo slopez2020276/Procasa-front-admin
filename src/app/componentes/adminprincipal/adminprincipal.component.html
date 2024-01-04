@@ -78,10 +78,7 @@
 </div>
 
 
-
-
-<div class="container" id="container-3">
-<!--
+<form [formGroup]="formularioEdit" (ngSubmit)="editarTime()" >
   <div id="modal-time-line">
     <div id="cont-close-button">
       <button id="close-modal-3" (click)="ModalTimeLine()">cerrar</button>
@@ -89,32 +86,38 @@
     <label for="file">Imagen</label>
       <input type="file" name="file" title="imagen">
     <label for="title">Título</label>
-      <input type="text" [(ngModel)]="tituloModal" name="title" title="título">
+      <input type="text" [(ngModel)]="tituloModal" formControlName="titleLineaTiempo" name="title" title="título">
     <label for="description">Descripción</label>
-      <input type="text" [(ngModel)]="descripcionModal" title="description">
+      <input type="text" [(ngModel)]="descripcionModal" formControlName="descriptionLineaTiempo" title="description">
 
-      <button type="submit" class="bold">guardar</button>
+      <button type="submit" class="bold" >guardar</button>
   </div> -->
+
+</form>
+
+<div class="container" id="container-3">
+
+  
 
   <h1 class="bold">LÍNEA DE TIEMPO</h1>
 
 
 
-  <div id="sub-cont-3">
+<div id="sub-cont-3">
   @for (os of dataLinea; track os._id) {
 
     <div class="cont-3-timeline">
       <!-- <input type="file" name="file img" title="seleccionar imagen"> -->
       <img src="../../../assets/img/Fondo-ham.png" alt="item 1" title="item 1">
-      <p class="input-to-text bold">Título TimeLine</p>
+      <p class="input-to-text"> {{os.titleLineaTiempo}}</p>
       <!-- <input type="text" name="description" title="descripción de contenido" placeholder="descripción"> -->
-      <p class="input-to-text">Descripción TimeLine</p>
+      <p class="input-to-text">{{os.descriptionLineaTiempo}}</p>
             <!-- <input type="text" title="titulo de primer contenido" name="title" placeholder="Título"> -->
                   <!-- <input type="text" name="description" title="descripción de contenido" placeholder="descripción"> -->
-                  <button class="edit-timeline" type="button" (click)="Modal()">editar</button>
+                  <button class="edit-timeline" type="button" (click)="editarModal(os._id)" (click)="Modal()">editar</button>
                 </div>
-              }
-            </div>
+}
+</div>
 
 
 <button id="cont-3-see-all" class="bold">Mostrar todo</button>

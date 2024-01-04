@@ -2,6 +2,7 @@ import { Component, OnInit, inject } from '@angular/core';
 import { HistoriaService } from '../../services/historia.service';
 import { FormControl, FormGroup } from '@angular/forms';
 import { LineaTiempoService } from '../../services/linea-tiempo.service';
+import { timeInterval } from 'rxjs';
 
 @Component({
   selector: 'app-adminprincipal',
@@ -11,6 +12,7 @@ import { LineaTiempoService } from '../../services/linea-tiempo.service';
 export class AdminprincipalComponent implements OnInit {
 
   formulario: FormGroup
+  formularioEdit: FormGroup 
   historiaService = inject(HistoriaService)
   lineaService = inject(LineaTiempoService)
   data: any
@@ -26,6 +28,10 @@ export class AdminprincipalComponent implements OnInit {
     this.formulario = new FormGroup({
       DescripcionHistoria: new FormControl('ingrese la historia por favor ')
     })
+    this.formularioEdit = new FormGroup({
+      titleLineaTiempo: new FormControl(),
+      descriptionLineaTiempo: new FormControl()
+    })
 
   }
 
@@ -39,17 +45,27 @@ export class AdminprincipalComponent implements OnInit {
 
 
   async ngOnInit()  {
+    this.obtenerHistoria()
+    this.obtenerLinea()
+
+
+
+  }
+
+  async obtenerHistoria(){
     const responsive = await this.historiaService.obtenerHistoria()
     this.data = responsive.historia[0]
     this.textoHistoria = responsive.historia[0].DescripcionHistoria
     this._idhistoria = responsive.historia[0]._id
     console.log(this.textoHistoria)
     console.log(this.data)
+      
+  }
+
+  async obtenerLinea(){
     const repuestaLinea = await this.lineaService.obtenerLineaTiempo()
      this.dataLinea = repuestaLinea.lineFiended
      console.log(this.dataLinea)
-
-
 
   }
   InputFile() {
@@ -68,14 +84,15 @@ EditarHistoria(){
 
 }
 
-async onMouseOver(id:any) {
+async editarModal(id:any) {
   const respuestaid = await this.lineaService.obtenerLineaxID(id)
   console.log(id)
  
   this.dataLieneaxId = respuestaid.lineaFiend
   this.tituloModal = this.dataLieneaxId.titleLineaTiempo
-this.descripcionModal = this.dataLieneaxId.descriptionLineaTiempo
+  this.descripcionModal = this.dataLieneaxId.descriptionLineaTiempo
   console.log(this.dataLieneaxId)
+
 }
 
 
@@ -86,6 +103,14 @@ this.descripcionModal = this.dataLieneaxId.descriptionLineaTiempo
 
 }
 
+
+async editarTime(){
+  let id =  this.dataLieneaxId._id 
+ const guardarRes = await this.lineaService.editarLineaforID(id,this.formularioEdit.value)
+ console.log(guardarRes)
+ this.obtenerLinea()
+ this.Modal()
+}
 
 
 ModalTimeLine() {document.getElementById('modal-time-line')?.classList.toggle('modal') }
