@@ -48,8 +48,6 @@ export class AdminloginComponent {
   }
 
 
-
-
   async onSubmit(){
     const response = await this.usersService.login(this.formulario.value)
     this.data = response.token
