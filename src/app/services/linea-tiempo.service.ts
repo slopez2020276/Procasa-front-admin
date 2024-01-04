@@ -21,9 +21,18 @@ export class LineaTiempoService {
   }
 
   obtenerLineaxID(idLinea:any){
+    
+    return firstValueFrom(
+      this.httpClient.get<any>(`${this.baseUrl}/obtenerLineaXid/${idLinea}`,this.createHeaders())
+    )
 
   }
   
+  editarLineaforID(idLinea:any){
+    return firstValueFrom(
+      this.httpClient.put<any>(`${this.baseUrl}/editarLineaTiempo/${idLinea}`,this.createHeaders())
+    )
+  }
 
   createHeaders(){
     return   {

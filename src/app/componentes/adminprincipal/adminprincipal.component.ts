@@ -17,6 +17,9 @@ export class AdminprincipalComponent implements OnInit {
   _idhistoria: any
   textoHistoria:any
   dataLinea:any
+  dataLieneaxId:any
+  tituloModal: string = ''
+  descripcionModal: string = ''
 
 
   constructor(){
@@ -65,12 +68,28 @@ EditarHistoria(){
 
 }
 
-onMouseOver(osName:string): void{
-  console.log(osName)
+async onMouseOver(id:any) {
+  const respuestaid = await this.lineaService.obtenerLineaxID(id)
+  console.log(id)
+ 
+  this.dataLieneaxId = respuestaid.lineaFiend
+  this.tituloModal = this.dataLieneaxId.titleLineaTiempo
+this.descripcionModal = this.dataLieneaxId.descriptionLineaTiempo
+  console.log(this.dataLieneaxId)
 }
 
 
+ Modal() {
+
+
+  document.getElementById('modal-time-line')?.classList.toggle('modal')
+
+}
+
+
+
 ModalTimeLine() {document.getElementById('modal-time-line')?.classList.toggle('modal') }
+
 
 
  async onSubmit(){

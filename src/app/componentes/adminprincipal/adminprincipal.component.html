@@ -81,22 +81,36 @@
 
 
 <div class="container" id="container-3">
+
+  <div id="modal-time-line">
+    <div id="cont-close-button">
+      <button id="close-modal-3" (click)="ModalTimeLine()">cerrar</button>
+    </div>
+    <label for="file">Imagen</label>
+      <input type="file" name="file" title="imagen">
+    <label for="title">Título</label>
+      <input type="text" [(ngModel)]="tituloModal" name="title" title="título">
+    <label for="description">Descripción</label>
+      <input type="text" [(ngModel)]="descripcionModal" title="description">
+
+      <button type="submit" class="bold">guardar</button>
+  </div>
+
   <h1 class="bold">LÍNEA DE TIEMPO</h1>
 
 
 
   @for (os of dataLinea; track os._id) {
-    <li (mouseover)="onMouseOver(os.descriptionLineaTiempo)">{{os.descriptionLineaTiempo | uppercase}}</li>
+    
     <div class="cont-3-timeline">
       <!-- <input type="file" name="file img" title="seleccionar imagen"> -->
       <img src="../../../assets/img/Fondo-ham.png" alt="item 1" title="item 1">
-
-      <!-- <input type="text" title="titulo de primer contenido" name="title" placeholder="Título"> -->
-                  <p>Título TimeLine</p>
-                  <!-- <input type="text" name="description" title="descripción de contenido" placeholder="descripción"> -->
-                  <p>Descripción TimeLine</p>
-
-                  <button class="edit-timeline" type="button" (click)="ModalTimeLine()">editar</button>
+      <p>Título TimeLine</p>
+      <!-- <input type="text" name="description" title="descripción de contenido" placeholder="descripción"> -->
+      <p>Descripción TimeLine</p>
+            <input type="text" title="titulo de primer contenido" name="title" placeholder="Título">
+                  <input type="text" name="description" title="descripción de contenido" placeholder="descripción">
+                  <button class="edit-timeline" type="button" (click)="Modal()">editar</button>
                 </div>
 }
 
