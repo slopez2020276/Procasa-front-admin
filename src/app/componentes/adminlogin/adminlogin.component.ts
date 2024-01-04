@@ -28,24 +28,48 @@ export class AdminloginComponent {
 
 
 
+  MessageAlert(message: string, type: number, time: number){
+    document.getElementById('container-alert')?.classList.add('show')
+    const innerMessage = document.getElementById('inner-message');
+    if (innerMessage) {
+      innerMessage.innerHTML = message;
+
+      if(type===1){
+        document.getElementById('time')?.classList.add('green')
+      }else if(type===2){
+        document.getElementById('time')?.classList.add('red')
+      }else if(type===3){
+        document.getElementById('time')?.classList.add('orange')
+      }
+      setTimeout(function(){
+        document.getElementById('container-alert')?.classList.remove('show')
+    },time)
+    }
+  }
+
+
+
+
   async onSubmit(){
     const response = await this.usersService.login(this.formulario.value)
     this.data = response.token
 
     this.data = response.token
     if(response.message ){
-      console.log(response.message )
-
-//error con alertas
-
+      console.log(response.message)
+      this.MessageAlert(response.message,3,2000)
+            //error con alertas
     }else if (response.token){
       localStorage.setItem('token', response.token)
       this.router.navigate(['admin/Principal'])
-
     }
 
 
   }
 
+
+ngOnInit(){
+
+}
 
 }
