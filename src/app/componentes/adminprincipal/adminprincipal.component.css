@@ -123,13 +123,59 @@ button#init-preview:active {
 
 
 
-div.cont-inter {
-  position: relative;
-  flex-wrap: wrap;
+div#cont-textareas {
+  width: 90%;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-wrap: wrap;
+  position: relative;
 }
+
+div.cont-inter {
+  position: relative;
+  flex-wrap: nowrap;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 48%;
+}
+
+div.cont-inter label {
+  text-align: right;
+  width: 30%;
+}
+
+
+
+div#cont-textareas-valores {
+  width: 90%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  position: relative;
+}
+
+div.cont-inter-valores {
+  position: relative;
+  flex-wrap: nowrap;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 48%;
+  margin-top: 2rem;
+}
+
+textarea, input {font-size: 12pt;}
+
+div.cont-inter-valores label {
+  text-align: right;
+  width: 30%;
+  padding-right: 2rem;
+}
+
+
 
 div.sub-container-1 {
   width: 90%;
