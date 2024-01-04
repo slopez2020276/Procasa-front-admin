@@ -1,11 +1,30 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
+import { MisionService } from '../../services/mision.service';
 
 @Component({
   selector: 'app-mision-valor',
   templateUrl: './mision-valor.component.html',
   styleUrl: './mision-valor.component.css'
 })
-export class MisionValorComponent {
+export class MisionValorComponent implements OnInit {
+  
+  MisionService = inject(MisionService)
+
+  dataMision:any
+  mision:string =''
+  vision:string= ''
+
+
+  
+  async ngOnInit()  {
+    const response = await this.MisionService.obtenerMsion()
+    this.dataMision = response.Mision[0]
+    this.mision = this.dataMision.textMision
+    this.vision = this.dataMision.textVIsion
+    
+    console.log(response.Mision)
+  }
+
 
   ValShow(val: number){
     // console.log(valshi);
