@@ -21,6 +21,10 @@ export class LineaTiempoService {
   }
 
   obtenerLineaxID(idLinea:any){
+    let id = idLinea
+    return firstValueFrom(
+      this.httpClient.get<any>(`${this.baseUrl}/obtenerLineaXid/${idLinea}`,this.createHeaders())
+    )
 
   }
   
