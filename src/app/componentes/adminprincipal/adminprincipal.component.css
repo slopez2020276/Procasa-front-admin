@@ -68,30 +68,33 @@ div.container:nth-child(1) {
 div.foot-cont {
   width: 90%;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   margin-top: 2rem;
 }
 
 div.cont-buttons {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   flex-wrap: nowrap;
+  width: 350px;
 }
 
 div.cont-buttons button {
-  padding: .5rem 1rem;
-  margin-left: .2rem;
+  padding: .5rem 3rem;
   border-radius: 4px;
-  border: 1px solid #DDD;
   transform: scale(1);
   cursor: pointer;
   font-size: 10pt;
+  border-radius: 4px;
+  background: #EAEAEA;
+  box-shadow: 0px 2px 0px rgba(0,0,0,.3);
 }
 
 div.cont-buttons button:active {
-  transform: scale(0.9);
+  transform: scale(0.95);
+  box-shadow: 0px 0px 0px rgba(0,0,0,.3);
 }
 
 
@@ -456,8 +459,8 @@ button#cont-3-see-all {
   padding: 1rem 5rem;
   border-radius: 4px;
   background: #EAEAEA;
+  box-shadow: 0px 2px 0px rgba(0,0,0,.3);
   transition: .2s;
-  box-shadow: 0px 2px 0px rgba(0,0,0,.1);
   margin-top: 2rem;
   cursor: pointer;
   transform: scale(1);
@@ -467,8 +470,7 @@ button#cont-3-see-all {
 
 button#cont-3-see-all:active {
   transform: scale(.97);
-  box-shadow: 0px 0px 0px rgba(0,0,0,.1);
-  color: #AAA;
+  box-shadow: 0px 0px 0px rgba(0,0,0,.3);
 }
 
 
