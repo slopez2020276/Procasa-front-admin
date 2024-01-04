@@ -51,7 +51,12 @@ export class AdminprincipalComponent implements OnInit {
     document.getElementById('mision-txt')?.setAttribute('disabled', 'disabled');
     document.getElementById('vision-txt')?.setAttribute('disabled', 'disabled');
     document.getElementById('deshabilitar')?.classList.add('hide');
+    document.getElementById('vdeshabilitar')?.classList.add('hide');
 
+    const valoresa = document.getElementsByClassName('valores-txt');
+    for(let e = 0; e < valoresa.length; e++){
+      valoresa[e].setAttribute('disabled', 'disabled');
+    }
 
     this.obtenerHistoria()
     this.obtenerLinea()
@@ -109,6 +114,27 @@ DisableMisionVision(){
 
 
 
+
+EnableValores() {
+  const valores = document.getElementsByClassName('valores-txt');
+for(let e = 0; e < valores.length; e++){
+  valores[e].removeAttribute('disabled');
+}
+
+  document.getElementById('vhabilitar')?.classList.toggle('hide')
+  document.getElementById('vdeshabilitar')?.classList.toggle('hide')
+}
+
+
+DisableValores(){
+  const valores = document.getElementsByClassName('valores-txt');
+for(let e = 0; e < valores.length; e++){
+  valores[e].setAttribute('disabled', 'disabled');
+}
+
+  document.getElementById('vhabilitar')?.classList.toggle('hide')
+  document.getElementById('vdeshabilitar')?.classList.toggle('hide')
+}
 
 
 

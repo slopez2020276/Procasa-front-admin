@@ -66,7 +66,7 @@ div.container:nth-child(1) {
 
 
 
-div#buts-enable {
+div.buts-enable {
   width: 90%;
   position: relative;
   display: flex;
@@ -76,7 +76,7 @@ div#buts-enable {
 
 
 
-div#buts-enable button {
+div.buts-enable button {
   padding: .5rem 2rem;
   background: #EAEAEA;
   border-radius: 4px;
@@ -92,11 +92,17 @@ div#buts-enable button {
 button#habilitar.hide { display: none; }
 button#deshabilitar.hide { display: none; }
 
+button#vhabilitar.hide { display: none; }
+button#vdeshabilitar.hide { display: none; }
 
-div#buts-enable button:active {
+
+
+div.buts-enable button:active {
   transform: scale(.95);
   box-shadow: 0px 0px 0px rgba(0,0,0,.3);
 }
+
+
 
 
 
