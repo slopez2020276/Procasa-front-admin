@@ -11,6 +11,7 @@ import { timeInterval } from 'rxjs';
 })
 export class AdminprincipalComponent implements OnInit {
 
+
   formulario: FormGroup
   formularioEditlineaTiempo: FormGroup
   historiaService = inject(HistoriaService)
@@ -25,6 +26,7 @@ export class AdminprincipalComponent implements OnInit {
 
 
   constructor(){
+
     this.formulario = new FormGroup({
       DescripcionHistoria: new FormControl('ingrese la historia por favor ')
     })
@@ -46,10 +48,13 @@ export class AdminprincipalComponent implements OnInit {
 
 
   async ngOnInit()  {
+    document.getElementById('mision-txt')?.setAttribute('disabled', 'disabled');
+    document.getElementById('vision-txt')?.setAttribute('disabled', 'disabled');
+    document.getElementById('deshabilitar')?.classList.add('hide');
+
+
     this.obtenerHistoria()
     this.obtenerLinea()
-
-
 
   }
 
@@ -81,9 +86,31 @@ export class AdminprincipalComponent implements OnInit {
   document.getElementById('preview-portada')?.removeAttribute('src');
 }
 
-EditarHistoria(){
+EnableMisionVision(){
+  document.getElementById('mision-txt')?.removeAttribute('disabled');
+  document.getElementById('vision-txt')?.removeAttribute('disabled');
 
+  document.getElementById('habilitar')?.classList.toggle('hide')
+  document.getElementById('deshabilitar')?.classList.toggle('hide')
 }
+
+DisableMisionVision(){
+  document.getElementById('mision-txt')?.setAttribute('disabled', 'disabled');
+  document.getElementById('vision-txt')?.setAttribute('disabled', 'disabled');
+
+  document.getElementById('habilitar')?.classList.toggle('hide')
+  document.getElementById('deshabilitar')?.classList.toggle('hide')
+}
+
+
+
+
+
+
+
+
+
+
 
 async editarModal(id:any) {
   const respuestaid = await this.lineaService.obtenerLineaxID(id)
