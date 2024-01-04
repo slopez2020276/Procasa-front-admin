@@ -250,23 +250,25 @@
 </div>
 
 
-<form [formGroup]="formularioEditlineaTiempo" (ngSubmit)="editarTime()"  >
+
 
 <div id="modal-time-line">
-  <div id="cont-close-button">
-    <button id="close-modal-3" (click)="ModalTimeLine()">cerrar</button>
+ 
+  <div id="cont-close-button">    
+    <button id="close-modal-3"  (click)="Modal()" >cerrar</button>
   </div>
+  <form [formGroup]="formularioEditlineaTiempo" (ngSubmit)="editarTime()"  >
   <label for="file">Imagen</label>
     <input type="file"   name="file" title="imagen">
   <label for="title">Título</label>
     <input type="text"  formControlName="titleLineaTiempo" [(ngModel)]="tituloModal" name="title" title="título">
   <label for="description">Descripción</label>
     <input type="text" formControlName="descriptionLineaTiempo" [(ngModel)]="descripcionModal"  title="description">
-
-    <button type="submit" class="bold">guardar</button>
+    <button type="submit" class="bold"  >guardar</button>
+  </form>
 </div>
 
-</form>
+
 
 
 <div id="space-sp"></div>

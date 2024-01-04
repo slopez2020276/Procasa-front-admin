@@ -99,11 +99,10 @@ async editarModal(id:any) {
 
 
  Modal() {
-
-
   document.getElementById('modal-time-line')?.classList.toggle('modal')
-
 }
+
+
 async buscarporID(id:any){
   const respuestaID = await this.lineaService.obtenerLineaxID(id)
   this.dataLieneaxId = respuestaID.lineaFiend
