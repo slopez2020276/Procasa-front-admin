@@ -88,10 +88,10 @@
     </div>
     <label for="file">Imagen</label>
       <input type="file" name="file" title="imagen">
-    <label for="title"  >Título</label>
+    <label for="title">Título</label>
       <input type="text" [(ngModel)]="tituloModal" name="title" title="título">
-    <label  for="description">Descripción</label>
-      <input [(ngModel)]="descripcionModal" type="text" title="description">
+    <label for="description">Descripción</label>
+      <input type="text" [(ngModel)]="descripcionModal" title="description">
 
       <button type="submit" class="bold">guardar</button>
   </div>
@@ -258,6 +258,20 @@
 
 </div>
 
+
+<div id="modal-time-line">
+  <div id="cont-close-button">
+    <button id="close-modal-3" (click)="ModalTimeLine()">cerrar</button>
+  </div>
+  <label for="file">Imagen</label>
+    <input type="file" name="file" title="imagen">
+  <label for="title">Título</label>
+    <input type="text" name="title" title="título">
+  <label for="description">Descripción</label>
+    <input type="text" title="description">
+
+    <button type="submit" class="bold">guardar</button>
+</div>
 
 
 <div id="space-sp"></div>
