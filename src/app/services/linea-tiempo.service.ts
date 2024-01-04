@@ -28,9 +28,9 @@ export class LineaTiempoService {
 
   }
   
-  editarLineaforID(idLinea:any){
+  editarLineaforID(idLinea:any,fromValue){
     return firstValueFrom(
-      this.httpClient.put<any>(`${this.baseUrl}/editarLineaTiempo/${idLinea}`,this.createHeaders())
+      this.httpClient.put<any>(`${this.baseUrl}/editarLineaTiempo/${idLinea}`,fromValue,this.createHeaders())
     )
   }
 
