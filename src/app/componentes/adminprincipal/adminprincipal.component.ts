@@ -70,9 +70,7 @@ onMouseOver(osName:string): void{
 }
 
 
-Modal() {
-  document.getElementById('modal-time-line')?.classList.toggle('modal')
-}
+ModalTimeLine() {document.getElementById('modal-time-line')?.classList.toggle('modal') }
 
 
  async onSubmit(){
