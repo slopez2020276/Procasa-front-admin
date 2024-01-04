@@ -431,7 +431,7 @@ div.cont-3-timeline {
   padding: 1rem;
   flex-wrap: wrap;
   position: relative;
-  box-shadow: 0px 2px 10px rgba(0,0,0,.3);
+  box-shadow: 0px 5px 5px rgba(0,0,0,.4);
   margin-top: 2rem;
   border-radius: 4px;
 }
@@ -488,6 +488,16 @@ div#cantainer-4 {
 
 
 
+div#cont-6-noticias {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 90%;
+  flex-wrap: wrap;
+  margin-top: 2rem;
+}
+
+
 
 div#modal-6 {
   position: fixed;
@@ -531,14 +541,14 @@ div#modal-6 h1 {
 div.noticia {
   display: flex;
   justify-content: center;
-  align-items: start;
+  align-items: center;
   flex-wrap: wrap;
   background: #F5F5F5;
-  width: 250px;
+  width: 270px;
   border-radius: .5rem;
   padding: 1rem;
-  box-shadow: 0px 5px 10px rgba(0,0,0,.2);
-  border: 2px solid #EEE;
+  box-shadow: 0px 5px 5px rgba(0,0,0,.4);
+  margin-bottom: 4rem;
 }
 
 div.noticia h2 {
