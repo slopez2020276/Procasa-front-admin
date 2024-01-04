@@ -1,6 +1,7 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { HistoriaService } from '../../services/historia.service';
 import { FormControl, FormGroup } from '@angular/forms';
+import { LineaTiempoService } from '../../services/linea-tiempo.service';
 
 @Component({
   selector: 'app-adminprincipal',
@@ -11,9 +12,11 @@ export class AdminprincipalComponent implements OnInit {
 
   formulario: FormGroup
   historiaService = inject(HistoriaService)
+  lineaService = inject(LineaTiempoService)
   data: any
   _idhistoria: any
-  textoHistoria
+  textoHistoria:any
+  dataLinea:any
 
 
   constructor(){
@@ -39,6 +42,11 @@ export class AdminprincipalComponent implements OnInit {
     this._idhistoria = responsive.historia[0]._id
     console.log(this.textoHistoria)
     console.log(this.data)
+    const repuestaLinea = await this.lineaService.obtenerLineaTiempo()
+     this.dataLinea = repuestaLinea.lineFiended
+     console.log(this.dataLinea)
+
+
 
   }
   InputFile() {
@@ -55,6 +63,10 @@ export class AdminprincipalComponent implements OnInit {
 
 EditarHistoria(){
 
+}
+
+onMouseOver(osName:string): void{
+  console.log(osName)
 }
 
 
