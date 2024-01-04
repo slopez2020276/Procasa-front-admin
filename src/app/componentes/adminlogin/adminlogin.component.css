@@ -236,3 +236,110 @@ div.alert-model button {
 
 
 
+
+
+
+
+
+
+
+
+
+div#container-alert {
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  z-index: -100;
+  opacity: 0;
+  transition: .2s ease;
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  background: rgba(0,0,0,.2);
+  text-align: center;
+}
+
+div#container-alert.show {
+  z-index: 900;
+  opacity: 1;
+}
+
+div.alert-model {
+  width: 400px;
+  height: auto;
+  padding: 2rem;
+  margin-top: 6vh;
+  border-radius: 4px;
+  box-shadow: 1px 3px 5px rgba(0,0,0,.4);
+  position: absolute;
+  z-index: 901;
+  background: #FAFAFA;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+
+
+
+div#sharp {
+  position: relative;
+  width: 50px;
+  height: 50px;
+  /* border: 1px solid black; */
+  margin-top: .5rem;
+}
+
+svg {
+  width: 50px;
+  height: auto;
+  position: relative;
+}
+
+div#time {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0%;
+  height: 5px;
+  background: transparent;
+  border-radius: 4px;
+  transition: .2s;
+}
+
+div#time.green {  background: greenyellow; animation: less 2s ease;}
+div#time.red {  background: red; animation: less 2s ease;}
+div#time.orange {  background: orangered; animation: less 2s ease;}
+
+div#time.timeoff {
+  width: 0%;
+}
+
+@keyframes less {
+  0%   {width: 100%;}
+  100% {width: 0%;}
+}
+
+
+
+div.alert-model p {
+  font-size: 14pt;
+  color: #757575;
+  width: 100%;
+  display: block;
+}
+
+div.alert-model button {
+  padding: .5rem 2rem;
+  text-decoration: underline;
+  font-size: 12pt;
+  color: #252525;
+  margin-top: 1rem;
+  background: #EAEAEA;
+  border-radius: 4px;
+  border: 1px solid #E1E1E1;
+}
+
