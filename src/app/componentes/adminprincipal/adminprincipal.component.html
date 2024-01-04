@@ -145,29 +145,33 @@
 
 <div class="container" id="container-5">
   <h1 class="bold">VALORES</h1>
+  <div class="buts-enable">
+    <button id="vhabilitar" (click)="EnableValores()">Habilitar</button>
+    <button id="vdeshabilitar" (click)="DisableValores()">Deshabilitar</button>
+  </div>
+
 
 
   <div id="cont-textareas-valores">
 
     <div class="cont-inter-valores">
         <label for="ttare1">Integridad</label>
-        <textarea title="Misión" name="ttare1" id="" cols="35" rows="10"></textarea>
+        <textarea class="valores-txt" title="Integridad" name="ttare1" id="" cols="35" rows="10"></textarea>
       </div>
 
       <div class="cont-inter-valores">
       <label for="ttare2">Pasión</label>
-      <textarea title="Visión" name="ttare2" id="" cols="35" rows="10"></textarea>
+      <textarea class="valores-txt" title="Pasión" name="ttare2" id="" cols="35" rows="10"></textarea>
     </div>
 
     <div class="cont-inter-valores">
       <label for="ttare3">Innovación continua</label>
-      <textarea title="Visión" name="ttare3" id="" cols="35" rows="10"></textarea>
+      <textarea class="valores-txt" title="Innovación continua" name="ttare3" id="" cols="35" rows="10"></textarea>
     </div>
-
 
     <div class="cont-inter-valores">
       <label for="ttare4">Orientación al servicio</label>
-      <textarea title="Visión" name="ttare4" id="" cols="35" rows="10"></textarea>
+      <textarea class="valores-txt" title="Orientación al servicio" name="ttare4" id="" cols="35" rows="10"></textarea>
     </div>
   </div>
 
@@ -234,7 +238,7 @@
 
     <div class="cont-buttons">
 
-      <button class="normal">guardar</button> -->
+      <button class="normal">guardar</button>
     </div>
   </div>
 
@@ -253,8 +257,8 @@
 
 
 <div id="modal-time-line">
- 
-  <div id="cont-close-button">    
+
+  <div id="cont-close-button">
     <button id="close-modal-3"  (click)="Modal()" >cerrar</button>
   </div>
 
