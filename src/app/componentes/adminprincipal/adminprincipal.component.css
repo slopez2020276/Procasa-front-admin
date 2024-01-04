@@ -130,6 +130,7 @@ div#cont-textareas {
   align-items: center;
   flex-wrap: wrap;
   position: relative;
+  margin-top: 2rem;
 }
 
 div.cont-inter {
@@ -144,6 +145,7 @@ div.cont-inter {
 div.cont-inter label {
   text-align: right;
   width: 30%;
+  padding-right: 2rem;
 }
 
 
