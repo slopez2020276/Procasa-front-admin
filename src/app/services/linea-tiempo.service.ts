@@ -7,9 +7,9 @@ import { firstValueFrom } from 'rxjs';
 })
 export class LineaTiempoService {
   private httpClient = inject(HttpClient)
-  private baseUrl: string; 
+  private baseUrl: string;
 
-  constructor() { 
+  constructor() {
     this.baseUrl = 'http://localhost:3002/api'
   }
 
@@ -21,14 +21,14 @@ export class LineaTiempoService {
   }
 
   obtenerLineaxID(idLinea:any){
-    
+
     return firstValueFrom(
       this.httpClient.get<any>(`${this.baseUrl}/obtenerLineaXid/${idLinea}`,this.createHeaders())
     )
 
   }
-  
-  editarLineaforID(idLinea:any,fromValue){
+
+  editarLineaforID(idLinea:any,fromValue: any){
     return firstValueFrom(
       this.httpClient.put<any>(`${this.baseUrl}/editarLineaTiempo/${idLinea}`,fromValue,this.createHeaders())
     )

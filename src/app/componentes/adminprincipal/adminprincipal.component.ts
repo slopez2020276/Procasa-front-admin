@@ -12,7 +12,7 @@ import { timeInterval } from 'rxjs';
 export class AdminprincipalComponent implements OnInit {
 
   formulario: FormGroup
-  formularioEdit: FormGroup 
+  formularioEditlineaTiempo: FormGroup
   historiaService = inject(HistoriaService)
   lineaService = inject(LineaTiempoService)
   data: any
@@ -28,7 +28,8 @@ export class AdminprincipalComponent implements OnInit {
     this.formulario = new FormGroup({
       DescripcionHistoria: new FormControl('ingrese la historia por favor ')
     })
-    this.formularioEdit = new FormGroup({
+
+    this.formularioEditlineaTiempo = new FormGroup({
       titleLineaTiempo: new FormControl(),
       descriptionLineaTiempo: new FormControl()
     })
@@ -59,7 +60,7 @@ export class AdminprincipalComponent implements OnInit {
     this._idhistoria = responsive.historia[0]._id
     console.log(this.textoHistoria)
     console.log(this.data)
-      
+
   }
 
   async obtenerLinea(){
@@ -87,11 +88,12 @@ EditarHistoria(){
 async editarModal(id:any) {
   const respuestaid = await this.lineaService.obtenerLineaxID(id)
   console.log(id)
- 
+
   this.dataLieneaxId = respuestaid.lineaFiend
   this.tituloModal = this.dataLieneaxId.titleLineaTiempo
   this.descripcionModal = this.dataLieneaxId.descriptionLineaTiempo
   console.log(this.dataLieneaxId)
+  console.log(this.tituloModal)
 
 }
 
@@ -102,11 +104,16 @@ async editarModal(id:any) {
   document.getElementById('modal-time-line')?.classList.toggle('modal')
 
 }
+async buscarporID(id:any){
+  const respuestaID = await this.lineaService.obtenerLineaxID(id)
+  this.dataLieneaxId = respuestaID.lineaFiend
+  console.log(this.dataLieneaxId)
 
+}
 
 async editarTime(){
-  let id =  this.dataLieneaxId._id 
- const guardarRes = await this.lineaService.editarLineaforID(id,this.formularioEdit.value)
+  let id =  this.dataLieneaxId._id
+ const guardarRes = await this.lineaService.editarLineaforID(id,this.formularioEditlineaTiempo.value)
  console.log(guardarRes)
  this.obtenerLinea()
  this.Modal()
