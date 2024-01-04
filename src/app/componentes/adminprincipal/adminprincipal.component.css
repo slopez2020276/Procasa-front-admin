@@ -51,7 +51,7 @@ div.container {
   margin-top: 3rem;
   padding: 2rem 2rem 1rem 2rem;
   display: flex;
-  border-radius: .5rem;
+  border-radius: 4px;
   justify-content: center;
   flex-wrap: wrap;
   align-items: start;
@@ -508,7 +508,7 @@ div.noticia {
   justify-content: center;
   align-items: start;
   flex-wrap: wrap;
-  background: #F7F7FC;
+  background: #F5F5F5;
   width: 250px;
   border-radius: .5rem;
   padding: 1rem;
