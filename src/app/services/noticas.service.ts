@@ -13,9 +13,16 @@ export class NoticasService {
     this.baseUrl = 'http://localhost:3002/api'
    }
 
+
    obtenerMainPage(){
     return firstValueFrom(
       this.httpClient.get<any>(`${this.baseUrl}/mostrarPaginaPrincipal`)
+    )
+  }
+
+  obtenerNoticas(){
+    return firstValueFrom(
+      this.httpClient.get<any>(`${this.baseUrl}/ObtnerNoticias`)
     )
   }
 }

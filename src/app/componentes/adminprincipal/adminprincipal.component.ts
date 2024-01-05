@@ -16,6 +16,7 @@ export class AdminprincipalComponent implements OnInit {
   formulario: FormGroup
   formularioEditlineaTiempo: FormGroup
   formularioMisionValor: FormGroup
+  formularioAgregarLineaTiempo:FormGroup
 
 
   historiaService = inject(HistoriaService)
@@ -33,6 +34,7 @@ export class AdminprincipalComponent implements OnInit {
   dataLieneaxId:any
   tituloModal: string = ''
   descripcionModal: string = ''
+  dataLineaRespuesta: any
 
   dataMisionÑ:any
 
@@ -50,6 +52,12 @@ export class AdminprincipalComponent implements OnInit {
       textMision: new FormControl(),
       textVIsion: new FormControl()
     })
+   this.formularioAgregarLineaTiempo = new FormGroup({
+    titleLineaTiempo: new FormControl(),
+    descriptionLineaTiempo: new FormControl(),
+  
+    })
+
 
   }
 
@@ -287,7 +295,21 @@ return false;
 
 
 
-  ModalAddTimeLine() {document.getElementById('modal-time-line-add')?.classList.toggle('modal')}
+  ModalAddTimeLine() {
+    document.getElementById('modal-time-line-add')?.classList.toggle('modal')
+
+  }
+
+  async agregarEventoLineaTiempo(){
+    const respuestaAgregar = await this.lineaService.crearEventoLineaTiempo(this.formularioAgregarLineaTiempo.value)
+    this.obtenerLinea()
+  }
+
+  async obtnerNoticias (){
+    const respuestasobtnerNoticas = this.lineaService.obtenerLineaTiempo()
+    this.dataLineaRespuesta = respuestasobtnerNoticas
+
+  }
 
   ModalEditNotice() { document.getElementById('modal-edit-notice')?.classList.toggle('show') }
 
