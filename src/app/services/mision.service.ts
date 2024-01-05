@@ -24,7 +24,7 @@ export class MisionService {
 
   editarMisionValor(id:any,fromValue:any){
     return firstValueFrom(
-      this.htppCliente.put<any>(`${this.baseUrl}/editarMision`,fromValue,this.createHeaders())
+      this.htppCliente.put<any>(`${this.baseUrl}/editarMision/${id}`,fromValue,this.createHeaders())
     )
   }
 
