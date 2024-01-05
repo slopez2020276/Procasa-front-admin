@@ -87,7 +87,7 @@ export class AdminprincipalComponent implements OnInit {
   }
 
 
-  AlertConfirm(message: string) {
+  AlertConfirm(message: string): number | any {
   document.getElementById('cont-btns-alert')?.classList.remove('show')
   document.getElementById('container-alert')?.classList.add('show')
   const innerMessage = document.getElementById('inner-message');
@@ -102,16 +102,16 @@ export class AdminprincipalComponent implements OnInit {
 
     document.getElementById('cancel')?.addEventListener('click', function(){
         document.getElementById('container-alert')?.classList.remove('show')
+        return 0;
       },false)
 
       document.getElementById('confirm')?.addEventListener('click', function(){
         document.getElementById('container-alert')?.classList.remove('show')
+        return 1;
       },false)
-
-
   }
-}
 
+}
 
 
 
@@ -121,9 +121,11 @@ export class AdminprincipalComponent implements OnInit {
 
     document.getElementById('mision-txt')?.setAttribute('disabled', 'disabled');
     document.getElementById('vision-txt')?.setAttribute('disabled', 'disabled');
+
+
     document.getElementById('deshabilitar')?.classList.add('hide');
-    document.getElementById('vdeshabilitar')?.classList.add('hide');
     document.getElementById('deshabilitar-mv')?.classList.add('hide');
+    document.getElementById('vdeshabilitar')?.classList.add('hide');
 
     const valoresa = document.getElementsByClassName('valores-txt');
     for(let e = 0; e < valoresa.length; e++){
@@ -259,8 +261,13 @@ ModalTimeLine() {document.getElementById('modal-time-line')?.classList.toggle('m
 
 
  async onSubmit(){
-    const response = await this.historiaService.editarHistoria(this.formulario.value,this._idhistoria)
-    console.log(response)
+
+let confirma = this.AlertConfirm("¿Desea guardar los cambios?")
+if(confirma===1){
+  const response = await this.historiaService.editarHistoria(this.formulario.value,this._idhistoria)
+  return true;
+}
+return false;
   }
 
   async guardarMision(){
