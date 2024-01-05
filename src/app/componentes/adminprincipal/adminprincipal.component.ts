@@ -123,6 +123,7 @@ export class AdminprincipalComponent implements OnInit {
     document.getElementById('vision-txt')?.setAttribute('disabled', 'disabled');
     document.getElementById('deshabilitar')?.classList.add('hide');
     document.getElementById('vdeshabilitar')?.classList.add('hide');
+    document.getElementById('deshabilitar-mv')?.classList.add('hide');
 
     const valoresa = document.getElementsByClassName('valores-txt');
     for(let e = 0; e < valoresa.length; e++){
@@ -176,16 +177,16 @@ EnableMisionVision(){
   document.getElementById('mision-txt')?.removeAttribute('disabled');
   document.getElementById('vision-txt')?.removeAttribute('disabled');
 
-  document.getElementById('habilitar')?.classList.toggle('hide')
-  document.getElementById('deshabilitar')?.classList.toggle('hide')
+  document.getElementById('habilitar-mv')?.classList.toggle('hide')
+  document.getElementById('deshabilitar-mv')?.classList.toggle('hide')
 }
 
 DisableMisionVision(){
   document.getElementById('mision-txt')?.setAttribute('disabled', 'disabled');
   document.getElementById('vision-txt')?.setAttribute('disabled', 'disabled');
 
-  document.getElementById('habilitar')?.classList.toggle('hide')
-  document.getElementById('deshabilitar')?.classList.toggle('hide')
+  document.getElementById('habilitar-mv')?.classList.toggle('hide')
+  document.getElementById('deshabilitar-mv')?.classList.toggle('hide')
 }
 
 
