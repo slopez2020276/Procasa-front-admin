@@ -4,6 +4,7 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { LineaTiempoService } from '../../services/linea-tiempo.service';
 import { timeInterval } from 'rxjs';
 import { MisionService } from '../../services/mision.service';
+import { NoticasService } from '../../services/noticas.service';
 
 @Component({
   selector: 'app-adminprincipal',
@@ -22,6 +23,7 @@ export class AdminprincipalComponent implements OnInit {
   historiaService = inject(HistoriaService)
   lineaService = inject(LineaTiempoService)
   misionService = inject(MisionService)
+  noticiasService = inject(NoticasService)
 
 
   mision:any
@@ -143,6 +145,7 @@ export class AdminprincipalComponent implements OnInit {
     this.obtenerHistoria()
     this.obtenerLinea()
     this.obtenerMision()
+    this.obtnerNoticias()
 
   }
 
@@ -297,8 +300,9 @@ return false;
   }
 
   async obtnerNoticias (){
-    const respuestasobtnerNoticas = this.lineaService.obtenerLineaTiempo()
-    this.dataLineaRespuesta = respuestasobtnerNoticas
+    const respuestasobtnerNoticas = await this.noticiasService.obtenerNoticas()
+    this.dataLineaRespuesta = respuestasobtnerNoticas.noticas
+    console.log(respuestasobtnerNoticas)
 
   }
 

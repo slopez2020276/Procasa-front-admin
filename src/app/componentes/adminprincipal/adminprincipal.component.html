@@ -195,22 +195,18 @@
 
 
 
+  <div id="cont-6-noticias">
   @for (os of dataLineaRespuesta; track os._id) {
 
-    <div class="cont-2-column-item">
-      <!-- <div class="bar-connect"></div> -->
-   <img src="../../../assets/img/hamburguesa.jpg" alt=""><h2> {{os.titleLineaTiempo}} </h2> <br> {{os.descriptionLineaTiempo}} </div>
-
-   <div id="cont-6-noticias">
 
     <div class="noticia">
       <img src="../../../assets/img/textura-fon.png" alt="noticia">
-    <h2>Título</h2>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed nemo mollitia id dolor, ipsum amet numquam necessitatibus tenetur placeat deleniti suscipit inventore eos reprehenderit! Fuga mollitia id iure assumenda praesentium.</p>
+    <h2>{{os.titulo}}</h2>
+    <p>{{os.imgPhat}}</p>
           <button type="button" class="edit-notice">editar</button>
         </div>
-  </div>
-  }
+      }
+    </div>
 
 
 
