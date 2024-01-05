@@ -1,5 +1,6 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { MisionService } from '../../services/mision.service';
+import { ValoresService } from '../../services/valores.service';
 
 @Component({
   selector: 'app-mision-valor',
@@ -9,7 +10,15 @@ import { MisionService } from '../../services/mision.service';
 export class MisionValorComponent implements OnInit {
   
   MisionService = inject(MisionService)
+  ValoresService = inject(ValoresService)
 
+
+  Integridad:any
+  Pasion:any
+  Innovacion:any
+  Orientacion:any
+  
+  dataValores
   dataMision:any
   mision:string =''
   vision:string= ''
@@ -17,12 +26,27 @@ export class MisionValorComponent implements OnInit {
 
   
   async ngOnInit()  {
+    this.obtenerMision()
+    this.obtnerValores()
+    
+  }
+
+  async obtenerMision(){
     const response = await this.MisionService.obtenerMsion()
     this.dataMision = response.Mision[0]
     this.mision = this.dataMision.textMision
     this.vision = this.dataMision.textVIsion
-    
-    console.log(response.Mision)
+  }
+
+  async obtnerValores(){
+    const respuesta = await this.ValoresService.obtenerValores()
+    this.dataValores = respuesta.valores[0]
+    this.Innovacion = this.dataValores.Innovacion
+    this.Pasion = this.dataValores.Pasion
+    this.Integridad = this.dataValores.Integridad
+    this.Orientacion = this.dataValores.Orientacion
+    console.log(this.dataValores)
+
   }
 
 

@@ -5,6 +5,7 @@ import { LineaTiempoService } from '../../services/linea-tiempo.service';
 import { timeInterval } from 'rxjs';
 import { MisionService } from '../../services/mision.service';
 import { NoticasService } from '../../services/noticas.service';
+import { ValoresService } from '../../services/valores.service';
 
 @Component({
   selector: 'app-adminprincipal',
@@ -18,8 +19,15 @@ export class AdminprincipalComponent implements OnInit {
   formularioEditlineaTiempo: FormGroup
   formularioMisionValor: FormGroup
   formularioAgregarLineaTiempo:FormGroup
+  formularioValores:FormGroup
 
 
+
+
+  
+  dataValores
+
+  ValoresService = inject(ValoresService)
   historiaService = inject(HistoriaService)
   lineaService = inject(LineaTiempoService)
   misionService = inject(MisionService)
@@ -30,15 +38,26 @@ export class AdminprincipalComponent implements OnInit {
   mision:any
   vision:any
   data: any
+
+  
+  Integridad:any
+  Pasion:any
+  Innovacion:any
+  Orientacion:any
+
+
   _idhistoria: any
   textoHistoria:any
+
+  dataMisionÑ:any
   dataLinea:any
   dataLieneaxId:any
+
   tituloModal: string = ''
   descripcionModal: string = ''
   dataLineaRespuesta: any
 
-  dataMisionÑ:any
+
 
   constructor(){
 
@@ -59,6 +78,13 @@ export class AdminprincipalComponent implements OnInit {
     descriptionLineaTiempo: new FormControl(),
 
     })
+    this.formularioValores = new FormGroup({
+      Integridad: new FormControl(),
+      Pasion: new FormControl(),
+      Innovacion: new FormControl(),
+      Orientacion: new FormControl(),
+  
+      })
 
 
   }
@@ -148,6 +174,7 @@ export class AdminprincipalComponent implements OnInit {
     this.obtenerLinea()
     this.obtenerMision()
     this.obtnerNoticias()
+    this.obtnerValores()
 
   }
 
@@ -319,7 +346,24 @@ return false;
   ModalEditNotice() { document.getElementById('modal-edit-notice')?.classList.toggle('show') }
   NewModalNotice() { document.getElementById('modal-new-notice')?.classList.toggle('show') }
 
+  
 
+  async obtnerValores(){
+    const respuesta = await this.ValoresService.obtenerValores()
+    this.dataValores = respuesta.valores[0]
+    this.Innovacion = this.dataValores.Innovacion
+    this.Pasion = this.dataValores.Pasion
+    this.Integridad = this.dataValores.Integridad
+    this.Orientacion = this.dataValores.Orientacion
+    console.log(this.dataValores)
+
+  }
+
+  async editarValores(){
+   let id =  this.dataValores
+   const respuestaEdit = await this.ValoresService.editarValores(id,this.formularioValores.value)
+   console.log(respuestaEdit) 
+  }
 
 
 
