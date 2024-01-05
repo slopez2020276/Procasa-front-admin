@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
 import { firstValueFrom } from 'rxjs';
 
@@ -20,6 +20,23 @@ export class MisionService {
       this.htppCliente.get<any>(`${this.baseUrl}/mostrarMision`)
     )
   }
+
+
+  editarMisionValor(id:any,fromValue:any){
+    return firstValueFrom(
+      this.htppCliente.put<any>(`${this.baseUrl}/editarMision`,fromValue,this.createHeaders())
+    )
+  }
+
+  createHeaders(){
+    return   {
+     headers: new HttpHeaders ({
+       'Authorization': localStorage.getItem('token')!
+     })
+   }
+ }
+
+
 
 
 }
