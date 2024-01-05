@@ -64,7 +64,7 @@
 
   <div class="cont-buttons">
 
-    <button class="normal" type="submit" >guardar </button>
+    <button class="normal" type="submit" (click)="AlertConfirm('¿Desea guardar los cambios?')">guardar</button>
   </div>
 
 
@@ -96,7 +96,7 @@
             </div>
 
 
-<button id="cont-3-see-all" class="bold">Agregar</button>
+<button id="cont-3-see-all" class="bold" (click)="ModalAddTimeLine()">Agregar</button>
 
 
   <div class="foot-cont">
@@ -276,6 +276,51 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div id="modal-time-line-add">
+
+  <div id="cont-close-button-add">
+    <button id="close-modal-3-add" (click)="ModalAddTimeLine()" >cerrar</button>
+  </div>
+
+  <form>
+  <label for="file">Imagen</label>
+    <input type="file"   name="file" title="imagen">
+  <label for="title">Título</label>
+    <input type="text"  formControlName="titleLineaTiempo" [(ngModel)]="tituloModal" name="title" title="título">
+  <label for="description">Descripción</label>
+    <input type="text" formControlName="descriptionLineaTiempo" [(ngModel)]="descripcionModal"  title="description">
+    <button type="submit" class="bold"  >guardar</button>
+  </form>
+</div>
+
+
+
+
+
+
+
+
 <div id="space-sp"></div>
 
 
@@ -286,16 +331,6 @@
 
   <div id="alert-check" class="alert-model">
       <p class="bold" id="inner-message"></p>
-
-      <!-- <button class="bold">confirmar</button>
-      <button class="bold">cancelar</button> -->
-
-  <!-- <div id="sharp">
-  <svg width="800px" height="800px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <circle cx="12" cy="12" r="10" stroke="greenyellow" stroke-width="1.5"/>
-  <path d="M8.5 12.5L10.5 14.5L15.5 9.5" stroke="greenyellow" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-  </svg>
-      </div> -->
 
       <div id="cont-btns-alert">
         <button id="confirm">confirmar</button>

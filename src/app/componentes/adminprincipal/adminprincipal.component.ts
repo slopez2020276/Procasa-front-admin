@@ -239,4 +239,12 @@ ModalTimeLine() {document.getElementById('modal-time-line')?.classList.toggle('m
   }
 
 
+
+  ModalAddTimeLine() {
+
+
+
+  }
+
+
 }
