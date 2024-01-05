@@ -3,6 +3,7 @@ import { HistoriaService } from '../../services/historia.service';
 import { FormControl, FormGroup } from '@angular/forms';
 import { LineaTiempoService } from '../../services/linea-tiempo.service';
 import { timeInterval } from 'rxjs';
+import { MisionService } from '../../services/mision.service';
 
 @Component({
   selector: 'app-adminprincipal',
@@ -14,8 +15,16 @@ export class AdminprincipalComponent implements OnInit {
 
   formulario: FormGroup
   formularioEditlineaTiempo: FormGroup
+  formularioMisionValor: FormGroup
+
+
   historiaService = inject(HistoriaService)
   lineaService = inject(LineaTiempoService)
+  misionService = inject(MisionService)
+
+
+  mision:any
+  vision:any
   data: any
   _idhistoria: any
   textoHistoria:any
@@ -24,6 +33,7 @@ export class AdminprincipalComponent implements OnInit {
   tituloModal: string = ''
   descripcionModal: string = ''
 
+  dataMisionÑ:any
 
   constructor(){
 
@@ -34,6 +44,10 @@ export class AdminprincipalComponent implements OnInit {
     this.formularioEditlineaTiempo = new FormGroup({
       titleLineaTiempo: new FormControl(),
       descriptionLineaTiempo: new FormControl()
+    })
+    this.formularioMisionValor = new FormGroup({
+      textMision: new FormControl(),
+      textVIsion: new FormControl()
     })
 
   }
@@ -117,7 +131,17 @@ export class AdminprincipalComponent implements OnInit {
 
     this.obtenerHistoria()
     this.obtenerLinea()
+    this.obtenerMision()
 
+  }
+
+  async obtenerMision(){
+    const respuesta = await this.misionService.obtenerMsion()
+    this.dataMisionÑ = respuesta.Mision[0]
+    this.mision = this.dataMisionÑ.textMision
+    this.vision = this.dataMisionÑ.textVIsion
+
+    console.log(this.dataMisionÑ)
   }
 
   async obtenerHistoria(){
@@ -236,6 +260,11 @@ ModalTimeLine() {document.getElementById('modal-time-line')?.classList.toggle('m
  async onSubmit(){
     const response = await this.historiaService.editarHistoria(this.formulario.value,this._idhistoria)
     console.log(response)
+  }
+
+  async guardarMision(){
+    let id = this.dataMisionÑ._id
+    const repuestaEdit = this.misionService.editarMisionValor(id,this.formularioMisionValor)
   }
 
 
