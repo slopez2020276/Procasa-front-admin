@@ -23,6 +23,7 @@ export class AdminprincipalComponent implements OnInit {
   misionService = inject(MisionService)
 
 
+
   mision:any
   vision:any
   data: any
@@ -53,6 +54,8 @@ export class AdminprincipalComponent implements OnInit {
   }
 
 
+  // ENLACE DE VIDEO DE YOUTUBE DE HISTORIA
+
   IframeVideo() {
     const src: any = (document.getElementById('iframe-value') as HTMLInputElement | null)?.value;
           document.getElementById('iframe-preview')?.removeAttribute('src')
@@ -62,8 +65,7 @@ export class AdminprincipalComponent implements OnInit {
 
 
 
-
-
+// SISTEMA DE ALERTAS TYPO COLORES
   MessageAlert(message: string, type: number, time: number){
     document.getElementById('container-alert')?.classList.add('show')
     const innerMessage = document.getElementById('inner-message');
@@ -87,6 +89,7 @@ export class AdminprincipalComponent implements OnInit {
   }
 
 
+  // SISTEMA DE ALERTAS TIPO CONFIRMACIÓN CON BOTONES
   AlertConfirm(message: string): number | any {
   document.getElementById('cont-btns-alert')?.classList.remove('show')
   document.getElementById('container-alert')?.classList.add('show')
@@ -114,14 +117,13 @@ export class AdminprincipalComponent implements OnInit {
 }
 
 
-
+// AL INICIAR
   async ngOnInit()  {
 
     this.MessageAlert("¡Bienvenido al Administrador de Procasa!",1,2000)
 
     document.getElementById('mision-txt')?.setAttribute('disabled', 'disabled');
     document.getElementById('vision-txt')?.setAttribute('disabled', 'disabled');
-
 
     document.getElementById('deshabilitar')?.classList.add('hide');
     document.getElementById('deshabilitar-mv')?.classList.add('hide');
@@ -135,7 +137,6 @@ export class AdminprincipalComponent implements OnInit {
     this.obtenerHistoria()
     this.obtenerLinea()
     this.obtenerMision()
-
   }
 
   async obtenerMision(){
@@ -163,6 +164,9 @@ export class AdminprincipalComponent implements OnInit {
     console.log(this.dataLinea)
 
   }
+
+
+// SISTEMA DEL INPUT FILE IMAGEN
   InputFile() {
     const inputfile: any = (document.getElementById('file-portada') as HTMLInputElement | null)?.value;
     document.getElementById('file-portada')?.setAttribute('data-content', inputfile);
@@ -175,6 +179,9 @@ export class AdminprincipalComponent implements OnInit {
   document.getElementById('preview-portada')?.removeAttribute('src');
 }
 
+
+
+// HABILITAR Y DESHABILITAR TEXTARES DE VISION Y MISIÓN
 EnableMisionVision(){
   document.getElementById('mision-txt')?.removeAttribute('disabled');
   document.getElementById('vision-txt')?.removeAttribute('disabled');
@@ -198,7 +205,7 @@ DisableMisionVision(){
 
 
 
-
+// SISTEMA DE HABILITAR Y DESHABILITAR TEXTAREA DE VALORES
 EnableValores() {
   const valores = document.getElementsByClassName('valores-txt');
 for(let e = 0; e < valores.length; e++){
@@ -222,6 +229,8 @@ for(let e = 0; e < valores.length; e++){
 
 
 
+
+// MODAL LINEA DE TIEMPO
 async editarModal(id:any) {
   const respuestaid = await this.lineaService.obtenerLineaxID(id)
   console.log(id)
@@ -280,5 +289,16 @@ return false;
 
   ModalAddTimeLine() {document.getElementById('modal-time-line-add')?.classList.toggle('modal')}
 
+  ModalEditNotice() { document.getElementById('modal-edit-notice')?.classList.toggle('show') }
+
+
+
+
+
+
+
 
 }
+
+
+

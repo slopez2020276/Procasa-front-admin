@@ -201,22 +201,9 @@
     <img src="../../../assets/img/textura-fon.png" alt="noticia">
   <h2>Título</h2>
   <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed nemo mollitia id dolor, ipsum amet numquam necessitatibus tenetur placeat deleniti suscipit inventore eos reprehenderit! Fuga mollitia id iure assumenda praesentium.</p>
-        <button type="button" class="edit-notice">editar</button>
+        <button type="button" class="edit-notice" (click)="ModalEditNotice()">editar</button>
       </div>
 
-      <div class="noticia">
-  <img src="../../../assets/img/textura-fon.png" alt="noticia">
-  <h2>Título</h2>
-  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed nemo mollitia id dolor, ipsum amet numquam necessitatibus tenetur placeat deleniti suscipit inventore eos reprehenderit! Fuga mollitia id iure assumenda praesentium.</p>
-  <button type="button" class="edit-notice">editar</button>
-</div>
-
-<div class="noticia">
-  <img src="../../../assets/img/textura-fon.png" alt="noticia">
-  <h2>Título</h2>
-  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed nemo mollitia id dolor, ipsum amet numquam necessitatibus tenetur placeat deleniti suscipit inventore eos reprehenderit! Fuga mollitia id iure assumenda praesentium.</p>
-  <button type="button" class="edit-notice">editar</button>
-</div>
 
 </div>
 
@@ -304,9 +291,18 @@
 
 
 
-
+<!-- M O D A L   E D I T A R   N O T I C I A S  -->
 <div id="modal-edit-notice">
+        <div id="cont-btn-close"> <button id="close-modal-notice" (click)="ModalEditNotice()">cerrar</button> </div>
 
+<form>
+
+<label for="file-notice">imagen</label>               <input title="imagen de noticia" type="file" name="file-notice">
+<label for="title-notice">Título</label>              <input type="text" name="title-notice" title="Título de noticia">
+<label for="description-notice">Descripción</label>   <textarea title="descripción de noticia" name="description-notice" id="" cols="20" rows="5"></textarea>
+
+<button type="submit">guardar</button>
+</form>
 </div>
 
 
