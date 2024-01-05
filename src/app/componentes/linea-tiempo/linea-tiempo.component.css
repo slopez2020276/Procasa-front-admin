@@ -91,6 +91,7 @@ position: relative;
 border-radius: 4px;
 }
 
+
 div.r { transform: translate(307px, 70px); }
 div.l { transform: translate(-32px, 170px); }
 
@@ -107,9 +108,9 @@ div#cont-2-column {
 }
 
 div.cont-2-column-item {
-width: 325px;
-height: 370px;
-margin-bottom: 1rem;
+  width: 325px;
+  height: 370px;
+  margin-bottom: 1rem;
 }
 
 div#line-center {background: transparent;}
