@@ -118,17 +118,17 @@
   <button id="deshabilitar" (click)="DisableMisionVision()">Cancelar</button>
 </div>
 
-<form [formGroup]="formularioMisionValor"  (ngSubmit)="onSubmit()" >
+<form [formGroup]="formularioMisionValor"  (ngSubmit)="guardarMision()" >
 <div id="cont-textareas">
 
   <div class="cont-inter">
       <label for="ttarea1">Misión</label>
-      <textarea [(ngModel)]="mision" title="Misión" name="ttarea1" id="mision-txt" cols="35" rows="10"></textarea>
+      <textarea [(ngModel)]="mision" formControlName="textMision" title="Misión" name="ttarea1" id="mision-txt" cols="35" rows="10"></textarea>
     </div>
 
     <div class="cont-inter">
       <label for="ttarea2">Visión</label>
-      <textarea title="Visión" [(ngModel)]="vision" name="ttarea2" id="vision-txt" cols="35" rows="10"></textarea>
+      <textarea title="Visión" [(ngModel)]="vision" formControlName="textVIsion" name="ttarea2" id="vision-txt" cols="35" rows="10"></textarea>
     </div>
 
   </div>

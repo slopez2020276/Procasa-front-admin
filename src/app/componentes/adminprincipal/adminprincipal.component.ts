@@ -264,7 +264,8 @@ ModalTimeLine() {document.getElementById('modal-time-line')?.classList.toggle('m
 
   async guardarMision(){
     let id = this.dataMisionÑ._id
-    const repuestaEdit = this.misionService.editarMisionValor(id,this.formularioMisionValor)
+    const repuestaEdit =  await this.misionService.editarMisionValor(id,this.formularioMisionValor.value)
+    console.log(repuestaEdit)
   }
 
 
