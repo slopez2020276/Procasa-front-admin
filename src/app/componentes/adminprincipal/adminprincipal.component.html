@@ -33,7 +33,7 @@
 
     <div class="cont-buttons">
 
-      <button class="normal">guardar</button>
+      <button class="normal" (click)="AlertConfirm('¿Desea guardar los cambios?')">guardar</button>
     </div>
   </div>
 </div>
@@ -96,14 +96,14 @@
             </div>
 
 
-<button id="cont-3-see-all" class="bold">Mostrar todo</button>
+<button id="cont-3-see-all" class="bold">Agregar</button>
 
 
   <div class="foot-cont">
 
     <div class="cont-buttons">
 
-      <button class="normal">guardar</button>
+
     </div>
   </div>
 </div>
@@ -114,8 +114,8 @@
   <h1 class="bold">MISIÓN y VISIÓN</h1>
 
 <div id="buts-enable">
-  <button id="habilitar" (click)="EnableMisionVision()">Habilitar</button>
-  <button id="deshabilitar" (click)="DisableMisionVision()">Deshabilitar</button>
+  <button id="habilitar" (click)="EnableMisionVision()">Editar</button>
+  <button id="deshabilitar" (click)="DisableMisionVision()">Cancelar</button>
 </div>
 
 <div id="cont-textareas">
@@ -146,8 +146,8 @@
 <div class="container" id="container-5">
   <h1 class="bold">VALORES</h1>
   <div class="buts-enable">
-    <button id="vhabilitar" (click)="EnableValores()">Habilitar</button>
-    <button id="vdeshabilitar" (click)="DisableValores()">Deshabilitar</button>
+    <button id="vhabilitar" (click)="EnableValores()">Editar</button>
+    <button id="vdeshabilitar" (click)="DisableValores()">Cancelar</button>
   </div>
 
 
@@ -277,5 +277,34 @@
 
 
 <div id="space-sp"></div>
+
+
+
+
+
+<div id="container-alert">
+
+  <div id="alert-check" class="alert-model">
+      <p class="bold" id="inner-message"></p>
+
+      <!-- <button class="bold">confirmar</button>
+      <button class="bold">cancelar</button> -->
+
+  <!-- <div id="sharp">
+  <svg width="800px" height="800px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <circle cx="12" cy="12" r="10" stroke="greenyellow" stroke-width="1.5"/>
+  <path d="M8.5 12.5L10.5 14.5L15.5 9.5" stroke="greenyellow" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  </svg>
+      </div> -->
+
+      <div id="cont-btns-alert">
+        <button id="confirm">confirmar</button>
+        <button id="cancel">cancelar</button>
+      </div>
+
+      <div id="time"></div>
+    </div>
+    </div>
+
 </body>
 </html>

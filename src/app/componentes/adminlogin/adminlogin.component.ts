@@ -43,6 +43,9 @@ export class AdminloginComponent {
       }
       setTimeout(function(){
         document.getElementById('container-alert')?.classList.remove('show')
+        document.getElementById('time')?.classList.remove('green')
+        document.getElementById('time')?.classList.remove('red')
+        document.getElementById('time')?.classList.remove('orange')
     },time)
     }
   }

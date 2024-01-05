@@ -47,7 +47,64 @@ export class AdminprincipalComponent implements OnInit {
   }
 
 
+
+
+
+  MessageAlert(message: string, type: number, time: number){
+    document.getElementById('container-alert')?.classList.add('show')
+    const innerMessage = document.getElementById('inner-message');
+    if (innerMessage) {
+      innerMessage.innerHTML = message;
+
+      if(type===1){
+        document.getElementById('time')?.classList.add('green')
+      }else if(type===2){
+        document.getElementById('time')?.classList.add('red')
+      }else if(type===3){
+        document.getElementById('time')?.classList.add('orange')
+      }
+      setTimeout(function(){
+        document.getElementById('container-alert')?.classList.remove('show')
+        document.getElementById('time')?.classList.remove('green')
+        document.getElementById('time')?.classList.remove('red')
+        document.getElementById('time')?.classList.remove('orange')
+    },time)
+    }
+  }
+
+
+  AlertConfirm(message: string) {
+  document.getElementById('cont-btns-alert')?.classList.remove('show')
+  document.getElementById('container-alert')?.classList.add('show')
+  const innerMessage = document.getElementById('inner-message');
+  if (innerMessage) {
+    innerMessage.innerHTML = message;
+
+    document.getElementById('container-alert')?.classList.add('show')
+    document.getElementById('time')?.classList.remove('green')
+    document.getElementById('time')?.classList.remove('red')
+    document.getElementById('time')?.classList.remove('orange')
+    document.getElementById('cont-btns-alert')?.classList.add('show')
+
+    document.getElementById('cancel')?.addEventListener('click', function(){
+        document.getElementById('container-alert')?.classList.remove('show')
+      },false)
+
+      document.getElementById('confirm')?.addEventListener('click', function(){
+        document.getElementById('container-alert')?.classList.remove('show')
+      },false)
+
+
+  }
+}
+
+
+
+
   async ngOnInit()  {
+
+    this.MessageAlert("¡Bienvenido al Administrador de Procasa!",1,2000)
+
     document.getElementById('mision-txt')?.setAttribute('disabled', 'disabled');
     document.getElementById('vision-txt')?.setAttribute('disabled', 'disabled');
     document.getElementById('deshabilitar')?.classList.add('hide');
@@ -75,8 +132,8 @@ export class AdminprincipalComponent implements OnInit {
 
   async obtenerLinea(){
     const repuestaLinea = await this.lineaService.obtenerLineaTiempo()
-     this.dataLinea = repuestaLinea.lineFiended
-     console.log(this.dataLinea)
+    this.dataLinea = repuestaLinea.lineFiended
+    console.log(this.dataLinea)
 
   }
   InputFile() {
