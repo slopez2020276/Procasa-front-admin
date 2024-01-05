@@ -23,7 +23,7 @@ div#sub-section-1 {
     justify-content: space-around;
 }
 
-div#sub-section-1 div.sub {
+div#sub-section-1 div.sub-mv {
     width: 350px;
     min-width: 350px;
     height: auto;
@@ -32,19 +32,33 @@ div#sub-section-1 div.sub {
     justify-content: center;
     text-align: center;
     padding: 1rem;
+    position: relative;
 }
 
-div#sub-section-1 div.sub img {
+div#sub-section-1 div.sub-mv img {
     display: block;
     width: 100px;
     position: relative;
 }
 
-div#sub-section-1 div.sub h1 {
+div.sub-mv div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+div#sub-section-1 p {
+  width: 100%;
+}
+
+
+div#sub-section-1 div.sub-mv h1 {
     background-color: #AA182C;
     border-radius: 10px;
     display: block;
     height: 40px;
+    width: 200px;
     position: relative;
 }
 
