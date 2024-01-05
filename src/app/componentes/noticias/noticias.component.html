@@ -3,12 +3,13 @@
     <div id="container-5" class="containers">
         <h1 class="container-h1">NOTICIAS</h1>
     <div id="block-5">
-        <div class="sub-block-5"><img src="../../../assets/img/Fondo-ham.png" alt=""><h6>FECHA</h6></div>
-        <div class="sub-block-5"><img src="../../../assets/img/Fondo-ham.png" alt=""><h6>FECHA</h6></div>
-        <div class="sub-block-5"><img src="../../../assets/img/Fondo-ham.png" alt=""><h6>FECHA</h6></div>
-        <div class="sub-block-5"><img src="../../../assets/img/Fondo-ham.png" alt=""><h6>FECHA</h6></div>
-        <div class="sub-block-5"><img src="../../../assets/img/Fondo-ham.png" alt=""><h6>FECHA</h6></div>
-        <div class="sub-block-5"><img src="../../../assets/img/Fondo-ham.png" alt=""><h6>FECHA</h6></div>
+
+        @for (os of data; track os._id) {
+
+       
+               <div class="sub-block-5"><img src="../../../assets/img/Fondo-ham.png" alt=""><h6>{{os.titulo}}</h6></div>
+          }
+      
     </div>
 </div>
 

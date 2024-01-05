@@ -195,30 +195,24 @@
 
 
 
-  <div id="cont-6-noticias">
+  @for (os of dataLineaRespuesta; track os._id) {
 
-  <div class="noticia">
-    <img src="../../../assets/img/textura-fon.png" alt="noticia">
-  <h2>Título</h2>
-  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed nemo mollitia id dolor, ipsum amet numquam necessitatibus tenetur placeat deleniti suscipit inventore eos reprehenderit! Fuga mollitia id iure assumenda praesentium.</p>
-        <button type="button" class="edit-notice">editar</button>
-      </div>
+    <div class="cont-2-column-item">
+      <!-- <div class="bar-connect"></div> -->
+   <img src="../../../assets/img/hamburguesa.jpg" alt=""><h2> {{os.titleLineaTiempo}} </h2> <br> {{os.descriptionLineaTiempo}} </div>
 
-      <div class="noticia">
-  <img src="../../../assets/img/textura-fon.png" alt="noticia">
-  <h2>Título</h2>
-  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed nemo mollitia id dolor, ipsum amet numquam necessitatibus tenetur placeat deleniti suscipit inventore eos reprehenderit! Fuga mollitia id iure assumenda praesentium.</p>
-  <button type="button" class="edit-notice">editar</button>
-</div>
+   <div id="cont-6-noticias">
 
-<div class="noticia">
-  <img src="../../../assets/img/textura-fon.png" alt="noticia">
-  <h2>Título</h2>
-  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed nemo mollitia id dolor, ipsum amet numquam necessitatibus tenetur placeat deleniti suscipit inventore eos reprehenderit! Fuga mollitia id iure assumenda praesentium.</p>
-  <button type="button" class="edit-notice">editar</button>
-</div>
+    <div class="noticia">
+      <img src="../../../assets/img/textura-fon.png" alt="noticia">
+    <h2>Título</h2>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed nemo mollitia id dolor, ipsum amet numquam necessitatibus tenetur placeat deleniti suscipit inventore eos reprehenderit! Fuga mollitia id iure assumenda praesentium.</p>
+          <button type="button" class="edit-notice">editar</button>
+        </div>
+  </div>
+  }
 
-</div>
+
 
 
 
@@ -291,14 +285,14 @@
     <button id="close-modal-3-add" (click)="ModalAddTimeLine()" >cerrar</button>
   </div>
 
-  <form>
+  <form [formGroup]="formularioAgregarLineaTiempo" (ngSubmit)="agregarEventoLineaTiempo()" >
   <label for="file">Imagen</label>
     <input type="file"   name="file" title="imagen">
   <label for="title">Título</label>
-    <input type="text"  formControlName="titleLineaTiempo" [(ngModel)]="tituloModal" name="title" title="título">
+    <input type="text"  formControlName="titleLineaTiempo" ame="title" title="título">
   <label for="description">Descripción</label>
-    <input type="text" formControlName="descriptionLineaTiempo" [(ngModel)]="descripcionModal"  title="description">
-    <button type="submit" class="bold"  >guardar</button>
+    <input type="text" formControlName="descriptionLineaTiempo"title="description">
+    <button type="submit" class="bold" (click)="ModalAddTimeLine()"  >guardar</button>
   </form>
 </div>
 

@@ -34,6 +34,12 @@ export class LineaTiempoService {
     )
   }
 
+  crearEventoLineaTiempo(fromValue:any){
+    return firstValueFrom(
+      this.httpClient.post<any>(`${this.baseUrl}/agregarEventoLineadeTiempo`,fromValue,this.createHeaders())
+    )
+  }
+
   createHeaders(){
     return   {
      headers: new HttpHeaders ({
