@@ -302,11 +302,12 @@ div.sub-cont-2 {
   align-items: center;
   position: relative;
   margin-top: 1rem;
+  border: 1px solid gray;
 }
 
 
 iframe#iframe-preview {
-  width: 250px;
+  width: 0px;
   height: auto;
   display: block;
   position: relative;
