@@ -125,17 +125,17 @@
       <label for="ttarea1">Misión</label>
       <textarea [(ngModel)]="mision" title="Misión" name="ttarea1" id="mision-txt" cols="35" rows="10"></textarea>
     </div>
-    
+
     <div class="cont-inter">
       <label for="ttarea2">Visión</label>
       <textarea title="Visión" [(ngModel)]="vision" name="ttarea2" id="vision-txt" cols="35" rows="10"></textarea>
     </div>
-    
+
   </div>
   <div class="foot-cont">
 
     <div class="cont-buttons">
-  
+
       <button class="normal" >guardar</button>
     </div>
   </div>
@@ -265,7 +265,7 @@
     <button id="close-modal-3"  (click)="Modal()" >cerrar</button>
   </div>
 
-  <form [formGroup]="formularioEditlineaTiempo" (ngSubmit)="editarTime()"  >
+  <form [formGroup]="formularioEditlineaTiempo" (ngSubmit)="editarTime()">
   <label for="file">Imagen</label>
     <input type="file"   name="file" title="imagen">
   <label for="title">Título</label>

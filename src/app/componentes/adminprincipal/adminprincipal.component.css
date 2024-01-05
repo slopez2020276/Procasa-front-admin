@@ -305,7 +305,7 @@ iframe#iframe-preview {
 
 
 
-div#modal-time-line {
+div#modal-time-line, div#modal-time-line-add {
   position: fixed;
   width: 450px;
   height: 500px;
@@ -326,7 +326,14 @@ div#modal-time-line {
   z-index: -200;
 }
 
-div#modal-time-line.modal {
+div#modal-time-line form, div#modal-time-line-add form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+div#modal-time-line.modal, div#modal-time-line-add.modal {
   transform: scale(1);
   top: calc(50% - 250px);
   cursor: pointer;
@@ -334,7 +341,7 @@ div#modal-time-line.modal {
   z-index: 999;
 }
 
-div#cont-close-button {
+div#cont-close-button, div#cont-close-button-add {
   display: flex;
   justify-content: end;
   align-items: center;
@@ -342,7 +349,7 @@ div#cont-close-button {
 
 }
 
-button#close-modal-3 {
+button#close-modal-3, button#close-modal-3-add {
   position: absolute;
   right: 1rem;
   top: .5rem;
@@ -354,22 +361,27 @@ button#close-modal-3 {
   transform: scale(1);
   transition: .2s;
 }
-button#close-modal-3:active {
+button#close-modal-3:active, button#close-modal-3-add:active {
   transform: scale(.95);
 }
 
 
-div#modal-time-line input, div#modal-time-line label {
+div#modal-time-line form input, div#modal-time-line form label,
+div#modal-time-line-add form input, div#modal-time-line-add form label {
   display: block;
   position: relative;
   width: 60%;
+  margin-top: 2rem;
 }
 
-div#modal-time-line button[type=submit] {
+div#modal-time-line-add form input, div#modal-time-line form input {margin-top: .5rem;}
+
+div#modal-time-line button[type=submit], div#modal-time-line-add button[type=submit] {
   padding: .5rem 4rem;
   background: #DADADA;
   border-radius: 4px;
   border: #DDD;
+  margin-top: 2rem;
 }
 
 

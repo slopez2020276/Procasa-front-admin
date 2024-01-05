@@ -269,11 +269,7 @@ ModalTimeLine() {document.getElementById('modal-time-line')?.classList.toggle('m
 
 
 
-  ModalAddTimeLine() {
-
-
-
-  }
+  ModalAddTimeLine() {document.getElementById('modal-time-line-add')?.classList.toggle('modal')}
 
 
 }
