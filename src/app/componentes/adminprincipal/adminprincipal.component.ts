@@ -147,7 +147,7 @@ export class AdminprincipalComponent implements OnInit {
     this.obtenerHistoria()
     this.obtenerLinea()
     this.obtenerMision()
-    this.obtnerNoticias
+    this.obtnerNoticias()
 
   }
 

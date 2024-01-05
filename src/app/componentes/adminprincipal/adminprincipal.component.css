@@ -345,7 +345,7 @@ div#modal-time-line form, div#modal-time-line-add form {
   flex-wrap: wrap;
 }
 
-div#modal-time-line.modal, div#modal-time-line-add.modal {
+div#modal-time-line.modal, div#modal-time-line-add.modal, div#modal-edit-notice.modal {
   transform: scale(1);
   top: calc(50% - 250px);
   cursor: pointer;
@@ -985,6 +985,7 @@ div#cont-btns-alert button:active {
   transform: scale(.95);
   box-shadow: 0px 0px 0px rgba(0,0,0,.3);
 }
+
 
 button.edit-notice {
   padding: .5rem 2rem;
