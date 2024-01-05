@@ -212,7 +212,7 @@
 
     <div class="cont-buttons">
 
-      <button class="normal">agregar</button>
+      <button class="normal" (click)="NewModalNotice()">agregar</button>
     </div>
   </div>
 
@@ -223,8 +223,6 @@
 <div id="modal-6">
   <div id="close-modal-6"></div>
   <h1 class="bold">NOTICIAS</h1>
-
-
 </div>
 
 
@@ -304,6 +302,22 @@
 </form>
 </div>
 
+<!-- M O D A L   N U E V O   N O T I C I A S  -->
+<div id="modal-new-notice">
+        <div id="cont-btn-close-new"> <button id="close-modal-notice-new" (click)="NewModalNotice()">cerrar</button> </div>
+
+<form>
+
+<label for="file-notice">imagen</label>               <input title="imagen de noticia" type="file" name="file-notice">
+<label for="title-notice">Título</label>              <input type="text" name="title-notice" title="Título de noticia">
+<label for="description-notice">Descripción</label>   <textarea title="descripción de noticia" name="description-notice" id="" cols="20" rows="5"></textarea>
+
+<button type="submit">guardar</button>
+</form>
+</div>
+
+
+
 
 
 
@@ -325,7 +339,7 @@
 
       <div id="time"></div>
     </div>
-    </div>
+</div>
 
 </body>
 </html>

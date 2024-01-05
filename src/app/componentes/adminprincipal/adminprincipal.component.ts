@@ -317,6 +317,7 @@ return false;
   }
 
   ModalEditNotice() { document.getElementById('modal-edit-notice')?.classList.toggle('show') }
+  NewModalNotice() { document.getElementById('modal-new-notice')?.classList.toggle('show') }
 
 
 
