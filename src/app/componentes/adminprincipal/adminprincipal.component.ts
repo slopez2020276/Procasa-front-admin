@@ -40,10 +40,10 @@ export class AdminprincipalComponent implements OnInit {
   data: any
 
   
-  Integridad:any
-  Pasion:any
-  Innovacion:any
-  Orientacion:any
+  Integridadmodel:any
+  PasionModel:any
+  InnovacionModel:any
+  OrientacionModel:any
 
 
   _idhistoria: any
@@ -310,12 +310,12 @@ ModalTimeLine() {document.getElementById('modal-time-line')?.classList.toggle('m
 
  async onSubmit(){
 
-let confirma = this.AlertConfirm("¿Desea guardar los cambios?")
-if(confirma===1){
+
+
   const response = await this.historiaService.editarHistoria(this.formulario.value,this._idhistoria)
-  return true;
-}
-return false;
+
+
+
   }
 
   async guardarMision(){
@@ -351,16 +351,16 @@ return false;
   async obtnerValores(){
     const respuesta = await this.ValoresService.obtenerValores()
     this.dataValores = respuesta.valores[0]
-    this.Innovacion = this.dataValores.Innovacion
-    this.Pasion = this.dataValores.Pasion
-    this.Integridad = this.dataValores.Integridad
-    this.Orientacion = this.dataValores.Orientacion
+    this.InnovacionModel = this.dataValores.Innovacion
+    this.PasionModel = this.dataValores.Pasion
+    this.Integridadmodel = this.dataValores.Integridad
+    this.OrientacionModel = this.dataValores.Orientacion
     console.log(this.dataValores)
 
   }
 
   async editarValores(){
-   let id =  this.dataValores
+   let id =  this.dataValores._id
    const respuestaEdit = await this.ValoresService.editarValores(id,this.formularioValores.value)
    console.log(respuestaEdit) 
   }
