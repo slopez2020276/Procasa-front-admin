@@ -33,7 +33,7 @@ div#cont-column {
 div#cont-2-column {
   width: 800px;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
   color: #FFF;
@@ -42,7 +42,7 @@ div#cont-2-column {
 
 div#line-center {
 width: 3px;
-height: 90%;
+height: 75%;
 background: #F4F4F4;
 position: absolute;
 border-radius: 100px;
@@ -50,6 +50,7 @@ display: block;
 transition: .2s;
 transform: translateY(10vh);
 z-index: 0;
+top: -20px;
 }
 
 div.cont-2-column-item {
@@ -79,21 +80,20 @@ div.cont-2-column-item img {
 }
 
 div.bar-connect {
-width: 50px;
-height: 3px;
-background: #F4F4F4;
-top: initial;
-left: initial;
-z-index: 0;
-transition: .2s;
-z-index: -10;
-position: relative;
-border-radius: 4px;
+  width: 70px;
+  height: 3px;
+  background: #F4F4F4;
+  top: initial;
+  left: initial;
+  z-index: 0;
+  transition: .2s;
+  z-index: -10;
+  position: relative;
+  border-radius: 4px;
 }
 
-
-div.r { transform: translate(307px, 70px); }
-div.l { transform: translate(-32px, 170px); }
+div.cont-2-column-item:nth-child(even) div.bar-connect { transform: translate(-52px, 170px); }
+div.cont-2-column-item:nth-child(odd) div.bar-connect { transform: translate(307px, 70px); }
 
 
 @media (max-width: 760px) {
