@@ -44,10 +44,10 @@ export class AdminprincipalComponent implements OnInit {
   dataNoticias:any
 
 
-  Integridad:any
-  Pasion:any
-  Innovacion:any
-  Orientacion:any
+  Integridadmodel:any
+  PasionModel:any
+  InnovacionModel:any
+  OrientacionModel:any
 
 
   _idhistoria: any
@@ -368,16 +368,16 @@ return false;
   async obtnerValores(){
     const respuesta = await this.ValoresService.obtenerValores()
     this.dataValores = respuesta.valores[0]
-    this.Innovacion = this.dataValores.Innovacion
-    this.Pasion = this.dataValores.Pasion
-    this.Integridad = this.dataValores.Integridad
-    this.Orientacion = this.dataValores.Orientacion
+    this.Integridadmodel = this.dataValores.Innovacion
+    this.PasionModel = this.dataValores.Pasion
+    this.InnovacionModel = this.dataValores.Integridad
+    this.OrientacionModel = this.dataValores.Orientacion
     console.log(this.dataValores)
 
   }
 
   async editarValores(){
-   let id =  this.dataValores
+   let id =  this.dataValores._id
    const respuestaEdit = await this.ValoresService.editarValores(id,this.formularioValores.value)
    console.log(respuestaEdit)
   }
