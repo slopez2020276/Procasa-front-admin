@@ -225,7 +225,7 @@
       <img src="../../../assets/img/textura-fon.png" alt="noticia">
     <h2>{{os.titulo}}</h2>
     <p>{{os.descripcion}}</p>
-          <button type="button" class="edit-notice" (click)="buscarporID(os._id)" (click)="ModalEditNotice()">editar</button>
+          <button type="button" class="edit-notice" (click)="obtenerxidNoticias(os._id)" (click)="ModalEditNotice()">editar</button>
         </div>
       }
   </div>
@@ -314,11 +314,11 @@
 <div id="modal-edit-notice">
         <div id="cont-btn-close"> <button id="close-modal-notice" (click)="ModalEditNotice()">cerrar</button> </div>
 
-<form>
+<form [formGroup]="formularioEditarNoticias" (ngSubmit)="editarNoticiasxid()" >
 
 <label for="file-notice">imagen</label>               <input title="imagen de noticia" type="file" name="file-notice">
-<label for="title-notice">Título</label>              <input type="text" name="title-notice" title="Título de noticia">
-<label for="description-notice">Descripción</label>   <textarea title="descripción de noticia" name="description-notice" id="" cols="26" rows="5"></textarea>
+<label for="title-notice">Título</label>              <input type="text" [(ngModel)]="tituloNoticia" formControlName="titulo" name="title-notice" title="Título de noticia">
+<label for="description-notice">Descripción</label>   <textarea title="descripción de noticia" [(ngModel)]="descripcionNoticia" formControlName="descripcion" name="description-notice" id="" cols="26" rows="5"></textarea>
 
 <button type="submit">guardar</button>
 </form>
@@ -328,11 +328,11 @@
 <div id="modal-new-notice">
         <div id="cont-btn-close-new"> <button id="close-modal-notice-new" (click)="NewModalNotice()">cerrar</button> </div>
 
-<form>
+<form [formGroup]="formularioAgregarNoticias" (ngSubmit)="crearNoticia()" >
 
-<label for="file-notice">imagen</label>               <input title="imagen de noticia" type="file" name="file-notice">
-<label for="title-notice">Título</label>              <input type="text" name="title-notice" title="Título de noticia">
-<label for="description-notice">Descripción</label>   <textarea title="descripción de noticia" name="description-notice" id="" cols="26" rows="5"></textarea>
+<label for="file-notice">imagen</label>               <input  title="imagen de noticia" type="file" name="file-notice">
+<label for="title-notice">Título</label>              <input  formControlName="titulo" type="text" name="title-notice" title="Título de noticia">
+<label for="description-notice">Descripción</label>   <textarea formControlName="descripcion" title="descripción de noticia" name="description-notice" id="" cols="26" rows="5"></textarea>
 
 <button type="submit">guardar</button>
 </form>

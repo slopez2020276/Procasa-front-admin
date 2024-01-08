@@ -63,6 +63,9 @@ export class AdminprincipalComponent implements OnInit {
   dataLineaRespuesta: any
 
   
+  tituloNoticia:string = ''
+  descripcionNoticia:string = ''
+
 
 
 
@@ -99,7 +102,7 @@ export class AdminprincipalComponent implements OnInit {
         })
     this.formularioAgregarNoticias= new FormGroup({
      titulo: new FormControl(),
-     imgPhat: new FormControl(),
+     imgPhat: new FormControl('imgpath'),
      descripcion: new FormControl(),
      })
 
@@ -385,12 +388,27 @@ return false;
 
   async obtenerxidNoticias(id:any){
     const respuestaObtnerid = await this.noticiasService.obtenerxID(id)
-    this.dataNoticiasxID = respuestaObtnerid
+    this.dataNoticiasxID = respuestaObtnerid.noticia
     console.log(this.dataNoticiasxID)
+    this.tituloNoticia = this.dataNoticiasxID.titulo
+    this.descripcionNoticia = this.dataNoticiasxID.descripcion
   
   }
    
+ async editarNoticiasxid(){
+  let id = this.dataNoticiasxID._id
+  const respuestaeditNoticias = await this.noticiasService.editarnoticas(id,this.formularioEditarNoticias.value)
+  console.log(respuestaeditNoticias)
+  this.obtnerNoticias()
+  this.ModalEditNotice()
+ }
 
+ async crearNoticia(){
+  const respuestaCrearNoticia = await this.noticiasService.crearNoticia(this.formularioAgregarNoticias.value)
+  console.log(respuestaCrearNoticia)
+  this.obtnerNoticias()
+  this.NewModalNotice()
+ }
 
 
 

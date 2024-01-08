@@ -1,5 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
+import { Form } from '@angular/forms';
 import { firstValueFrom } from 'rxjs';
 
 @Injectable({
@@ -27,7 +28,20 @@ export class NoticasService {
   }
   obtenerxID(id:any){
     return firstValueFrom(
-      this.httpClient.get<any>(`${this.baseUrl}/obtenernoticiasxID/${id}`,this.createHeaders())
+      this.httpClient.get<any>(`${this.baseUrl}/obtenernoticiasid/${id}`,this.createHeaders())
+    )
+  }
+  
+  editarnoticas(id:any,fromValue:any){ 
+    return firstValueFrom(
+      this.httpClient.put<any>(`${this.baseUrl}/editarNoticiasxId/${id}`,fromValue,this.createHeaders())
+    )
+
+  }
+
+  crearNoticia (fromValue:any){
+    return firstValueFrom(
+      this.httpClient.post<any>(`${this.baseUrl}/agregarNOticias`,fromValue)
     )
   }
 
@@ -38,4 +52,5 @@ export class NoticasService {
      })
    }
  }
+
 }
