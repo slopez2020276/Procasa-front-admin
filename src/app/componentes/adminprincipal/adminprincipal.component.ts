@@ -400,4 +400,11 @@ return false;
     this.ModalEditNotice()
    }
 
+   async crearNoticia(){
+    const respuestaCrearNoticia = await this.noticiasService.crearNoticia(this.formularioAgregarNoticias.value)
+    console.log(respuestaCrearNoticia)
+    this.obtnerNoticias()
+    this.NewModalNotice()
+   }
+
 }
