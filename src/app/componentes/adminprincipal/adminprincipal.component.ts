@@ -26,7 +26,7 @@ export class AdminprincipalComponent implements OnInit {
 
 
 
-  
+
   dataValores
 
   ValoresService = inject(ValoresService)
@@ -43,11 +43,11 @@ export class AdminprincipalComponent implements OnInit {
   data: any
   dataNoticias:any
 
-  
-  Integridadmodel:any
-  PasionModel:any
-  InnovacionModel:any
-  OrientacionModel:any
+
+  Integridad:any
+  Pasion:any
+  Innovacion:any
+  Orientacion:any
 
 
   _idhistoria: any
@@ -90,7 +90,7 @@ export class AdminprincipalComponent implements OnInit {
       Pasion: new FormControl(),
       Innovacion: new FormControl(),
       Orientacion: new FormControl(),
-  
+
       })
     this.formularioEditarNoticias = new FormGroup({
         titulo: new FormControl(),
@@ -113,7 +113,7 @@ export class AdminprincipalComponent implements OnInit {
     const src: any = (document.getElementById('iframe-value') as HTMLInputElement | null)?.value;
           document.getElementById('iframe-preview')?.removeAttribute('src')
           document.getElementById('iframe-preview')?.setAttribute('src', src)
-          // console.log(document.getElementById('iframe-preview'));
+          // console.log(document.getElementById('iframe-preview'))
   }
 
 
@@ -121,7 +121,7 @@ export class AdminprincipalComponent implements OnInit {
 // SISTEMA DE ALERTAS TYPO COLORES
   MessageAlert(message: string, type: number, time: number){
     document.getElementById('container-alert')?.classList.add('show')
-    const innerMessage = document.getElementById('inner-message');
+    const innerMessage = document.getElementById('inner-message')
     if (innerMessage) {
       innerMessage.innerHTML = message;
 
@@ -146,7 +146,7 @@ export class AdminprincipalComponent implements OnInit {
   AlertConfirm(message: string): number | any {
   document.getElementById('cont-btns-alert')?.classList.remove('show')
   document.getElementById('container-alert')?.classList.add('show')
-  const innerMessage = document.getElementById('inner-message');
+  const innerMessage = document.getElementById('inner-message')
   if (innerMessage) {
     innerMessage.innerHTML = message;
 
@@ -175,16 +175,16 @@ export class AdminprincipalComponent implements OnInit {
 
     this.MessageAlert("¡Bienvenido al Administrador de Procasa!",1,2000)
 
-    document.getElementById('mision-txt')?.setAttribute('disabled', 'disabled');
-    document.getElementById('vision-txt')?.setAttribute('disabled', 'disabled');
+    document.getElementById('mision-txt')?.setAttribute('disabled', 'disabled')
+    document.getElementById('vision-txt')?.setAttribute('disabled', 'disabled')
 
-    document.getElementById('deshabilitar')?.classList.add('hide');
-    document.getElementById('deshabilitar-mv')?.classList.add('hide');
-    document.getElementById('vdeshabilitar')?.classList.add('hide');
+    document.getElementById('deshabilitar')?.classList.add('hide')
+    document.getElementById('deshabilitar-mv')?.classList.add('hide')
+    document.getElementById('vdeshabilitar')?.classList.add('hide')
 
-    const valoresa = document.getElementsByClassName('valores-txt');
+    const valoresa = document.getElementsByClassName('valores-txt')
     for(let e = 0; e < valoresa.length; e++){
-      valoresa[e].setAttribute('disabled', 'disabled');
+      valoresa[e].setAttribute('disabled', 'disabled')
     }
 
     this.obtenerHistoria()
@@ -224,31 +224,31 @@ export class AdminprincipalComponent implements OnInit {
 
 // SISTEMA DEL INPUT FILE IMAGEN
   InputFile() {
-    const inputfile: any = (document.getElementById('file-portada') as HTMLInputElement | null)?.value;
-    document.getElementById('file-portada')?.setAttribute('data-content', inputfile);
-    document.getElementById('preview-portada')?.removeAttribute('src');
-    document.getElementById('preview-portada')?.setAttribute('src', "../../../assets/img/"+inputfile.slice(12));
-    console.log(inputfile.slice(12));
+
+    let inputfile: any = (document.getElementById('file-portada') as HTMLInputElement | null)?.value;
+
+        document.getElementById('file-portada')?.setAttribute('data-content', inputfile)
+        document.getElementById('preview-portada')?.removeAttribute('src')
+        document.getElementById('preview-portada')?.setAttribute('src', "../../../assets/img/"+inputfile.slice(12))
+      }
+
+      DeleteImg(){
+        document.getElementById('file-portada')?.setAttribute('data-content', "seleccionar archivo")
+  document.getElementById('preview-portada')?.setAttribute('src', "../../../assets/img/empty.jpg")
 }
-
-  DeleteImg(){
-  document.getElementById('preview-portada')?.removeAttribute('src');
-}
-
-
 
 // HABILITAR Y DESHABILITAR TEXTARES DE VISION Y MISIÓN
 EnableMisionVision(){
-  document.getElementById('mision-txt')?.removeAttribute('disabled');
-  document.getElementById('vision-txt')?.removeAttribute('disabled');
+  document.getElementById('mision-txt')?.removeAttribute('disabled')
+  document.getElementById('vision-txt')?.removeAttribute('disabled')
 
   document.getElementById('habilitar-mv')?.classList.toggle('hide')
   document.getElementById('deshabilitar-mv')?.classList.toggle('hide')
 }
 
 DisableMisionVision(){
-  document.getElementById('mision-txt')?.setAttribute('disabled', 'disabled');
-  document.getElementById('vision-txt')?.setAttribute('disabled', 'disabled');
+  document.getElementById('mision-txt')?.setAttribute('disabled', 'disabled')
+  document.getElementById('vision-txt')?.setAttribute('disabled', 'disabled')
 
   document.getElementById('habilitar-mv')?.classList.toggle('hide')
   document.getElementById('deshabilitar-mv')?.classList.toggle('hide')
@@ -263,9 +263,9 @@ DisableMisionVision(){
 
 // SISTEMA DE HABILITAR Y DESHABILITAR TEXTAREA DE VALORES
 EnableValores() {
-  const valores = document.getElementsByClassName('valores-txt');
+  const valores = document.getElementsByClassName('valores-txt')
 for(let e = 0; e < valores.length; e++){
-  valores[e].removeAttribute('disabled');
+  valores[e].removeAttribute('disabled')
 }
 
   document.getElementById('vhabilitar')?.classList.toggle('hide')
@@ -274,9 +274,9 @@ for(let e = 0; e < valores.length; e++){
 
 
 DisableValores(){
-  const valores = document.getElementsByClassName('valores-txt');
+  const valores = document.getElementsByClassName('valores-txt')
 for(let e = 0; e < valores.length; e++){
-  valores[e].setAttribute('disabled', 'disabled');
+  valores[e].setAttribute('disabled', 'disabled')
 }
 
   document.getElementById('vhabilitar')?.classList.toggle('hide')
@@ -363,23 +363,23 @@ return false;
   ModalEditNotice() { document.getElementById('modal-edit-notice')?.classList.toggle('show') }
   NewModalNotice() { document.getElementById('modal-new-notice')?.classList.toggle('show') }
 
-  
+
 
   async obtnerValores(){
     const respuesta = await this.ValoresService.obtenerValores()
     this.dataValores = respuesta.valores[0]
-    this.InnovacionModel = this.dataValores.Innovacion
-    this.PasionModel = this.dataValores.Pasion
-    this.Integridadmodel = this.dataValores.Integridad
-    this.OrientacionModel = this.dataValores.Orientacion
+    this.Innovacion = this.dataValores.Innovacion
+    this.Pasion = this.dataValores.Pasion
+    this.Integridad = this.dataValores.Integridad
+    this.Orientacion = this.dataValores.Orientacion
     console.log(this.dataValores)
 
   }
 
   async editarValores(){
-   let id =  this.dataValores._id
+   let id =  this.dataValores
    const respuestaEdit = await this.ValoresService.editarValores(id,this.formularioValores.value)
-   console.log(respuestaEdit) 
+   console.log(respuestaEdit)
   }
 
 
