@@ -128,7 +128,7 @@ div.buts-enable button:active, div.buts-enable-mv button:active {
 
 
 div.foot-cont {
-  width: 90%;
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -137,10 +137,10 @@ div.foot-cont {
 
 div.cont-buttons {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
-  flex-wrap: nowrap;
-  width: auto;
+  flex-wrap: wrap;
+  width: 100%;
 }
 
 div.cont-buttons button {
@@ -196,21 +196,22 @@ div#cont-textareas {
   flex-wrap: wrap;
   position: relative;
   margin-top: 2rem;
+  margin-left: 5%;
 }
 
 div.cont-inter {
   position: relative;
-  flex-wrap: nowrap;
+  flex-wrap: wrap;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   width: 48%;
 }
 
 div.cont-inter label {
-  text-align: right;
-  width: 30%;
-  padding-right: 2rem;
+  text-align: center;
+  width: 100%;
+  padding: 1rem 0;
 }
 
 
@@ -222,13 +223,14 @@ div#cont-textareas-valores {
   align-items: center;
   flex-wrap: wrap;
   position: relative;
+  margin-left: 5%;
 }
 
 div.cont-inter-valores {
   position: relative;
-  flex-wrap: nowrap;
+  flex-wrap: wrap;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   width: 48%;
   margin-top: 2rem;
@@ -237,9 +239,9 @@ div.cont-inter-valores {
 textarea, input {font-size: 12pt;}
 
 div.cont-inter-valores label {
-  text-align: right;
-  width: 30%;
-  padding-right: 2rem;
+  text-align: center;
+  width: 100%;
+  padding: 1rem 0;
 }
 
 
@@ -477,14 +479,14 @@ div#sub-cont-3 {
 }
 
 div.cont-3-timeline {
-  width: 400px;
+  width: 300px;
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 1rem;
   flex-wrap: wrap;
   position: relative;
-  box-shadow: 0px 5px 5px rgba(0,0,0,.4);
+  box-shadow: 0px 3px 3px rgba(0,0,0,.3);
   margin-top: 2rem;
   border-radius: 4px;
 }
@@ -550,8 +552,6 @@ div#cont-6-noticias {
   margin-top: 2rem;
 }
 
-
-
 div#modal-6 {
   position: fixed;
   width: 900px;
@@ -610,6 +610,11 @@ div.noticia h2 {
 
 div.noticia p {
   font-size: 12pt;
+}
+
+div.noticia h2, div.noticia p {
+  width: 100%;
+  text-align: center;
 }
 
 div.noticia img {
@@ -744,7 +749,6 @@ button#close-modal-notice, button#close-modal-notice-new {
   transform: scale(1);
   transition: .2s;
 }
-
 
 
 

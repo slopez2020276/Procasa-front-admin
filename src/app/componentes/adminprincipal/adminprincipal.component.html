@@ -82,21 +82,21 @@
       <div class="foot-cont">
 
   <div class="cont-buttons">
-    <button class="normal" >guardar</button>
-    <button class="normal" >guardar</button>
+    <button class="normal">guardar</button>
   </div>
 
-  <div id="container-alert">
 
-    <div id="alert-check" class="alert-model">
-        <p class="bold" id="inner-message"></p>
+  <div id="container-alert-b">
+
+    <div id="alert-check-b" class="alert-model">
+        <p class="bold" id="inner-message-b"></p>
 
         <div id="cont-btns-alert">
-          <button id="confirm">confirmar</button>
-          <button id="cancel">cancelar</button>
+          <button id="confirm-b">confirmar</button>
+          <button id="cancel-b">cancelar</button>
         </div>
 
-        <div id="time"></div>
+        <div id="time-b"></div>
       </div>
   </div>
 
@@ -157,12 +157,12 @@
 <div id="cont-textareas">
 
   <div class="cont-inter">
-      <label for="ttarea1">Misión</label>
+      <label class="bold" for="ttarea1">Misión</label>
       <textarea [(ngModel)]="mision" formControlName="textMision" title="Misión" name="ttarea1" id="mision-txt" cols="35" rows="10"></textarea>
     </div>
 
     <div class="cont-inter">
-      <label for="ttarea2">Visión</label>
+      <label class="bold" for="ttarea2">Visión</label>
       <textarea title="Visión" [(ngModel)]="vision" formControlName="textVIsion" name="ttarea2" id="vision-txt" cols="35" rows="10"></textarea>
     </div>
 
@@ -195,23 +195,23 @@
     <div id="cont-textareas-valores">
     <div class="cont-inter-valores">
 
-        <label for="ttare1">Integridad</label>
+        <label class="bold" for="ttare1">Integridad</label>
         <textarea   [(ngModel)]="Integridadmodel" formControlName="Integridad" class="valores-txt" title="Integridad" name="ttare1" id="" cols="35" rows="10"></textarea>
 
       </div>
 
       <div class="cont-inter-valores">
-        <label for="ttare2">Pasión</label>
+        <label class="bold" for="ttare2">Pasión</label>
         <textarea  [(ngModel)]="PasionModel" formControlName="Pasion" class="valores-txt" title="pasion" name="ttare2" id="" cols="35" rows="10"></textarea>
       </div>
 
     <div class="cont-inter-valores">
-      <label for="ttare3">Innovación continua</label>
+      <label class="bold" for="ttare3">Innovación continua</label>
       <textarea class="valores-txt"   [(ngModel)]="InnovacionModel"  formControlName="Innovacion" title="Innovación continua" name="ttare3" id="" cols="35" rows="10"></textarea>
     </div>
 
     <div class="cont-inter-valores">
-      <label for="ttare4">Orientación al servicio</label>
+      <label class="bold" for="ttare4">Orientación al servicio</label>
       <textarea class="valores-txt" [(ngModel)]="OrientacionModel" formControlName="Orientacion" title="Orientación al servicio" name="ttare4" id="" cols="35" rows="10"></textarea>
     </div>
 
@@ -363,10 +363,6 @@
 
 
 <div id="space-sp"></div>
-
-
-
-
 
 
 </body>

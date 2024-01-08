@@ -173,6 +173,8 @@ export class AdminprincipalComponent implements OnInit {
 
 // AL INICIAR
   async ngOnInit()  {
+
+
     document.getElementById('container-alert')?.classList.remove('show')
       const inputfileBefore: any = (document.getElementById('file-portada') as HTMLInputElement | null)?.value;
 
