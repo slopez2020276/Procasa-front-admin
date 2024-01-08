@@ -22,6 +22,6 @@ export class LineaTiempoComponent implements OnInit {
   onMouseOver(osName:string): void{
     console.log(osName)
   }
-  
+
 }
 
