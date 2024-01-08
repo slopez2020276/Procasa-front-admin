@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
 import { firstValueFrom } from 'rxjs';
 
@@ -25,4 +25,17 @@ export class NoticasService {
       this.httpClient.get<any>(`${this.baseUrl}/ObtnerNoticias`)
     )
   }
+  obtenerxID(id:any){
+    return firstValueFrom(
+      this.httpClient.get<any>(`${this.baseUrl}/obtenernoticiasxID/${id}`,this.createHeaders())
+    )
+  }
+
+  createHeaders(){
+    return   {
+     headers: new HttpHeaders ({
+       'Authorization': localStorage.getItem('token')!
+     })
+   }
+ }
 }

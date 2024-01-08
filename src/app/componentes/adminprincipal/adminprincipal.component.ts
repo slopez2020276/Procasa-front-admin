@@ -1,6 +1,6 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { HistoriaService } from '../../services/historia.service';
-import { FormControl, FormGroup } from '@angular/forms';
+import { Form, FormControl, FormGroup } from '@angular/forms';
 import { LineaTiempoService } from '../../services/linea-tiempo.service';
 import { timeInterval } from 'rxjs';
 import { MisionService } from '../../services/mision.service';
@@ -20,6 +20,8 @@ export class AdminprincipalComponent implements OnInit {
   formularioMisionValor: FormGroup
   formularioAgregarLineaTiempo:FormGroup
   formularioValores:FormGroup
+  formularioEditarNoticias: FormGroup
+  formularioAgregarNoticias: FormGroup
 
 
 
@@ -32,12 +34,14 @@ export class AdminprincipalComponent implements OnInit {
   lineaService = inject(LineaTiempoService)
   misionService = inject(MisionService)
   noticiasService = inject(NoticasService)
+  
 
 
 
   mision:any
   vision:any
   data: any
+  dataNoticias:any
 
   
   Integridadmodel:any
@@ -52,10 +56,13 @@ export class AdminprincipalComponent implements OnInit {
   dataMisionÑ:any
   dataLinea:any
   dataLieneaxId:any
+  dataNoticiasxID:any
 
   tituloModal: string = ''
   descripcionModal: string = ''
   dataLineaRespuesta: any
+
+  
 
 
 
@@ -85,6 +92,16 @@ export class AdminprincipalComponent implements OnInit {
       Orientacion: new FormControl(),
   
       })
+    this.formularioEditarNoticias = new FormGroup({
+        titulo: new FormControl(),
+        imgPhat: new FormControl(),
+        descripcion: new FormControl(),
+        })
+    this.formularioAgregarNoticias= new FormGroup({
+     titulo: new FormControl(),
+     imgPhat: new FormControl(),
+     descripcion: new FormControl(),
+     })
 
 
   }
@@ -310,12 +327,12 @@ ModalTimeLine() {document.getElementById('modal-time-line')?.classList.toggle('m
 
  async onSubmit(){
 
-
-
+let confirma = this.AlertConfirm("¿Desea guardar los cambios?")
+if(confirma===1){
   const response = await this.historiaService.editarHistoria(this.formulario.value,this._idhistoria)
-
-
-
+  return true;
+}
+return false;
   }
 
   async guardarMision(){
@@ -366,6 +383,13 @@ ModalTimeLine() {document.getElementById('modal-time-line')?.classList.toggle('m
   }
 
 
+  async obtenerxidNoticias(id:any){
+    const respuestaObtnerid = await this.noticiasService.obtenerxID(id)
+    this.dataNoticiasxID = respuestaObtnerid
+    console.log(this.dataNoticiasxID)
+  
+  }
+   
 
 
 
