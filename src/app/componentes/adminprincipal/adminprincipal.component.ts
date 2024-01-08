@@ -156,12 +156,6 @@ export class AdminprincipalComponent implements OnInit {
 // AL INICIAR
   async ngOnInit()  {
 
-    let inputfileBefore: any = (document.getElementById('file-portada') as HTMLInputElement | null)?.value;
-      if(inputfileBefore==""){
-        document.getElementById('file-portada')?.removeAttribute('src')
-        document.getElementById('preview-portada')?.setAttribute('src', "../../../assets/img/"+inputfileBefore)
-      }
-
     this.MessageAlert("¡Bienvenido al Administrador de Procasa!",1,2000)
 
     document.getElementById('mision-txt')?.setAttribute('disabled', 'disabled')
