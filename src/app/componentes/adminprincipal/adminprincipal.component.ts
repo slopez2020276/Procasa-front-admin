@@ -216,7 +216,6 @@ export class AdminprincipalComponent implements OnInit {
       }
 
       DeleteImg(){
-        // document.getElementById('preview-portada')?.removeAttribute('src')
         document.getElementById('file-portada')?.setAttribute('data-content', "seleccionar archivo")
   document.getElementById('preview-portada')?.setAttribute('src', "../../../assets/img/empty.jpg")
 }
