@@ -34,7 +34,7 @@ export class AdminprincipalComponent implements OnInit {
   lineaService = inject(LineaTiempoService)
   misionService = inject(MisionService)
   noticiasService = inject(NoticasService)
-  
+
 
 
 
@@ -62,10 +62,8 @@ export class AdminprincipalComponent implements OnInit {
   descripcionModal: string = ''
   dataLineaRespuesta: any
 
-  
   tituloNoticia:string = ''
   descripcionNoticia:string = ''
-
 
 
 
@@ -175,6 +173,10 @@ export class AdminprincipalComponent implements OnInit {
 
 // AL INICIAR
   async ngOnInit()  {
+    document.getElementById('container-alert')?.classList.remove('show')
+      const inputfileBefore: any = (document.getElementById('file-portada') as HTMLInputElement | null)?.value;
+
+if(inputfileBefore==""){  document.getElementById('preview-portada')?.setAttribute('src', "../../../assets/img/empty.jpg");  document.getElementById('file-portada')?.setAttribute('data-content', 'seleccionar archivo')}
 
     this.MessageAlert("¡Bienvenido al Administrador de Procasa!",1,2000)
 
@@ -228,17 +230,12 @@ export class AdminprincipalComponent implements OnInit {
 // SISTEMA DEL INPUT FILE IMAGEN
   InputFile() {
 
-    let inputfile: any = (document.getElementById('file-portada') as HTMLInputElement | null)?.value;
+    const inputfile: any = (document.getElementById('file-portada') as HTMLInputElement | null)?.value;
 
         document.getElementById('file-portada')?.setAttribute('data-content', inputfile)
         document.getElementById('preview-portada')?.removeAttribute('src')
         document.getElementById('preview-portada')?.setAttribute('src', "../../../assets/img/"+inputfile.slice(12))
       }
-
-      DeleteImg(){
-        document.getElementById('file-portada')?.setAttribute('data-content', "seleccionar archivo")
-  document.getElementById('preview-portada')?.setAttribute('src', "../../../assets/img/empty.jpg")
-}
 
 // HABILITAR Y DESHABILITAR TEXTARES DE VISION Y MISIÓN
 EnableMisionVision(){
@@ -392,24 +389,15 @@ return false;
     console.log(this.dataNoticiasxID)
     this.tituloNoticia = this.dataNoticiasxID.titulo
     this.descripcionNoticia = this.dataNoticiasxID.descripcion
-  
+
   }
-   
- async editarNoticiasxid(){
-  let id = this.dataNoticiasxID._id
-  const respuestaeditNoticias = await this.noticiasService.editarnoticas(id,this.formularioEditarNoticias.value)
-  console.log(respuestaeditNoticias)
-  this.obtnerNoticias()
-  this.ModalEditNotice()
- }
 
- async crearNoticia(){
-  const respuestaCrearNoticia = await this.noticiasService.crearNoticia(this.formularioAgregarNoticias.value)
-  console.log(respuestaCrearNoticia)
-  this.obtnerNoticias()
-  this.NewModalNotice()
- }
-
-
+  async editarNoticiasxid(){
+    let id = this.dataNoticiasxID._id
+    const respuestaeditNoticias = await this.noticiasService.editarnoticas(id,this.formularioEditarNoticias.value)
+    console.log(respuestaeditNoticias)
+    this.obtnerNoticias()
+    this.ModalEditNotice()
+   }
 
 }
