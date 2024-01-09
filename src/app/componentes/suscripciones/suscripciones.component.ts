@@ -13,10 +13,8 @@ export class SuscripcionesComponent {
   }
 
 
-  TbDelete(){
-    console.log('BORRAR PRESED');
-
+TbDelete(){
     confirm("Presione aceptar para confirmar");
-  }
+    }
 
 }
