@@ -33,24 +33,22 @@
   <div class="foot-cont">
 
     <div class="cont-buttons">
-      <button id="btn-alert-1" class="normal">guardar</button>
+      <button id="btn-alert-1" class="normal" (click)="AlertConfirm('¿Desea guardar los cambios?','a')">guardar</button>
     </div>
   </div>
 
 
 
-  <div id="container-alert">
+  <div id="container-alert-a">
 
-    <div id="alert-check" class="alert-model">
+    <div id="alert-check-a" class="alert-model">
         <p class="bold" id="inner-message"></p>
 
-        <div id="cont-btns-alert">
+        <div id="cont-btns-alert-a">
           <button id="confirm">confirmar</button>
           <!-- <button id="cancel">cancelar</button> -->
           <div id="cancel" class="replace-button">cancelar</div>
         </div>
-
-        <div id="time"></div>
       </div>
   </div>
 
@@ -84,7 +82,7 @@
       <div class="foot-cont">
 
   <div class="cont-buttons">
-    <button id="btn-alert-2" class="normal">guardar</button>
+    <button id="btn-alert-2" class="normal" (click)="AlertConfirm('¿Desea guardar los cambios?','b')">guardar</button>
   </div>
 
 

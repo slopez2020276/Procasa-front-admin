@@ -821,7 +821,8 @@ button#close-modal-notice, button#close-modal-notice-new {
 /*================================================================================================================================================================*/
 /*||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
 
-div#container-alert, div#container-alert-b {
+div#container-alert-a,
+div#container-alert-b {
   top: 0;
   left: 0;
   width: 100%;
@@ -837,7 +838,8 @@ div#container-alert, div#container-alert-b {
   text-align: center;
 }
 
-div#container-alert.show, div#container-alertb.show {
+div#container-alert-a.show,
+div#container-alert-b.show {
   z-index: 100;
   opacity: 1;
 }
@@ -892,7 +894,8 @@ div.alert-model p {
 }
 
 
-div#cont-btns-alert, div#cont-btns-alert-b {
+div#cont-btns-alert-a,
+div#cont-btns-alert-b {
   width: 100%;
   position: relative;
   justify-content: space-around;
@@ -901,11 +904,12 @@ div#cont-btns-alert, div#cont-btns-alert-b {
   display: none;
 }
 
-div#cont-btns-alert.show, div#cont-btns-alert-b.show {
+div#cont-btns-alert-a.show,
+div#cont-btns-alert-b.show {
   display: flex;
 }
 
-div#cont-btns-alert button, div.replace-button,
+div#cont-btns-alert-a button, div.replace-button,
 div#cont-btns-alert-b button {
   text-decoration: none;
   background: #EAEAEA;
@@ -916,7 +920,8 @@ div#cont-btns-alert-b button {
   box-shadow: 0px 3px 0px rgba(0,0,0,.3);
   cursor: pointer;
 }
-div#cont-btns-alert button:active, div.replace-button:active {
+div#cont-btns-alert-a button:active, div.replace-button:active,
+div#cont-btns-alert-b button:active {
   transform: scale(.95);
   box-shadow: 0px 0px 0px rgba(0,0,0,.3);
 }
