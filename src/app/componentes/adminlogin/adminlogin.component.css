@@ -1,22 +1,31 @@
-div#sharp {
-    position: absolute;
+div#sharp-back {
+    position: fixed;
     z-index: 0;
-    background: rgba(0,0,0,.2);
+    background: rgba(0,0,0,.1);
     width: 60%;
     height: 150%;
     top: 0;
     left: -100px;
+    opacity: 1;
     transform: rotate(-30deg);
-  }
+    animation: load 1.2s ease-in-out;
+}
+
+@keyframes load {
+     0% { top: 100vh; opacity: 0; }
+   100% { top: 0vh; opacity: 1; }
+}
+
 
   div#container-login {
     width: 100vw;
     height: 100vh;
-    position: relative;
+    position: fixed;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
+    overflow: hidden;
   }
 
   div#login {
@@ -24,13 +33,22 @@ div#sharp {
     width: 480px;
     height: 550px;
     border-radius: .5rem;
-    box-shadow: 0px 10px 10px rgba(0,0,0,.4);
+    box-shadow: 0px 5px 5px rgba(0,0,0,.4);
     background: rgba(250,250,250,.7);
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     align-items: start;
+    opacity: 1;
+    animation: show 1.3s ease-in-out;
+    transform: scale(1);
   }
+
+  @keyframes show {
+    0% { opacity: 0; transform: scale(1.2); box-shadow: 0px 0px 0px rgba(0,0,0,0);}
+  100% { opacity: 1; transform: scale(1); box-shadow: 0px 5px 5px rgba(0,0,0,.4);}
+}
+
 
   div#login img {
     width: 25%;
@@ -140,7 +158,7 @@ form {
   /*||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
 /*================================================================================================================================================================*/
 /*||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
-
+/*
 div#container-alert {
   top: 0;
   left: 0;
@@ -187,7 +205,7 @@ div#sharp {
   position: relative;
   width: 50px;
   height: 50px;
-  /* border: 1px solid black; */
+  border: 1px solid black;
   margin-top: .5rem;
 }
 
@@ -232,7 +250,7 @@ div.alert-model button {
   border: 1px solid #E1E1E1;
 }
 
-
+ */
 
 
 

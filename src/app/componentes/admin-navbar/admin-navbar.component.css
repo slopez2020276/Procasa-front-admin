@@ -3,12 +3,15 @@ div#container-menu {
   position: fixed;
   height: 100vh;
   background: #252525;
-  /* left: -200px; */
   top: 0;
   left: -270px;
   transition: .2s;
-  /* border-radius: 0 10px 10px 0; */
-  z-index: 200;
+  z-index: 999;
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  flex-wrap: wrap;
+  align-content: flex-start;
 }
 
 div#container-menu.openmenu {
@@ -16,14 +19,13 @@ div#container-menu.openmenu {
 }
 
 
-div#container-menu h1 {
+/* div#container-menu h1 {
   width: 100%;
   color: #FFF;
   font-size: 14pt;
   text-align: center;
-  padding-top: 2rem;
   text-decoration: none;
-}
+} */
 
 
 div#container-menu a.light {
@@ -98,27 +100,44 @@ div#list-menu {
   align-items: start;
   flex-wrap: wrap;
   position: relative;
-  margin-top: 50px;
+  margin-top: 4rem;
   padding-left: 2rem;
-  /* border: 1px solid yellow; */
 }
 
-h1#title {
-  border-bottom: 2px solid #444;
-  padding-bottom: 30px;
-  margin-top: 20px;
-  width: 80%;
-}
-
-
-a#close-session {
+div#cont-btn {
   width: 100%;
-  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   position: absolute;
-  bottom: 3rem;
-  color: #FFF;
+  bottom: 2rem;
+  left: 0;
 }
 
-a#close-session:hover {
-  color: #AA182C;
+button#close-session {
+  position: relative;
+  color: #FFF;
+  background: #AA182C;
+  border: 1px solid #AA182C;
+  padding: .5rem 2rem;
+  border-radius: 4px;
+  font-size: 10pt;
+  cursor: pointer;
+  transition: .2s;
+  box-shadow: 0px 2px 0px rgba(0,0,0,.2);
+  transform: scale(1);
 }
+
+button#close-session:active {
+  background: #F4F4F4;
+  color: #252525;
+  border: 1px solid #252525;
+  transform: scale(.97);
+}
+
+img#logo-menu {
+  width: 100px;
+  position: relative;
+  margin-top: 4rem;
+}
+

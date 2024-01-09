@@ -382,7 +382,7 @@ let confirma = this.AlertConfirm("¿Desea guardar los cambios?")
     document.getElementById('txt-orientacion')?.setAttribute('disabled', 'true')
 
 
-    this.MessageAlert("¡Bienvenido al Administrador de Procasa!",1,2000)
+    // this.MessageAlert("¡Bienvenido al Administrador de Procasa!",1,2000)
   }
 
   async editarValores(){
