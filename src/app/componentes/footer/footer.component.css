@@ -204,6 +204,23 @@ div#formulario button#send:active {
 }
 
 
+
+button#open-form {
+  padding: .3rem .5rem;
+  border-radius: 4px;
+  cursor: pointer;
+  background: transparent;
+  border: 1px solid #F4F4F4;
+  font-size: 9pt;
+  color: #F4F4F4;
+  transition: .2s;
+}
+button#open-form:active {
+  background: rgba(255,255,255,.4);
+}
+
+
+
 button#close-form-modal {
   position: absolute;
   top: .1rem;
