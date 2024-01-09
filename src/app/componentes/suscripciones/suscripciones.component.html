@@ -53,13 +53,15 @@
       </tr>
     </thead>
     <tbody>
-      <tr>
+      @for (os of dataSub; track os._id) {
+        <tr>
         <td class="tb-number">1</td>
-        <td class="tb-name">nombre cliente</td>
-        <td class="tb-address">apellido cliente</td>
-        <td class="tb-telephone">clientegmail.com</td>
-        <td class="tb-actions actions-center"> <button class="tb-delete" (click)="TbDelete()">borrar</button></td>
+        <td class="tb-name">{{os.nombre}}</td>
+        <td class="tb-address">{{os.apellido}}</td>
+        <td class="tb-telephone">{{os.correo}}</td>
+        <td class="tb-actions actions-center"> <button class="tb-delete" (click)="eliminar(os._id)" >borrar</button></td>
       </tr>
+    }
   </tbody>
 
   </table>

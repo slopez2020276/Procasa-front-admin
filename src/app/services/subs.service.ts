@@ -25,17 +25,19 @@ export class SubsService {
     )
   }
 
-  createHeaders(){
-    return   {
-     headers: new HttpHeaders ({
-       'Authorization': localStorage.getItem('token')!
-     })
-   }
- }
+
 
  eliminarsub(id:any){
   return firstValueFrom(
-    this.httpClient.delete<any>(`${this.baseUrl}/eliminarSubs/${id}`)
+    this.httpClient.delete<any>(`${this.baseUrl}/eliminarSubs/${id}`,this.createHeaders())
   )
  }
+
+ createHeaders(){
+  return   {
+   headers: new HttpHeaders ({
+     'Authorization': localStorage.getItem('token')!
+   })
+ }
+}
 }

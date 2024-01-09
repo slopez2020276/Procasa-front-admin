@@ -16,9 +16,9 @@ export class FooterComponent {
 
   constructor(){
     this.formularioAgregarSub = new FormGroup({
-      correo: new FormControl('ingrese la historia por favor '),
-      nombre: new FormControl('ingrese la historia por favor '),
-      apellido: new FormControl('ingrese la historia por favor ')
+      correo: new FormControl(),
+      nombre: new FormControl(),
+      apellido: new FormControl()
   
     })
   }

@@ -33,7 +33,7 @@
           <label for="correo">INGRESA TU CORREO</label>
           <input type="mail" formControlName="correo" name="correo" placeholder="TU CORREO">
           <label for="nombre">NOMBRE</label>
-          <input type="text" formArrayName="nombre" name="nombre" placeholder="TU NOMBRE">
+          <input type="text" formControlName="nombre" formArrayName="nombre" name="nombre" placeholder="TU NOMBRE">
           <label for="apellido">APELLIDO</label>
           <input type="text" formControlName="apellido" name="apellido" placeholder="TU APELLIDO">
           <button  (click)="agregarnuevaSub" type="submit">ENVIAR</button>
