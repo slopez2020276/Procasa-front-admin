@@ -145,31 +145,27 @@ export class AdminprincipalComponent implements OnInit {
 
 
   // SISTEMA DE ALERTAS TIPO CONFIRMACIÓN CON BOTONES
-  AlertConfirm(message: string): number | any {
-  document.getElementById('cont-btns-alert')?.classList.remove('show')
-  document.getElementById('container-alert')?.classList.add('show')
+  AlertConfirm(message: string, elem: string): number | any {
+  document.getElementById('cont-btns-alert-'+elem)?.classList.remove('show')
+  document.getElementById('container-alert-'+elem)?.classList.add('show')
   const innerMessage = document.getElementById('inner-message')
   if (innerMessage) {
     innerMessage.innerHTML = message;
 
-    document.getElementById('container-alert')?.classList.add('show')
-    document.getElementById('time')?.classList.remove('green')
-    document.getElementById('time')?.classList.remove('red')
-    document.getElementById('time')?.classList.remove('orange')
-    document.getElementById('cont-btns-alert')?.classList.add('show')
+    document.getElementById('container-alert-'+elem)?.classList.add('show')
+    document.getElementById('cont-btns-alert-'+elem)?.classList.add('show')
 
     document.getElementById('cancel')?.addEventListener('click', function(){
-        document.getElementById('container-alert')?.classList.remove('show')
-        return 0;
+        document.getElementById('container-alert-'+elem)?.classList.remove('show')
       },false)
 
       document.getElementById('confirm')?.addEventListener('click', function(){
-        document.getElementById('container-alert')?.classList.remove('show')
-        return 1;
+        document.getElementById('container-alert-'+elem)?.classList.remove('show')
       },false)
   }
 
 }
+
 
 
 
@@ -332,7 +328,6 @@ ModalTimeLine() {document.getElementById('modal-time-line')?.classList.toggle('m
 
  async onSubmit(){
 
-let confirma = this.AlertConfirm("¿Desea guardar los cambios?")
 
   }
 

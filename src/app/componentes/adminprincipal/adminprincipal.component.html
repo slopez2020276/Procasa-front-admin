@@ -6,6 +6,7 @@
   <title>Quiénes somos</title>
 </head>
 <body>
+  <img src="../../../assets/img/t3.png" alt="" title="background texture" id="back-texture">
   <app-admin-navbar></app-admin-navbar>
   <div id="trans"></div>
 
@@ -32,7 +33,7 @@
   <div class="foot-cont">
 
     <div class="cont-buttons">
-      <button class="normal " (click)="AlertConfirm('¿Desea guardar los cambios?')">guardar</button>
+      <button id="btn-alert-1" class="normal">guardar</button>
     </div>
   </div>
 
@@ -45,7 +46,8 @@
 
         <div id="cont-btns-alert">
           <button id="confirm">confirmar</button>
-          <button id="cancel">cancelar</button>
+          <!-- <button id="cancel">cancelar</button> -->
+          <div id="cancel" class="replace-button">cancelar</div>
         </div>
 
         <div id="time"></div>
@@ -82,7 +84,7 @@
       <div class="foot-cont">
 
   <div class="cont-buttons">
-    <button class="normal ">guardar</button>
+    <button id="btn-alert-2" class="normal">guardar</button>
   </div>
 
 
@@ -93,7 +95,8 @@
 
         <div id="cont-btns-alert">
           <button id="confirm-b">confirmar</button>
-          <button id="cancel-b">cancelar</button>
+          <!-- <button id="cancel-b">cancelar</button> -->
+          <div class="replace-button">cancelar</div>
         </div>
 
         <div id="time-b"></div>
