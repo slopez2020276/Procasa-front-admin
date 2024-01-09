@@ -183,8 +183,6 @@ export class AdminprincipalComponent implements OnInit {
 
 if(inputfileBefore==""){  document.getElementById('preview-portada')?.setAttribute('src', "../../../assets/img/empty.jpg");  document.getElementById('file-portada')?.setAttribute('data-content', 'seleccionar archivo')}
 
-    this.MessageAlert("¡Bienvenido al Administrador de Procasa!",1,2000)
-
 
     document.getElementById('deshabilitar')?.classList.add('hide')
     document.getElementById('deshabilitar-mv')?.classList.add('hide')
@@ -386,6 +384,9 @@ return false;
     document.getElementById('txt-pasion')?.setAttribute('disabled', 'true')
     document.getElementById('txt-innovacion')?.setAttribute('disabled', 'true')
     document.getElementById('txt-orientacion')?.setAttribute('disabled', 'true')
+
+
+    this.MessageAlert("¡Bienvenido al Administrador de Procasa!",1,2000)
   }
 
   async editarValores(){
@@ -402,6 +403,7 @@ return false;
     console.log(this.dataNoticiasxID)
     this.tituloNoticia = this.dataNoticiasxID.titulo
     this.descripcionNoticia = this.dataNoticiasxID.descripcion
+
 
   }
 
