@@ -439,7 +439,7 @@ div#modal-time-line button[type=submit], div#modal-time-line-add button[type=sub
 
 
 button.edit-timeline {
-  padding: .5rem 2rem;
+  padding: .5rem 1.5rem;
   border-radius: 4px;
   margin-top: 1rem;
   background: #E1E1E1;
@@ -453,6 +453,8 @@ button.edit-timeline {
 button.edit-timeline:active {
   transform: scale(.95);
 }
+
+
 
 div.sub-container-4 {
   border: 1px solid green;
@@ -468,7 +470,7 @@ div.container h1 {
   width: 100%;
   text-align: left;
   /* border-bottom: 2px solid #AAA; */
-  color: #666;
+  color: #AA182C;
   text-align: left;
   font-size: 19pt;
   /* border-radius: 1rem; */
@@ -960,3 +962,10 @@ div#container-5,
 div#container-6,
 div#container-7
 {z-index: 0; position: relative;}
+
+
+
+button.del-bg {
+  background: #AA182C;
+  color: #FFF;
+}

@@ -20,7 +20,7 @@
 </div>
 
 <div class="container" id="container-1">
-  <h1 class="bold">PORTADA PRINCIPAL</h1>
+  <h1 class="bold title-bg">PORTADA PRINCIPAL</h1>
   <div class="sub-container-1">
     <p>Cambiar imagen</p> <input (change)="InputFile()" id="file-portada" type="file" title="seleccionar archivo" [defaultValue]="null" data-content="seleccionar archivo">
 
@@ -32,7 +32,7 @@
   <div class="foot-cont">
 
     <div class="cont-buttons">
-      <button class="normal" (click)="AlertConfirm('¿Desea guardar los cambios?')">guardar</button>
+      <button class="normal " (click)="AlertConfirm('¿Desea guardar los cambios?')">guardar</button>
     </div>
   </div>
 
@@ -60,8 +60,8 @@
 
 
 <div class="container" id="container-2">
+  <h1 class="bold title-bg">HISTORIA</h1>
 <form [formGroup]="formulario" (ngSubmit)="onSubmit()">
-  <h1 class="bold">HISTORIA</h1>
   <div class="sub-cont-2">
       <label for="enlace">Enlace del video:</label>
       <input id="iframe-value" name="enlace" type="text" (change)="IframeVideo()"  placeholder="enlace del video" value="">
@@ -82,7 +82,7 @@
       <div class="foot-cont">
 
   <div class="cont-buttons">
-    <button class="normal">guardar</button>
+    <button class="normal ">guardar</button>
   </div>
 
 
@@ -104,7 +104,7 @@
 
 </div>
 </form>
-<button class="normal" (click)="AlertConfirm('pruea')" >guardar</button>
+<!-- <button class="normal " (click)="AlertConfirm('pruea')" >guardar</button> -->
 
 </div>
 
@@ -114,7 +114,7 @@
 <div class="container" id="container-3">
 
 
-  <h1 class="bold">LÍNEA DE TIEMPO</h1>
+  <h1 class="bold title-bg">LÍNEA DE TIEMPO</h1>
 
 
 
@@ -125,6 +125,7 @@
       <p class="input-to-text bold">{{os.titleLineaTiempo}}</p>
       <p class="input-to-text">{{os.descriptionLineaTiempo}}</p>
                   <button class="edit-timeline" type="button" (click)="editarModal(os._id)" (click)="Modal()">editar</button>
+                  <button class="edit-timeline del-bg" type="button">eliminar</button>
                 </div>
               }
 
@@ -146,7 +147,7 @@
 
 
 <div class="container" id="container-4">
-  <h1 class="bold">MISIÓN y VISIÓN</h1>
+  <h1 class="bold title-bg">MISIÓN y VISIÓN</h1>
 
 <div id="buts-enable-mv">
   <button id="habilitar-mv" (click)="EnableMisionVision()">Editar</button>
@@ -171,7 +172,7 @@
 
     <div class="cont-buttons">
 
-      <button class="normal" >guardar</button>
+      <button class="normal " >guardar</button>
     </div>
   </div>
 </form>
@@ -182,7 +183,7 @@
 
 
 <div class="container" id="container-5">
-  <h1 class="bold">VALORES</h1>
+  <h1 class="bold title-bg">VALORES</h1>
   <div class="buts-enable">
     <button id="vhabilitar" (click)="EnableValores()">Editar</button>
     <button id="vdeshabilitar" (click)="DisableValores()">Cancelar</button>
@@ -219,7 +220,7 @@
 
       <div class="cont-buttons">
 
-        <button class="normal">guardar</button>
+        <button class="normal ">guardar</button>
       </div>
     </div>
   </div>
@@ -232,7 +233,7 @@
 
 
 <div class="container" id="container-6">
-  <h1 class="bold">NOTICIAS</h1>
+  <h1 class="bold title-bg">NOTICIAS</h1>
 
 
 
@@ -245,6 +246,7 @@
     <h2>{{os.titulo}}</h2>
     <p>{{os.descripcion}}</p>
           <button type="button" class="edit-notice" (click)="obtenerxidNoticias(os._id)" (click)="ModalEditNotice()">editar</button>
+          <button type="button" class="edit-notice del-bg">eliminar</button>
         </div>
       }
   </div>
@@ -282,7 +284,7 @@
     <input type="text"  formControlName="titleLineaTiempo" [(ngModel)]="tituloModal" name="title" title="título">
   <label for="description">Descripción</label>
     <input type="text" formControlName="descriptionLineaTiempo" [(ngModel)]="descripcionModal"  title="description">
-    <button type="submit" class="bold"  >guardar</button>
+    <button type="submit" class="bold "  >guardar</button>
   </form>
 </div>
 
@@ -323,7 +325,7 @@
     <input type="text"  formControlName="titleLineaTiempo" ame="title" title="título">
   <label for="description">Descripción</label>
     <input type="text" formControlName="descriptionLineaTiempo"title="description">
-    <button type="submit" class="bold" (click)="ModalAddTimeLine()"  >guardar</button>
+    <button type="submit" class="bold " (click)="ModalAddTimeLine()"  >guardar</button>
   </form>
 </div>
 
@@ -339,7 +341,7 @@
 <label for="title-notice">Título</label>              <input type="text" [(ngModel)]="tituloNoticia" formControlName="titulo" name="title-notice" title="Título de noticia">
 <label for="description-notice">Descripción</label>   <textarea title="descripción de noticia" [(ngModel)]="descripcionNoticia" formControlName="descripcion" name="description-notice" id="" cols="26" rows="5"></textarea>
 
-<button type="submit">guardar</button>
+<button type="submit" class="">guardar</button>
 </form>
 </div>
 
@@ -353,7 +355,7 @@
 <label for="title-notice">Título</label>              <input  formControlName="titulo" type="text" name="title-notice" title="Título de noticia">
 <label for="description-notice">Descripción</label>   <textarea formControlName="descripcion" title="descripción de noticia" name="description-notice" id="" cols="26" rows="5"></textarea>
 
-<button type="submit">guardar</button>
+<button type="submit" class="">guardar</button>
 </form>
 </div>
 
