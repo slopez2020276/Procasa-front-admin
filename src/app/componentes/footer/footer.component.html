@@ -24,17 +24,22 @@
           <button id="open-form" (click)="OpenForm()">SUSCRÍBETE</button>
       </div>
 
-      <div id="formulario">
-        <button type="button" id="close-form-modal" (click)="CloseForm()">X</button>
+  
+      <form [formGroup]="formularioAgregarSub" (ngSubmit)="agregarnuevaSub()" >
+        <div id="formulario">
+  
+          <button type="button" id="close-form-modal" (click)="CloseForm()">X</button>
           <h1>SUSCRÍBETE PARA RECIBIR NOTICIAS DE NUESTROS PRODUCTOS</h1>
-              <label for="correo">INGRESA TU CORREO</label>
-              <input type="mail" name="correo" placeholder="TU CORREO">
-              <label for="nombre">NOMBRE</label>
-              <input type="text" name="nombre" placeholder="TU NOMBRE">
-              <label for="apellido">APELLIDO</label>
-              <input type="text" name="apellido" placeholder="TU APELLIDO">
-                  <button id="send">ENVIAR</button>
-      </div>
+          <label for="correo">INGRESA TU CORREO</label>
+          <input type="mail" formControlName="correo" name="correo" placeholder="TU CORREO">
+          <label for="nombre">NOMBRE</label>
+          <input type="text" formArrayName="nombre" name="nombre" placeholder="TU NOMBRE">
+          <label for="apellido">APELLIDO</label>
+          <input type="text" formControlName="apellido" name="apellido" placeholder="TU APELLIDO">
+          <button  (click)="agregarnuevaSub" type="submit">ENVIAR</button>
+        </div>
+      </form>
+
 
 
     </footer>
