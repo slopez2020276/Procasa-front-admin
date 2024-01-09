@@ -19,4 +19,14 @@ export class AdminNavbarComponent {
         }, 300);
     }
   }
+
+CloseSession(){
+let response = confirm('¿Desea cerrar sesión?')
+  if(response===true){
+    localStorage.removeItem('token')
+    location.href ="http://localhost:4200/admin"
+  }
+}
+
+
 }

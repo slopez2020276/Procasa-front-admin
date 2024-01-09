@@ -333,11 +333,7 @@ ModalTimeLine() {document.getElementById('modal-time-line')?.classList.toggle('m
  async onSubmit(){
 
 let confirma = this.AlertConfirm("¿Desea guardar los cambios?")
-if(confirma===1){
-  const response = await this.historiaService.editarHistoria(this.formulario.value,this._idhistoria)
-  return true;
-}
-return false;
+
   }
 
   async guardarMision(){
