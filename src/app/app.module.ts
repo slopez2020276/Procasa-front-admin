@@ -24,6 +24,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { FlechaComponent } from './componentes/flecha/flecha.component';
 import { FooterMainComponent } from './componentes/footer-main/footer-main.component';
 import { AlertComponent } from './componentes/alert/alert.component';
+import { SuscripcionesComponent } from './componentes/suscripciones/suscripciones.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -46,6 +47,7 @@ import { AlertComponent } from './componentes/alert/alert.component';
     FlechaComponent,
     FooterMainComponent,
     AlertComponent,
+    SuscripcionesComponent,
   ],
   imports: [
     BrowserModule,

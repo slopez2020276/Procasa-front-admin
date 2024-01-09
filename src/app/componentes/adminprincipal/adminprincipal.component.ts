@@ -69,6 +69,7 @@ export class AdminprincipalComponent implements OnInit {
 
   constructor(){
 
+
     this.formulario = new FormGroup({
       DescripcionHistoria: new FormControl('ingrese la historia por favor ')
     })
@@ -171,19 +172,19 @@ export class AdminprincipalComponent implements OnInit {
 }
 
 
+
+
 // AL INICIAR
   async ngOnInit()  {
 
 
-    document.getElementById('container-alert')?.classList.remove('show')
+    // document.getElementById('container-alert')?.classList.remove('show')
       const inputfileBefore: any = (document.getElementById('file-portada') as HTMLInputElement | null)?.value;
 
 if(inputfileBefore==""){  document.getElementById('preview-portada')?.setAttribute('src', "../../../assets/img/empty.jpg");  document.getElementById('file-portada')?.setAttribute('data-content', 'seleccionar archivo')}
 
     this.MessageAlert("¡Bienvenido al Administrador de Procasa!",1,2000)
 
-    document.getElementById('mision-txt')?.setAttribute('disabled', 'disabled')
-    document.getElementById('vision-txt')?.setAttribute('disabled', 'disabled')
 
     document.getElementById('deshabilitar')?.classList.add('hide')
     document.getElementById('deshabilitar-mv')?.classList.add('hide')
@@ -200,7 +201,7 @@ if(inputfileBefore==""){  document.getElementById('preview-portada')?.setAttribu
     this.obtnerNoticias()
     this.obtnerValores()
 
-  }
+}
 
   async obtenerMision(){
     const respuesta = await this.misionService.obtenerMsion()
@@ -209,6 +210,10 @@ if(inputfileBefore==""){  document.getElementById('preview-portada')?.setAttribu
     this.vision = this.dataMisionÑ.textVIsion
 
     console.log(this.dataMisionÑ)
+
+
+    document.getElementById('mision-txt')?.setAttribute('disabled', 'true')
+    document.getElementById('vision-txt')?.setAttribute('disabled', 'true')
   }
 
   async obtenerHistoria(){
@@ -376,6 +381,11 @@ return false;
     this.OrientacionModel = this.dataValores.Orientacion
     console.log(this.dataValores)
 
+
+    document.getElementById('txt-integridad')?.setAttribute('disabled', 'true')
+    document.getElementById('txt-pasion')?.setAttribute('disabled', 'true')
+    document.getElementById('txt-innovacion')?.setAttribute('disabled', 'true')
+    document.getElementById('txt-orientacion')?.setAttribute('disabled', 'true')
   }
 
   async editarValores(){
@@ -383,6 +393,7 @@ return false;
    const respuestaEdit = await this.ValoresService.editarValores(id,this.formularioValores.value)
    console.log(respuestaEdit)
   }
+
 
 
   async obtenerxidNoticias(id:any){

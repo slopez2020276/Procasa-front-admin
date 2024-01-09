@@ -1,0 +1,68 @@
+<app-admin-navbar></app-admin-navbar>
+
+<div id="container-1"></div>
+
+<div id="modal-add-location">
+  <button id="close-modal" (click)="AddLocation()">cerrar</button>
+  <h1>Agregar Ubicación</h1>
+
+  <div class="item">
+    <label>Nombre</label>
+    <input title="input" type="text" class="bold" placeholder="">
+  </div>
+  <div class="item">
+    <label>Dirección</label>
+    <input title="input" type="text" class="bold" placeholder="">
+  </div>
+  <div class="item">
+    <label>Teléfono</label>
+    <input title="input" type="text" class="bold" placeholder="">
+  </div>
+  <div class="item">
+    <label>Extensión</label>
+    <input title="input" type="text" class="bold" placeholder="">
+  </div>
+  <div class="item">
+    <label>imagen</label>
+    <input title="input" type="file" class="bold" placeholder="">
+  </div>
+
+  <button id="save-modal" (click)="AddLocation()">GUARDAR</button>
+</div>
+
+<div id="container-2">
+  <h1>Suscripciones</h1>
+    <h2></h2>
+    <!-- <button id="add-location" (click)="AddLocation()">+ Agregar ubicación</button> -->
+
+    <div id="bar-search">
+      <label for="search">Buscar</label>
+      <input class="bold" type="text" name="search" placeholder="" title="buscar">
+      <button type="button">...<i class="fas fa-magnifying-glass"></i></button>
+    </div>
+</div>
+
+<div id="container-3">
+  <table>
+    <thead>
+      <tr>
+        <td class="bold tb-number">#</td>
+        <td class="bold tb-name">Nombre</td>
+        <td class="bold tb-address">Apellido</td>
+        <td class="bold tb-telephone">Correo</td>
+        <td class="bold tb-telephone">Acciones</td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="tb-number">1</td>
+        <td class="tb-name">nombre cliente</td>
+        <td class="tb-address">apellido cliente</td>
+        <td class="tb-telephone">clientegmail.com</td>
+        <td class="tb-actions actions-center"> <button class="tb-delete" (click)="TbDelete()">borrar</button></td>
+      </tr>
+  </tbody>
+
+  </table>
+
+</div>
