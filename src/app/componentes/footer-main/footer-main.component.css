@@ -195,7 +195,7 @@ div#formulario input {
   border: 1px solid #DDD;
 }
 
-div#formulario button {
+form button[type=submit] {
   padding: .5rem 2rem;
   background: #AA182C;
   border-radius: .5rem;
