@@ -1,40 +1,22 @@
 <!-- https://r7qjvd13-4200.use2.devtunnels.ms/ -->
-<img src="../../../assets/img/textura-fon.png" id="background-texture">
+<img title="textura de fondo" src="../../../assets/img/textura-fon.png" id="background-texture">
 <div id="container-map">
 
   <div id="mapa-principal">
       <div id="cont-sucursales">
         <div class="item-sucursal" (click)="mostarMapas('procasa')" >
           <div class="check-sucursal">
-            <input name="ck" type="radio" class="checked" (click)="mostarMapas('procasa')"  >
+            <input title="input" name="ck" type="radio" class="checked" (click)="mostarMapas('procasa')"  >
           </div>
             <img src="../../assets/img/Logo Procasa original vertocal B.png" alt="">
         </div>
         <div class="item-sucursal" (click)="mostarMapas('meath')" >
           <div class="check-sucursal"  >
-            <input name="ck" type="radio" class="checked"  (click)="mostarMapas('meath')"  >
+            <input title="input" name="ck" type="radio" class="checked"  (click)="mostarMapas('meath')"  >
           </div>
             <img src="../../../assets/img/Logo MH blanco.png" alt="">
         </div>
-        <div class="item-sucursal">
-          <div class="check-sucursal">
-            <div class="checked"></div>
-          </div>
-            <img src="../../../assets/img/Logo MH blanco.png" alt="">
-        </div>
-        <div class="item-sucursal">
-          <div class="check-sucursal">
-            <div class="checked"></div>
-          </div>
-            <img src="../../../assets/img/Logo MH blanco.png" alt="">
-        </div>
-        <div class="item-sucursal">
-          <div class="check-sucursal">
-            <div class="checked"></div>
-          </div>
-            <img src="../../../assets/img/Logo MH blanco.png" alt="">
-        </div>
-      </div>
+</div>
 
       <div class="map-wrap">
         <div class="map" #map></div>
@@ -45,7 +27,7 @@
 
       @switch (tienda) {
         @case ('1') {
-          <img src="../../assets/img/Huehuetenango.png" alt="">
+          <img src="../../../assets/img/empty.jpg" alt="">
           <div class="desc-img">
             Lorem ipsum dolor sit amet consectetur, adipisicing elit. Obcaecati, dolore sunt! Eius officiis sed ab corporis modi earum, ipsam facere minus animi dicta et, minima nisi id, laudantium non voluptatem.
           </div>
@@ -54,14 +36,14 @@
 
         }
         @case ('2') {
-          <img src="../../assets/img/procasa xela.png" alt="">
+          <img src="../../../assets/img/empty.jpg" alt="">
           <div class="desc-img">
             Lorem ipsum dolor sit amet consectetur, adipisicing elit. Obcaecati, dolore sunt! Eius officiis sed ab corporis modi earum, ipsam facere minus animi dicta et, minima nisi id, laudantium non voluptatem.
           </div>
           <button (click)="cerrarUbicacionIndivudal('procasa')" >cerrar</button>
         }
         @case ('3') {
-          <img src="../../assets/img/Procasa Zona 2.PNG" alt="">
+          <img src="../../../assets/img/empty.jpg" alt="">
           <div class="desc-img">
             Lorem ipsum dolor sit amet consectetur, adipisicing elit. Obcaecati, dolore sunt! Eius officiis sed ab corporis modi earum, ipsam facere minus animi dicta et, minima nisi id, laudantium non voluptatem.
           </div>
@@ -70,49 +52,49 @@
           <button (click)="cerrarUbicacionIndivudal('procasa')" >cerrar</button>
         }
         @case ('4') {
-          <img src="../../assets/img/procasa xela.png" alt="">
+          <img src="../../../assets/img/empty.jpg" alt="">
           <div class="desc-img">
             Lorem ipsum dolor sit amet consectetur, adipisicing elit. Obcaecati, dolore sunt! Eius officiis sed ab corporis modi earum, ipsam facere minus animi dicta et, minima nisi id, laudantium non voluptatem.
           </div>
           <button (click)="cerrarUbicacionIndivudal('procasa')" >cerrar</button>
         }
         @case ('5') {
-          <img src="../../assets/img/procasa xela.png" alt="">
+          <img src="../../../assets/img/empty.jpg" alt="">
           <div class="desc-img">
             Lorem ipsum dolor sit amet consectetur, adipisicing elit. Obcaecati, dolore sunt! Eius officiis sed ab corporis modi earum, ipsam facere minus animi dicta et, minima nisi id, laudantium non voluptatem.
           </div>
           <button (click)="cerrarUbicacionIndivudal('procasa')" >cerrar</button>
         }
         @case ('6') {
-          <img src="../../assets/img/procasa xela.png" alt="">
+          <img src="../../../assets/img/empty.jpg" alt="">
           <div class="desc-img">
             Lorem ipsum dolor sit amet consectetur, adipisicing elit. Obcaecati, dolore sunt! Eius officiis sed ab corporis modi earum, ipsam facere minus animi dicta et, minima nisi id, laudantium non voluptatem.
           </div>
           <button (click)="cerrarUbicacionIndivudal('meath')" >cerrar</button>
         }
         @case ('7') {
-          <img src="../../assets/img/procasa xela.png" alt="">
+          <img src="../../../assets/img/empty.jpg" alt="">
           <div class="desc-img">
             Lorem ipsum dolor sit amet consectetur, adipisicing elit. Obcaecati, dolore sunt! Eius officiis sed ab corporis modi earum, ipsam facere minus animi dicta et, minima nisi id, laudantium non voluptatem.
           </div>
           <button (click)="cerrarUbicacionIndivudal('meath')" >cerrar</button>
         }
         @case ('8') {
-          <img src="../../assets/img/procasa xela.png" alt="">
+          <img src="../../../assets/img/empty.jpg" alt="">
           <div class="desc-img">
             Lorem ipsum dolor sit amet consectetur, adipisicing elit. Obcaecati, dolore sunt! Eius officiis sed ab corporis modi earum, ipsam facere minus animi dicta et, minima nisi id, laudantium non voluptatem.
           </div>
           <button (click)="cerrarUbicacionIndivudal('meath')" >cerrar</button>
         }
         @case ('9') {
-          <img src="../../assets/img/procasa xela.png" alt="">
+          <img src="../../../assets/img/empty.jpg" alt="">
           <div class="desc-img">
             Lorem ipsum dolor sit amet consectetur, adipisicing elit. Obcaecati, dolore sunt! Eius officiis sed ab corporis modi earum, ipsam facere minus animi dicta et, minima nisi id, laudantium non voluptatem.
           </div>
           <button (click)="cerrarUbicacionIndivudal('meath')" >cerrar</button>
         }
         @case ('10') {
-          <img src="../../assets/img/procasa xela.png" alt="">
+          <img src="../../../assets/img/empty.jpg" alt="">
           <div class="desc-img">
             Lorem ipsum dolor sit amet consectetur, adipisicing elit. Obcaecati, dolore sunt! Eius officiis sed ab corporis modi earum, ipsam facere minus animi dicta et, minima nisi id, laudantium non voluptatem.
           </div>

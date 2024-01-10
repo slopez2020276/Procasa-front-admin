@@ -10,7 +10,7 @@ div#container-map {
     padding-top: 5rem;
     padding-bottom: 10rem;
   }
-  
+
   div#mapa-principal {
     width: 90%;
     height: auto;
@@ -19,7 +19,7 @@ div#container-map {
     align-items: center;
     flex-wrap: wrap;
   }
-  
+
   div#list-locations {
     /* width: calc(100% - 700px); */
     width: 350px;
@@ -27,7 +27,7 @@ div#container-map {
     overflow-x: scroll;
   }
   div#list-locations::-webkit-scrollbar { display: none;}
-  
+
   div.item-location {
     width: 100%;
     height: auto;
@@ -43,10 +43,10 @@ div#container-map {
   }
   div.item-location:hover {padding-left: 1.5rem; background: #AA182C; color: #FFF;}
   div.item-location:active {transform: scale(.95); }
-  
-  
-  
-  
+
+
+
+
   div#cont-sucursales {
     width: 90%;
     height: 120px;
@@ -56,7 +56,7 @@ div#container-map {
     flex-wrap: nowrap;
     margin-bottom: 1rem;
   }
-  
+
   div.item-sucursal {
     width: 150px;
     height: 120px;
@@ -66,12 +66,12 @@ div#container-map {
     align-items: center;
     flex-wrap: nowrap;
   }
-  
+
   div.item-sucursal img {
     height: 100%;
     width: auto;
   }
-  
+
   div.check-sucursal {
     width: 25px;
     height: 25px;
@@ -83,26 +83,26 @@ div#container-map {
     align-items: center;
     transform: scale(1);
   }
-  
+
   div.checked {
     width: 80%;
     height: 80%;
     background: transparent;
     border-radius: 2px;
   }
-  
+
   div.check-sucursal:active div.checked {background: #FCFCF7;}
   div.check-sucursal:active {transform: scale(.8);}
-  
-  
+
+
   @media screen and (max-width: 1000px){
-  
+
     div#mapa-principal {
       width: 90%;
       display: flex;
       justify-content: center;
     }
-  
+
     div#cont-sucursales {
       width: 90%;
       height: auto;
@@ -111,4 +111,3 @@ div#container-map {
       flex-wrap: wrap;
     }
   }
-  
