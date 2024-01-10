@@ -1,0 +1,16 @@
+NOTICIAS
+- Agregar Link
+- Acepte PDF
+- Dinámico de 6 noticias
+- "ver más" de cada noticia
+
+
+FORM SUSCRIPCIÓN
+- Cookies
+- términos y condiciones
+
+
+IMÁGENES
+- Límite de resolución de imagen
+- Formatear imágenes
+
