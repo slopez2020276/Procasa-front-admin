@@ -148,18 +148,18 @@ export class AdminprincipalComponent implements OnInit {
   AlertConfirm(message: string, elem: string): number | any {
   document.getElementById('cont-btns-alert-'+elem)?.classList.remove('show')
   document.getElementById('container-alert-'+elem)?.classList.add('show')
-  const innerMessage = document.getElementById('inner-message')
+  const innerMessage = document.getElementById('inner-message-'+elem)
   if (innerMessage) {
     innerMessage.innerHTML = message;
 
     document.getElementById('container-alert-'+elem)?.classList.add('show')
     document.getElementById('cont-btns-alert-'+elem)?.classList.add('show')
 
-    document.getElementById('cancel')?.addEventListener('click', function(){
+    document.getElementById('cancel-'+elem)?.addEventListener('click', function(){
         document.getElementById('container-alert-'+elem)?.classList.remove('show')
       },false)
 
-      document.getElementById('confirm')?.addEventListener('click', function(){
+      document.getElementById('confirm-'+elem)?.addEventListener('click', function(){
         document.getElementById('container-alert-'+elem)?.classList.remove('show')
       },false)
   }

@@ -39,18 +39,16 @@
 
 
   <div id="container-alert-a">
-
     <div id="alert-check-a" class="alert-model">
-        <p class="bold" id="inner-message"></p>
+        <p class="bold" id="inner-message-a"></p>
 
         <div id="cont-btns-alert-a">
           <button id="confirm">confirmar</button>
           <!-- <button id="cancel">cancelar</button> -->
-          <div id="cancel" class="replace-button">cancelar</div>
+          <div id="cancel-a" class="replace-button">cancelar</div>
         </div>
       </div>
   </div>
-
 
 </div>
 
@@ -90,10 +88,10 @@
     <div id="alert-check-b" class="alert-model">
         <p class="bold" id="inner-message-b"></p>
 
-        <div id="cont-btns-alert">
+        <div id="cont-btns-alert-b">
           <button id="confirm-b">confirmar</button>
           <!-- <button id="cancel-b">cancelar</button> -->
-          <div class="replace-button">cancelar</div>
+          <div class="replace-button" id="cancel-b">cancelar</div>
         </div>
 
         <div id="time-b"></div>
@@ -172,12 +170,25 @@
 
     <div class="cont-buttons">
 
-      <button class="normal " >guardar</button>
+      <button class="normal" (click)="AlertConfirm('¿Desea guardar los cambios?','c')">guardar</button>
     </div>
   </div>
+
+
+
+  <div id="container-alert-c">
+    <div id="alert-check-c" class="alert-model">
+        <p class="bold" id="inner-message-c"></p>
+
+        <div id="cont-btns-alert-c">
+          <button id="confirm-c">confirmar</button>
+          <div id="cancel-c" class="replace-button">cancelar</div>
+        </div>
+      </div>
+  </div>
+
+
 </form>
-
-
 </div>
 
 
@@ -220,10 +231,25 @@
 
       <div class="cont-buttons">
 
-        <button class="normal ">guardar</button>
+        <button class="normal" (click)="AlertConfirm('¿Desea guardar los cambios?','d')">guardar</button>
       </div>
     </div>
   </div>
+
+
+
+
+  <div id="container-alert-d">
+    <div id="alert-check-d" class="alert-model">
+        <p class="bold" id="inner-message-d"></p>
+
+        <div id="cont-btns-alert-d">
+          <button id="confirm-d">confirmar</button>
+          <div id="cancel-d" class="replace-button">cancelar</div>
+        </div>
+      </div>
+  </div>
+
   </form>
 
 

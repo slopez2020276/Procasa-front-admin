@@ -811,7 +811,12 @@ button#close-modal-notice, button#close-modal-notice-new {
 /*||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
 
 div#container-alert-a,
-div#container-alert-b {
+div#container-alert-b,
+div#container-alert-c,
+div#container-alert-d,
+div#container-alert-e,
+div#container-alert-f
+{
   top: 0;
   left: 0;
   width: 100%;
@@ -822,13 +827,18 @@ div#container-alert-b {
   transition: .2s ease;
   display: flex;
   justify-content: center;
-  align-items: start;
+  align-items: center;
   background: rgba(255,255,255,1);
   text-align: center;
 }
 
 div#container-alert-a.show,
-div#container-alert-b.show {
+div#container-alert-b.show,
+div#container-alert-c.show,
+div#container-alert-d.show,
+div#container-alert-e.show,
+div#container-alert-f.show
+{
   z-index: 100;
   opacity: 1;
 }
@@ -837,12 +847,11 @@ div.alert-model {
   width: 400px;
   height: auto;
   padding: 2rem;
-  margin-top: 6vh;
   border-radius: 4px;
   /* box-shadow: 1px 3px 5px rgba(0,0,0,.4); */
   position: absolute;
   z-index: 901;
-  background: #FAFAFA;
+  background: transparent;
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -884,7 +893,12 @@ div.alert-model p {
 
 
 div#cont-btns-alert-a,
-div#cont-btns-alert-b {
+div#cont-btns-alert-b,
+div#cont-btns-alert-c,
+div#cont-btns-alert-d,
+div#cont-btns-alert-e,
+div#cont-btns-alert-f
+{
   width: 100%;
   position: relative;
   justify-content: space-around;
@@ -894,12 +908,23 @@ div#cont-btns-alert-b {
 }
 
 div#cont-btns-alert-a.show,
-div#cont-btns-alert-b.show {
+div#cont-btns-alert-b.show,
+div#cont-btns-alert-c.show,
+div#cont-btns-alert-d.show,
+div#cont-btns-alert-e.show,
+div#cont-btns-alert-f.show
+{
   display: flex;
 }
 
-div#cont-btns-alert-a button, div.replace-button,
-div#cont-btns-alert-b button {
+div#cont-btns-alert-a button,
+div#cont-btns-alert-b button,
+div#cont-btns-alert-c button,
+div#cont-btns-alert-d button,
+div#cont-btns-alert-e button,
+div#cont-btns-alert-f button,
+div.replace-button
+{
   text-decoration: none;
   background: #EAEAEA;
   border-radius: 4px;
@@ -909,8 +934,14 @@ div#cont-btns-alert-b button {
   box-shadow: 0px 3px 0px rgba(0,0,0,.3);
   cursor: pointer;
 }
-div#cont-btns-alert-a button:active, div.replace-button:active,
-div#cont-btns-alert-b button:active {
+div.replace-button:active,
+div#cont-btns-alert-a button:active,
+div#cont-btns-alert-b button:active,
+div#cont-btns-alert-c button:active,
+div#cont-btns-alert-d button:active,
+div#cont-btns-alert-e button:active,
+div#cont-btns-alert-f button:active
+{
   transform: scale(.95);
   box-shadow: 0px 0px 0px rgba(0,0,0,.3);
 }
