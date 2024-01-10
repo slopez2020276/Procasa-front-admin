@@ -32,7 +32,8 @@
   <div class="foot-cont">
 
     <div class="cont-buttons">
-      <button id="btn-alert-1" class="normal" (click)="AlertConfirm('¿Desea guardar los cambios?','a')">guardar</button>
+      <!-- <button id="btn-alert-1" class="normal" >guardar</button> -->
+      <div class="normal replace-button" id="btn-alert-1" (click)="AlertConfirm('¿Desea guardar los cambios?','a')">guardar</div>
     </div>
   </div>
 
@@ -51,6 +52,8 @@
   </div>
 
 </div>
+
+
 
 <!-- ------------------------------------------------------------------------------------------------------------------------------------------------------------------- -->
 
@@ -79,7 +82,8 @@
       <div class="foot-cont">
 
   <div class="cont-buttons">
-    <button id="btn-alert-2" class="normal" (click)="AlertConfirm('¿Desea guardar los cambios?','b')">guardar</button>
+    <!-- <button id="btn-alert-2" class="normal" (click)="AlertConfirm('¿Desea guardar los cambios?','b')">guardar</button> -->
+    <div class="replace-button normal" id="btn-alert-2" (click)="AlertConfirm('¿Desea guardar los cambios?','b')">guardar</div>
   </div>
 
 
@@ -89,7 +93,7 @@
         <p class="bold" id="inner-message-b"></p>
 
         <div id="cont-btns-alert-b">
-          <button id="confirm-b">confirmar</button>
+          <button type="submit" id="confirm-b">confirmar</button>
           <!-- <button id="cancel-b">cancelar</button> -->
           <div class="replace-button" id="cancel-b">cancelar</div>
         </div>
@@ -169,8 +173,8 @@
   <div class="foot-cont">
 
     <div class="cont-buttons">
-
-      <button class="normal" (click)="AlertConfirm('¿Desea guardar los cambios?','c')">guardar</button>
+      <!-- <div class="normal" (click)="AlertConfirm('¿Desea guardar los cambios?','c')">guardar</div> -->
+      <div class="replace-button normal" id="cancel-c" (click)="AlertConfirm('¿Desea guardar los cambios?','c')">guardar</div>
     </div>
   </div>
 
@@ -181,7 +185,7 @@
         <p class="bold" id="inner-message-c"></p>
 
         <div id="cont-btns-alert-c">
-          <button id="confirm-c">confirmar</button>
+          <button type="submit" id="confirm-c">confirmar</button>
           <div id="cancel-c" class="replace-button">cancelar</div>
         </div>
       </div>
