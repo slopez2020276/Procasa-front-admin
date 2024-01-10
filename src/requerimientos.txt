@@ -14,3 +14,36 @@ IMÁGENES
 - Límite de resolución de imagen
 - Formatear imágenes
 
+
+
+
+
+
+
+FORM
+- Nombre y apellido separado
+
+
+NOTICIAS
+- Tiempo desde que se subió la noticia (hace x tiempo)
+
+
+UBICACIONES
+- Separar Meat House, Gran..., Procasa
+
+
+PÚBLICA
+- Cumpleaños
+
+
+
+MERCADEO
+- solicitud de vistas de noticias
+
+LÍNEA DE TIEMPO
+- Pendiente
+
+
+IMÁGENES
+- Resoluciones y tamaños con filtro y avisos
+
