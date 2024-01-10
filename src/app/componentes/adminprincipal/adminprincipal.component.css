@@ -58,16 +58,6 @@ div#container-welcome h1 {
 }
 
 
-img#back-texture {
-  width: 100vw;
-  position: fixed;
-  top: 0;
-  left: 0;
-  height: auto;
-  opacity: .1;
-  z-index: 0;
-}
-
 
 div#trans {
   width: 5%;
@@ -337,7 +327,6 @@ img#preview-portada {
   cursor: pointer;
 }
 
-img#preview-portada:hover { opacity: 0; }
 
 div#container-2 {
   display: flex;
