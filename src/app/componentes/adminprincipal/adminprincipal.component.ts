@@ -398,6 +398,19 @@ ModalTimeLine() {document.getElementById('modal-time-line')?.classList.toggle('m
 
   }
 
+
+async eliminarLineaTiempo(id){
+  const respuestaDelete = await this.lineaService.eliminarLineaTIempo(id)
+  console.log(respuestaDelete)
+  this.obtenerLinea()
+}
+
+async eliminarNoticia(id){
+  const respuestaDelete = await this.noticiasService.EliminarNoticia(id)
+  console.log(respuestaDelete)
+  this.obtnerNoticias()
+}
+
   async editarNoticiasxid(){
     let id = this.dataNoticiasxID._id
     const respuestaeditNoticias = await this.noticiasService.editarnoticas(id,this.formularioEditarNoticias.value)

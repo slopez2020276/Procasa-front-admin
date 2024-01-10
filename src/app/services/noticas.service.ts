@@ -43,6 +43,11 @@ export class NoticasService {
     return firstValueFrom(
       this.httpClient.post<any>(`${this.baseUrl}/agregarNOticias`,fromValue)
     )
+  } 
+   EliminarNoticia (id){
+    return firstValueFrom(
+      this.httpClient.delete<any>(`${this.baseUrl}/eliminarNoticia/${id}`)
+    )
   }
 
   createHeaders(){
