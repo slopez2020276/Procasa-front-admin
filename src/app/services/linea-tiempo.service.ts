@@ -40,6 +40,12 @@ export class LineaTiempoService {
     )
   }
 
+  eliminarLineaTIempo(idLinea:any){
+    return firstValueFrom(
+      this.httpClient.delete<any>(`${this.baseUrl}/eliminarLineaTiempo/${idLinea}`,this.createHeaders())
+    )
+  }
+
   createHeaders(){
     return   {
      headers: new HttpHeaders ({

@@ -127,7 +127,7 @@
       <p class="input-to-text bold">{{os.titleLineaTiempo}}</p>
       <p class="input-to-text">{{os.descriptionLineaTiempo}}</p>
                   <button class="edit-timeline" type="button" (click)="editarModal(os._id)" (click)="Modal()">editar</button>
-                  <button class="edit-timeline del-bg" type="button">eliminar</button>
+                  <button class="edit-timeline del-bg" type="button" (click)="eliminarLineaTiempo(os._id)">eliminar</button>
                 </div>
               }
 
@@ -276,7 +276,7 @@
     <h2>{{os.titulo}}</h2>
     <p>{{os.descripcion}}</p>
           <button type="button" class="edit-notice" (click)="obtenerxidNoticias(os._id)" (click)="ModalEditNotice()">editar</button>
-          <button type="button" class="edit-notice del-bg">eliminar</button>
+          <button type="button" class="edit-notice del-bg" (click)="eliminarNoticia(os._id)" >eliminar</button>
         </div>
       }
   </div>
