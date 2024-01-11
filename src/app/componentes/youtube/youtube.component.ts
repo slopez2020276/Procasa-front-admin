@@ -36,7 +36,7 @@ export class YoutubeComponent implements OnInit {
 getVideoIframe(url:any) {
 
   let dataVIdeo = this.urlvideo
-  var video, results;
+  var video, results
 
   if (url === null) {
       return '';
@@ -47,8 +47,6 @@ getVideoIframe(url:any) {
 
   return this._sanitizer.bypassSecurityTrustResourceUrl('https://www.youtube.com/embed/' + video);
 }
-
-
 
 
 }
