@@ -25,6 +25,7 @@ import { FlechaComponent } from './componentes/flecha/flecha.component';
 import { FooterMainComponent } from './componentes/footer-main/footer-main.component';
 import { AlertComponent } from './componentes/alert/alert.component';
 import { SuscripcionesComponent } from './componentes/suscripciones/suscripciones.component';
+import { YoutubeComponent } from './componentes/youtube/youtube.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -48,6 +49,7 @@ import { SuscripcionesComponent } from './componentes/suscripciones/suscripcione
     FooterMainComponent,
     AlertComponent,
     SuscripcionesComponent,
+    YoutubeComponent,
   ],
   imports: [
     BrowserModule,

@@ -9,6 +9,7 @@ import { AdminprincipalComponent } from './componentes/adminprincipal/adminprinc
 import { PromocionesComponent } from './componentes/promociones/promociones.component';
 import { AlertComponent } from './componentes/alert/alert.component';
 import { SuscripcionesComponent } from './componentes/suscripciones/suscripciones.component';
+import { YoutubeComponent } from './componentes/youtube/youtube.component';
 
 const routes: Routes = [
   {path:'',title:'Inicio',component:PrincipalComponent},
@@ -20,6 +21,7 @@ const routes: Routes = [
   {path:'admin/Promociones',title:'Principal-Admin',component:PromocionesComponent},
   {path:'alert',title:'alert',component:AlertComponent},
   {path:'admin/suscripciones',title:'suscripciones',component:SuscripcionesComponent},
+  {path:'youtube',title:'youtube',component:YoutubeComponent},
 ];
 
 @NgModule({
