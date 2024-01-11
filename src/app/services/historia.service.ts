@@ -13,7 +13,7 @@ export class HistoriaService {
     this.baseUrl = 'http://localhost:3002/api'
    }
 
-   
+
 
    obtenerMainPage(){
     return firstValueFrom(
@@ -29,8 +29,8 @@ export class HistoriaService {
 
   editarHistoria(fromValue:any,idhistoria){
 
-   
-   
+
+
     let id = idhistoria
     console.log(idhistoria)
     return firstValueFrom(

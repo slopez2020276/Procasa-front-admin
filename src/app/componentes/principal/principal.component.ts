@@ -20,4 +20,5 @@ export class PrincipalComponent {
   //   this.data = response.MainPage[0]
 
   // }
+
 }

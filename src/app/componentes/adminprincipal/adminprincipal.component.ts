@@ -16,6 +16,7 @@ export class AdminprincipalComponent implements OnInit {
 
 
   formulario: FormGroup
+  formularioEditHistoria: FormGroup
   formularioEditlineaTiempo: FormGroup
   formularioMisionValor: FormGroup
   formularioAgregarLineaTiempo:FormGroup
@@ -52,6 +53,7 @@ export class AdminprincipalComponent implements OnInit {
 
   _idhistoria: any
   textoHistoria:any
+  EncalceVideo: any
 
   dataMisionÑ:any
   dataLinea:any
@@ -71,12 +73,17 @@ export class AdminprincipalComponent implements OnInit {
 
 
     this.formulario = new FormGroup({
-      DescripcionHistoria: new FormControl('ingrese la historia por favor ')
+      DescripcionHistoria: new FormControl('ingrese la historia por favor '),
+      EncalceVideo: new FormControl('ingrese enlace de video por favor')
     })
 
     this.formularioEditlineaTiempo = new FormGroup({
       titleLineaTiempo: new FormControl(),
       descriptionLineaTiempo: new FormControl()
+    })
+    this.formularioEditHistoria = new FormGroup({
+      titleHistoria: new FormControl(),
+      descriptionHistoria: new FormControl()
     })
     this.formularioMisionValor = new FormGroup({
       textMision: new FormControl(),
@@ -211,13 +218,11 @@ if(inputfileBefore==""){  document.getElementById('preview-portada')?.setAttribu
   }
 
   async obtenerHistoria(){
-    const responsive = await this.historiaService.obtenerHistoria()
-    this.data = responsive.historia[0]
-    this.textoHistoria = responsive.historia[0].DescripcionHistoria
-    this._idhistoria = responsive.historia[0]._id
-    console.log(this.textoHistoria)
-    console.log(this.data)
-
+    const responsivehistoria = await this.historiaService.obtenerHistoria()
+    this.data = responsivehistoria.historia[0]
+    this.textoHistoria = responsivehistoria.historia[0].DescripcionHistoria
+    this.EncalceVideo = responsivehistoria.historia[0].EncalceVideo
+    this._idhistoria = responsivehistoria.historia[0]._id
   }
 
   async obtenerLinea(){
@@ -315,6 +320,13 @@ async buscarporID(id:any){
 
 async editarTime(){
   let id =  this.dataLieneaxId._id
+ const guardarRes = await this.lineaService.editarLineaforID(id,this.formularioEditHistoria.value)
+ this.obtenerHistoria()
+ this.Modal()
+}
+
+async editarHistoria(){
+  let id =  this.dataLieneaxId._id
  const guardarRes = await this.lineaService.editarLineaforID(id,this.formularioEditlineaTiempo.value)
  console.log(guardarRes)
  this.obtenerLinea()
@@ -322,14 +334,13 @@ async editarTime(){
 }
 
 
+
+
 ModalTimeLine() {document.getElementById('modal-time-line')?.classList.toggle('modal') }
 
 
 
- async onSubmit(){
-
-
-  }
+ async onSubmit(){}
 
   async guardarMision(){
     let id = this.dataMisionÑ._id
@@ -353,7 +364,12 @@ ModalTimeLine() {document.getElementById('modal-time-line')?.classList.toggle('m
     const respuestasobtnerNoticas = await this.noticiasService.obtenerNoticas()
     this.dataLineaRespuesta = respuestasobtnerNoticas.noticas
     console.log(respuestasobtnerNoticas)
+  }
 
+  async obtnerHistorias (){
+    let respuestasobtnerHistoria = await this.historiaService.obtenerHistoria()
+    this.dataLineaRespuesta = respuestasobtnerHistoria.historia
+    console.log(respuestasobtnerHistoria)
   }
 
   ModalEditNotice() { document.getElementById('modal-edit-notice')?.classList.toggle('show') }
@@ -385,6 +401,7 @@ ModalTimeLine() {document.getElementById('modal-time-line')?.classList.toggle('m
    const respuestaEdit = await this.ValoresService.editarValores(id,this.formularioValores.value)
    console.log(respuestaEdit)
   }
+
 
 
 

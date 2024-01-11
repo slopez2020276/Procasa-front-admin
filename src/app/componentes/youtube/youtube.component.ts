@@ -14,11 +14,8 @@ import { HistoriaService } from '../../services/historia.service';
 
 export class YoutubeComponent implements OnInit {
   urlvideo = "https://www.youtube.com/watch?v=akGkQ1Vm-Xk"
-
   historiaService = inject(HistoriaService)
   enlaceVideo:any
-
-
 
   constructor(
     private _sanitizer: DomSanitizer
