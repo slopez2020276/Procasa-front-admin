@@ -815,7 +815,9 @@ div#container-alert-b,
 div#container-alert-c,
 div#container-alert-d,
 div#container-alert-e,
-div#container-alert-f
+div#container-alert-f,
+div#container-alert-g,
+div#container-alert-h
 {
   top: 0;
   left: 0;
@@ -837,7 +839,9 @@ div#container-alert-b.show,
 div#container-alert-c.show,
 div#container-alert-d.show,
 div#container-alert-e.show,
-div#container-alert-f.show
+div#container-alert-f.show,
+div#container-alert-g.show,
+div#container-alert-h.show
 {
   z-index: 100;
   opacity: 1;
@@ -897,7 +901,9 @@ div#cont-btns-alert-b,
 div#cont-btns-alert-c,
 div#cont-btns-alert-d,
 div#cont-btns-alert-e,
-div#cont-btns-alert-f
+div#cont-btns-alert-f,
+div#cont-btns-alert-g,
+div#cont-btns-alert-h
 {
   width: 100%;
   position: relative;
@@ -912,7 +918,9 @@ div#cont-btns-alert-b.show,
 div#cont-btns-alert-c.show,
 div#cont-btns-alert-d.show,
 div#cont-btns-alert-e.show,
-div#cont-btns-alert-f.show
+div#cont-btns-alert-f.show,
+div#cont-btns-alert-g.show,
+div#cont-btns-alert-h.show
 {
   display: flex;
 }
@@ -923,16 +931,19 @@ div#cont-btns-alert-c button,
 div#cont-btns-alert-d button,
 div#cont-btns-alert-e button,
 div#cont-btns-alert-f button,
+div#cont-btns-alert-g button,
+div#cont-btns-alert-h button,
 div.replace-button
 {
   text-decoration: none;
   background: #EAEAEA;
   border-radius: 4px;
-  padding: .5rem 2rem;
+  padding: .5rem 3rem;
   transition: .2s;
   transform: scale(1);
   box-shadow: 0px 3px 0px rgba(0,0,0,.3);
   cursor: pointer;
+  margin-top: 2rem;
 }
 div.replace-button:active,
 div#cont-btns-alert-a button:active,
@@ -940,7 +951,9 @@ div#cont-btns-alert-b button:active,
 div#cont-btns-alert-c button:active,
 div#cont-btns-alert-d button:active,
 div#cont-btns-alert-e button:active,
-div#cont-btns-alert-f button:active
+div#cont-btns-alert-f button:active,
+div#cont-btns-alert-g button:active,
+div#cont-btns-alert-h button:active
 {
   transform: scale(.95);
   box-shadow: 0px 0px 0px rgba(0,0,0,.3);

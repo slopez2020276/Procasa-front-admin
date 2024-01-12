@@ -311,7 +311,20 @@
     <input type="text"  formControlName="titleLineaTiempo" [(ngModel)]="tituloModal" name="title" title="título">
   <label for="description">Descripción</label>
     <input type="text" formControlName="descriptionLineaTiempo" [(ngModel)]="descripcionModal"  title="description">
-    <button type="submit" class="bold "  >guardar</button>
+    <!-- <button type="submit" class="bold "  >guardar</button> -->
+    <div class="replace-button normal" (click)="AlertConfirm('¿Desea guardar los cambios?','h')">guardar</div>
+
+    <div id="container-alert-h">
+      <div id="alert-check-h" class="alert-model">
+          <p class="bold" id="inner-message-h"></p>
+
+          <div id="cont-btns-alert-h">
+            <button id="confirm-h">confirmar</button>
+            <div id="cancel-h" class="replace-button">cancelar</div>
+          </div>
+        </div>
+    </div>
+
   </form>
 </div>
 
@@ -352,7 +365,20 @@
     <input type="text"  formControlName="titleLineaTiempo" ame="title" title="título">
   <label for="description">Descripción</label>
     <input type="text" formControlName="descriptionLineaTiempo"title="description">
-    <button type="submit" class="bold " (click)="ModalAddTimeLine()"  >guardar</button>
+    <!-- <button type="submit" class="bold " (click)="ModalAddTimeLine()"  >guardar</button> -->
+    <div class="replace-button normal" (click)="AlertConfirm('¿Desea guardar los cambios?','g')">guardar</div>
+
+    <div id="container-alert-g">
+      <div id="alert-check-g" class="alert-model">
+          <p class="bold" id="inner-message-g"></p>
+
+          <div id="cont-btns-alert-g">
+            <button id="confirm-g">confirmar</button>
+            <div id="cancel-g" class="replace-button">cancelar</div>
+          </div>
+        </div>
+    </div>
+
   </form>
 </div>
 
@@ -368,7 +394,20 @@
 <label for="title-notice">Título</label>              <input type="text" [(ngModel)]="tituloNoticia" formControlName="titulo" name="title-notice" title="Título de noticia">
 <label for="description-notice">Descripción</label>   <textarea title="descripción de noticia" [(ngModel)]="descripcionNoticia" formControlName="descripcion" name="description-notice" id="" cols="26" rows="5"></textarea>
 
-<button type="submit" class="">guardar</button>
+<!-- <button type="submit" class="">guardar</button> -->
+<div class="replace-button normal" (click)="AlertConfirm('¿Desea guardar los cambios?','e')">guardar</div>
+
+<div id="container-alert-e">
+  <div id="alert-check-e" class="alert-model">
+      <p class="bold" id="inner-message-e"></p>
+
+      <div id="cont-btns-alert-e">
+        <button id="confirm-e">confirmar</button>
+        <div id="cancel-e" class="replace-button">cancelar</div>
+      </div>
+    </div>
+</div>
+
 </form>
 </div>
 
@@ -382,7 +421,22 @@
 <label for="title-notice">Título</label>              <input  formControlName="titulo" type="text" name="title-notice" title="Título de noticia">
 <label for="description-notice">Descripción</label>   <textarea formControlName="descripcion" title="descripción de noticia" name="description-notice" id="" cols="26" rows="5"></textarea>
 
-<button type="submit" class="">guardar</button>
+<!-- <button type="submit" class="">guardar</button> -->
+<div class="replace-button normal" (click)="AlertConfirm('¿Desea guardar los cambios?','f')">guardar</div>
+
+
+<div id="container-alert-f">
+  <div id="alert-check-f" class="alert-model">
+      <p class="bold" id="inner-message-f"></p>
+
+      <div id="cont-btns-alert-f">
+        <button id="confirm-f">confirmar</button>
+        <div id="cancel-f" class="replace-button">cancelar</div>
+      </div>
+    </div>
+</div>
+
+
 </form>
 </div>
 
@@ -392,11 +446,6 @@
 
 
 <div id="space-sp"></div>
-
-
-
-
-
 
 
 
