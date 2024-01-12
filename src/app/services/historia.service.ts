@@ -28,9 +28,6 @@ export class HistoriaService {
   }
 
   editarHistoria(fromValue:any,idhistoria){
-
-
-
     let id = idhistoria
     console.log(idhistoria)
     return firstValueFrom(

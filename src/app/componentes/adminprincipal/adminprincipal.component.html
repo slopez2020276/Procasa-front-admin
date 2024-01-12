@@ -33,7 +33,7 @@
 
     <div class="cont-buttons">
       <!-- <button id="btn-alert-1" class="normal" >guardar</button> -->
-      <div class="normal replace-button" id="btn-alert-1" (click)="AlertConfirm('¿Desea guardar los cambios?','a')">guardar</div>
+      <div class="normal replace-button" id="btn-alert-1" (click)="AlertConfirm('¿Desea guardar los cambios?','a')"  >guardar</div>
     </div>
   </div>
 
@@ -44,7 +44,7 @@
         <p class="bold" id="inner-message-a"></p>
 
         <div id="cont-btns-alert-a">
-          <button id="confirm">confirmar</button>
+          <button id="confirm" (click)="editarHistoria()" >confirmar</button>
           <!-- <button id="cancel">cancelar</button> -->
           <div id="cancel-a" class="replace-button">cancelar</div>
         </div>
