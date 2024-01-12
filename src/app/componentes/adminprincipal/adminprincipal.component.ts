@@ -75,6 +75,7 @@ export class AdminprincipalComponent implements OnInit {
     this.formulario = new FormGroup({
       DescripcionHistoria: new FormControl('ingrese la historia por favor '),
       EncalceVideo: new FormControl('ingrese enlace de video por favor')
+
     })
 
     this.formularioEditlineaTiempo = new FormGroup({
@@ -325,7 +326,7 @@ async editarTime(){
  this.Modal()
 }
 
-async editarHistoria(){
+async editarHistoriaA(){
   let id =  this.dataLieneaxId._id
  const guardarRes = await this.lineaService.editarLineaforID(id,this.formularioEditlineaTiempo.value)
  console.log(guardarRes)
@@ -346,6 +347,14 @@ ModalTimeLine() {document.getElementById('modal-time-line')?.classList.toggle('m
     let id = this.dataMisionÑ._id
     const repuestaEdit =  await this.misionService.editarMisionValor(id,this.formularioMisionValor.value)
     console.log(repuestaEdit)
+  }
+
+
+  async editarHistoria(){
+    let id = this._idhistoria
+    const respuestaAgregar = await this.historiaService.editarHistoria(this.formularioAgregarLineaTiempo.value,id)
+    this.obtenerHistoria()
+
   }
 
 
