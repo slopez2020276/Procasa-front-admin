@@ -4,27 +4,27 @@ div#navbar {
     top: 0;
     left: 0;
     z-index: 110;
-    width: 100%;
+    width: 100vw;
     height: 65px;
     color: #252525;
     display: flex;
-    justify-content: space-between;
+    justify-content: right;
     color: #FFF;
     z-index: 700;
     background: transparent;
     background: rgba(255,255,255,.9);
     position: fixed;
-}
+  }
 
 
-div#cont-menu-list {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  height: 100%;
-  position: relative;
-  z-index: 300;
+  div#cont-menu-list {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
+    position: relative;
+    z-index: 300;
 }
 
 
@@ -60,6 +60,9 @@ div#navbar-logo {
     align-items: center;
     width: 180px;
     height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
 }
 
 div#navbar-logo img {
@@ -75,7 +78,6 @@ div#navbar-cont-items {
     display: flex;
     justify-content: center;
     align-items: start;
-    position: relative;
   }
 
 div.navbar-items {
