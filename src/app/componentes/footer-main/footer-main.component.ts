@@ -33,10 +33,15 @@ constructor(){
       let scrollywindow:number = 0;
       window.addEventListener('scroll',function(){
               scrollywindow=this.scrollY;
+              console.log("...............................................................................");
+
+              console.log(scrollywindow)
+
             if(scrollywindow>=1){
-              document.getElementById('foot')?.classList.add('tobottom');
+              console.log(scrollywindow);
+              document.getElementById('foot')?.classList.add('tobottom')
             }else{
-              document.getElementById('foot')?.classList.remove('tobottom');
+              document.getElementById('foot')?.classList.remove('tobottom')
               }
       });
 
