@@ -141,7 +141,7 @@ div.buts-enable button, div#buts-enable-mv button {
   background: #EAEAEA;
   border-radius: 4px;
   box-shadow: 0px 3px 0px rgba(0,0,0,.3);
-  transition: .2s;
+  transition: .1s;
   transform: scale(1);
   cursor: pointer;
   position: relative;
@@ -316,13 +316,13 @@ div.prewiew {
   justify-content: center;
   align-items: center;
   position: relative;
-  transition: .2s;
+  transition: .1s;
 }
 
 img#preview-portada {
   width: 100%;
   height: auto;
-  transition: .2s;
+  transition: .1s;
   opacity: 1;
   cursor: pointer;
 }
@@ -411,7 +411,7 @@ button#close-modal-3, button#close-modal-3-add {
   border-radius: 4px;
   cursor: pointer;
   transform: scale(1);
-  transition: .2s;
+  transition: .1s;
 }
 button#close-modal-3:active, button#close-modal-3-add:active {
   transform: scale(.95);
@@ -446,7 +446,7 @@ button.edit-timeline {
   background: #E1E1E1;
   font-size: 10pt;
   border: 1px solid #DDD;
-  transition: .2s ease;
+  transition: .1s ease;
   transform: calc(1);
   cursor: pointer;
 }
@@ -567,7 +567,7 @@ button#cont-3-see-all {
   border-radius: 4px;
   background: #EAEAEA;
   box-shadow: 0px 2px 0px rgba(0,0,0,.3);
-  transition: .2s;
+  transition: .1s;
   margin-top: 2rem;
   cursor: pointer;
   transform: scale(1);
@@ -741,7 +741,7 @@ div#modal-edit-notice.show, div#modal-new-notice.show {
   z-index: 300;
   transform: scale(1);
   opacity: 1;
-  transition: .2s;
+  transition: .1s;
   top: calc(50vh - 250px);
 }
 
@@ -780,7 +780,7 @@ div#modal-edit-notice button[type=submit], div#modal-new-notice button[type=subm
   border: #DDD;
   margin-top: 2rem;
   cursor: pointer;
-  transition: .2s;
+  transition: .1s;
   transform: scale(1);
   box-shadow: 0px 3px 0px rgba(0,0,0,.3);
 }
@@ -799,7 +799,7 @@ button#close-modal-notice, button#close-modal-notice-new {
   border-radius: 4px;
   cursor: pointer;
   transform: scale(1);
-  transition: .2s;
+  transition: .1s;
 }
 
 
@@ -826,7 +826,7 @@ div#container-alert-h
   position: absolute;
   z-index: -10;
   opacity: 0;
-  transition: .2s ease;
+  transition: .1s ease;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -870,7 +870,7 @@ div#time {
   height: 5px;
   background: transparent;
   border-radius: 4px;
-  transition: .2s;
+  transition: .1s;
 }
 
 div#time.green {  background: greenyellow; animation: less 2s ease;}
@@ -939,7 +939,7 @@ div.replace-button
   background: #EAEAEA;
   border-radius: 4px;
   padding: .5rem 3rem;
-  transition: .2s;
+  transition: .1s;
   transform: scale(1);
   box-shadow: 0px 3px 0px rgba(0,0,0,.3);
   cursor: pointer;
@@ -966,7 +966,7 @@ button.edit-notice {
   margin-top: 2rem;
   border-radius: 4px;
   cursor: pointer;
-  transition: .2s;
+  transition: .1s;
   transform: scale(1);
 }
 
@@ -990,3 +990,21 @@ button.del-bg {
   background: #AA182C;
   color: #FFF;
 }
+
+div#show-more {
+  position: relative;
+  width: 100%;
+  text-align: center;
+  padding: 1rem 0;
+  background: #EAEAEA;
+  border-radius: 4px;
+  margin-bottom: 1rem;
+  cursor: pointer;
+  transform: scale(1);
+  transition: .1s;
+}
+
+div#show-more:active {
+  transform: scale(.95);
+}
+

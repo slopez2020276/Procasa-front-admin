@@ -460,4 +460,9 @@ async eliminarNoticia(id){
     this.NewModalNotice()
    }
 
+
+
+ShowMore(){
+    console.log("-- MOSTRAR MÁS --");
+  }
 }

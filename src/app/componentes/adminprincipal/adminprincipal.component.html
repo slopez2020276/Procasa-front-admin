@@ -280,7 +280,7 @@
   <div class="foot-cont">
 
     <div class="cont-buttons">
-
+      <div id="show-more" (click)="ShowMore()">mostrar más</div>
       <button class="normal" (click)="NewModalNotice()">agregar</button>
     </div>
   </div>
@@ -311,6 +311,7 @@
   <label for="description">Descripción</label>
     <input type="text" formControlName="descriptionLineaTiempo" [(ngModel)]="descripcionModal"  title="description">
     <!-- <button type="submit" class="bold "  >guardar</button> -->
+
     <div class="replace-button normal" (click)="AlertConfirm('¿Desea guardar los cambios?','h')">guardar</div>
 
     <div id="container-alert-h">
