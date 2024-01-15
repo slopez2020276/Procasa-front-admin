@@ -230,15 +230,22 @@ if(inputfileBefore==""){  document.getElementById('preview-portada')?.setAttribu
   async obtenerLinea(){
     const repuestaLinea = await this.lineaService.obtenerLineaTiempo()
     this.dataLinea = repuestaLinea.lineFiended
-    console.log(this.dataLinea)
-
   }
 
 
 // SISTEMA DEL INPUT FILE IMAGEN
   InputFile() {
 
-    const inputfile: any = (document.getElementById('file-portada') as HTMLInputElement | null)?.value;
+    const inputfile: any = (document.getElementById('file-portada') as HTMLInputElement | null)?.value
+
+    let img = new Image()
+    img.src = inputfile
+    console.log("- - - - - DETALLES DEL ARCHIVO IMG - - - - -")
+    console.log(img)
+    console.log(img.naturalWidth)
+    console.log(img.naturalWidth)
+
+// document
 
         document.getElementById('file-portada')?.setAttribute('data-content', inputfile)
         document.getElementById('preview-portada')?.removeAttribute('src')
