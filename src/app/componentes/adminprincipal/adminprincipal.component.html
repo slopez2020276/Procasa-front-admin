@@ -63,7 +63,7 @@
 <form [formGroup]="formulario" (ngSubmit)="onSubmit()">
   <div class="sub-cont-2">
       <label for="enlace">Enlace del video:</label>
-      <input id="iframe-value" name="enlace" type="text" [(ngModel)]="EncalceVideo" [ngModelOptions]="{standalone: true}" (change)="IframeVideo()" placeholder="enlace del video" value="">
+      <input id="iframe-value" name="enlace" type="text" [(ngModel)]="EncalceVideo" formControlName="EncalceVideo"  (change)="IframeVideo()" placeholder="enlace del video" value="">
 
     <iframe id="iframe-preview" width="560" height="315" src=""
     title="YouTube video player"
@@ -93,7 +93,7 @@
         <p class="bold" id="inner-message-b"></p>
 
         <div id="cont-btns-alert-b">
-          <button type="submit" id="confirm-b">confirmar</button>
+          <button type="submit" id="confirm-b" (click)="editarHistoria()" >confirmar</button>
           <!-- <button id="cancel-b">cancelar</button> -->
           <div class="replace-button" id="cancel-b">cancelar</div>
         </div>
