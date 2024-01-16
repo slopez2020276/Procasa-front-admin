@@ -26,6 +26,7 @@ import { FooterMainComponent } from './componentes/footer-main/footer-main.compo
 import { AlertComponent } from './componentes/alert/alert.component';
 import { SuscripcionesComponent } from './componentes/suscripciones/suscripciones.component';
 import { YoutubeComponent } from './componentes/youtube/youtube.component';
+import { SafePipe } from './safe.pipe';
 @NgModule({
   declarations: [
     AppComponent,
@@ -50,6 +51,7 @@ import { YoutubeComponent } from './componentes/youtube/youtube.component';
     AlertComponent,
     SuscripcionesComponent,
     YoutubeComponent,
+    SafePipe,
   ],
   imports: [
     BrowserModule,

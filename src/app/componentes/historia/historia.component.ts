@@ -1,7 +1,6 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { HistoriaService } from '../../services/historia.service';
-import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
-
+import { DomSanitizer } from '@angular/platform-browser';
 
 
 @Component({

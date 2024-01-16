@@ -7,9 +7,10 @@ div#section-2 {
     flex-wrap: wrap;
     position: relative;
     color: #FFF;
-    height: 100vh;
+    height: auto;
     margin-top: 65px;
     padding-top: 3rem;
+    padding-bottom: 10rem;
 }
 
 a {text-decoration: none;}
@@ -20,7 +21,6 @@ a {text-decoration: none;}
     text-align: center;
     display: block;
     flex-wrap: wrap;
-    justify-content: center;
     align-items: center;
     transition: .2s;
     transform: scale(1);
@@ -80,6 +80,8 @@ a {text-decoration: none;}
 
 @media (max-width: 550px) {
   .column { width: 400px; }
+  .column h2{ font-size: 20pt; }
+
 }
 
 

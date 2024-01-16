@@ -32,20 +32,14 @@ constructor(){
 
       const footer = document.getElementById('foot');
       let scrollywindow:number = 0;
-      // window.addEventListener('scroll',function(){
-      //         scrollywindow=this.scrollY;
-      //         console.log("...............................................................................");
+      window.addEventListener('scroll',function(){
+console.log("...............................................................................");
+              scrollywindow=this.scrollY;
 
-      //         console.log(scrollywindow)
-
-      //       if(scrollywindow>=1){
-      //         console.log(scrollywindow);
-      //         document.getElementById('foot')?.classList.add('tobottom')
-      //       }else{
-      //         document.getElementById('foot')?.classList.remove('tobottom')
-      //         }
-      // })
-
+            if(scrollywindow>=1){
+              console.log(scrollywindow)
+              document.getElementById('foot')?.classList.add('tobottom') }else{ document.getElementById('foot')?.classList.remove('tobottom') }
+      }, false)
 }
 
 OpenForm(){ document.getElementById('formulario')?.classList.toggle('open'); }

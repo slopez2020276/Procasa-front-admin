@@ -9,6 +9,7 @@ div#to-home-scroll {
   z-index: 500;
   transform: scale(1);
   transition: .2s ease;
+  bottom: 100px;
 }
 
 div#to-home-scroll img {

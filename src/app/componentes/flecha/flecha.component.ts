@@ -8,19 +8,29 @@ import { Component } from '@angular/core';
 export class FlechaComponent {
 
   constructor(){
-    let scrollywindow:number = 0;
+    let scrollywindow:number = 0
     window.addEventListener('scroll',function(){
-            scrollywindow=this.scrollY;
+            scrollywindow=this.scrollY
           if(scrollywindow>=200){
-            document.getElementById('to-home-scroll')?.classList.add('toshow');
+            document.getElementById('to-home-scroll')?.classList.add('toshow')
           }else{
-            document.getElementById('to-home-scroll')?.classList.remove('toshow');
+            document.getElementById('to-home-scroll')?.classList.remove('toshow')
             }
     },false);
 }
 
 
   toHome(){
-    document.getElementById("body")?.scrollIntoView({behavior:"smooth"});
+    console.log("TO HOME TOP")
+    // document.getElementById("body")?.scrollIntoView({behavior:"smooth"})
+      window.scrollTo({
+          top: 0,
+          behavior: 'smooth'
+      })
+
+
+
+
+
   }
 }
