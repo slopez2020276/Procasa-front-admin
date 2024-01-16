@@ -75,7 +75,6 @@ export class AdminprincipalComponent implements OnInit {
     this.formulario = new FormGroup({
       DescripcionHistoria: new FormControl(),
       EncalceVideo: new FormControl()
-
     })
 
     this.formularioEditlineaTiempo = new FormGroup({
@@ -203,7 +202,6 @@ if(inputfileBefore==""){  document.getElementById('preview-portada')?.setAttribu
     this.obtenerMision()
     this.obtnerNoticias()
     this.obtnerValores()
-
 }
 
   async obtenerMision(){
@@ -324,7 +322,6 @@ async buscarporID(id:any){
   const respuestaID = await this.lineaService.obtenerLineaxID(id)
   this.dataLieneaxId = respuestaID.lineaFiend
   console.log(this.dataLieneaxId)
-
 }
 
 async editarTime(){
@@ -335,9 +332,8 @@ async editarTime(){
 }
 
 async editarHistoriaA(){
-  let id =  this.dataLieneaxId._id
- const guardarRes = await this.lineaService.editarLineaforID(id,this.formularioEditlineaTiempo.value)
- console.log(guardarRes)
+  // let id =  this.dataLieneaxId._id
+//  const guardarRes = await this.lineaService.editarLineaforID(id,this.formularioEditlineaTiempo.value)
  this.obtenerLinea()
  this.Modal()
 }
@@ -359,11 +355,15 @@ ModalTimeLine() {document.getElementById('modal-time-line')?.classList.toggle('m
 
 
   async editarHistoria(){
-    let id = this._idhistoria
-    const respuestaAgregar = await this.historiaService.editarHistoria(this.formulario.value,id)
-    this.obtenerHistoria()
-    console.log(respuestaAgregar)
-
+    // const enlaceValidate: any = (document.getElementById('iframe-value') as HTMLInputElement | null)?.value
+    // const txtareaValidate: any = (document.getElementById('iframe-value') as HTMLInputElement | null)?.value
+    //   if(enlaceValidate==null || txtareaValidate==null){
+    //     console.log("LOS CAMPOS ESTÁN VACÍOS POR EL AMOR DE DIOSSSSS...")
+    //   }else{
+    //     let id = this._idhistoria
+    //     const respuestaAgregar = await this.historiaService.editarHistoria(this.formulario.value,id)
+    //     this.obtenerHistoria()
+    //   }
   }
 
 

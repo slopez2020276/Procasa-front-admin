@@ -1013,5 +1013,25 @@ div#show-more:active {
 
 
 div.success-message {
-  
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  background: #f4f4f4;
+  text-align: center;
+  top: 0;
+  left: 0;
+  border-radius: 4px;
+  z-index: -10;
+  opacity: 0;
+}
+
+div.success-message h1 {
+  width: 100%;
+  text-align: center;
+  font-size: 1.5rem;
+  color: #252525;
 }
