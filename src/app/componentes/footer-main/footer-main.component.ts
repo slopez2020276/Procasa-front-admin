@@ -2,15 +2,20 @@ import { Component, OnInit, inject } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { SubsService } from '../../services/subs.service';
 
+
 @Component({
   selector: 'app-footer-main',
   templateUrl: './footer-main.component.html',
   styleUrl: './footer-main.component.css'
 })
+
+
 export class FooterMainComponent {
 
-  formularioAgregarSub : FormGroup
 
+
+
+  formularioAgregarSub : FormGroup
   SubService = inject(SubsService)
 
 
