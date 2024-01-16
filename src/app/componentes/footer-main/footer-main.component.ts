@@ -2,7 +2,6 @@ import { Component, OnInit, inject } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { SubsService } from '../../services/subs.service';
 
-
 @Component({
   selector: 'app-footer-main',
   templateUrl: './footer-main.component.html',
@@ -11,9 +10,6 @@ import { SubsService } from '../../services/subs.service';
 
 
 export class FooterMainComponent {
-
-
-
 
   formularioAgregarSub : FormGroup
   SubService = inject(SubsService)
@@ -36,19 +32,19 @@ constructor(){
 
       const footer = document.getElementById('foot');
       let scrollywindow:number = 0;
-      window.addEventListener('scroll',function(){
-              scrollywindow=this.scrollY;
-              console.log("...............................................................................");
+      // window.addEventListener('scroll',function(){
+      //         scrollywindow=this.scrollY;
+      //         console.log("...............................................................................");
 
-              console.log(scrollywindow)
+      //         console.log(scrollywindow)
 
-            if(scrollywindow>=1){
-              console.log(scrollywindow);
-              document.getElementById('foot')?.classList.add('tobottom')
-            }else{
-              document.getElementById('foot')?.classList.remove('tobottom')
-              }
-      });
+      //       if(scrollywindow>=1){
+      //         console.log(scrollywindow);
+      //         document.getElementById('foot')?.classList.add('tobottom')
+      //       }else{
+      //         document.getElementById('foot')?.classList.remove('tobottom')
+      //         }
+      // })
 
 }
 
