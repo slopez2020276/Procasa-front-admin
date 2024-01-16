@@ -12,7 +12,8 @@ import { SuscripcionesComponent } from './componentes/suscripciones/suscripcione
 import { YoutubeComponent } from './componentes/youtube/youtube.component';
 
 const routes: Routes = [
-  {path:'',title:'Inicio',component:PrincipalComponent},
+  {path:'',redirectTo:'Inicio', pathMatch:'full'},
+  {path:'Inicio',title:'inicio',component:PrincipalComponent},
   {path:'ubicaciones',title:'Ubicaciones',component:UbicacionesComponent},
   {path:'quiero-comprar',title:'Quiero Comprar',component:QuieroComprarComponent},
   {path:'admin',title:'Administrador', component: AdminloginComponent},

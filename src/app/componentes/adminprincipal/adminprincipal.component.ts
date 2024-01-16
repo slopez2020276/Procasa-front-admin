@@ -7,6 +7,10 @@ import { MisionService } from '../../services/mision.service';
 import { NoticasService } from '../../services/noticas.service';
 import { ValoresService } from '../../services/valores.service';
 
+
+interface HtmlInputEvent extends Event {
+  target: HTMLInputElement;
+}
 @Component({
   selector: 'app-adminprincipal',
   templateUrl: './adminprincipal.component.html',
@@ -23,8 +27,6 @@ export class AdminprincipalComponent implements OnInit {
   formularioValores:FormGroup
   formularioEditarNoticias: FormGroup
   formularioAgregarNoticias: FormGroup
-
-
 
 
 
@@ -67,10 +69,15 @@ export class AdminprincipalComponent implements OnInit {
   tituloNoticia:string = ''
   descripcionNoticia:string = ''
 
+  photoSelected: string | ArrayBuffer | null = null;
+file: File | undefined;
+
+
 
 
   constructor(){
 
+   
 
     this.formulario = new FormGroup({
       DescripcionHistoria: new FormControl(),
@@ -329,6 +336,7 @@ async editarTime(){
  const guardarRes = await this.lineaService.editarLineaforID(id,this.formularioEditHistoria.value)
  this.obtenerHistoria()
  this.Modal()
+
 }
 
 async editarHistoriaA(){
@@ -463,6 +471,27 @@ async eliminarNoticia(id){
 
 
 
+  onPhotoSelected(event: Event): void {
+    if (event.target instanceof HTMLInputElement) {
+      if (event.target.files && event.target.files[0]) {
+        this.file = event.target.files[0];
+  
+        // image preview
+        const reader = new FileReader();
+  
+        reader.onload = (e) => {
+          // Cambia la asignación solo si reader.result no es null
+          if (reader.result !== null) {
+            this.photoSelected = reader.result as string | ArrayBuffer;
+          }
+        };
+  
+        reader.readAsDataURL(this.file);
+      }
+    }
+  }
+
+  
 ShowMore(){
     console.log("-- MOSTRAR MÁS --");
   }

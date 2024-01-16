@@ -289,6 +289,41 @@
 </div>
 
 
+<div >
+  <button id="close-modal-3-add" (click)="ModalAddTimeLine()" >cerrar</button>
+</div>
+
+<form  (ngSubmit)="agregarEventoLineaTiempo()" >
+<label for="title">Título</label>
+<div class="form-group" >
+  <input class="form-control" type="text"  name="title"  title="título" required>
+</div>
+<label for="description">Descripción</label>
+<div class="form-group" >
+
+  <textarea class="form-control" name="" id="" cols="15" rows="10" required></textarea>
+</div>
+
+<label for="file">Imagen</label>
+<input type="file"  class="d-none" name="file" title="imagen" (change)="onPhotoSelected($event)" #photoImput>
+<img src="photoSelected || ../../../assets/img/no-image.png"  alt="" (click)="photoImput.click()">
+  <!-- <button type="submit" class="bold " (click)="ModalAddTimeLine()"  >guardar</button> -->
+  <div class="replace-button normal" (click)="AlertConfirm('¿Desea guardar los cambios?','g')">guardar</div>
+
+  <div id="container-alert-g">
+    <div id="alert-check-g" class="alert-model">
+        <p class="bold" id="inner-message-g"></p>
+
+        <div id="cont-btns-alert-g">
+          <button id="confirm-g" > confirmar</button>
+          <div id="cancel-g" class="replace-button">cancelar</div>
+        </div>
+      </div>
+  </div>
+
+</form>
+
+
 
 <div id="modal-6">
   <div id="close-modal-6"></div>
@@ -306,9 +341,9 @@
 
   <form [formGroup]="formularioEditlineaTiempo" (ngSubmit)="editarTime()">
   <label for="file">Imagen</label>
-    <input type="file"   name="file" title="imagen">
+    <input type="file"   name="file" title="imagen" required>
   <label for="title">Título</label>
-    <input type="text"  formControlName="titleLineaTiempo" [(ngModel)]="tituloModal" name="title" title="título">
+    <input type="text"  formControlName="titleLineaTiempo" [(ngModel)]="tituloModal" name="title" title="título" required>
   <label for="description">Descripción</label>
     <input type="text" formControlName="descriptionLineaTiempo" [(ngModel)]="descripcionModal"  title="description">
     <!-- <button type="submit" class="bold "  >guardar</button> -->
@@ -359,13 +394,20 @@
     <button id="close-modal-3-add" (click)="ModalAddTimeLine()" >cerrar</button>
   </div>
 
-  <form [formGroup]="formularioAgregarLineaTiempo" (ngSubmit)="agregarEventoLineaTiempo()" >
-  <label for="file">Imagen</label>
-    <input type="file"   name="file" title="imagen">
+  <form  (ngSubmit)="agregarEventoLineaTiempo()" >
   <label for="title">Título</label>
-    <input type="text"  formControlName="titleLineaTiempo" ame="title" title="título">
+  <div class="form-group" >
+    <input class="form-control" type="text"  name="title"  title="título" required>
+  </div>
   <label for="description">Descripción</label>
-    <input type="text" formControlName="descriptionLineaTiempo"title="description">
+  <div class="form-group" >
+
+    <textarea class="form-control" name="" id="" cols="15" rows="10" required></textarea>
+  </div>
+
+  <label for="file">Imagen</label>
+  <input type="file"  class="d-none" name="file" title="imagen">
+  img
     <!-- <button type="submit" class="bold " (click)="ModalAddTimeLine()"  >guardar</button> -->
     <div class="replace-button normal" (click)="AlertConfirm('¿Desea guardar los cambios?','g')">guardar</div>
 
@@ -374,7 +416,7 @@
           <p class="bold" id="inner-message-g"></p>
 
           <div id="cont-btns-alert-g">
-            <button id="confirm-g">confirmar</button>
+            <button id="confirm-g" > confirmar</button>
             <div id="cancel-g" class="replace-button">cancelar</div>
           </div>
         </div>
