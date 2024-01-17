@@ -361,13 +361,13 @@ ModalTimeLine() {document.getElementById('modal-time-line')?.classList.toggle('m
 
 
 
-      if(enlaceValidate!==null || txtareaValidate!==null){
-
+      if(enlaceValidate==null || txtareaValidate==null){
+        this.MessageSuccess('Los campos requeridos no pueden estar vacíos','a')
+      }else{
         let id = this._idhistoria
         const respuestaAgregar = await this.historiaService.editarHistoria(this.formulario.value,id)
         this.MessageSuccess('¡Datos guardados exitosamente!','a')
         this.obtenerHistoria()
-      }else{
       }
   }
 
