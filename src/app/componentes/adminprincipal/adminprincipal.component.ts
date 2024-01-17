@@ -7,12 +7,17 @@ import { MisionService } from '../../services/mision.service';
 import { NoticasService } from '../../services/noticas.service';
 import { ValoresService } from '../../services/valores.service';
 
+
+interface HtmlInputEvent extends Event {
+  target: HTMLInputElement;
+}
 @Component({
   selector: 'app-adminprincipal',
   templateUrl: './adminprincipal.component.html',
   styleUrl: './adminprincipal.component.css'
 })
 export class AdminprincipalComponent implements OnInit {
+
 
 
   formulario: FormGroup
@@ -23,8 +28,6 @@ export class AdminprincipalComponent implements OnInit {
   formularioValores:FormGroup
   formularioEditarNoticias: FormGroup
   formularioAgregarNoticias: FormGroup
-
-
 
 
 
@@ -67,10 +70,16 @@ export class AdminprincipalComponent implements OnInit {
   tituloNoticia:string = ''
   descripcionNoticia:string = ''
 
+  photoSelected: string | ArrayBuffer | null = null;
+file: File | undefined;
+private fileTmp:any;
+
+
 
 
   constructor(){
 
+   
 
     this.formulario = new FormGroup({
       DescripcionHistoria: new FormControl(),
@@ -92,6 +101,7 @@ export class AdminprincipalComponent implements OnInit {
    this.formularioAgregarLineaTiempo = new FormGroup({
     titleLineaTiempo: new FormControl(),
     descriptionLineaTiempo: new FormControl(),
+    image: new FormControl()
 
     })
     this.formularioValores = new FormGroup({
@@ -329,6 +339,7 @@ async editarTime(){
  const guardarRes = await this.lineaService.editarLineaforID(id,this.formularioEditHistoria.value)
  this.obtenerHistoria()
  this.Modal()
+
 }
 
 async editarHistoriaA(){
@@ -379,8 +390,9 @@ ModalTimeLine() {document.getElementById('modal-time-line')?.classList.toggle('m
   }
 
   async agregarEventoLineaTiempo(){
-    const respuestaAgregar = await this.lineaService.crearEventoLineaTiempo(this.formularioAgregarLineaTiempo.value)
     this.obtenerLinea()
+    console.log(this.formularioAgregarLineaTiempo.value.image)
+    
   }
 
   async obtnerNoticias (){
@@ -467,6 +479,48 @@ async eliminarNoticia(id){
 
 
 
+  onPhotoSelected(event: Event): void {
+    if (event.target instanceof HTMLInputElement) {
+      if (event.target.files && event.target.files[0]) {
+        this.file = event.target.files[0];
+  
+        // image preview
+        const reader = new FileReader();
+  
+        reader.onload = (e) => {
+          // Cambia la asignación solo si reader.result no es null
+          if (reader.result !== null) {
+            this.photoSelected = reader.result as string | ArrayBuffer;
+          }
+        };
+  
+        reader.readAsDataURL(this.file);
+      }
+    }
+  }
+
+
+  getFile($event: any): void {
+    //TODO esto captura el archivo!
+    const [ file ] = $event.target.files;
+    this.fileTmp = {
+      fileRaw:file,
+      fileName:file.name
+    }
+  }
+
+
+  sendFile():void{
+
+    const body = new FormData();
+    body.append('ImgPathLineaTiempo', this.fileTmp.fileRaw, this.fileTmp.fileName);
+    body.append('titleLineaTiempo', this.formularioAgregarLineaTiempo.value.titleLineaTiempo)
+    body.append('descriptionLineaTiempo',this.formularioAgregarLineaTiempo.value.descriptionLineaTiempo)
+
+    this.lineaService.sendPost(body)
+    .subscribe(res => console.log(res))
+  }
+  
 ShowMore(){
     console.log("-- MOSTRAR MÁS --");
   }

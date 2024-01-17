@@ -13,7 +13,10 @@
 
             <div class="cont-2-column-item">
               <div class="bar-connect"></div>
-           <img src="../../../assets/img/hamburguesa.jpg" alt=""><h2> {{os.titleLineaTiempo}} </h2> <br> {{os.descriptionLineaTiempo}} </div>
+           <img [src]="'http://localhost:3002/' + os.ImgPathLineaTiempo" alt="">
+           <h2> {{os.titleLineaTiempo}} </h2> <br> {{os.descriptionLineaTiempo}}
+          
+          </div>
           }
         </div>
 

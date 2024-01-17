@@ -287,6 +287,12 @@
 </div>
 
 
+<div >
+  <button id="close-modal-3-add" (click)="ModalAddTimeLine()" >cerrar</button>
+</div>
+
+
+
 
 <div id="modal-6">
   <div id="close-modal-6"></div>
@@ -304,9 +310,9 @@
 
   <form [formGroup]="formularioEditlineaTiempo" (ngSubmit)="editarTime()">
   <label for="file">Imagen</label>
-    <input type="file"   name="file" title="imagen">
+    <input type="file"   name="file" title="imagen" required>
   <label for="title">Título</label>
-    <input type="text"  formControlName="titleLineaTiempo" [(ngModel)]="tituloModal" name="title" title="título">
+    <input type="text"  formControlName="titleLineaTiempo" [(ngModel)]="tituloModal" name="title" title="título" required>
   <label for="description">Descripción</label>
     <input type="text" formControlName="descriptionLineaTiempo" [(ngModel)]="descripcionModal"  title="description">
     <!-- <button type="submit" class="bold "  >guardar</button> -->
@@ -351,6 +357,7 @@
 
 
 
+
 <div id="modal-time-line-add">
 
   <div id="cont-close-button-add">
@@ -359,7 +366,10 @@
 
   <form [formGroup]="formularioAgregarLineaTiempo" (ngSubmit)="agregarEventoLineaTiempo()" >
   <label for="file">Imagen</label>
-    <input type="file"   name="file" title="imagen">
+  <input type="file" (change)="getFile($event)">
+
+  <button (click)="sendFile()">Enviar</button>
+    <input type="file"  formControlName="image"  name="file" title="imagen">
   <label for="title">Título</label>
     <input type="text"  formControlName="titleLineaTiempo" ame="title" title="título">
   <label for="description">Descripción</label>
@@ -372,7 +382,7 @@
           <p class="bold" id="inner-message-g"></p>
 
           <div id="cont-btns-alert-g">
-            <button id="confirm-g">confirmar</button>
+            <button id="confirm-g" (click)="agregarEventoLineaTiempo()" >confirmar</button>
             <div id="cancel-g" class="replace-button">cancelar</div>
           </div>
         </div>
