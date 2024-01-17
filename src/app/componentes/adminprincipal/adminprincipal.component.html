@@ -75,7 +75,7 @@
 
     <div class="sub-cont-2">
             <label for="historia">Desgloce de Historia:</label>
-            <textarea name="historia" id="" cols="40" rows="10" formControlName="DescripcionHistoria" [(ngModel)]="textoHistoria" title="descripción"></textarea>
+            <textarea [(ngModel)]="desgloce" [value]="" name="historia" id="textareaValidate" cols="40" rows="10" formControlName="DescripcionHistoria" [(ngModel)]="textoHistoria" title="descripción"></textarea>
           </div>
 
       <div class="foot-cont">
@@ -106,7 +106,7 @@
 </div>
 </form>
 <!-- <button class="normal " (click)="AlertConfirm('pruea')" >guardar</button> -->
-<div class="success-message" id="messagge-a"> <h1 id="innermsg-a"></h1> </div>
+<div class="success-message" id="messagge-a"> <h1 id="innermsg-a"></h1> <div id="timesuccess"></div> </div>
 </div>
 
 

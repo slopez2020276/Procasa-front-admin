@@ -47,3 +47,15 @@ LÍNEA DE TIEMPO
 IMÁGENES
 - Resoluciones y tamaños con filtro y avisos
 
+
+
+..................................................................................................
+..................................................................................................
+
+
+REQUERIMIENTOS 17 ENERO
+
+
+- Orden de Línea de tiempo
+- Resolución de imágenes
+- royal the free (gestion de imágenes)

@@ -1048,6 +1048,20 @@ div.success-message h1 {
   color: #252525;
 }
 
+div#timesuccess {
+  width: 200px;
+  background: #DADADA;
+  border-radius: 5px;
+  height: 10px;
+  position: absolute;
+  top: 55%;
+  left: calc(50% - 100px);
+  transition: 1.5s;
+  animation: ;
+}
+
 
 input, textarea { transition: .1s; }
 input:focus, textarea:focus { border: 1px solid #27A315; }
+
+

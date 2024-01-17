@@ -19,7 +19,7 @@ interface HtmlInputEvent extends Event {
 export class AdminprincipalComponent implements OnInit {
 
 
-
+  desgloce: any
   formulario: FormGroup
   formularioEditHistoria: FormGroup
   formularioEditlineaTiempo: FormGroup
@@ -79,7 +79,7 @@ private fileTmp:any;
 
   constructor(){
 
-   
+
 
     this.formulario = new FormGroup({
       DescripcionHistoria: new FormControl(),
@@ -368,17 +368,23 @@ ModalTimeLine() {document.getElementById('modal-time-line')?.classList.toggle('m
   async editarHistoria(){
 
     const enlaceValidate: any = (document.getElementById('iframe-value') as HTMLInputElement | null)?.value
-    const txtareaValidate: any = (document.getElementById('iframe-preview') as HTMLInputElement | null)?.value
+    const txtareaValidate: any = (document.getElementById('textareaValidate') as HTMLInputElement | null)?.value
+    // const txtareaValidate: any = this.desgloce
 
-
-
-      if(enlaceValidate==null || txtareaValidate==null){
+      if(enlaceValidate==undefined || txtareaValidate==undefined || (enlaceValidate==undefined && txtareaValidate==undefined)){
         this.MessageSuccess('Los campos requeridos no pueden estar vacíos','a')
+        console.log("- - - - - - -NO- - - - - -")
+        console.log(enlaceValidate)
+        console.log(txtareaValidate)
       }else{
-        let id = this._idhistoria
-        const respuestaAgregar = await this.historiaService.editarHistoria(this.formulario.value,id)
-        this.MessageSuccess('¡Datos guardados exitosamente!','a')
+        console.log("- - - - - - -OK- - - - - -")
+        console.log(enlaceValidate)
+        console.log(txtareaValidate)
+
+        // let id = this._idhistoria
+        // const respuestaAgregar = await this.historiaService.editarHistoria(this.formulario.value,id)
         this.obtenerHistoria()
+        this.MessageSuccess('¡Datos guardados exitosamente!','a')
       }
   }
 
@@ -392,7 +398,7 @@ ModalTimeLine() {document.getElementById('modal-time-line')?.classList.toggle('m
   async agregarEventoLineaTiempo(){
     this.obtenerLinea()
     console.log(this.formularioAgregarLineaTiempo.value.image)
-    
+
   }
 
   async obtnerNoticias (){
@@ -483,17 +489,17 @@ async eliminarNoticia(id){
     if (event.target instanceof HTMLInputElement) {
       if (event.target.files && event.target.files[0]) {
         this.file = event.target.files[0];
-  
+
         // image preview
         const reader = new FileReader();
-  
+
         reader.onload = (e) => {
           // Cambia la asignación solo si reader.result no es null
           if (reader.result !== null) {
             this.photoSelected = reader.result as string | ArrayBuffer;
           }
         };
-  
+
         reader.readAsDataURL(this.file);
       }
     }
@@ -520,7 +526,7 @@ async eliminarNoticia(id){
     this.lineaService.sendPost(body)
     .subscribe(res => console.log(res))
   }
-  
+
 ShowMore(){
     console.log("-- MOSTRAR MÁS --");
   }
