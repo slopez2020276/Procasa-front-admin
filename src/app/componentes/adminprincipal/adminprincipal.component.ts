@@ -19,6 +19,7 @@ interface HtmlInputEvent extends Event {
 export class AdminprincipalComponent implements OnInit {
 
 
+
   formulario: FormGroup
   formularioEditHistoria: FormGroup
   formularioEditlineaTiempo: FormGroup
@@ -71,6 +72,7 @@ export class AdminprincipalComponent implements OnInit {
 
   photoSelected: string | ArrayBuffer | null = null;
 file: File | undefined;
+private fileTmp:any;
 
 
 
@@ -99,6 +101,7 @@ file: File | undefined;
    this.formularioAgregarLineaTiempo = new FormGroup({
     titleLineaTiempo: new FormControl(),
     descriptionLineaTiempo: new FormControl(),
+    image: new FormControl()
 
     })
     this.formularioValores = new FormGroup({
@@ -382,8 +385,9 @@ ModalTimeLine() {document.getElementById('modal-time-line')?.classList.toggle('m
   }
 
   async agregarEventoLineaTiempo(){
-    const respuestaAgregar = await this.lineaService.crearEventoLineaTiempo(this.formularioAgregarLineaTiempo.value)
     this.obtenerLinea()
+    console.log(this.formularioAgregarLineaTiempo.value.image)
+    
   }
 
   async obtnerNoticias (){
@@ -491,6 +495,27 @@ async eliminarNoticia(id){
     }
   }
 
+
+  getFile($event: any): void {
+    //TODO esto captura el archivo!
+    const [ file ] = $event.target.files;
+    this.fileTmp = {
+      fileRaw:file,
+      fileName:file.name
+    }
+  }
+
+
+  sendFile():void{
+
+    const body = new FormData();
+    body.append('ImgPathLineaTiempo', this.fileTmp.fileRaw, this.fileTmp.fileName);
+    body.append('titleLineaTiempo', this.formularioAgregarLineaTiempo.value.titleLineaTiempo)
+    body.append('descriptionLineaTiempo',this.formularioAgregarLineaTiempo.value.descriptionLineaTiempo)
+
+    this.lineaService.sendPost(body)
+    .subscribe(res => console.log(res))
+  }
   
 ShowMore(){
     console.log("-- MOSTRAR MÁS --");
