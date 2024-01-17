@@ -167,7 +167,7 @@ export class AdminprincipalComponent implements OnInit {
       },false)
 
       document.getElementById('confirm-'+elem)?.addEventListener('click', function(){
-        document.getElementById('container-alert-'+elem)?.classList.remove('show')
+        setTimeout(() => { document.getElementById('container-alert-'+elem)?.classList.remove('show') },500)
       },false)
   }
 
@@ -355,15 +355,20 @@ ModalTimeLine() {document.getElementById('modal-time-line')?.classList.toggle('m
 
 
   async editarHistoria(){
-    // const enlaceValidate: any = (document.getElementById('iframe-value') as HTMLInputElement | null)?.value
-    // const txtareaValidate: any = (document.getElementById('iframe-value') as HTMLInputElement | null)?.value
-    //   if(enlaceValidate==null || txtareaValidate==null){
-    //     console.log("LOS CAMPOS ESTÁN VACÍOS POR EL AMOR DE DIOSSSSS...")
-    //   }else{
-    //     let id = this._idhistoria
-    //     const respuestaAgregar = await this.historiaService.editarHistoria(this.formulario.value,id)
-    //     this.obtenerHistoria()
-    //   }
+
+    const enlaceValidate: any = (document.getElementById('iframe-value') as HTMLInputElement | null)?.value
+    const txtareaValidate: any = (document.getElementById('iframe-preview') as HTMLInputElement | null)?.value
+
+
+
+      if(enlaceValidate!==null || txtareaValidate!==null){
+
+        let id = this._idhistoria
+        const respuestaAgregar = await this.historiaService.editarHistoria(this.formulario.value,id)
+        this.MessageSuccess('¡Datos guardados exitosamente!','a')
+        this.obtenerHistoria()
+      }else{
+      }
   }
 
 
@@ -387,7 +392,6 @@ ModalTimeLine() {document.getElementById('modal-time-line')?.classList.toggle('m
   async obtnerHistorias (){
     let respuestasobtnerHistoria = await this.historiaService.obtenerHistoria()
     this.dataLineaRespuesta = respuestasobtnerHistoria.historia
-    console.log(respuestasobtnerHistoria)
   }
 
   ModalEditNotice() { document.getElementById('modal-edit-notice')?.classList.toggle('show') }
@@ -466,4 +470,18 @@ async eliminarNoticia(id){
 ShowMore(){
     console.log("-- MOSTRAR MÁS --");
   }
+
+
+
+  MessageSuccess(text: string, idmsg: string){
+
+    const innermsg = document.getElementById('innermsg-'+idmsg)
+    if (innermsg) { innermsg.innerHTML = text
+      document.getElementById('messagge-'+idmsg)?.classList.add('show')
+    setTimeout(() => {
+      document.getElementById('messagge-'+idmsg)?.classList.remove('show')
+    },1500)
+  }
+  }
+
 }

@@ -1029,9 +1029,25 @@ div.success-message {
   opacity: 0;
 }
 
+#messagge-a.show,
+#messagge-b.show,
+#messagge-c.show,
+#messagge-d.show,
+#messagge-e.show,
+#messagge-f.show,
+#messagge-g.show
+{
+  opacity: 1;
+  z-index: 700;
+}
+
 div.success-message h1 {
   width: 100%;
   text-align: center;
-  font-size: 1.5rem;
+  font-size: 1rem;
   color: #252525;
 }
+
+
+input, textarea { transition: .1s; }
+input:focus, textarea:focus { border: 1px solid #27A315; }
