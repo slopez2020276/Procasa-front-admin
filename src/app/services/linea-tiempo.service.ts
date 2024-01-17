@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
-import { firstValueFrom } from 'rxjs';
+import { Observable, firstValueFrom } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -53,6 +53,10 @@ export class LineaTiempoService {
      })
    }
  }
+
+ sendPost(body:FormData):Observable<any>{
+  return this.httpClient.post(`${this.baseUrl}/agregarEventoLineadeTiempo`, body)
+}
 }
 
 
