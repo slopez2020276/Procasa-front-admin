@@ -73,6 +73,7 @@ export class AdminprincipalComponent implements OnInit {
   photoSelected: string | ArrayBuffer | null = null;
 file: File | undefined;
 private fileTmp:any;
+private fileTmpNoticia :any;
 
 
 
@@ -118,7 +119,7 @@ private fileTmp:any;
         })
     this.formularioAgregarNoticias= new FormGroup({
      titulo: new FormControl(),
-     imgPhat: new FormControl('imgpath'),
+     imgPhat: new FormControl(),
      descripcion: new FormControl(),
      })
 
@@ -515,7 +516,6 @@ async eliminarNoticia(id){
     }
   }
 
-
   sendFile():void{
 
     const body = new FormData();
@@ -525,6 +525,30 @@ async eliminarNoticia(id){
 
     this.lineaService.sendPost(body)
     .subscribe(res => console.log(res))
+
+    this.obtenerLinea()
+  }
+
+  getFileNoticia($event: any): void {
+    //TODO esto captura el archivo!
+    const [ file ] = $event.target.files;
+    this.fileTmpNoticia = {
+      fileRaw:file,
+      fileName:file.name
+    }
+  }
+
+  sendFileNoticia():void{
+
+    const body = new FormData();
+    body.append('imgPhat', this.fileTmpNoticia.fileRaw, this.fileTmpNoticia.fileName);
+    body.append('titulo', this.formularioAgregarNoticias.value.titulo)
+    body.append('descripcion',this.formularioAgregarNoticias.value.descripcion)
+
+    this.noticiasService.sendPost(body)
+    .subscribe(res => console.log(res))
+    this.obtnerNoticias()
+
   }
 
 ShowMore(){

@@ -122,7 +122,7 @@
   <div id="sub-cont-3">
   @for (os of dataLinea; track os._id) {
     <div class="cont-3-timeline">
-      <img src="../../../assets/img/Fondo-ham.png" alt="item 1" title="item 1">
+      <img [src]="'http://localhost:3002/' + os.ImgPathLineaTiempo" alt="item 1" title="item 1">
       <p class="input-to-text bold">{{os.titleLineaTiempo}}</p>
       <p class="input-to-text">{{os.descriptionLineaTiempo}}</p>
                   <button class="edit-timeline" type="button" (click)="editarModal(os._id)" (click)="Modal()">editar</button>
@@ -267,7 +267,7 @@
 
 
     <div class="noticia">
-      <img src="../../../assets/img/textura-fon.png" alt="noticia">
+      <img  [src]="'http://localhost:3002/' + os.imgPhat"  alt="noticia">
     <h2>{{os.titulo}}</h2>
     <p>{{os.descripcion}}</p>
           <button type="button" class="edit-notice" (click)="obtenerxidNoticias(os._id)" (click)="ModalEditNotice()">editar</button>
@@ -366,10 +366,7 @@
 
   <form [formGroup]="formularioAgregarLineaTiempo" (ngSubmit)="agregarEventoLineaTiempo()" >
   <label for="file">Imagen</label>
-  <input type="file" (change)="getFile($event)">
-
-  <button (click)="sendFile()">Enviar</button>
-    <input type="file"  formControlName="image"  name="file" title="imagen">
+  <input type="file" (change)="getFile($event)">  
   <label for="title">Título</label>
     <input type="text"  formControlName="titleLineaTiempo" ame="title" title="título">
   <label for="description">Descripción</label>
@@ -382,7 +379,7 @@
           <p class="bold" id="inner-message-g"></p>
 
           <div id="cont-btns-alert-g">
-            <button id="confirm-g" (click)="agregarEventoLineaTiempo()" >confirmar</button>
+            <button id="confirm-g" (click)="sendFile()" >confirmar</button>
             <div id="cancel-g" class="replace-button">cancelar</div>
           </div>
         </div>
@@ -424,14 +421,14 @@
 <div id="modal-new-notice">
         <div id="cont-btn-close-new"> <button id="close-modal-notice-new" (click)="NewModalNotice()">cerrar</button> </div>
 
-<form [formGroup]="formularioAgregarNoticias" (ngSubmit)="crearNoticia()" >
+<form [formGroup]="formularioAgregarNoticias"  >
 
-<label for="file-notice">imagen</label>               <input  title="imagen de noticia" type="file" name="file-notice">
+<label for="file-notice">imagen</label>               <input  (change)="getFileNoticia($event)" title="imagen de noticia" type="file" name="file-notice">
 <label for="title-notice">Título</label>              <input  formControlName="titulo" type="text" name="title-notice" title="Título de noticia">
 <label for="description-notice">Descripción</label>   <textarea formControlName="descripcion" title="descripción de noticia" name="description-notice" id="" cols="26" rows="5"></textarea>
 
 <!-- <button type="submit" class="">guardar</button> -->
-<div class="replace-button normal" (click)="AlertConfirm('¿Desea guardar los cambios?','f')">guardar</div>
+<div class="replace-button normal" (click)="AlertConfirm('¿Desea guardar los cambios?','f')"  >guardar</div>
 
 
 <div id="container-alert-f">
@@ -439,7 +436,7 @@
       <p class="bold" id="inner-message-f"></p>
 
       <div id="cont-btns-alert-f">
-        <button id="confirm-f">confirmar</button>
+        <button id="confirm-f" (click)="sendFileNoticia()">confirmar</button>
         <div id="cancel-f" class="replace-button">cancelar</div>
       </div>
     </div>

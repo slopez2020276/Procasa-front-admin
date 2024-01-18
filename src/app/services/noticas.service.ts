@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
 import { Form } from '@angular/forms';
-import { firstValueFrom } from 'rxjs';
+import { Observable, firstValueFrom } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -46,7 +46,7 @@ export class NoticasService {
   } 
    EliminarNoticia (id){
     return firstValueFrom(
-      this.httpClient.delete<any>(`${this.baseUrl}/eliminarNoticia/${id}`)
+      this.httpClient.delete<any>(`${this.baseUrl}/eliminarNoticia/${id}`,this.createHeaders())
     )
   }
 
@@ -57,5 +57,9 @@ export class NoticasService {
      })
    }
  }
+
+ sendPost(body:FormData):Observable<any>{
+  return this.httpClient.post(`${this.baseUrl}/agregarNOticias`, body)
+}
 
 }
