@@ -560,8 +560,8 @@ async eliminarNoticia(id){
     body.append('descripcion',this.formularioAgregarNoticias.value.descripcion)
 
     this.noticiasService.sendPost(body)
-    .subscribe(res => console.log(res))
-    this.obtnerNoticias()
+    .subscribe(res => {console.log(res) ,this.obtnerNoticias()})
+   
 
   }
 

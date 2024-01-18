@@ -5,7 +5,9 @@
     <div id="block-5">
 
         @for (os of data; track os._id) {
-               <div class="sub-block-5"><img src="../../../assets/img/hamburguesa.jpg" alt=""><h6>{{os.titulo}}</h6></div>
+
+
+               <div class="sub-block-5"><img  [src]="'http://localhost:3002/' + os.imgPhat"  alt=""><h6>{{os.titulo}}</h6></div>
           }
     </div>
 </div>
