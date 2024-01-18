@@ -43,19 +43,20 @@ div.sub-block-5 {
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
+    margin-bottom: 4rem;
   }
 
 div.sub-block-5 h6 {
     font-size: 14pt;
+    width: 100%;
+    text-align: center;
 }
 
 div.sub-block-5 img {
-  width: 100%;
+  width: auto;
+  max-width: 100%;
   height: auto;
+  max-height: 200px;
   border-radius: .5rem;
+  display: block;
 }
-
-
-
-
-
