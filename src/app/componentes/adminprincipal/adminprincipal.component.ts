@@ -542,8 +542,8 @@ async eliminarNoticia(id){
   }
 
 ShowMore(){
-    console.log("-- MOSTRAR MÁS --");
-  }
+  console.log("-- MOSTRAR MÁS --")
+}
 
 
 
