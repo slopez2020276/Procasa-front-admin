@@ -365,24 +365,20 @@ ModalTimeLine() {document.getElementById('modal-time-line')?.classList.toggle('m
   }
 
 
+  textareaValue(valor){ valor }
+
   async editarHistoria(){
 
     const enlaceValidate: any = (document.getElementById('iframe-value') as HTMLInputElement | null)?.value
-    const txtareaValidate: any = (document.getElementById('textareaValidate') as HTMLInputElement | null)?.value
-    // const txtareaValidate: any = this.desgloce
+    // const txtareaValidate: any = (document.getElementById('textareaValidate') as HTMLInputElement | null)?.value
+    const txtareaValidate: any = this.desgloce
 
-      if(enlaceValidate==undefined || txtareaValidate==undefined || (enlaceValidate==undefined && txtareaValidate==undefined)){
+      if(enlaceValidate==undefined || txtareaValidate=="" || (enlaceValidate==undefined && txtareaValidate=="")){
         this.MessageSuccess('Los campos requeridos no pueden estar vacíos','a')
-        console.log("- - - - - - -NO- - - - - -")
-        console.log(enlaceValidate)
-        console.log(txtareaValidate)
       }else{
-        console.log("- - - - - - -OK- - - - - -")
-        console.log(enlaceValidate)
-        console.log(txtareaValidate)
 
-        // let id = this._idhistoria
-        // const respuestaAgregar = await this.historiaService.editarHistoria(this.formulario.value,id)
+        let id = this._idhistoria
+        const respuestaAgregar = await this.historiaService.editarHistoria(this.formulario.value,id)
         this.obtenerHistoria()
         this.MessageSuccess('¡Datos guardados exitosamente!','a')
       }

@@ -1,7 +1,8 @@
 body {
   width: 100vw;
   overflow-x: hidden;
+  overflow-y: scroll;
   position: relative;
-  height: 100vh;
+  height: auto;
   background: #F4F4F4;
 }

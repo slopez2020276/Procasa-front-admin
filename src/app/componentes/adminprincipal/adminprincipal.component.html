@@ -75,7 +75,7 @@
 
     <div class="sub-cont-2">
             <label for="historia">Desgloce de Historia:</label>
-            <textarea [(ngModel)]="desgloce" [value]="" name="historia" id="textareaValidate" cols="40" rows="10" formControlName="DescripcionHistoria" [(ngModel)]="textoHistoria" title="descripción"></textarea>
+            <textarea [(ngModel)]="desgloce" (keyup)="textareaValue(this.desgloce)" name="historia" id="textareaValidate" cols="40" rows="10" formControlName="DescripcionHistoria" [(ngModel)]="textoHistoria" title="descripción"></textarea>
           </div>
 
       <div class="foot-cont">
@@ -286,10 +286,10 @@
 
 </div>
 
-
+<!--
 <div >
   <button id="close-modal-3-add" (click)="ModalAddTimeLine()" >cerrar</button>
-</div>
+</div> -->
 
 
 
@@ -366,7 +366,7 @@
 
   <form [formGroup]="formularioAgregarLineaTiempo" (ngSubmit)="agregarEventoLineaTiempo()" >
   <label for="file">Imagen</label>
-  <input type="file" (change)="getFile($event)">
+  <input title="input linea de tiempo" type="file" (change)="getFile($event)">
 
   <button (click)="sendFile()">Enviar</button>
     <input type="file"  formControlName="image"  name="file" title="imagen">
