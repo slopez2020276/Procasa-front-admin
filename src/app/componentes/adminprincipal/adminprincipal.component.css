@@ -1,4 +1,4 @@
-/* body {
+body {
   display: flex;
   justify-content: center;
   align-items: start;
@@ -8,7 +8,7 @@
   padding: 0 4rem;
   flex-wrap: wrap;
   position: relative;
-} */
+}
 
 
 div#container-welcome {
@@ -127,7 +127,7 @@ div#container-5 form {
 
 
 
-div.buts-enable, div.buts-enable-mv {
+div.buts-enable, div.buts-enable-mv, div.buts-enable-hs {
   width: 90%;
   position: relative;
   display: flex;
@@ -137,7 +137,7 @@ div.buts-enable, div.buts-enable-mv {
 
 
 
-div.buts-enable button, div#buts-enable-mv button {
+div.buts-enable button, div#buts-enable-mv button, div#buts-enable-hs button {
   padding: .5rem 2rem;
   background: #EAEAEA;
   border-radius: 4px;
@@ -150,7 +150,7 @@ div.buts-enable button, div#buts-enable-mv button {
   z-index: 1;
 }
 
-div#buts-enable-mv {
+div#buts-enable-mv, div#buts-enable-hs {
   display: flex;
   justify-content: end;
   align-items: center;
@@ -162,6 +162,8 @@ button#habilitar.hide { display: none; }
 button#habilitar-mv.hide { display: none; }
 button#deshabilitar.hide { display: none; }
 button#deshabilitar-mv.hide { display: none; }
+button#deshabilitar-hs.hide { display: none; }
+button#habilitar-hs.hide { display: none; }
 
 button#vhabilitar-mv.hide { display: none; }
 button#vhabilitar.hide { display: none; }
@@ -170,7 +172,7 @@ button#vdeshabilitar.hide { display: none; }
 
 
 
-div.buts-enable button:active, div.buts-enable-mv button:active {
+div.buts-enable button:active, div.buts-enable-mv button:active, div.buts-enable-hs button:active {
   transform: scale(.95);
   box-shadow: 0px 0px 0px rgba(0,0,0,.3);
 }
@@ -1050,7 +1052,7 @@ div.success-message h1 {
 }
 
 div#timesuccess {
-  width: 200px;
+  width: 0px;
   background: #DADADA;
   border-radius: 5px;
   height: 10px;
@@ -1058,9 +1060,14 @@ div#timesuccess {
   top: 55%;
   left: calc(50% - 100px);
   transition: 1.5s;
-  animation: ;
 }
 
+div#timesuccess.lesswidth { animation: lesswidth 1.7s ease-in-out; }
+
+@keyframes lesswidth {
+    0% { width: 200px; }
+  100% { width: 0px; }
+}
 
 input, textarea { transition: .1s; }
 input:focus, textarea:focus { border: 1px solid #27A315; }
