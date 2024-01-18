@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+// import { windowToggle } from 'rxjs';
 
 @Component({
   selector: 'app-flecha',
@@ -20,7 +21,7 @@ export class FlechaComponent {
 }
 
 
-  toHome(){
-    document.getElementById("body")?.scrollIntoView(true);
+toHome(){
+    document.getElementById("tophtml")?.scrollIntoView({behavior: "smooth"})
   }
 }

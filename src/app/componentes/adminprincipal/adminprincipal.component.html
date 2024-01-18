@@ -59,7 +59,15 @@
 
 <div class="container" id="container-2">
   <h1 class="bold title-bg">HISTORIA</h1>
-<form [formGroup]="formulario" (ngSubmit)="onSubmit()">
+
+
+  <div id="buts-enable-hs">
+    <button id="habilitar-hs" (click)="EnableHistoria()">Editar</button>
+    <button id="deshabilitar-hs" (click)="DisableHistoria()">Cancelar</button>
+  </div>
+
+
+  <form [formGroup]="formulario" (ngSubmit)="onSubmit()">
   <div class="sub-cont-2">
       <label for="enlace">Enlace del video:</label>
       <input required="required" id="iframe-value" name="enlace" type="text" [(ngModel)]="EncalceVideo" formControlName="EncalceVideo"  (change)="IframeVideo()" placeholder="enlace del video" value="">
@@ -71,11 +79,9 @@
     allowfullscreen></iframe>
   </div>
 
-
-
     <div class="sub-cont-2">
             <label for="historia">Desgloce de Historia:</label>
-            <textarea [(ngModel)]="desgloce" [value]="" name="historia" id="textareaValidate" cols="40" rows="10" formControlName="DescripcionHistoria" [(ngModel)]="textoHistoria" title="descripción"></textarea>
+            <textarea [(ngModel)]="desgloce" (keyup)="textareaValue(this.desgloce)" name="historia" id="textareaValidate" cols="40" rows="10" formControlName="DescripcionHistoria" [(ngModel)]="textoHistoria" title="descripción"></textarea>
           </div>
 
       <div class="foot-cont">
@@ -286,10 +292,10 @@
 
 </div>
 
-
+<!--
 <div >
   <button id="close-modal-3-add" (click)="ModalAddTimeLine()" >cerrar</button>
-</div>
+</div> -->
 
 
 
@@ -366,7 +372,9 @@
 
   <form [formGroup]="formularioAgregarLineaTiempo" (ngSubmit)="agregarEventoLineaTiempo()" >
   <label for="file">Imagen</label>
-  <input type="file" (change)="getFile($event)">  
+  <input type="file" (change)="getFile($event)">
+  <button (click)="sendFile()">Enviar</button>
+    <input type="file"  formControlName="image"  name="file" title="imagen">
   <label for="title">Título</label>
     <input type="text"  formControlName="titleLineaTiempo" ame="title" title="título">
   <label for="description">Descripción</label>

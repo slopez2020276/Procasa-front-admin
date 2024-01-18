@@ -1,5 +1,5 @@
 #foot {
-  position: absolute;
+  position: fixed;
   bottom: 0;
   left: 0;
   width: 100vw;
@@ -11,10 +11,9 @@
   flex-wrap: nowrap;
   overflow: visible;
   transition: .4s ease;
-  z-index: 400;
-  opacity: 1;
+  z-index: 700;
   transform: translateY(0);
-  opacity: 0;
+  opacity: 1;
 }
 
 

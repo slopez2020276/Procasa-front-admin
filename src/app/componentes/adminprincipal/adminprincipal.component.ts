@@ -81,7 +81,6 @@ private fileTmpNoticia :any;
   constructor(){
 
 
-
     this.formulario = new FormGroup({
       DescripcionHistoria: new FormControl(),
       EncalceVideo: new FormControl()
@@ -202,6 +201,7 @@ if(inputfileBefore==""){  document.getElementById('preview-portada')?.setAttribu
     document.getElementById('deshabilitar')?.classList.add('hide')
     document.getElementById('deshabilitar-mv')?.classList.add('hide')
     document.getElementById('vdeshabilitar')?.classList.add('hide')
+    document.getElementById('deshabilitar-hs')?.classList.add('hide')
 
     const valoresa = document.getElementsByClassName('valores-txt')
     for(let e = 0; e < valoresa.length; e++){
@@ -221,8 +221,6 @@ if(inputfileBefore==""){  document.getElementById('preview-portada')?.setAttribu
     this.mision = this.dataMisionÑ.textMision
     this.vision = this.dataMisionÑ.textVIsion
 
-    console.log(this.dataMisionÑ)
-
 
     document.getElementById('mision-txt')?.setAttribute('disabled', 'true')
     document.getElementById('vision-txt')?.setAttribute('disabled', 'true')
@@ -234,6 +232,9 @@ if(inputfileBefore==""){  document.getElementById('preview-portada')?.setAttribu
     this.textoHistoria = responsivehistoria.historia[0].DescripcionHistoria
     this.EncalceVideo = responsivehistoria.historia[0].EncalceVideo
     this._idhistoria = responsivehistoria.historia[0]._id
+
+    document.getElementById('iframe-value')?.setAttribute('disabled', 'true')
+    document.getElementById('textareaValidate')?.setAttribute('disabled', 'true')
   }
 
   async obtenerLinea(){
@@ -277,6 +278,23 @@ DisableMisionVision(){
   document.getElementById('habilitar-mv')?.classList.toggle('hide')
   document.getElementById('deshabilitar-mv')?.classList.toggle('hide')
 }
+
+EnableHistoria(){
+  document.getElementById('iframe-value')?.removeAttribute('disabled')
+  document.getElementById('textareaValidate')?.removeAttribute('disabled')
+
+  document.getElementById('habilitar-hs')?.classList.toggle('hide')
+  document.getElementById('deshabilitar-hs')?.classList.toggle('hide')
+}
+
+DisableHistoria(){
+  document.getElementById('iframe-value')?.setAttribute('disabled', 'disabled')
+  document.getElementById('textareaValidate')?.setAttribute('disabled', 'disabled')
+
+  document.getElementById('habilitar-hs')?.classList.toggle('hide')
+  document.getElementById('deshabilitar-hs')?.classList.toggle('hide')
+}
+
 
 
 
@@ -366,24 +384,20 @@ ModalTimeLine() {document.getElementById('modal-time-line')?.classList.toggle('m
   }
 
 
+  textareaValue(valor){ valor }
+
   async editarHistoria(){
 
     const enlaceValidate: any = (document.getElementById('iframe-value') as HTMLInputElement | null)?.value
-    const txtareaValidate: any = (document.getElementById('textareaValidate') as HTMLInputElement | null)?.value
-    // const txtareaValidate: any = this.desgloce
+    // const txtareaValidate: any = (document.getElementById('textareaValidate') as HTMLInputElement | null)?.value
+    const txtareaValidate: any = this.desgloce
 
-      if(enlaceValidate==undefined || txtareaValidate==undefined || (enlaceValidate==undefined && txtareaValidate==undefined)){
+      if(enlaceValidate==undefined || txtareaValidate=="" || (enlaceValidate==undefined && txtareaValidate=="")){
         this.MessageSuccess('Los campos requeridos no pueden estar vacíos','a')
-        console.log("- - - - - - -NO- - - - - -")
-        console.log(enlaceValidate)
-        console.log(txtareaValidate)
       }else{
-        console.log("- - - - - - -OK- - - - - -")
-        console.log(enlaceValidate)
-        console.log(txtareaValidate)
 
-        // let id = this._idhistoria
-        // const respuestaAgregar = await this.historiaService.editarHistoria(this.formulario.value,id)
+        let id = this._idhistoria
+        const respuestaAgregar = await this.historiaService.editarHistoria(this.formulario.value,id)
         this.obtenerHistoria()
         this.MessageSuccess('¡Datos guardados exitosamente!','a')
       }
@@ -552,8 +566,8 @@ async eliminarNoticia(id){
   }
 
 ShowMore(){
-    console.log("-- MOSTRAR MÁS --");
-  }
+  console.log("-- MOSTRAR MÁS --")
+}
 
 
 
@@ -562,8 +576,10 @@ ShowMore(){
     const innermsg = document.getElementById('innermsg-'+idmsg)
     if (innermsg) { innermsg.innerHTML = text
       document.getElementById('messagge-'+idmsg)?.classList.add('show')
-    setTimeout(() => {
-      document.getElementById('messagge-'+idmsg)?.classList.remove('show')
+      document.getElementById("timesuccess")?.classList.toggle('lesswidth')
+      setTimeout(() => {
+        document.getElementById('messagge-'+idmsg)?.classList.remove('show')
+        document.getElementById("timesuccess")?.classList.toggle('lesswidth')
     },1500)
   }
   }
