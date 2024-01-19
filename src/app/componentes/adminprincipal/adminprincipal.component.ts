@@ -20,7 +20,7 @@ interface HtmlInputEvent extends Event {
 export class AdminprincipalComponent implements OnInit {
 
 
-  desgloce: any
+  desgloce: any|undefined
   formulario: FormGroup
   formularioEditHistoria: FormGroup
   formularioEditlineaTiempo: FormGroup
@@ -73,6 +73,7 @@ export class AdminprincipalComponent implements OnInit {
 
   photoSelected: string | ArrayBuffer | null = null;
 file: File | undefined;
+
 private fileTmp:any;
 private fileTmpNoticia :any;
 
@@ -80,7 +81,6 @@ private fileTmpNoticia :any;
 
 
   constructor(){
-
     this.formulario = new FormGroup({
       DescripcionHistoria: new FormControl(),
       EncalceVideo: new FormControl()
@@ -237,7 +237,8 @@ if(inputfileBefore==""){  document.getElementById('preview-portada')?.setAttribu
 
   async obtenerLinea(){
     const repuestaLinea = await this.lineaService.obtenerLineaTiempo()
-    this.dataLinea = repuestaLinea.lineFiended
+    this.dataLinea = repuestaLinea[1].linea
+    console.log(this.dataLinea)
   }
 
 
@@ -538,9 +539,9 @@ async eliminarNoticia(id){
     body.append('descriptionLineaTiempo',this.formularioAgregarLineaTiempo.value.descriptionLineaTiempo)
 
     this.lineaService.sendPost(body)
-    .subscribe(res => console.log(res))
+    .subscribe(res =>{console.log(res), this.obtenerLinea(),this.fileTmp = null})
 
-    this.obtenerLinea()
+    
   }
 
   getFileNoticia($event: any): void {

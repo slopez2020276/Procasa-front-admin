@@ -13,7 +13,7 @@ export class LineaTiempoComponent implements OnInit {
 
   async ngOnInit(){
     const response = await this.lineaService.obtenerLineaTiempo()
-    this.data = response.lineFiended
+    this.data = response[1].linea
     console.log(this.data)
   }
 

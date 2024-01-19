@@ -19,6 +19,7 @@ export class MapsComponent implements OnInit, AfterViewInit, OnDestroy  {
   ubicacio5: any;
   ubicacio6: any;
   ubicacio7: any;
+  
   pupop: any;
   ubicacio8: any;
   ubicacio9: any;
