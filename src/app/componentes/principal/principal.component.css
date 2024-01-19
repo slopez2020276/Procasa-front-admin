@@ -1,3 +1,15 @@
+section#historia {
+  opacity: 0;
+  transition: .8s ease-in-out;
+  transform: translateY(300px);
+}
+section#historia.topshow {
+  transform: translateY(0px);
+  opacity: 1;
+  transition: .8s ease-in-out;
+}
+
+
 div#cont-introduction {
   width: 100vw;
   height: 100vh;

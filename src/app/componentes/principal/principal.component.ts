@@ -1,24 +1,22 @@
 import { Component, OnInit, inject } from '@angular/core';
-import { MainpageService } from '../../services/mainpage.service';
 
 @Component({
   selector: 'app-principal',
   templateUrl: './principal.component.html',
   styleUrl: './principal.component.css'
 })
-// export class PrincipalComponent implements OnInit {
+
 export class PrincipalComponent {
-  // data
-  // mainPageService = inject(MainpageService)
+ngOnInit(){
+  let scrollywindow:any
+  window.addEventListener('scroll',function(){
+    scrollywindow=this.scrollY
 
-  // async onSubmit(){
-  // }
+    if(scrollywindow>550){ this.document.getElementById('historia')?.classList.add('topshow') }else{this.document.getElementById('historia')?.classList.remove('topshow')}
 
-  // async ngOnInit() {
-  //    const response = await this.mainPageService.obtenerMainPage()
-  //   console.log(response.MainPage[0].textHistoria)
-  //   this.data = response.MainPage[0]
+  },false)
 
-  // }
 
+
+}
 }
