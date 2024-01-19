@@ -6,6 +6,7 @@ import { timeInterval } from 'rxjs';
 import { MisionService } from '../../services/mision.service';
 import { NoticasService } from '../../services/noticas.service';
 import { ValoresService } from '../../services/valores.service';
+import { math } from '@maptiler/sdk';
 
 
 interface HtmlInputEvent extends Event {
@@ -79,7 +80,6 @@ private fileTmpNoticia :any;
 
 
   constructor(){
-
 
     this.formulario = new FormGroup({
       DescripcionHistoria: new FormControl(),
@@ -191,8 +191,6 @@ private fileTmpNoticia :any;
 // AL INICIAR
   async ngOnInit()  {
 
-
-    // document.getElementById('container-alert')?.classList.remove('show')
       const inputfileBefore: any = (document.getElementById('file-portada') as HTMLInputElement | null)?.value;
 
 if(inputfileBefore==""){  document.getElementById('preview-portada')?.setAttribute('src', "../../../assets/img/empty.jpg");  document.getElementById('file-portada')?.setAttribute('data-content', 'seleccionar archivo')}
@@ -244,22 +242,25 @@ if(inputfileBefore==""){  document.getElementById('preview-portada')?.setAttribu
 
 
 // SISTEMA DEL INPUT FILE IMAGEN
-  InputFile() {
 
-    const inputfile: any = (document.getElementById('file-portada') as HTMLInputElement | null)?.value
+  InputFile(x) {
 
+
+    const fileInput: any = document.getElementById('file-portada') as HTMLInputElement
+    const fileSize: number = fileInput.files[0].size
+    const size: any = fileSize.toFixed(2)
+    let medida: string
+    let sizemedida: any
+    if((size/1024/1024) < 1.0) {medida = " KB"; sizemedida = (size/1024).toFixed(2).toString() + medida }else{ medida = " MB"; sizemedida = (size/1024/1024).toFixed(2).toString() + medida }
+    const fileName: string = fileInput.files[0].name
     let img = new Image()
-    img.src = inputfile
-    console.log("- - - - - DETALLES DEL ARCHIVO IMG - - - - -")
-    console.log(img)
-    console.log(img.naturalWidth)
-    console.log(img.naturalWidth)
+    const objectURL = URL.createObjectURL(fileInput.files[0])
+    img.src = objectURL
 
-// document
-
-        document.getElementById('file-portada')?.setAttribute('data-content', inputfile)
+        document.getElementById('innersize')!.innerHTML = sizemedida
+        document.getElementById('file-portada')?.setAttribute('data-content', fileName)
         document.getElementById('preview-portada')?.removeAttribute('src')
-        document.getElementById('preview-portada')?.setAttribute('src', "../../../assets/img/"+inputfile.slice(12))
+        document.getElementById('preview-portada')?.setAttribute('src', img.src)
       }
 
 // HABILITAR Y DESHABILITAR TEXTARES DE VISION Y MISIÓN
@@ -561,7 +562,7 @@ async eliminarNoticia(id){
 
     this.noticiasService.sendPost(body)
     .subscribe(res => {console.log(res) ,this.obtnerNoticias()})
-   
+
 
   }
 
