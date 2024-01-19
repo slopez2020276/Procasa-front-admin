@@ -65,7 +65,7 @@ img#container-principal-img {
     display: block;
     border: none;
     transform: scale(1);
-    animation: introduction 1.5s ease-in-out;
+    animation: introduction 1.6s ease-in-out;
   }
 
 @keyframes introduction {

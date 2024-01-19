@@ -245,7 +245,6 @@ if(inputfileBefore==""){  document.getElementById('preview-portada')?.setAttribu
 
   InputFile(x) {
 
-
     const fileInput: any = document.getElementById('file-portada') as HTMLInputElement
     const fileSize: number = fileInput.files[0].size
     const size: any = fileSize.toFixed(2)

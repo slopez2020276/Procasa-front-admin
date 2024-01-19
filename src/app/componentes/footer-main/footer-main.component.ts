@@ -22,6 +22,7 @@ export class FooterMainComponent {
 }
 
 constructor(){
+
   this.formularioAgregarSub = new FormGroup({
     correo: new FormControl('ingrese la historia por favor '),
     nombre: new FormControl('ingrese la historia por favor '),
