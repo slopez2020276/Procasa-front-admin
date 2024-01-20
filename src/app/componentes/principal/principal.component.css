@@ -66,8 +66,10 @@ div#intro-2 {
 
 
 img#container-principal-img {
-    width: 100vw;
+    width: auto;
+    max-width: 100vw;
     height: auto;
+    max-height: 100vh;
     margin-top: 62px;
     background: transparent;
     position: relative;
