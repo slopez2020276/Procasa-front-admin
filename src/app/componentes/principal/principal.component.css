@@ -1,10 +1,10 @@
 section#historia {
   opacity: 0;
   transition: .8s ease-in-out;
-  transform: translateY(300px);
+  transform: translateY(300px) scale(2);
 }
 section#historia.topshow {
-  transform: translateY(0px);
+  transform: translateY(0px) scale(1);
   opacity: 1;
   transition: .8s ease-in-out;
 }

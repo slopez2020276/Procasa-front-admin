@@ -10,8 +10,20 @@ import { HistoriaService } from '../../services/historia.service';
 })
  export class PrincipalComponent implements OnInit {
 
+constructor(){
+  let height = screen.height
+  height = (height/100*25)
+
+
+    let scrollywindow:any
+    window.addEventListener('scroll',function(){
+      scrollywindow=this.scrollY
+      if(scrollywindow>height){ this.document.getElementById('historia')?.classList.add('topshow') }else{this.document.getElementById('historia')?.classList.remove('topshow')} },false)
+  }
+
+
    data
-   imgPrincipal 
+   imgPrincipal
   HistoriaService = inject(HistoriaService)
 
    async onSubmit(){
