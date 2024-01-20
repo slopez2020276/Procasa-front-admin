@@ -1,8 +1,4 @@
 
-
-/*=============================================================================================*/
-/*=============================================================================================*/
-
 div#section-1 {
     position: relative;
     width: 100%;
@@ -11,6 +7,7 @@ div#section-1 {
     margin-top: 80px;
     color: #FFF;
     padding-top: 10vh;
+    background: transparent;
 }
 
 div#sub-section-1 {
@@ -198,7 +195,6 @@ div#close-valor-def {
 div#close-valor-def:active {
   transform: scale(.9);
 }
-
 
 
 @media (max-width: 680px) {

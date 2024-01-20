@@ -1,12 +1,16 @@
-section#historia {
+section#historia, section#linea-tiempo, section#valores {
   opacity: 0;
   transition: .8s ease-in-out;
-  transform: translateY(300px) scale(2);
+  transform: translateY(300px) scale(2.5);
 }
-section#historia.topshow {
+section#historia.topshow, section#linea-tiempo.topshow, section#valores.topshow {
   transform: translateY(0px) scale(1);
   opacity: 1;
   transition: .8s ease-in-out;
+}
+
+section#valores {
+ background: transparent;
 }
 
 

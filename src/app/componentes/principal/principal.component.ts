@@ -12,14 +12,18 @@ import { HistoriaService } from '../../services/historia.service';
 
 constructor(){
   let height = screen.height
-  height = (height/100*25)
-
 
     let scrollywindow:any
     window.addEventListener('scroll',function(){
       scrollywindow=this.scrollY
-      if(scrollywindow>height){ this.document.getElementById('historia')?.classList.add('topshow') }else{this.document.getElementById('historia')?.classList.remove('topshow')} },false)
-  }
+        console.log(scrollywindow)
+
+      if(scrollywindow>(height/100*50)){ this.document.getElementById('historia')?.classList.add('topshow') }else{this.document.getElementById('historia')?.classList.remove('topshow')}
+      if(scrollywindow>(height/100*135)){ this.document.getElementById('linea-tiempo')?.classList.add('topshow') }else{this.document.getElementById('linea-tiempo')?.classList.remove('topshow')}
+      if(scrollywindow>(height/100*200)){ this.document.getElementById('valores')?.classList.add('topshow') }else{this.document.getElementById('valores')?.classList.remove('topshow')}
+    },false)
+    }
+
 
 
    data
@@ -33,9 +37,6 @@ constructor(){
      const response = await this.HistoriaService.obtenerHistoria()
      this.data = response.historia
      this.imgPrincipal = this.data[0].imgPathPrincipal
-     console.log(this.imgPrincipal)
-     console.log(this.data)
-
    }
 
 }

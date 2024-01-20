@@ -195,7 +195,6 @@ private fileTmpNoticia :any;
 
 if(inputfileBefore==""){  document.getElementById('preview-portada')?.setAttribute('src', "../../../assets/img/empty.jpg");  document.getElementById('file-portada')?.setAttribute('data-content', 'seleccionar archivo')}
 
-
     document.getElementById('deshabilitar')?.classList.add('hide')
     document.getElementById('deshabilitar-mv')?.classList.add('hide')
     document.getElementById('vdeshabilitar')?.classList.add('hide')
@@ -251,17 +250,18 @@ if(inputfileBefore==""){  document.getElementById('preview-portada')?.setAttribu
     const size: any = fileSize.toFixed(2)
     let medida: string
     let sizemedida: any
-    if((size/1024/1024) < 1.0) {medida = " KB"; sizemedida = (size/1024).toFixed(2).toString() + medida }else{ medida = " MB"; sizemedida = (size/1024/1024).toFixed(2).toString() + medida }
+        if((size/1024/1024) < 1.0) {medida = " KB"; sizemedida = (size/1024).toFixed(2).toString() + medida }else{ medida = " MB"; sizemedida = (size/1024/1024).toFixed(2).toString() + medida }
     const fileName: string = fileInput.files[0].name
     let img = new Image()
     const objectURL = URL.createObjectURL(fileInput.files[0])
     img.src = objectURL
 
+
         document.getElementById('innersize')!.innerHTML = sizemedida
         document.getElementById('file-portada')?.setAttribute('data-content', fileName)
         document.getElementById('preview-portada')?.removeAttribute('src')
         document.getElementById('preview-portada')?.setAttribute('src', img.src)
-      }
+}
 
 // HABILITAR Y DESHABILITAR TEXTARES DE VISION Y MISIÓN
 EnableMisionVision(){
@@ -541,7 +541,7 @@ async eliminarNoticia(id){
     this.lineaService.sendPost(body)
     .subscribe(res =>{console.log(res), this.obtenerLinea(),this.fileTmp = null})
 
-    
+
   }
 
   getFileNoticia($event: any): void {
@@ -555,8 +555,8 @@ async eliminarNoticia(id){
 
   sendFileNoticia():void{
 
-    const body = new FormData();
-    body.append('imgPhat', this.fileTmpNoticia.fileRaw, this.fileTmpNoticia.fileName);
+    const body = new FormData()
+    body.append('imgPhat', this.fileTmpNoticia.fileRaw, this.fileTmpNoticia.fileName)
     body.append('titulo', this.formularioAgregarNoticias.value.titulo)
     body.append('descripcion',this.formularioAgregarNoticias.value.descripcion)
 
@@ -586,3 +586,18 @@ ShowMore(){
   }
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -8,14 +8,16 @@
 <img title="imagen de muestra" src="../../../assets/img/textura-fon.png" id="background-texture">
 
 <img [src]="'http://localhost:3002/' + imgPrincipal" alt="section" id="container-principal-img">
+<!-- <img src="../../../assets/img/Fondo-ham - copia.png" alt="section" id="container-principal-img"> -->
 
-<section id="historia">
-    <app-historia/>
+<section id="historia"> <app-historia/> </section>
+
+<section id="linea-tiempo"> <app-linea-tiempo></app-linea-tiempo> </section>
+
+<section id="valores">
+  <app-mision-valor/>
 </section>
-<app-linea-tiempo></app-linea-tiempo>
-<section id="mision">
-    <app-mision-valor/>
-</section>
+
 <section id="noticias">
     <app-noticias></app-noticias>
 </section>
