@@ -7,11 +7,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AppComponent {
   width:any
-  height:any
-
+  screens:any
 ngOnInit(){
   this.width = window.innerWidth
-  this.height = window.innerHeight
+if(this.width >= 1024){ this.screens = "desktop" }
+else if(this.width < 1024 && this.width >= 768){ this.screens = "tablet" }
+else if(this.width < 768){ this.screens = "movil" }
+
+console.log(this.screens)
+
+
 }
 
 
