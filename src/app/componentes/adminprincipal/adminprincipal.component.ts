@@ -77,9 +77,9 @@ file: File | undefined;
 
 private fileTmp:any;
 private fileTmpNoticia :any;
-
-
-
+private imgPathPrincipal : any;
+private fileUpdateLineaTiempo: any;
+private fileUpdateNoticia:any;
 
   constructor(){
 
@@ -588,6 +588,73 @@ async eliminarNoticia(id){
 
 
   }
+  getFilePortada($event: any): void {
+    //TODO esto captura el archivo!
+    const [ file ] = $event.target.files;
+    this.imgPathPrincipal = {
+      fileRaw:file,
+      fileName:file.name
+    }
+  }
+
+  sendFilePortada():void{
+
+    const body = new FormData();
+    body.append('imgPathPrincipal', this.imgPathPrincipal.fileRaw, this.imgPathPrincipal.fileName);
+    this.historiaService.sendPost(body,this._idhistoria)
+    .subscribe(res =>{console.log(res), this.obtenerHistoria()})
+
+    
+  }
+
+
+
+  getFileUpdateTiempo($event: any): void {
+    //TODO esto captura el archivo!
+    const [ file ] = $event.target.files;
+    this.fileUpdateLineaTiempo = {
+      fileRaw:file,
+      fileName:file.name
+    }
+  }
+
+
+  sendFileUpdateTiempo():void{
+
+    let id = this.dataLieneaxId._id 
+    const body = new FormData();
+    body.append('ImgPathLineaTiempo', this.fileUpdateLineaTiempo.fileRaw, this.fileUpdateLineaTiempo.fileName);
+    body.append('titleLineaTiempo', this.formularioEditlineaTiempo.value.titleLineaTiempo)
+    body.append('descriptionLineaTiempo',this.formularioEditlineaTiempo.value.descriptionLineaTiempo)
+
+    this.lineaService.sendEdit(body,id)
+    .subscribe(res =>{console.log(res), this.obtenerLinea(),this.fileTmp = null})
+
+    
+  }
+
+  getFileUpdateNoticia($event: any): void {
+    //TODO esto captura el archivo!
+    const [ file ] = $event.target.files;
+    this.fileUpdateNoticia = {
+      fileRaw:file,
+      fileName:file.name
+    }
+  }
+
+
+  sendFileUpdateNoticia():void{
+
+    let id = this.dataNoticiasxID._id 
+    const body = new FormData();
+    body.append('imgPhat', this.fileUpdateNoticia.fileRaw, this.fileUpdateNoticia.fileName);
+    body.append('title', this.formularioEditarNoticias.value.title)
+    body.append('descripcion',this.formularioEditarNoticias.value.descripcion)
+
+    this.noticiasService.sendEdit(body,id)
+    .subscribe(res =>{console.log(res), this.obtnerNoticias(),this.fileTmp = null})
+  }
+
 
 ShowMore(){
   console.log("-- MOSTRAR MÁS --")

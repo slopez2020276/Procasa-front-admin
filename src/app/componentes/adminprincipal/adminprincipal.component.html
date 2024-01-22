@@ -421,8 +421,8 @@
 
 <form [formGroup]="formularioEditarNoticias" (ngSubmit)="editarNoticiasxid()" >
 
-<label for="file-notice">imagen</label>               <input title="imagen de noticia" type="file" name="file-notice">
-<label for="title-notice">Título</label>              <input type="text" [(ngModel)]="tituloNoticia" formControlName="titulo" name="title-notice" title="Título de noticia">
+<label for="file-notice">imagen</label>               <input (change)="getFileUpdateNoticia($event)"  title="imagen de noticia" type="file" name="file-notice">
+<label for="title-notice">Título</label>              <input type="text" [(ngModel)]="tituloNoticia" formControlName="title" name="title-notice" title="Título de noticia">
 <label for="description-notice">Descripción</label>   <textarea title="descripción de noticia" [(ngModel)]="descripcionNoticia" formControlName="descripcion" name="description-notice" id="" cols="26" rows="5"></textarea>
 
 <!-- <button type="submit" class="">guardar</button> -->
@@ -433,7 +433,7 @@
       <p class="bold" id="inner-message-e"></p>
 
       <div id="cont-btns-alert-e">
-        <button id="confirm-e">confirmar</button>
+        <button id="confirm-e" (click)="sendFileUpdateNoticia()" >confirmar</button>
         <div id="cancel-e" class="replace-button">cancelar</div>
       </div>
     </div>

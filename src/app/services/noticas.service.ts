@@ -49,6 +49,10 @@ export class NoticasService {
       this.httpClient.delete<any>(`${this.baseUrl}/eliminarNoticia/${id}`,this.createHeaders())
     )
   }
+  sendEdit (body:FormData,id:any):Observable<any>{
+    return this.httpClient.put(`${this.baseUrl}/editarNoticiasxId/${id}`, body)
+  }
+  
 
   createHeaders(){
     return   {
