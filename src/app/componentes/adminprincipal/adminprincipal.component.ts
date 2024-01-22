@@ -20,6 +20,8 @@ interface HtmlInputEvent extends Event {
 export class AdminprincipalComponent implements OnInit {
 
 
+//Formularios
+
   desgloce: any|undefined
   formulario: FormGroup
   formularioEditHistoria: FormGroup
@@ -34,6 +36,8 @@ export class AdminprincipalComponent implements OnInit {
 
   dataValores
 
+
+  //Servicos
   ValoresService = inject(ValoresService)
   historiaService = inject(HistoriaService)
   lineaService = inject(LineaTiempoService)
@@ -41,44 +45,49 @@ export class AdminprincipalComponent implements OnInit {
   noticiasService = inject(NoticasService)
 
 
+  //imgPortada
+  imgPrincipal : any;
 
-
+//vision
   mision:any
   vision:any
   data: any
-  dataNoticias:any
-
-
+  
+  //valores
   Integridadmodel:any
   PasionModel:any
   InnovacionModel:any
   OrientacionModel:any
-
-
+  
+  
   _idhistoria: any
   textoHistoria:any
   EncalceVideo: any
-
+  imgModal
+  
   dataMisionÑ:any
   dataLinea:any
   dataLieneaxId:any
+  dataNoticias:any
   dataNoticiasxID:any
 
   tituloModal: string = ''
   descripcionModal: string = ''
-  dataLineaRespuesta: any
-
+  
   tituloNoticia:string = ''
   descripcionNoticia:string = ''
-
+  
   photoSelected: string | ArrayBuffer | null = null;
-file: File | undefined;
+  file: File | undefined;
+
+  
+  //Data Sin procesar
+  dataLineaRespuesta: any
 
 private fileTmp:any;
 private fileTmpNoticia :any;
-
-
-
+private imgPathPrincipal : any;
+private fileUpdateLineaTiempo: any;
 
   constructor(){
     this.formulario = new FormGroup({
@@ -112,7 +121,7 @@ private fileTmpNoticia :any;
 
       })
     this.formularioEditarNoticias = new FormGroup({
-        titulo: new FormControl(),
+        title: new FormControl(),
         imgPhat: new FormControl(),
         descripcion: new FormControl(),
         })
@@ -195,6 +204,7 @@ private fileTmpNoticia :any;
 
 if(inputfileBefore==""){  document.getElementById('preview-portada')?.setAttribute('src', "../../../assets/img/empty.jpg");  document.getElementById('file-portada')?.setAttribute('data-content', 'seleccionar archivo')}
 
+
     document.getElementById('deshabilitar')?.classList.add('hide')
     document.getElementById('deshabilitar-mv')?.classList.add('hide')
     document.getElementById('vdeshabilitar')?.classList.add('hide')
@@ -229,6 +239,7 @@ if(inputfileBefore==""){  document.getElementById('preview-portada')?.setAttribu
     this.textoHistoria = responsivehistoria.historia[0].DescripcionHistoria
     this.EncalceVideo = responsivehistoria.historia[0].EncalceVideo
     this._idhistoria = responsivehistoria.historia[0]._id
+    this.imgPrincipal = responsivehistoria.historia[0].imgPathPrincipal
 
     document.getElementById('iframe-value')?.setAttribute('disabled', 'true')
     document.getElementById('textareaValidate')?.setAttribute('disabled', 'true')
@@ -250,18 +261,17 @@ if(inputfileBefore==""){  document.getElementById('preview-portada')?.setAttribu
     const size: any = fileSize.toFixed(2)
     let medida: string
     let sizemedida: any
-        if((size/1024/1024) < 1.0) {medida = " KB"; sizemedida = (size/1024).toFixed(2).toString() + medida }else{ medida = " MB"; sizemedida = (size/1024/1024).toFixed(2).toString() + medida }
+    if((size/1024/1024) < 1.0) {medida = " KB"; sizemedida = (size/1024).toFixed(2).toString() + medida }else{ medida = " MB"; sizemedida = (size/1024/1024).toFixed(2).toString() + medida }
     const fileName: string = fileInput.files[0].name
     let img = new Image()
     const objectURL = URL.createObjectURL(fileInput.files[0])
     img.src = objectURL
 
-
         document.getElementById('innersize')!.innerHTML = sizemedida
         document.getElementById('file-portada')?.setAttribute('data-content', fileName)
         document.getElementById('preview-portada')?.removeAttribute('src')
         document.getElementById('preview-portada')?.setAttribute('src', img.src)
-}
+      }
 
 // HABILITAR Y DESHABILITAR TEXTARES DE VISION Y MISIÓN
 EnableMisionVision(){
@@ -337,6 +347,7 @@ async editarModal(id:any) {
   this.dataLieneaxId = respuestaid.lineaFiend
   this.tituloModal = this.dataLieneaxId.titleLineaTiempo
   this.descripcionModal = this.dataLieneaxId.descriptionLineaTiempo
+  this.imgModal = this.dataLieneaxId.ImgPathLineaTiempo
   console.log(this.dataLieneaxId)
   console.log(this.tituloModal)
 
@@ -465,8 +476,9 @@ ModalTimeLine() {document.getElementById('modal-time-line')?.classList.toggle('m
     const respuestaObtnerid = await this.noticiasService.obtenerxID(id)
     this.dataNoticiasxID = respuestaObtnerid.noticia
     console.log(this.dataNoticiasxID)
-    this.tituloNoticia = this.dataNoticiasxID.titulo
+    this.tituloNoticia = this.dataNoticiasxID.title
     this.descripcionNoticia = this.dataNoticiasxID.descripcion
+   
 
 
   }
@@ -531,6 +543,7 @@ async eliminarNoticia(id){
     }
   }
 
+
   sendFile():void{
 
     const body = new FormData();
@@ -541,7 +554,7 @@ async eliminarNoticia(id){
     this.lineaService.sendPost(body)
     .subscribe(res =>{console.log(res), this.obtenerLinea(),this.fileTmp = null})
 
-
+    
   }
 
   getFileNoticia($event: any): void {
@@ -555,8 +568,8 @@ async eliminarNoticia(id){
 
   sendFileNoticia():void{
 
-    const body = new FormData()
-    body.append('imgPhat', this.fileTmpNoticia.fileRaw, this.fileTmpNoticia.fileName)
+    const body = new FormData();
+    body.append('imgPhat', this.fileTmpNoticia.fileRaw, this.fileTmpNoticia.fileName);
     body.append('titulo', this.formularioAgregarNoticias.value.titulo)
     body.append('descripcion',this.formularioAgregarNoticias.value.descripcion)
 
@@ -565,6 +578,51 @@ async eliminarNoticia(id){
 
 
   }
+  getFilePortada($event: any): void {
+    //TODO esto captura el archivo!
+    const [ file ] = $event.target.files;
+    this.imgPathPrincipal = {
+      fileRaw:file,
+      fileName:file.name
+    }
+  }
+
+  sendFilePortada():void{
+
+    const body = new FormData();
+    body.append('imgPathPrincipal', this.imgPathPrincipal.fileRaw, this.imgPathPrincipal.fileName);
+    this.historiaService.sendPost(body,this._idhistoria)
+    .subscribe(res =>{console.log(res), this.obtenerHistoria()})
+
+    
+  }
+
+
+
+  getFileUpdateTiempo($event: any): void {
+    //TODO esto captura el archivo!
+    const [ file ] = $event.target.files;
+    this.fileUpdateLineaTiempo = {
+      fileRaw:file,
+      fileName:file.name
+    }
+  }
+
+
+  sendFileUpdateTiempo():void{
+
+    let id = this.dataLieneaxId._id 
+    const body = new FormData();
+    body.append('ImgPathLineaTiempo', this.fileUpdateLineaTiempo.fileRaw, this.fileUpdateLineaTiempo.fileName);
+    body.append('titleLineaTiempo', this.formularioEditlineaTiempo.value.titleLineaTiempo)
+    body.append('descriptionLineaTiempo',this.formularioEditlineaTiempo.value.descriptionLineaTiempo)
+
+    this.lineaService.sendEdit(body,id)
+    .subscribe(res =>{console.log(res), this.obtenerLinea(),this.fileTmp = null})
+
+    
+  }
+
 
 ShowMore(){
   console.log("-- MOSTRAR MÁS --")
@@ -586,18 +644,3 @@ ShowMore(){
   }
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -57,6 +57,11 @@ export class LineaTiempoService {
  sendPost(body:FormData):Observable<any>{
   return this.httpClient.post(`${this.baseUrl}/agregarEventoLineadeTiempo`, body)
 }
+
+sendEdit(body:FormData,id):Observable<any>{
+  return this.httpClient.put(`${this.baseUrl}/editarLineaTiempo/${id}`, body)
+}
+
 }
 
 
