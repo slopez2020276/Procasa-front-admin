@@ -42,13 +42,13 @@ export class HistoriaComponent implements OnInit {
     }
 
     getVideoIframe(url:any) {
-      // let dataVIdeo = this.urlvideo
-      // var video, results
-      // if (url === null) { return ''; }
-      // results = url.match('[\\?&]v=([^&#]*)');
-      // video   = (results === null) ? url : results[1];
-      // return this._sanitizer.bypassSecurityTrustResourceUrl('https://www.youtube.com/embed/' + video);
-      // console.log("COMPONENTE DE VIDEO");
+      let dataVIdeo = this.urlvideo
+      var video, results
+      if (url === null) { return ''; }
+      results = url.match('[\\?&]v=([^&#]*)');
+      video   = (results === null) ? url : results[1];
+      return this._sanitizer.bypassSecurityTrustResourceUrl('https://www.youtube.com/embed/' + video);
+      console.log("COMPONENTE DE VIDEO");
 
     }
 }

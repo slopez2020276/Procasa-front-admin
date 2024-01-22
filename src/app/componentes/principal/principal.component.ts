@@ -18,7 +18,7 @@ constructor(){
       scrollywindow=this.scrollY
         console.log(scrollywindow)
 
-      if(scrollywindow>(height/100*50)){ this.document.getElementById('historia')?.classList.add('topshow') }else{this.document.getElementById('historia')?.classList.remove('topshow')}
+      if(scrollywindow>(height/100*35)){ this.document.getElementById('historia')?.classList.add('topshow') }else{this.document.getElementById('historia')?.classList.remove('topshow')}
       if(scrollywindow>(height/100*135)){ this.document.getElementById('linea-tiempo')?.classList.add('topshow') }else{this.document.getElementById('linea-tiempo')?.classList.remove('topshow')}
       if(scrollywindow>(height/100*200)){ this.document.getElementById('valores')?.classList.add('topshow') }else{this.document.getElementById('valores')?.classList.remove('topshow')}
     },false)
