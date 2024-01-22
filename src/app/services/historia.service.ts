@@ -1,6 +1,6 @@
 import { HttpClient, HttpHandler, HttpHeaders } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
-import { firstValueFrom } from 'rxjs';
+import { Observable, firstValueFrom } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -34,7 +34,9 @@ export class HistoriaService {
       this.httpClient.put<any>(`${this.baseUrl}/editarHistoria/${id}`,fromValue, this.createHeaders())
     )
   }
-
+  sendPost(body:FormData,id:any):Observable<any>{
+    return this.httpClient.put(`${this.baseUrl}/editarHistoria/${id}`, body)
+  }
   createHeaders(){
      return   {
       headers: new HttpHeaders ({
