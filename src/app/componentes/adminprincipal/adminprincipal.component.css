@@ -203,7 +203,13 @@ div#cont-caracteristics div.cont-carac ul {
   width: 80%;
 }
 
-div#cont-caracteristics div.cont-carac ul li { list-style: none; font-size: 11pt;}
+div#cont-caracteristics div.cont-carac ul li {
+  list-style: none;
+  font-size: 11pt;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 
 
 
@@ -334,12 +340,14 @@ div.sub-container-1 {
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
+  margin-top: 2rem;
 }
 
+
 div.prewiew {
-  border: 1px solid #AAA;
+  box-shadow: 0px 3px 3px rgb(0,0,0,.4);
   border-radius: 4px;
-  width: 200px;
+  width: 350px;
   height: auto;
   margin-left: 1rem;
   display: flex;
@@ -347,13 +355,20 @@ div.prewiew {
   align-items: center;
   position: relative;
   transition: .1s;
+  flex-wrap: wrap;
+}
+
+img#navbar-pre,img#footer-pre {
+  position: relative;
+  width: 100%;
+  height: auto;
 }
 
 img#preview-portada {
-  width: auto;
+  width: 100%;
   max-width: 100%;
   height: auto;
-  max-height: 250px;
+  max-height: 180px;
   transition: .1s;
   opacity: 1;
   cursor: pointer;
@@ -515,11 +530,23 @@ div.container h1 {
 }
 
 
+
+div#cont-input-file {
+  width: 200px;
+  position: relative;
+}
+
+img#pre-portada {
+  width: 100%;
+  margin-top: 1rem;
+  border-radius: 4px;
+}
+
 div#container-1 input[type=file] {
   position: relative;
-  display: inline-block;
+  display: block;
   padding: .5rem;
-  margin-top: 1rem;
+  width: 100%;
 }
 
 div#container-1 input[type=file]::before {

@@ -1,23 +1,23 @@
 
 div#section-2 {
-    width: 100%;
+    width: 100vw;
     display: flex;
     justify-content: space-around;
     align-items: center;
     flex-wrap: wrap;
     position: relative;
     color: #FFF;
-    height: auto;
+    height: 90vh;
     margin-top: 65px;
     padding-top: 3rem;
-    padding-bottom: 10rem;
+    padding-bottom: 5rem;
 }
 
 a {text-decoration: none;}
 
 .column {
     width: 500px;
-    height: auto;
+    height: 500px;
     text-align: center;
     display: block;
     flex-wrap: wrap;
@@ -34,8 +34,9 @@ a {text-decoration: none;}
 }
 
 .column img {
-    width: 200px;
-    height: auto;
+    width: auto;
+    /* max-width: 200px; */
+    height: 250px;
     margin: auto;
     margin-top: 40px;
     position: relative;
@@ -84,4 +85,10 @@ a {text-decoration: none;}
 
 }
 
-
+@media screen and (max-width: 999px) {
+  div#section-2 { margin-bottom: 10rem; }
+.column {
+  width: 480px;
+  height: 550px;
+}
+}

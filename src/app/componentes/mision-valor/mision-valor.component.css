@@ -4,10 +4,9 @@ div#section-1 {
     width: 100%;
     height: auto;
     overflow: hidden;
-    margin-top: 80px;
     color: #FFF;
-    padding-top: 10vh;
     background: transparent;
+    margin-top: 10rem;
 }
 
 div#sub-section-1 {
@@ -65,7 +64,6 @@ div#sub-section-2 {
     margin-left: 0;
     height: auto;
     min-height: 50vh;
-    margin-bottom: 100px;
 }
 
 div#sub-section-2 div#sub-valores div img {
@@ -78,11 +76,16 @@ div#sub-section-2 div#sub-valores div img {
 div#sub-section-2 h1 {
     text-align: center;
     width: 100%;
+    font-size: 40pt;
+    margin-top: 5rem;
 }
+
+
+
+
 
 div#sub-valores {
     position: relative;
-    padding-top: 10vh;
     width: 100%;
     height: auto;
     display: flex;

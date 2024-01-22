@@ -19,7 +19,8 @@ interface HtmlInputEvent extends Event {
 })
 export class AdminprincipalComponent implements OnInit {
 
-
+  anchoimg:any
+  altoimg:any
   desgloce: any|undefined
   formulario: FormGroup
   formularioEditHistoria: FormGroup
@@ -81,6 +82,7 @@ private fileTmpNoticia :any;
 
 
   constructor(){
+
     this.formulario = new FormGroup({
       DescripcionHistoria: new FormControl(),
       EncalceVideo: new FormControl()
@@ -193,7 +195,11 @@ private fileTmpNoticia :any;
 
       const inputfileBefore: any = (document.getElementById('file-portada') as HTMLInputElement | null)?.value;
 
-if(inputfileBefore==""){  document.getElementById('preview-portada')?.setAttribute('src', "../../../assets/img/empty.jpg");  document.getElementById('file-portada')?.setAttribute('data-content', 'seleccionar archivo')}
+if(inputfileBefore==""){
+    document.getElementById('preview-portada')?.setAttribute('src', "../../../assets/img/empty.jpg")
+    document.getElementById('pre-portada')?.setAttribute('src', "../../../assets/img/empty.jpg")
+    document.getElementById('file-portada')?.setAttribute('data-content', 'seleccionar archivo')
+}
 
     document.getElementById('deshabilitar')?.classList.add('hide')
     document.getElementById('deshabilitar-mv')?.classList.add('hide')
@@ -242,27 +248,44 @@ if(inputfileBefore==""){  document.getElementById('preview-portada')?.setAttribu
 
 
 // SISTEMA DEL INPUT FILE IMAGEN
+// _____________________________________________________________________________________________________________________________________________________________________________________________
+previewFileImg(event: Event): void  {
+    const fileInput = event.target as HTMLInputElement
+    const archivo = fileInput.files?.[0]
+    if (archivo) { const lector = new FileReader()
 
-  InputFile(x) {
+      lector.onload = (eventoLectura:any) => {
+        const imagen = new Image()
+        imagen.src = eventoLectura.target.result as string
 
-    const fileInput: any = document.getElementById('file-portada') as HTMLInputElement
-    const fileSize: number = fileInput.files[0].size
-    const size: any = fileSize.toFixed(2)
-    let medida: string
-    let sizemedida: any
-        if((size/1024/1024) < 1.0) {medida = " KB"; sizemedida = (size/1024).toFixed(2).toString() + medida }else{ medida = " MB"; sizemedida = (size/1024/1024).toFixed(2).toString() + medida }
-    const fileName: string = fileInput.files[0].name
-    let img = new Image()
-    const objectURL = URL.createObjectURL(fileInput.files[0])
-    img.src = objectURL
+        imagen.onload = () => {
+          const fileSize: number = archivo.size
+          const size: any = fileSize.toFixed(2)
+          let medida: string
+          let sizemedida: any
+          if((size/1024/1024) < 1.0) {medida = " KB"; sizemedida = (size/1024).toFixed(2).toString() + medida }else{ medida = " MB"; sizemedida = (size/1024/1024).toFixed(2).toString() + medida }
+          const fileName: string = archivo.name
+          let img = new Image()
+          const objectURL = URL.createObjectURL(archivo)
+          img.src = objectURL
+          this.anchoimg = imagen.width, this.altoimg = imagen.height
+          document.getElementById('innersize')!.innerHTML = sizemedida
+          document.getElementById('innerwidth')!.innerHTML = this.anchoimg + " px"
+          document.getElementById('innerheight')!.innerHTML = this.altoimg + " px"
+          document.getElementById('file-portada')?.setAttribute('data-content', fileName)
+          document.getElementById('preview-portada')?.removeAttribute('src')
+          document.getElementById('pre-portada')?.removeAttribute('src')
+          document.getElementById('preview-portada')?.setAttribute('src', img.src)
+          document.getElementById('pre-portada')?.setAttribute('src', img.src)
+          console.log(this.anchoimg + " ------------ " + this.altoimg)
+        }
+      }
+      lector.readAsDataURL(archivo)
+    }
 
-
-        document.getElementById('innersize')!.innerHTML = sizemedida
-        document.getElementById('file-portada')?.setAttribute('data-content', fileName)
-        document.getElementById('preview-portada')?.removeAttribute('src')
-        document.getElementById('preview-portada')?.setAttribute('src', img.src)
 }
 
+// ______________________________________________________________________________________________________________________________________________________________________________________________
 // HABILITAR Y DESHABILITAR TEXTARES DE VISION Y MISIÓN
 EnableMisionVision(){
   document.getElementById('mision-txt')?.removeAttribute('disabled')
@@ -586,18 +609,4 @@ ShowMore(){
   }
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 

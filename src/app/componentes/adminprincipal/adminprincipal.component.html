@@ -21,10 +21,16 @@
 <div class="container" id="container-1">
   <h1 class="bold title-bg">PORTADA PRINCIPAL</h1>
   <div class="sub-container-1">
-    <input (change)="InputFile(this)" accept="image/png, image/jpeg, image/jpg" id="file-portada" type="file" title="seleccionar archivo" data-content="seleccionar archivo">
+    <div id="cont-input-file">
+      <input (change)="previewFileImg($event)" accept="image/png, image/jpeg, image/jpg" id="file-portada" type="file" title="seleccionar archivo" data-content="seleccionar archivo">
+      <!-- <input type="file" (change)="manejarCambioArchivo($event)" title="input for demo"> -->
+      <img id="pre-portada" src="../../../assets/img/Fondo-ham.png" alt="portada" title="previsualización del archivo">
+    </div>
 
     <div class="prewiew">
-          <img id="preview-portada" src="" alt="portada" title="previsualización del archivo">
+      <img id="navbar-pre" src="../../../assets/img/navbar.png" alt="navbar" title="navbar preview">
+      <img id="preview-portada" src="" alt="portada" title="previsualización del archivo">
+      <img id="footer-pre" src="../../../assets/img/footer.png" alt="footer" title="footer preview">
     </div>
 
     <div id="cont-caracteristics">
@@ -43,8 +49,8 @@
 
         <h4>detalles del archivo</h4>
         <ul>
-          <li>ancho: </li>
-          <li>alto: </li>
+          <li>ancho: <span class="bold" id="innerwidth"></span> </li>
+          <li>alto: <span class="bold" id="innerheight"></span> </li>
           <li>peso: <span id="innersize" class="bold"></span></li>
         </ul>
       </div>
