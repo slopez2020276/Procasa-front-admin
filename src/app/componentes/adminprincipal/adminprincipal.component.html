@@ -20,12 +20,17 @@
 
 <div class="container" id="container-1">
   <h1 class="bold title-bg">PORTADA PRINCIPAL</h1>
-  <div id="cont-input-file">
-    <input (change)="previewFileImg($event)" accept="image/png, image/jpeg, image/jpg" id="file-portada" type="file" title="seleccionar archivo" data-content="seleccionar archivo">
-    <!-- <input type="file" (change)="manejarCambioArchivo($event)" title="input for demo"> -->
-    <img id="pre-portada" src="../../../assets/img/Fondo-ham.png" alt="portada" title="previsualización del archivo">
-  </div>
-          <img id="preview-portada" src="" alt="portada" title="previsualización del archivo">
+  <div class="sub-container-1">
+    <div id="cont-input-file">
+      <input (change)="previewFileImg($event)" accept="image/png, image/jpeg, image/jpg" id="file-portada" type="file" title="seleccionar archivo" data-content="seleccionar archivo">
+      <!-- <input type="file" (change)="manejarCambioArchivo($event)" title="input for demo"> -->
+      <img id="pre-portada" src="../../../assets/img/Fondo-ham.png" alt="portada" title="previsualización del archivo">
+    </div>
+
+    <div class="prewiew">
+      <img id="navbar-pre" src="../../../assets/img/navbar.png" alt="navbar" title="navbar preview">
+      <img id="preview-portada" src="" alt="portada" title="previsualización del archivo">
+      <img id="footer-pre" src="../../../assets/img/footer.png" alt="footer" title="footer preview">
     </div>
 
     <div id="cont-caracteristics">
@@ -34,9 +39,9 @@
 
         <h4>requisitos recomendados</h4>
         <ul>
-          <li>ancho: 1300px</li>
-          <li>alto: 768px</li>
-          <li>peso: 2MB</li>
+          <li>ancho: </li>
+          <li>alto: </li>
+          <li>peso: </li>
         </ul>
       </div>
 
@@ -58,7 +63,7 @@
 
     <div class="cont-buttons">
       <!-- <button id="btn-alert-1" class="normal" >guardar</button> -->
-      <div class="normal replace-button" id="btn-alert-1" (click)="AlertConfirm('¿Desea guardar los cambios?','a')"  (click)="sendFilePortada()"    >guardar</div>
+      <div class="normal replace-button" id="btn-alert-1" (click)="AlertConfirm('¿Desea guardar los cambios?','a')"  >guardar</div>
     </div>
   </div>
 
@@ -69,7 +74,7 @@
         <p class="bold" id="inner-message-a"></p>
 
         <div id="cont-btns-alert-a">
-          <button id="confirm" (click)="editarHistoria()" (click)="sendFilePortada()" >confirmar</button>
+          <button id="confirm" (click)="editarHistoria()" >confirmar</button>
           <!-- <button id="cancel">cancelar</button> -->
           <div id="cancel-a" class="replace-button">cancelar</div>
         </div>
@@ -107,7 +112,7 @@
 
     <div class="sub-cont-2">
             <label for="historia">Desgloce de Historia:</label>
-            <textarea (keyup)="textareaValue(this.desgloce)" name="historia" id="textareaValidate" cols="40" rows="10" formControlName="DescripcionHistoria" [(ngModel)]="textoHistoria" title="descripción"></textarea>
+            <textarea [(ngModel)]="desgloce" (keyup)="textareaValue(this.desgloce)" name="historia" id="textareaValidate" cols="40" rows="10" formControlName="DescripcionHistoria" [(ngModel)]="textoHistoria" title="descripción"></textarea>
           </div>
 
       <div class="foot-cont">
@@ -288,7 +293,7 @@
 
     <div class="noticia">
       <img  [src]="'http://localhost:3002/' + os.imgPhat"  alt="noticia">
-    <h2>{{os.title}}</h2>
+    <h2>{{os.titulo}}</h2>
     <p>{{os.descripcion}}</p>
           <button type="button" class="edit-notice" (click)="obtenerxidNoticias(os._id)" (click)="ModalEditNotice()">editar</button>
           <button type="button" class="edit-notice del-bg" (click)="eliminarNoticia(os._id)" >eliminar</button>
@@ -329,9 +334,8 @@
   </div>
 
   <form [formGroup]="formularioEditlineaTiempo" (ngSubmit)="editarTime()">
-
   <label for="file">Imagen</label>
-    <input type="file" (change)="getFileUpdateTiempo($event)" name="file" title="imagen" required>
+    <input type="file"   name="file" title="imagen" required>
   <label for="title">Título</label>
     <input type="text"  formControlName="titleLineaTiempo" [(ngModel)]="tituloModal" name="title" title="título" required>
   <label for="description">Descripción</label>
@@ -345,7 +349,7 @@
           <p class="bold" id="inner-message-h"></p>
 
           <div id="cont-btns-alert-h">
-            <button id="confirm-h" (click)="sendFileUpdateTiempo()" >confirmar</button>
+            <button id="confirm-h">confirmar</button>
             <div id="cancel-h" class="replace-button">cancelar</div>
           </div>
         </div>
@@ -387,7 +391,7 @@
 
   <form [formGroup]="formularioAgregarLineaTiempo"  >
   <label for="file">Imagen</label>
-    <input type="file" (change)="getFile($event)" name="file" title="imagen">
+    <input type="file" (change)="getFile($event)" formControlName=""  name="file" title="imagen">
   <label for="title">Título</label>
     <input type="text"  formControlName="titleLineaTiempo" ame="title" title="título">
   <label for="description">Descripción</label>
@@ -418,7 +422,7 @@
 <form [formGroup]="formularioEditarNoticias" (ngSubmit)="editarNoticiasxid()" >
 
 <label for="file-notice">imagen</label>               <input title="imagen de noticia" type="file" name="file-notice">
-<label for="title-notice">Título</label>              <input type="text" [(ngModel)]="tituloNoticia" formControlName="title" name="title-notice" title="Título de noticia">
+<label for="title-notice">Título</label>              <input type="text" [(ngModel)]="tituloNoticia" formControlName="titulo" name="title-notice" title="Título de noticia">
 <label for="description-notice">Descripción</label>   <textarea title="descripción de noticia" [(ngModel)]="descripcionNoticia" formControlName="descripcion" name="description-notice" id="" cols="26" rows="5"></textarea>
 
 <!-- <button type="submit" class="">guardar</button> -->
