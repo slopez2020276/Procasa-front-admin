@@ -1,4 +1,13 @@
+html {
+  position: relative;
+  width: 100vw;
+  height: auto;
+  overflow: hidden;
+}
 body {
+  display: flex;
+  justify-content: center;
+  align-items: start;
   width: 100vw;
   overflow-x: hidden;
   overflow-y: scroll;

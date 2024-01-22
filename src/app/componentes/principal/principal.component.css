@@ -1,9 +1,10 @@
-section#historia, section#linea-tiempo, section#valores {
+
+section#historia, section#linea-tiempo, section#valores, section#noticias {
   opacity: 0;
   transition: .8s ease-in-out;
-  transform: translateY(300px) scale(2.5);
+  transform: translateY(-100px) scale(1.5);
 }
-section#historia.topshow, section#linea-tiempo.topshow, section#valores.topshow {
+section#historia.topshow, section#linea-tiempo.topshow, section#valores.topshow,section#noticias.topshow {
   transform: translateY(0px) scale(1);
   opacity: 1;
   transition: .8s ease-in-out;
@@ -12,7 +13,6 @@ section#historia.topshow, section#linea-tiempo.topshow, section#valores.topshow 
 section#valores {
  background: transparent;
 }
-
 
 div#cont-introduction {
   width: 100vw;
@@ -76,11 +76,8 @@ img#container-principal-img {
     margin-top: 62px;
     background: transparent;
     position: relative;
+    overflow: hidden;
     z-index: 10;
-    top: 0;
-    left: 0;
-    display: block;
-    border: none;
     transform: scale(1);
     animation: introduction 1.6s ease-in-out;
   }

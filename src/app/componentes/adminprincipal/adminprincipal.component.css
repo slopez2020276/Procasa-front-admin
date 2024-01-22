@@ -1,11 +1,11 @@
 body {
+  width: 100vw;
+  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: start;
-  height: 100vh;
   padding-bottom: 20rem;
   background: #EFEFEF;
-  padding: 0 4rem;
   flex-wrap: wrap;
   position: relative;
 }
