@@ -31,7 +31,7 @@ export class AdminprincipalComponent implements OnInit {
   formularioEditarNoticias: FormGroup
   formularioAgregarNoticias: FormGroup
 
-
+  imgPrincipal : any;
 
   dataValores
 
@@ -114,7 +114,7 @@ private fileUpdateNoticia:any;
 
       })
     this.formularioEditarNoticias = new FormGroup({
-        titulo: new FormControl(),
+       title: new FormControl(),
         imgPhat: new FormControl(),
         descripcion: new FormControl(),
         })
@@ -235,6 +235,8 @@ if(inputfileBefore==""){
     this.textoHistoria = responsivehistoria.historia[0].DescripcionHistoria
     this.EncalceVideo = responsivehistoria.historia[0].EncalceVideo
     this._idhistoria = responsivehistoria.historia[0]._id
+    this.imgPrincipal =  responsivehistoria.historia[0].imgPathPrincipal
+    console.log(this.imgPrincipal)
 
     document.getElementById('iframe-value')?.setAttribute('disabled', 'true')
     document.getElementById('textareaValidate')?.setAttribute('disabled', 'true')
@@ -488,7 +490,7 @@ ModalTimeLine() {document.getElementById('modal-time-line')?.classList.toggle('m
     const respuestaObtnerid = await this.noticiasService.obtenerxID(id)
     this.dataNoticiasxID = respuestaObtnerid.noticia
     console.log(this.dataNoticiasxID)
-    this.tituloNoticia = this.dataNoticiasxID.titulo
+    this.tituloNoticia = this.dataNoticiasxID.title
     this.descripcionNoticia = this.dataNoticiasxID.descripcion
 
 
