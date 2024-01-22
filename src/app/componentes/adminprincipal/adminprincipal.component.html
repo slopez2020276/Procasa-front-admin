@@ -29,7 +29,7 @@
 
     <div class="prewiew">
       <img id="navbar-pre" src="../../../assets/img/navbar.png" alt="navbar" title="navbar preview">
-      <img id="preview-portada" src=""  alt="portada" title="previsualización del archivo">
+      <img id="preview-portada" src="" alt="portada" title="previsualización del archivo">
       <img id="footer-pre" src="../../../assets/img/footer.png" alt="footer" title="footer preview">
     </div>
 
@@ -49,9 +49,9 @@
 
         <h4>detalles del archivo</h4>
         <ul>
-          <li>ancho: <span class="bold" id="innerwidth"></span> </li>
-          <li>alto: <span class="bold" id="innerheight"></span> </li>
-          <li>peso: <span id="innersize" class="bold"></span></li>
+          <li>ancho: <span class="bold danger-red" id="innerwidth"></span> </li>
+          <li>alto:  <span class="bold danger-red" id="innerheight"></span> </li>
+          <li>peso:  <span class="bold danger-red" id="innersize"></span></li>
         </ul>
       </div>
 
@@ -63,7 +63,7 @@
 
     <div class="cont-buttons">
       <!-- <button id="btn-alert-1" class="normal" >guardar</button> -->
-      <div class="normal replace-button" id="btn-alert-1" (click)="AlertConfirm('¿Desea guardar los cambios?','a')" (click)="sendFilePortada()" >guardar</div>
+      <div class="normal replace-button" id="btn-alert-1" (click)="AlertConfirm('¿Desea guardar los cambios?','a')">guardar</div>
     </div>
   </div>
 
@@ -74,16 +74,20 @@
         <p class="bold" id="inner-message-a"></p>
 
         <div id="cont-btns-alert-a">
-          <button id="confirm" (click)="editarHistoria()"  >confirmar</button>
+          <button id="confirm" (click)="sendFilePortada()">confirmar</button>
           <!-- <button id="cancel">cancelar</button> -->
           <div id="cancel-a" class="replace-button">cancelar</div>
         </div>
       </div>
   </div>
+
+  <div class="success-message" id="messagge-a"> <h1 id="innermsg-a"></h1> <div id="timesuccess"></div> </div>
 </div>
 
 
 
+<!-- ------------------------------------------------------------------------------------------------------------------------------------------------------------------- -->
+<!-- ------------------------------------------------------------------------------------------------------------------------------------------------------------------- -->
 <!-- ------------------------------------------------------------------------------------------------------------------------------------------------------------------- -->
 
 
@@ -143,7 +147,7 @@
 </div>
 </form>
 <!-- <button class="normal " (click)="AlertConfirm('pruea')" >guardar</button> -->
-<div class="success-message" id="messagge-a"> <h1 id="innermsg-a"></h1> <div id="timesuccess"></div> </div>
+<div class="success-message" id="messagge-b"> <h1 id="innermsg-b"></h1> <div id="timesuccess"></div> </div>
 </div>
 
 
@@ -490,28 +494,3 @@
 
 </body>
 </html>
-
-
-
-<script>
-  // const fileInput = document.getElementById("myInputFile");
-  // fileInput.addEventListener("change", function(e) {
-  //     const file = this.files[0];
-  //     const resultado = document.querySelector("#resultado")
-  //     if (file.type=="image/jpeg" || file.type=="image/pjpeg" || file.type=="image/gif" || file.type=="image/png") {
-  //         resultado.innerHTML="La imagen <b>" + file.name + "</b> ocupa <b>" + file.size + "</b> Bytes";
-  //         const img = new Image();
-  //         img.onload = function() {
-  //             resultado.innerHTML+=" y tiene un tamaño de: <b>" + this.width + "x" + this.height + "</b>";
-  //         }
-
-  //         var reader=new FileReader();
-  //         reader.onload=function(e) {
-  //             img.src = e.target.result;
-  //         }
-  //         reader.readAsDataURL(file);
-  //     } else {
-  //         resultado.innerText="No es un archivo de imagen";
-  //     }
-  // });
-  </script>

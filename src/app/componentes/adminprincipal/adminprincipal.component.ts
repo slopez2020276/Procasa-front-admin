@@ -164,12 +164,11 @@ private fileUpdateNoticia:any;
 
 
   // SISTEMA DE ALERTAS TIPO CONFIRMACIÓN CON BOTONES
-  AlertConfirm(message: string, elem: string): number | any {
+  AlertConfirm(message: string, elem: string): any {
   document.getElementById('cont-btns-alert-'+elem)?.classList.remove('show')
   document.getElementById('container-alert-'+elem)?.classList.add('show')
   const innerMessage = document.getElementById('inner-message-'+elem)
-  if (innerMessage) {
-    innerMessage.innerHTML = message;
+  if (innerMessage) { innerMessage.innerHTML = message
 
     document.getElementById('container-alert-'+elem)?.classList.add('show')
     document.getElementById('cont-btns-alert-'+elem)?.classList.add('show')
@@ -179,7 +178,7 @@ private fileUpdateNoticia:any;
       },false)
 
       document.getElementById('confirm-'+elem)?.addEventListener('click', function(){
-        setTimeout(() => { document.getElementById('container-alert-'+elem)?.classList.remove('show') },500)
+        setTimeout(function() { document.getElementById('container-alert-'+elem)?.classList.remove('show') },500)
       },false)
   }
 
@@ -254,6 +253,8 @@ if(inputfileBefore==""){
 previewFileImg(event: Event): void  {
     const fileInput = event.target as HTMLInputElement
     const archivo = fileInput.files?.[0]
+
+
     if (archivo) { const lector = new FileReader()
 
       lector.onload = (eventoLectura:any) => {
@@ -271,6 +272,15 @@ previewFileImg(event: Event): void  {
           const objectURL = URL.createObjectURL(archivo)
           img.src = objectURL
           this.anchoimg = imagen.width, this.altoimg = imagen.height
+
+          document.getElementsByClassName('danger-red')[0].classList.remove('red')
+          document.getElementsByClassName('danger-red')[1].classList.remove('red')
+          document.getElementsByClassName('danger-red')[2].classList.remove('red')
+
+          if(this.anchoimg > 2000){ document.getElementsByClassName('danger-red')[0].classList.add('red') }
+          if(this.altoimg > 1500){ document.getElementsByClassName('danger-red')[1].classList.add('red') }
+          if((size/1024) > 2048 ){ document.getElementsByClassName('danger-red')[2].classList.add('red') }
+
           document.getElementById('innersize')!.innerHTML = sizemedida
           document.getElementById('innerwidth')!.innerHTML = this.anchoimg + " px"
           document.getElementById('innerheight')!.innerHTML = this.altoimg + " px"
@@ -279,7 +289,6 @@ previewFileImg(event: Event): void  {
           document.getElementById('pre-portada')?.removeAttribute('src')
           document.getElementById('preview-portada')?.setAttribute('src', img.src)
           document.getElementById('pre-portada')?.setAttribute('src', img.src)
-          console.log(this.anchoimg + " ------------ " + this.altoimg)
         }
       }
       lector.readAsDataURL(archivo)
@@ -388,8 +397,8 @@ async editarTime(){
 }
 
 async editarHistoriaA(){
-  // let id =  this.dataLieneaxId._id
-//  const guardarRes = await this.lineaService.editarLineaforID(id,this.formularioEditlineaTiempo.value)
+  let id =  this.dataLieneaxId._id
+ const guardarRes = await this.lineaService.editarLineaforID(id,this.formularioEditlineaTiempo.value)
  this.obtenerLinea()
  this.Modal()
 }
@@ -419,13 +428,13 @@ ModalTimeLine() {document.getElementById('modal-time-line')?.classList.toggle('m
     const txtareaValidate: any = this.desgloce
 
       if(enlaceValidate==undefined || txtareaValidate=="" || (enlaceValidate==undefined && txtareaValidate=="")){
-        this.MessageSuccess('Los campos requeridos no pueden estar vacíos','a')
+        this.MessageSuccess('Los campos requeridos no pueden estar vacíos','b')
       }else{
 
         let id = this._idhistoria
         const respuestaAgregar = await this.historiaService.editarHistoria(this.formulario.value,id)
         this.obtenerHistoria()
-        this.MessageSuccess('¡Datos guardados exitosamente!','a')
+        this.MessageSuccess('¡Datos guardados exitosamente!','b')
       }
   }
 
@@ -604,9 +613,11 @@ async eliminarNoticia(id){
     const body = new FormData();
     body.append('imgPathPrincipal', this.imgPathPrincipal.fileRaw, this.imgPathPrincipal.fileName);
     this.historiaService.sendPost(body,this._idhistoria)
-    .subscribe(res =>{console.log(res), this.obtenerHistoria()})
+    .subscribe(res =>{ this.MessageSuccess('¡Guardado exitosamente!','a')
+    document.getElementById('container-alert-a')?.classList.remove('show')
+      console.log(res), this.obtenerHistoria()})
 
-    
+
   }
 
 
@@ -623,7 +634,7 @@ async eliminarNoticia(id){
 
   sendFileUpdateTiempo():void{
 
-    let id = this.dataLieneaxId._id 
+    let id = this.dataLieneaxId._id
     const body = new FormData();
     body.append('ImgPathLineaTiempo', this.fileUpdateLineaTiempo.fileRaw, this.fileUpdateLineaTiempo.fileName);
     body.append('titleLineaTiempo', this.formularioEditlineaTiempo.value.titleLineaTiempo)
@@ -632,7 +643,7 @@ async eliminarNoticia(id){
     this.lineaService.sendEdit(body,id)
     .subscribe(res =>{console.log(res), this.obtenerLinea(),this.fileTmp = null})
 
-    
+
   }
 
   getFileUpdateNoticia($event: any): void {
@@ -647,7 +658,7 @@ async eliminarNoticia(id){
 
   sendFileUpdateNoticia():void{
 
-    let id = this.dataNoticiasxID._id 
+    let id = this.dataNoticiasxID._id
     const body = new FormData();
     body.append('imgPhat', this.fileUpdateNoticia.fileRaw, this.fileUpdateNoticia.fileName);
     body.append('title', this.formularioEditarNoticias.value.title)

@@ -332,6 +332,8 @@ div.cont-inter-valores label {
 }
 
 
+span.danger-red { color: #252525; }
+span.danger-red.red { color: #FF182C; }
 
 div.sub-container-1 {
   width: 90%;
@@ -357,6 +359,7 @@ div.prewiew {
   transition: .1s;
   flex-wrap: wrap;
 }
+
 
 img#navbar-pre,img#footer-pre {
   position: relative;
@@ -889,14 +892,14 @@ div#container-alert-h
   width: 100%;
   height: 100%;
   position: absolute;
-  z-index: -10;
-  opacity: 0;
   transition: .1s ease;
   display: flex;
   justify-content: center;
   align-items: center;
   background: rgba(255,255,255,1);
   text-align: center;
+  z-index: -10;
+  opacity: 0;
 }
 
 div#container-alert-a.show,
@@ -907,10 +910,7 @@ div#container-alert-e.show,
 div#container-alert-f.show,
 div#container-alert-g.show,
 div#container-alert-h.show
-{
-  z-index: 100;
-  opacity: 1;
-}
+{ z-index: 100; opacity: 1; }
 
 div.alert-model {
   width: 400px;
