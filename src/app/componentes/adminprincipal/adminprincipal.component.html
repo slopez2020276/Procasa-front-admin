@@ -116,7 +116,7 @@
 
     <div class="sub-cont-2">
             <label for="historia">Desgloce de Historia:</label>
-            <textarea [(ngModel)]="desgloce" (keyup)="textareaValue(this.desgloce)" name="historia" id="textareaValidate" cols="40" rows="10" formControlName="DescripcionHistoria" [(ngModel)]="textoHistoria" title="descripción"></textarea>
+            <textarea (keyup)="textareaValue(this.desgloce)" name="historia" id="textareaValidate" cols="40" rows="10" formControlName="DescripcionHistoria" [(ngModel)]="textoHistoria" title="descripción"></textarea>
           </div>
 
       <div class="foot-cont">
@@ -216,7 +216,6 @@
   <div id="container-alert-c">
     <div id="alert-check-c" class="alert-model">
         <p class="bold" id="inner-message-c"></p>
-
         <div id="cont-btns-alert-c">
           <button type="submit" id="confirm-c">confirmar</button>
           <div id="cancel-c" class="replace-button">cancelar</div>
@@ -423,7 +422,7 @@
 <div id="modal-edit-notice">
         <div id="cont-btn-close"> <button id="close-modal-notice" (click)="ModalEditNotice()">cerrar</button> </div>
 
-<form [formGroup]="formularioEditarNoticias" (ngSubmit)="editarNoticiasxid()" >
+<form [formGroup]="formularioEditarNoticias"  >
 
 <label for="file-notice">imagen</label>               <input (change)="getFileUpdateNoticia($event)"  title="imagen de noticia" type="file" name="file-notice">
 <label for="title-notice">Título</label>              <input type="text" [(ngModel)]="tituloNoticia" formControlName="title" name="title-notice" title="Título de noticia">

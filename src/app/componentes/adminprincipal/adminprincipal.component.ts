@@ -114,12 +114,12 @@ private fileUpdateNoticia:any;
 
       })
     this.formularioEditarNoticias = new FormGroup({
-       title: new FormControl(),
+        title: new FormControl(),
         imgPhat: new FormControl(),
         descripcion: new FormControl(),
         })
     this.formularioAgregarNoticias= new FormGroup({
-     titulo: new FormControl(),
+     title: new FormControl(),
      imgPhat: new FormControl(),
      descripcion: new FormControl(),
      })
@@ -568,10 +568,15 @@ async eliminarNoticia(id){
   sendFile():void{
 
     const body = new FormData();
-    body.append('ImgPathLineaTiempo', this.fileTmp.fileRaw, this.fileTmp.fileName);
-    body.append('titleLineaTiempo', this.formularioAgregarLineaTiempo.value.titleLineaTiempo)
-    body.append('descriptionLineaTiempo',this.formularioAgregarLineaTiempo.value.descriptionLineaTiempo)
 
+    if(this.fileTmp){
+      body.append('ImgPathLineaTiempo', this.fileTmp.fileRaw, this.fileTmp.fileName);
+      body.append('titleLineaTiempo', this.formularioAgregarLineaTiempo.value.titleLineaTiempo)
+      body.append('descriptionLineaTiempo',this.formularioAgregarLineaTiempo.value.descriptionLineaTiempo)
+    }else{
+      body.append('titleLineaTiempo', this.formularioAgregarLineaTiempo.value.titleLineaTiempo)
+      body.append('descriptionLineaTiempo',this.formularioAgregarLineaTiempo.value.descriptionLineaTiempo)
+    }
     this.lineaService.sendPost(body)
     .subscribe(res =>{console.log(res), this.obtenerLinea(),this.fileTmp = null})
 
@@ -590,12 +595,18 @@ async eliminarNoticia(id){
   sendFileNoticia():void{
 
     const body = new FormData()
-    body.append('imgPhat', this.fileTmpNoticia.fileRaw, this.fileTmpNoticia.fileName)
-    body.append('titulo', this.formularioAgregarNoticias.value.titulo)
-    body.append('descripcion',this.formularioAgregarNoticias.value.descripcion)
+    if(this.fileTmpNoticia){
+      body.append('imgPhat', this.fileTmpNoticia.fileRaw, this.fileTmpNoticia.fileName)
+      body.append('titulo', this.formularioAgregarNoticias.value.titulo)
+      body.append('descripcion',this.formularioAgregarNoticias.value.descripcion)
+    }else{
+      body.append('titulo', this.formularioAgregarNoticias.value.titulo)
+      body.append('descripcion',this.formularioAgregarNoticias.value.descripcion)
+    }
+   
 
     this.noticiasService.sendPost(body)
-    .subscribe(res => {console.log(res) ,this.obtnerNoticias()})
+    .subscribe(res => {console.log(res) ,this.obtnerNoticias(),this.fileTmpNoticia = null})
 
 
   }
@@ -611,11 +622,16 @@ async eliminarNoticia(id){
   sendFilePortada():void{
 
     const body = new FormData();
-    body.append('imgPathPrincipal', this.imgPathPrincipal.fileRaw, this.imgPathPrincipal.fileName);
-    this.historiaService.sendPost(body,this._idhistoria)
-    .subscribe(res =>{ this.MessageSuccess('¡Guardado exitosamente!','a')
-    document.getElementById('container-alert-a')?.classList.remove('show')
-      console.log(res), this.obtenerHistoria()})
+    if(this.imgPathPrincipal){
+      body.append('imgPathPrincipal', this.imgPathPrincipal.fileRaw, this.imgPathPrincipal.fileName);
+      this.historiaService.sendPost(body,this._idhistoria)
+      .subscribe(res =>{ this.MessageSuccess('¡Guardado exitosamente!','a')
+      document.getElementById('container-alert-a')?.classList.remove('show')
+        console.log(res), this.obtenerHistoria() })
+    }else{
+      console.log('error porfavor selecione una imagen')
+    }
+   
 
 
   }
@@ -636,12 +652,18 @@ async eliminarNoticia(id){
 
     let id = this.dataLieneaxId._id
     const body = new FormData();
-    body.append('ImgPathLineaTiempo', this.fileUpdateLineaTiempo.fileRaw, this.fileUpdateLineaTiempo.fileName);
-    body.append('titleLineaTiempo', this.formularioEditlineaTiempo.value.titleLineaTiempo)
-    body.append('descriptionLineaTiempo',this.formularioEditlineaTiempo.value.descriptionLineaTiempo)
+    if(this.fileUpdateLineaTiempo){
+      body.append('ImgPathLineaTiempo', this.fileUpdateLineaTiempo.fileRaw, this.fileUpdateLineaTiempo.fileName);
+      body.append('titleLineaTiempo', this.formularioEditlineaTiempo.value.titleLineaTiempo)
+      body.append('descriptionLineaTiempo',this.formularioEditlineaTiempo.value.descriptionLineaTiempo)
+    }else{
+      body.append('titleLineaTiempo', this.formularioEditlineaTiempo.value.titleLineaTiempo)
+      body.append('descriptionLineaTiempo',this.formularioEditlineaTiempo.value.descriptionLineaTiempo)
+    }
+  
 
     this.lineaService.sendEdit(body,id)
-    .subscribe(res =>{console.log(res), this.obtenerLinea(),this.fileTmp = null})
+    .subscribe(res =>{console.log(res), this.obtenerLinea(),this.fileUpdateLineaTiempo = null})
 
 
   }
@@ -660,12 +682,22 @@ async eliminarNoticia(id){
 
     let id = this.dataNoticiasxID._id
     const body = new FormData();
-    body.append('imgPhat', this.fileUpdateNoticia.fileRaw, this.fileUpdateNoticia.fileName);
-    body.append('title', this.formularioEditarNoticias.value.title)
-    body.append('descripcion',this.formularioEditarNoticias.value.descripcion)
+
+    if(this.fileUpdateNoticia){
+      body.append('imgPhat', this.fileUpdateNoticia.fileRaw, this.fileUpdateNoticia.fileName);
+      body.append('title', this.formularioEditarNoticias.value.title)
+      body.append('descripcion',this.formularioEditarNoticias.value.descripcion)
+      console.log('con imagen')
+    }else{
+      console.log('sin imagen')
+      body.append('imgPhat', this.dataNoticiasxID.imgPhat)
+      body.append('title', this.formularioEditarNoticias.value.title)
+      body.append('descripcion',this.formularioEditarNoticias.value.descripcion)
+  
+    }
 
     this.noticiasService.sendEdit(body,id)
-    .subscribe(res =>{console.log(res), this.obtnerNoticias(),this.fileTmp = null})
+    .subscribe(res =>{console.log(res), this.obtnerNoticias(),this.fileUpdateNoticia = null})
   }
 
 
