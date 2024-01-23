@@ -27,6 +27,7 @@ import { AlertComponent } from './componentes/alert/alert.component';
 import { SuscripcionesComponent } from './componentes/suscripciones/suscripciones.component';
 import { YoutubeComponent } from './componentes/youtube/youtube.component';
 import { SafePipe } from './safe.pipe';
+import { UsuariosComponent } from './componentes/usuarios/usuarios.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -52,6 +53,7 @@ import { SafePipe } from './safe.pipe';
     SuscripcionesComponent,
     YoutubeComponent,
     SafePipe,
+    UsuariosComponent,
   ],
   imports: [
     BrowserModule,

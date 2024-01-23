@@ -1,15 +1,14 @@
-
+/*
 section#historia, section#linea-tiempo, section#valores, section#noticias {
   opacity: 0;
   transition: .8s ease-in-out;
-  transform: translateY(-100px) scale(1.5);
 }
 section#historia.topshow, section#linea-tiempo.topshow, section#valores.topshow,section#noticias.topshow {
-  transform: translateY(0px) scale(1);
   opacity: 1;
   transition: .8s ease-in-out;
-}
+} */
 
+section#noticias { opacity: 1; }
 section#valores {
  background: transparent;
 }

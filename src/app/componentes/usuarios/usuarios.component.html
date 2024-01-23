@@ -1,0 +1,37 @@
+<app-admin-navbar></app-admin-navbar>
+
+<div id="container-2">
+  <h1>Usuarios</h1>
+    <h2></h2>
+    <!-- <button id="add-location" (click)="AddLocation()">+ Agregar ubicación</button> -->
+    <button id="add-location" (click)="modalAddUser()">+ Agregar usuario</button>
+
+    <div id="bar-search">
+      <label for="search">Buscar</label>
+      <input class="bold" class="bold" type="text" name="search" placeholder="" title="buscar">
+      <button type="button">...<i class="fas fa-magnifying-glass"></i></button>
+    </div>
+</div>
+
+<div id="container-1" class="container">
+    <div id="cont-users">
+      <div class="user-head"><span class="bold">ALIAS</span><span class="bold">CORREO</span><span class="bold edit-head">ACCIONES</span></div>
+      <div class="user"> <span class="bold">Alias</span> <span class="bold">correogmail.com</span><span class="edit">editar</span></div>
+      <div class="user"> <span class="bold">Alias</span> <span class="bold">correogmail.com</span><span class="edit">editar</span></div>
+      <div class="user"> <span class="bold">Alias</span> <span class="bold">correogmail.com</span><span class="edit">editar</span></div>
+      <div class="user"> <span class="bold">Alias</span> <span class="bold">correogmail.com</span><span class="edit">editar</span></div>
+      <div class="user"> <span class="bold">Alias</span> <span class="bold">correogmail.com</span><span class="edit">editar</span></div>
+    </div>
+</div>
+
+
+<div id="cont-modal-add">
+  <div id="modal-add-user">
+    <div id="close-modal-add" (click)="modalAddUser()">cerrar</div>
+        <h1>Agregar Usuario</h1>
+      <div class="cont-input-user"> <label class="bold" for="alias">alias</label> <input class="bold" name="alias" type="text" title="alias del usuario"> </div>
+      <div class="cont-input-user"> <label class="bold" for="correo">correo</label> <input class="bold" name="correo" type="mail" title="correo del usuario"> </div>
+      <div class="cont-input-user"> <label class="bold" for="contraseña">contraseña</label> <input class="bold" name="contraseña" type="text" title="contraseña del usuario"> </div>
+        <div class="replace-button" id="save-user">guardar</div>
+    </div>
+</div>

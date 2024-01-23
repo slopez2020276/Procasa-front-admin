@@ -10,6 +10,7 @@ import { PromocionesComponent } from './componentes/promociones/promociones.comp
 import { AlertComponent } from './componentes/alert/alert.component';
 import { SuscripcionesComponent } from './componentes/suscripciones/suscripciones.component';
 import { YoutubeComponent } from './componentes/youtube/youtube.component';
+import { UsuariosComponent } from './componentes/usuarios/usuarios.component';
 
 const routes: Routes = [
   {path:'',redirectTo:'Inicio', pathMatch:'full'},
@@ -23,6 +24,7 @@ const routes: Routes = [
   {path:'alert',title:'alert',component:AlertComponent},
   {path:'admin/suscripciones',title:'suscripciones',component:SuscripcionesComponent},
   {path:'youtube',title:'youtube',component:YoutubeComponent},
+  {path:'admin/usuarios',title:'usuarios',component:UsuariosComponent},
 ];
 
 @NgModule({
