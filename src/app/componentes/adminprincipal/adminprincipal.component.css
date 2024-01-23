@@ -116,6 +116,32 @@ div.container:nth-child(1) {
   margin-top: 100px;
 }
 
+div#sub-cont-0 {
+  width: 100%;
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-top: 2rem;
+}
+
+div.sub-0 {
+  width: 33%;
+  height: 100%;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  position: relative;
+}
+
+img#navbar-pre-0, img#preview-portada-0, img#footer-pre-0 {
+  width: 100%;
+}
+
+
 
 div#container-5 form {
   width: 100%;

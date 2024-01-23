@@ -2,7 +2,7 @@ import { Component, OnInit, inject } from '@angular/core';
 import { HistoriaService } from '../../services/historia.service';
 import { Form, FormControl, FormGroup } from '@angular/forms';
 import { LineaTiempoService } from '../../services/linea-tiempo.service';
-import { timeInterval } from 'rxjs';
+import { empty, timeInterval } from 'rxjs';
 import { MisionService } from '../../services/mision.service';
 import { NoticasService } from '../../services/noticas.service';
 import { ValoresService } from '../../services/valores.service';
@@ -131,7 +131,7 @@ private fileUpdateNoticia:any;
   // ENLACE DE VIDEO DE YOUTUBE DE HISTORIA
 
   IframeVideo() {
-    const src: any = (document.getElementById('iframe-value') as HTMLInputElement | null)?.value;
+    const src: any = (document.getElementById('iframe-value') as HTMLInputElement | null)?.value
           document.getElementById('iframe-preview')?.removeAttribute('src')
           document.getElementById('iframe-preview')?.setAttribute('src', src)
           // console.log(document.getElementById('iframe-preview'))
@@ -163,6 +163,7 @@ private fileUpdateNoticia:any;
   }
 
 
+
   // SISTEMA DE ALERTAS TIPO CONFIRMACIÓN CON BOTONES
   AlertConfirm(message: string, elem: string): any {
   document.getElementById('cont-btns-alert-'+elem)?.classList.remove('show')
@@ -174,10 +175,12 @@ private fileUpdateNoticia:any;
     document.getElementById('cont-btns-alert-'+elem)?.classList.add('show')
 
     document.getElementById('cancel-'+elem)?.addEventListener('click', function(){
+      return false
         document.getElementById('container-alert-'+elem)?.classList.remove('show')
       },false)
 
       document.getElementById('confirm-'+elem)?.addEventListener('click', function(){
+        return true
         setTimeout(function() { document.getElementById('container-alert-'+elem)?.classList.remove('show') },500)
       },false)
   }
@@ -419,31 +422,30 @@ ModalTimeLine() {document.getElementById('modal-time-line')?.classList.toggle('m
   }
 
 
-  textareaValue(valor){ valor }
+  textareaValue(valor:any){ return valor }
 
   async editarHistoria(){
 
-    const enlaceValidate: any = (document.getElementById('iframe-value') as HTMLInputElement | null)?.value
-    // const txtareaValidate: any = (document.getElementById('textareaValidate') as HTMLInputElement | null)?.value
-    const txtareaValidate: any = this.desgloce
+    let enlaceValidate: any = (document.getElementById('iframe-value') as HTMLInputElement | any)?.value
+    let textareagtp: HTMLTextAreaElement | any = document.getElementById('textareaValidate')
+    let valorTextarea: any = textareagtp?.value
 
-      if(enlaceValidate==undefined || txtareaValidate=="" || (enlaceValidate==undefined && txtareaValidate=="")){
-        this.MessageSuccess('Los campos requeridos no pueden estar vacíos','b')
-      }else{
-
-        let id = this._idhistoria
-        const respuestaAgregar = await this.historiaService.editarHistoria(this.formulario.value,id)
-        this.obtenerHistoria()
-        this.MessageSuccess('¡Datos guardados exitosamente!','b')
+if(enlaceValidate !== null && enlaceValidate !== undefined && enlaceValidate !== ''){ enlaceValidate }else{ enlaceValidate=null }
+if(valorTextarea !== null && valorTextarea !== undefined && valorTextarea !== ''){ valorTextarea }else{ valorTextarea=null }
+if(enlaceValidate == null || valorTextarea == null){
+  this.MessageSuccess('Los campos requeridos no pueden estar vacíos','b')
+}else{
+        this.AlertConfirm("¿Desea guardar los cambios?","b")
+        // let id = this._idhistoria
+        // const respuestaAgregar = await this.historiaService.editarHistoria(this.formulario.value,id)
+        // this.obtenerHistoria()
+        // this.MessageSuccess('¡Datos guardados exitosamente!','b')
       }
-  }
+}
 
 
 
-  ModalAddTimeLine() {
-    document.getElementById('modal-time-line-add')?.classList.toggle('modal')
-
-  }
+ModalAddTimeLine() { document.getElementById('modal-time-line-add')?.classList.toggle('modal') }
 
   async agregarEventoLineaTiempo(){
     this.obtenerLinea()
@@ -603,12 +605,9 @@ async eliminarNoticia(id){
       body.append('titulo', this.formularioAgregarNoticias.value.titulo)
       body.append('descripcion',this.formularioAgregarNoticias.value.descripcion)
     }
-   
 
     this.noticiasService.sendPost(body)
     .subscribe(res => {console.log(res) ,this.obtnerNoticias(),this.fileTmpNoticia = null})
-
-
   }
   getFilePortada($event: any): void {
     //TODO esto captura el archivo!
@@ -631,12 +630,7 @@ async eliminarNoticia(id){
     }else{
       console.log('error porfavor selecione una imagen')
     }
-   
-
-
   }
-
-
 
   getFileUpdateTiempo($event: any): void {
     //TODO esto captura el archivo!
@@ -646,7 +640,6 @@ async eliminarNoticia(id){
       fileName:file.name
     }
   }
-
 
   sendFileUpdateTiempo():void{
 
@@ -660,7 +653,6 @@ async eliminarNoticia(id){
       body.append('titleLineaTiempo', this.formularioEditlineaTiempo.value.titleLineaTiempo)
       body.append('descriptionLineaTiempo',this.formularioEditlineaTiempo.value.descriptionLineaTiempo)
     }
-  
 
     this.lineaService.sendEdit(body,id)
     .subscribe(res =>{console.log(res), this.obtenerLinea(),this.fileUpdateLineaTiempo = null})
@@ -693,7 +685,7 @@ async eliminarNoticia(id){
       body.append('imgPhat', this.dataNoticiasxID.imgPhat)
       body.append('title', this.formularioEditarNoticias.value.title)
       body.append('descripcion',this.formularioEditarNoticias.value.descripcion)
-  
+
     }
 
     this.noticiasService.sendEdit(body,id)
@@ -720,5 +712,14 @@ ShowMore(){
   }
   }
 
-}
 
+
+// saveHistoria() {
+//   let accept:any
+//     if((document.getElementById('iframe-value') as HTMLInputElement | null)?.value == ""){
+//       if()
+//     }
+// }
+
+
+}

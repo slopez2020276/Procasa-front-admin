@@ -18,6 +18,55 @@
   <!-- <button id="init-preview" class="bold">PREVISUALIZAR</button> -->
 </div>
 
+
+<div id="container-0" class="container">
+  <h1 class="bold title-bg">IMAGEN DE FONDO</h1>
+
+<div id="sub-cont-0">
+  <div class="sub-0">
+    <input accept="image/png, image/jpeg, image/jpg" id="file-portada" type="file" title="seleccionar imagen de fondo" data-content="seleccionar archivo">
+  </div>
+  <div class="sub-0">
+    <div class="prewiew">
+      <img id="navbar-pre-0" src="../../../assets/img/navbar.png" alt="navbar" title="navbar preview">
+      <img id="preview-portada-0" src="" alt="portada" title="previsualización del archivo">
+      <img id="footer-pre-0" src="../../../assets/img/footer.png" alt="footer" title="footer preview">
+    </div>
+  </div>
+  <div class="sub-0">
+
+    <div id="cont-caracteristics-0">
+
+      <div class="cont-carac">
+
+        <h4>requisitos recomendados</h4>
+        <ul>
+          <li>ancho: </li>
+          <li>alto: </li>
+          <li>peso: </li>
+        </ul>
+      </div>
+
+      <div class="cont-carac">
+
+        <h4>detalles del archivo</h4>
+        <ul>
+          <li>ancho: <span class="bold danger-red" id="innerwidth-0"></span> </li>
+          <li>alto:  <span class="bold danger-red" id="innerheight-0"></span> </li>
+          <li>peso:  <span class="bold danger-red" id="innersize-0"></span></li>
+        </ul>
+      </div>
+
+
+    </div>
+
+  </div>
+</div>
+
+  <div class="foot-cont"> <div class="cont-buttons"> <div class="normal replace-button" id="btn-alert-1" (click)="AlertConfirm('¿Desea guardar los cambios?','z')">guardar</div> </div> </div>
+</div>
+
+
 <div class="container" id="container-1">
   <h1 class="bold title-bg">PORTADA PRINCIPAL</h1>
   <div class="sub-container-1">
@@ -123,7 +172,7 @@
 
   <div class="cont-buttons">
     <!-- <button id="btn-alert-2" class="normal" (click)="AlertConfirm('¿Desea guardar los cambios?','b')">guardar</button> -->
-    <div class="replace-button normal" id="btn-alert-2" (click)="AlertConfirm('¿Desea guardar los cambios?','b')">guardar</div>
+    <div class="replace-button normal" id="btn-alert-2" (click)="editarHistoria()">guardar</div>
   </div>
 
 
