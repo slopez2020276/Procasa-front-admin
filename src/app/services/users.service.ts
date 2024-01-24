@@ -19,4 +19,16 @@ export class UsersService {
         this.httClient.post<any>(`${this.baseUrl}/login`,fromValue)
       )
   }
+
+  obtener(){
+    return firstValueFrom(
+      this.httClient.get<any>(`${this.baseUrl}/obtenerUsuarios`)
+    )
+  }
+
+  registrarUser(forms:any){
+    return firstValueFrom(
+      this.httClient.post<any>(`${this.baseUrl}/registrarUsuario`,forms)
+    )
+  }
 }
