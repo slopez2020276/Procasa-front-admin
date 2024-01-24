@@ -24,7 +24,7 @@ h1.container-h1 {
   margin-top: 30vh;
 }
 
-* {transition: .3s ease;}
+* {transition: .2s ease;}
 
 img#background-texture {
   width: auto;

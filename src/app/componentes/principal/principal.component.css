@@ -34,8 +34,8 @@ div#intro-1 {
   position: absolute;
   top: 0;
   left: -100%;
-  transition: .2s;
-  animation: introleft 1.3s ease-in-out;
+  transition: .4s;
+  animation: introleft 1.5s ease-in-out;
 }
 
 div#intro-2 {
@@ -45,7 +45,7 @@ div#intro-2 {
   top: 0;
   right: -100%;
   background: #f4f4f4;
-  animation: introright 1.3s ease-in-out;
+  animation: introright 1.5s ease-in-out;
   transition: .2s;
 }
 
@@ -78,7 +78,7 @@ img#container-principal-img {
     overflow: hidden;
     z-index: 10;
     transform: scale(1);
-    animation: introduction 1.6s ease-in-out;
+    animation: introduction 1.8s ease-in-out;
   }
 
 @keyframes introduction {

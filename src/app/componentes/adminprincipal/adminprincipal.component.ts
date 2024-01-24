@@ -124,8 +124,9 @@ private fileUpdateNoticia:any;
      descripcion: new FormControl(),
      })
 
-
   }
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 
 
   // ENLACE DE VIDEO DE YOUTUBE DE HISTORIA
@@ -142,7 +143,7 @@ private fileUpdateNoticia:any;
 // SISTEMA DE ALERTAS TYPO COLORES
   MessageAlert(message: string, type: number, time: number){
     document.getElementById('container-alert')?.classList.add('show')
-    const innerMessage = document.getElementById('inner-message')
+    const innerMessage = document.getElementById('message')
     if (innerMessage) {
       innerMessage.innerHTML = message;
 
@@ -160,7 +161,7 @@ private fileUpdateNoticia:any;
         document.getElementById('time')?.classList.remove('orange')
     },time)
     }
-  }
+}
 
 
 
@@ -249,55 +250,6 @@ if(inputfileBefore==""){
     this.dataLinea = repuestaLinea[1].linea
     console.log(this.dataLinea)
   }
-
-
-// SISTEMA DEL INPUT FILE IMAGEN
-// _____________________________________________________________________________________________________________________________________________________________________________________________
-previewFileImg(event: Event): void  {
-    const fileInput = event.target as HTMLInputElement
-    const archivo = fileInput.files?.[0]
-
-
-    if (archivo) { const lector = new FileReader()
-
-      lector.onload = (eventoLectura:any) => {
-        const imagen = new Image()
-        imagen.src = eventoLectura.target.result as string
-
-        imagen.onload = () => {
-          const fileSize: number = archivo.size
-          const size: any = fileSize.toFixed(2)
-          let medida: string
-          let sizemedida: any
-          if((size/1024/1024) < 1.0) {medida = " KB"; sizemedida = (size/1024).toFixed(2).toString() + medida }else{ medida = " MB"; sizemedida = (size/1024/1024).toFixed(2).toString() + medida }
-          const fileName: string = archivo.name
-          let img = new Image()
-          const objectURL = URL.createObjectURL(archivo)
-          img.src = objectURL
-          this.anchoimg = imagen.width, this.altoimg = imagen.height
-
-          document.getElementsByClassName('danger-red')[0].classList.remove('red')
-          document.getElementsByClassName('danger-red')[1].classList.remove('red')
-          document.getElementsByClassName('danger-red')[2].classList.remove('red')
-
-          if(this.anchoimg > 2000){ document.getElementsByClassName('danger-red')[0].classList.add('red') }
-          if(this.altoimg > 1500){ document.getElementsByClassName('danger-red')[1].classList.add('red') }
-          if((size/1024) > 2048 ){ document.getElementsByClassName('danger-red')[2].classList.add('red') }
-
-          document.getElementById('innersize')!.innerHTML = sizemedida
-          document.getElementById('innerwidth')!.innerHTML = this.anchoimg + " px"
-          document.getElementById('innerheight')!.innerHTML = this.altoimg + " px"
-          document.getElementById('file-portada')?.setAttribute('data-content', fileName)
-          document.getElementById('preview-portada')?.removeAttribute('src')
-          document.getElementById('pre-portada')?.removeAttribute('src')
-          document.getElementById('preview-portada')?.setAttribute('src', img.src)
-          document.getElementById('pre-portada')?.setAttribute('src', img.src)
-        }
-      }
-      lector.readAsDataURL(archivo)
-    }
-
-}
 
 // ______________________________________________________________________________________________________________________________________________________________________________________________
 // HABILITAR Y DESHABILITAR TEXTARES DE VISION Y MISIÓN
@@ -422,7 +374,9 @@ ModalTimeLine() {document.getElementById('modal-time-line')?.classList.toggle('m
   }
 
 
-  textareaValue(valor:any){ return valor }
+  textareaValue(valor:any){ console.log(valor) }
+
+
 
   async editarHistoria(){
 
@@ -433,7 +387,7 @@ ModalTimeLine() {document.getElementById('modal-time-line')?.classList.toggle('m
 if(enlaceValidate !== null && enlaceValidate !== undefined && enlaceValidate !== ''){ enlaceValidate }else{ enlaceValidate=null }
 if(valorTextarea !== null && valorTextarea !== undefined && valorTextarea !== ''){ valorTextarea }else{ valorTextarea=null }
 if(enlaceValidate == null || valorTextarea == null){
-  this.MessageSuccess('Los campos requeridos no pueden estar vacíos','b')
+  this.MessageSuccess('Los campos requeridos no pueden estar vacíos',2)
 }else{
         this.AlertConfirm("¿Desea guardar los cambios?","b")
         // let id = this._idhistoria
@@ -619,18 +573,18 @@ async eliminarNoticia(id){
   }
 
   sendFilePortada():void{
-
-    const body = new FormData();
+    const body = new FormData()
     if(this.imgPathPrincipal){
       body.append('imgPathPrincipal', this.imgPathPrincipal.fileRaw, this.imgPathPrincipal.fileName);
       this.historiaService.sendPost(body,this._idhistoria)
-      .subscribe(res =>{ this.MessageSuccess('¡Guardado exitosamente!','a')
+      .subscribe(res =>{ this.MessageSuccess('¡Guardado exitosamente!',1)
       document.getElementById('container-alert-a')?.classList.remove('show')
         console.log(res), this.obtenerHistoria() })
     }else{
       console.log('error porfavor selecione una imagen')
     }
   }
+
 
   getFileUpdateTiempo($event: any): void {
     //TODO esto captura el archivo!
@@ -653,11 +607,8 @@ async eliminarNoticia(id){
       body.append('titleLineaTiempo', this.formularioEditlineaTiempo.value.titleLineaTiempo)
       body.append('descriptionLineaTiempo',this.formularioEditlineaTiempo.value.descriptionLineaTiempo)
     }
-
     this.lineaService.sendEdit(body,id)
     .subscribe(res =>{console.log(res), this.obtenerLinea(),this.fileUpdateLineaTiempo = null})
-
-
   }
 
   getFileUpdateNoticia($event: any): void {
@@ -699,27 +650,190 @@ ShowMore(){
 
 
 
-  MessageSuccess(text: string, idmsg: string){
+  MessageSuccess(text: string, i: number){
 
-    const innermsg = document.getElementById('innermsg-'+idmsg)
+    const innermsg = document.getElementsByClassName('innermsg')[i]
     if (innermsg) { innermsg.innerHTML = text
-      document.getElementById('messagge-'+idmsg)?.classList.add('show')
-      document.getElementById("timesuccess")?.classList.toggle('lesswidth')
+      document.getElementsByClassName('container-alert')[i]?.classList.add('show')
+      document.getElementsByClassName('message')[i]?.classList.add('show')
+      document.getElementsByClassName('timesuccess')[i]?.classList.toggle('lesswidth')
       setTimeout(() => {
-        document.getElementById('messagge-'+idmsg)?.classList.remove('show')
-        document.getElementById("timesuccess")?.classList.toggle('lesswidth')
-    },1500)
+        document.getElementsByClassName('container-alert')[i]?.classList.remove('show')
+        document.getElementsByClassName('message')[i]?.classList.remove('show')
+        document.getElementsByClassName('timesuccess')[i]?.classList.remove('lesswidth')
+    },1800)
   }
   }
 
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-// saveHistoria() {
-//   let accept:any
-//     if((document.getElementById('iframe-value') as HTMLInputElement | null)?.value == ""){
-//       if()
-//     }
-// }
+
+
+preSaveBackground(event: Event): void  {
+  const fileInput = event.target as HTMLInputElement
+  const archivo = fileInput.files?.[0]
+
+  if (archivo) { const lector = new FileReader()
+
+    lector.onload = (eventoLectura:any) => {
+      const imagen = new Image()
+      imagen.src = eventoLectura.target.result as string
+
+      imagen.onload = () => {
+        const fileSize: number = archivo.size
+        const size: any = fileSize.toFixed(2)
+        let medida: string
+        let sizemedida: any
+        if((size/1024/1024) < 1.0) {medida = " KB"; sizemedida = (size/1024).toFixed(2).toString() + medida }else{ medida = " MB"; sizemedida = (size/1024/1024).toFixed(2).toString() + medida }
+        const fileName: string = archivo.name
+        let img = new Image()
+        const objectURL = URL.createObjectURL(archivo)
+        img.src = objectURL
+        this.anchoimg = imagen.width, this.altoimg = imagen.height
+
+
+        document.getElementsByClassName('danger-red')[0]?.classList.remove('limit')
+        document.getElementsByClassName('danger-red')[1]?.classList.remove('limit')
+        document.getElementsByClassName('danger-red')[2]?.classList.remove('limit')
+
+        if(this.anchoimg > 2000){  document.getElementsByClassName('danger-red')[0].classList.add('limit') }
+        if(this.altoimg > 1500){ document.getElementsByClassName('danger-red')[1].classList.add('limit') }
+        if((size/1024) > 2048 ){  document.getElementsByClassName('danger-red')[2].classList.add('limit') }
+
+        document.getElementById('innersize-bg')!.innerHTML = sizemedida
+        document.getElementById('innerwidth-bg')!.innerHTML = this.anchoimg + " px"
+        document.getElementById('innerheight-bg')!.innerHTML = this.altoimg + " px"
+        document.getElementById('file-bg')?.setAttribute('data-content', fileName)
+        document.getElementById('pre-bg')?.removeAttribute('src')
+        document.getElementById('preview-bg')?.removeAttribute('src')
+        document.getElementById('preview-bg')?.setAttribute('src', img.src)
+        document.getElementById('pre-bg')?.setAttribute('src', img.src)
+      }
+    }
+    lector.readAsDataURL(archivo)
+  }
+
+  document.getElementById('btn-save-bg')?.addEventListener('click', () => {
+
+    if(archivo!==null || archivo!==undefined){
+
+  const innerMessage = document.getElementsByClassName('innermsg')[0]
+  if (innerMessage) { innerMessage.innerHTML = "¿Desea guardar los cambios?"
+
+
+  document.getElementsByClassName('container-alert')[0]?.classList.add('show')
+  document.getElementsByClassName('message')[0]?.classList.add('show')
+  document.getElementsByClassName('cont-btns-alert')[0]?.classList.add('show')
+
+  document.getElementsByClassName('cancel')[0]?.addEventListener('click', function(){
+    document.getElementsByClassName('container-alert')[0]?.classList.remove('show')
+    document.getElementsByClassName('message')[0]?.classList.remove('show')
+    document.getElementsByClassName('cont-btns-alert')[0]?.classList.remove('show')
+  },false)
+  document.getElementsByClassName('confirm')[0]?.addEventListener('click', function(){ setTimeout(function() { document.getElementsByClassName('container-alert')[0]?.classList.remove('show') },300) },false)
+  }
+}
+}, false)
+}
+
+
+sendFileBackground():void{
+  const body = new FormData()
+  if(this.imgPathPrincipal){
+    body.append('imgPathPrincipal', this.imgPathPrincipal.fileRaw, this.imgPathPrincipal.fileName);
+    this.historiaService.sendPost(body,this._idhistoria)
+    .subscribe(res =>{ this.MessageSuccess('¡Guardado exitosamente!',0)
+    document.getElementById('container-alert-a')?.classList.remove('show')
+      console.log(res), this.obtenerHistoria() })
+  }else{
+    console.log('error porfavor selecione una imagen')
+  }
+}
+
+
+
+testEmptyBackground(){
+  let prefile: any | null = (document.getElementById('file-bg') as HTMLInputElement).value
+  if(prefile==null || prefile==undefined || prefile==""){ this.MessageSuccess("No hay archivo seleccionado", 0) }
+}
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////77777
+  preSavePortada(event: Event): void  {
+
+  const fileInput = event.target as HTMLInputElement
+  const archivo = fileInput.files?.[0]
+
+  if (archivo) { const lector = new FileReader()
+
+    lector.onload = (eventoLectura:any) => {
+      const imagen = new Image()
+      imagen.src = eventoLectura.target.result as string
+
+      imagen.onload = () => {
+        const fileSize: number = archivo.size
+        const size: any = fileSize.toFixed(2)
+        let medida: string
+        let sizemedida: any
+        if((size/1024/1024) < 1.0) {medida = " KB"; sizemedida = (size/1024).toFixed(2).toString() + medida }else{ medida = " MB"; sizemedida = (size/1024/1024).toFixed(2).toString() + medida }
+        const fileName: string = archivo.name
+        let img = new Image()
+        const objectURL = URL.createObjectURL(archivo)
+        img.src = objectURL
+        this.anchoimg = imagen.width, this.altoimg = imagen.height
+
+
+        document.getElementsByClassName('danger-red')[3]?.classList.remove('limit')
+        document.getElementsByClassName('danger-red')[4]?.classList.remove('limit')
+        document.getElementsByClassName('danger-red')[5]?.classList.remove('limit')
+
+        if(this.anchoimg > 2000){  document.getElementsByClassName('danger-red')[3].classList.add('limit') }
+        if(this.altoimg > 1500){ document.getElementsByClassName('danger-red')[4].classList.add('limit') }
+        if((size/1024) > 2048 ){  document.getElementsByClassName('danger-red')[5].classList.add('limit') }
+
+        document.getElementById('innersize')!.innerHTML = sizemedida
+        document.getElementById('innerwidth')!.innerHTML = this.anchoimg + " px"
+        document.getElementById('innerheight')!.innerHTML = this.altoimg + " px"
+        document.getElementById('file-portada')?.setAttribute('data-content', fileName)
+        document.getElementById('preview-portada')?.removeAttribute('src')
+        document.getElementById('pre-portada')?.removeAttribute('src')
+        document.getElementById('preview-portada')?.setAttribute('src', img.src)
+        document.getElementById('pre-portada')?.setAttribute('src', img.src)
+      }
+    }
+    lector.readAsDataURL(archivo)
+  }
+
+  document.getElementById('btn-save-portada')?.addEventListener('click', () => {
+
+    if(archivo!==null || archivo!==undefined){
+
+  const innerMessage = document.getElementsByClassName('innermsg')[1]
+  if (innerMessage) { innerMessage.innerHTML = "¿Desea guardar los cambios?"
+
+
+  document.getElementsByClassName('container-alert')[1]?.classList.add('show')
+  document.getElementsByClassName('message')[1]?.classList.add('show')
+  document.getElementsByClassName('cont-btns-alert')[1]?.classList.add('show')
+
+  document.getElementsByClassName('cancel')[1]?.addEventListener('click', function(){
+    document.getElementsByClassName('container-alert')[1]?.classList.remove('show')
+    document.getElementsByClassName('message')[1]?.classList.remove('show')
+    document.getElementsByClassName('cont-btns-alert')[1]?.classList.remove('show')
+  },false)
+  document.getElementsByClassName('confirm')[1]?.addEventListener('click', function(){
+    setTimeout(function() {
+    document.getElementsByClassName('container-alert')[1]?.classList.remove('show')
+  },300) },false)
+  }
+}
+}, false)
+}
+
+testEmptyPortada(){
+   let prefile: any | null = (document.getElementById('file-portada') as HTMLInputElement).value
+   if(prefile==null || prefile==undefined || prefile==""){ this.MessageSuccess("No hay archivo seleccionado", 1) }
+}
+
 
 
 }
