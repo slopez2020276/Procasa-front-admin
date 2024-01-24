@@ -87,6 +87,7 @@
       <input (change)="preSavePortada($event)" (change)="getFilePortada($event)" accept="image/png, image/jpeg, image/jpg" id="file-portada" type="file" title="seleccionar archivo" data-content="seleccionar archivo">
       <!-- <input type="file" (change)="manejarCambioArchivo($event)" title="input for demo"> -->
       <img id="pre-portada" [src]="'http://localhost:3002/' + imgPrincipal" alt="portada" title="previsualización del archivo">
+
     </div>
 
     <div class="prewiew">
@@ -212,7 +213,7 @@
   <div id="sub-cont-3">
   @for (os of dataLinea; track os._id) {
     <div class="cont-3-timeline">
-      <img [src]="'http://localhost:3002/' + os.ImgPathLineaTiempo" alt="item 1" title="item 1">
+      <img [ngSrc]="'http://localhost:3002/' + os.ImgPathLineaTiempo" [width]="300" [height]="300" alt="item 1" title="item 1">
       <p class="input-to-text bold">{{os.titleLineaTiempo}}</p>
       <p class="input-to-text">{{os.descriptionLineaTiempo}}</p>
                   <button class="edit-timeline" type="button" (click)="editarModal(os._id)" (click)="Modal()">editar</button>
@@ -349,7 +350,7 @@
 
 
     <div class="noticia">
-      <img  [src]="'http://localhost:3002/' + os.imgPhat"  alt="noticia">
+      <img  [ngSrc]="'http://localhost:3002/' + os.imgPhat" [width]="300" [height]="300" alt="noticia">
     <h2>{{os.title}}</h2>
     <p>{{os.descripcion}}</p>
           <button type="button" class="edit-notice" (click)="obtenerxidNoticias(os._id)" (click)="ModalEditNotice()">editar</button>

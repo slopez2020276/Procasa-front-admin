@@ -6,9 +6,9 @@
 
 <app-navbar></app-navbar>
 
-<img title="imagen de muestra" src="../../../assets/img/textura-fon.png" id="background-texture">
+<img title="imagen de muestra" [ngSrc]="'http://localhost:3002/'  + imgFondo"[width]="1000" [height]="1000" id="background-texture">
 
-<img [src]="'http://localhost:3002/' + imgPrincipal" alt="section" id="container-principal-img">
+<img [ngSrc]="'http://localhost:3002/' + imgPrincipal" [width]="1000" [height]="1000"  alt="section" id="container-principal-img">
 <!-- <img src="../../../assets/img/Fondo-ham - copia.png" alt="section" id="container-principal-img"> -->
 
 <section id="historia"> <app-historia/> </section>

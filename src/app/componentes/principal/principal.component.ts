@@ -1,7 +1,7 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { MainpageService } from '../../services/mainpage.service';
 import { HistoriaService } from '../../services/historia.service';
-
+import { NgOptimizedImage } from '@angular/common';
 
 @Component({
   selector: 'app-principal',
@@ -24,8 +24,9 @@ constructor(){
 
    data
    imgPrincipal
+   imgFondo
   HistoriaService = inject(HistoriaService)
-
+ 
    async onSubmit(){
   }
 
@@ -33,6 +34,6 @@ constructor(){
      const response = await this.HistoriaService.obtenerHistoria()
      this.data = response.historia
      this.imgPrincipal = this.data[0].imgPathPrincipal
+     this.imgFondo = this.data[0].imgPathFondo
    }
-
 }

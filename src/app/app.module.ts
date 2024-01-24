@@ -28,6 +28,7 @@ import { SuscripcionesComponent } from './componentes/suscripciones/suscripcione
 import { YoutubeComponent } from './componentes/youtube/youtube.component';
 import { SafePipe } from './safe.pipe';
 import { UsuariosComponent } from './componentes/usuarios/usuarios.component';
+import { NgOptimizedImage } from '@angular/common';
 @NgModule({
   declarations: [
     AppComponent,
@@ -60,7 +61,8 @@ import { UsuariosComponent } from './componentes/usuarios/usuarios.component';
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    NgOptimizedImage
   ],
   providers: [],
   bootstrap: [AppComponent]
