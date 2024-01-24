@@ -7,6 +7,7 @@ import { MisionService } from '../../services/mision.service';
 import { NoticasService } from '../../services/noticas.service';
 import { ValoresService } from '../../services/valores.service';
 import { math } from '@maptiler/sdk';
+import { NgOptimizedImage } from '@angular/common';
 
 
 interface HtmlInputEvent extends Event {
