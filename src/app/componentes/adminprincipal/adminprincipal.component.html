@@ -445,7 +445,7 @@
 
   <form [formGroup]="formularioAgregarLineaTiempo"  >
   <label for="file">Imagen</label>
-    <input type="file" (change)="getFile($event)"  name="file" title="imagen">
+    <input type="file" (change)="getFile($event)" name="file" data-content="seleccionar archivo" title="imagen">
   <label for="title">Título</label>
     <input type="text"  formControlName="titleLineaTiempo" ame="title" title="título">
   <label for="description">Descripción</label>

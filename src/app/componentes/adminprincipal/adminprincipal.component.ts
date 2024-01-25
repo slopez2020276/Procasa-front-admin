@@ -942,8 +942,6 @@ preSaveHistoria() {
   if (preEnlace instanceof HTMLTextAreaElement) { enlace = preEnlace.value }
   if (descTextArea instanceof HTMLTextAreaElement) { desc = descTextArea.value }
 
-  console.log(enlace)
-  console.log(desc)
 
   if(enlace!=="" && desc!==""){
   const innerMessage = document.getElementsByClassName('innermsg')[2]
@@ -975,16 +973,9 @@ async guardarHistoria() {
 
   console.log(this._idhistoria);
   const respuestaEdit = await this.historiaService.editarHistoria( this.formularioEditHistoria.value,this._idhistoria)
-  
+
 console.log(respuestaEdit)
 }
-
-
-
-
-
-
-
 
 
 }
