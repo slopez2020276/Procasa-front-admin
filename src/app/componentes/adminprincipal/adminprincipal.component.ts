@@ -35,6 +35,7 @@ export class AdminprincipalComponent implements OnInit, AfterViewInit {
   imgPrincipal : any;
 
   dataValores
+  dataHistoria
 
   ValoresService = inject(ValoresService)
   historiaService = inject(HistoriaService)
@@ -42,8 +43,12 @@ export class AdminprincipalComponent implements OnInit, AfterViewInit {
   misionService = inject(MisionService)
   noticiasService = inject(NoticasService)
 
-  @ViewChild('confirmElement') confirmElement!: ElementRef;
-  @ViewChild('containerAlertElement') containerAlertElement!: ElementRef;
+  @ViewChild('confirmElement') confirmElement!: ElementRef
+  @ViewChild('containerAlertElement') containerAlertElement!: ElementRef
+  @ViewChild('confirmElementVal') confirmElementVal!: ElementRef
+  @ViewChild('containerAlertElementVal') containerAlertElementVal!: ElementRef
+  @ViewChild('confirmElementHis') confirmElementHis!: ElementRef
+  @ViewChild('containerAlertElementHis') containerAlertElementHis!: ElementRef
 
 
   mision:any
@@ -128,7 +133,8 @@ private fileUpdateNoticia:any;
   }
   ngAfterViewInit(): void {
     this.confirmElement.nativeElement.addEventListener('click', this.onClick.bind(this))
-    // throw new Error('Method not implemented.')
+    this.confirmElementVal.nativeElement.addEventListener('click', this.onClickValores.bind(this))
+    this.confirmElementHis.nativeElement.addEventListener('click', this.onClickHistoria.bind(this))
   }
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -150,7 +156,7 @@ private fileUpdateNoticia:any;
     document.getElementById('container-alert')?.classList.add('show')
     const innerMessage = document.getElementById('message')
     if (innerMessage) {
-      innerMessage.innerHTML = message;
+      innerMessage.innerHTML = message
 
       if(type===1){
         document.getElementById('time')?.classList.add('green')
@@ -170,43 +176,24 @@ private fileUpdateNoticia:any;
 
 
 
-  // SISTEMA DE ALERTAS TIPO CONFIRMACIÓN CON BOTONES
-  AlertConfirm(message: string, elem: string): any {
-  document.getElementById('cont-btns-alert-'+elem)?.classList.remove('show')
-  document.getElementById('container-alert-'+elem)?.classList.add('show')
-  const innerMessage = document.getElementById('inner-message-'+elem)
-  if (innerMessage) { innerMessage.innerHTML = message
-
-    document.getElementById('container-alert-'+elem)?.classList.add('show')
-    document.getElementById('cont-btns-alert-'+elem)?.classList.add('show')
-
-    document.getElementById('cancel-'+elem)?.addEventListener('click', function(){
-      return false
-        document.getElementById('container-alert-'+elem)?.classList.remove('show')
-      },false)
-
-      document.getElementById('confirm-'+elem)?.addEventListener('click', function(){
-        return true
-        setTimeout(function() { document.getElementById('container-alert-'+elem)?.classList.remove('show') },500)
-      },false)
-  }
-
-
-}
-
-
 
 
 
 // AL INICIAR
   async ngOnInit()  {
 
-      const inputfileBefore: any = (document.getElementById('file-portada') as HTMLInputElement | null)?.value;
+      const inputfileBefore: any = (document.getElementById('file-portada') as HTMLInputElement | null)?.value
+      const inputfileBefbg: any = (document.getElementById('file-bg') as HTMLInputElement | null)?.value
 
 if(inputfileBefore==""){
     document.getElementById('preview-portada')?.setAttribute('src', "../../../assets/img/empty.jpg")
     document.getElementById('pre-portada')?.setAttribute('src', "../../../assets/img/empty.jpg")
     document.getElementById('file-portada')?.setAttribute('data-content', 'seleccionar archivo')
+}
+if(inputfileBefbg==""){
+    document.getElementById('preview-bg')?.setAttribute('src', "../../../assets/img/empty.jpg")
+    document.getElementById('pre-bg')?.setAttribute('src', "../../../assets/img/empty.jpg")
+    document.getElementById('file-bg')?.setAttribute('data-content', 'seleccionar archivo')
 }
 
     document.getElementById('deshabilitar')?.classList.add('hide')
@@ -215,9 +202,7 @@ if(inputfileBefore==""){
     document.getElementById('deshabilitar-hs')?.classList.add('hide')
 
     const valoresa = document.getElementsByClassName('valores-txt')
-    for(let e = 0; e < valoresa.length; e++){
-      valoresa[e].setAttribute('disabled', 'disabled')
-    }
+    for(let e = 0; e < valoresa.length; e++){ valoresa[e].setAttribute('disabled', 'disabled') }
 
     this.obtenerHistoria()
     this.obtenerLinea()
@@ -232,7 +217,6 @@ if(inputfileBefore==""){
     this.mision = this.dataMisionÑ.textMision
     this.vision = this.dataMisionÑ.textVIsion
 
-
     document.getElementById('mision-txt')?.setAttribute('disabled', 'true')
     document.getElementById('vision-txt')?.setAttribute('disabled', 'true')
   }
@@ -244,7 +228,7 @@ if(inputfileBefore==""){
     this.EncalceVideo = responsivehistoria.historia[0].EncalceVideo
     this._idhistoria = responsivehistoria.historia[0]._id
     this.imgPrincipal =  responsivehistoria.historia[0].imgPathPrincipal
-    console.log(this.imgPrincipal)
+    console.log(this._idhistoria)
 
     document.getElementById('iframe-value')?.setAttribute('disabled', 'true')
     document.getElementById('textareaValidate')?.setAttribute('disabled', 'true')
@@ -375,43 +359,43 @@ ModalTimeLine() {document.getElementById('modal-time-line')?.classList.toggle('m
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-async editarHistoria(){
+// async editarHistoria(){
 
-    let enlaceValidate: any = (document.getElementById('iframe-value') as HTMLInputElement | any)?.value
+//     let enlaceValidate: any = (document.getElementById('iframe-value') as HTMLInputElement | any)?.value
 
-    let textareagtp: HTMLTextAreaElement | any = document.getElementById('textareaValidate')
-    let valorTextarea: any = textareagtp?.value
+//     let textareagtp: HTMLTextAreaElement | any = document.getElementById('textareaValidate')
+//     let valorTextarea: any = textareagtp?.value
 
 
-if(enlaceValidate !== null && enlaceValidate !== undefined && enlaceValidate !== ''){ enlaceValidate }else{ enlaceValidate="" }
-if(valorTextarea !== null && valorTextarea !== undefined && valorTextarea !== ''){ valorTextarea }else{ valorTextarea="" }
-if(enlaceValidate == "" || valorTextarea == ""){
-  this.MessageSuccess('Los campos requeridos no pueden estar vacíos',2)
-}else{
+// if(enlaceValidate !== null && enlaceValidate !== undefined && enlaceValidate !== ''){ enlaceValidate }else{ enlaceValidate="" }
+// if(valorTextarea !== null && valorTextarea !== undefined && valorTextarea !== ''){ valorTextarea }else{ valorTextarea="" }
+// if(enlaceValidate == "" || valorTextarea == ""){
+//   this.MessageSuccess('Los campos requeridos no pueden estar vacíos',2)
+// }else{
 
-  const innerMessage = document.getElementsByClassName('innermsg')[2]
-  if (innerMessage) { innerMessage.innerHTML = "¿Desea guardar los cambios?"
+//   const innerMessage = document.getElementsByClassName('innermsg')[2]
+//   if (innerMessage) { innerMessage.innerHTML = "¿Desea guardar los cambios?"
 
-  document.getElementsByClassName('container-alert')[2]?.classList.add('show')
-  document.getElementsByClassName('message')[2]?.classList.add('show')
-  document.getElementsByClassName('cont-btns-alert')[2]?.classList.add('show')
+//   document.getElementsByClassName('container-alert')[2]?.classList.add('show')
+//   document.getElementsByClassName('message')[2]?.classList.add('show')
+//   document.getElementsByClassName('cont-btns-alert')[2]?.classList.add('show')
 
-    document.getElementsByClassName('cancel')[2]?.addEventListener('click', function(){
-    document.getElementsByClassName('container-alert')[2]?.classList.remove('show')
-    document.getElementsByClassName('message')[2]?.classList.remove('show')
-    document.getElementsByClassName('cont-btns-alert')[2]?.classList.remove('show')
-  },false)
-  document.getElementsByClassName('confirm')[2]?.addEventListener('click', function(){
-    setTimeout(function() { document.getElementsByClassName('container-alert')[2]?.classList.remove('show')
-  },300) },false)
+//     document.getElementsByClassName('cancel')[2]?.addEventListener('click', function(){
+//     document.getElementsByClassName('container-alert')[2]?.classList.remove('show')
+//     document.getElementsByClassName('message')[2]?.classList.remove('show')
+//     document.getElementsByClassName('cont-btns-alert')[2]?.classList.remove('show')
+//   },false)
+//   document.getElementsByClassName('confirm')[2]?.addEventListener('click', function(){
+//     setTimeout(function() { document.getElementsByClassName('container-alert')[2]?.classList.remove('show')
+//   },300) },false)
 
   //   let id:any = this._idhistoria
   // const respuestaAgregar = await this.historiaService.editarHistoria(this.formulario.value,id)
   // this.obtenerHistoria()
   // this.MessageSuccess('¡Datos guardados exitosamente!',2)
-}
-}
-}
+// }
+// }
+// }
 
 
 
@@ -466,16 +450,13 @@ ModalAddTimeLine() { document.getElementById('modal-time-line-add')?.classList.t
 
 
 
-
   async obtenerxidNoticias(id:any){
     const respuestaObtnerid = await this.noticiasService.obtenerxID(id)
     this.dataNoticiasxID = respuestaObtnerid.noticia
     console.log(this.dataNoticiasxID)
     this.tituloNoticia = this.dataNoticiasxID.title
     this.descripcionNoticia = this.dataNoticiasxID.descripcion
-
-
-  }
+}
 
 
 async eliminarLineaTiempo(id){
@@ -682,10 +663,6 @@ ShowMore(){
   }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-
-
-
 preSaveBackground(event: Event): void  {
   const fileInput = event.target as HTMLInputElement
   const archivo = fileInput.files?.[0]
@@ -893,6 +870,117 @@ async guardarMision() {
   let id = this.dataMisionÑ._id
   const respuestaEdit = await this.misionService.editarMisionValor(id, this.formularioMisionValor.value)
 }
+
+
+
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////77
+preSaveValores() {
+  const integridadTextArea: HTMLTextAreaElement | any = document.getElementById('txt-integridad')
+  const pasionTextArea: HTMLTextAreaElement | any = document.getElementById('txt-pasion')
+  const innovacionTextArea: HTMLTextAreaElement | any = document.getElementById('txt-innovacion')
+  const orientacionTextArea: HTMLTextAreaElement | any = document.getElementById('txt-orientacion')
+
+  let integridad: string = ''
+  let pasion: string = ''
+  let innovacion: string = ''
+  let orientacion: string = ''
+
+  if (integridadTextArea instanceof HTMLTextAreaElement) { integridad = integridadTextArea.value }
+  if (pasionTextArea instanceof HTMLTextAreaElement) { pasion = pasionTextArea.value }
+  if (innovacionTextArea instanceof HTMLTextAreaElement) { innovacion = innovacionTextArea.value }
+  if (orientacionTextArea instanceof HTMLTextAreaElement) { orientacion = orientacionTextArea.value }
+
+  if(integridad!=="" && pasion!=="" && innovacion!=="" && orientacion!==""){
+  const innerMessage = document.getElementsByClassName('innermsg')[4]
+  if (innerMessage) { innerMessage.innerHTML = "¿Desea guardar los cambios?"
+
+
+  document.getElementsByClassName('container-alert')[4]?.classList.add('show')
+  document.getElementsByClassName('message')[4]?.classList.add('show')
+  document.getElementsByClassName('cont-btns-alert')[4]?.classList.add('show')
+
+  document.getElementsByClassName('cancel')[4]?.addEventListener('click', function(){
+    document.getElementsByClassName('container-alert')[4]?.classList.remove('show')
+    document.getElementsByClassName('message')[4]?.classList.remove('show')
+    document.getElementsByClassName('cont-btns-alert')[4]?.classList.remove('show')
+  },false)
+  document.getElementsByClassName('confirm')[4]?.addEventListener('click', function(){
+    setTimeout(function() {
+      document.getElementsByClassName('container-alert')[4]?.classList.remove('show')
+    },300) },false)
+  }
+  }else{ this.MessageSuccess("Los campos requeridos no pueden estar vacíos",4) }
+}
+
+onClickValores() {
+  this.guardarValores()
+  setTimeout(() => { this.containerAlertElementVal.nativeElement.classList.remove('show') }, 300) }
+
+async guardarValores() {
+  let id = this.dataValores._id
+  const respuestaEdit = await this.ValoresService.editarValores(id, this.formularioValores.value)
+}
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////77
+preSaveHistoria() {
+
+    let enlace: any = (document.getElementById('iframe-value') as HTMLInputElement | any)?.value
+
+  const preEnlace: HTMLInputElement | null = document.getElementById('iframe-value') as HTMLInputElement
+  // let enlace: string = preEnlace?.value || ''
+
+// const enlaceTextArea = document.getElementById('iframe-value')
+  const descTextArea: HTMLTextAreaElement | any = document.getElementById('textareaValidate')
+
+  // let enlace: string = ''
+  let desc: string = ''
+
+  if (preEnlace instanceof HTMLTextAreaElement) { enlace = preEnlace.value }
+  if (descTextArea instanceof HTMLTextAreaElement) { desc = descTextArea.value }
+
+  console.log(enlace)
+  console.log(desc)
+
+  if(enlace!=="" && desc!==""){
+  const innerMessage = document.getElementsByClassName('innermsg')[2]
+  if (innerMessage) { innerMessage.innerHTML = "¿Desea guardar los cambios?"
+
+
+  document.getElementsByClassName('container-alert')[2]?.classList.add('show')
+  document.getElementsByClassName('message')[2]?.classList.add('show')
+  document.getElementsByClassName('cont-btns-alert')[2]?.classList.add('show')
+
+  document.getElementsByClassName('cancel')[2]?.addEventListener('click', function(){
+    document.getElementsByClassName('container-alert')[2]?.classList.remove('show')
+    document.getElementsByClassName('message')[2]?.classList.remove('show')
+    document.getElementsByClassName('cont-btns-alert')[2]?.classList.remove('show')
+  },false)
+  document.getElementsByClassName('confirm')[2]?.addEventListener('click', function(){
+    setTimeout(function() {
+      document.getElementsByClassName('container-alert')[2]?.classList.remove('show')
+    },300) },false)
+  }
+  }else{ this.MessageSuccess("Los campos requeridos no pueden estar vacíos",2) }
+}
+
+onClickHistoria() {
+  this.guardarHistoria()
+  setTimeout(() => { this.containerAlertElementHis.nativeElement.classList.remove('show') }, 300) }
+
+async guardarHistoria() {
+
+  const respuestaEdit = await this.historiaService.editarHistoria(this._idhistoria, this.formularioEditHistoria.value)
+  console.log(this._idhistoria);
+}
+
+
+
+
+
+
+
 
 
 }

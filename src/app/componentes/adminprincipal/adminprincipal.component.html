@@ -172,23 +172,23 @@
     <div class="sub-cont-2">
             <label for="historia">Desgloce de Historia:</label>
             <textarea name="historia" id="textareaValidate" cols="40" rows="10" formControlName="DescripcionHistoria" [(ngModel)]="textoHistoria" title="descripción"></textarea>
-          </div>
+    </div>
 
-      <div class="foot-cont">
+  <div class="foot-cont">
 
   <div class="cont-buttons">
-    <!-- <button id="btn-alert-2" class="normal" (click)="AlertConfirm('¿Desea guardar los cambios?','b')">guardar</button> -->
-    <div class="replace-button normal" (click)="editarHistoria()" id="btn-alert-2">guardar</div>
+    <div class="replace-button normal" (click)="preSaveHistoria()" id="btn-alert-2">guardar</div>
+    <!-- <div class="replace-button normal" (click)="editarHistoria()" id="btn-alert-2">guardar</div> -->
   </div>
 
 
-  <div class="container-alert">
+  <div class="container-alert" #containerAlertElementHis>
     <div class="alert-model">
         <p class="inner-message bold"></p>
 
         <div class="message"> <h1 class="innermsg"></h1></div>
         <div class="cont-btns-alert">
-          <button class="confirm">confirmar</button>
+          <button class="confirm" #confirmElementHis>confirmar</button>
           <div class="replace-button cancel">cancelar</div>
         </div>
       </div>
@@ -255,7 +255,7 @@
   <div class="foot-cont">
 
     <div class="cont-buttons">
-      <!-- <div class="normal" (click)="AlertConfirm('¿Desea guardar los cambios?','c')">guardar</div> -->
+      <!-- <div class="normal">guardar</div> -->
       <div class="replace-button normal" id="cancel-c" (click)="preSaveMisionVision()">guardar</div>
     </div>
   </div>
@@ -313,20 +313,20 @@
     <div class="foot-cont">
       <div class="cont-buttons">
 
-        <button class="normal" (click)="AlertConfirm('¿Desea guardar los cambios?','d')">guardar</button>
+        <div class="normal replace-button" (click)="preSaveValores()">guardar</div>
       </div>
     </div>
   </div>
 
 
 
-  <div class="container-alert">
+  <div class="container-alert" #containerAlertElementVal>
     <div class="alert-model">
         <p class="inner-message bold"></p>
 
         <div class="message"> <h1 class="innermsg"></h1></div>
         <div class="cont-btns-alert">
-          <button class="confirm">confirmar</button>
+          <button class="confirm" #confirmElementVal>confirmar</button>
           <div class="replace-button cancel">cancelar</div>
         </div>
       </div>
@@ -395,7 +395,7 @@
     <input type="text" formControlName="descriptionLineaTiempo" [(ngModel)]="descripcionModal"  title="description">
     <!-- <button type="submit" class="bold "  >guardar</button> -->
 
-    <div class="replace-button normal" (click)="AlertConfirm('¿Desea guardar los cambios?','h')">guardar</div>
+    <div class="replace-button normal">guardar</div>
 
     <div class="container-alert">
       <div class="alert-model">
@@ -451,7 +451,7 @@
   <label for="description">Descripción</label>
     <input type="text" formControlName="descriptionLineaTiempo"title="description">
     <!-- <button type="submit" class="bold " (click)="ModalAddTimeLine()"  >guardar</button> -->
-    <div class="replace-button normal" (click)="AlertConfirm('¿Desea guardar los cambios?','g')">guardar</div>
+    <div class="replace-button normal">guardar</div>
 
     <div class="container-alert">
       <div class="alert-model">
@@ -487,7 +487,7 @@
 <label for="description-notice">Descripción</label>   <textarea title="descripción de noticia" [(ngModel)]="descripcionNoticia" formControlName="descripcion" name="description-notice" id="" cols="26" rows="5"></textarea>
 
 <!-- <button type="submit" class="">guardar</button> -->
-<div class="replace-button normal" (click)="AlertConfirm('¿Desea guardar los cambios?','e')">guardar</div>
+<div class="replace-button normal">guardar</div>
 
 <div class="container-alert">
   <div class="alert-model">
@@ -520,7 +520,7 @@
 <label for="description-notice">Descripción</label>   <textarea formControlName="descripcion" title="descripción de noticia" name="description-notice" id="" cols="26" rows="5"></textarea>
 
 <!-- <button type="submit" class="">guardar</button> -->
-<div class="replace-button normal" (click)="AlertConfirm('¿Desea guardar los cambios?','f')"  >guardar</div>
+<div class="replace-button normal"  >guardar</div>
 
 <div class="container-alert">
   <div class="alert-model">
