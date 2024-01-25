@@ -171,38 +171,30 @@
 
     <div class="sub-cont-2">
             <label for="historia">Desgloce de Historia:</label>
-            <textarea (keyup)="textareaValue(this.desgloce)" name="historia" id="textareaValidate" cols="40" rows="10" formControlName="DescripcionHistoria" [(ngModel)]="textoHistoria" title="descripción"></textarea>
+            <textarea name="historia" id="textareaValidate" cols="40" rows="10" formControlName="DescripcionHistoria" [(ngModel)]="textoHistoria" title="descripción"></textarea>
           </div>
 
       <div class="foot-cont">
 
   <div class="cont-buttons">
     <!-- <button id="btn-alert-2" class="normal" (click)="AlertConfirm('¿Desea guardar los cambios?','b')">guardar</button> -->
-    <div class="replace-button normal" id="btn-alert-2">guardar</div>
+    <div class="replace-button normal" (click)="editarHistoria()" id="btn-alert-2">guardar</div>
   </div>
 
 
-  <div id="container-alert-b">
+  <div class="container-alert">
+    <div class="alert-model">
+        <p class="inner-message bold"></p>
 
-    <div id="alert-check-b" class="alert-model">
-        <p class="bold" id="inner-message-b"></p>
-
-        <div id="cont-btns-alert-b">
-          <button type="submit" id="confirm-b">confirmar</button>
-          <!-- <button type="submit" id="confirm-b" (click)="editarHistoria()" >confirmar</button> -->
-          <div class="replace-button" id="cancel-b">cancelar</div>
+        <div class="message"> <h1 class="innermsg"></h1></div>
+        <div class="cont-btns-alert">
+          <button class="confirm">confirmar</button>
+          <div class="replace-button cancel">cancelar</div>
         </div>
-
-        <div id="time-b"></div>
       </div>
-  </div>
-
-
-
+    </div>
 </div>
 </form>
-<!-- <button class="normal " (click)="AlertConfirm('pruea')" >guardar</button> -->
-<div class="message"> <h1 class="innermsg"></h1> </div>
 </div>
 
 
@@ -264,19 +256,21 @@
 
     <div class="cont-buttons">
       <!-- <div class="normal" (click)="AlertConfirm('¿Desea guardar los cambios?','c')">guardar</div> -->
-      <div class="replace-button normal" id="cancel-c" (click)="AlertConfirm('¿Desea guardar los cambios?','c')">guardar</div>
+      <div class="replace-button normal" id="cancel-c" (click)="preSaveMisionVision()">guardar</div>
     </div>
   </div>
 
-  <div id="container-alert-c">
-    <div id="alert-check-c" class="alert-model">
-        <p class="bold" id="inner-message-c"></p>
-        <div id="cont-btns-alert-c">
-          <button type="submit" id="confirm-c">confirmar</button>
-          <div id="cancel-c" class="replace-button">cancelar</div>
+  <div class="container-alert" #containerAlertElement>
+    <div class="alert-model">
+        <p class="inner-message bold"></p>
+
+        <div class="message"> <h1 class="innermsg"></h1></div>
+        <div class="cont-btns-alert">
+          <button class="confirm" #confirmElement>confirmar</button>
+          <div class="replace-button cancel">cancelar</div>
         </div>
       </div>
-  </div>
+    </div>
 
 
 </form>
@@ -326,13 +320,14 @@
 
 
 
-  <div id="container-alert-d">
-    <div id="alert-check-d" class="alert-model">
-        <p class="bold" id="inner-message-d"></p>
+  <div class="container-alert">
+    <div class="alert-model">
+        <p class="inner-message bold"></p>
 
-        <div id="cont-btns-alert-d">
-          <button id="confirm-d">confirmar</button>
-          <div id="cancel-d" class="replace-button">cancelar</div>
+        <div class="message"> <h1 class="innermsg"></h1></div>
+        <div class="cont-btns-alert">
+          <button class="confirm">confirmar</button>
+          <div class="replace-button cancel">cancelar</div>
         </div>
       </div>
     </div>
@@ -402,16 +397,17 @@
 
     <div class="replace-button normal" (click)="AlertConfirm('¿Desea guardar los cambios?','h')">guardar</div>
 
-    <div id="container-alert-h">
-      <div id="alert-check-h" class="alert-model">
-          <p class="bold" id="inner-message-h"></p>
+    <div class="container-alert">
+      <div class="alert-model">
+          <p class="inner-message bold"></p>
 
-          <div id="cont-btns-alert-h">
-            <button id="confirm-h" (click)="sendFileUpdateTiempo()" > confirmar</button>
-            <div id="cancel-h" class="replace-button">cancelar</div>
+          <div class="message"> <h1 class="innermsg"></h1></div>
+          <div class="cont-btns-alert">
+            <button class="confirm" (click)="sendFileUpdateTiempo()">confirmar</button>
+            <div class="replace-button cancel">cancelar</div>
           </div>
         </div>
-    </div>
+      </div>
 
   </form>
 </div>
@@ -457,16 +453,23 @@
     <!-- <button type="submit" class="bold " (click)="ModalAddTimeLine()"  >guardar</button> -->
     <div class="replace-button normal" (click)="AlertConfirm('¿Desea guardar los cambios?','g')">guardar</div>
 
-    <div id="container-alert-g">
-      <div id="alert-check-g" class="alert-model">
-          <p class="bold" id="inner-message-g"></p>
+    <div class="container-alert">
+      <div class="alert-model">
+          <p class="inner-message bold"></p>
 
-          <div id="cont-btns-alert-g">
-            <button id="confirm-g" (click)="sendFile()" >confirmar</button>
-            <div id="cancel-g" class="replace-button">cancelar</div>
+          <div class="message"> <h1 class="innermsg"></h1></div>
+          <div class="cont-btns-alert">
+            <button class="confirm" (click)="sendFile()">confirmar</button>
+            <div class="replace-button cancel">cancelar</div>
           </div>
         </div>
-    </div>
+      </div>
+
+
+
+
+
+
 
   </form>
 </div>
@@ -486,16 +489,22 @@
 <!-- <button type="submit" class="">guardar</button> -->
 <div class="replace-button normal" (click)="AlertConfirm('¿Desea guardar los cambios?','e')">guardar</div>
 
-<div id="container-alert-e">
-  <div id="alert-check-e" class="alert-model">
-      <p class="bold" id="inner-message-e"></p>
+<div class="container-alert">
+  <div class="alert-model">
+      <p class="inner-message bold"></p>
 
-      <div id="cont-btns-alert-e">
-        <button id="confirm-e" (click)="sendFileUpdateNoticia()" >confirmar</button>
-        <div id="cancel-e" class="replace-button">cancelar</div>
+      <div class="message"> <h1 class="innermsg"></h1></div>
+      <div class="cont-btns-alert">
+        <button class="confirm" (click)="sendFileUpdateNoticia()">confirmar</button>
+        <div class="replace-button cancel">cancelar</div>
       </div>
     </div>
-</div>
+  </div>
+
+
+
+
+
 
 </form>
 </div>
@@ -513,17 +522,18 @@
 <!-- <button type="submit" class="">guardar</button> -->
 <div class="replace-button normal" (click)="AlertConfirm('¿Desea guardar los cambios?','f')"  >guardar</div>
 
+<div class="container-alert">
+  <div class="alert-model">
+      <p class="inner-message bold"></p>
 
-<div id="container-alert-f">
-  <div id="alert-check-f" class="alert-model">
-      <p class="bold" id="inner-message-f"></p>
-
-      <div id="cont-btns-alert-f">
-        <button id="confirm-f" (click)="sendFileNoticia()">confirmar</button>
-        <div id="cancel-f" class="replace-button">cancelar</div>
+      <div class="message"> <h1 class="innermsg"></h1></div>
+      <div class="cont-btns-alert">
+        <button class="confirm" (click)="sendFileNoticia()">confirmar</button>
+        <div class="replace-button cancel">cancelar</div>
       </div>
     </div>
-</div>
+  </div>
+
 
 
 </form>

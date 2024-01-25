@@ -1,4 +1,4 @@
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild, inject } from '@angular/core';
 import { HistoriaService } from '../../services/historia.service';
 import { Form, FormControl, FormGroup } from '@angular/forms';
 import { LineaTiempoService } from '../../services/linea-tiempo.service';
@@ -8,6 +8,7 @@ import { NoticasService } from '../../services/noticas.service';
 import { ValoresService } from '../../services/valores.service';
 import { math } from '@maptiler/sdk';
 import { NgOptimizedImage } from '@angular/common';
+import { AfterViewInit } from '@angular/core';
 
 
 interface HtmlInputEvent extends Event {
@@ -18,8 +19,7 @@ interface HtmlInputEvent extends Event {
   templateUrl: './adminprincipal.component.html',
   styleUrl: './adminprincipal.component.css'
 })
-export class AdminprincipalComponent implements OnInit {
-
+export class AdminprincipalComponent implements OnInit, AfterViewInit {
   anchoimg:any
   altoimg:any
   desgloce: any|undefined
@@ -42,7 +42,8 @@ export class AdminprincipalComponent implements OnInit {
   misionService = inject(MisionService)
   noticiasService = inject(NoticasService)
 
-
+  @ViewChild('confirmElement') confirmElement!: ElementRef;
+  @ViewChild('containerAlertElement') containerAlertElement!: ElementRef;
 
 
   mision:any
@@ -83,7 +84,6 @@ private fileUpdateLineaTiempo: any;
 private fileUpdateNoticia:any;
 
   constructor(){
-
     this.formulario = new FormGroup({
       DescripcionHistoria: new FormControl(),
       EncalceVideo: new FormControl()
@@ -125,6 +125,10 @@ private fileUpdateNoticia:any;
      descripcion: new FormControl(),
      })
 
+  }
+  ngAfterViewInit(): void {
+    this.confirmElement.nativeElement.addEventListener('click', this.onClick.bind(this))
+    // throw new Error('Method not implemented.')
   }
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -368,34 +372,45 @@ ModalTimeLine() {document.getElementById('modal-time-line')?.classList.toggle('m
 
  async onSubmit(){}
 
-  async guardarMision(){
-    let id = this.dataMisionÑ._id
-    const repuestaEdit =  await this.misionService.editarMisionValor(id,this.formularioMisionValor.value)
-    console.log(repuestaEdit)
-  }
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-  textareaValue(valor:any){ console.log(valor) }
-
-
-
-  async editarHistoria(){
+async editarHistoria(){
 
     let enlaceValidate: any = (document.getElementById('iframe-value') as HTMLInputElement | any)?.value
+
     let textareagtp: HTMLTextAreaElement | any = document.getElementById('textareaValidate')
     let valorTextarea: any = textareagtp?.value
 
-if(enlaceValidate !== null && enlaceValidate !== undefined && enlaceValidate !== ''){ enlaceValidate }else{ enlaceValidate=null }
-if(valorTextarea !== null && valorTextarea !== undefined && valorTextarea !== ''){ valorTextarea }else{ valorTextarea=null }
-if(enlaceValidate == null || valorTextarea == null){
+
+if(enlaceValidate !== null && enlaceValidate !== undefined && enlaceValidate !== ''){ enlaceValidate }else{ enlaceValidate="" }
+if(valorTextarea !== null && valorTextarea !== undefined && valorTextarea !== ''){ valorTextarea }else{ valorTextarea="" }
+if(enlaceValidate == "" || valorTextarea == ""){
   this.MessageSuccess('Los campos requeridos no pueden estar vacíos',2)
 }else{
-        this.AlertConfirm("¿Desea guardar los cambios?","b")
-        // let id = this._idhistoria
-        // const respuestaAgregar = await this.historiaService.editarHistoria(this.formulario.value,id)
-        // this.obtenerHistoria()
-        // this.MessageSuccess('¡Datos guardados exitosamente!','b')
-      }
+
+  const innerMessage = document.getElementsByClassName('innermsg')[2]
+  if (innerMessage) { innerMessage.innerHTML = "¿Desea guardar los cambios?"
+
+  document.getElementsByClassName('container-alert')[2]?.classList.add('show')
+  document.getElementsByClassName('message')[2]?.classList.add('show')
+  document.getElementsByClassName('cont-btns-alert')[2]?.classList.add('show')
+
+    document.getElementsByClassName('cancel')[2]?.addEventListener('click', function(){
+    document.getElementsByClassName('container-alert')[2]?.classList.remove('show')
+    document.getElementsByClassName('message')[2]?.classList.remove('show')
+    document.getElementsByClassName('cont-btns-alert')[2]?.classList.remove('show')
+  },false)
+  document.getElementsByClassName('confirm')[2]?.addEventListener('click', function(){
+    setTimeout(function() { document.getElementsByClassName('container-alert')[2]?.classList.remove('show')
+  },300) },false)
+
+  //   let id:any = this._idhistoria
+  // const respuestaAgregar = await this.historiaService.editarHistoria(this.formulario.value,id)
+  // this.obtenerHistoria()
+  // this.MessageSuccess('¡Datos guardados exitosamente!',2)
+}
+}
 }
 
 
@@ -835,6 +850,50 @@ testEmptyPortada(){
    if(prefile==null || prefile==undefined || prefile==""){ this.MessageSuccess("No hay archivo seleccionado", 1) }
 }
 
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////7
+preSaveMisionVision() {
+  const misionTextArea: HTMLTextAreaElement | any = document.getElementById('mision-txt')
+  const visionTextArea: HTMLTextAreaElement | any = document.getElementById('vision-txt')
+
+  let mision: string = ''
+  let vision: string = ''
+
+  if (misionTextArea instanceof HTMLTextAreaElement) { mision = misionTextArea.value }
+  if (visionTextArea instanceof HTMLTextAreaElement) { vision = visionTextArea.value }
+
+  if(mision!=="" && vision!==""){
+
+
+  const innerMessage = document.getElementsByClassName('innermsg')[3]
+  if (innerMessage) { innerMessage.innerHTML = "¿Desea guardar los cambios?"
+
+
+  document.getElementsByClassName('container-alert')[3]?.classList.add('show')
+  document.getElementsByClassName('message')[3]?.classList.add('show')
+  document.getElementsByClassName('cont-btns-alert')[3]?.classList.add('show')
+
+  document.getElementsByClassName('cancel')[3]?.addEventListener('click', function(){
+    document.getElementsByClassName('container-alert')[3]?.classList.remove('show')
+    document.getElementsByClassName('message')[3]?.classList.remove('show')
+    document.getElementsByClassName('cont-btns-alert')[3]?.classList.remove('show')
+  },false)
+  document.getElementsByClassName('confirm')[3]?.addEventListener('click', function(){
+    setTimeout(function() {
+      document.getElementsByClassName('container-alert')[3]?.classList.remove('show')
+    },300) },false)
+  }
+  }else if((mision=="" && vision=="") || (mision=="" || vision=="")) { this.MessageSuccess("Los campos requeridos no pueden estar vacíos",3) }
+}
+
+onClick() {
+  this.guardarMision()
+  setTimeout(() => { this.containerAlertElement.nativeElement.classList.remove('show') }, 300) }
+
+async guardarMision() {
+  let id = this.dataMisionÑ._id
+  const respuestaEdit = await this.misionService.editarMisionValor(id, this.formularioMisionValor.value)
+}
 
 
 }
+
