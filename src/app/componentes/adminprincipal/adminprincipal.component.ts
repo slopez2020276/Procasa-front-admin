@@ -99,8 +99,8 @@ private fileUpdateNoticia:any;
       descriptionLineaTiempo: new FormControl()
     })
     this.formularioEditHistoria = new FormGroup({
-      titleHistoria: new FormControl(),
-      descriptionHistoria: new FormControl()
+      EncalceVideo: new FormControl(),
+      DescripcionHistoria: new FormControl()
     })
     this.formularioMisionValor = new FormGroup({
       textMision: new FormControl(),
@@ -746,6 +746,8 @@ sendFileBackground():void{
 
 
 
+
+
 testEmptyBackground(){
   let prefile: any | null = (document.getElementById('file-bg') as HTMLInputElement).value
   if(prefile==null || prefile==undefined || prefile==""){ this.MessageSuccess("No hay archivo seleccionado", 0) }
@@ -971,8 +973,10 @@ onClickHistoria() {
 
 async guardarHistoria() {
 
-  const respuestaEdit = await this.historiaService.editarHistoria(this._idhistoria, this.formularioEditHistoria.value)
   console.log(this._idhistoria);
+  const respuestaEdit = await this.historiaService.editarHistoria( this.formularioEditHistoria.value,this._idhistoria)
+  
+console.log(respuestaEdit)
 }
 
 

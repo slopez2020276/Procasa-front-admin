@@ -29,10 +29,10 @@ export class HistoriaService {
   }
 
   editarHistoria(fromValue:any,idhistoria){
-    let id = idhistoria
+     idhistoria
     console.log(idhistoria)
     return firstValueFrom(
-      this.httpClient.put<any>(`${this.baseUrl}/editarHistoria/${id}`,fromValue, this.createHeaders())
+      this.httpClient.put<any>(`${this.baseUrl}/editarHistoria/${idhistoria}`,fromValue, this.createHeaders())
     )
   }
   sendPost(body:FormData,id:any):Observable<any>{
