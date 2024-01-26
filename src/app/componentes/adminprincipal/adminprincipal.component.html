@@ -445,32 +445,29 @@
 
   <form [formGroup]="formularioAgregarLineaTiempo"  >
   <label for="file">Imagen</label>
-    <input type="file" (change)="getFile($event)" name="file" data-content="seleccionar archivo" title="imagen">
-  <label for="title">Título</label>
-    <input type="text"  formControlName="titleLineaTiempo" ame="title" title="título">
-  <label for="description">Descripción</label>
-    <input type="text" formControlName="descriptionLineaTiempo"title="description">
-    <!-- <button type="submit" class="bold " (click)="ModalAddTimeLine()"  >guardar</button> -->
-    <div class="replace-button normal" (click)="saveNewTimeLine()">guardar</div>
+    <input type="file" id="new-file-input" (change)="preSaveTimeLine($event)" (change)="getFile($event)" name="file" data-content="seleccionar archivo" title="imagen">
+<div class="preview-img-model">
+  <img src="" alt="" id="img-pre-tl">
+</div>
 
-    <div class="container-alert">
+  <label for="title">Título</label>
+    <input type="text" id="new-titulo-tl" formControlName="titleLineaTiempo" name="title" title="título">
+  <label for="description">Descripción</label>
+    <input type="text" id="new-desc-tl" formControlName="descriptionLineaTiempo" title="description">
+    <!-- <div class="replace-button normal" (click)="saveNewTimeLine()">guardar</div> -->
+    <div class="replace-button normal" id="save-new-tili">guardar</div>
+
+    <div class="container-alert" #containerAlertElementTL>
       <div class="alert-model">
           <p class="inner-message bold"></p>
 
           <div class="message"> <h1 class="innermsg"></h1></div>
           <div class="cont-btns-alert">
-            <button class="confirm" (click)="sendFile()">confirmar</button>
+            <button class="confirm" #confirmElementTL>confirmar</button>
             <div class="replace-button cancel">cancelar</div>
           </div>
         </div>
       </div>
-
-
-
-
-
-
-
   </form>
 </div>
 

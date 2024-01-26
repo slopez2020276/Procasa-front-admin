@@ -49,6 +49,8 @@ export class AdminprincipalComponent implements OnInit, AfterViewInit {
   @ViewChild('containerAlertElementVal') containerAlertElementVal!: ElementRef
   @ViewChild('confirmElementHis') confirmElementHis!: ElementRef
   @ViewChild('containerAlertElementHis') containerAlertElementHis!: ElementRef
+  @ViewChild('confirmElementTL') confirmElementTL!: ElementRef
+  @ViewChild('containerAlertElementTL') containerAlertElementTL!: ElementRef
 
 
   mision:any
@@ -135,6 +137,7 @@ private fileUpdateNoticia:any;
     this.confirmElement.nativeElement.addEventListener('click', this.onClick.bind(this))
     this.confirmElementVal.nativeElement.addEventListener('click', this.onClickValores.bind(this))
     this.confirmElementHis.nativeElement.addEventListener('click', this.onClickHistoria.bind(this))
+    this.confirmElementTL.nativeElement.addEventListener('click', this.onClickNewTimeLine.bind(this))
   }
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -236,7 +239,7 @@ if(inputfileBefbg==""){
 
   async obtenerLinea(){
     const repuestaLinea = await this.lineaService.obtenerLineaTiempo()
-    this.dataLinea = repuestaLinea[1].linea
+    this.dataLinea = repuestaLinea.lineas
     console.log(this.dataLinea)
   }
 
@@ -292,7 +295,6 @@ for(let e = 0; e < valores.length; e++){
   document.getElementById('vhabilitar')?.classList.toggle('hide')
   document.getElementById('vdeshabilitar')?.classList.toggle('hide')
 }
-
 
 DisableValores(){
   const valores = document.getElementsByClassName('valores-txt')
@@ -518,23 +520,7 @@ async eliminarNoticia(id){
     }
   }
 
-  sendFile():void{
 
-    const body = new FormData();
-
-    if(this.fileTmp){
-      body.append('ImgPathLineaTiempo', this.fileTmp.fileRaw, this.fileTmp.fileName);
-      body.append('titleLineaTiempo', this.formularioAgregarLineaTiempo.value.titleLineaTiempo)
-      body.append('descriptionLineaTiempo',this.formularioAgregarLineaTiempo.value.descriptionLineaTiempo)
-    }else{
-      body.append('titleLineaTiempo', this.formularioAgregarLineaTiempo.value.titleLineaTiempo)
-      body.append('descriptionLineaTiempo',this.formularioAgregarLineaTiempo.value.descriptionLineaTiempo)
-    }
-    this.lineaService.sendPost(body)
-    .subscribe(res =>{console.log(res), this.obtenerLinea(),this.fileTmp = null})
-
-
-  }
 
   getFileNoticia($event: any): void {
     //TODO esto captura el archivo!
@@ -963,66 +949,124 @@ onClickHistoria() {
 
 async guardarHistoria() {
 
-  console.log(this._idhistoria);
   const respuestaEdit = await this.historiaService.editarHistoria( this.formularioEditHistoria.value,this._idhistoria)
-
-console.log(respuestaEdit)
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+preSaveTimeLine(event: Event): void  {
+
+  const fileInput = event.target as HTMLInputElement
+  const archivo = fileInput.files?.[0]
+
+  if (archivo) { const lector = new FileReader()
+
+    lector.onload = (eventoLectura:any) => {
+      const imagen = new Image()
+      imagen.src = eventoLectura.target.result as string
+
+      imagen.onload = () => {
+        const fileSize: number = archivo.size
+        const size: any = fileSize.toFixed(2)
+        let medida: string
+        let sizemedida: any
+        if((size/1024/1024) < 1.0) {medida = " KB"; sizemedida = (size/1024).toFixed(2).toString() + medida }else{ medida = " MB"; sizemedida = (size/1024/1024).toFixed(2).toString() + medida }
+        const fileName: string = archivo.name
+        let img = new Image()
+        const objectURL = URL.createObjectURL(archivo)
+        img.src = objectURL
+        this.anchoimg = imagen.width, this.altoimg = imagen.height
+
+const saveButtonTL = document.getElementById('save-new-tili')
+if (saveButtonTL) {
+  saveButtonTL.addEventListener('click', () => {
+
+    this.saveNewTimeLine()
+
+}, false) }
+
+        // document.getElementsByClassName('danger-red')[3]?.classList.remove('limit')
+        // document.getElementsByClassName('danger-red')[4]?.classList.remove('limit')
+        // document.getElementsByClassName('danger-red')[5]?.classList.remove('limit')
+
+        // if(this.anchoimg > 2000){  document.getElementsByClassName('danger-red')[3].classList.add('limit') }
+        // if(this.altoimg > 1500){ document.getElementsByClassName('danger-red')[4].classList.add('limit') }
+        // if((size/1024) > 2048 ){  document.getElementsByClassName('danger-red')[5].classList.add('limit') }
+
+        // document.getElementById('innersize')!.innerHTML = sizemedida
+        // document.getElementById('innerwidth')!.innerHTML = this.anchoimg + " px"
+        // document.getElementById('innerheight')!.innerHTML = this.altoimg + " px"
+        document.getElementById('new-file-input')?.setAttribute('data-content', fileName)
+        // document.getElementById('pre-portada')?.removeAttribute('src')
+        document.getElementById('img-pre-tl')?.setAttribute('src', img.src)
+        // document.getElementById('pre-portada')?.setAttribute('src', img.src)
+      }
+    }
+    lector.readAsDataURL(archivo)
+  }
+}
+
+//#################################################################################################################################
 saveNewTimeLine() {
 
-//   let enlace: any = (document.getElementById('iframe-value') as HTMLInputElement | any)?.value
-//   const preEnlace: HTMLInputElement | null = document.getElementById('iframe-value') as HTMLInputElement
-//   const descTextArea: HTMLTextAreaElement | any = document.getElementById('textareaValidate')
-//   let desc: string = ''
+  const fileInput: HTMLInputElement | null = document.getElementById('new-file-input') as HTMLInputElement | null
 
-//   if (preEnlace instanceof HTMLTextAreaElement) { enlace = preEnlace.value }
-//   if (descTextArea instanceof HTMLTextAreaElement) { desc = descTextArea.value }
+  const tituloInput: HTMLInputElement | null = document.getElementById('new-titulo-tl') as HTMLInputElement | null
+  const descripcionInput: HTMLInputElement | null = document.getElementById('new-desc-tl') as HTMLInputElement | null
 
-//   if(enlace!=="" && desc!==""){
-//   const innerMessage = document.getElementsByClassName('innermsg')[2]
-//   if (innerMessage) { innerMessage.innerHTML = "¿Desea guardar los cambios?"
+  let file: string = 'empty.jpg'
+  let titulo: string = ''
+  let descripcion: string = ''
 
-//   document.getElementsByClassName('container-alert')[2]?.classList.add('show')
-//   document.getElementsByClassName('message')[2]?.classList.add('show')
-//   document.getElementsByClassName('cont-btns-alert')[2]?.classList.add('show')
+  if (fileInput instanceof HTMLInputElement) { file = fileInput.value }
+  if (tituloInput instanceof HTMLInputElement) { titulo = tituloInput.value }
+  if (descripcionInput instanceof HTMLInputElement) { descripcion = descripcionInput.value }
 
-//   document.getElementsByClassName('cancel')[2]?.addEventListener('click', function(){
-//     document.getElementsByClassName('container-alert')[2]?.classList.remove('show')
-//     document.getElementsByClassName('message')[2]?.classList.remove('show')
-//     document.getElementsByClassName('cont-btns-alert')[2]?.classList.remove('show')
-//   },false)
-//   document.getElementsByClassName('confirm')[2]?.addEventListener('click', function(){
-//     setTimeout(function() {
-//       document.getElementsByClassName('container-alert')[2]?.classList.remove('show')
-//     },300) },false)
-//   }
-//   }else{ this.MessageSuccess("Los campos requeridos no pueden estar vacíos",2) }
-// }
 
-// onClickHistoria() {
-//   this.guardarHistoria()
-//   setTimeout(() => { this.containerAlertElementHis.nativeElement.classList.remove('show') }, 300) }
+console.log(file)
+console.log(titulo)
+console.log(descripcion)
 
-// async guardarHistoria() {
+  if(file!=="" && titulo!=="" && descripcion!==""){
+  const innerMessage = document.getElementsByClassName('innermsg')[6]
+  if (innerMessage) { innerMessage.innerHTML = "¿Desea guardar los cambios?"
 
-//   console.log(this._idhistoria);
-//   const respuestaEdit = await this.historiaService.editarHistoria( this.formularioEditHistoria.value,this._idhistoria)
+  document.getElementsByClassName('container-alert')[6]?.classList.add('show')
+  document.getElementsByClassName('message')[6]?.classList.add('show')
+  document.getElementsByClassName('cont-btns-alert')[6]?.classList.add('show')
 
-// console.log(respuestaEdit)
-// }
-
+  document.getElementsByClassName('cancel')[6]?.addEventListener('click', function(){
+    document.getElementsByClassName('container-alert')[6]?.classList.remove('show')
+    document.getElementsByClassName('message')[6]?.classList.remove('show')
+    document.getElementsByClassName('cont-btns-alert')[6]?.classList.remove('show')
+  },false)
+  document.getElementsByClassName('confirm')[6]?.addEventListener('click', function(){
+    setTimeout(function() {
+      document.getElementsByClassName('container-alert')[6]?.classList.remove('show')
+    },300) },false)
+  }
+  }else{ this.MessageSuccess("Los campos requeridos no pueden estar vacíos",6) }
 }
 
+onClickNewTimeLine() {
+  this.sendFile()
+  setTimeout(() => { this.containerAlertElementTL.nativeElement.classList.remove('show') }, 300) }
 
+  sendFile():void{
 
+    const body = new FormData();
 
-
-
-
-
+    if(this.fileTmp){
+      body.append('ImgPathLineaTiempo', this.fileTmp.fileRaw, this.fileTmp.fileName);
+      body.append('titleLineaTiempo', this.formularioAgregarLineaTiempo.value.titleLineaTiempo)
+      body.append('descriptionLineaTiempo',this.formularioAgregarLineaTiempo.value.descriptionLineaTiempo)
+    }else{
+      body.append('titleLineaTiempo', this.formularioAgregarLineaTiempo.value.titleLineaTiempo)
+      body.append('descriptionLineaTiempo',this.formularioAgregarLineaTiempo.value.descriptionLineaTiempo)
+    }
+    this.lineaService.sendPost(body)
+    .subscribe(res =>{console.log(res), this.obtenerLinea(),this.fileTmp = null})
+    this.MessageSuccess('Datos guardados exitosamente',6)
+  }
 
 }
-

@@ -430,7 +430,7 @@ iframe#iframe-preview {
 div#modal-time-line, div#modal-time-line-add, div#modal-edit-notice {
   position: fixed;
   width: 450px;
-  height: 500px;
+  height: auto;
   background: #EEEEEE;
   left: calc(50% - 225px);
   border-radius: 4px;
@@ -439,7 +439,7 @@ div#modal-time-line, div#modal-time-line-add, div#modal-edit-notice {
   justify-content: center;
   align-items: start;
   flex-wrap: wrap;
-  padding: 1rem;
+  padding: 1rem 0 2rem 0;
   top: 200vh;
   transition: .4s ease;
   opacity: 0;
@@ -456,7 +456,7 @@ div#modal-time-line form, div#modal-time-line-add form {
 
 div#modal-time-line.modal, div#modal-time-line-add.modal, div#modal-edit-notice.modal {
   transform: scale(1);
-  top: calc(50% - 250px);
+  top: calc(50% - 270px);
   cursor: pointer;
   opacity: 1;
   z-index: 999;
@@ -1107,3 +1107,22 @@ span.danger-red.limit { color: #FF182C; }
 h1.innermsg {
   background: transparent;
 }
+
+div.preview-img-model {
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem 0 0 0;
+}
+
+
+img#img-pre-tl {
+  width: 150px;
+  width: auto;
+  height: auto;
+  max-height: 150px;
+  border-radius: 4px;
+}
+
