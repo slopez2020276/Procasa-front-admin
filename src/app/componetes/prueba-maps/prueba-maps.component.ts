@@ -45,20 +45,20 @@ export class PruebaMapsComponent implements OnInit, AfterViewInit {
         if (ubicacion && ubicacion.codenadaslat && ubicacion.codenadasLng) {
           const lat = parseFloat(ubicacion.codenadaslat);
           const lng = parseFloat(ubicacion.codenadasLng);
-  
+
           // Agrega un marcador para cada ubicación
           const marker = L.marker([lat, lng], { icon: L.icon({ iconUrl: '../../../assets/images/marker-icon.png' }) }).addTo(this.map);
-          
+
           // Puedes personalizar el marcador según tus necesidades
           // marker.bindPopup('Información del marcador');
-  
+
           // Puedes agregar cada marcador a un array si necesitas gestionarlos posteriormente
           // this.markers.push(marker);
         } else {
           console.error('Ubicación no válida:', ubicacion);
         }
       });
-  
+
       // Opcional: Ajusta la vista del mapa para incluir todos los marcadores
       if (this.map && ubiArray.length > 1) {
         const bounds = L.latLngBounds(ubiArray.map(ubicacion => [ubicacion.codenadaslat, ubicacion.codenadasLng]));
@@ -68,5 +68,5 @@ export class PruebaMapsComponent implements OnInit, AfterViewInit {
       console.error('El arreglo de ubicaciones está vacío o no definido:', ubiArray);
     }
   }
-  
+
 }

@@ -690,6 +690,7 @@ preSaveBackground(event: Event): void  {
         document.getElementById('preview-bg')?.removeAttribute('src')
         document.getElementById('preview-bg')?.setAttribute('src', img.src)
         document.getElementById('pre-bg')?.setAttribute('src', img.src)
+        document.getElementById('endpreview-bg')?.setAttribute('src', img.src)
       }
     }
     lector.readAsDataURL(archivo)
@@ -781,6 +782,7 @@ testEmptyBackground(){
         document.getElementById('pre-portada')?.removeAttribute('src')
         document.getElementById('preview-portada')?.setAttribute('src', img.src)
         document.getElementById('pre-portada')?.setAttribute('src', img.src)
+        document.getElementById('endpreview-portada')?.setAttribute('src', img.src)
       }
     }
     lector.readAsDataURL(archivo)
@@ -995,9 +997,9 @@ if (saveButtonTL) {
         // if(this.altoimg > 1500){ document.getElementsByClassName('danger-red')[4].classList.add('limit') }
         // if((size/1024) > 2048 ){  document.getElementsByClassName('danger-red')[5].classList.add('limit') }
 
-        // document.getElementById('innersize')!.innerHTML = sizemedida
-        // document.getElementById('innerwidth')!.innerHTML = this.anchoimg + " px"
-        // document.getElementById('innerheight')!.innerHTML = this.altoimg + " px"
+        document.getElementsByClassName('innerdetails')[2]!.innerHTML = sizemedida
+        document.getElementsByClassName('innerdetails')[0]!.innerHTML = this.anchoimg + " px"
+        document.getElementsByClassName('innerdetails')[1]!.innerHTML = this.altoimg + " px"
         document.getElementById('new-file-input')?.setAttribute('data-content', fileName)
         // document.getElementById('pre-portada')?.removeAttribute('src')
         document.getElementById('img-pre-tl')?.setAttribute('src', img.src)
@@ -1024,11 +1026,6 @@ saveNewTimeLine() {
   if (tituloInput instanceof HTMLInputElement) { titulo = tituloInput.value }
   if (descripcionInput instanceof HTMLInputElement) { descripcion = descripcionInput.value }
 
-
-console.log(file)
-console.log(titulo)
-console.log(descripcion)
-
   if(file!=="" && titulo!=="" && descripcion!==""){
   const innerMessage = document.getElementsByClassName('innermsg')[6]
   if (innerMessage) { innerMessage.innerHTML = "¿Desea guardar los cambios?"
@@ -1037,7 +1034,7 @@ console.log(descripcion)
   document.getElementsByClassName('message')[6]?.classList.add('show')
   document.getElementsByClassName('cont-btns-alert')[6]?.classList.add('show')
 
-  document.getElementsByClassName('cancel')[6]?.addEventListener('click', function(){
+    document.getElementsByClassName('cancel')[6]?.addEventListener('click', function(){
     document.getElementsByClassName('container-alert')[6]?.classList.remove('show')
     document.getElementsByClassName('message')[6]?.classList.remove('show')
     document.getElementsByClassName('cont-btns-alert')[6]?.classList.remove('show')

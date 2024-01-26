@@ -28,5 +28,5 @@ export class PruebaMaps2Component  implements AfterViewInit   {
   ngAfterViewInit(): void {
     this.initMap();
    }
-  
+
 }

@@ -30,7 +30,7 @@
 
     <div class="prewiew sub-items">
       <img id="navbar-pre-bg" src="../../../assets/img/navbar.png" alt="navbar" title="navbar preview">
-      <img id="preview-bg" src="" alt="fondo" title="previsualización del archivo">
+      <img id="preview-bg" [src]="'http://localhost:3002/' + imgfondo" alt="fondo" title="previsualización del archivo">
       <img id="footer-bg" src="../../../assets/img/footer.png" alt="footer" title="footer preview">
     </div>
 
@@ -79,7 +79,6 @@
 </div>
 
 <!-- ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- -->
-<!-- ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- -->
 <div class="container" id="container-1">
   <h1 class="bold title-bg">PORTADA PRINCIPAL</h1>
   <div class="sub-container-items">
@@ -92,7 +91,7 @@
 
     <div class="prewiew">
       <img id="navbar-pre" src="../../../assets/img/navbar.png" alt="navbar" title="navbar preview">
-      <img id="preview-portada" src="" alt="portada" title="previsualización del archivo">
+      <img id="preview-portada" [src]="'http://localhost:3002/' + imgPrincipal" alt="portada" title="previsualización del archivo">
       <img id="footer-pre" src="../../../assets/img/footer.png" alt="footer" title="footer preview">
     </div>
 
@@ -141,6 +140,21 @@
 </div>
 
 
+
+
+
+
+<div id="container-preview" class="container">
+  <h1 class="bold title-bg">PREVISUALIZACIÓN FINAL</h1>
+  <div id="sub-cont-preview-end">
+    <img id="nav-end" src="../../../assets/img/navbar.png" alt="navbar" title="navbar preview">
+      <div>
+        <img id="endpreview-bg" [src]="'http://localhost:3002/' + imgfondo" alt="">
+        <img id="endpreview-portada" [src]="'http://localhost:3002/' + imgPrincipal" alt="">
+      </div>
+    <img id="foo-end" src="../../../assets/img/footer.png" alt="footer" title="footer preview">
+  </div>
+</div>
 
 <!-- ------------------------------------------------------------------------------------------------------------------------------------------------------------------- -->
 <!-- ------------------------------------------------------------------------------------------------------------------------------------------------------------------- -->
@@ -452,6 +466,13 @@
   <form [formGroup]="formularioAgregarLineaTiempo"  >
   <label for="file">Imagen</label>
   <input type="file" id="new-file-input" (change)="preSaveTimeLine($event)" (change)="getFile($event)" name="file" data-content="seleccionar archivo" title="imagen">
+  <div class="details-img">
+    <ul>
+      <li>ancho <p class="innerdetails bold"></p></li>
+      <li>alto <p class="innerdetails bold"></p></li>
+      <li>tamaño <p class="innerdetails bold"></p></li>
+    </ul>
+  </div>
 <div class="preview-img-model">
   <img src="" alt="" id="img-pre-tl">
 </div>  <label for="title">Título</label>
