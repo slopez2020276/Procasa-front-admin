@@ -33,6 +33,7 @@ export class AdminprincipalComponent implements OnInit, AfterViewInit {
   formularioAgregarNoticias: FormGroup
 
   imgPrincipal : any;
+  imgfondo:any;
 
   dataValores
   dataHistoria
@@ -231,7 +232,8 @@ if(inputfileBefbg==""){
     this.EncalceVideo = responsivehistoria.historia[0].EncalceVideo
     this._idhistoria = responsivehistoria.historia[0]._id
     this.imgPrincipal =  responsivehistoria.historia[0].imgPathPrincipal
-    console.log(this._idhistoria)
+    this.imgfondo = responsivehistoria.historia[0].imgPathFondo
+     console.log(this._idhistoria)
 
     document.getElementById('iframe-value')?.setAttribute('disabled', 'true')
     document.getElementById('textareaValidate')?.setAttribute('disabled', 'true')
@@ -239,7 +241,7 @@ if(inputfileBefbg==""){
 
   async obtenerLinea(){
     const repuestaLinea = await this.lineaService.obtenerLineaTiempo()
-    this.dataLinea = repuestaLinea.lineas
+    this.dataLinea = repuestaLinea[1].lineas
     console.log(this.dataLinea)
   }
 

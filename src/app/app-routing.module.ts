@@ -11,11 +11,15 @@ import { AlertComponent } from './componentes/alert/alert.component';
 import { SuscripcionesComponent } from './componentes/suscripciones/suscripciones.component';
 import { YoutubeComponent } from './componentes/youtube/youtube.component';
 import { UsuariosComponent } from './componentes/usuarios/usuarios.component';
+import { PruebaMapsComponent } from './componetes/prueba-maps/prueba-maps.component';
+import { PruebaMaps2Component } from './componetes/prueba-maps2/prueba-maps2.component';
 
 const routes: Routes = [
   {path:'',redirectTo:'Inicio', pathMatch:'full'},
   {path:'Inicio',title:'inicio',component:PrincipalComponent},
   {path:'ubicaciones',title:'Ubicaciones',component:UbicacionesComponent},
+  {path:'pruebaMaps',title:'Maps Prueba',component:PruebaMapsComponent},
+  {path:'pruebaMaps2',title:'Maps Prueba',component:PruebaMaps2Component},
   {path:'quiero-comprar',title:'Quiero Comprar',component:QuieroComprarComponent},
   {path:'admin',title:'Administrador', component: AdminloginComponent},
   {path:'admin/Ubicaciones',title:'Administrador-Ubicaciones', component:AdminUbicacionesComponent},

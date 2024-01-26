@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
+import { UbicacionServiceService } from '../../services/ubicacion-service.service';
 
 @Component({
   selector: 'app-ubicaciones',
@@ -7,4 +8,13 @@ import { Component } from '@angular/core';
 })
 export class UbicacionesComponent {
 
-}
+  UbicacionService = inject(UbicacionServiceService)
+
+  data
+
+
+
+  }
+
+
+

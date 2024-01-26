@@ -29,6 +29,11 @@ import { YoutubeComponent } from './componentes/youtube/youtube.component';
 import { SafePipe } from './safe.pipe';
 import { UsuariosComponent } from './componentes/usuarios/usuarios.component';
 import { NgOptimizedImage } from '@angular/common';
+import { PruebaMapsComponent } from './componetes/prueba-maps/prueba-maps.component';
+import { PruebaMaps2Component } from './componetes/prueba-maps2/prueba-maps2.component';
+import { MapComponent } from './map/map.component';
+import { Noticias01Component } from './componentes/noticias0.1/noticias0.1.component';
+import { NoticiasNEWComponent } from './componentes/noticias-new/noticias-new.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -55,6 +60,11 @@ import { NgOptimizedImage } from '@angular/common';
     YoutubeComponent,
     SafePipe,
     UsuariosComponent,
+    PruebaMapsComponent,
+    PruebaMaps2Component,
+    MapComponent,
+    Noticias01Component,
+    NoticiasNEWComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,6 +1,9 @@
-import { Component, OnInit, ViewChild, ElementRef, AfterViewInit, OnDestroy } from '@angular/core'; import { CommonModule } from '@angular/common';
+import { Component, OnInit, ViewChild, ElementRef, AfterViewInit, OnDestroy, inject } from '@angular/core';
+ import { CommonModule } from '@angular/common';
 import { Map, MapStyle, Marker, config, Popup } from '@maptiler/sdk';
 import '@maptiler/sdk/dist/maptiler-sdk.css';
+import { UbicacionServiceService } from '../../services/ubicacion-service.service';
+
 
 @Component({
   selector: 'app-maps',
@@ -9,7 +12,11 @@ import '@maptiler/sdk/dist/maptiler-sdk.css';
 })
 export class MapsComponent implements OnInit, AfterViewInit, OnDestroy  {
   
-
+  //services
+  UbicacionService = inject(UbicacionServiceService)
+  //data
+  data
+// marcadores
   map: Map | undefined;
   mostrar: boolean = false;
   ubicacio1: any;
@@ -34,25 +41,22 @@ export class MapsComponent implements OnInit, AfterViewInit, OnDestroy  {
   @ViewChild('map')
   private mapContainer!: ElementRef<HTMLElement>;
 
-  ngOnInit(): void {
+   async ngOnInit(){
 
     config.apiKey = 'mmhVVCeVE3UJhtmX4ezW';
-    this.markers = new Marker({color:"#aa182c"}).setLngLat([-90.58707990424546,14.610695907067866])
-    this.ubicacio1 = new Marker()
-    this.ubicacio2 = new Marker()
-    this.ubicacio3 = new Marker()
-    this.ubicacio4 = new Marker()
-    this.ubicacio5 = new Marker()
-    this.ubicacio6 = new Marker()
-    this.ubicacio7 = new Marker()
-    this.ubicacio8 = new Marker()
-    this.ubicacio9 = new Marker()
-    this.ubicacio10 = new Marker()
-    this.ubicacio11 = new Marker()
+  
+
+    
+
+    console.log(this.data[0])
 
   }
 
+
+
   ngAfterViewInit() {
+
+    
     const initialState = { lng: -90.528741, lat: 14.603684, zoom: 10 };
     this.map = new Map({
       container: this.mapContainer.nativeElement,
@@ -60,39 +64,16 @@ export class MapsComponent implements OnInit, AfterViewInit, OnDestroy  {
       center: [initialState.lng, initialState.lat],
       zoom: initialState.zoom
     });
-    this.ubicacio1 = new Marker({ color: "#ab182d" })
-      .setLngLat([-90.58750148105256, 14.612134851341485]).setPopup(new Popup().setHTML('<h1>Procasa Central1</h1>'))
+
+    for(let index1   in this.data){
+      new Marker({color: "#ab182d" })
+      .setLngLat([-90.58750148105256,14.612134851341485])
       .addTo(this.map);
-    this.ubicacio2 =  new Marker({ color: "#ab182d" })
-    .setLngLat([-90.52819945504122, 14.6073388602745]).setPopup(new Popup().setHTML('<h1>Procasa Central2</h1>'))
-    .addTo(this.map);
-    this.ubicacio3 =  new Marker({ color: "#ab182d" })
-    .setLngLat([-90.5216741781541, 14.614655501025824]).setPopup(new Popup().setHTML('<h1>Procasa Central3</h1>'))
-    .addTo(this.map);
-    this.ubicacio4 =  new Marker({ color: "#ab182d" })
-    .setLngLat([-90.5087995751424, 14.593060502876403]).setPopup(new Popup().setHTML('<h1>Procasa Central4</h1>'))
-    .addTo(this.map);
-    this.ubicacio5 =  new Marker({ color: "#ab182d" })
-    .setLngLat([-90.45764448505608, 14.55750719849885]).setPopup(new Popup().setHTML('<h1>Procasa Central5</h1>'))
-    .addTo(this.map);
 
-  // Ubicacion coodenadas Meat House
+    }
 
-    this.ubicacio6 =  new Marker({ color: "#222222" })
-    .setLngLat([-90.58690824328646, 14.608536464013127]).setPopup(new Popup().setHTML('<h1>Meat House San Cristobal</h1>'))
-    .addTo(this.map);
-    this.ubicacio7 =  new Marker({ color: "#222222" })
-    .setLngLat([-90.58090009499428, 14.636939751825205]).setPopup(new Popup().setHTML('<h1>Procasa Central7</h1>'))
-    .addTo(this.map);
-    this.ubicacio8 =  new Marker({ color: "#222222" })
-    .setLngLat([-90.55789747010412, 14.626641908277852]).setPopup(new Popup().setHTML('<h1>Procasa Central8</h1>'))
-    .addTo(this.map);
-    this.ubicacio9 =  new Marker({ color: "#222222" })
-    .setLngLat([-90.54948606249503, 14.61052979701638]).setPopup(new Popup().setHTML('<h1>Procasa Central9</h1>'))
-    .addTo(this.map);
-    this.ubicacio10 =  new Marker({ color: "#222222" })
-    .setLngLat([-90.50845899272827,14.593918136505467]).setPopup(new Popup().setHTML('<h1>Procasa Central10</h1>'))
-    .addTo(this.map);
+
+
 
     console.log(this.markers);
     this.ubicacio1
