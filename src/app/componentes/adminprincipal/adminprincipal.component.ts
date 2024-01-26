@@ -90,6 +90,7 @@ private fileTmpNoticia :any;
 private imgPathPrincipal : any;
 private fileUpdateLineaTiempo: any;
 private fileUpdateNoticia:any;
+private fileBackgrud:any
 
   constructor(){
     this.formulario = new FormGroup({
@@ -722,9 +723,9 @@ preSaveBackground(event: Event): void  {
 
 sendFileBackground():void{
   const body = new FormData()
-  if(this.imgPathPrincipal){
-    body.append('imgPathPrincipal', this.imgPathPrincipal.fileRaw, this.imgPathPrincipal.fileName);
-    this.historiaService.sendPost(body,this._idhistoria)
+  if(this.fileBackgrud){
+    body.append('imgPathFondo', this.fileBackgrud.fileRaw, this.fileBackgrud.fileName);
+    this.historiaService.sendback(body,this._idhistoria)
     .subscribe(res =>{ this.MessageSuccess('¡Guardado exitosamente!',0)
     document.getElementById('container-alert-a')?.classList.remove('show')
       console.log(res), this.obtenerHistoria() })
@@ -733,6 +734,15 @@ sendFileBackground():void{
   }
 }
 
+
+getFileBack($event: any): void {
+  //TODO esto captura el archivo!
+  const [ file ] = $event.target.files;
+  this.fileBackgrud = {
+    fileRaw:file,
+    fileName:file.name
+  }
+}
 
 
 

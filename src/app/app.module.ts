@@ -72,7 +72,7 @@ import { NoticiasNEWComponent } from './componentes/noticias-new/noticias-new.co
     ReactiveFormsModule,
     HttpClientModule,
     FormsModule,
-    NgOptimizedImage
+    NgOptimizedImage,  
   ],
   providers: [],
   bootstrap: [AppComponent]
