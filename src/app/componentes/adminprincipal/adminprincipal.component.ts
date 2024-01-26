@@ -928,25 +928,17 @@ async guardarValores() {
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////77
 preSaveHistoria() {
 
-    let enlace: any = (document.getElementById('iframe-value') as HTMLInputElement | any)?.value
-
+  let enlace: any = (document.getElementById('iframe-value') as HTMLInputElement | any)?.value
   const preEnlace: HTMLInputElement | null = document.getElementById('iframe-value') as HTMLInputElement
-  // let enlace: string = preEnlace?.value || ''
-
-// const enlaceTextArea = document.getElementById('iframe-value')
   const descTextArea: HTMLTextAreaElement | any = document.getElementById('textareaValidate')
-
-  // let enlace: string = ''
   let desc: string = ''
 
   if (preEnlace instanceof HTMLTextAreaElement) { enlace = preEnlace.value }
   if (descTextArea instanceof HTMLTextAreaElement) { desc = descTextArea.value }
 
-
   if(enlace!=="" && desc!==""){
   const innerMessage = document.getElementsByClassName('innermsg')[2]
   if (innerMessage) { innerMessage.innerHTML = "¿Desea guardar los cambios?"
-
 
   document.getElementsByClassName('container-alert')[2]?.classList.add('show')
   document.getElementsByClassName('message')[2]?.classList.add('show')
@@ -976,6 +968,60 @@ async guardarHistoria() {
 
 console.log(respuestaEdit)
 }
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+saveNewTimeLine() {
+
+//   let enlace: any = (document.getElementById('iframe-value') as HTMLInputElement | any)?.value
+//   const preEnlace: HTMLInputElement | null = document.getElementById('iframe-value') as HTMLInputElement
+//   const descTextArea: HTMLTextAreaElement | any = document.getElementById('textareaValidate')
+//   let desc: string = ''
+
+//   if (preEnlace instanceof HTMLTextAreaElement) { enlace = preEnlace.value }
+//   if (descTextArea instanceof HTMLTextAreaElement) { desc = descTextArea.value }
+
+//   if(enlace!=="" && desc!==""){
+//   const innerMessage = document.getElementsByClassName('innermsg')[2]
+//   if (innerMessage) { innerMessage.innerHTML = "¿Desea guardar los cambios?"
+
+//   document.getElementsByClassName('container-alert')[2]?.classList.add('show')
+//   document.getElementsByClassName('message')[2]?.classList.add('show')
+//   document.getElementsByClassName('cont-btns-alert')[2]?.classList.add('show')
+
+//   document.getElementsByClassName('cancel')[2]?.addEventListener('click', function(){
+//     document.getElementsByClassName('container-alert')[2]?.classList.remove('show')
+//     document.getElementsByClassName('message')[2]?.classList.remove('show')
+//     document.getElementsByClassName('cont-btns-alert')[2]?.classList.remove('show')
+//   },false)
+//   document.getElementsByClassName('confirm')[2]?.addEventListener('click', function(){
+//     setTimeout(function() {
+//       document.getElementsByClassName('container-alert')[2]?.classList.remove('show')
+//     },300) },false)
+//   }
+//   }else{ this.MessageSuccess("Los campos requeridos no pueden estar vacíos",2) }
+// }
+
+// onClickHistoria() {
+//   this.guardarHistoria()
+//   setTimeout(() => { this.containerAlertElementHis.nativeElement.classList.remove('show') }, 300) }
+
+// async guardarHistoria() {
+
+//   console.log(this._idhistoria);
+//   const respuestaEdit = await this.historiaService.editarHistoria( this.formularioEditHistoria.value,this._idhistoria)
+
+// console.log(respuestaEdit)
+// }
+
+}
+
+
+
+
+
+
+
 
 
 }

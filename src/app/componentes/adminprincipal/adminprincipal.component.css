@@ -1094,6 +1094,7 @@ div.message h1 {
   text-align: center;
   font-size: 14pt;
   color: #757575;
+  background: transparent;
 }
 
 
@@ -1103,3 +1104,6 @@ input:focus, textarea:focus { border: 1px solid #27A315; }
 span.danger-red { color: #252525; }
 span.danger-red.limit { color: #FF182C; }
 
+h1.innermsg {
+  background: transparent;
+}
