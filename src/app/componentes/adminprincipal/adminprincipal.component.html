@@ -384,14 +384,6 @@
 
 </div>
 
-<!--
-<div >
-  <button id="close-modal-3-add" (click)="ModalAddTimeLine()" >cerrar</button>
-</div> -->
-
-
-
-
 <div id="modal-6">
   <div id="close-modal-6"></div>
   <h1 class="bold">NOTICIAS</h1>
@@ -399,38 +391,6 @@
 
 
 
-
-<div id="modal-time-line">
-
-  <div id="cont-close-button">
-    <button id="close-modal-3"  (click)="Modal()" >cerrar</button>
-  </div>
-
-  <form [formGroup]="formularioEditlineaTiempo" (ngSubmit)="editarTime()">
-  <label for="file">Imagen</label>
-    <input type="file"   name="file"  (change)="getFileUpdateTiempo($event)" title="imagen" required>
-  <label for="title">Título</label>
-    <input type="text"  formControlName="titleLineaTiempo" [(ngModel)]="tituloModal" name="title" title="título" required>
-  <label for="description">Descripción</label>
-    <input type="text" formControlName="descriptionLineaTiempo" [(ngModel)]="descripcionModal"  title="description">
-    <!-- <button type="submit" class="bold "  >guardar</button> -->
-
-    <div class="replace-button normal">guardar</div>
-
-    <div class="container-alert">
-      <div class="alert-model">
-          <p class="inner-message bold"></p>
-
-          <div class="message"> <h1 class="innermsg"></h1></div>
-          <div class="cont-btns-alert">
-            <button class="confirm" (click)="sendFileUpdateTiempo()">confirmar</button>
-            <div class="replace-button cancel">cancelar</div>
-          </div>
-        </div>
-      </div>
-
-  </form>
-</div>
 
 
 
@@ -475,7 +435,8 @@
   </div>
 <div class="preview-img-model">
   <img src="" alt="" id="img-pre-tl">
-</div>  <label for="title">Título</label>
+</div>
+  <label for="title">Título</label>
     <input type="text" id="new-titulo-tl" formControlName="titleLineaTiempo" name="title" title="título">
   <label for="description">Descripción</label>
     <input type="text" id="new-desc-tl" formControlName="descriptionLineaTiempo" title="description">
@@ -495,6 +456,100 @@
       </div>
   </form>
 </div>
+<!------------------------------------------------------------------------------------------------------------------------------------------------------>
+
+
+
+<div id="modal-time-line">
+
+  <div id="cont-close-button">
+    <button id="close-modal-3"  (click)="Modal()" >cerrar</button>
+  </div>
+
+  <form [formGroup]="formularioEditlineaTiempo" (ngSubmit)="editarTime()">
+  <label for="file">Imagen</label>
+    <input type="file" name="file" (change)="getFileUpdateTiempo($event)" title="imagen">
+
+    <input type="file" id="" (change)="getFileUpdateTiempo($event)" (change)="getFile($event)" name="file" data-content="seleccionar archivo" title="imagen">
+    <div class="details-img">
+      <ul>
+        <li>ancho <p class="innerdetails bold"></p></li>
+        <li>alto <p class="innerdetails bold"></p></li>
+        <li>tamaño <p class="innerdetails bold"></p></li>
+      </ul>
+    </div>
+  <div class="preview-img-model">
+    <img src="" alt="" id="img-pre-tl">
+  </div>
+
+    <label for="title">Título</label>
+    <input type="text"  formControlName="titleLineaTiempo" [(ngModel)]="tituloModal" name="title" title="título" required>
+  <label for="description">Descripción</label>
+    <input type="text" formControlName="descriptionLineaTiempo" [(ngModel)]="descripcionModal"  title="description">
+    <!-- <button type="submit" class="bold "  >guardar</button> -->
+
+    <div class="replace-button normal">guardar</div>
+
+    <div class="container-alert">
+      <div class="alert-model">
+          <p class="inner-message bold"></p>
+
+          <div class="message"> <h1 class="innermsg"></h1></div>
+          <div class="cont-btns-alert">
+            <button class="confirm" (click)="sendFileUpdateTiempo()">confirmar</button>
+            <div class="replace-button cancel">cancelar</div>
+          </div>
+        </div>
+      </div>
+
+  </form>
+</div>
+
+<!-------------------------------------------------------------------------------------------------------------------------------------->
+
+
+<!-- M O D A L   N U E V O   N O T I C I A S  -->
+<div id="modal-new-notice">
+  <div id="cont-btn-close-new"> <button id="close-modal-notice-new" (click)="NewModalNotice()">cerrar</button> </div>
+
+<form [formGroup]="formularioAgregarNoticias"  >
+
+<label for="file-notice">imagen</label>               <input  (change)="getFileNoticia($event)" title="imagen de noticia" type="file" name="file-notice">
+<label for="title-notice">Título</label>              <input  formControlName="title" type="text" name="title-notice" title="Título de noticia">
+<label for="description-notice">Descripción</label>   <textarea formControlName="descripcion" title="descripción de noticia" name="description-notice" id="" cols="26" rows="5"></textarea>
+
+<!-- <button type="submit" class="">guardar</button> -->
+<div class="replace-button normal"  >guardar</div>
+
+<div class="container-alert">
+<div class="alert-model">
+<p class="inner-message bold"></p>
+
+<div class="message"> <h1 class="innermsg"></h1></div>
+<div class="cont-btns-alert">
+  <button class="confirm" (click)="sendFileNoticia()">confirmar</button>
+  <div class="replace-button cancel">cancelar</div>
+</div>
+</div>
+</div>
+
+
+
+</form>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -522,53 +577,13 @@
       </div>
     </div>
   </div>
-
-
-
-
-
-
 </form>
 </div>
-
-<!-- M O D A L   N U E V O   N O T I C I A S  -->
-<div id="modal-new-notice">
-        <div id="cont-btn-close-new"> <button id="close-modal-notice-new" (click)="NewModalNotice()">cerrar</button> </div>
-
-<form [formGroup]="formularioAgregarNoticias"  >
-
-<label for="file-notice">imagen</label>               <input  (change)="getFileNoticia($event)" title="imagen de noticia" type="file" name="file-notice">
-<label for="title-notice">Título</label>              <input  formControlName="title" type="text" name="title-notice" title="Título de noticia">
-<label for="description-notice">Descripción</label>   <textarea formControlName="descripcion" title="descripción de noticia" name="description-notice" id="" cols="26" rows="5"></textarea>
-
-<!-- <button type="submit" class="">guardar</button> -->
-<div class="replace-button normal"  >guardar</div>
-
-<div class="container-alert">
-  <div class="alert-model">
-      <p class="inner-message bold"></p>
-
-      <div class="message"> <h1 class="innermsg"></h1></div>
-      <div class="cont-btns-alert">
-        <button class="confirm" (click)="sendFileNoticia()">confirmar</button>
-        <div class="replace-button cancel">cancelar</div>
-      </div>
-    </div>
-  </div>
-
-
-
-</form>
-</div>
-
-
 
 
 
 
 <div id="space-sp"></div>
-
-
 
 <div id="container-welcome">
   <div>
