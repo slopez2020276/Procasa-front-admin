@@ -52,7 +52,7 @@ export class AdminprincipalComponent implements OnInit, AfterViewInit {
   @ViewChild('containerAlertElementHis') containerAlertElementHis!: ElementRef
   @ViewChild('confirmElementTL') confirmElementTL!: ElementRef
   @ViewChild('containerAlertElementTL') containerAlertElementTL!: ElementRef
-
+  @ViewChild('containerAlertElementTLEdited') containerAlertElementTLEdited!: ElementRef
 
   mision:any
   vision:any
@@ -75,6 +75,8 @@ export class AdminprincipalComponent implements OnInit, AfterViewInit {
   dataLieneaxId:any
   dataNoticiasxID:any
 
+
+  imgEditModalLT: any = ''
   tituloModal: string = ''
   descripcionModal: string = ''
   dataLineaRespuesta: any
@@ -310,27 +312,6 @@ for(let e = 0; e < valores.length; e++){
 }
 
 
-
-
-// MODAL LINEA DE TIEMPO
-async editarModal(id:any) {
-  const respuestaid = await this.lineaService.obtenerLineaxID(id)
-  console.log(id)
-
-  this.dataLieneaxId = respuestaid.lineaFiend
-  this.tituloModal = this.dataLieneaxId.titleLineaTiempo
-  this.descripcionModal = this.dataLieneaxId.descriptionLineaTiempo
-  console.log(this.dataLieneaxId)
-  console.log(this.tituloModal)
-
-}
-
-
- Modal() {
-  document.getElementById('modal-time-line')?.classList.toggle('modal')
-}
-
-
 async buscarporID(id:any){
   const respuestaID = await this.lineaService.obtenerLineaxID(id)
   this.dataLieneaxId = respuestaID.lineaFiend
@@ -464,10 +445,27 @@ ModalAddTimeLine() { document.getElementById('modal-time-line-add')?.classList.t
 }
 
 
-async eliminarLineaTiempo(id){
-  const respuestaDelete = await this.lineaService.eliminarLineaTIempo(id)
-  console.log(respuestaDelete)
-  this.obtenerLinea()
+async eliminarLineaTiempo(id:any){
+
+    const innerMessage = document.getElementsByClassName('innermsg')[3]
+    if (innerMessage) { innerMessage.innerHTML = "¿Desea eliminar el evento seleccionado?"
+
+    document.getElementsByClassName('container-alert')[3]?.classList.add('show')
+    document.getElementsByClassName('message')[3]?.classList.add('show')
+    document.getElementsByClassName('cont-btns-alert')[3]?.classList.add('show')
+
+    document.getElementsByClassName('cancel')[3]?.addEventListener('click', function(){
+      document.getElementsByClassName('container-alert')[3]?.classList.remove('show')
+      document.getElementsByClassName('message')[3]?.classList.remove('show')
+      document.getElementsByClassName('cont-btns-alert')[3]?.classList.remove('show')
+    },false)
+
+    document.getElementsByClassName('confirm')[3]?.addEventListener('click', async () => {
+      const respuestaDelete = await this.lineaService.eliminarLineaTIempo(id)
+      this.obtenerLinea()
+      document.getElementsByClassName('cont-btns-alert')[3]?.classList.remove('show'); this.MessageSuccess('Evento eliminado',3) }, false) }
+
+
 }
 
 async eliminarNoticia(id){
@@ -526,7 +524,6 @@ async eliminarNoticia(id){
 
 
   getFileNoticia($event: any): void {
-    //TODO esto captura el archivo!
     const [ file ] = $event.target.files;
     this.fileTmpNoticia = {
       fileRaw:file,
@@ -584,11 +581,12 @@ async eliminarNoticia(id){
   sendFileUpdateTiempo():void{
 
     let id = this.dataLieneaxId._id
-    const body = new FormData();
+    const body = new FormData()
     if(this.fileUpdateLineaTiempo){
-      body.append('ImgPathLineaTiempo', this.fileUpdateLineaTiempo.fileRaw, this.fileUpdateLineaTiempo.fileName);
+      body.append('ImgPathLineaTiempo', this.fileUpdateLineaTiempo.fileRaw, this.fileUpdateLineaTiempo.fileName)
       body.append('titleLineaTiempo', this.formularioEditlineaTiempo.value.titleLineaTiempo)
       body.append('descriptionLineaTiempo',this.formularioEditlineaTiempo.value.descriptionLineaTiempo)
+
     }else{
       body.append('titleLineaTiempo', this.formularioEditlineaTiempo.value.titleLineaTiempo)
       body.append('descriptionLineaTiempo',this.formularioEditlineaTiempo.value.descriptionLineaTiempo)
@@ -647,7 +645,7 @@ ShowMore(){
         document.getElementsByClassName('container-alert')[i]?.classList.remove('show')
         document.getElementsByClassName('message')[i]?.classList.remove('show')
         document.getElementsByClassName('timesuccess')[i]?.classList.remove('lesswidth')
-    },1800)
+    },2000)
   }
   }
 
@@ -843,25 +841,25 @@ preSaveMisionVision() {
   if(mision!=="" && vision!==""){
 
 
-  const innerMessage = document.getElementsByClassName('innermsg')[3]
+  const innerMessage = document.getElementsByClassName('innermsg')[4]
   if (innerMessage) { innerMessage.innerHTML = "¿Desea guardar los cambios?"
 
 
-  document.getElementsByClassName('container-alert')[3]?.classList.add('show')
-  document.getElementsByClassName('message')[3]?.classList.add('show')
-  document.getElementsByClassName('cont-btns-alert')[3]?.classList.add('show')
+  document.getElementsByClassName('container-alert')[4]?.classList.add('show')
+  document.getElementsByClassName('message')[4]?.classList.add('show')
+  document.getElementsByClassName('cont-btns-alert')[4]?.classList.add('show')
 
-  document.getElementsByClassName('cancel')[3]?.addEventListener('click', function(){
-    document.getElementsByClassName('container-alert')[3]?.classList.remove('show')
-    document.getElementsByClassName('message')[3]?.classList.remove('show')
-    document.getElementsByClassName('cont-btns-alert')[3]?.classList.remove('show')
+  document.getElementsByClassName('cancel')[4]?.addEventListener('click', function(){
+    document.getElementsByClassName('container-alert')[4]?.classList.remove('show')
+    document.getElementsByClassName('message')[4]?.classList.remove('show')
+    document.getElementsByClassName('cont-btns-alert')[4]?.classList.remove('show')
   },false)
-  document.getElementsByClassName('confirm')[3]?.addEventListener('click', function(){
+  document.getElementsByClassName('confirm')[4]?.addEventListener('click', function(){
     setTimeout(function() {
-      document.getElementsByClassName('container-alert')[3]?.classList.remove('show')
+      document.getElementsByClassName('container-alert')[4]?.classList.remove('show')
     },300) },false)
   }
-  }else if((mision=="" && vision=="") || (mision=="" || vision=="")) { this.MessageSuccess("Los campos requeridos no pueden estar vacíos",3) }
+  }else if((mision=="" && vision=="") || (mision=="" || vision=="")) { this.MessageSuccess("Los campos requeridos no pueden estar vacíos",4) }
 }
 
 onClick() {
@@ -1063,7 +1061,7 @@ onClickNewTimeLine() {
 
   sendFile():void{
 
-    const body = new FormData();
+    const body = new FormData()
 
     if(this.fileTmp){
       body.append('ImgPathLineaTiempo', this.fileTmp.fileRaw, this.fileTmp.fileName);
@@ -1077,5 +1075,242 @@ onClickNewTimeLine() {
     .subscribe(res =>{console.log(res), this.obtenerLinea(),this.fileTmp = null})
     this.MessageSuccess('Datos guardados exitosamente',6)
   }
+
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// EDITAR LINEA DE TIEMPO
+// N O    S I R V E **************************************************************************************************************
+// *******************************************************************************************************************************
+
+//   saveNewTimeLineEdited() {
+
+//     const fileInput: HTMLInputElement | null = document.getElementById('new-file-input') as HTMLInputElement | null
+
+//     const tituloInput: HTMLInputElement | null = document.getElementById('new-titulo-tl') as HTMLInputElement | null
+//     const descripcionInput: HTMLInputElement | null = document.getElementById('new-desc-tl') as HTMLInputElement | null
+
+//     let file: string = ''
+//     let titulo: string = ''
+//     let descripcion: string = ''
+
+//     if (fileInput instanceof HTMLInputElement) { file = fileInput.value }
+//     if (tituloInput instanceof HTMLInputElement) { titulo = tituloInput.value }
+//     if (descripcionInput instanceof HTMLInputElement) { descripcion = descripcionInput.value }
+
+//     if(file!=="" && titulo!=="" && descripcion!==""){
+//     const innerMessage = document.getElementsByClassName('innermsg')[6]
+//     if (innerMessage) { innerMessage.innerHTML = "¿Desea guardar los cambios?"
+
+//     document.getElementsByClassName('container-alert')[6]?.classList.add('show')
+//     document.getElementsByClassName('message')[6]?.classList.add('show')
+//     document.getElementsByClassName('cont-btns-alert')[6]?.classList.add('show')
+
+//       document.getElementsByClassName('cancel')[6]?.addEventListener('click', function(){
+//       document.getElementsByClassName('container-alert')[6]?.classList.remove('show')
+//       document.getElementsByClassName('message')[6]?.classList.remove('show')
+//       document.getElementsByClassName('cont-btns-alert')[6]?.classList.remove('show')
+//     },false)
+//     document.getElementsByClassName('confirm')[6]?.addEventListener('click', function(){
+//       setTimeout(function() {
+//         document.getElementsByClassName('container-alert')[6]?.classList.remove('show')
+//       },300) },false)
+//     }
+//     }else{ this.MessageSuccess("Los campos requeridos no pueden estar vacíos",6) }
+//   }
+
+//   onClickNewTimeLineEdited() {
+//     this.sendFile()
+//     setTimeout(() => { this.containerAlertElementTL.nativeElement.classList.remove('show') }, 300) }
+
+//     sendFileEdit():void{
+
+//       const body = new FormData()
+
+//       if(this.fileTmp){
+//         body.append('ImgPathLineaTiempo', this.fileTmp.fileRaw, this.fileTmp.fileName);
+//         body.append('titleLineaTiempo', this.formularioAgregarLineaTiempo.value.titleLineaTiempo)
+//         body.append('descriptionLineaTiempo',this.formularioAgregarLineaTiempo.value.descriptionLineaTiempo)
+//       }else{
+//         body.append('titleLineaTiempo', this.formularioAgregarLineaTiempo.value.titleLineaTiempo)
+//         body.append('descriptionLineaTiempo',this.formularioAgregarLineaTiempo.value.descriptionLineaTiempo)
+//       }
+//       this.lineaService.sendPost(body)
+//       .subscribe(res =>{console.log(res), this.obtenerLinea(),this.fileTmp = null})
+//       this.MessageSuccess('Datos guardados exitosamente',6)
+//     }
+
+
+
+async editarModal(id:any) {
+  const respuestaid = await this.lineaService.obtenerLineaxID(id)
+  this.dataLieneaxId = respuestaid.lineaFiend
+  this.tituloModal = this.dataLieneaxId.titleLineaTiempo
+  this.descripcionModal = this.dataLieneaxId.descriptionLineaTiempo
+}
+ Modal() { document.getElementById('modal-time-line')?.classList.toggle('modal') }
+
+
+
+
+ // ***
+saveEditedLineaTiempo() {
+
+//   const fileInput: HTMLInputElement | null = document.getElementById('file-edit-lt') as HTMLInputElement | null
+//   let file: any = ''
+//   if (fileInput instanceof HTMLInputElement) {
+//     file = fileInput.files?.[0]
+// // ***
+//     const tituloInput: HTMLInputElement | null = document.getElementById('new-titulo-tl') as HTMLInputElement | null
+//     const descripcionInput: HTMLInputElement | null = document.getElementById('new-desc-tl') as HTMLInputElement | null
+
+//     let titulo: string = ''
+//     let descripcion: string = ''
+
+//     if (tituloInput instanceof HTMLInputElement) { titulo = tituloInput.value }
+//     if (descripcionInput instanceof HTMLInputElement) { descripcion = descripcionInput.value }
+
+
+
+//     if(file!=="" && titulo!=="" && descripcion!==""){
+//       const innerMessage = document.getElementsByClassName('innermsg')[7]
+//       if (innerMessage) { innerMessage.innerHTML = "¿Desea guardar los cambios?"
+
+//       document.getElementsByClassName('container-alert')[7]?.classList.add('show')
+//       document.getElementsByClassName('message')[7]?.classList.add('show')
+//       document.getElementsByClassName('cont-btns-alert')[7]?.classList.add('show')
+
+//         document.getElementsByClassName('cancel')[7]?.addEventListener('click', function(){
+//         document.getElementsByClassName('container-alert')[7]?.classList.remove('show')
+//         document.getElementsByClassName('message')[7]?.classList.remove('show')
+//         document.getElementsByClassName('cont-btns-alert')[7]?.classList.remove('show')
+//       },false)
+//       document.getElementsByClassName('confirm')[7]?.addEventListener('click', () => {
+//         this.onClickEditedTimeLineEdited()
+//         setTimeout(function() {
+//           document.getElementsByClassName('container-alert')[7]?.classList.remove('show')
+//         },300) },false)
+//       }
+//       }else{ this.MessageSuccess("Los campos requeridos no pueden estar vacíos",7) }
+//   }
+this.MessageSuccess("ERROR :(",7)
+}
+
+  onClickEditedTimeLineEdited() { this.sendFile(); setTimeout(() => { this.containerAlertElementTLEdited.nativeElement.classList.remove('show') }, 300) }
+
+
+
+
+
+
+//#################################################################################################################################
+saveNewNotice() {
+
+  const fileInput: HTMLInputElement | null = document.getElementById('new-file-input') as HTMLInputElement | null
+
+  const tituloInput: HTMLInputElement | null = document.getElementById('new-titulo-tl') as HTMLInputElement | null
+  const descripcionInput: HTMLInputElement | null = document.getElementById('new-desc-tl') as HTMLInputElement | null
+
+  let file: string = ''
+  let titulo: string = ''
+  let descripcion: string = ''
+
+  if (fileInput instanceof HTMLInputElement) { file = fileInput.value }
+  if (tituloInput instanceof HTMLInputElement) { titulo = tituloInput.value }
+  if (descripcionInput instanceof HTMLInputElement) { descripcion = descripcionInput.value }
+
+  if(file!=="" && titulo!=="" && descripcion!==""){
+  const innerMessage = document.getElementsByClassName('innermsg')[6]
+  if (innerMessage) { innerMessage.innerHTML = "¿Desea guardar los cambios?"
+
+  document.getElementsByClassName('container-alert')[6]?.classList.add('show')
+  document.getElementsByClassName('message')[6]?.classList.add('show')
+  document.getElementsByClassName('cont-btns-alert')[6]?.classList.add('show')
+
+    document.getElementsByClassName('cancel')[6]?.addEventListener('click', function(){
+    document.getElementsByClassName('container-alert')[6]?.classList.remove('show')
+    document.getElementsByClassName('message')[6]?.classList.remove('show')
+    document.getElementsByClassName('cont-btns-alert')[6]?.classList.remove('show')
+  },false)
+  document.getElementsByClassName('confirm')[6]?.addEventListener('click', function(){
+    setTimeout(function() {
+      document.getElementsByClassName('container-alert')[6]?.classList.remove('show')
+    },300) },false)
+  }
+  }else{ this.MessageSuccess("Los campos requeridos no pueden estar vacíos",6) }
+}
+
+onClickNewNotice() {
+  this.sendFile()
+  setTimeout(() => { this.containerAlertElementTL.nativeElement.classList.remove('show') }, 300) }
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////777
+
+saveNewNoticia(event: Event): void {
+  // file-noticia, titulo-noticia, desc-noticia
+
+//   let prefilenoticia: any = (document.getElementById('file-noticia') as HTMLInputElement | any)?.value
+//   const pretitnoticia: HTMLInputElement | null = document.getElementById('titulo-noticia') as HTMLInputElement
+//   const predescnoticia: HTMLTextAreaElement | any = document.getElementById('desc-noticia')
+//   let filen:string = ''
+//   let noticia:string = ''
+//   let descno:string = ''
+
+//   if (prefilenoticia instanceof HTMLTextAreaElement) { filen = filen.value }
+
+//   if(enlace!=="" && desc!==""){
+//   const innerMessage = document.getElementsByClassName('innermsg')[2]
+//   if (innerMessage) { innerMessage.innerHTML = "¿Desea guardar los cambios?"
+
+//   document.getElementsByClassName('container-alert')[2]?.classList.add('show')
+//   document.getElementsByClassName('message')[2]?.classList.add('show')
+//   document.getElementsByClassName('cont-btns-alert')[2]?.classList.add('show')
+
+//   document.getElementsByClassName('cancel')[2]?.addEventListener('click', function(){
+//     document.getElementsByClassName('container-alert')[2]?.classList.remove('show')
+//     document.getElementsByClassName('message')[2]?.classList.remove('show')
+//     document.getElementsByClassName('cont-btns-alert')[2]?.classList.remove('show')
+//   },false)
+//   document.getElementsByClassName('confirm')[2]?.addEventListener('click', function(){
+//     setTimeout(function() {
+//       document.getElementsByClassName('container-alert')[2]?.classList.remove('show')
+//     },300) },false)
+//   }
+//   }else{ this.MessageSuccess("Los campos requeridos no pueden estar vacíos",2) }
+// }
+
+// onClickHistoria() {
+//   this.guardarHistoria()
+//   setTimeout(() => { this.containerAlertElementHis.nativeElement.classList.remove('show') }, 300) }
+
+// async guardarHistoria() {
+
+//   const respuestaEdit = await this.historiaService.editarHistoria( this.formularioEditHistoria.value,this._idhistoria)
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 }

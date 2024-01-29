@@ -216,7 +216,7 @@
   <div id="sub-cont-3">
   @for (os of dataLinea; track os._id) {
     <div class="cont-3-timeline">
-      <img [ngSrc]="'http://localhost:3002/' + os.ImgPathLineaTiempo" [width]="1000" [height]="1000" alt="item 1" title="item 1">
+      <img class="img-linetiempo" [ngSrc]="'http://localhost:3002/' + os.ImgPathLineaTiempo" [width]="1000" [height]="1000" alt="item 1" title="item 1">
       <p class="input-to-text bold">{{os.titleLineaTiempo}}</p>
       <p class="input-to-text">{{os.descriptionLineaTiempo}}</p>
       <p class="input-to-text">{{os.fecha}}</p>
@@ -234,15 +234,25 @@
 
 
 <button id="cont-3-see-all" class="bold" (click)="ModalAddTimeLine()">Agregar</button>
-
-
   <div class="foot-cont">
-
     <div class="cont-buttons">
 
 
     </div>
   </div>
+
+  <div class="container-alert" #containerAlertElement>
+    <div class="alert-model">
+        <p class="inner-message bold"></p>
+
+        <div class="message"> <h1 class="innermsg"></h1></div>
+        <div class="cont-btns-alert">
+          <button class="confirm" #confirmElement>confirmar</button>
+          <div class="replace-button cancel">cancelar</div>
+        </div>
+      </div>
+    </div>
+
 </div>
 
 
@@ -423,22 +433,22 @@
   <form [formGroup]="formularioAgregarLineaTiempo"  >
     <div class="preview-img-model">
   <label for="file">Imagen</label>
-  <input type="file" id="new-file-input" (change)="preSaveTimeLine($event)" (change)="getFile($event)" name="file" data-content="seleccionar archivo" title="imagen">
+  <input type="file" id="new-file-input" #newFileInput (change)="preSaveTimeLine($event)" (change)="getFile($event)" name="file" data-content="seleccionar archivo" title="imagen">
   <div class="details-img">
     <ul>
       <li>ancho <p class="innerdetails bold"></p></li>
       <li>alto <p class="innerdetails bold"></p></li>
       <li>tamaño <p class="innerdetails bold"></p></li>
     </ul>
+    <img src="" alt="" id="img-pre-tl">
   </div>
-  <img src="" alt="" id="img-pre-tl">
 </div>
 
 <div class="subcont-modal">
   <label for="title">Título</label>
-  <input type="text" id="new-titulo-tl" formControlName="titleLineaTiempo" name="title" title="título">
+  <input type="text" #newTituloTl id="new-titulo-tl" formControlName="titleLineaTiempo" name="title" title="título">
   <label for="description">Descripción</label>
-  <input type="text" id="new-desc-tl" formControlName="descriptionLineaTiempo" title="description">
+  <input type="text" id="new-desc-tl" #newDescTl formControlName="descriptionLineaTiempo" title="description">
 </div>
 
     <div class="replace-button normal" id="save-new-tili">guardar</div>
@@ -456,6 +466,9 @@
       </div>
   </form>
 </div>
+
+
+
 <!------------------------------------------------------------------------------------------------------------------------------------------------------>
 
 
@@ -467,10 +480,9 @@
   </div>
 
   <form [formGroup]="formularioEditlineaTiempo" (ngSubmit)="editarTime()">
-  <label for="file">Imagen</label>
-    <input type="file" name="file" (change)="getFileUpdateTiempo($event)" title="imagen">
-
-    <input type="file" id="" (change)="getFileUpdateTiempo($event)" (change)="getFile($event)" name="file" data-content="seleccionar archivo" title="imagen">
+    <div class="preview-img-model">
+    <label for="file">Imagen</label>
+    <input type="file" id="file-edit-lt" (change)="getFileUpdateTiempo($event)" (change)="getFile($event)" name="file" data-content="seleccionar archivo" title="imagen">
     <div class="details-img">
       <ul>
         <li>ancho <p class="innerdetails bold"></p></li>
@@ -482,21 +494,23 @@
     <img src="" alt="" id="img-pre-tl">
   </div>
 
+</div>
+  <div class="subcont-modal">
     <label for="title">Título</label>
-    <input type="text"  formControlName="titleLineaTiempo" [(ngModel)]="tituloModal" name="title" title="título" required>
-  <label for="description">Descripción</label>
-    <input type="text" formControlName="descriptionLineaTiempo" [(ngModel)]="descripcionModal"  title="description">
-    <!-- <button type="submit" class="bold "  >guardar</button> -->
+    <input type="text" id="titulo-edit-lt" formControlName="titleLineaTiempo" [(ngModel)]="tituloModal" name="title" title="título" required>
+    <label for="description">Descripción</label>
+    <input type="text" formControlName="descriptionLineaTiempo" id="desc-edit-lt" [(ngModel)]="descripcionModal"  title="description">
+  </div>
 
-    <div class="replace-button normal">guardar</div>
+    <div class="replace-button normal" (click)="saveEditedLineaTiempo()">guardar</div>
 
-    <div class="container-alert">
+    <div class="container-alert" #containerAlertElementTLEdited>
       <div class="alert-model">
           <p class="inner-message bold"></p>
 
           <div class="message"> <h1 class="innermsg"></h1></div>
           <div class="cont-btns-alert">
-            <button class="confirm" (click)="sendFileUpdateTiempo()">confirmar</button>
+            <button class="confirm" #confirmElementTLEdited (click)="sendFileUpdateTiempo()">confirmar</button>
             <div class="replace-button cancel">cancelar</div>
           </div>
         </div>
@@ -512,11 +526,11 @@
 <div id="modal-new-notice">
   <div id="cont-btn-close-new"> <button id="close-modal-notice-new" (click)="NewModalNotice()">cerrar</button> </div>
 
-<form [formGroup]="formularioAgregarNoticias"  >
+<form [formGroup]="formularioAgregarNoticias">
 
-<label for="file-notice">imagen</label>               <input  (change)="getFileNoticia($event)" title="imagen de noticia" type="file" name="file-notice">
-<label for="title-notice">Título</label>              <input  formControlName="title" type="text" name="title-notice" title="Título de noticia">
-<label for="description-notice">Descripción</label>   <textarea formControlName="descripcion" title="descripción de noticia" name="description-notice" id="" cols="26" rows="5"></textarea>
+<label for="file-notice">imagen</label>               <input id="file-noticia" (change)="saveNewNoticia($event)" title="imagen de noticia" type="file" name="file-notice">
+<label for="title-notice">Título</label>              <input id="titulo-noticia" formControlName="title" type="text" name="title-notice" title="Título de noticia">
+<label for="description-notice">Descripción</label>   <textarea id="desc-noticia" formControlName="descripcion" title="descripción de noticia" name="description-notice" cols="26" rows="5"></textarea>
 
 <!-- <button type="submit" class="">guardar</button> -->
 <div class="replace-button normal"  >guardar</div>
@@ -534,10 +548,22 @@
 </div>
 
 
+<div class="container-alert" #containerAlertNewNoticia>
+  <div class="alert-model">
+      <p class="inner-message bold"></p>
 
-</form>
+      <div class="message"> <h1 class="innermsg"></h1></div>
+      <div class="cont-btns-alert">
+        <button class="confirm" #confirmNewNoticia>confirmar</button>
+        <div class="replace-button cancel">cancelar</div>
+      </div>
+    </div>
 </div>
 
+
+</form>
+
+</div>
 
 
 

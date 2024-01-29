@@ -549,7 +549,7 @@ div#modal-time-line-add form input, div#modal-time-line form input {
 div#modal-time-line-add input[type=file] {
   position: relative;
 }
-div#modal-time-line-add input[type=file]::before {
+div#modal-time-line-add input[type=file]::before, input#file-edit-lt::before {
   content: attr(data-content);
   width: 100%;
   height: 100%;
@@ -610,13 +610,9 @@ div.sub-container-1 p {
 div.container h1 {
   width: 100%;
   text-align: left;
-  /* border-bottom: 2px solid #AAA; */
   color: #AA182C;
   text-align: left;
   font-size: 19pt;
-  /* border-radius: 1rem; */
-  /* padding: 1rem; */
-  /* box-shadow: 0 5px 15px rgba(0,0,0,.3); */
 }
 
 
@@ -706,7 +702,9 @@ p.input-to-text {
 
 div.cont-3-timeline img {
   width: 150px;
+  width: auto;
   height: auto;
+  max-height: 150px;
   border-radius: 4px;
 }
 
@@ -1164,7 +1162,6 @@ div.preview-img-model {
   margin-top: 1rem;
   flex-wrap: wrap;
 }
-
 
 img#img-pre-tl {
   max-width: 130px;
