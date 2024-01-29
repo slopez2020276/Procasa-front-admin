@@ -1,5 +1,5 @@
 import { Component, AfterViewInit  } from '@angular/core';
-import * as L from 'leaflet';
+import * as L from 'leaflet'
 @Component({
   selector: 'app-prueba-maps2',
   templateUrl: './prueba-maps2.component.html',

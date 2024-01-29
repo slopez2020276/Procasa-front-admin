@@ -424,6 +424,7 @@
   </div>
 
   <form [formGroup]="formularioAgregarLineaTiempo"  >
+    <div class="preview-img-model">
   <label for="file">Imagen</label>
   <input type="file" id="new-file-input" (change)="preSaveTimeLine($event)" (change)="getFile($event)" name="file" data-content="seleccionar archivo" title="imagen">
   <div class="details-img">
@@ -433,14 +434,16 @@
       <li>tamaño <p class="innerdetails bold"></p></li>
     </ul>
   </div>
-<div class="preview-img-model">
   <img src="" alt="" id="img-pre-tl">
 </div>
+
+<div class="subcont-modal">
   <label for="title">Título</label>
-    <input type="text" id="new-titulo-tl" formControlName="titleLineaTiempo" name="title" title="título">
+  <input type="text" id="new-titulo-tl" formControlName="titleLineaTiempo" name="title" title="título">
   <label for="description">Descripción</label>
-    <input type="text" id="new-desc-tl" formControlName="descriptionLineaTiempo" title="description">
-    <!-- <div class="replace-button normal" (click)="saveNewTimeLine()">guardar</div> -->
+  <input type="text" id="new-desc-tl" formControlName="descriptionLineaTiempo" title="description">
+</div>
+
     <div class="replace-button normal" id="save-new-tili">guardar</div>
 
     <div class="container-alert" #containerAlertElementTL>

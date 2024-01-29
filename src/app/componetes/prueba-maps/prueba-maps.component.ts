@@ -1,5 +1,5 @@
 import { AfterViewInit, Component, OnInit } from '@angular/core';
-import * as L from 'leaflet';
+import * as L from 'leaflet'
 import { UbicacionServiceService } from '../../services/ubicacion-service.service';
 
 @Component({
