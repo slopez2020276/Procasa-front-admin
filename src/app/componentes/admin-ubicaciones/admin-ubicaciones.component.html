@@ -48,332 +48,36 @@
       <tr>
         <td class="bold tb-number">#</td>
         <td class="bold tb-name">Nombre</td>
-        <td class="bold tb-address">Dirección</td>
-        <td class="bold tb-telephone">Teléfono</td>
-        <td class="bold tb-extension">Extensión</td>
+        <td class="bold tb-address">Tipo Tienda</td>
+        <td class="bold tb-telephone">Coordenadas LAT</td>
+        <td class="bold tb-extension">Coodenadas LOG</td>
         <td class="bold tb-actions">Acciones</td>
       </tr>
     </thead>
     <tbody>
       <tr>
-        <td class="tb-number">1</td>
-        <td class="tb-name">Nombre Sucursal</td>
-        <td class="tb-address">Dirección</td>
-        <td class="tb-telephone">0000-0000</td>
-        <td class="tb-extension">000</td>
-        <td class="tb-actions actions-center"><button class="tb-edit" (click)="TbEdit()">editar</button> <button class="tb-delete" (click)="TbDelete()">borrar</button></td>
+
+
+        <tr>
+      @for (os of dataUbicacion; track os._id) {
+
+        
+          <td class="tb-number"></td>
+          <td class="tb-name">{{os.nombreTienda}}</td>
+          <td class="tb-address">{{os.tipoTienda}}</td>
+          <td class="tb-telephone">{{os.codenadaslat}}</td>
+          <td class="tb-extension">{{os.codenadasLng}}</td>
+          <td class="tb-actions actions-center"><button class="tb-edit" (click)="TbEdit()">editar</button> <button class="tb-delete" (click)="TbDelete()">borrar</button></td>
+        }
       </tr>
 
 
 
 
 
+   
 
-    <tr>
-      <td class="tb-number">2</td>
-      <td class="tb-name">Nombre Sucursal</td>
-      <td class="tb-address">Dirección</td>
-      <td class="tb-telephone">0000-0000</td>
-      <td class="tb-extension">000</td>
-      <td class="tb-actions actions-center"><button class="tb-edit" (click)="TbEdit()">editar</button> <button class="tb-delete" (click)="TbDelete()">borrar</button></td>
-    </tr>
 
-    <tr>
-      <td class="tb-number">3</td>
-      <td class="tb-name">Nombre Sucursal</td>
-      <td class="tb-address">Dirección</td>
-      <td class="tb-telephone">0000-0000</td>
-      <td class="tb-extension">000</td>
-      <td class="tb-actions actions-center"><button class="tb-edit" (click)="TbEdit()">editar</button> <button class="tb-delete" (click)="TbDelete()">borrar</button></td>
-    </tr>
-
-    <tr>
-      <td class="tb-number">4</td>
-      <td class="tb-name">Nombre Sucursal</td>
-      <td class="tb-address">Dirección</td>
-      <td class="tb-telephone">0000-0000</td>
-      <td class="tb-extension">000</td>
-      <td class="tb-actions actions-center"><button class="tb-edit" (click)="TbEdit()">editar</button> <button class="tb-delete" (click)="TbDelete()">borrar</button></td>
-    </tr>
-
-    <tr>
-      <td class="tb-number">5</td>
-      <td class="tb-name">Nombre Sucursal</td>
-      <td class="tb-address">Dirección</td>
-      <td class="tb-telephone">0000-0000</td>
-      <td class="tb-extension">000</td>
-      <td class="tb-actions actions-center"><button class="tb-edit" (click)="TbEdit()">editar</button> <button class="tb-delete" (click)="TbDelete()">borrar</button></td>
-    </tr>
-
-    <tr>
-      <td class="tb-number">6</td>
-      <td class="tb-name">Nombre Sucursal</td>
-      <td class="tb-address">Dirección</td>
-      <td class="tb-telephone">0000-0000</td>
-      <td class="tb-extension">000</td>
-      <td class="tb-actions actions-center"><button class="tb-edit" (click)="TbEdit()">editar</button> <button class="tb-delete" (click)="TbDelete()">borrar</button></td>
-    </tr>
-
-    <tr>
-      <td class="tb-number">7</td>
-      <td class="tb-name">Nombre Sucursal</td>
-      <td class="tb-address">Dirección</td>
-      <td class="tb-telephone">0000-0000</td>
-      <td class="tb-extension">000</td>
-      <td class="tb-actions actions-center"><button class="tb-edit" (click)="TbEdit()">editar</button> <button class="tb-delete" (click)="TbDelete()">borrar</button></td>
-    </tr>
-
-    <tr>
-      <td class="tb-number">8</td>
-      <td class="tb-name">Nombre Sucursal</td>
-      <td class="tb-address">Dirección</td>
-      <td class="tb-telephone">0000-0000</td>
-      <td class="tb-extension">000</td>
-      <td class="tb-actions actions-center"><button class="tb-edit" (click)="TbEdit()">editar</button> <button class="tb-delete" (click)="TbDelete()">borrar</button></td>
-    </tr>
-
-    <tr>
-      <td class="tb-number">9</td>
-      <td class="tb-name">Nombre Sucursal</td>
-      <td class="tb-address">Dirección</td>
-      <td class="tb-telephone">0000-0000</td>
-      <td class="tb-extension">000</td>
-      <td class="tb-actions actions-center"><button class="tb-edit" (click)="TbEdit()">editar</button> <button class="tb-delete" (click)="TbDelete()">borrar</button></td>
-    </tr>
-
-    <tr>
-      <td class="tb-number">10</td>
-      <td class="tb-name">Nombre Sucursal</td>
-      <td class="tb-address">Dirección</td>
-      <td class="tb-telephone">0000-0000</td>
-      <td class="tb-extension">000</td>
-      <td class="tb-actions actions-center"><button class="tb-edit" (click)="TbEdit()">editar</button> <button class="tb-delete" (click)="TbDelete()">borrar</button></td>
-    </tr>
-
-    <tr>
-      <td class="tb-number">11</td>
-      <td class="tb-name">Nombre Sucursal</td>
-      <td class="tb-address">Dirección</td>
-      <td class="tb-telephone">0000-0000</td>
-      <td class="tb-extension">000</td>
-      <td class="tb-actions actions-center"><button class="tb-edit" (click)="TbEdit()">editar</button> <button class="tb-delete" (click)="TbDelete()">borrar</button></td>
-    </tr>
-
-    <tr>
-      <td class="tb-number">12</td>
-      <td class="tb-name">Nombre Sucursal</td>
-      <td class="tb-address">Dirección</td>
-      <td class="tb-telephone">0000-0000</td>
-      <td class="tb-extension">000</td>
-      <td class="tb-actions actions-center"><button class="tb-edit" (click)="TbEdit()">editar</button> <button class="tb-delete" (click)="TbDelete()">borrar</button></td>
-    </tr>
-
-    <tr>
-      <td class="tb-number">13</td>
-      <td class="tb-name">Nombre Sucursal</td>
-      <td class="tb-address">Dirección</td>
-      <td class="tb-telephone">0000-0000</td>
-      <td class="tb-extension">000</td>
-      <td class="tb-actions actions-center"><button class="tb-edit" (click)="TbEdit()">editar</button> <button class="tb-delete" (click)="TbDelete()">borrar</button></td>
-    </tr>
-
-    <tr>
-      <td class="tb-number">14</td>
-      <td class="tb-name">Nombre Sucursal</td>
-      <td class="tb-address">Dirección</td>
-      <td class="tb-telephone">0000-0000</td>
-      <td class="tb-extension">000</td>
-      <td class="tb-actions actions-center"><button class="tb-edit" (click)="TbEdit()">editar</button> <button class="tb-delete" (click)="TbDelete()">borrar</button></td>
-    </tr>
-
-    <tr>
-      <td class="tb-number">15</td>
-      <td class="tb-name">Nombre Sucursal</td>
-      <td class="tb-address">Dirección</td>
-      <td class="tb-telephone">0000-0000</td>
-      <td class="tb-extension">000</td>
-      <td class="tb-actions actions-center"><button class="tb-edit" (click)="TbEdit()">editar</button> <button class="tb-delete" (click)="TbDelete()">borrar</button></td>
-    </tr>
-
-    <tr>
-      <td class="tb-number">16</td>
-      <td class="tb-name">Nombre Sucursal</td>
-      <td class="tb-address">Dirección</td>
-      <td class="tb-telephone">0000-0000</td>
-      <td class="tb-extension">000</td>
-      <td class="tb-actions actions-center"><button class="tb-edit" (click)="TbEdit()">editar</button> <button class="tb-delete" (click)="TbDelete()">borrar</button></td>
-    </tr>
-
-    <tr>
-      <td class="tb-number">17</td>
-      <td class="tb-name">Nombre Sucursal</td>
-      <td class="tb-address">Dirección</td>
-      <td class="tb-telephone">0000-0000</td>
-      <td class="tb-extension">000</td>
-      <td class="tb-actions actions-center"><button class="tb-edit" (click)="TbEdit()">editar</button> <button class="tb-delete" (click)="TbDelete()">borrar</button></td>
-    </tr>
-
-    <tr>
-      <td class="tb-number">18</td>
-      <td class="tb-name">Nombre Sucursal</td>
-      <td class="tb-address">Dirección</td>
-      <td class="tb-telephone">0000-0000</td>
-      <td class="tb-extension">000</td>
-      <td class="tb-actions actions-center"><button class="tb-edit" (click)="TbEdit()">editar</button> <button class="tb-delete" (click)="TbDelete()">borrar</button></td>
-    </tr>
-
-    <tr>
-      <td class="tb-number">19</td>
-      <td class="tb-name">Nombre Sucursal</td>
-      <td class="tb-address">Dirección</td>
-      <td class="tb-telephone">0000-0000</td>
-      <td class="tb-extension">000</td>
-      <td class="tb-actions actions-center"><button class="tb-edit" (click)="TbEdit()">editar</button> <button class="tb-delete" (click)="TbDelete()">borrar</button></td>
-    </tr>
-
-    <tr>
-      <td class="tb-number">20</td>
-      <td class="tb-name">Nombre Sucursal</td>
-      <td class="tb-address">Dirección</td>
-      <td class="tb-telephone">0000-0000</td>
-      <td class="tb-extension">000</td>
-      <td class="tb-actions actions-center"><button class="tb-edit" (click)="TbEdit()">editar</button> <button class="tb-delete" (click)="TbDelete()">borrar</button></td>
-    </tr>
-
-    <tr>
-      <td class="tb-number">21</td>
-      <td class="tb-name">Nombre Sucursal</td>
-      <td class="tb-address">Dirección</td>
-      <td class="tb-telephone">0000-0000</td>
-      <td class="tb-extension">000</td>
-      <td class="tb-actions actions-center"><button class="tb-edit" (click)="TbEdit()">editar</button> <button class="tb-delete" (click)="TbDelete()">borrar</button></td>
-    </tr>
-
-    <tr>
-      <td class="tb-number">22</td>
-      <td class="tb-name">Nombre Sucursal</td>
-      <td class="tb-address">Dirección</td>
-      <td class="tb-telephone">0000-0000</td>
-      <td class="tb-extension">000</td>
-      <td class="tb-actions actions-center"><button class="tb-edit" (click)="TbEdit()">editar</button> <button class="tb-delete" (click)="TbDelete()">borrar</button></td>
-    </tr>
-
-    <tr>
-      <td class="tb-number">23</td>
-      <td class="tb-name">Nombre Sucursal</td>
-      <td class="tb-address">Dirección</td>
-      <td class="tb-telephone">0000-0000</td>
-      <td class="tb-extension">000</td>
-      <td class="tb-actions actions-center"><button class="tb-edit" (click)="TbEdit()">editar</button> <button class="tb-delete" (click)="TbDelete()">borrar</button></td>
-    </tr>
-
-    <tr>
-      <td class="tb-number">24</td>
-      <td class="tb-name">Nombre Sucursal</td>
-      <td class="tb-address">Dirección</td>
-      <td class="tb-telephone">0000-0000</td>
-      <td class="tb-extension">000</td>
-      <td class="tb-actions actions-center"><button class="tb-edit" (click)="TbEdit()">editar</button> <button class="tb-delete" (click)="TbDelete()">borrar</button></td>
-    </tr>
-
-    <tr>
-      <td class="tb-number">25</td>
-      <td class="tb-name">Nombre Sucursal</td>
-      <td class="tb-address">Dirección</td>
-      <td class="tb-telephone">0000-0000</td>
-      <td class="tb-extension">000</td>
-      <td class="tb-actions actions-center"><button class="tb-edit" (click)="TbEdit()">editar</button> <button class="tb-delete" (click)="TbDelete()">borrar</button></td>
-    </tr>
-
-    <tr>
-      <td class="tb-number">26</td>
-      <td class="tb-name">Nombre Sucursal</td>
-      <td class="tb-address">Dirección</td>
-      <td class="tb-telephone">0000-0000</td>
-      <td class="tb-extension">000</td>
-      <td class="tb-actions actions-center"><button class="tb-edit" (click)="TbEdit()">editar</button> <button class="tb-delete" (click)="TbDelete()">borrar</button></td>
-    </tr>
-
-    <tr>
-      <td class="tb-number">27</td>
-      <td class="tb-name">Nombre Sucursal</td>
-      <td class="tb-address">Dirección</td>
-      <td class="tb-telephone">0000-0000</td>
-      <td class="tb-extension">000</td>
-      <td class="tb-actions actions-center"><button class="tb-edit" (click)="TbEdit()">editar</button> <button class="tb-delete" (click)="TbDelete()">borrar</button></td>
-    </tr>
-
-    <tr>
-      <td class="tb-number">28</td>
-      <td class="tb-name">Nombre Sucursal</td>
-      <td class="tb-address">Dirección</td>
-      <td class="tb-telephone">0000-0000</td>
-      <td class="tb-extension">000</td>
-      <td class="tb-actions actions-center"><button class="tb-edit" (click)="TbEdit()">editar</button> <button class="tb-delete" (click)="TbDelete()">borrar</button></td>
-    </tr>
-
-    <tr>
-      <td class="tb-number">29</td>
-      <td class="tb-name">Nombre Sucursal</td>
-      <td class="tb-address">Dirección</td>
-      <td class="tb-telephone">0000-0000</td>
-      <td class="tb-extension">000</td>
-      <td class="tb-actions actions-center"><button class="tb-edit" (click)="TbEdit()">editar</button> <button class="tb-delete" (click)="TbDelete()">borrar</button></td>
-    </tr>
-
-    <tr>
-      <td class="tb-number">30</td>
-      <td class="tb-name">Nombre Sucursal</td>
-      <td class="tb-address">Dirección</td>
-      <td class="tb-telephone">0000-0000</td>
-      <td class="tb-extension">000</td>
-      <td class="tb-actions actions-center"><button class="tb-edit" (click)="TbEdit()">editar</button> <button class="tb-delete" (click)="TbDelete()">borrar</button></td>
-    </tr>
-
-    <tr>
-      <td class="tb-number">31</td>
-      <td class="tb-name">Nombre Sucursal</td>
-      <td class="tb-address">Dirección</td>
-      <td class="tb-telephone">0000-0000</td>
-      <td class="tb-extension">000</td>
-      <td class="tb-actions actions-center"><button class="tb-edit" (click)="TbEdit()">editar</button> <button class="tb-delete" (click)="TbDelete()">borrar</button></td>
-    </tr>
-
-    <tr>
-      <td class="tb-number">32</td>
-      <td class="tb-name">Nombre Sucursal</td>
-      <td class="tb-address">Dirección</td>
-      <td class="tb-telephone">0000-0000</td>
-      <td class="tb-extension">000</td>
-      <td class="tb-actions actions-center"><button class="tb-edit" (click)="TbEdit()">editar</button> <button class="tb-delete" (click)="TbDelete()">borrar</button></td>
-    </tr>
-
-    <tr>
-      <td class="tb-number">33</td>
-      <td class="tb-name">Nombre Sucursal</td>
-      <td class="tb-address">Dirección</td>
-      <td class="tb-telephone">0000-0000</td>
-      <td class="tb-extension">000</td>
-      <td class="tb-actions actions-center"><button class="tb-edit" (click)="TbEdit()">editar</button> <button class="tb-delete" (click)="TbDelete()">borrar</button></td>
-    </tr>
-
-    <tr>
-      <td class="tb-number">34</td>
-      <td class="tb-name">Nombre Sucursal</td>
-      <td class="tb-address">Dirección</td>
-      <td class="tb-telephone">0000-0000</td>
-      <td class="tb-extension">000</td>
-      <td class="tb-actions actions-center"><button class="tb-edit" (click)="TbEdit()">editar</button> <button class="tb-delete" (click)="TbDelete()">borrar</button></td>
-    </tr>
-
-    <tr>
-      <td class="tb-number">35</td>
-      <td class="tb-name">Nombre Sucursal</td>
-      <td class="tb-address">Dirección</td>
-      <td class="tb-telephone">0000-0000</td>
-      <td class="tb-extension">000</td>
-      <td class="tb-actions actions-center"><button class="tb-edit" (click)="TbEdit()">editar</button> <button class="tb-delete" (click)="TbDelete()">borrar</button></td>
-    </tr>
   </tbody>
 
   </table>
