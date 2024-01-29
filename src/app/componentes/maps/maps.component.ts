@@ -11,7 +11,7 @@ import { UbicacionServiceService } from '../../services/ubicacion-service.servic
   styleUrl: './maps.component.css'
 })
 export class MapsComponent implements OnInit, AfterViewInit, OnDestroy  {
-  
+
   //services
   UbicacionService = inject(UbicacionServiceService)
   //data
@@ -26,7 +26,7 @@ export class MapsComponent implements OnInit, AfterViewInit, OnDestroy  {
   ubicacio5: any;
   ubicacio6: any;
   ubicacio7: any;
-  
+
   pupop: any;
   ubicacio8: any;
   ubicacio9: any;
@@ -44,11 +44,6 @@ export class MapsComponent implements OnInit, AfterViewInit, OnDestroy  {
    async ngOnInit(){
 
     config.apiKey = 'mmhVVCeVE3UJhtmX4ezW';
-  
-
-    
-
-    console.log(this.data[0])
 
   }
 
@@ -56,8 +51,8 @@ export class MapsComponent implements OnInit, AfterViewInit, OnDestroy  {
 
   ngAfterViewInit() {
 
-    
-    const initialState = { lng: -90.528741, lat: 14.603684, zoom: 10 };
+
+    const initialState = { lng: -90.528741, lat: 14.603684, zoom: 10 }
     this.map = new Map({
       container: this.mapContainer.nativeElement,
       style: MapStyle.STREETS,
@@ -75,7 +70,7 @@ export class MapsComponent implements OnInit, AfterViewInit, OnDestroy  {
 
 
 
-    console.log(this.markers);
+    console.log(this.markers)
     this.ubicacio1
 
 
@@ -90,7 +85,7 @@ export class MapsComponent implements OnInit, AfterViewInit, OnDestroy  {
       'fill-color': '#FFAA01', // orange color fill
       'fill-opacity': 0.5
       }
-    });
+    })
 
 
   }
@@ -104,17 +99,17 @@ export class MapsComponent implements OnInit, AfterViewInit, OnDestroy  {
 
   removeUbi() {
     this.markers.remove()
-    this.ubicacio1.remove();
-    this.ubicacio2.remove();
-    this.ubicacio3.remove();
-    this.ubicacio4.remove();
-    this.ubicacio5.remove();
-    this.ubicacio6.remove();
-    this.ubicacio7.remove();
-    this.ubicacio8.remove();
-    this.ubicacio9.remove();
-    this.ubicacio10.remove();
-    this.ubicacio11.remove();
+    this.ubicacio1.remove()
+    this.ubicacio2.remove()
+    this.ubicacio3.remove()
+    this.ubicacio4.remove()
+    this.ubicacio5.remove()
+    this.ubicacio6.remove()
+    this.ubicacio7.remove()
+    this.ubicacio8.remove()
+    this.ubicacio9.remove()
+    this.ubicacio10.remove()
+    this.ubicacio11.remove()
 
 
     console.log('intento remove')
@@ -124,9 +119,11 @@ export class MapsComponent implements OnInit, AfterViewInit, OnDestroy  {
   }
 
   mostarMapas(valor: string) {
-    document.getElementById("cont-img-sucursales")?.classList.remove('show');
+    console.log(document.getElementById("cont-img-sucursales")?.childNodes)
 
-    let initialState = { lng: -90.528741, lat: 14.603684, zoom: 16 };
+    document.getElementById("cont-img-sucursales")?.classList.remove('show')
+
+    let initialState = { lng: -90.528741, lat: 14.603684, zoom: 16 }
 
     switch (valor) {
       case valor = 'procasa':
@@ -172,7 +169,6 @@ export class MapsComponent implements OnInit, AfterViewInit, OnDestroy  {
         this.ubicacio6 =  new Marker({ color: "#222222" })
         .setLngLat([-90.58690824328646, 14.608536464013127]).setPopup(new Popup().setHTML('<h1>Meat House San Cristobal</h1>'))
         this.ubicacio6.addTo(this.map);
-
 
         this.ubicacio7 =  new Marker({ color: "#222222" })
         .setLngLat([-90.58090009499428, 14.636939751825205]).setPopup(new Popup().setHTML('<h1>Procasa Central7</h1>'))

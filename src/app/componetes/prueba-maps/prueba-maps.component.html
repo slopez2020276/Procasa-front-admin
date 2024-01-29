@@ -1,6 +1,26 @@
-<!-- En prueba-maps.component.html -->
-<div id="map"></div>
+<img src="../../../assets/img/textura-fon.png" alt="" id="background">
+
+<div id="container-map">
 
 
+  <div id="conts">
+    <div id="map"></div>
+      <div id="cont-sucursal">
+        <div id="cont-img" class="cont">
+              <div id="close" (click)="CloseSucursal()">cerrar</div>
+          <img src="../../../assets/img/empty.jpg" alt="">
+            <p id="details">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus, molestiae debitis placeat, minus adipisci eveniet nesciunt ad quibusdam neque, nostrum aliquam voluptatibus eum est odit! Explicabo saepe ratione facere illo.</p>
+        </div>
 
+        <div id="cont-sucursales-buttons" class="cont">
+            <div class="sucursales bold" (click)="ToggleDetails()">sucursal</div>
+            <div class="sucursales bold" (click)="ToggleDetails()">sucursal</div>
+            <div class="sucursales bold" (click)="ToggleDetails()">sucursal</div>
+            <div class="sucursales bold" (click)="ToggleDetails()">sucursal</div>
+            <div class="sucursales bold" (click)="ToggleDetails()">sucursal</div>
+            <div class="sucursales bold" (click)="ToggleDetails()">sucursal</div>
+        </div>
+      </div>
+  </div>
 
+</div>

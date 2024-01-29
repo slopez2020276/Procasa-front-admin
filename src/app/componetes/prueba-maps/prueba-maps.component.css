@@ -1,5 +1,150 @@
-/* En prueba-maps.component.css */
+img#background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  min-width: 100vw;
+  width: auto;
+  height: auto;
+  min-height: 110vh;
+  z-index: 0;
+}
+
+div#container-map {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: transparent;
+  margin-top: 0;
+}
+
+div#conts {
+  width: 80%;
+  height: auto;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-wrap: wrap;
+  position: relative;
+}
+
+div#cont-sucursal {
+  width: 50%;
+  height: 100%;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+div.cont {
+  width: 80%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+div.cont:nth-child(2) {
+  width: 60%;
+}
+
+div#close {
+  padding: .5rem 1rem;
+  background: #AA182C;
+  color: #F4F4F4;
+  border-radius: 4px;
+  position: absolute;
+  right: 11%;
+  top: 4px;
+  cursor: pointer;
+}
+
+div#cont-sucursales-buttons { display: none; }
+div#cont-sucursales-buttons.show { display: flex; }
+
+
+div#cont-img { display: none; position: relative;}
+div#cont-img.show { display: flex; }
+
+ div#cont-img img {
+  width: 80%;
+  height: auto;
+  border-radius: 4px;
+ }
+
+p#details {
+  width: 80%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  color: #F4F4F4;
+  text-align: justify;
+  padding: 2rem 0;
+}
+
+div.sucursales {
+  width: 80%;
+  color: #F4F4F4;
+  background: #AA182C;
+  margin-top: 4px;
+  padding: 1rem 2rem;
+  border-radius: 4px;
+  transition: .1s ;
+  cursor: pointer;
+  transform: scale(1);
+  opacity: 1;
+}
+
+div.sucursales:hover {
+  opacity: .8;
+}
+
+div.sucursales:active {
+  background: #F4F4F4;
+  color: #252525;
+  transform: scale(0.97);
+}
+
+
+
+
 #map {
-  height: 400px; /* Ajusta el tamaño según tus necesidades */
-  width: 100%;
+  height: 400px;
+  width: 400px;
+  border-radius: 4px;
+}
+
+
+@media screen and (max-width: 1200px) {
+
+  div#container-map {margin-top: 60px; }
+
+  div#conts {
+    width: 80%;
+    justify-content: center;
+  }
+
+  div#cont-sucursal {
+    margin-top: 2rem;
+    width: 100%;
+    justify-content: center
+  }
+
+  #map {
+    height: 300px;
+    width: 300px;
+  }
+
+}
+
+
+
+@media screen and (max-width: 700px) {
+  div#container-map {margin-top: 0px; }
+  div#conts { width: 90%; }
 }

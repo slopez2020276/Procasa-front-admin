@@ -14,10 +14,12 @@ export class PruebaMapsComponent implements OnInit, AfterViewInit {
   constructor(private ubicaciones: UbicacionServiceService) {}
 
   ngOnInit() {
+  document.getElementById('cont-sucursales-buttons')?.classList.add('show')
+
     this.ubicaciones.ObtenerUbicaciones().subscribe({
       next: (data: any) => {
         console.log('Datos recibidos:', data);
-        this.addMarkers(data.ubi);
+        this.addMarkers(data.ubi)
       },
       error: (error) => {
         console.error('Error al obtener datos:', error);
@@ -29,7 +31,7 @@ export class PruebaMapsComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit() {
-    this.initMap();
+    this.initMap()
   }
 
   private initMap(): void {
@@ -43,30 +45,36 @@ export class PruebaMapsComponent implements OnInit, AfterViewInit {
       ubiArray.forEach((ubicacion) => {
         // Verifica que el objeto tenga las propiedades de coordenadas
         if (ubicacion && ubicacion.codenadaslat && ubicacion.codenadasLng) {
-          const lat = parseFloat(ubicacion.codenadaslat);
-          const lng = parseFloat(ubicacion.codenadasLng);
+          const lat = parseFloat(ubicacion.codenadaslat)
+          const lng = parseFloat(ubicacion.codenadasLng)
 
-          // Agrega un marcador para cada ubicación
           const marker = L.marker([lat, lng], { icon: L.icon({ iconUrl: '../../../assets/images/marker-icon.png' }) }).addTo(this.map);
-
-          // Puedes personalizar el marcador según tus necesidades
-          // marker.bindPopup('Información del marcador');
-
-          // Puedes agregar cada marcador a un array si necesitas gestionarlos posteriormente
-          // this.markers.push(marker);
         } else {
-          console.error('Ubicación no válida:', ubicacion);
+          console.error('Ubicación no válida:', ubicacion)
         }
-      });
+      })
 
-      // Opcional: Ajusta la vista del mapa para incluir todos los marcadores
       if (this.map && ubiArray.length > 1) {
-        const bounds = L.latLngBounds(ubiArray.map(ubicacion => [ubicacion.codenadaslat, ubicacion.codenadasLng]));
+        const bounds = L.latLngBounds(ubiArray.map(ubicacion => [ubicacion.codenadaslat, ubicacion.codenadasLng]))
         this.map.fitBounds(bounds);
       }
     } else {
-      console.error('El arreglo de ubicaciones está vacío o no definido:', ubiArray);
+      console.error('El arreglo de ubicaciones está vacío o no definido:', ubiArray)
     }
   }
+
+
+ToggleDetails(){
+  document.getElementById('cont-sucursales-buttons')?.classList.remove('show')
+  document.getElementById('cont-img')?.classList.add('show')
+}
+
+CloseSucursal() {
+  document.getElementById('cont-sucursales-buttons')?.classList.add('show')
+  document.getElementById('cont-img')?.classList.remove('show')
+}
+
+
+
 
 }
