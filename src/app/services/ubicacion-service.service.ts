@@ -17,7 +17,6 @@ export class UbicacionServiceService {
   }
 
   CrearUbicacion(body: FormData) {
-
     return  firstValueFrom(
       this.httpClient.post<any>(`${this.baseUrlw}/crearUbicacion`, body,this.createHeaders())
     )

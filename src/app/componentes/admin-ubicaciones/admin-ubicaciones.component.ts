@@ -14,6 +14,7 @@ dataUbicacion
 
 
 
+
 ngOnInit(): void {
   this.obtenerUbicacion()
 }
@@ -22,6 +23,10 @@ async obtenerUbicacion(){
   const ubicacion = await this.ubicacionService.ObtenerUbicaionesAdmin()
   console.log(ubicacion.ubi)
   this.dataUbicacion = ubicacion.ubi
+}
+
+crearUbicacion(){
+
 }
 
 
