@@ -53,6 +53,8 @@ export class AdminprincipalComponent implements OnInit, AfterViewInit {
   @ViewChild('confirmElementTL') confirmElementTL!: ElementRef
   @ViewChild('containerAlertElementTL') containerAlertElementTL!: ElementRef
   @ViewChild('containerAlertElementTLEdited') containerAlertElementTLEdited!: ElementRef
+  @ViewChild('containerAlertNewNoticia') containerAlertNewNoticia!: ElementRef
+  @ViewChild('confirmNewNoticia') confirmNewNoticia!: ElementRef
 
   mision:any
   vision:any
@@ -142,6 +144,7 @@ private fileBackgrud:any
     this.confirmElementVal.nativeElement.addEventListener('click', this.onClickValores.bind(this))
     this.confirmElementHis.nativeElement.addEventListener('click', this.onClickHistoria.bind(this))
     this.confirmElementTL.nativeElement.addEventListener('click', this.onClickNewTimeLine.bind(this))
+    this.confirmNewNoticia.nativeElement.addEventListener('click', this.saveNewNotice.bind(this))
   }
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -1247,45 +1250,46 @@ onClickNewNotice() {
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////777
 
 saveNewNoticia(event: Event): void {
-  // file-noticia, titulo-noticia, desc-noticia
 
-//   let prefilenoticia: any = (document.getElementById('file-noticia') as HTMLInputElement | any)?.value
-//   const pretitnoticia: HTMLInputElement | null = document.getElementById('titulo-noticia') as HTMLInputElement
-//   const predescnoticia: HTMLTextAreaElement | any = document.getElementById('desc-noticia')
-//   let filen:string = ''
-//   let noticia:string = ''
-//   let descno:string = ''
+  let prefilenoticia: any = (document.getElementById('file-noticia') as HTMLInputElement | any)?.value
+  const pretitnoticia: HTMLInputElement | null = document.getElementById('titulo-noticia') as HTMLInputElement
+  const predescnoticia: HTMLTextAreaElement | any = document.getElementById('desc-noticia')
+  let filen:any = ''
+  let noticia:any = ''
+  let descno:any = ''
 
-//   if (prefilenoticia instanceof HTMLTextAreaElement) { filen = filen.value }
+  if (prefilenoticia instanceof HTMLTextAreaElement) { filen = prefilenoticia.value }
+  if (pretitnoticia instanceof HTMLTextAreaElement) { noticia = pretitnoticia.value }
+  if (predescnoticia instanceof HTMLTextAreaElement) { descno = predescnoticia.value }
 
-//   if(enlace!=="" && desc!==""){
-//   const innerMessage = document.getElementsByClassName('innermsg')[2]
-//   if (innerMessage) { innerMessage.innerHTML = "¿Desea guardar los cambios?"
+  if(filen!=="" && noticia!=="" && descno!==""){
+  const innerMessage = document.getElementsByClassName('innermsg')[2]
+  if (innerMessage) { innerMessage.innerHTML = "¿Desea guardar los cambios?"
 
-//   document.getElementsByClassName('container-alert')[2]?.classList.add('show')
-//   document.getElementsByClassName('message')[2]?.classList.add('show')
-//   document.getElementsByClassName('cont-btns-alert')[2]?.classList.add('show')
+  document.getElementsByClassName('container-alert')[8]?.classList.add('show')
+  document.getElementsByClassName('message')[8]?.classList.add('show')
+  document.getElementsByClassName('cont-btns-alert')[8]?.classList.add('show')
 
-//   document.getElementsByClassName('cancel')[2]?.addEventListener('click', function(){
-//     document.getElementsByClassName('container-alert')[2]?.classList.remove('show')
-//     document.getElementsByClassName('message')[2]?.classList.remove('show')
-//     document.getElementsByClassName('cont-btns-alert')[2]?.classList.remove('show')
-//   },false)
-//   document.getElementsByClassName('confirm')[2]?.addEventListener('click', function(){
-//     setTimeout(function() {
-//       document.getElementsByClassName('container-alert')[2]?.classList.remove('show')
-//     },300) },false)
-//   }
-//   }else{ this.MessageSuccess("Los campos requeridos no pueden estar vacíos",2) }
-// }
+  document.getElementsByClassName('cancel')[8]?.addEventListener('click', function(){
+    document.getElementsByClassName('container-alert')[8]?.classList.remove('show')
+    document.getElementsByClassName('message')[8]?.classList.remove('show')
+    document.getElementsByClassName('cont-btns-alert')[8]?.classList.remove('show')
+  },false)
+  document.getElementsByClassName('confirm')[8]?.addEventListener('click', function(){
+    setTimeout(function() {
+      document.getElementsByClassName('container-alert')[8]?.classList.remove('show')
+    },300) },false)
+  }
+  }else{ this.MessageSuccess("Los campos requeridos no pueden estar vacíos",2) }
+}
 
-// onClickHistoria() {
-//   this.guardarHistoria()
-//   setTimeout(() => { this.containerAlertElementHis.nativeElement.classList.remove('show') }, 300) }
+SaveNoticia() {
+  this.guardarHistoria()
+  this.containerAlertNewNoticia.nativeElement.classList.remove('show')
+}
 
-// async guardarHistoria() {
-
-//   const respuestaEdit = await this.historiaService.editarHistoria( this.formularioEditHistoria.value,this._idhistoria)
+async guardarNoticia() {
+  // const respuestaEdit = await this.historiaService.editarHistoria( this.formularioEditHistoria.value,this._idhistoria)
 }
 
 
