@@ -1089,6 +1089,15 @@ div#show-more:active {
   transform: scale(.95);
 }
 
+.ng-touched.ng-invalid:is(input, textarea),
+.ng-dirty.ng-invalid:is(input, textarea) {
+  outline: 2px solid #bd0c0c;
+}
+
+.ng-dirty.ng-pending:is(input, textarea) {
+  outline: 2px solid #838a2a;
+}
+
 
 div.message {
   position: relative;

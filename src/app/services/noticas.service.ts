@@ -31,6 +31,11 @@ export class NoticasService {
       this.httpClient.get<any>(`${this.baseUrl}/obtenernoticiasid/${id}`,this.createHeaders())
     )
   }
+  obtnenerNoticasAll(){
+      return firstValueFrom(
+        this.httpClient.get<any>(`${this,this.baseUrl}/otenerNoticciasAll`,this.createHeaders())
+      )
+  }
   
   editarnoticas(id:any,fromValue:any){ 
     return firstValueFrom(
@@ -53,6 +58,8 @@ export class NoticasService {
     return this.httpClient.put(`${this.baseUrl}/editarNoticiasxId/${id}`, body)
   }
   
+
+ 
 
   createHeaders(){
     return   {

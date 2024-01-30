@@ -1,12 +1,12 @@
 import { Component, ElementRef, OnInit, ViewChild, inject } from '@angular/core';
 import { HistoriaService } from '../../services/historia.service';
-import { Form, FormControl, FormGroup } from '@angular/forms';
+import { Form, FormControl, FormGroup, ReactiveFormsModule, Validator, Validators } from '@angular/forms';
 import { LineaTiempoService } from '../../services/linea-tiempo.service';
 import { empty, timeInterval } from 'rxjs';
 import { MisionService } from '../../services/mision.service';
 import { NoticasService } from '../../services/noticas.service';
 import { ValoresService } from '../../services/valores.service';
-import { math } from '@maptiler/sdk';
+import { math, validateStyleMin } from '@maptiler/sdk';
 import { NgOptimizedImage } from '@angular/common';
 import { AfterViewInit } from '@angular/core';
 
@@ -113,8 +113,8 @@ private fileBackgrud:any
       DescripcionHistoria: new FormControl()
     })
     this.formularioMisionValor = new FormGroup({
-      textMision: new FormControl(),
-      textVIsion: new FormControl()
+      textMision: new FormControl((''),[Validators.required]),
+      textVIsion: new FormControl((''),[Validators.required])
     })
    this.formularioAgregarLineaTiempo = new FormGroup({
     titleLineaTiempo: new FormControl(),
@@ -123,14 +123,14 @@ private fileBackgrud:any
 
     })
     this.formularioValores = new FormGroup({
-      Integridad: new FormControl(),
-      Pasion: new FormControl(),
-      Innovacion: new FormControl(),
-      Orientacion: new FormControl(),
+      Integridad: new FormControl((''),[Validators.required]),
+      Pasion: new FormControl((''),[Validators.required]),
+      Innovacion: new FormControl((''),[Validators.required]),
+      Orientacion: new FormControl((''),[Validators.required]),
 
       })
     this.formularioEditarNoticias = new FormGroup({
-        title: new FormControl(),
+        title: new FormControl((''),[Validators.required]) ,
         imgPhat: new FormControl(),
         descripcion: new FormControl(),
         })
@@ -538,6 +538,12 @@ async eliminarLineaTiempo(id:any){
     }
   }
 
+  async ObtenerAllnoticas(){
+    const dataLineaRespuesta = await this.noticiasService.obtnenerNoticasAll()
+    this.dataLineaRespuesta = dataLineaRespuesta.noticias
+    console.log(this.dataLineaRespuesta )
+  }
+
   sendFileUpdateTiempo():void{
 
     let id = this.dataLieneaxId._id
@@ -590,6 +596,9 @@ async eliminarLineaTiempo(id:any){
 
 ShowMore(){
   console.log("-- MOSTRAR MÁS --")
+
+  this.ObtenerAllnoticas()
+
 }
 
 

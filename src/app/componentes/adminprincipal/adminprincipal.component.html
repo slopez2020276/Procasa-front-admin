@@ -262,7 +262,7 @@
   <button id="deshabilitar-mv" (click)="DisableMisionVision()">Cancelar</button>
 </div>
 
-<form [formGroup]="formularioMisionValor" (ngSubmit)="guardarMision()" >
+<form [formGroup]="formularioMisionValor"  >
 <div id="cont-textareas">
 
   <div class="cont-inter">
@@ -279,8 +279,9 @@
   <div class="foot-cont">
 
     <div class="cont-buttons">
+      <button [disabled]="formularioMisionValor.invalid"  > aaa</button>
       <!-- <div class="normal">guardar</div> -->
-      <div class="replace-button normal" id="cancel-c" (click)="preSaveMisionVision()">guardar</div>
+      <div    class="replace-button normal" id="cancel-c" (click)="preSaveMisionVision()">guardar</div>
     </div>
   </div>
 
@@ -311,7 +312,7 @@
 
 
 
-  <form [formGroup]="formularioValores" (ngSubmit)="editarValores()">
+  <form [formGroup]="formularioValores">
     <div id="cont-textareas-valores">
     <div class="cont-inter-valores">
 
@@ -350,7 +351,7 @@
 
         <div class="message"> <h1 class="innermsg"></h1></div>
         <div class="cont-btns-alert">
-          <button class="confirm" #confirmElementVal>confirmar</button>
+          <button  class="confirm" #confirmElementVal> confirmar</button>
           <div class="replace-button cancel">cancelar</div>
         </div>
       </div>
@@ -634,7 +635,7 @@
 
       <div class="message"> <h1 class="innermsg"></h1></div>
       <div class="cont-btns-alert">
-        <button class="confirm" #confirmUpdateNotice (click)="sendFileUpdateNoticia()">confirmar</button>
+        <button class="confirm" (click)="sendFileUpdateNoticia()">confirmar</button>
         <div class="replace-button cancel">cancelar</div>
       </div>
     </div>
