@@ -1125,8 +1125,10 @@ div.message h1 {
 input, textarea { transition: .1s; }
 input:focus, textarea:focus { border: 1px solid #27A315; }
 
-span.danger-red { color: #252525; }
-span.danger-red.limit { color: #FF182C; }
+span.danger-red,
+span#width-new-n, span#height-new-n, span#size-new-n { color: #252525; }
+span.danger-red.limit, span.innerdetails.limit,
+span#width-new-n.limit, span#height-new-n.limit, span#size-new-n.limit { color: #FF182C; }
 
 h1.innermsg {
   background: transparent;

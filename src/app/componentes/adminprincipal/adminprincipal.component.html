@@ -386,6 +386,21 @@
     </div>
   </div>
 
+
+
+
+  <div class="container-alert">
+    <div class="alert-model">
+        <p class="inner-message bold"></p>
+
+        <div class="message"> <h1 class="innermsg"></h1></div>
+        <div class="cont-btns-alert">
+          <button class="confirm">confirmar</button>
+          <div class="replace-button cancel">cancelar</div>
+        </div>
+      </div>
+    </div>
+
 </div>
 
 <div id="modal-6">
@@ -526,13 +541,13 @@
 <form [formGroup]="formularioAgregarNoticias">
   <div class="preview-img-model">
 <label for="file-notice">imagen</label>
-<input id="file-noticia" (change)="saveNewNoticia($event)" title="imagen de noticia" type="file" name="file-notice" data-content="seleccionar archivo">
+<input id="file-noticia" (change)="getFileNoticia($event)" (change)="saveNewNoticia($event)" title="imagen de noticia" type="file" name="file-notice" data-content="seleccionar archivo">
 
 <div class="details-img">
   <ul>
-    <li>ancho <p class="innerdetails bold" id="width-new-n"></p></li>
-    <li>alto <p class="innerdetails bold" id="height-new-n"></p></li>
-    <li>tamaño <p class="innerdetails bold" id="size-new-n"></p></li>
+    <li>ancho <span class="innerdetails bold" id="width-new-n"></span></li>
+    <li>alto <span class="innerdetails bold" id="height-new-n"></span></li>
+    <li>tamaño <span class="innerdetails bold" id="size-new-n"></span></li>
   </ul>
   <img src="" alt="" id="img-pre-noticia">
 </div>
@@ -548,7 +563,7 @@
 
 
 
-<div class="replace-button normal" >guardar</div>
+<div class="replace-button normal" id="presave-noticia">guardar</div>
 
 <div class="container-alert">
 <div class="alert-model">
@@ -579,15 +594,6 @@
 </form>
 
 </div>
-
-
-
-
-
-
-
-
-
 
 
 

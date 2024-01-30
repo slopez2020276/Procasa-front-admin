@@ -144,7 +144,7 @@ private fileBackgrud:any
     this.confirmElementVal.nativeElement.addEventListener('click', this.onClickValores.bind(this))
     this.confirmElementHis.nativeElement.addEventListener('click', this.onClickHistoria.bind(this))
     this.confirmElementTL.nativeElement.addEventListener('click', this.onClickNewTimeLine.bind(this))
-    this.confirmNewNoticia.nativeElement.addEventListener('click', this.saveNewNotice.bind(this))
+    this.confirmNewNoticia.nativeElement.addEventListener('click', this.saveNoticia.bind(this))
   }
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -347,47 +347,6 @@ ModalTimeLine() {document.getElementById('modal-time-line')?.classList.toggle('m
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-
-// async editarHistoria(){
-
-//     let enlaceValidate: any = (document.getElementById('iframe-value') as HTMLInputElement | any)?.value
-
-//     let textareagtp: HTMLTextAreaElement | any = document.getElementById('textareaValidate')
-//     let valorTextarea: any = textareagtp?.value
-
-
-// if(enlaceValidate !== null && enlaceValidate !== undefined && enlaceValidate !== ''){ enlaceValidate }else{ enlaceValidate="" }
-// if(valorTextarea !== null && valorTextarea !== undefined && valorTextarea !== ''){ valorTextarea }else{ valorTextarea="" }
-// if(enlaceValidate == "" || valorTextarea == ""){
-//   this.MessageSuccess('Los campos requeridos no pueden estar vacíos',2)
-// }else{
-
-//   const innerMessage = document.getElementsByClassName('innermsg')[2]
-//   if (innerMessage) { innerMessage.innerHTML = "¿Desea guardar los cambios?"
-
-//   document.getElementsByClassName('container-alert')[2]?.classList.add('show')
-//   document.getElementsByClassName('message')[2]?.classList.add('show')
-//   document.getElementsByClassName('cont-btns-alert')[2]?.classList.add('show')
-
-//     document.getElementsByClassName('cancel')[2]?.addEventListener('click', function(){
-//     document.getElementsByClassName('container-alert')[2]?.classList.remove('show')
-//     document.getElementsByClassName('message')[2]?.classList.remove('show')
-//     document.getElementsByClassName('cont-btns-alert')[2]?.classList.remove('show')
-//   },false)
-//   document.getElementsByClassName('confirm')[2]?.addEventListener('click', function(){
-//     setTimeout(function() { document.getElementsByClassName('container-alert')[2]?.classList.remove('show')
-//   },300) },false)
-
-  //   let id:any = this._idhistoria
-  // const respuestaAgregar = await this.historiaService.editarHistoria(this.formulario.value,id)
-  // this.obtenerHistoria()
-  // this.MessageSuccess('¡Datos guardados exitosamente!',2)
-// }
-// }
-// }
-
-
-
 ModalAddTimeLine() { document.getElementById('modal-time-line-add')?.classList.toggle('modal') }
 
   async agregarEventoLineaTiempo(){
@@ -471,12 +430,7 @@ async eliminarLineaTiempo(id:any){
 
 }
 
-async eliminarNoticia(id){
-  const respuestaDelete = await this.noticiasService.EliminarNoticia(id)
-  console.log(respuestaDelete)
-  this.obtnerNoticias()
-}
-
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
   async editarNoticiasxid(){
     let id = this.dataNoticiasxID._id
     const respuestaeditNoticias = await this.noticiasService.editarnoticas(id,this.formularioEditarNoticias.value)
@@ -539,10 +493,10 @@ async eliminarNoticia(id){
     const body = new FormData()
     if(this.fileTmpNoticia){
       body.append('imgPhat', this.fileTmpNoticia.fileRaw, this.fileTmpNoticia.fileName)
-      body.append('titulo', this.formularioAgregarNoticias.value.titulo)
+      body.append('title', this.formularioAgregarNoticias.value.title)
       body.append('descripcion',this.formularioAgregarNoticias.value.descripcion)
     }else{
-      body.append('titulo', this.formularioAgregarNoticias.value.titulo)
+      body.append('title', this.formularioAgregarNoticias.value.title)
       body.append('descripcion',this.formularioAgregarNoticias.value.descripcion)
     }
 
@@ -648,7 +602,7 @@ ShowMore(){
         document.getElementsByClassName('container-alert')[i]?.classList.remove('show')
         document.getElementsByClassName('message')[i]?.classList.remove('show')
         document.getElementsByClassName('timesuccess')[i]?.classList.remove('lesswidth')
-    },2000)
+    },1500)
   }
   }
 
@@ -1038,24 +992,24 @@ saveNewTimeLine() {
   if (descripcionInput instanceof HTMLInputElement) { descripcion = descripcionInput.value }
 
   if(file!=="" && titulo!=="" && descripcion!==""){
-  const innerMessage = document.getElementsByClassName('innermsg')[6]
+  const innerMessage = document.getElementsByClassName('innermsg')[7]
   if (innerMessage) { innerMessage.innerHTML = "¿Desea guardar los cambios?"
 
-  document.getElementsByClassName('container-alert')[6]?.classList.add('show')
-  document.getElementsByClassName('message')[6]?.classList.add('show')
-  document.getElementsByClassName('cont-btns-alert')[6]?.classList.add('show')
+  document.getElementsByClassName('container-alert')[7]?.classList.add('show')
+  document.getElementsByClassName('message')[7]?.classList.add('show')
+  document.getElementsByClassName('cont-btns-alert')[7]?.classList.add('show')
 
-    document.getElementsByClassName('cancel')[6]?.addEventListener('click', function(){
-    document.getElementsByClassName('container-alert')[6]?.classList.remove('show')
-    document.getElementsByClassName('message')[6]?.classList.remove('show')
-    document.getElementsByClassName('cont-btns-alert')[6]?.classList.remove('show')
+    document.getElementsByClassName('cancel')[7]?.addEventListener('click', function(){
+    document.getElementsByClassName('container-alert')[7]?.classList.remove('show')
+    document.getElementsByClassName('message')[7]?.classList.remove('show')
+    document.getElementsByClassName('cont-btns-alert')[7]?.classList.remove('show')
   },false)
-  document.getElementsByClassName('confirm')[6]?.addEventListener('click', function(){
+  document.getElementsByClassName('confirm')[7]?.addEventListener('click', function(){
     setTimeout(function() {
-      document.getElementsByClassName('container-alert')[6]?.classList.remove('show')
+      document.getElementsByClassName('container-alert')[7]?.classList.remove('show')
     },300) },false)
   }
-  }else{ this.MessageSuccess("Los campos requeridos no pueden estar vacíos",6) }
+  }else{ this.MessageSuccess("Los campos requeridos no pueden estar vacíos",7) }
 }
 
 onClickNewTimeLine() {
@@ -1082,68 +1036,6 @@ onClickNewTimeLine() {
 
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// EDITAR LINEA DE TIEMPO
-// N O    S I R V E **************************************************************************************************************
-// *******************************************************************************************************************************
-
-//   saveNewTimeLineEdited() {
-
-//     const fileInput: HTMLInputElement | null = document.getElementById('new-file-input') as HTMLInputElement | null
-
-//     const tituloInput: HTMLInputElement | null = document.getElementById('new-titulo-tl') as HTMLInputElement | null
-//     const descripcionInput: HTMLInputElement | null = document.getElementById('new-desc-tl') as HTMLInputElement | null
-
-//     let file: string = ''
-//     let titulo: string = ''
-//     let descripcion: string = ''
-
-//     if (fileInput instanceof HTMLInputElement) { file = fileInput.value }
-//     if (tituloInput instanceof HTMLInputElement) { titulo = tituloInput.value }
-//     if (descripcionInput instanceof HTMLInputElement) { descripcion = descripcionInput.value }
-
-//     if(file!=="" && titulo!=="" && descripcion!==""){
-//     const innerMessage = document.getElementsByClassName('innermsg')[6]
-//     if (innerMessage) { innerMessage.innerHTML = "¿Desea guardar los cambios?"
-
-//     document.getElementsByClassName('container-alert')[6]?.classList.add('show')
-//     document.getElementsByClassName('message')[6]?.classList.add('show')
-//     document.getElementsByClassName('cont-btns-alert')[6]?.classList.add('show')
-
-//       document.getElementsByClassName('cancel')[6]?.addEventListener('click', function(){
-//       document.getElementsByClassName('container-alert')[6]?.classList.remove('show')
-//       document.getElementsByClassName('message')[6]?.classList.remove('show')
-//       document.getElementsByClassName('cont-btns-alert')[6]?.classList.remove('show')
-//     },false)
-//     document.getElementsByClassName('confirm')[6]?.addEventListener('click', function(){
-//       setTimeout(function() {
-//         document.getElementsByClassName('container-alert')[6]?.classList.remove('show')
-//       },300) },false)
-//     }
-//     }else{ this.MessageSuccess("Los campos requeridos no pueden estar vacíos",6) }
-//   }
-
-//   onClickNewTimeLineEdited() {
-//     this.sendFile()
-//     setTimeout(() => { this.containerAlertElementTL.nativeElement.classList.remove('show') }, 300) }
-
-//     sendFileEdit():void{
-
-//       const body = new FormData()
-
-//       if(this.fileTmp){
-//         body.append('ImgPathLineaTiempo', this.fileTmp.fileRaw, this.fileTmp.fileName);
-//         body.append('titleLineaTiempo', this.formularioAgregarLineaTiempo.value.titleLineaTiempo)
-//         body.append('descriptionLineaTiempo',this.formularioAgregarLineaTiempo.value.descriptionLineaTiempo)
-//       }else{
-//         body.append('titleLineaTiempo', this.formularioAgregarLineaTiempo.value.titleLineaTiempo)
-//         body.append('descriptionLineaTiempo',this.formularioAgregarLineaTiempo.value.descriptionLineaTiempo)
-//       }
-//       this.lineaService.sendPost(body)
-//       .subscribe(res =>{console.log(res), this.obtenerLinea(),this.fileTmp = null})
-//       this.MessageSuccess('Datos guardados exitosamente',6)
-//     }
-
-
 
 async editarModal(id:any) {
   const respuestaid = await this.lineaService.obtenerLineaxID(id)
@@ -1206,50 +1098,9 @@ this.MessageSuccess("ERROR :(",7)
 
 
 
-//#################################################################################################################################
-saveNewNotice() {
-
-  const fileInput: HTMLInputElement | null = document.getElementById('new-file-input') as HTMLInputElement | null
-
-  const tituloInput: HTMLInputElement | null = document.getElementById('new-titulo-tl') as HTMLInputElement | null
-  const descripcionInput: HTMLInputElement | null = document.getElementById('new-desc-tl') as HTMLInputElement | null
-
-  let file: string = ''
-  let titulo: string = ''
-  let descripcion: string = ''
-
-  if (fileInput instanceof HTMLInputElement) { file = fileInput.value }
-  if (tituloInput instanceof HTMLInputElement) { titulo = tituloInput.value }
-  if (descripcionInput instanceof HTMLInputElement) { descripcion = descripcionInput.value }
-
-  if(file!=="" && titulo!=="" && descripcion!==""){
-  const innerMessage = document.getElementsByClassName('innermsg')[6]
-  if (innerMessage) { innerMessage.innerHTML = "¿Desea guardar los cambios?"
-
-  document.getElementsByClassName('container-alert')[6]?.classList.add('show')
-  document.getElementsByClassName('message')[6]?.classList.add('show')
-  document.getElementsByClassName('cont-btns-alert')[6]?.classList.add('show')
-
-    document.getElementsByClassName('cancel')[6]?.addEventListener('click', function(){
-    document.getElementsByClassName('container-alert')[6]?.classList.remove('show')
-    document.getElementsByClassName('message')[6]?.classList.remove('show')
-    document.getElementsByClassName('cont-btns-alert')[6]?.classList.remove('show')
-  },false)
-  document.getElementsByClassName('confirm')[6]?.addEventListener('click', function(){
-    setTimeout(function() {
-      document.getElementsByClassName('container-alert')[6]?.classList.remove('show')
-    },300) },false)
-  }
-  }else{ this.MessageSuccess("Los campos requeridos no pueden estar vacíos",6) }
-}
-
-onClickNewNotice() {
-  this.sendFile()
-  setTimeout(() => { this.containerAlertElementTL.nativeElement.classList.remove('show') }, 300) }
-
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////777
 
-saveNewNoticia(event: Event): void {
+saveNewNoticia(event: Event): void  {
 
   const fileInput = event.target as HTMLInputElement
   const archivo = fileInput.files?.[0]
@@ -1272,86 +1123,102 @@ saveNewNoticia(event: Event): void {
         img.src = objectURL
         this.anchoimg = imagen.width, this.altoimg = imagen.height
 
-const saveButtonTL = document.getElementById('save-new-noticia')
-if (saveButtonTL) {
-  saveButtonTL.addEventListener('click', () => {
+    document.getElementById('width-new-n')?.classList.remove('limit')
+        document.getElementById('height-new-n')?.classList.remove('limit')
+        document.getElementById('size-new-n')?.classList.remove('limit')
 
-    this.saveNoticia()
-
-}, false) }
-
-        // document.getElementsByClassName('danger-red')[3]?.classList.remove('limit')
-        // document.getElementsByClassName('danger-red')[4]?.classList.remove('limit')
-        // document.getElementsByClassName('danger-red')[5]?.classList.remove('limit')
-
-        // if(this.anchoimg > 2000){  document.getElementsByClassName('danger-red')[3].classList.add('limit') }
-        // if(this.altoimg > 1500){ document.getElementsByClassName('danger-red')[4].classList.add('limit') }
-        // if((size/1024) > 2048 ){  document.getElementsByClassName('danger-red')[5].classList.add('limit') }
+        if(this.anchoimg > 2000){  document.getElementById('width-new-n')?.classList.add('limit') }
+        if(this.altoimg > 1500){ document.getElementById('height-new-n')?.classList.add('limit') }
+        if((size/1024) > 2048 ){  document.getElementById('size-new-n')?.classList.add('limit') }
 
         document.getElementById('size-new-n')!.innerHTML = sizemedida
         document.getElementById('width-new-n')!.innerHTML = this.anchoimg + " px"
         document.getElementById('height-new-n')!.innerHTML = this.altoimg + " px"
         document.getElementById('file-noticia')?.setAttribute('data-content', fileName)
-        // document.getElementById('img-pre-noticia')?.removeAttribute('src')
-        document.getElementById('img-pre-tl')?.setAttribute('src', img.src)
+        document.getElementById('img-pre-noticia')?.removeAttribute('src')
         document.getElementById('img-pre-noticia')?.setAttribute('src', img.src)
-      }
-    }
-    lector.readAsDataURL(archivo)
-  }
 
-// -----------------------------------------------------------------------------------------------------------
-  const tituloInput: HTMLInputElement | null = document.getElementById('titulo-noticia') as HTMLInputElement
-  const descInput: HTMLTextAreaElement | null = document.getElementById('desc-noticia') as HTMLTextAreaElement
-  
-  let filen: string = ''
-  let noticia: string = ''
-  let descno: string = ''
-  
-  if (fileInput && fileInput instanceof HTMLInputElement) { filen = fileInput.value }
-  if (tituloInput && tituloInput instanceof HTMLInputElement) { noticia = tituloInput.value }
-  if (descInput && descInput instanceof HTMLTextAreaElement) { descno = descInput.value }
-  
+        const saveButtonTL = document.getElementById('presave-noticia')
+        if (saveButtonTL) { saveButtonTL.addEventListener('click', () => {
+          // this.saveNoticia()
 
-  if(filen!=="" && noticia!=="" && descno!==""){
-  const innerMessage = document.getElementsByClassName('innermsg')[2]
+
+          const tituloInput: HTMLInputElement | null = document.getElementById('titulo-noticia') as HTMLInputElement | null
+          const descripcionInput: HTMLTextAreaElement | any = document.getElementById('desc-noticia')
+
+          let file: string = ''
+          let titulo: string = ''
+          let descripcion: string = ''
+
+          if (tituloInput instanceof HTMLInputElement) { titulo = tituloInput.value }
+          if (descripcionInput instanceof HTMLTextAreaElement) { descripcion = descripcionInput.value }
+
+console.log(file)
+console.log(titulo)
+console.log(descripcion)
+
+if(titulo!=="" && descripcion!==""){
+  const innerMessage = document.getElementsByClassName('innermsg')[9]
   if (innerMessage) { innerMessage.innerHTML = "¿Desea guardar los cambios?"
 
-  document.getElementsByClassName('container-alert')[8]?.classList.add('show')
-  document.getElementsByClassName('message')[8]?.classList.add('show')
-  document.getElementsByClassName('cont-btns-alert')[8]?.classList.add('show')
 
-  document.getElementsByClassName('cancel')[8]?.addEventListener('click', function(){
-    document.getElementsByClassName('container-alert')[8]?.classList.remove('show')
-    document.getElementsByClassName('message')[8]?.classList.remove('show')
-    document.getElementsByClassName('cont-btns-alert')[8]?.classList.remove('show')
-  },false)
-  document.getElementsByClassName('confirm')[8]?.addEventListener('click', function(){
-    setTimeout(function() {
-      document.getElementsByClassName('container-alert')[8]?.classList.remove('show')
-    },300) },false)
-  }
-  }else{ this.MessageSuccess("Los campos requeridos no pueden estar vacíos",2) }
+          document.getElementsByClassName('container-alert')[9]?.classList.add('show')
+          document.getElementsByClassName('message')[9]?.classList.add('show')
+          document.getElementsByClassName('cont-btns-alert')[9]?.classList.add('show')
+
+            document.getElementsByClassName('cancel')[9]?.addEventListener('click', function(){
+            document.getElementsByClassName('container-alert')[9]?.classList.remove('show')
+            document.getElementsByClassName('message')[9]?.classList.remove('show')
+            document.getElementsByClassName('cont-btns-alert')[9]?.classList.remove('show')
+          },false)
+          document.getElementsByClassName('confirm')[9]?.addEventListener('click', function(){
+            document.getElementsByClassName('container-alert')[9]?.classList.remove('show')
+
+          },false)
+        }
+
+      }else{
+        document.getElementsByClassName('cont-btns-alert')[9]?.classList.remove('show')
+        this.MessageSuccess("Los campos requeridos no pueden estar vacíos",9)
+      }
+        }, false) }
+        }
+      }
+      lector.readAsDataURL(archivo)
+    }
 }
-
 saveNoticia() {
-  this.guardarHistoria()
+  this.sendFileNoticia()
   this.containerAlertNewNoticia.nativeElement.classList.remove('show')
 }
 
-async guardarNoticia() {
-  // const respuestaEdit = await this.historiaService.editarHistoria( this.formularioEditHistoria.value,this._idhistoria)
+async guardarNoticia() { const respuestaEdit = await this.noticiasService.crearNoticia(this.formularioAgregarNoticias.value) }
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+async eliminarNoticia(id:any){
+
+  const innerMessage = document.getElementsByClassName('innermsg')[6]
+  if (innerMessage) { innerMessage.innerHTML = "¿Desea eliminar la noticia seleccionada?"
+
+  document.getElementsByClassName('container-alert')[6]?.classList.add('show')
+  document.getElementsByClassName('message')[6]?.classList.add('show')
+  document.getElementsByClassName('cont-btns-alert')[6]?.classList.add('show')
+
+  document.getElementsByClassName('cancel')[6]?.addEventListener('click', function(){
+    document.getElementsByClassName('container-alert')[6]?.classList.remove('show')
+    document.getElementsByClassName('message')[6]?.classList.remove('show')
+    document.getElementsByClassName('cont-btns-alert')[6]?.classList.remove('show')
+  },false)
+
+  document.getElementsByClassName('confirm')[6]?.addEventListener('click', async () => {
+    const respuestaDelete = await this.noticiasService.EliminarNoticia(id)
+    this.obtnerNoticias()
+    document.getElementsByClassName('cont-btns-alert')[6]?.classList.remove('show'); this.MessageSuccess('Noticia eliminada',6) }, false) }
+
 }
 
 
-
-
-
-
-
-
-
-
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////777777
 
 
 
