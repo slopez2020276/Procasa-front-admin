@@ -1251,7 +1251,6 @@ onClickNewNotice() {
 
 saveNewNoticia(event: Event): void {
 
-
   const fileInput = event.target as HTMLInputElement
   const archivo = fileInput.files?.[0]
 
@@ -1273,11 +1272,11 @@ saveNewNoticia(event: Event): void {
         img.src = objectURL
         this.anchoimg = imagen.width, this.altoimg = imagen.height
 
-const saveButtonTL = document.getElementById('save-new-tili')
+const saveButtonTL = document.getElementById('save-new-noticia')
 if (saveButtonTL) {
   saveButtonTL.addEventListener('click', () => {
 
-    this.saveNewTimeLine()
+    this.saveNoticia()
 
 }, false) }
 
@@ -1289,13 +1288,13 @@ if (saveButtonTL) {
         // if(this.altoimg > 1500){ document.getElementsByClassName('danger-red')[4].classList.add('limit') }
         // if((size/1024) > 2048 ){  document.getElementsByClassName('danger-red')[5].classList.add('limit') }
 
-        document.getElementsByClassName('innerdetails')[2]!.innerHTML = sizemedida
-        document.getElementsByClassName('innerdetails')[0]!.innerHTML = this.anchoimg + " px"
-        document.getElementsByClassName('innerdetails')[1]!.innerHTML = this.altoimg + " px"
-        document.getElementById('new-file-input')?.setAttribute('data-content', fileName)
-        // document.getElementById('pre-portada')?.removeAttribute('src')
+        document.getElementById('size-new-n')!.innerHTML = sizemedida
+        document.getElementById('width-new-n')!.innerHTML = this.anchoimg + " px"
+        document.getElementById('height-new-n')!.innerHTML = this.altoimg + " px"
+        document.getElementById('file-noticia')?.setAttribute('data-content', fileName)
+        // document.getElementById('img-pre-noticia')?.removeAttribute('src')
         document.getElementById('img-pre-tl')?.setAttribute('src', img.src)
-        // document.getElementById('pre-portada')?.setAttribute('src', img.src)
+        document.getElementById('img-pre-noticia')?.setAttribute('src', img.src)
       }
     }
     lector.readAsDataURL(archivo)
@@ -1313,11 +1312,6 @@ if (saveButtonTL) {
   if (tituloInput && tituloInput instanceof HTMLInputElement) { noticia = tituloInput.value }
   if (descInput && descInput instanceof HTMLTextAreaElement) { descno = descInput.value }
   
-
-console.log(filen)
-console.log(noticia)
-console.log(descno)
-
 
   if(filen!=="" && noticia!=="" && descno!==""){
   const innerMessage = document.getElementsByClassName('innermsg')[2]
@@ -1340,7 +1334,7 @@ console.log(descno)
   }else{ this.MessageSuccess("Los campos requeridos no pueden estar vacíos",2) }
 }
 
-SaveNoticia() {
+saveNoticia() {
   this.guardarHistoria()
   this.containerAlertNewNoticia.nativeElement.classList.remove('show')
 }

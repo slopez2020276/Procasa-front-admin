@@ -1142,7 +1142,7 @@ div.preview-img-model {
   flex-wrap: wrap;
 }
 
-img#img-pre-tl {
+img#img-pre-tl, img#img-pre-noticia {
   max-width: 130px;
   width: auto;
   height: auto;
