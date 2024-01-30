@@ -1288,7 +1288,9 @@ if(namefile!=="" && titulo!=="" && descripcion!==""){
           },false)
           document.getElementsByClassName('confirm')[11]?.addEventListener('click', function(){
             document.getElementsByClassName('container-alert')[11]?.classList.remove('show')
-
+//************************************************************************ */
+// ACÁ EMPIEZA LO BONITO
+//************************************************************************ */
           },false)
         }
 
