@@ -1,24 +1,20 @@
 import { Component, ElementRef, OnInit, ViewChild, inject } from '@angular/core';
 import { HistoriaService } from '../../services/historia.service';
-import { Form, FormControl, FormGroup, ReactiveFormsModule, Validator, Validators } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { LineaTiempoService } from '../../services/linea-tiempo.service';
-import { empty, timeInterval } from 'rxjs';
 import { MisionService } from '../../services/mision.service';
 import { NoticasService } from '../../services/noticas.service';
 import { ValoresService } from '../../services/valores.service';
-import { math, validateStyleMin } from '@maptiler/sdk';
-import { NgOptimizedImage } from '@angular/common';
 import { AfterViewInit } from '@angular/core';
 
+interface HtmlInputEvent extends Event { target: HTMLInputElement }
 
-interface HtmlInputEvent extends Event {
-  target: HTMLInputElement;
-}
 @Component({
   selector: 'app-adminprincipal',
   templateUrl: './adminprincipal.component.html',
   styleUrl: './adminprincipal.component.css'
 })
+
 export class AdminprincipalComponent implements OnInit, AfterViewInit {
   anchoimg:any
   altoimg:any
@@ -38,52 +34,49 @@ export class AdminprincipalComponent implements OnInit, AfterViewInit {
   dataValores
   dataHistoria
 
-  ValoresService = inject(ValoresService)
-  historiaService = inject(HistoriaService)
-  lineaService = inject(LineaTiempoService)
-  misionService = inject(MisionService)
-  noticiasService = inject(NoticasService)
+ValoresService = inject(ValoresService)
+historiaService = inject(HistoriaService)
+lineaService = inject(LineaTiempoService)
+misionService = inject(MisionService)
+noticiasService = inject(NoticasService)
 
-  @ViewChild('confirmElement') confirmElement!: ElementRef
-  @ViewChild('containerAlertElement') containerAlertElement!: ElementRef
-  @ViewChild('confirmElementVal') confirmElementVal!: ElementRef
-  @ViewChild('containerAlertElementVal') containerAlertElementVal!: ElementRef
-  @ViewChild('confirmElementHis') confirmElementHis!: ElementRef
-  @ViewChild('containerAlertElementHis') containerAlertElementHis!: ElementRef
-  @ViewChild('confirmElementTL') confirmElementTL!: ElementRef
-  @ViewChild('containerAlertElementTL') containerAlertElementTL!: ElementRef
-  @ViewChild('containerAlertElementTLEdited') containerAlertElementTLEdited!: ElementRef
-  @ViewChild('containerAlertNewNoticia') containerAlertNewNoticia!: ElementRef
-  @ViewChild('confirmNewNoticia') confirmNewNoticia!: ElementRef
-  @ViewChild('containeralertUpdateNotice') containeralertUpdateNotice!: ElementRef
-  @ViewChild('confirmUpdateNotice') confirmUpdateNotice!: ElementRef
+@ViewChild('confirmElement') confirmElement!: ElementRef
+@ViewChild('containerAlertElement') containerAlertElement!: ElementRef
+@ViewChild('confirmElementVal') confirmElementVal!: ElementRef
+@ViewChild('containerAlertElementVal') containerAlertElementVal!: ElementRef
+@ViewChild('confirmElementHis') confirmElementHis!: ElementRef
+@ViewChild('containerAlertElementHis') containerAlertElementHis!: ElementRef
+@ViewChild('confirmElementTL') confirmElementTL!: ElementRef
+@ViewChild('containerAlertElementTL') containerAlertElementTL!: ElementRef
+@ViewChild('containerAlertElementTLEdited') containerAlertElementTLEdited!: ElementRef
+@ViewChild('containerAlertNewNoticia') containerAlertNewNoticia!: ElementRef
+@ViewChild('confirmNewNoticia') confirmNewNoticia!: ElementRef
+@ViewChild('containeralertUpdateNotice') containeralertUpdateNotice!: ElementRef
+@ViewChild('confirmUpdateNotice') confirmUpdateNotice!: ElementRef
 
-  mision:any
-  vision:any
-  data: any
-  dataNoticias:any
+mision:any
+vision:any
+data: any
+dataNoticias:any
 
+Integridadmodel:any
+PasionModel:any
+InnovacionModel:any
+OrientacionModel:any
 
-  Integridadmodel:any
-  PasionModel:any
-  InnovacionModel:any
-  OrientacionModel:any
+_idhistoria: any
+textoHistoria:any
+EncalceVideo: any
 
+dataMisionÑ:any
+dataLinea:any
+dataLieneaxId:any
+dataNoticiasxID:any
 
-  _idhistoria: any
-  textoHistoria:any
-  EncalceVideo: any
-
-  dataMisionÑ:any
-  dataLinea:any
-  dataLieneaxId:any
-  dataNoticiasxID:any
-
-
-  imgEditModalLT: any = ''
-  tituloModal: string = ''
-  descripcionModal: string = ''
-  dataLineaRespuesta: any
+imgEditModalLT: any = ''
+tituloModal: string = ''
+descripcionModal: string = ''
+dataLineaRespuesta: any
 
   tituloNoticia:string = ''
   descripcionNoticia:string = ''
@@ -151,50 +144,8 @@ private fileBackgrud:any
   }
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-
-
-  // ENLACE DE VIDEO DE YOUTUBE DE HISTORIA
-
-  IframeVideo() {
-    const src: any = (document.getElementById('iframe-value') as HTMLInputElement | null)?.value
-          document.getElementById('iframe-preview')?.removeAttribute('src')
-          document.getElementById('iframe-preview')?.setAttribute('src', src)
-          // console.log(document.getElementById('iframe-preview'))
-  }
-
-
-
-// SISTEMA DE ALERTAS TYPO COLORES
-  MessageAlert(message: string, type: number, time: number){
-    document.getElementById('container-alert')?.classList.add('show')
-    const innerMessage = document.getElementById('message')
-    if (innerMessage) {
-      innerMessage.innerHTML = message
-
-      if(type===1){
-        document.getElementById('time')?.classList.add('green')
-      }else if(type===2){
-        document.getElementById('time')?.classList.add('red')
-      }else if(type===3){
-        document.getElementById('time')?.classList.add('orange')
-      }
-      setTimeout(function(){
-        document.getElementById('container-alert')?.classList.remove('show')
-        document.getElementById('time')?.classList.remove('green')
-        document.getElementById('time')?.classList.remove('red')
-        document.getElementById('time')?.classList.remove('orange')
-    },time)
-    }
-}
-
-
-
-
-
-
 // AL INICIAR
   async ngOnInit()  {
-
       const inputfileBefore: any = (document.getElementById('file-portada') as HTMLInputElement | null)?.value
       const inputfileBefbg: any = (document.getElementById('file-bg') as HTMLInputElement | null)?.value
 
@@ -1221,7 +1172,7 @@ async eliminarNoticia(id:any){
     const respuestaDelete = await this.noticiasService.EliminarNoticia(id)
     this.obtnerNoticias()
     document.getElementsByClassName('cont-btns-alert')[6]?.classList.remove('show'); this.MessageSuccess('Noticia eliminada',6)
-  
+
   }, false) }
 
 }
@@ -1297,10 +1248,10 @@ if(namefile!=="" && titulo!=="" && descripcion!==""){
             document.getElementsByClassName('message')[11]?.classList.remove('show')
             document.getElementsByClassName('cont-btns-alert')[11]?.classList.remove('show')
           },false)
-          document.getElementsByClassName('confirm')[11]?.addEventListener('click', () =>{ 
+          document.getElementsByClassName('confirm')[11]?.addEventListener('click', () =>{
             document.getElementsByClassName('container-alert')[11]?.classList.remove('show')
 //************************************************************************ */
-          
+
 
 
 //************************************************************************ */
@@ -1406,10 +1357,10 @@ toUpdateLineaTiempo(event: Event) {
           const tituloInput: HTMLInputElement | null = document.getElementById('titulo-update-lt') as HTMLInputElement | null
           const descripcionInput: HTMLInputElement | null = document.getElementById('desc-update-lt') as HTMLInputElement | null
 
-          
+
           let titulo: string = ''
           let descripcion: string = ''
-          
+
           if (tituloInput instanceof HTMLInputElement) { titulo = tituloInput.value }
           if (descripcionInput instanceof HTMLInputElement) { descripcion = descripcionInput.value }
 
@@ -1431,10 +1382,10 @@ if(titulo!=="" && descripcion!==""){
             document.getElementsByClassName('message')[8]?.classList.remove('show')
             document.getElementsByClassName('cont-btns-alert')[8]?.classList.remove('show')
           },false)
-          document.getElementsByClassName('confirm')[8]?.addEventListener('click', () =>{ 
+          document.getElementsByClassName('confirm')[8]?.addEventListener('click', () =>{
             document.getElementsByClassName('container-alert')[8]?.classList.remove('show')
 //************************************************************************ */
-          
+
 
 
 //************************************************************************ */

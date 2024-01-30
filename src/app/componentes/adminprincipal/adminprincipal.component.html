@@ -171,7 +171,7 @@
   <form [formGroup]="formularioEditHistoria" (ngSubmit)="onSubmit()">
   <div class="sub-cont-2">
       <label for="enlace">Enlace del video:</label>
-      <input required="required" id="iframe-value" name="enlace" type="text" [(ngModel)]="EncalceVideo" formControlName="EncalceVideo"  (change)="IframeVideo()" placeholder="enlace del video" value="">
+      <input required="required" id="iframe-value" name="enlace" type="text" [(ngModel)]="EncalceVideo" formControlName="EncalceVideo" placeholder="enlace del video" value="">
 
     <iframe required="required" id="iframe-preview" width="560" height="315" src=""
     title="YouTube video player"
