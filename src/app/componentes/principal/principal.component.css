@@ -8,6 +8,21 @@ section#historia.topshow, section#linea-tiempo.topshow, section#valores.topshow,
   transition: .8s ease-in-out;
 } */
 
+
+img#background-texture {
+  width: auto;
+  min-width: 100vw;
+  height: 120vh;
+  min-height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 0;
+  opacity: 1;
+}
+
+
+
 section#noticias { opacity: 1; }
 section#valores {
  background: transparent;
@@ -88,10 +103,11 @@ img#container-principal-img {
 }
 
 
-
-
 section#news {
+  position: relative;
+  width: 100vw;
+  height: auto;
   opacity: 1;
-  z-index: 990;
+  z-index: 10;
 }
 
