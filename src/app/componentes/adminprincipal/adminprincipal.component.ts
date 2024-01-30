@@ -55,6 +55,8 @@ export class AdminprincipalComponent implements OnInit, AfterViewInit {
   @ViewChild('containerAlertElementTLEdited') containerAlertElementTLEdited!: ElementRef
   @ViewChild('containerAlertNewNoticia') containerAlertNewNoticia!: ElementRef
   @ViewChild('confirmNewNoticia') confirmNewNoticia!: ElementRef
+  @ViewChild('containeralertUpdateNotice') containeralertUpdateNotice!: ElementRef
+  @ViewChild('confirmUpdateNotice') confirmUpdateNotice!: ElementRef
 
   mision:any
   vision:any
@@ -145,6 +147,7 @@ private fileBackgrud:any
     this.confirmElementHis.nativeElement.addEventListener('click', this.onClickHistoria.bind(this))
     this.confirmElementTL.nativeElement.addEventListener('click', this.onClickNewTimeLine.bind(this))
     this.confirmNewNoticia.nativeElement.addEventListener('click', this.saveNoticia.bind(this))
+    this.confirmUpdateNotice.nativeElement.addEventListener('click', this.updateNotice.bind(this))
   }
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -1146,16 +1149,11 @@ saveNewNoticia(event: Event): void  {
           const tituloInput: HTMLInputElement | null = document.getElementById('titulo-noticia') as HTMLInputElement | null
           const descripcionInput: HTMLTextAreaElement | any = document.getElementById('desc-noticia')
 
-          let file: string = ''
           let titulo: string = ''
           let descripcion: string = ''
 
           if (tituloInput instanceof HTMLInputElement) { titulo = tituloInput.value }
           if (descripcionInput instanceof HTMLTextAreaElement) { descripcion = descripcionInput.value }
-
-console.log(file)
-console.log(titulo)
-console.log(descripcion)
 
 if(titulo!=="" && descripcion!==""){
   const innerMessage = document.getElementsByClassName('innermsg')[9]
@@ -1219,6 +1217,117 @@ async eliminarNoticia(id:any){
 
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////777777
+//#################################################################################################################################
+updateNoticia(event: Event) {
+
+  const fileInput = event.target as HTMLInputElement
+  const archivo = fileInput.files?.[0]
+
+  if (archivo) { const lector = new FileReader()
+
+    lector.onload = (eventoLectura:any) => {
+      const imagen = new Image()
+      imagen.src = eventoLectura.target.result as string
+
+      imagen.onload = () => {
+        const fileSize: number = archivo.size
+        const size: any = fileSize.toFixed(2)
+        let medida: string
+        let sizemedida: any
+        if((size/1024/1024) < 1.0) {medida = " KB"; sizemedida = (size/1024).toFixed(2).toString() + medida }else{ medida = " MB"; sizemedida = (size/1024/1024).toFixed(2).toString() + medida }
+        const fileName: string = archivo.name
+        let img = new Image()
+        const objectURL = URL.createObjectURL(archivo)
+        img.src = objectURL
+        this.anchoimg = imagen.width, this.altoimg = imagen.height
+        let namefile = archivo.name
+
+    document.getElementById('width-edit-n')?.classList.remove('limit')
+        document.getElementById('height-edit-n')?.classList.remove('limit')
+        document.getElementById('size-edit-n')?.classList.remove('limit')
+
+        if(this.anchoimg > 2000){  document.getElementById('width-edit-n')?.classList.add('limit') }
+        if(this.altoimg > 1500){ document.getElementById('height-edit-n')?.classList.add('limit') }
+        if((size/1024) > 2048 ){  document.getElementById('size-edit-n')?.classList.add('limit') }
+
+        document.getElementById('size-edit-n')!.innerHTML = sizemedida
+        document.getElementById('width-edit-n')!.innerHTML = this.anchoimg + " px"
+        document.getElementById('height-edit-n')!.innerHTML = this.altoimg + " px"
+        document.getElementById('img-pre-noticia-edit')?.setAttribute('data-content', fileName)
+        document.getElementById('img-pre-noticia-edit')?.removeAttribute('src')
+        document.getElementById('img-pre-noticia-edit')?.setAttribute('src', img.src)
+
+        const saveButtonTL = document.getElementById('update-noticia')
+        if (saveButtonTL) { saveButtonTL.addEventListener('click', () => {
+          // this.saveNoticia()
+console.log("CLICKED SAVE BUTTON")
+
+
+          const tituloInput: HTMLInputElement | null = document.getElementById('title-update-noticia') as HTMLInputElement | null
+          const descripcionInput: HTMLTextAreaElement | any = document.getElementById('desc-update-noticia')
+
+          let titulo: string = ''
+          let descripcion: string = ''
+
+          if (tituloInput instanceof HTMLInputElement) { titulo = tituloInput.value }
+          if (descripcionInput instanceof HTMLTextAreaElement) { descripcion = descripcionInput.value }
+
+if(namefile!=="" && titulo!=="" && descripcion!==""){
+  const innerMessage = document.getElementsByClassName('innermsg')[11]
+  if (innerMessage) { innerMessage.innerHTML = "¿Desea guardar los cambios?"
+
+
+          document.getElementsByClassName('container-alert')[11]?.classList.add('show')
+          document.getElementsByClassName('message')[11]?.classList.add('show')
+          document.getElementsByClassName('cont-btns-alert')[11]?.classList.add('show')
+
+            document.getElementsByClassName('cancel')[11]?.addEventListener('click', function(){
+            document.getElementsByClassName('container-alert')[11]?.classList.remove('show')
+            document.getElementsByClassName('message')[11]?.classList.remove('show')
+            document.getElementsByClassName('cont-btns-alert')[11]?.classList.remove('show')
+          },false)
+          document.getElementsByClassName('confirm')[11]?.addEventListener('click', function(){
+            document.getElementsByClassName('container-alert')[11]?.classList.remove('show')
+
+          },false)
+        }
+
+      }else{
+        document.getElementsByClassName('cont-btns-alert')[11]?.classList.remove('show')
+        this.MessageSuccess("Los campos requeridos no pueden estar vacíos",11)
+      }
+        }, false) }
+        }
+      }
+      lector.readAsDataURL(archivo)
+    }
+// ...................................................................................................
+}
+
+updateNotice() {
+  this.sendFileUpdateNotice()
+  this.containeralertUpdateNotice.nativeElement.classList.remove('show') }
+
+  sendFileUpdateNotice():void{
+
+    const body = new FormData()
+
+    if(this.fileTmp){
+      body.append('ImgPathLineaTiempo', this.fileTmp.fileRaw, this.fileTmp.fileName);
+      body.append('titleLineaTiempo', this.formularioAgregarLineaTiempo.value.titleLineaTiempo)
+      body.append('descriptionLineaTiempo',this.formularioAgregarLineaTiempo.value.descriptionLineaTiempo)
+    }else{
+      body.append('titleLineaTiempo', this.formularioAgregarLineaTiempo.value.titleLineaTiempo)
+      body.append('descriptionLineaTiempo',this.formularioAgregarLineaTiempo.value.descriptionLineaTiempo)
+    }
+    this.lineaService.sendPost(body)
+    .subscribe(res =>{console.log(res), this.obtenerLinea(),this.fileTmp = null})
+    this.MessageSuccess('Datos guardados exitosamente',6)
+  }
+
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
 

@@ -421,8 +421,7 @@ iframe#iframe-preview {
 }
 
 
-div#modal-time-line, div#modal-time-line-add, div#modal-edit-notice,
-div#modal-edit-notice, div#modal-new-notice {
+div#modal-time-line, div#modal-time-line-add, div#modal-edit-notice, div#modal-new-notice {
   position: fixed;
   width: 800px;
   height: auto;
@@ -487,7 +486,7 @@ img#nav-end, img#foo-end {
 
 
 
-div#modal-time-line form, div#modal-time-line-add form {
+div#modal-time-line form, div#modal-time-line-add form, div#modal-edit-notice form {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -1127,8 +1126,10 @@ input:focus, textarea:focus { border: 1px solid #27A315; }
 
 span.danger-red,
 span#width-new-n, span#height-new-n, span#size-new-n { color: #252525; }
+span#width-edit-n, span#height-edit-n, span#size-edit-n { color: #252525; }
 span.danger-red.limit, span.innerdetails.limit,
 span#width-new-n.limit, span#height-new-n.limit, span#size-new-n.limit { color: #FF182C; }
+span#width-edit-n.limit, span#height-edit-n.limit, span#size-edit-n.limit { color: #FF182C; }
 
 h1.innermsg {
   background: transparent;
@@ -1144,7 +1145,7 @@ div.preview-img-model {
   flex-wrap: wrap;
 }
 
-img#img-pre-tl, img#img-pre-noticia {
+img#img-pre-tl, img#img-pre-noticia, img#img-pre-noticia-edit {
   max-width: 130px;
   width: auto;
   height: auto;

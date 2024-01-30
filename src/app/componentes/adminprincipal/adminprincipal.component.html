@@ -606,26 +606,39 @@
 
 <form [formGroup]="formularioEditarNoticias"  >
 
-<label for="file-notice">imagen</label>               <input (change)="getFileUpdateNoticia($event)"  title="imagen de noticia" type="file" name="file-notice">
-<label for="title-notice">Título</label>              <input type="text" [(ngModel)]="tituloNoticia" formControlName="title" name="title-notice" title="Título de noticia">
-<label for="description-notice">Descripción</label>   <textarea title="descripción de noticia" [(ngModel)]="descripcionNoticia" formControlName="descripcion" name="description-notice" id="" cols="26" rows="5"></textarea>
+  <div class="preview-img-model">
+<label for="file-notice">imagen</label>
+<input (change)="updateNoticia($event)" id="file-edit-noticia" title="imagen de noticia" type="file" name="file-notice" data-content="seleccionar archivo">
+<div class="details-img">
+  <ul>
+    <li>ancho <span class="innerdetails bold" id="width-edit-n"></span></li>
+    <li>alto <span class="innerdetails bold" id="height-edit-n"></span></li>
+    <li>tamaño <span class="innerdetails bold" id="size-edit-n"></span></li>
+  </ul>
+  <img src="" alt="" id="img-pre-noticia-edit">
+</div>
+
+</div>
+
+
+
+<label for="title-notice">Título</label>              <input type="text" [(ngModel)]="tituloNoticia" formControlName="title" name="title-notice" title="Título de noticia" id="title-update-noticia">
+<label for="description-notice">Descripción</label>   <textarea title="descripción de noticia" [(ngModel)]="descripcionNoticia" formControlName="descripcion" name="description-notice" id="desc-update-noticia" cols="26" rows="5"></textarea>
 
 <!-- <button type="submit" class="">guardar</button> -->
-<div class="replace-button normal">guardar</div>
+<div class="replace-button normal" id="update-noticia">guardar</div>
 
-<div class="container-alert">
+<div class="container-alert" #containeralertUpdateNotice>
   <div class="alert-model">
       <p class="inner-message bold"></p>
 
       <div class="message"> <h1 class="innermsg"></h1></div>
       <div class="cont-btns-alert">
-        <button class="confirm" (click)="sendFileUpdateNoticia()">confirmar</button>
+        <button class="confirm" #confirmUpdateNotice (click)="sendFileUpdateNoticia()">confirmar</button>
         <div class="replace-button cancel">cancelar</div>
       </div>
     </div>
-  </div>
-</form>
-</div>
+</div> </form> </div>
 
 
 
