@@ -494,27 +494,27 @@
   <form [formGroup]="formularioEditlineaTiempo" (ngSubmit)="editarTime()">
     <div class="preview-img-model">
     <label for="file">Imagen</label>
-    <input type="file" id="file-edit-lt" (change)="getFileUpdateTiempo($event)" (change)="getFile($event)" name="file" data-content="seleccionar archivo" title="imagen">
+    <input type="file" id="file-update-lt"  (change)="toUpdateLineaTiempo($event)" (change)="getFileUpdateTiempo($event)" name="file" data-content="seleccionar archivo" title="imagen">
     <div class="details-img">
       <ul>
-        <li>ancho <p class="innerdetails bold"></p></li>
-        <li>alto <p class="innerdetails bold"></p></li>
-        <li>tamaño <p class="innerdetails bold"></p></li>
+        <li>ancho <span class="innerdetails bold" id="width-update-lt"></span></li>
+        <li>alto <span class="innerdetails bold" id="height-update-lt"></span></li>
+        <li>tamaño <span class="innerdetails bold" id="size-update-lt"></span></li>
       </ul>
     </div>
   <div class="preview-img-model">
-    <img src="" alt="" id="img-pre-tl">
+    <img src="" alt="" id="img-update-tl">
   </div>
 
 </div>
   <div class="subcont-modal">
     <label for="title">Título</label>
-    <input type="text" id="titulo-edit-lt" formControlName="titleLineaTiempo" [(ngModel)]="tituloModal" name="title" title="título" required>
+    <input   type="text" id="titulo-update-lt" formControlName="titleLineaTiempo" [(ngModel)]="tituloModal" name="title" title="título" required>
     <label for="description">Descripción</label>
-    <input type="text" formControlName="descriptionLineaTiempo" id="desc-edit-lt" [(ngModel)]="descripcionModal"  title="description">
+    <input type="text" formControlName="descriptionLineaTiempo" id="desc-update-lt" [(ngModel)]="descripcionModal"  title="description">
   </div>
 
-    <div class="replace-button normal" (click)="saveEditedLineaTiempo()">guardar</div>
+    <div class="replace-button normal" id="update-time-line" (click)="saveEditedLineaTiempo()">guardar</div>
 
     <div class="container-alert" #containerAlertElementTLEdited>
       <div class="alert-model">
@@ -608,7 +608,7 @@
 
   <div class="preview-img-model">
 <label for="file-notice">imagen</label>
-<input (change)="updateNoticia($event)" id="file-edit-noticia" title="imagen de noticia" type="file" name="file-notice" data-content="seleccionar archivo">
+<input (change)="updateNoticia($event)" (change)="getFileUpdateNoticia($event)"  id="file-edit-noticia" title="imagen de noticia" type="file" name="file-notice" data-content="seleccionar archivo">
 <div class="details-img">
   <ul>
     <li>ancho <span class="innerdetails bold" id="width-edit-n"></span></li>

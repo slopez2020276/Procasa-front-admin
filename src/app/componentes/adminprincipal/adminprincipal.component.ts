@@ -857,26 +857,26 @@ preSaveValores() {
   if (innerMessage) { innerMessage.innerHTML = "¿Desea guardar los cambios?"
 
 
-  document.getElementsByClassName('container-alert')[4]?.classList.add('show')
-  document.getElementsByClassName('message')[4]?.classList.add('show')
-  document.getElementsByClassName('cont-btns-alert')[4]?.classList.add('show')
+  document.getElementsByClassName('container-alert')[5]?.classList.add('show')
+  document.getElementsByClassName('message')[5]?.classList.add('show')
+  document.getElementsByClassName('cont-btns-alert')[5]?.classList.add('show')
 
-  document.getElementsByClassName('cancel')[4]?.addEventListener('click', function(){
-    document.getElementsByClassName('container-alert')[4]?.classList.remove('show')
-    document.getElementsByClassName('message')[4]?.classList.remove('show')
-    document.getElementsByClassName('cont-btns-alert')[4]?.classList.remove('show')
+  document.getElementsByClassName('cancel')[5]?.addEventListener('click', function(){
+    document.getElementsByClassName('container-alert')[5]?.classList.remove('show')
+    document.getElementsByClassName('message')[5]?.classList.remove('show')
+    document.getElementsByClassName('cont-btns-alert')[5]?.classList.remove('show')
   },false)
-  document.getElementsByClassName('confirm')[4]?.addEventListener('click', function(){
+  document.getElementsByClassName('confirm')[5]?.addEventListener('click', function(){
     setTimeout(function() {
-      document.getElementsByClassName('container-alert')[4]?.classList.remove('show')
+      document.getElementsByClassName('container-alert')[5]?.classList.remove('show')
     },300) },false)
   }
-  }else{ this.MessageSuccess("Los campos requeridos no pueden estar vacíos",4) }
+  }else{ this.MessageSuccess("Los campos requeridos no pueden estar vacíos",5) }
 }
 
 onClickValores() {
   this.guardarValores()
-  setTimeout(() => { this.containerAlertElementVal.nativeElement.classList.remove('show') }, 300) }
+ this.containerAlertElementVal.nativeElement.classList.remove('show') }
 
 async guardarValores() {
   let id = this.dataValores._id
@@ -1211,7 +1211,9 @@ async eliminarNoticia(id:any){
   document.getElementsByClassName('confirm')[6]?.addEventListener('click', async () => {
     const respuestaDelete = await this.noticiasService.EliminarNoticia(id)
     this.obtnerNoticias()
-    document.getElementsByClassName('cont-btns-alert')[6]?.classList.remove('show'); this.MessageSuccess('Noticia eliminada',6) }, false) }
+    document.getElementsByClassName('cont-btns-alert')[6]?.classList.remove('show'); this.MessageSuccess('Noticia eliminada',6)
+  
+  }, false) }
 
 }
 
@@ -1286,24 +1288,30 @@ if(namefile!=="" && titulo!=="" && descripcion!==""){
             document.getElementsByClassName('message')[11]?.classList.remove('show')
             document.getElementsByClassName('cont-btns-alert')[11]?.classList.remove('show')
           },false)
-          document.getElementsByClassName('confirm')[11]?.addEventListener('click', function(){
+          document.getElementsByClassName('confirm')[11]?.addEventListener('click', () =>{ 
             document.getElementsByClassName('container-alert')[11]?.classList.remove('show')
 //************************************************************************ */
-// ACÁ EMPIEZA LO BONITO
+          
+
+
 //************************************************************************ */
           },false)
         }
 
       }else{
+
+
         document.getElementsByClassName('cont-btns-alert')[11]?.classList.remove('show')
         this.MessageSuccess("Los campos requeridos no pueden estar vacíos",11)
+
+
+
       }
         }, false) }
         }
       }
       lector.readAsDataURL(archivo)
     }
-// ...................................................................................................
 }
 
 updateNotice() {
@@ -1335,6 +1343,110 @@ updateNotice() {
 
 
 
+
+
+
+
+
+
+//#################################################################################################################################
+toUpdateLineaTiempo(event: Event) {
+
+
+
+  const fileInput = event.target as HTMLInputElement
+  const archivo = fileInput.files?.[0]
+
+  if (archivo) { const lector = new FileReader()
+
+    lector.onload = (eventoLectura:any) => {
+      const imagen = new Image()
+      imagen.src = eventoLectura.target.result as string
+
+      imagen.onload = () => {
+        const fileSize: number = archivo.size
+        const size: any = fileSize.toFixed(2)
+        let medida: string
+        let sizemedida: any
+        if((size/1024/1024) < 1.0) {medida = " KB"; sizemedida = (size/1024).toFixed(2).toString() + medida }else{ medida = " MB"; sizemedida = (size/1024/1024).toFixed(2).toString() + medida }
+        const fileName: string = archivo.name
+        let img = new Image()
+        const objectURL = URL.createObjectURL(archivo)
+        img.src = objectURL
+        this.anchoimg = imagen.width, this.altoimg = imagen.height
+        let namefile = archivo.name
+
+    document.getElementById('width-update-lt')?.classList.remove('limit')
+        document.getElementById('height-update-lt')?.classList.remove('limit')
+        document.getElementById('size-update-lt')?.classList.remove('limit')
+
+        if(this.anchoimg > 2000){  document.getElementById('width-update-lt')?.classList.add('limit') }
+        if(this.altoimg > 1500){ document.getElementById('height-update-lt')?.classList.add('limit') }
+        if((size/1024) > 2048 ){  document.getElementById('size-update-lt')?.classList.add('limit') }
+
+        document.getElementById('size-update-lt')!.innerHTML = sizemedida
+        document.getElementById('width-update-lt')!.innerHTML = this.anchoimg + " px"
+        document.getElementById('height-update-lt')!.innerHTML = this.altoimg + " px"
+        document.getElementById('file-update-lt')?.setAttribute('data-content', fileName)
+        document.getElementById('img-update-tl')?.removeAttribute('src')
+        document.getElementById('img-update-tl')?.setAttribute('src', img.src)
+
+        const saveButtonTL = document.getElementById('update-time-line')
+        if (saveButtonTL) { saveButtonTL.addEventListener('click', () => {
+
+          const tituloInput: HTMLInputElement | null = document.getElementById('titulo-update-lt') as HTMLInputElement | null
+          const descripcionInput: HTMLInputElement | null = document.getElementById('desc-update-lt') as HTMLInputElement | null
+
+          
+          let titulo: string = ''
+          let descripcion: string = ''
+          
+          if (tituloInput instanceof HTMLInputElement) { titulo = tituloInput.value }
+          if (descripcionInput instanceof HTMLInputElement) { descripcion = descripcionInput.value }
+
+          // Mostrando valores de los inputs
+          console.log(titulo)
+          console.log(descripcion)
+
+if(titulo!=="" && descripcion!==""){
+  const innerMessage = document.getElementsByClassName('innermsg')[8]
+  if (innerMessage) { innerMessage.innerHTML = "¿Desea guardar los cambios?"
+
+
+          document.getElementsByClassName('container-alert')[8]?.classList.add('show')
+          document.getElementsByClassName('message')[8]?.classList.add('show')
+          document.getElementsByClassName('cont-btns-alert')[8]?.classList.add('show')
+
+            document.getElementsByClassName('cancel')[8]?.addEventListener('click', function(){
+            document.getElementsByClassName('container-alert')[8]?.classList.remove('show')
+            document.getElementsByClassName('message')[8]?.classList.remove('show')
+            document.getElementsByClassName('cont-btns-alert')[8]?.classList.remove('show')
+          },false)
+          document.getElementsByClassName('confirm')[8]?.addEventListener('click', () =>{ 
+            document.getElementsByClassName('container-alert')[8]?.classList.remove('show')
+//************************************************************************ */
+          
+
+
+//************************************************************************ */
+          },false)
+        }
+
+      }else{
+
+
+        document.getElementsByClassName('cont-btns-alert')[8]?.classList.remove('show')
+        this.MessageSuccess("Los campos requeridos no pueden estar vacíos",8)
+
+
+
+      }
+        }, false) }
+        }
+      }
+      lector.readAsDataURL(archivo)
+    }
+}
 
 
 
