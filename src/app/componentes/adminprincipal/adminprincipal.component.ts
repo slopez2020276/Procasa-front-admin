@@ -1251,16 +1251,73 @@ onClickNewNotice() {
 
 saveNewNoticia(event: Event): void {
 
-  let prefilenoticia: any = (document.getElementById('file-noticia') as HTMLInputElement | any)?.value
-  const pretitnoticia: HTMLInputElement | null = document.getElementById('titulo-noticia') as HTMLInputElement
-  const predescnoticia: HTMLTextAreaElement | any = document.getElementById('desc-noticia')
-  let filen:any = ''
-  let noticia:any = ''
-  let descno:any = ''
 
-  if (prefilenoticia instanceof HTMLTextAreaElement) { filen = prefilenoticia.value }
-  if (pretitnoticia instanceof HTMLTextAreaElement) { noticia = pretitnoticia.value }
-  if (predescnoticia instanceof HTMLTextAreaElement) { descno = predescnoticia.value }
+  const fileInput = event.target as HTMLInputElement
+  const archivo = fileInput.files?.[0]
+
+  if (archivo) { const lector = new FileReader()
+
+    lector.onload = (eventoLectura:any) => {
+      const imagen = new Image()
+      imagen.src = eventoLectura.target.result as string
+
+      imagen.onload = () => {
+        const fileSize: number = archivo.size
+        const size: any = fileSize.toFixed(2)
+        let medida: string
+        let sizemedida: any
+        if((size/1024/1024) < 1.0) {medida = " KB"; sizemedida = (size/1024).toFixed(2).toString() + medida }else{ medida = " MB"; sizemedida = (size/1024/1024).toFixed(2).toString() + medida }
+        const fileName: string = archivo.name
+        let img = new Image()
+        const objectURL = URL.createObjectURL(archivo)
+        img.src = objectURL
+        this.anchoimg = imagen.width, this.altoimg = imagen.height
+
+const saveButtonTL = document.getElementById('save-new-tili')
+if (saveButtonTL) {
+  saveButtonTL.addEventListener('click', () => {
+
+    this.saveNewTimeLine()
+
+}, false) }
+
+        // document.getElementsByClassName('danger-red')[3]?.classList.remove('limit')
+        // document.getElementsByClassName('danger-red')[4]?.classList.remove('limit')
+        // document.getElementsByClassName('danger-red')[5]?.classList.remove('limit')
+
+        // if(this.anchoimg > 2000){  document.getElementsByClassName('danger-red')[3].classList.add('limit') }
+        // if(this.altoimg > 1500){ document.getElementsByClassName('danger-red')[4].classList.add('limit') }
+        // if((size/1024) > 2048 ){  document.getElementsByClassName('danger-red')[5].classList.add('limit') }
+
+        document.getElementsByClassName('innerdetails')[2]!.innerHTML = sizemedida
+        document.getElementsByClassName('innerdetails')[0]!.innerHTML = this.anchoimg + " px"
+        document.getElementsByClassName('innerdetails')[1]!.innerHTML = this.altoimg + " px"
+        document.getElementById('new-file-input')?.setAttribute('data-content', fileName)
+        // document.getElementById('pre-portada')?.removeAttribute('src')
+        document.getElementById('img-pre-tl')?.setAttribute('src', img.src)
+        // document.getElementById('pre-portada')?.setAttribute('src', img.src)
+      }
+    }
+    lector.readAsDataURL(archivo)
+  }
+
+// -----------------------------------------------------------------------------------------------------------
+  const tituloInput: HTMLInputElement | null = document.getElementById('titulo-noticia') as HTMLInputElement
+  const descInput: HTMLTextAreaElement | null = document.getElementById('desc-noticia') as HTMLTextAreaElement
+  
+  let filen: string = ''
+  let noticia: string = ''
+  let descno: string = ''
+  
+  if (fileInput && fileInput instanceof HTMLInputElement) { filen = fileInput.value }
+  if (tituloInput && tituloInput instanceof HTMLInputElement) { noticia = tituloInput.value }
+  if (descInput && descInput instanceof HTMLTextAreaElement) { descno = descInput.value }
+  
+
+console.log(filen)
+console.log(noticia)
+console.log(descno)
+
 
   if(filen!=="" && noticia!=="" && descno!==""){
   const innerMessage = document.getElementsByClassName('innermsg')[2]

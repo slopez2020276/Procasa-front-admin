@@ -524,13 +524,31 @@
   <div id="cont-btn-close-new"> <button id="close-modal-notice-new" (click)="NewModalNotice()">cerrar</button> </div>
 
 <form [formGroup]="formularioAgregarNoticias">
+  <div class="preview-img-model">
+<label for="file-notice">imagen</label>
+<input id="file-noticia" (change)="saveNewNoticia($event)" title="imagen de noticia" type="file" name="file-notice" data-content="seleccionar archivo">
 
-<label for="file-notice">imagen</label>               <input id="file-noticia" (change)="saveNewNoticia($event)" title="imagen de noticia" type="file" name="file-notice">
-<label for="title-notice">Título</label>              <input id="titulo-noticia" formControlName="title" type="text" name="title-notice" title="Título de noticia">
-<label for="description-notice">Descripción</label>   <textarea id="desc-noticia" formControlName="descripcion" title="descripción de noticia" name="description-notice" cols="26" rows="5"></textarea>
+<div class="details-img">
+  <ul>
+    <li>ancho <p class="innerdetails bold"></p></li>
+    <li>alto <p class="innerdetails bold"></p></li>
+    <li>tamaño <p class="innerdetails bold"></p></li>
+  </ul>
+  <img src="" alt="" id="img-pre-tl">
+</div>
 
-<!-- <button type="submit" class="">guardar</button> -->
-<div class="replace-button normal"  >guardar</div>
+</div>
+
+<div class="subcont-modal">
+  <label for="title-notice">Título</label>
+  <input id="titulo-noticia" formControlName="title" type="text" name="title-notice" title="Título de noticia">
+  <label for="description-notice">Descripción</label>
+  <textarea id="desc-noticia" formControlName="descripcion" title="descripción de noticia" name="description-notice" cols="26" rows="5"></textarea>
+</div>
+
+
+
+<div class="replace-button normal" >guardar</div>
 
 <div class="container-alert">
 <div class="alert-model">
