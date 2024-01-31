@@ -79,6 +79,8 @@ imgEditModalLT: any = ''
 tituloModal: string = ''
 descripcionModal: string = ''
 dataLineaRespuesta: any
+fechaModal
+mostrarPorModal
 
   tituloNoticia:string = ''
   descripcionNoticia:string = ''
@@ -101,7 +103,9 @@ private fileBackgrud:any
 
     this.formularioEditlineaTiempo = new FormGroup({
       titleLineaTiempo: new FormControl(),
-      descriptionLineaTiempo: new FormControl()
+      descriptionLineaTiempo: new FormControl(),
+      mostrarPor: new FormControl(),
+      fecha: new FormControl(),
     })
     this.formularioEditHistoria = new FormGroup({
       EncalceVideo: new FormControl(),
@@ -114,8 +118,9 @@ private fileBackgrud:any
    this.formularioAgregarLineaTiempo = new FormGroup({
     titleLineaTiempo: new FormControl(),
     descriptionLineaTiempo: new FormControl(),
-    image: new FormControl()
-
+    fecha: new FormControl(),
+    image: new FormControl(),
+    mostrarPor: new FormControl(),
     })
     this.formularioValores = new FormGroup({
       Integridad: new FormControl((''),[Validators.required]),
@@ -133,6 +138,7 @@ private fileBackgrud:any
      title: new FormControl(),
      imgPhat: new FormControl(),
      descripcion: new FormControl(),
+     tipo: new FormControl(),
      })
 
   }
@@ -451,9 +457,12 @@ async eliminarLineaTiempo(id:any){
       body.append('imgPhat', this.fileTmpNoticia.fileRaw, this.fileTmpNoticia.fileName)
       body.append('title', this.formularioAgregarNoticias.value.title)
       body.append('descripcion',this.formularioAgregarNoticias.value.descripcion)
+      body.append('tipo',this.formularioAgregarNoticias.value.tipo)
     }else{
       body.append('title', this.formularioAgregarNoticias.value.title)
       body.append('descripcion',this.formularioAgregarNoticias.value.descripcion)
+      body.append('tipo',this.formularioAgregarNoticias.value.tipo)
+
     }
 
     this.noticiasService.sendPost(body)
@@ -505,10 +514,14 @@ async eliminarLineaTiempo(id:any){
       body.append('ImgPathLineaTiempo', this.fileUpdateLineaTiempo.fileRaw, this.fileUpdateLineaTiempo.fileName)
       body.append('titleLineaTiempo', this.formularioEditlineaTiempo.value.titleLineaTiempo)
       body.append('descriptionLineaTiempo',this.formularioEditlineaTiempo.value.descriptionLineaTiempo)
+      body.append('fecha',this.formularioAgregarLineaTiempo.value.fecha)
+      body.append('mostrarPor',this.formularioAgregarLineaTiempo.value.mostrarPor)
 
     }else{
       body.append('titleLineaTiempo', this.formularioEditlineaTiempo.value.titleLineaTiempo)
       body.append('descriptionLineaTiempo',this.formularioEditlineaTiempo.value.descriptionLineaTiempo)
+      body.append('fecha',this.formularioAgregarLineaTiempo.value.fecha)
+      body.append('mostrarPor',this.formularioAgregarLineaTiempo.value.mostrarPor)
     }
     this.lineaService.sendEdit(body,id)
     .subscribe(res =>{console.log(res), this.obtenerLinea(),this.fileUpdateLineaTiempo = null})
@@ -769,7 +782,7 @@ preSaveMisionVision() {
   document.getElementsByClassName('container-alert')[4]?.classList.add('show')
   document.getElementsByClassName('message')[4]?.classList.add('show')
   document.getElementsByClassName('cont-btns-alert')[4]?.classList.add('show')
-
+  
   document.getElementsByClassName('cancel')[4]?.addEventListener('click', function(){
     document.getElementsByClassName('cont-btns-alert')[4]?.classList.remove('show')
     document.getElementsByClassName('container-alert')[4]?.classList.remove('show')
@@ -792,7 +805,7 @@ async guardarMision() {
   let id = this.dataMisionÑ._id
   const respuestaEdit = await this.misionService.editarMisionValor(id, this.formularioMisionValor.value)
   console.log(respuestaEdit)
-
+  
 }
 
 
@@ -948,20 +961,15 @@ saveNewTimeLine() {
   const fileInput: HTMLInputElement | null = document.getElementById('new-file-input') as HTMLInputElement | null
 
   const tituloInput: HTMLInputElement | null = document.getElementById('new-titulo-tl') as HTMLInputElement | null
-  const fechaInput: HTMLInputElement | null = document.getElementById('fechanewlt') as HTMLInputElement | null
   const descripcionInput: HTMLInputElement | null = document.getElementById('new-desc-tl') as HTMLInputElement | null
-  const selectNew: HTMLSelectElement | any = document.getElementById('mostrarnew')
-let mostrarpor = selectNew.value
 
-  let file: string = ''
+  let file: string = 'empty.jpg'
   let titulo: string = ''
   let descripcion: string = ''
-  let fecha: string = ''
 
   if (fileInput instanceof HTMLInputElement) { file = fileInput.value }
   if (tituloInput instanceof HTMLInputElement) { titulo = tituloInput.value }
   if (descripcionInput instanceof HTMLInputElement) { descripcion = descripcionInput.value }
-  if (fechaInput instanceof HTMLInputElement) { fecha = fechaInput.value }
 
   if(file!=="" && titulo!=="" && descripcion!==""){
   const innerMessage = document.getElementsByClassName('innermsg')[7]
@@ -996,10 +1004,16 @@ onClickNewTimeLine() {
       body.append('ImgPathLineaTiempo', this.fileTmp.fileRaw, this.fileTmp.fileName);
       body.append('titleLineaTiempo', this.formularioAgregarLineaTiempo.value.titleLineaTiempo)
       body.append('descriptionLineaTiempo',this.formularioAgregarLineaTiempo.value.descriptionLineaTiempo)
+      body.append('fecha',this.formularioAgregarLineaTiempo.value.fecha)
+      body.append('mostrarPor',this.formularioAgregarLineaTiempo.value.mostrarPor)
     }else{
       body.append('titleLineaTiempo', this.formularioAgregarLineaTiempo.value.titleLineaTiempo)
       body.append('descriptionLineaTiempo',this.formularioAgregarLineaTiempo.value.descriptionLineaTiempo)
+      body.append('fecha',this.formularioAgregarLineaTiempo.value.fecha)
+      body.append('mostrarPor',this.formularioAgregarLineaTiempo.value.mostrarPor)
     }
+
+    console.log(this.formularioAgregarLineaTiempo.value.fecha)
     this.lineaService.sendPost(body)
     .subscribe(res =>{console.log(res), this.obtenerLinea(),this.fileTmp = null})
     this.MessageSuccess('Datos guardados exitosamente',6)
@@ -1014,8 +1028,63 @@ async editarModal(id:any) {
   this.dataLieneaxId = respuestaid.lineaFiend
   this.tituloModal = this.dataLieneaxId.titleLineaTiempo
   this.descripcionModal = this.dataLieneaxId.descriptionLineaTiempo
+  this.fechaModal = this.dataLieneaxId.fecha
+  this.mostrarPorModal = this.dataLieneaxId.mostrarPor
 }
  Modal() { document.getElementById('modal-time-line')?.classList.toggle('modal') }
+
+
+
+
+ // ***
+saveEditedLineaTiempo() {
+
+//   const fileInput: HTMLInputElement | null = document.getElementById('file-edit-lt') as HTMLInputElement | null
+//   let file: any = ''
+//   if (fileInput instanceof HTMLInputElement) {
+//     file = fileInput.files?.[0]
+// // ***
+//     const tituloInput: HTMLInputElement | null = document.getElementById('new-titulo-tl') as HTMLInputElement | null
+//     const descripcionInput: HTMLInputElement | null = document.getElementById('new-desc-tl') as HTMLInputElement | null
+
+//     let titulo: string = ''
+//     let descripcion: string = ''
+
+//     if (tituloInput instanceof HTMLInputElement) { titulo = tituloInput.value }
+//     if (descripcionInput instanceof HTMLInputElement) { descripcion = descripcionInput.value }
+
+
+
+//     if(file!=="" && titulo!=="" && descripcion!==""){
+//       const innerMessage = document.getElementsByClassName('innermsg')[7]
+//       if (innerMessage) { innerMessage.innerHTML = "¿Desea guardar los cambios?"
+
+//       document.getElementsByClassName('container-alert')[7]?.classList.add('show')
+//       document.getElementsByClassName('message')[7]?.classList.add('show')
+//       document.getElementsByClassName('cont-btns-alert')[7]?.classList.add('show')
+
+//         document.getElementsByClassName('cancel')[7]?.addEventListener('click', function(){
+//         document.getElementsByClassName('container-alert')[7]?.classList.remove('show')
+//         document.getElementsByClassName('message')[7]?.classList.remove('show')
+//         document.getElementsByClassName('cont-btns-alert')[7]?.classList.remove('show')
+//       },false)
+//       document.getElementsByClassName('confirm')[7]?.addEventListener('click', () => {
+//         this.onClickEditedTimeLineEdited()
+//         setTimeout(function() {
+//           document.getElementsByClassName('container-alert')[7]?.classList.remove('show')
+//         },300) },false)
+//       }
+//       }else{ this.MessageSuccess("Los campos requeridos no pueden estar vacíos",7) }
+//   }
+this.MessageSuccess("ERROR :(",7)
+}
+
+  onClickEditedTimeLineEdited() { this.sendFile(); setTimeout(() => { this.containerAlertElementTLEdited.nativeElement.classList.remove('show') }, 300) }
+
+
+
+
+
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////777
 
@@ -1059,11 +1128,11 @@ saveNewNoticia(event: Event): void  {
 
         const saveButtonTL = document.getElementById('presave-noticia')
         if (saveButtonTL) { saveButtonTL.addEventListener('click', () => {
+          // this.saveNoticia()
+
 
           const tituloInput: HTMLInputElement | null = document.getElementById('titulo-noticia') as HTMLInputElement | null
           const descripcionInput: HTMLTextAreaElement | any = document.getElementById('desc-noticia')
-          const selectNew: HTMLSelectElement | any = document.getElementById('select-edit-noticia')
-          let prioritarioNew = selectNew.value
 
           let titulo: string = ''
           let descripcion: string = ''
@@ -1087,9 +1156,11 @@ if(titulo!=="" && descripcion!==""){
           },false)
           document.getElementsByClassName('confirm')[9]?.addEventListener('click', function(){
             document.getElementsByClassName('container-alert')[9]?.classList.remove('show')
+
           },false)
         }
-  }else{
+
+      }else{
         document.getElementsByClassName('cont-btns-alert')[9]?.classList.remove('show')
         this.MessageSuccess("Los campos requeridos no pueden estar vacíos",9)
       }
@@ -1175,12 +1246,12 @@ updateNoticia(event: Event) {
 
         const saveButtonTL = document.getElementById('update-noticia')
         if (saveButtonTL) { saveButtonTL.addEventListener('click', () => {
+          // this.saveNoticia()
+console.log("CLICKED SAVE BUTTON")
+
 
           const tituloInput: HTMLInputElement | null = document.getElementById('title-update-noticia') as HTMLInputElement | null
           const descripcionInput: HTMLTextAreaElement | any = document.getElementById('desc-update-noticia')
-          const selectEdit: HTMLSelectElement | any = document.getElementById('select-edit-noticia')
-          let prioritarioEdit = selectEdit.value
-
 
           let titulo: string = ''
           let descripcion: string = ''
@@ -1203,8 +1274,14 @@ if(namefile!=="" && titulo!=="" && descripcion!==""){
             document.getElementsByClassName('cont-btns-alert')[11]?.classList.remove('show')
           },false)
           document.getElementsByClassName('confirm')[11]?.addEventListener('click', () =>{
-            document.getElementsByClassName('container-alert')[11]?.classList.remove('show') },false)
-}
+            document.getElementsByClassName('container-alert')[11]?.classList.remove('show')
+//************************************************************************ */
+
+
+
+//************************************************************************ */
+          },false)
+        }
 
       }else{
 
@@ -1247,7 +1324,20 @@ updateNotice() {
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+
+
+
+
+
+
+
+
+
+
+//#################################################################################################################################
 toUpdateLineaTiempo(event: Event) {
+
+
 
   const fileInput = event.target as HTMLInputElement
   const archivo = fileInput.files?.[0]
@@ -1290,18 +1380,18 @@ toUpdateLineaTiempo(event: Event) {
         if (saveButtonTL) { saveButtonTL.addEventListener('click', () => {
 
           const tituloInput: HTMLInputElement | null = document.getElementById('titulo-update-lt') as HTMLInputElement | null
-          const fechaInput: HTMLInputElement | null = document.getElementById('fechaupdatelt') as HTMLInputElement | null
           const descripcionInput: HTMLInputElement | null = document.getElementById('desc-update-lt') as HTMLInputElement | null
-          const selectNew: HTMLSelectElement | any = document.getElementById('mostrarnew')
-          let mostrarpor = selectNew.value
+
 
           let titulo: string = ''
           let descripcion: string = ''
-          let fecha: string = ''
 
           if (tituloInput instanceof HTMLInputElement) { titulo = tituloInput.value }
           if (descripcionInput instanceof HTMLInputElement) { descripcion = descripcionInput.value }
-          if (fechaInput instanceof HTMLInputElement) { fecha = fechaInput.value }
+
+          // Mostrando valores de los inputs
+          console.log(titulo)
+          console.log(descripcion)
 
 if(titulo!=="" && descripcion!==""){
   const innerMessage = document.getElementsByClassName('innermsg')[8]
