@@ -15,7 +15,6 @@
 <h1 class="bold" id="title-admin">ADMINISTRACIÓN <div class="clip"></div> <p class="light">PÁGINA PRINCIPAL</p></h1>
 
 <div id="cont-btn-preview">
-  <!-- <button id="init-preview" class="bold">PREVISUALIZAR</button> -->
 </div>
 
 
@@ -60,7 +59,7 @@
   </div>
   <div class="foot-cont">
     <div class="cont-buttons">
-      <div (click)="testEmptyBackground()" class="normal replace-button" id="btn-save-bg">guardar</div>
+      <div (click)="testEmptyBackground()" class="normal replace-button red" id="btn-save-bg">guardar</div>
     </div>
   </div>
 
@@ -121,7 +120,7 @@
   </div>
   <div class="foot-cont">
     <div class="cont-buttons">
-      <div (click)="testEmptyPortada()" class="normal replace-button" id="btn-save-portada">guardar</div>
+      <div (click)="testEmptyPortada()" class="normal replace-button red" id="btn-save-portada">guardar</div>
     </div>
   </div>
 
@@ -188,7 +187,7 @@
   <div class="foot-cont">
 
   <div class="cont-buttons">
-    <div class="replace-button normal" (click)="preSaveHistoria()" id="btn-alert-2">guardar</div>
+    <div class="replace-button normal red" (click)="preSaveHistoria()" id="btn-alert-2">guardar</div>
     <!-- <div class="replace-button normal" (click)="editarHistoria()" id="btn-alert-2">guardar</div> -->
   </div>
 
@@ -230,7 +229,7 @@
             </div>
 
 
-<button id="cont-3-see-all" class="bold" (click)="ModalAddTimeLine()">Agregar</button>
+<button id="cont-3-see-all" class="bold red" (click)="ModalAddTimeLine()">Agregar</button>
   <div class="foot-cont">
     <div class="cont-buttons">
 
@@ -281,7 +280,7 @@
     <div class="cont-buttons">
       <button [disabled]="formularioMisionValor.invalid"  > aaa</button>
       <!-- <div class="normal">guardar</div> -->
-      <div    class="replace-button normal" id="cancel-c" (click)="preSaveMisionVision()">guardar</div>
+      <div    class="replace-button normal red" id="cancel-c" (click)="preSaveMisionVision()">guardar</div>
     </div>
   </div>
 
@@ -338,7 +337,7 @@
     <div class="foot-cont">
       <div class="cont-buttons">
 
-        <div class="normal replace-button" (click)="preSaveValores()">guardar</div>
+        <div class="normal replace-button red" (click)="preSaveValores()">guardar</div>
       </div>
     </div>
   </div>
@@ -383,7 +382,7 @@
 
     <div class="cont-buttons">
       <div id="show-more" (click)="ShowMore()">mostrar más</div>
-      <button class="normal" (click)="NewModalNotice()">agregar</button>
+      <button class="normal red" (click)="NewModalNotice()">agregar</button>
     </div>
   </div>
 
@@ -461,7 +460,9 @@
   <label for="title">Título</label>
   <input type="text" #newTituloTl id="new-titulo-tl" formControlName="titleLineaTiempo" name="title" title="título">
   <label for="description">Descripción</label>
-  <input type="text" id="new-desc-tl" #newDescTl formControlName="descriptionLineaTiempo" title="description">
+  <input type="text" id="new-desc-tl" formControlName="descriptionLineaTiempo" title="description">
+  <label for="fecha-new-lt">fecha</label>
+  <input type="date">
 </div>
 
     <div class="replace-button normal" id="save-new-tili">guardar</div>
@@ -560,6 +561,11 @@
   <input id="titulo-noticia" formControlName="title" type="text" name="title-notice" title="Título de noticia">
   <label for="description-notice">Descripción</label>
   <textarea id="desc-noticia" formControlName="descripcion" title="descripción de noticia" name="description-notice" cols="26" rows="5"></textarea>
+  <label for="select-add">prioridad</label>
+  <select name="select-add" id="select-add-noticia">
+    <option value="">no prioritario</option>
+    <option value="">prioritario</option>
+  </select>
 </div>
 
 
@@ -622,10 +628,15 @@
 </div>
 
 
-
+<div class="subcont-modal">
 <label for="title-notice">Título</label>              <input type="text" [(ngModel)]="tituloNoticia" formControlName="title" name="title-notice" title="Título de noticia" id="title-update-noticia">
 <label for="description-notice">Descripción</label>   <textarea title="descripción de noticia" [(ngModel)]="descripcionNoticia" formControlName="descripcion" name="description-notice" id="desc-update-noticia" cols="26" rows="5"></textarea>
-
+<label for="select-edit">prioridad</label>
+  <select name="select-edit" id="select-edit-noticia">
+    <option value="">no prioritario</option>
+    <option value="">prioritario</option>
+  </select>
+</div>
 <!-- <button type="submit" class="">guardar</button> -->
 <div class="replace-button normal" id="update-noticia">guardar</div>
 

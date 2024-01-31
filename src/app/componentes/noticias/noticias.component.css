@@ -3,7 +3,7 @@ h1.container-h1 {
   margin-top: 1rem;
 }
 
-div#container-5 {
+div#container-noticias {
     width: 100%;
     color: #FFF;
     display: flex;
@@ -12,20 +12,19 @@ div#container-5 {
     flex-wrap: wrap;
     padding-bottom: 10rem;
     background: transparent;
-
 }
 
-div#block-5 {
-    width: 80%;
-    height: auto;
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    flex-wrap: wrap;
+div#noticias {
+  width: 80%;
+  height: auto;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-wrap: wrap;
 }
 
-div.sub-block-5 {
-    width: 30%;
+div.noticia {
+    width: 300px;
     min-width: 200px;
     text-align: right;
     height: 250px;
@@ -37,17 +36,23 @@ div.sub-block-5 {
     margin-bottom: 4rem;
   }
 
-div.sub-block-5 h6 {
+div.noticia h6 {
     font-size: 14pt;
     width: 100%;
     text-align: center;
 }
 
-div.sub-block-5 img {
+div.noticia h2 {
+  width: 100%;
+  font-size: 12pt;
+  text-align: justify;
+}
+
+div.noticia img {
   width: auto;
   max-width: 100%;
   height: auto;
-  max-height: 200px;
-  border-radius: .5rem;
+  max-height: 300px;
+  border-radius: 4px;
   display: block;
 }

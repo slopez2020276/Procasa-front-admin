@@ -1,6 +1,5 @@
 footer {
     position: relative;
-    z-index: 200;
     width: 100vw;
     height: 100px;
     background: #000;
@@ -145,14 +144,14 @@ footer {
       bottom: -400px;
       opacity: 0;
       transition: .4s ease;
-      z-index: 700;
+      z-index: 800;
       /* display: none; */
   }
 
   div#formulario.open {
       bottom: 30px;
       opacity: 1;
-      z-index: 610;
+      z-index: 810;
   }
 
   div#formulario h1 {

@@ -21,19 +21,19 @@
             <div class="footer-sp"><h1>CONTACTO</h1></div>
         <p>PBX. 2310 6000</p>
         <p>Asesoría y compra</p>
-        <a href="#" id="open-form" (click)="OpenForm()">SUSCRÍBETE</a>
+        <button id="open-form" (click)="OpenForm()">SUSCRÍBETE</button>
     </div>
 
-    <div id="formulario">
+    <div id="formulariomain">
       <form [formGroup]="formularioAgregarSub" (ngSubmit)="agregarnuevaSub()" >
       <button type="button" id="close-form-modal" (click)="CloseForm()">X</button>
         <h1>SUSCRÍBETE PARA RECIBIR NOTICIAS DE NUESTROS PRODUCTOS</h1>
         <label for="correo">INGRESA TU CORREO</label>
-        <input type="mail" formControlName="correo" name="correo" placeholder="TU CORREO">
+        <input type="mail" formControlName="correo" name="correo" placeholder="">
         <label for="nombre">NOMBRE</label>
-        <input type="text" formArrayName="nombre" name="nombre" placeholder="TU NOMBRE">
+        <input type="text" formArrayName="nombre" name="nombre" placeholder="">
         <label for="apellido">APELLIDO</label>
-        <input type="text" formControlName="apellido" name="apellido" placeholder="TU APELLIDO">
+        <input type="text" formControlName="apellido" name="apellido" placeholder="">
         <button  (click)="agregarnuevaSub" type="submit">ENVIAR</button>
       </form>
       </div>

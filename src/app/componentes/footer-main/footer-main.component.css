@@ -148,7 +148,7 @@ div#transparence.open {
 
 
 
-div#formulario {
+div#formulariomain {
   position: fixed;
   right: 100px;
   background: #FFF;
@@ -158,17 +158,16 @@ div#formulario {
   bottom: -400px;
   opacity: 0;
   transition: .4s ease;
-  z-index: 700;
-  /* display: none; */
+  z-index: 800;
 }
 
-div#formulario.open {
+div#formulariomain.open {
   bottom: 30px;
   opacity: 1;
-  z-index: 610;
+  z-index: 810;
 }
 
-div#formulario h1 {
+div#formulariomain h1 {
   width: 100%;
   text-align: center;
   background-color: #AA182C;
@@ -179,7 +178,7 @@ div#formulario h1 {
   margin-bottom: 2rem;
 }
 
-div#formulario label {
+div#formulariomain label {
   width: 100%;
   display: block;
   padding-left: 10%;
@@ -187,7 +186,7 @@ div#formulario label {
   font-size: 12pt;
 }
 
-div#formulario input {
+div#formulariomain input {
   width: 80%;
   margin-left: 10%;
   padding: .5rem;
@@ -211,7 +210,7 @@ form button[type=submit] {
   transform: scale(1);
 }
 
-div#formulario button:active {
+div#formulariomain button:active {
 box-shadow: 0px 3px 0px rgba(0,0,0,0);
 transform: scale(0.97);
 }

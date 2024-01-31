@@ -7,6 +7,8 @@ import { NoticasService } from '../../services/noticas.service';
 import { ValoresService } from '../../services/valores.service';
 import { AfterViewInit } from '@angular/core';
 
+
+
 interface HtmlInputEvent extends Event { target: HTMLInputElement }
 
 @Component({
@@ -140,7 +142,7 @@ private fileBackgrud:any
     this.confirmElementHis.nativeElement.addEventListener('click', this.onClickHistoria.bind(this))
     this.confirmElementTL.nativeElement.addEventListener('click', this.onClickNewTimeLine.bind(this))
     this.confirmNewNoticia.nativeElement.addEventListener('click', this.saveNoticia.bind(this))
-    this.confirmUpdateNotice.nativeElement.addEventListener('click', this.updateNotice.bind(this))
+    // this.confirmUpdateNotice.nativeElement.addEventListener('click', this.updateNotice.bind(this))
   }
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -760,7 +762,6 @@ preSaveMisionVision() {
 
   if(mision!=="" && vision!==""){
 
-
   const innerMessage = document.getElementsByClassName('innermsg')[4]
   if (innerMessage) { innerMessage.innerHTML = "¿Desea guardar los cambios?"
 
@@ -768,27 +769,30 @@ preSaveMisionVision() {
   document.getElementsByClassName('container-alert')[4]?.classList.add('show')
   document.getElementsByClassName('message')[4]?.classList.add('show')
   document.getElementsByClassName('cont-btns-alert')[4]?.classList.add('show')
-
+  
   document.getElementsByClassName('cancel')[4]?.addEventListener('click', function(){
+    document.getElementsByClassName('cont-btns-alert')[4]?.classList.remove('show')
     document.getElementsByClassName('container-alert')[4]?.classList.remove('show')
     document.getElementsByClassName('message')[4]?.classList.remove('show')
-    document.getElementsByClassName('cont-btns-alert')[4]?.classList.remove('show')
   },false)
   document.getElementsByClassName('confirm')[4]?.addEventListener('click', function(){
     setTimeout(function() {
       document.getElementsByClassName('container-alert')[4]?.classList.remove('show')
     },300) },false)
   }
-  }else if((mision=="" && vision=="") || (mision=="" || vision=="")) { this.MessageSuccess("Los campos requeridos no pueden estar vacíos",4) }
+  }else if((mision=="" && vision=="") || mision=="" || vision=="") { this.MessageSuccess("Los campos requeridos no pueden estar vacíos",4) }
 }
 
 onClick() {
   this.guardarMision()
-  setTimeout(() => { this.containerAlertElement.nativeElement.classList.remove('show') }, 300) }
+  this.containerAlertElement.nativeElement.classList.remove('show')
+}
 
 async guardarMision() {
   let id = this.dataMisionÑ._id
   const respuestaEdit = await this.misionService.editarMisionValor(id, this.formularioMisionValor.value)
+  console.log(respuestaEdit)
+  
 }
 
 

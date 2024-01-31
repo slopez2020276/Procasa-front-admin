@@ -24,9 +24,9 @@ export class FooterMainComponent {
 constructor(){
 
   this.formularioAgregarSub = new FormGroup({
-    correo: new FormControl('ingrese la historia por favor '),
-    nombre: new FormControl('ingrese la historia por favor '),
-    apellido: new FormControl('ingrese la historia por favor ')
+    correo: new FormControl(),
+    nombre: new FormControl(),
+    apellido: new FormControl()
 
   })
 
@@ -41,8 +41,8 @@ constructor(){
       }, false)
 }
 
-OpenForm(){ document.getElementById('formulario')?.classList.toggle('open'); }
-CloseForm(){ document.getElementById('formulario')?.classList.toggle('open'); }
+OpenForm(){ document.getElementById('formulariomain')?.classList.toggle('open'); }
+CloseForm(){ document.getElementById('formulariomain')?.classList.toggle('open'); }
 
  async agregarnuevaSub(){
   const respuetsaNUevaSub = await this.SubService.crearSub(this.formularioAgregarSub.value)

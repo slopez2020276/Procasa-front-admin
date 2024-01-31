@@ -19,11 +19,7 @@ export class NoticiasComponent implements OnInit{
     const response = await this.NoticiasService.obtenerNoticas()
     this.data = response.noticas
    
-
     console.log(this.data)
-   
-
-
 
   }
 

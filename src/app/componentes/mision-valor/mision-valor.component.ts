@@ -53,31 +53,31 @@ export class MisionValorComponent implements OnInit {
   ValShow(val: number){
     // console.log(valshi);
     
-    document.getElementById('open-val')?.classList.toggle('show');
+    document.getElementById('open-val')?.classList.toggle('show')
     
     if (val==1) {
-      document.getElementsByClassName('valhide')[1].classList.remove('show');
-      document.getElementsByClassName('valhide')[2].classList.remove('show');
-      document.getElementsByClassName('valhide')[3].classList.remove('show');
-      document.getElementsByClassName('valhide')[0].classList.add('show');
+      document.getElementsByClassName('valhide')[1].classList.remove('show')
+      document.getElementsByClassName('valhide')[2].classList.remove('show')
+      document.getElementsByClassName('valhide')[3].classList.remove('show')
+      document.getElementsByClassName('valhide')[0].classList.add('show')
     }else
     if (val==2) {
-      document.getElementsByClassName('valhide')[0].classList.remove('show');
-      document.getElementsByClassName('valhide')[2].classList.remove('show');
-      document.getElementsByClassName('valhide')[3].classList.remove('show');
-      document.getElementsByClassName('valhide')[1].classList.add('show');
+      document.getElementsByClassName('valhide')[0].classList.remove('show')
+      document.getElementsByClassName('valhide')[2].classList.remove('show')
+      document.getElementsByClassName('valhide')[3].classList.remove('show')
+      document.getElementsByClassName('valhide')[1].classList.add('show')
     }else
     if (val==3) {
-      document.getElementsByClassName('valhide')[0].classList.remove('show');
-      document.getElementsByClassName('valhide')[1].classList.remove('show');
-      document.getElementsByClassName('valhide')[3].classList.remove('show');
-      document.getElementsByClassName('valhide')[2].classList.add('show');
+      document.getElementsByClassName('valhide')[0].classList.remove('show')
+      document.getElementsByClassName('valhide')[1].classList.remove('show')
+      document.getElementsByClassName('valhide')[3].classList.remove('show')
+      document.getElementsByClassName('valhide')[2].classList.add('show')
     }else
     if (val==4) {
-      document.getElementsByClassName('valhide')[0].classList.remove('show');
-      document.getElementsByClassName('valhide')[1].classList.remove('show');
-      document.getElementsByClassName('valhide')[2].classList.remove('show');
-      document.getElementsByClassName('valhide')[3].classList.add('show');
+      document.getElementsByClassName('valhide')[0].classList.remove('show')
+      document.getElementsByClassName('valhide')[1].classList.remove('show')
+      document.getElementsByClassName('valhide')[2].classList.remove('show')
+      document.getElementsByClassName('valhide')[3].classList.add('show')
     }
     
     }
