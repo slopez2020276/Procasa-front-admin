@@ -14,7 +14,6 @@ export class PruebaMapsComponent implements OnInit, AfterViewInit {
   constructor(private ubicaciones: UbicacionServiceService) {}
 
   ngOnInit() {
-  document.getElementById('cont-sucursales-buttons')?.classList.add('show')
 
     this.ubicaciones.ObtenerUbicaciones().subscribe({
       next: (data: any) => {
@@ -65,15 +64,29 @@ export class PruebaMapsComponent implements OnInit, AfterViewInit {
 
 
 ToggleDetails(){
-  document.getElementById('cont-sucursales-buttons')?.classList.remove('show')
+  document.getElementById('cont-sucursales-buttons-1')?.classList.remove('show')
+  document.getElementById('cont-sucursales-buttons-2')?.classList.remove('show')
   document.getElementById('cont-img')?.classList.add('show')
 }
 
 CloseSucursal() {
-  document.getElementById('cont-sucursales-buttons')?.classList.add('show')
+  document.getElementById('cont-sucursales-buttons-1')?.classList.remove('show')
+  document.getElementById('cont-sucursales-buttons-2')?.classList.remove('show')
   document.getElementById('cont-img')?.classList.remove('show')
 }
 
+
+OpenSucursales1(){
+  document.getElementById('cont-sucursales-buttons-1')?.classList.add('show')
+  document.getElementById('cont-sucursales-buttons-2')?.classList.remove('show')
+  document.getElementById('cont-img')?.classList.remove('show')
+}
+
+OpenSucursales2(){
+  document.getElementById('cont-sucursales-buttons-2')?.classList.add('show')
+  document.getElementById('cont-sucursales-buttons-1')?.classList.remove('show')
+  document.getElementById('cont-img')?.classList.remove('show')
+}
 
 
 

@@ -63,8 +63,8 @@ div#close {
   cursor: pointer;
 }
 
-div#cont-sucursales-buttons { display: none; }
-div#cont-sucursales-buttons.show { display: flex; }
+div#cont-sucursales-buttons-1, div#cont-sucursales-buttons-2 { display: none; }
+div#cont-sucursales-buttons-1.show, div#cont-sucursales-buttons-2.show { display: flex; }
 
 
 div#cont-img { display: none; position: relative;}
