@@ -19,6 +19,9 @@ div#modal-add-location {
   z-index: -200;
 }
 
+span.danger-red {color: #252525;}
+span.danger-red.limit {color: #AA182C;}
+
 input[type=file] { position: relative; }
 input[type=file]::before {
   content: attr(data-content);
@@ -31,7 +34,16 @@ input[type=file]::before {
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
+  text-align: center;
+  top: 0;
+  left: 0;
+  cursor: pointer;
+  transform: scale(1);
+  transition: .1s;
 }
+
+input[type=file]:active { transform: scale(.9); }
+
 
 div.cont {
   width: 40%;
@@ -124,6 +136,7 @@ div.details-img img {
   max-width: 100%;
   width: auto;
   height: auto;
+  max-height: 150px;
   margin-top: 1rem;
   border-radius: 4px;
 }
@@ -274,4 +287,115 @@ tr:hover {
   transform: scale(1.04);
   box-shadow: 0px 0px 15px rgba(0,0,0,.2);
 }
+
+
+/*------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+
+div.container-alert {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  transition: .5s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(255,255,255,1);
+  text-align: center;
+  z-index: -10;
+  opacity: 0;
+}
+div.container-alert.show { z-index: 100; opacity: 1; }
+
+div.alert-model {
+  width: 400px;
+  height: auto;
+  padding: 2rem;
+  border-radius: 4px;
+  position: absolute;
+  z-index: 901;
+  background: transparent;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+div.alert-model p {
+  font-size: 14pt;
+  color: #757575;
+  width: 100%;
+  display: block;
+}
+
+
+div.cont-btns-alert {
+  width: 100%;
+  position: relative;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: nowrap;
+  display: none;
+}
+
+div.cont-btns-alert.show { display: flex; z-index: 700;}
+
+div.cont-btns-alert button,
+div.replace-button {
+  text-decoration: none;
+  background: #EAEAEA;
+  border-radius: 4px;
+  padding: .5rem 2rem;
+  transition: .1s;
+  transform: scale(1);
+  box-shadow: 0px 3px 0px rgba(0,0,0,.3);
+  cursor: pointer;
+  margin-top: 2rem;
+  margin-left: 2rem;
+  margin-right: 2rem;
+}
+div.replace-button:active, div.cont-btns-alert button:active {
+  transform: scale(.95);
+  box-shadow: 0px 0px 0px rgba(0,0,0,.3);
+}
+
+
+div.message {
+  position: relative;
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  background: #f4f4f4;
+  text-align: center;
+  top: 0;
+  left: 0;
+  border-radius: 4px;
+  z-index: -10;
+  opacity: 0;
+}
+
+div.message.show {
+  opacity: 1;
+  z-index: 700;
+}
+
+div.message h1 {
+  width: 100%;
+  text-align: center;
+  font-size: 14pt;
+  color: #757575;
+  background: transparent;
+}
+
+
+
+
+
+
+
+
 

@@ -576,11 +576,10 @@ ShowMore(){
       document.getElementsByClassName('container-alert')[i]?.classList.add('show')
       document.getElementsByClassName('message')[i]?.classList.add('show')
       document.getElementsByClassName('timesuccess')[i]?.classList.toggle('lesswidth')
-      setTimeout(() => {
+
         document.getElementsByClassName('container-alert')[i]?.classList.remove('show')
         document.getElementsByClassName('message')[i]?.classList.remove('show')
         document.getElementsByClassName('timesuccess')[i]?.classList.remove('lesswidth')
-    },1500)
   }
   }
 
@@ -749,9 +748,7 @@ testEmptyBackground(){
     document.getElementsByClassName('cont-btns-alert')[1]?.classList.remove('show')
   },false)
   document.getElementsByClassName('confirm')[1]?.addEventListener('click', function(){
-    setTimeout(function() {
-    document.getElementsByClassName('container-alert')[1]?.classList.remove('show')
-  },300) },false)
+    document.getElementsByClassName('container-alert')[1]?.classList.remove('show') },false)
   }
 }
 }, false)
@@ -782,7 +779,7 @@ preSaveMisionVision() {
   document.getElementsByClassName('container-alert')[4]?.classList.add('show')
   document.getElementsByClassName('message')[4]?.classList.add('show')
   document.getElementsByClassName('cont-btns-alert')[4]?.classList.add('show')
-  
+
   document.getElementsByClassName('cancel')[4]?.addEventListener('click', function(){
     document.getElementsByClassName('cont-btns-alert')[4]?.classList.remove('show')
     document.getElementsByClassName('container-alert')[4]?.classList.remove('show')
@@ -805,7 +802,7 @@ async guardarMision() {
   let id = this.dataMisionÑ._id
   const respuestaEdit = await this.misionService.editarMisionValor(id, this.formularioMisionValor.value)
   console.log(respuestaEdit)
-  
+
 }
 
 
@@ -1032,52 +1029,6 @@ async editarModal(id:any) {
   this.mostrarPorModal = this.dataLieneaxId.mostrarPor
 }
  Modal() { document.getElementById('modal-time-line')?.classList.toggle('modal') }
-
-
-
-
- // ***
-saveEditedLineaTiempo() {
-
-//   const fileInput: HTMLInputElement | null = document.getElementById('file-edit-lt') as HTMLInputElement | null
-//   let file: any = ''
-//   if (fileInput instanceof HTMLInputElement) {
-//     file = fileInput.files?.[0]
-// // ***
-//     const tituloInput: HTMLInputElement | null = document.getElementById('new-titulo-tl') as HTMLInputElement | null
-//     const descripcionInput: HTMLInputElement | null = document.getElementById('new-desc-tl') as HTMLInputElement | null
-
-//     let titulo: string = ''
-//     let descripcion: string = ''
-
-//     if (tituloInput instanceof HTMLInputElement) { titulo = tituloInput.value }
-//     if (descripcionInput instanceof HTMLInputElement) { descripcion = descripcionInput.value }
-
-
-
-//     if(file!=="" && titulo!=="" && descripcion!==""){
-//       const innerMessage = document.getElementsByClassName('innermsg')[7]
-//       if (innerMessage) { innerMessage.innerHTML = "¿Desea guardar los cambios?"
-
-//       document.getElementsByClassName('container-alert')[7]?.classList.add('show')
-//       document.getElementsByClassName('message')[7]?.classList.add('show')
-//       document.getElementsByClassName('cont-btns-alert')[7]?.classList.add('show')
-
-//         document.getElementsByClassName('cancel')[7]?.addEventListener('click', function(){
-//         document.getElementsByClassName('container-alert')[7]?.classList.remove('show')
-//         document.getElementsByClassName('message')[7]?.classList.remove('show')
-//         document.getElementsByClassName('cont-btns-alert')[7]?.classList.remove('show')
-//       },false)
-//       document.getElementsByClassName('confirm')[7]?.addEventListener('click', () => {
-//         this.onClickEditedTimeLineEdited()
-//         setTimeout(function() {
-//           document.getElementsByClassName('container-alert')[7]?.classList.remove('show')
-//         },300) },false)
-//       }
-//       }else{ this.MessageSuccess("Los campos requeridos no pueden estar vacíos",7) }
-//   }
-this.MessageSuccess("ERROR :(",7)
-}
 
   onClickEditedTimeLineEdited() { this.sendFile(); setTimeout(() => { this.containerAlertElementTLEdited.nativeElement.classList.remove('show') }, 300) }
 

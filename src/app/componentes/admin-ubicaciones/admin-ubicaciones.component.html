@@ -9,15 +9,15 @@
 <div class="cont">
   <div class="item">
     <label>imagen</label>
-    <input title="input" type="file" class="bold" placeholder="" data-content="seleccionar archivo">
+    <input id="fileimg" (change)="InputChange($event)" title="input" type="file" class="bold" placeholder="" data-content="seleccionar archivo">
 
     <div class="details-img">
       <ul>
-        <li>ancho <span class="bold" id="">-</span></li>
-        <li>alto <span class="bold" id="">-</span></li>
-        <li>tamaño <span class="bold" id="">-</span></li>
+        <li>ancho <span class="bold danger-red" id="">-</span></li>
+        <li>alto <span class="bold danger-red" id="">-</span></li>
+        <li>tamaño <span class="bold danger-red" id="">-</span></li>
       </ul>
-      <img src="../../../assets/img/imgDefult.png" alt="" id="img-pre-noticia-edit">
+      <img src="" alt="" id="prefileimg">
     </div>
 
   </div>
@@ -26,23 +26,40 @@
 <div class="cont">
   <div class="item">
     <label>Nombre</label>
-    <input title="input" type="text" class="bold" placeholder="">
+    <input id="name" title="input" type="text" class="bold" placeholder="">
   </div>
   <div class="item">
-    <label>Dirección</label>
-    <input title="input" type="text" class="bold" placeholder="">
+    <label>Tipo</label>
+    <input id="type" title="input" type="text" class="bold" placeholder="">
   </div>
   <div class="item">
-    <label>Teléfono</label>
-    <input title="input" type="text" class="bold" placeholder="">
+    <label>Coordenada LAT</label>
+    <input id="lat" title="input" type="text" class="bold" placeholder="">
   </div>
   <div class="item">
-    <label>Extensión</label>
-    <input title="input" type="text" class="bold" placeholder="">
+    <label>Coordenada LOG</label>
+    <input id="log" title="input" type="text" class="bold" placeholder="">
   </div>
 </div>
 
-  <button id="save-modal" (click)="AddLocation()">GUARDAR</button>
+  <button id="save-modal">GUARDAR</button>
+
+
+  <div class="container-alert">
+    <div class="alert-model">
+        <p class="inner-message bold"></p>
+
+        <div class="message"> <h1 class="innermsg"></h1></div>
+        <div class="cont-btns-alert">
+          <button class="confirm">confirmar</button>
+          <div class="replace-button cancel">cancelar</div>
+        </div>
+      </div>
+  </div>
+
+
+
+
 </div>
 
 <div id="container-2">
@@ -70,31 +87,16 @@
       </tr>
     </thead>
     <tbody>
-      <tr>
-
-
+        @for (os of dataUbicacion; track os._id) {
         <tr>
-      @for (os of dataUbicacion; track os._id) {
-
-
           <td class="tb-number"></td>
           <td class="tb-name">{{os.nombreTienda}}</td>
           <td class="tb-address">{{os.tipoTienda}}</td>
           <td class="tb-telephone">{{os.codenadaslat}}</td>
           <td class="tb-extension">{{os.codenadasLng}}</td>
-          <td class="tb-actions actions-center"><button class="tb-edit" (click)="TbEdit()">editar</button> <button class="tb-delete" (click)="TbDelete()">borrar</button></td>
+          <td class="tb-actions actions-center"><button class="tb-edit">editar</button> <button class="tb-delete">borrar</button></td>
+        </tr>
         }
-      </tr>
-
-
-
-
-
-
-
-
   </tbody>
-
   </table>
-
 </div>
