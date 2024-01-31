@@ -10,10 +10,10 @@ export class NavbarComponent {
     document.getElementById("historia")?.scrollIntoView({behavior:"smooth"});
   }
   toVision(){
-    document.getElementById("mision")?.scrollIntoView({behavior:"smooth"});
+    document.getElementById("valores")?.scrollIntoView({behavior:"smooth"});
   }
   toNoticia(){
-    document.getElementById("noticias")?.scrollIntoView({behavior:"smooth"});
+    document.getElementById("news")?.scrollIntoView({behavior:"smooth"});
   }
 
   MenuToggle(){
