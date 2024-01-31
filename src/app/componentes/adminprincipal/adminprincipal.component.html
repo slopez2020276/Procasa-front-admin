@@ -462,7 +462,13 @@
   <label for="description">Descripción</label>
   <input type="text" id="new-desc-tl" formControlName="descriptionLineaTiempo" title="description">
   <label for="fecha-new-lt">fecha</label>
-  <input type="date">
+  <input type="date" id="fechanewlt" name="fecha-new-lt" placeholder="" title="fecha de línea de tiempo">
+  <label for="mostrarnew">Mostrar por</label>
+    <select name="mostrarpornew" id="mostrarnew">
+      <option value="anio">año</option>
+      <option value="aniomes">año - mes</option>
+      <option value="mesdia">mes - día</option>
+    </select>
 </div>
 
     <div class="replace-button normal" id="save-new-tili">guardar</div>
@@ -514,9 +520,17 @@
     <input   type="text" id="titulo-update-lt" formControlName="titleLineaTiempo" [(ngModel)]="tituloModal" name="title" title="título" required>
     <label for="description">Descripción</label>
     <input type="text" formControlName="descriptionLineaTiempo" id="desc-update-lt" [(ngModel)]="descripcionModal"  title="description">
+    <label for="fecha-edit-lt">fecha</label>
+  <input type="date" id="fechaupdatelt" name="fecha-edit-lt" title="fecha de línea de tiempo">
+  <label for="mostrarpor">Mostrar por</label>
+    <select name="mostrarpor" id="mostrarporedit">
+      <option value="anio">año</option>
+      <option value="aniomes">año - mes</option>
+      <option value="mesdia">mes - día</option>
+    </select>
   </div>
 
-    <div class="replace-button normal" id="update-time-line" (click)="saveEditedLineaTiempo()">guardar</div>
+    <div class="replace-button normal" id="update-time-line">guardar</div>
 
     <div class="container-alert" #containerAlertElementTLEdited>
       <div class="alert-model">
@@ -563,8 +577,8 @@
   <textarea id="desc-noticia" formControlName="descripcion" title="descripción de noticia" name="description-notice" cols="26" rows="5"></textarea>
   <label for="select-add">prioridad</label>
   <select name="select-add" id="select-add-noticia">
-    <option value="">no prioritario</option>
-    <option value="">prioritario</option>
+    <option value="0">no prioritario</option>
+    <option value="1">prioritario</option>
   </select>
 </div>
 
@@ -633,11 +647,11 @@
 <label for="description-notice">Descripción</label>   <textarea title="descripción de noticia" [(ngModel)]="descripcionNoticia" formControlName="descripcion" name="description-notice" id="desc-update-noticia" cols="26" rows="5"></textarea>
 <label for="select-edit">prioridad</label>
   <select name="select-edit" id="select-edit-noticia">
-    <option value="">no prioritario</option>
-    <option value="">prioritario</option>
+    <option value="0">no prioritario</option>
+    <option value="1">prioritario</option>
   </select>
 </div>
-<!-- <button type="submit" class="">guardar</button> -->
+
 <div class="replace-button normal" id="update-noticia">guardar</div>
 
 <div class="container-alert" #containeralertUpdateNotice>
