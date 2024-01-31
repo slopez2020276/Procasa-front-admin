@@ -278,9 +278,8 @@
   <div class="foot-cont">
 
     <div class="cont-buttons">
-      <button [disabled]="formularioMisionValor.invalid"  > aaa</button>
       <!-- <div class="normal">guardar</div> -->
-      <div    class="replace-button normal red" id="cancel-c" (click)="preSaveMisionVision()">guardar</div>
+      <div    class="replace-button normal red" id="cancel-c" (click)="preSaveMisionVision()" >guardar</div>
     </div>
   </div>
 
@@ -290,7 +289,7 @@
 
         <div class="message"> <h1 class="innermsg"></h1></div>
         <div class="cont-btns-alert">
-          <button class="confirm" #confirmElement>confirmar</button>
+          <button class="confirm"  (click)="guardarMision()">confirmar</button>
           <div class="replace-button cancel">cancelar</div>
         </div>
       </div>
@@ -462,13 +461,14 @@
   <label for="description">Descripción</label>
   <input type="text" id="new-desc-tl" formControlName="descriptionLineaTiempo" title="description">
   <label for="fecha-new-lt">fecha</label>
-  <input type="date" id="fechanewlt" name="fecha-new-lt" placeholder="" title="fecha de línea de tiempo">
+  <input type="date" formControlName="fecha" >
   <label for="mostrarnew">Mostrar por</label>
-    <select name="mostrarpornew" id="mostrarnew">
-      <option value="anio">año</option>
-      <option value="aniomes">año - mes</option>
-      <option value="mesdia">mes - día</option>
-    </select>
+  <select name="mostrarpornew" id="mostrarnew" formControlName="mostrarPor">
+    <option value="anio">año</option>
+    <option value="anioyMes">año - mes</option>
+    <option value="anioMesDia">año - mes - día</option>
+  </select>
+
 </div>
 
     <div class="replace-button normal" id="save-new-tili">guardar</div>
@@ -521,9 +521,9 @@
     <label for="description">Descripción</label>
     <input type="text" formControlName="descriptionLineaTiempo" id="desc-update-lt" [(ngModel)]="descripcionModal"  title="description">
     <label for="fecha-edit-lt">fecha</label>
-  <input type="date" id="fechaupdatelt" name="fecha-edit-lt" title="fecha de línea de tiempo">
-  <label for="mostrarpor">Mostrar por</label>
-    <select name="mostrarpor" id="mostrarporedit">
+  <input formControlName = "fecha" [(ngModel)]="fechaModal"  type="date" id="fechaupdatelt" name="fecha-edit-lt" title="fecha de línea de tiempo">
+  <label for="mostrarpor" >Mostrar por</label>
+    <select formControlName="mostrarPor" name="mostrarpor" id="mostrarporedit" [(ngModel)]="mostrarPorModal">
       <option value="anio">año</option>
       <option value="aniomes">año - mes</option>
       <option value="mesdia">mes - día</option>
@@ -575,10 +575,10 @@
   <input id="titulo-noticia" formControlName="title" type="text" name="title-notice" title="Título de noticia">
   <label for="description-notice">Descripción</label>
   <textarea id="desc-noticia" formControlName="descripcion" title="descripción de noticia" name="description-notice" cols="26" rows="5"></textarea>
-  <label for="select-add">prioridad</label>
-  <select name="select-add" id="select-add-noticia">
-    <option value="0">no prioritario</option>
-    <option value="1">prioritario</option>
+  <label for="select-add">Tipo De Noticia</label>
+  <select formControlName="tipo" name="select-add" id="select-add-noticia">
+    <option value="principal">Pricipal</option>
+    <option value="secundarios">Secundario</option>
   </select>
 </div>
 
