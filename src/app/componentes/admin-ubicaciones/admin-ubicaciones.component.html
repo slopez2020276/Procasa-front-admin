@@ -6,6 +6,24 @@
   <button id="close-modal" (click)="AddLocation()">cerrar</button>
   <h1>Agregar Ubicación</h1>
 
+<div class="cont">
+  <div class="item">
+    <label>imagen</label>
+    <input title="input" type="file" class="bold" placeholder="" data-content="seleccionar archivo">
+
+    <div class="details-img">
+      <ul>
+        <li>ancho <span class="bold" id="">-</span></li>
+        <li>alto <span class="bold" id="">-</span></li>
+        <li>tamaño <span class="bold" id="">-</span></li>
+      </ul>
+      <img src="../../../assets/img/imgDefult.png" alt="" id="img-pre-noticia-edit">
+    </div>
+
+  </div>
+</div>
+
+<div class="cont">
   <div class="item">
     <label>Nombre</label>
     <input title="input" type="text" class="bold" placeholder="">
@@ -22,10 +40,7 @@
     <label>Extensión</label>
     <input title="input" type="text" class="bold" placeholder="">
   </div>
-  <div class="item">
-    <label>imagen</label>
-    <input title="input" type="file" class="bold" placeholder="">
-  </div>
+</div>
 
   <button id="save-modal" (click)="AddLocation()">GUARDAR</button>
 </div>
@@ -61,7 +76,7 @@
         <tr>
       @for (os of dataUbicacion; track os._id) {
 
-        
+
           <td class="tb-number"></td>
           <td class="tb-name">{{os.nombreTienda}}</td>
           <td class="tb-address">{{os.tipoTienda}}</td>
@@ -75,7 +90,7 @@
 
 
 
-   
+
 
 
   </tbody>

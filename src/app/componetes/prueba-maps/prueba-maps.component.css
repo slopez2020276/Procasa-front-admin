@@ -87,6 +87,38 @@ p#details {
   padding: 2rem 0;
 }
 
+div#cont-top {
+  width: 100%;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 4rem;
+  cursor: pointer;
+}
+
+
+div.cont-logo {
+  width: 100px;
+  height: 100px;
+  position: relative;
+  margin: 0 1rem;
+  transform: scale(1);
+  transition: .2s;
+}
+
+div.cont-logo:hover {
+  transform: scale(1.1);
+}
+
+div.cont-logo img {
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: 100%;
+}
+
 div.sucursales {
   width: 80%;
   color: #F4F4F4;

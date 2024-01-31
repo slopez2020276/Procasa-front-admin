@@ -28,12 +28,12 @@ div.noticia {
     min-width: 200px;
     text-align: right;
     height: 250px;
-    margin-bottom: 1rem;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
     margin-bottom: 4rem;
+    margin-top: 2rem;
   }
 
 div.noticia h6 {
@@ -52,7 +52,7 @@ div.noticia img {
   width: auto;
   max-width: 100%;
   height: auto;
-  max-height: 300px;
+  max-height: 200px;
   border-radius: 4px;
   display: block;
 }

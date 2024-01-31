@@ -177,7 +177,7 @@ div#open-val h1 { font-size: 14pt; padding-bottom: 1rem;}
 div.valhide { display: none; }
 div.valhide.show { display: block; }
 
-
+h1#valores-h1 {margin-bottom: 4rem;}
 
 
 div#close-valor-def {

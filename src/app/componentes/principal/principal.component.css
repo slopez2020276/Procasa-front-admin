@@ -1,13 +1,3 @@
-/*
-section#historia, section#linea-tiempo, section#valores, section#noticias {
-  opacity: 0;
-  transition: .8s ease-in-out;
-}
-section#historia.topshow, section#linea-tiempo.topshow, section#valores.topshow,section#noticias.topshow {
-  opacity: 1;
-  transition: .8s ease-in-out;
-} */
-
 
 img#background-texture {
   width: auto;

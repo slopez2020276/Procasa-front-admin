@@ -10,6 +10,7 @@ img#background-texture {
   opacity: 1;
 }
 
+div#space { width: 100vw; height: 0; }
 
 
 div#section-2 {
@@ -95,13 +96,11 @@ a {text-decoration: none;}
 @media (max-width: 550px) {
   .column { width: 400px; }
   .column h2{ font-size: 20pt; }
-
+  div#space { width: 100%; height: 150px; }
 }
 
 @media screen and (max-width: 999px) {
   div#section-2 { margin-bottom: 10rem; }
-.column {
-  width: 480px;
-  height: 550px;
-}
+  .column { width: 480px; height: 550px; }
+  div#space { width: 100%; height: 150px; }
 }

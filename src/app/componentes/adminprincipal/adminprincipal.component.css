@@ -17,6 +17,12 @@ body {
   overflow-y: scroll;
 }
 
+svg {
+  width: 200px;
+  height: 200px;
+  z-index: 999;
+}
+
 
 div#container-welcome {
   width: 100vw;

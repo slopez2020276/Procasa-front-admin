@@ -1,7 +1,7 @@
 <div id="container-noticias">
     <h1 class="container-h1 bold">NOTICIAS</h1>
-    
-    <div id="noticias">    
+
+    <div id="noticias">
         @for (os of data; track os._id) {
             <div class="noticia">
                 <img  [ngSrc]="'http://localhost:3002/' + os.imgPhat" [width]="500" [height]="500" alt="">
