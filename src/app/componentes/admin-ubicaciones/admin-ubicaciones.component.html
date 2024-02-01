@@ -1,130 +1,19 @@
 <app-admin-navbar></app-admin-navbar>
 
+<!-- Input para el filtro -->
+
+
+
+
 <div id="container-1"></div>
 
 <div id="modal-add-location">
   <button id="close-modal" (click)="AddLocation()">cerrar</button>
   <h1>Agregar Ubicación</h1>
-
-<div class="cont">
-  <div class="item">
-    <label>imagen</label>
-    <input id="fileimg" (change)="InputChange($event)" (change)="getFile($event)" title="input" type="file" class="bold" placeholder="" data-content="seleccionar archivo">
-
-    <div class="details-img">
-      <ul>
-        <li>ancho <span class="bold danger-red" id="">-</span></li>
-        <li>alto <span class="bold danger-red" id="">-</span></li>
-        <li>tamaño <span class="bold danger-red" id="">-</span></li>
-      </ul>
-      <img src="" alt="" id="prefileimg">
-    </div>
-
-  </div>
-</div>
-
-<div class="cont">
-  <form [formGroup]="fornularioAgregarUbicacion">
-
+  
+  <div class="cont">
     <div class="item">
-      <label>Nombre</label>
-      <input formControlName="nombreTienda" id="name" title="input" type="text" class="bold" placeholder="">
-    </div>
-    <div class="item">
-      <label for="tipoTienda">Tipo</label>
-      <select formControlName="tipoTienda" name="tipoTienda" id="">
-        <option value="procasa">Procasa</option>
-        <option value="meathhouse">Meat House</option>
-      </select>
-    </div>
-    <div class="item">
-      <label>Coordenada LAT</label>
-      <input formControlName="codenadaslat" id="lat" title="input" type="text" class="bold" placeholder="">
-    </div>
-    <div class="item">
-      <label>Coordenada LOG</label>
-      <input formControlName="codenadasLng" id="log" title="input" type="text" class="bold" placeholder="">
-    </div>
-    <div class="item">
-      <label>Descripcion de la tienda</label>
-      <input formControlName="descripcion" id="log" title="input" type="text" class="bold" placeholder="">
-    </div>
-  </form>
-  </div>
-
-  <button (click)="sendFile()" id="save-modal" >GUARDAR</button>
-
-
-  <div class="container-alert">
-    <div class="alert-model">
-        <p class="inner-message bold"></p>
-
-        <div class="message"> <h1 class="innermsg"></h1></div>
-        <div class="cont-btns-alert">
-          <button>confirmar</button>
-          <div class="replace-button cancel">cancelar</div>
-        </div>
-      </div>
-  </div>
-</div>
-
-
-
-<div id="container-2">
-  <h1>Ubicaciones</h1>
-    <h2></h2>
-    <button id="add-location" (click)="AddLocation()">+ Agregar ubicación</button>
-
-    <div id="bar-search">
-      <label for="search">Buscar</label>
-      <input class="bold" type="text" name="search" placeholder="" title="buscar">
-      <button type="button">...<i class="fas fa-magnifying-glass"></i></button>
-    </div>
-</div>
-
-<div id="container-3">
-  <table>
-    <thead>
-      <tr>
-        <td class="bold tb-number">#</td>
-        <td class="bold tb-name">Nombre</td>
-        <td class="bold tb-address">Tipo Tienda</td>
-        <td class="bold tb-telephone">Coordenadas LAT</td>
-        <td class="bold tb-extension">Coodenadas LOG</td>
-        <td class="bold tb-actions">Acciones</td>
-      </tr>
-    </thead>
-    <tbody>
-        @for (os of dataUbicacion; track os._id) {
-        <tr>
-          <td class="tb-number"></td>
-          <td class="tb-name">{{os.nombreTienda}}</td>
-          <td class="tb-address">{{os.tipoTienda}}</td>
-          <td class="tb-telephone">{{os.codenadaslat}}</td>
-          <td class="tb-extension">{{os.codenadasLng}}</td>
-          <td class="tb-actions actions-center"><button class="tb-edit" (click)="editLocation()">editar</button> <button class="tb-delete">borrar</button></td>
-        </tr>
-        }
-  </tbody>
-  </table>
-</div>
-
-
-
-
-
-
-
-
-
-
-<div id="modal-edit-location">
-  <button id="close-modal-edit" (click)="editLocation()">cerrar</button>
-  <h1>Editar Ubicación</h1>
-
-<div class="cont">
-  <div class="item">
-    <label>imagen</label>
+      <label>imagen</label>
     <input id="fileimg" (change)="InputChange($event)" (change)="getFile($event)" title="input" type="file" class="bold" placeholder="" data-content="seleccionar archivo">
 
     <div class="details-img">
@@ -168,7 +57,7 @@
   </form>
   </div>
 
-  <button (click)="sendFile()" id="save-modal-edit" >GUARDAR</button>
+  <button (click)="sendFile()" id="save-modal" >GUARDAR</button>
 
 
   <div class="container-alert">
@@ -178,6 +67,123 @@
         <div class="message"> <h1 class="innermsg"></h1></div>
         <div class="cont-btns-alert">
           <button>confirmar</button>
+          <div class="replace-button cancel">cancelar</div>
+        </div>
+      </div>
+  </div>
+</div>
+
+
+
+<div id="container-2">
+  <h1>Ubicaciones</h1>
+    <h2></h2>
+    <button id="add-location" (click)="AddLocation()">+ Agregar ubicación</button>
+
+    <div id="bar-search">
+      <label for="search">Buscar</label>
+      <input  [(ngModel)]="nombreTiendaFiltro"  class="bold" type="text" name="search" placeholder="" title="buscar">
+
+      <button type="button">...<i class="fas fa-magnifying-glass"></i></button>
+    </div>
+</div>
+
+<div id="container-3">
+  <table>
+    <thead>
+      <tr>
+        <td class="bold tb-number">#</td>
+        <td class="bold tb-name">Nombre</td>
+        <td class="bold tb-address">Tipo Tienda</td>
+        <td class="bold tb-telephone">Coordenadas LAT</td>
+        <td class="bold tb-extension">Coodenadas LOG</td>
+        <td class="bold tb-actions">Acciones</td>
+      </tr>
+    </thead>
+    <tbody>
+        @for (os  of dataUbicacion | MostrarPorUbiPipe: nombreTiendaFiltro ; track os._id ) {
+        <tr>
+          <td class="tb-number"></td>
+          <td class="tb-name">{{os.nombreTienda}}</td>
+          <td class="tb-address">{{os.tipoTienda}}</td>
+          <td class="tb-telephone">{{os.codenadaslat}}</td>
+          <td class="tb-extension">{{os.codenadasLng}}</td>
+          <td class="tb-actions actions-center"><button class="tb-edit" (click)="ObtenerUbixId(os._id)" (click)="editLocation()">editar</button> <button class="tb-delete">borrar</button></td>
+        </tr>
+        }
+  </tbody>
+  </table>
+</div>
+
+
+
+
+
+
+
+
+
+
+<div id="modal-edit-location">
+  <button id="close-modal-edit" (click)="editLocation()">cerrar</button>
+  <h1>Editar Ubicación</h1>
+
+<div class="cont">
+  <div class="item">
+    <label>imagen</label>
+    <input id="fileimg" (change)="InputChange($event)" (change)="getFileEdit($event)" title="input" type="file" class="bold" placeholder="" data-content="seleccionar archivo">
+
+    <div class="details-img">
+      <ul>
+        <li>ancho <span class="bold danger-red" id="">-</span></li>
+        <li>alto <span class="bold danger-red" id="">-</span></li>
+        <li>tamaño <span class="bold danger-red" id="">-</span></li>
+      </ul>
+      <img src="" alt="" id="prefileimg">
+    </div>
+
+  </div>
+</div>
+
+<div class="cont">
+  <form [formGroup]="formularioEditUbicacion">
+
+    <div class="item">
+      <label>Nombre</label>
+      <input [(ngModel)]="nombreTienda" formControlName="nombreTienda" id="name" title="input" type="text" class="bold" placeholder="">
+    </div>
+    <div class="item">
+      <label for="tipoTienda">Tipo</label>
+      <select formControlName="tipoTienda" name="tipoTienda" id="">
+        <option value="procasa">Procasa</option>
+        <option value="meathouse">Meat House</option>
+      </select>
+    </div>
+    <div class="item">
+      <label>Coordenada LAT</label>
+      <input [(ngModel)]="codenadaslat" formControlName="codenadaslat" id="lat" title="input" type="text" class="bold" placeholder="">
+    </div>
+    <div class="item">
+      <label>Coordenada LOG</label>
+      <input [(ngModel)]="codenadasLng" formControlName="codenadasLng" id="log" title="input" type="text" class="bold" placeholder="">
+    </div>
+    <div class="item">
+      <label>Descripcion de la tienda</label>
+      <input [(ngModel)]="descripcion" formControlName="descripcion" id="log" title="input" type="text" class="bold" placeholder="">
+    </div>
+  </form>
+  </div>
+
+  <button (click)="sendFileEdit()" id="save-modal-edit" >GUARDAR</button>
+
+
+  <div class="container-alert">
+    <div class="alert-model">
+        <p class="inner-message bold"></p>
+
+        <div class="message"> <h1 class="innermsg"></h1></div>
+        <div class="cont-btns-alert">
+          <button (click)="sendFileEdit()">confirmar</button>
           <div class="replace-button cancel">cancelar</div>
         </div>
       </div>

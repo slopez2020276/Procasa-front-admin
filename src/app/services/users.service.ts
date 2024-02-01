@@ -26,6 +26,19 @@ export class UsersService {
     )
   }
 
+  obtenerxId(id:any){
+
+    return firstValueFrom(
+      this.httClient.get<any>(`${this.baseUrl}/obtenerUsuarioId/${id}`)
+    )
+  }
+
+  editarUser(fromValue:any,id){
+    return firstValueFrom(
+      this.httClient.put<any>(`${this.baseUrl}/editarUsuario/${id}`,fromValue)
+    )
+  }
+
   registrarUser(forms:any){
     return firstValueFrom(
       this.httClient.post<any>(`${this.baseUrl}/registrarUsuario`,forms)

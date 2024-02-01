@@ -1,6 +1,8 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { UbicacionServiceService } from '../../services/ubicacion-service.service';
 import { FormControl, FormGroup } from '@angular/forms';
+import { MostrarPorUbiPipe } from '../../pipes/mostrar-por-ubi.pipe';
+
 
 @Component({
   selector: 'app-admin-ubicaciones',
@@ -8,15 +10,38 @@ import { FormControl, FormGroup } from '@angular/forms';
   styleUrl: './admin-ubicaciones.component.css'
 })
 export class AdminUbicacionesComponent implements OnInit {
+[x: string]: any;
 
 ubicacionService = inject(UbicacionServiceService)
 dataUbicacion
 fornularioAgregarUbicacion : FormGroup
+formularioEditUbicacion: FormGroup
 private fileTmp:any
+private fileTmpEdit: any
+nombreTiendaFiltro: string = ''; 
+
+
+//Datos para el modal de editar
+
+idUbicacion:any
+
+nombreTienda:any
+descripcion:any
+codenadasLng:any
+codenadaslat:any
+tipoTienda:any
+imgPath:any
 
 
 constructor (){
   this.fornularioAgregarUbicacion = new FormGroup({
+    tipoTienda: new FormControl(),
+    nombreTienda: new FormControl(),
+    codenadasLng: new FormControl(),
+    codenadaslat: new FormControl(),
+    descripcion: new FormControl(),
+  })
+  this.formularioEditUbicacion  = new FormGroup({
     tipoTienda: new FormControl(),
     nombreTienda: new FormControl(),
     codenadasLng: new FormControl(),
@@ -205,9 +230,63 @@ sendFile():void{
   this.MessageSuccess('Datos guardados exitosamente',6)
 }
 
+getFileEdit($event: any): void {
+  //TODO esto captura el archivo!
+  const [ file ] = $event.target.files;
+  this.fileTmpEdit = {
+    fileRaw:file,
+    fileName:file.name
+  }
+}
+
+sendFileEdit():void{
+
+  const body = new FormData()
+
+  if(this.fileTmpEdit){
+    body.append('imgPath', this.fileTmpEdit.fileRaw, this.fileTmpEdit.fileName);
+    body.append('tipoTienda', this.formularioEditUbicacion.value.tipoTienda)
+    body.append('nombreTienda',this.formularioEditUbicacion.value.nombreTienda)
+    body.append('codenadasLng',this.formularioEditUbicacion.value.codenadasLng)
+    body.append('codenadaslat',this.formularioEditUbicacion.value.codenadaslat)
+    body.append('descripcion',this.formularioEditUbicacion.value.descripcion)
+
+  }else{
+    body.append('tipoTienda', this.formularioEditUbicacion.value.tipoTienda)
+    body.append('nombreTienda',this.formularioEditUbicacion.value.nombreTienda)
+    body.append('codenadasLng',this.formularioEditUbicacion.value.codenadasLng)
+    body.append('codenadaslat',this.formularioEditUbicacion.value.codenadaslat)
+    body.append('descripcion',this.formularioEditUbicacion.value.descripcion)
+  }
+
+  console.log(this.formularioEditUbicacion.value.fecha)
+  this.ubicacionService.sendEdit(body,this.idUbicacion)
+  .subscribe(res =>{console.log(res), this.obtenerUbicacion(),this.fileTmpEdit = null})
+  this.MessageSuccess('Datos guardados exitosamente',6)
+}
 
 
-editLocation(){ document.getElementById('modal-edit-location')?.classList.toggle('toggle') }
+async ObtenerUbixId(id){
+  const Ubicacion = await this.ubicacionService.ObtenerUbicaionesxid(id)
+  this.idUbicacion = Ubicacion.ubi._id
+  this.tipoTienda = Ubicacion.ubi.tipoTienda
+  this.nombreTienda = Ubicacion.ubi.nombreTienda
+  this.codenadasLng = Ubicacion.ubi.codenadasLng
+  this.codenadaslat = Ubicacion.ubi.codenadaslat
+  this.descripcion = Ubicacion.ubi.descripcion
+  this.imgPath =Ubicacion.ubi.imgPath
+  
+  console.log(Ubicacion)
+  console.log(this.descripcion)
+
+
+}
+
+editLocation(){ 
+  
+
+  
+  document.getElementById('modal-edit-location')?.classList.toggle('toggle') }
 
 
 }

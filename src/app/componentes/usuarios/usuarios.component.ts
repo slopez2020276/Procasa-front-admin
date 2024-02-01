@@ -13,6 +13,12 @@ userService = inject(UsersService)
 
 dataUsers
 
+Alias
+email
+id
+
+AliasFiltro
+
 
 formularioAgregarUser:FormGroup
 formularioEditarUser:FormGroup
@@ -23,11 +29,37 @@ constructor(){
     email: new FormControl(),
     password: new FormControl(),
   })
-    this.formularioEditarUser = new FormGroup({ password: new FormControl() })
+
+  this.formularioEditarUser = new FormGroup({
+    nombre: new FormControl(),
+    email: new FormControl(),
+    password: new FormControl(),
+    })
 }
 
 modalAddUser() { document.getElementById('cont-modal-add')?.classList.toggle('open-add') }
-modalEditUser() { document.getElementById('cont-modal-edit')?.classList.toggle('open-add') }
+modalEditUser() {
+
+
+   document.getElementById('cont-modal-edit')?.classList.toggle('open-add') 
+
+  }
+
+async ObtenerxID(id){
+
+  const respuesta = await this.userService.obtenerxId(id)
+
+  console.log(respuesta)
+
+
+  this.Alias = respuesta.User.nombre
+  this.email  = respuesta.User.email
+  this.id = respuesta.User._id
+
+
+
+
+}
 
 
 async ngOnInit(){ this.ObtenerUsers() }
@@ -46,6 +78,9 @@ async registrarUsuario(){
 
 async editarUusario(){
 
+  const respuesta = await this.userService.editarUser(this.formularioEditarUser.value,this.id)
+  console.log(respuesta)
+  this.ObtenerUsers()
 }
 
 }

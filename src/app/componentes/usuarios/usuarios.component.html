@@ -7,8 +7,8 @@
     <button id="add-location" (click)="modalAddUser()">+ Agregar usuario</button>
 
     <div id="bar-search">
-      <label for="search">Buscar</label>
-      <input class="bold" class="bold" type="text" name="search" placeholder="" title="buscar">
+      <label for="search" >Buscar</label>
+      <input class="bold" [(ngModel)]="AliasFiltro"  class="bold" type="text" name="search" placeholder="" title="buscar">
       <button type="button">...<i class="fas fa-magnifying-glass"></i></button>
     </div>
 </div>
@@ -16,8 +16,8 @@
 <div id="container-1" class="container">
     <div id="cont-users">
       <div class="user-head"><span class="bold">ALIAS</span><span class="bold">CORREO</span><span class="bold edit-head">ACCIONES</span></div>
-    @for (os of dataUsers; track os._id) {
-      <div class="user"> <span class="bold">{{os.nombre}}</span> <span class="bold">{{os.email}}</span><span class="edit" (click)="modalEditUser()">editar</span></div>
+    @for (os of dataUsers | mostrarAlias: AliasFiltro ; track os._id) {
+      <div class="user"> <span class="bold">{{os.nombre}}</span> <span class="bold">{{os.email}}</span><span class="edit" (click)="modalEditUser()"  (click)="ObtenerxID(os._id)">editar</span></div>
 
     }
     </div>
@@ -32,7 +32,7 @@
           <div class="cont-input-user">  <label class="bold" for="alias">alias</label> <input formControlName = "nombre" class="bold" name="alias" type="text" title="alias del usuario"> </div>
           <div class="cont-input-user"> <label class="bold" for="correo">correo</label> <input class="bold" name="correo" formControlName="email" type="mail" title="correo del usuario"> </div>
           <div class="cont-input-user"> <label class="bold" for="contraseña">contraseña</label> <input class="bold" formControlName="password" name="contraseña" type="text" title="contraseña del usuario"> </div>
-          <div class="replace-button" id="save-user" (click)="registrarUsuario()" >guardar</div>
+          <div class="replace-button" id="save-user" (click)="registrarUsuario()"  >guardar</div>
         </form>
   </div>
 </div>
@@ -42,9 +42,8 @@
     <div id="close-modal-edit" (click)="modalEditUser()">cerrar</div>
         <h1>Editar Usuario</h1>
         <form [formGroup]="formularioEditarUser">
-          <div class="cont-input-user"> <label class="bold" for="aliasEdit">Alias</label> <input class="bold" formControlName="aliasEdit" name="aliasEdit" type="text" title="editar alias"> </div>
-          <div class="cont-input-user"> <label class="bold" for="correoEdit">Correo</label> <input class="bold" formControlName="correoEdit" name="correoEdit" type="text" title="editar correo"> </div>
-          <div class="cont-input-user"> <label class="bold" for="password">contraseña</label> <input class="bold" formControlName="password" name="password" type="text" title="editar contraseña"> </div>
+          <div class="cont-input-user"> <label class="bold"  for="aliasEdit">Alias</label> <input [(ngModel)]="Alias" class="bold" formControlName="nombre" name="aliasEdit" type="text" title="editar alias"> </div>
+          <div class="cont-input-user"> <label class="bold" for="correoEdit">Correo</label> <input class="bold" [(ngModel)]="email"  formControlName="email" name="correoEdit" type="text" title="editar correo"> </div>
           <div class="replace-button" id="edit-user" (click)="editarUusario()" >guardar</div>
         </form>
   </div>

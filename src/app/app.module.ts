@@ -34,6 +34,8 @@ import { PruebaMaps2Component } from './componetes/prueba-maps2/prueba-maps2.com
 import { MapComponent } from './map/map.component';
 import { Noticias01Component } from './componentes/noticias0.1/noticias0.1.component';
 import { NoticiasNEWComponent } from './componentes/noticias-new/noticias-new.component';
+import { MostrarPorUbiPipe } from './pipes/mostrar-por-ubi.pipe';
+import { MostrarAliasPipe } from './pipes/mostrar-alias.pipe';
 @NgModule({
   declarations: [
     AppComponent,
@@ -65,6 +67,8 @@ import { NoticiasNEWComponent } from './componentes/noticias-new/noticias-new.co
     MapComponent,
     Noticias01Component,
     NoticiasNEWComponent,
+    MostrarPorUbiPipe,
+    MostrarAliasPipe,
   ],
   imports: [
     BrowserModule,

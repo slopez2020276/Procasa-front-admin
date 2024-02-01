@@ -39,6 +39,14 @@ export class UbicacionServiceService {
     )
   }
 
+  ObtenerUbicaionesxid(id:any){
+    return firstValueFrom(
+      this.httClient.get<any>(`${this.baseUrlw}//obtenerUbiccacionxID/${id}`)
+    )
+  }
+  sendEdit (body:FormData,id:any):Observable<any>{
+    return this.httpClient.put(`${this.baseUrlw}/editarUbicacion/${id}`, body)
+  }
   createHeaders(){
     return   {
      headers: new HttpHeaders ({
