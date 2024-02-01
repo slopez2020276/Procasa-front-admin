@@ -5,33 +5,27 @@
 
   <div id="conts">
     <div id="cont-top">
-        <div class="cont-logo" (click)="OpenSucursales1()"><img src="../../../assets/img/Logo MH blanco.png" alt=""></div>
-        <div class="cont-logo" (click)="OpenSucursales2()"><img src="../../../assets/img/Logo Procasa blanco.png" alt=""></div>
+        <div class="cont-logo" (click)="OpenSucursales1('meath')"><img src="../../../assets/img/Logo MH blanco.png" alt=""></div>
+        <div class="cont-logo" (click)="OpenSucursales1('procasa')"><img src="../../../assets/img/Logo Procasa blanco.png" alt=""></div>
     </div>
     <div id="map"></div>
       <div id="cont-sucursal">
+
+        
         <div id="cont-img" class="cont">
               <div id="close" (click)="CloseSucursal()">cerrar</div>
-          <img src="../../../assets/img/empty.jpg" alt="">
-            <p id="details">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus, molestiae debitis placeat, minus adipisci eveniet nesciunt ad quibusdam neque, nostrum aliquam voluptatibus eum est odit! Explicabo saepe ratione facere illo.</p>
+              <img  [ngSrc]="'http://localhost:3002/' + imgPath" [width]="500" [height]="500" alt="">
+            <p id="details">{{descripcion}}</p>
         </div>
 
         <div id="cont-sucursales-buttons-1" class="cont">
-            <div class="sucursales bold" (click)="ToggleDetails()">sucursal 1</div>
-            <div class="sucursales bold" (click)="ToggleDetails()">sucursal 1</div>
-            <div class="sucursales bold" (click)="ToggleDetails()">sucursal 1</div>
-            <div class="sucursales bold" (click)="ToggleDetails()">sucursal 1</div>
-            <div class="sucursales bold" (click)="ToggleDetails()">sucursal 1</div>
-            <div class="sucursales bold" (click)="ToggleDetails()">sucursal 1</div>
+          @for (os of data; track os._id) {
+              <div class="sucursales bold" (click)="ToggleDetails(os._id)">{{os.nombreTienda}}</div>
+             
+          }
+
         </div>
-        <div id="cont-sucursales-buttons-2" class="cont">
-            <div class="sucursales bold" (click)="ToggleDetails()">sucursal 2</div>
-            <div class="sucursales bold" (click)="ToggleDetails()">sucursal 2</div>
-            <div class="sucursales bold" (click)="ToggleDetails()">sucursal 2</div>
-            <div class="sucursales bold" (click)="ToggleDetails()">sucursal 2</div>
-            <div class="sucursales bold" (click)="ToggleDetails()">sucursal 2</div>
-            <div class="sucursales bold" (click)="ToggleDetails()">sucursal 2</div>
-        </div>
+       
       </div>
   </div>
 

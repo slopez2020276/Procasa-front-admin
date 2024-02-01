@@ -1,5 +1,6 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { UbicacionServiceService } from '../../services/ubicacion-service.service';
+import { HistoriaService } from '../../services/historia.service';
 
 @Component({
   selector: 'app-ubicaciones',
@@ -10,8 +11,20 @@ export class UbicacionesComponent {
 
   UbicacionService = inject(UbicacionServiceService)
 
+  constructor(){ }
   data
+  imgPrincipal
+  imgFondo
+ HistoriaService = inject(HistoriaService)
 
+  async onSubmit(){ }
+
+ async ngOnInit() {
+    const response = await this.HistoriaService.obtenerHistoria()
+    this.data = response.historia
+    this.imgPrincipal = this.data[0].imgPathPrincipal
+    this.imgFondo = this.data[0].imgPathFondo
+  }
 
 
   }
