@@ -5,6 +5,7 @@
         @for (os of data; track os._id) {
             <div class="noticia">
                 <img  [ngSrc]="'http://localhost:3002/' + os.imgPhat" [width]="500" [height]="500" alt="">
+                <h2 class="days"></h2>
                 <h6>{{os.title}}</h6>
             </div>
         }
