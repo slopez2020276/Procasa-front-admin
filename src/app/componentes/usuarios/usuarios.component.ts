@@ -15,6 +15,7 @@ dataUsers
 
 
 formularioAgregarUser:FormGroup
+formularioEditarUser:FormGroup
 
 constructor(){
   this.formularioAgregarUser = new FormGroup({
@@ -22,26 +23,29 @@ constructor(){
     email: new FormControl(),
     password: new FormControl(),
   })
+    this.formularioEditarUser = new FormGroup({ password: new FormControl() })
 }
 
 modalAddUser() { document.getElementById('cont-modal-add')?.classList.toggle('open-add') }
+modalEditUser() { document.getElementById('cont-modal-edit')?.classList.toggle('open-add') }
 
-async ngOnInit(){
-  this.ObtenerUsers()
-}
+
+async ngOnInit(){ this.ObtenerUsers() }
 
 async ObtenerUsers(){
 const res = await this.userService.obtener()
-  this.dataUsers= res.usuario 
-
+this.dataUsers= res.usuario
 }
 
 async registrarUsuario(){
-  
   const res = await this.userService.registrarUser(this.formularioAgregarUser.value)
   console.log(res)
   this.ObtenerUsers()
   this.formularioAgregarUser.reset()
+}
+
+async editarUusario(){
+
 }
 
 }

@@ -17,7 +17,7 @@
     <div id="cont-users">
       <div class="user-head"><span class="bold">ALIAS</span><span class="bold">CORREO</span><span class="bold edit-head">ACCIONES</span></div>
     @for (os of dataUsers; track os._id) {
-      <div class="user"> <span class="bold">{{os.nombre}}</span> <span class="bold">{{os.email}}</span><span class="edit">editar</span></div>
+      <div class="user"> <span class="bold">{{os.nombre}}</span> <span class="bold">{{os.email}}</span><span class="edit" (click)="modalEditUser()">editar</span></div>
 
     }
     </div>
@@ -34,5 +34,17 @@
           <div class="cont-input-user"> <label class="bold" for="contraseña">contraseña</label> <input class="bold" formControlName="password" name="contraseña" type="text" title="contraseña del usuario"> </div>
           <div class="replace-button" id="save-user" (click)="registrarUsuario()" >guardar</div>
         </form>
-        </div>
-      </div>
+  </div>
+</div>
+
+<div id="cont-modal-edit">
+  <div id="modal-edit-user">
+    <div id="close-modal-edit" (click)="modalEditUser()">cerrar</div>
+        <h1>Editar Contraseña</h1>
+        <form [formGroup]="formularioEditarUser">
+          <div class="cont-input-user"> <label class="bold" for="contraseña">contraseña actual</label> <input class="bold" formControlName="password" name="contraseña" type="text" title="contraseña actual"> </div>
+          <div class="cont-input-user"> <label class="bold" for="nueva">contraseña nueva</label> <input class="bold" formControlName="password" name="nueva" type="text" title="contraseña nueva"> </div>
+          <div class="replace-button" id="edit-user" (click)="editarUusario()" >guardar</div>
+        </form>
+  </div>
+</div>
