@@ -16,11 +16,22 @@ export class UbicacionServiceService {
     return this.httpClient.get<any>(`${this.baseUrlw}/obtenerUbicaciones`);
   }
 
-  CrearUbicacion(body: FormData) {
-    return  firstValueFrom(
-      this.httpClient.post<any>(`${this.baseUrlw}/crearUbicacion`, body,this.createHeaders())
-    )
+  ObtenerUbicacionesMt(): Observable<any> {
+    return this.httpClient.get<any>(`${this.baseUrlw}/obtenerMeatouse`);
   }
+  ObtenerUbicacionesPr(): Observable<any> {
+    return this.httpClient.get<any>(`${this.baseUrlw}/obtenerProcasa`);
+  }
+
+
+  ObtenerUbicacionesxID(id:any): Observable<any> {
+    return this.httpClient.get<any>(`${this.baseUrlw}/obtenerUbiccacionxID/${id}`);
+  }
+
+  CrearUbicacion(body:FormData):Observable<any>{
+    return this.httpClient.post(`${this.baseUrlw}/crearUbicacion`, body, this.createHeaders())
+  }
+  
 
   ObtenerUbicaionesAdmin(){
     return firstValueFrom(

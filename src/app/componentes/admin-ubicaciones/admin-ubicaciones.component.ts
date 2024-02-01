@@ -1,5 +1,6 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { UbicacionServiceService } from '../../services/ubicacion-service.service';
+import { FormControl, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-admin-ubicaciones',
@@ -10,6 +11,19 @@ export class AdminUbicacionesComponent implements OnInit {
 
 ubicacionService = inject(UbicacionServiceService)
 dataUbicacion
+fornularioAgregarUbicacion : FormGroup
+private fileTmp:any
+
+
+constructor (){
+  this.fornularioAgregarUbicacion = new FormGroup({
+    tipoTienda: new FormControl(),
+    nombreTienda: new FormControl(),
+    codenadasLng: new FormControl(),
+    codenadaslat: new FormControl(),
+    descripcion: new FormControl(),
+  })
+}
 
 ngOnInit(): void {
   this.obtenerUbicacion()
@@ -93,8 +107,29 @@ document.getElementById('save-modal')?.addEventListener('click', () => {
     document.getElementsByClassName('cont-btns-alert')[0]?.classList.remove('show')
   },false)
   document.getElementsByClassName('confirm')[0]?.addEventListener('click', async () => {
-    const response = await this.ubicacionService.CrearUbicacion(this.dataUbicacion)
-    if(response) { this.MessageSuccess("Datos guardados exitosamente",0) }
+
+    const body = new FormData()
+
+    if(this.fileTmp){
+      body.append('imgPath', this.fileTmp.fileRaw, this.fileTmp.fileName);
+      body.append('tipoTienda', this.fornularioAgregarUbicacion.value.tipoTienda)
+      body.append('nombreTienda',this.fornularioAgregarUbicacion.value.nombreTienda)
+      body.append('codenadasLng',this.fornularioAgregarUbicacion.value.codenadasLng)
+      body.append('codenadaslat',this.fornularioAgregarUbicacion.value.codenadaslat)
+      body.append('descripcion',this.fornularioAgregarUbicacion.value.descripcion)
+  
+    }else{
+      body.append('tipoTienda', this.fornularioAgregarUbicacion.value.tipoTienda)
+      body.append('nombreTienda',this.fornularioAgregarUbicacion.value.nombreTienda)
+      body.append('codenadasLng',this.fornularioAgregarUbicacion.value.codenadasLng)  
+      body.append('codenadaslat',this.fornularioAgregarUbicacion.value.codenadaslat)
+      body.append('descripcion',this.fornularioAgregarUbicacion.value.descripcion)
+    }
+  
+    console.log(this.fornularioAgregarUbicacion.value.fecha)
+    this.ubicacionService.CrearUbicacion(body)
+    .subscribe(res =>{console.log(res), this.obtenerUbicacion(),this.fileTmp = null})
+    this.MessageSuccess('Datos guardados exitosamente',6)
 
       document.getElementsByClassName('container-alert')[0]?.classList.remove('show')
       document.getElementsByClassName('danger-red')[2]!.innerHTML = "-"
@@ -135,7 +170,40 @@ MessageSuccess(text: string, i: number){
 }
 }
 
+getFile($event: any): void {
+  //TODO esto captura el archivo!
+  const [ file ] = $event.target.files;
+  this.fileTmp = {
+    fileRaw:file,
+    fileName:file.name
+  }
+}
 
+sendFile():void{
+
+  const body = new FormData()
+
+  if(this.fileTmp){
+    body.append('imgPath', this.fileTmp.fileRaw, this.fileTmp.fileName);
+    body.append('tipoTienda', this.fornularioAgregarUbicacion.value.tipoTienda)
+    body.append('nombreTienda',this.fornularioAgregarUbicacion.value.nombreTienda)
+    body.append('codenadasLng',this.fornularioAgregarUbicacion.value.codenadasLng)
+    body.append('codenadaslat',this.fornularioAgregarUbicacion.value.codenadaslat)
+    body.append('descripcion',this.fornularioAgregarUbicacion.value.descripcion)
+
+  }else{
+    body.append('tipoTienda', this.fornularioAgregarUbicacion.value.tipoTienda)
+    body.append('nombreTienda',this.fornularioAgregarUbicacion.value.nombreTienda)
+    body.append('codenadasLng',this.fornularioAgregarUbicacion.value.codenadasLng)  
+    body.append('codenadaslat',this.fornularioAgregarUbicacion.value.codenadaslat)
+    body.append('descripcion',this.fornularioAgregarUbicacion.value.descripcion)
+  }
+
+  console.log(this.fornularioAgregarUbicacion.value.fecha)
+  this.ubicacionService.CrearUbicacion(body)
+  .subscribe(res =>{console.log(res), this.obtenerUbicacion(),this.fileTmp = null})
+  this.MessageSuccess('Datos guardados exitosamente',6)
+}
 
 
 

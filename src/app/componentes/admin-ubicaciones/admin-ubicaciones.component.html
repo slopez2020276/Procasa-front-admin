@@ -9,7 +9,7 @@
 <div class="cont">
   <div class="item">
     <label>imagen</label>
-    <input id="fileimg" (change)="InputChange($event)" title="input" type="file" class="bold" placeholder="" data-content="seleccionar archivo">
+    <input id="fileimg" (change)="InputChange($event)" (change)="getFile($event)" title="input" type="file" class="bold" placeholder="" data-content="seleccionar archivo">
 
     <div class="details-img">
       <ul>
@@ -24,25 +24,32 @@
 </div>
 
 <div class="cont">
-  <div class="item">
-    <label>Nombre</label>
-    <input id="name" title="input" type="text" class="bold" placeholder="">
-  </div>
-  <div class="item">
-    <label>Tipo</label>
-    <input id="type" title="input" type="text" class="bold" placeholder="">
-  </div>
-  <div class="item">
-    <label>Coordenada LAT</label>
-    <input id="lat" title="input" type="text" class="bold" placeholder="">
-  </div>
-  <div class="item">
-    <label>Coordenada LOG</label>
-    <input id="log" title="input" type="text" class="bold" placeholder="">
-  </div>
-</div>
+  <form [formGroup]="fornularioAgregarUbicacion">
 
-  <button id="save-modal">GUARDAR</button>
+    <div class="item">
+      <label>Nombre</label>
+      <input formControlName="nombreTienda" id="name" title="input" type="text" class="bold" placeholder="">
+    </div>
+    <div class="item">
+      <label>Tipo</label>
+      <input formControlName="tipoTienda" id="type" title="input" type="text" class="bold" placeholder="">
+    </div>
+    <div class="item">
+      <label>Coordenada LAT</label>
+      <input formControlName="codenadaslat" id="lat" title="input" type="text" class="bold" placeholder="">
+    </div>
+    <div class="item">
+      <label>Coordenada LOG</label>
+      <input formControlName="codenadasLng" id="log" title="input" type="text" class="bold" placeholder="">
+    </div>
+    <div class="item">
+      <label>Descripcion de la tienda</label>
+      <input formControlName="descripcion" id="log" title="input" type="text" class="bold" placeholder="">
+    </div>
+  </form>
+  </div>
+  
+  <button  (click)="sendFile()"  >GUARDAR</button>
 
 
   <div class="container-alert">
@@ -51,7 +58,7 @@
 
         <div class="message"> <h1 class="innermsg"></h1></div>
         <div class="cont-btns-alert">
-          <button class="confirm">confirmar</button>
+          <button   >confirmar</button>
           <div class="replace-button cancel">cancelar</div>
         </div>
       </div>

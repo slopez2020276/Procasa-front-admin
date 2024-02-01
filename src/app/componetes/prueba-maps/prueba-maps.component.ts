@@ -10,6 +10,15 @@ import { UbicacionServiceService } from '../../services/ubicacion-service.servic
 export class PruebaMapsComponent implements OnInit, AfterViewInit {
   map: L.Map;
   marker: L.Marker;
+  data
+
+  codenadasLng
+  codenadaslat
+  descripcion
+  imgPath
+  nombreTienda
+  tipoTienda
+  id
 
   constructor(private ubicaciones: UbicacionServiceService) {}
 
@@ -19,6 +28,7 @@ export class PruebaMapsComponent implements OnInit, AfterViewInit {
       next: (data: any) => {
         console.log('Datos recibidos:', data);
         this.addMarkers(data.ubi)
+        this.data = data.ubi
       },
       error: (error) => {
         console.error('Error al obtener datos:', error);
@@ -63,20 +73,115 @@ export class PruebaMapsComponent implements OnInit, AfterViewInit {
   }
 
 
-ToggleDetails(){
+
+
+ ToggleDetails(id){
+
+  this.ubicaciones.ObtenerUbicacionesxID(id).subscribe({
+    next: (data: any) => {
+      console.log('Datos recibidos:', data);
+
+      const ubiArr = Object.values(data.ubi);
+
+      this.codenadasLng = data.ubi.codenadasLng
+      this.codenadaslat = data.ubi.codenadaslat
+      this.descripcion = data.ubi.descripcion
+      this.imgPath = data.ubi.imgPath
+      this.nombreTienda = data.ubi.nombreTienda
+      this.tipoTienda = data.ubi.tipoTienda
+      this.id = data.ubi._id
+      
+      this.addMarkers(ubiArr)
+    },
+    error: (error) => {
+      console.error('Error al obtener datos:', error);
+    },
+    complete: () => {
+      console.log('Suscripción completa');
+    }
+  });
+
+
   document.getElementById('cont-sucursales-buttons-1')?.classList.remove('show')
   document.getElementById('cont-sucursales-buttons-2')?.classList.remove('show')
   document.getElementById('cont-img')?.classList.add('show')
+
+
+
 }
 
 CloseSucursal() {
+
+  this.ubicaciones.ObtenerUbicaciones().subscribe({
+    next: (data: any) => {
+      console.log('Datos recibidos:', data);
+      this.addMarkers(data.ubi)
+      this.data = data.ubi
+    },
+    error: (error) => {
+      console.error('Error al obtener datos:', error);
+    },
+    complete: () => {
+      console.log('Suscripción completa');
+    }
+  });
+
+
+
   document.getElementById('cont-sucursales-buttons-1')?.classList.remove('show')
   document.getElementById('cont-sucursales-buttons-2')?.classList.remove('show')
   document.getElementById('cont-img')?.classList.remove('show')
 }
 
+async ObtnerSucursalesMT(){
+  
+  this.ubicaciones.ObtenerUbicacionesMt().subscribe({
+    next: (data: any) => {
+      console.log('Datos recibidos:', data);
+      this.addMarkers(data.ubi)
+      this.data = data.ubi
+    },
+    error: (error) => {
+      console.error('Error al obtener datos:', error);
+    },
+    complete: () => {
+      console.log('Suscripción completa');
+    }
+  });
+}
 
-OpenSucursales1(){
+
+async ObtenerSuccursalesPR(){
+
+  this.ubicaciones.ObtenerUbicacionesPr().subscribe({
+    next: (data: any) => {
+      console.log('Datos recibidos:', data);
+      this.addMarkers(data.ubi)
+      this.data = data.ubi
+    },
+    error: (error) => {
+      console.error('Error al obtener datos:', error);
+    },
+    complete: () => {
+      console.log('Suscripción completa');
+    }
+  });
+  
+}
+
+OpenSucursales1(tipo:string){
+
+
+  switch(tipo){
+    case 'meath':{
+      this.ObtnerSucursalesMT();
+    }
+    break;
+    case 'procasa':{
+      this.ObtenerSuccursalesPR();
+    }
+  }
+
   document.getElementById('cont-sucursales-buttons-1')?.classList.add('show')
   document.getElementById('cont-sucursales-buttons-2')?.classList.remove('show')
   document.getElementById('cont-img')?.classList.remove('show')
