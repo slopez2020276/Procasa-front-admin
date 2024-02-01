@@ -11,7 +11,7 @@
     <div id="map"></div>
       <div id="cont-sucursal">
 
-        
+
         <div id="cont-img" class="cont">
               <div id="close" (click)="CloseSucursal()">cerrar</div>
               <img  [ngSrc]="'http://localhost:3002/' + imgPath" [width]="500" [height]="500" alt="">
@@ -21,11 +21,11 @@
         <div id="cont-sucursales-buttons-1" class="cont">
           @for (os of data; track os._id) {
               <div class="sucursales bold" (click)="ToggleDetails(os._id)">{{os.nombreTienda}}</div>
-             
+
           }
 
         </div>
-       
+
       </div>
   </div>
 

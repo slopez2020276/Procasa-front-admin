@@ -71,8 +71,10 @@ div#cont-img { display: none; position: relative;}
 div#cont-img.show { display: flex; }
 
  div#cont-img img {
-  width: 80%;
+  max-width: 80%;
+  width: auto;
   height: auto;
+  max-height: 200px;
   border-radius: 4px;
  }
 
