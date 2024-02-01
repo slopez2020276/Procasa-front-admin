@@ -117,15 +117,15 @@ document.getElementById('save-modal')?.addEventListener('click', () => {
       body.append('codenadasLng',this.fornularioAgregarUbicacion.value.codenadasLng)
       body.append('codenadaslat',this.fornularioAgregarUbicacion.value.codenadaslat)
       body.append('descripcion',this.fornularioAgregarUbicacion.value.descripcion)
-  
+
     }else{
       body.append('tipoTienda', this.fornularioAgregarUbicacion.value.tipoTienda)
       body.append('nombreTienda',this.fornularioAgregarUbicacion.value.nombreTienda)
-      body.append('codenadasLng',this.fornularioAgregarUbicacion.value.codenadasLng)  
+      body.append('codenadasLng',this.fornularioAgregarUbicacion.value.codenadasLng)
       body.append('codenadaslat',this.fornularioAgregarUbicacion.value.codenadaslat)
       body.append('descripcion',this.fornularioAgregarUbicacion.value.descripcion)
     }
-  
+
     console.log(this.fornularioAgregarUbicacion.value.fecha)
     this.ubicacionService.CrearUbicacion(body)
     .subscribe(res =>{console.log(res), this.obtenerUbicacion(),this.fileTmp = null})
@@ -194,7 +194,7 @@ sendFile():void{
   }else{
     body.append('tipoTienda', this.fornularioAgregarUbicacion.value.tipoTienda)
     body.append('nombreTienda',this.fornularioAgregarUbicacion.value.nombreTienda)
-    body.append('codenadasLng',this.fornularioAgregarUbicacion.value.codenadasLng)  
+    body.append('codenadasLng',this.fornularioAgregarUbicacion.value.codenadasLng)
     body.append('codenadaslat',this.fornularioAgregarUbicacion.value.codenadaslat)
     body.append('descripcion',this.fornularioAgregarUbicacion.value.descripcion)
   }
@@ -207,16 +207,7 @@ sendFile():void{
 
 
 
-
-
-
-
-
-
-
-
-
-
+editLocation(){ document.getElementById('modal-edit-location')?.classList.toggle('toggle') }
 
 
 }
