@@ -94,7 +94,7 @@ div.item {
   border-radius: 4px;
 }
 
-div.item input {
+div.item input, select {
   border: 1px solid #BBB;
   width: 90%;
   padding: .5rem 1rem;
