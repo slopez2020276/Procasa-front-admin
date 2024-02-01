@@ -40,10 +40,11 @@
 <div id="cont-modal-edit">
   <div id="modal-edit-user">
     <div id="close-modal-edit" (click)="modalEditUser()">cerrar</div>
-        <h1>Editar Contraseña</h1>
+        <h1>Editar Usuario</h1>
         <form [formGroup]="formularioEditarUser">
-          <div class="cont-input-user"> <label class="bold" for="contraseña">contraseña actual</label> <input class="bold" formControlName="password" name="contraseña" type="text" title="contraseña actual"> </div>
-          <div class="cont-input-user"> <label class="bold" for="nueva">contraseña nueva</label> <input class="bold" formControlName="password" name="nueva" type="text" title="contraseña nueva"> </div>
+          <div class="cont-input-user"> <label class="bold" for="aliasEdit">Alias</label> <input class="bold" formControlName="aliasEdit" name="aliasEdit" type="text" title="editar alias"> </div>
+          <div class="cont-input-user"> <label class="bold" for="correoEdit">Correo</label> <input class="bold" formControlName="correoEdit" name="correoEdit" type="text" title="editar correo"> </div>
+          <div class="cont-input-user"> <label class="bold" for="password">contraseña</label> <input class="bold" formControlName="password" name="password" type="text" title="editar contraseña"> </div>
           <div class="replace-button" id="edit-user" (click)="editarUusario()" >guardar</div>
         </form>
   </div>
