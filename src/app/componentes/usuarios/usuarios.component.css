@@ -252,15 +252,15 @@ div#save-user, div#edit-user {
     box-shadow: 0px 1px 1px rgba(0,0,0,.1);
     background: #f4f4f4;
   }
-
 }
 
 
 @media screen and (max-width: 650px ) {
-
   div.user span {
     width: 35%;
     padding: .8rem 1rem;
   }
+
+  div#cont-users { padding: 1rem; }
 
 }
