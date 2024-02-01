@@ -92,7 +92,7 @@ document.getElementById('save-modal')?.addEventListener('click', () => {
   if (latinput instanceof HTMLInputElement) { lat = latinput.value }
   if (loginput instanceof HTMLInputElement) { log = loginput.value }
 
-    if(nombre!=="" && tipo!=="" && lat!=="" && log!=="" && archivo?.name!==""){
+    // if(nombre!=="" && tipo!=="" && lat!=="" && log!=="" && archivo?.name!==""){
 
   const innerMessage = document.getElementsByClassName('innermsg')[0]
   if (innerMessage) { innerMessage.innerHTML = "¿Desea guardar los datos?"
@@ -148,7 +148,7 @@ const logEmpty: HTMLInputElement | null = document.getElementById('name') as HTM
 
   },false)
   }
-}else{this.MessageSuccess("Los campos requeridos no pueden estar vacíos",0)}
+// }else{this.MessageSuccess("Los campos requeridos no pueden estar vacíos",0)}
 
 }, false)
 
