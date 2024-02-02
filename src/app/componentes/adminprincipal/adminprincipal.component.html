@@ -9,6 +9,17 @@
   <div id="trans"></div>
 
 
+  <div class="container-alert">
+    <div class="alert-model">
+        <p class="inner-message bold"></p>
+
+        <div class="message"> <h1 class="innermsg"></h1></div>
+        <div class="cont-btns-alert">
+          <button class="confirm" (click)="sendFileBackground()">confirmar</button>
+          <div class="replace-button cancel">cancelar</div>
+        </div>
+      </div>
+    </div>
 
 <div id="space-esp"></div>
 
@@ -62,18 +73,6 @@
       <div (click)="testEmptyBackground()" class="normal replace-button red" id="btn-save-bg">guardar</div>
     </div>
   </div>
-
-  <div class="container-alert">
-    <div class="alert-model">
-        <p class="inner-message bold"></p>
-
-        <div class="message"> <h1 class="innermsg"></h1></div>
-        <div class="cont-btns-alert">
-          <button class="confirm" (click)="sendFileBackground()">confirmar</button>
-          <div class="replace-button cancel">cancelar</div>
-        </div>
-      </div>
-    </div>
 
 </div>
 
@@ -442,7 +441,7 @@
   <div class="details-img">
     <ul>
       <li>ancho: <p class="innerdetails bold"></p></li>
-      <li>alto:<p class="innerdetails bold"></p></li>  
+      <li>alto:<p class="innerdetails bold"></p></li>
       <li>Realcion:<p class="innerdetails bold"></p></li>
       <li>tamaño:<p class="innerdetails bold"></p></li>
     </ul>

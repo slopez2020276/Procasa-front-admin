@@ -18,7 +18,7 @@ fornularioAgregarUbicacion : FormGroup
 formularioEditUbicacion: FormGroup
 private fileTmp:any
 private fileTmpEdit: any
-nombreTiendaFiltro: string = ''; 
+nombreTiendaFiltro: string = '';
 
 
 //Datos para el modal de editar
@@ -275,17 +275,17 @@ async ObtenerUbixId(id){
   this.codenadaslat = Ubicacion.ubi.codenadaslat
   this.descripcion = Ubicacion.ubi.descripcion
   this.imgPath =Ubicacion.ubi.imgPath
-  
+
   console.log(Ubicacion)
   console.log(this.descripcion)
 
 
 }
 
-editLocation(){ 
-  
+editLocation(){
 
-  
+
+
   document.getElementById('modal-edit-location')?.classList.toggle('toggle') }
 
 
