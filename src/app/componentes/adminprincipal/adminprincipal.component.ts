@@ -560,17 +560,9 @@ async eliminarLineaTiempo(id:any){
   }
 
 
-ShowMore(){
-  console.log("-- MOSTRAR MÁS --")
-
-  this.ObtenerAllnoticas()
-
-}
-
-
+ShowMore(){ this.ObtenerAllnoticas() }
 
   MessageSuccess(text: string, i: number){
-
     const innermsg = document.getElementsByClassName('innermsg')[i]
     if (innermsg) { innermsg.innerHTML = text
       document.getElementsByClassName('container-alert')[i]?.classList.add('show')
@@ -585,6 +577,8 @@ ShowMore(){
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 preSaveBackground(event: Event): void  {
+  this.MessageSuccess("adasdsdads",0)
+
   const fileInput = event.target as HTMLInputElement
   const archivo = fileInput.files?.[0]
 
@@ -681,7 +675,7 @@ getFileBack($event: any): void {
 
 testEmptyBackground(){
   let prefile: any | null = (document.getElementById('file-bg') as HTMLInputElement).value
-  if(prefile==null || prefile==undefined || prefile==""){ this.MessageSuccess("No hay archivo seleccionado", 0) }
+  if(prefile===null || prefile===undefined || prefile===""){ this.MessageSuccess("No hay archivo seleccionado", 0) }
 }
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////77777
   preSavePortada(event: Event): void  {

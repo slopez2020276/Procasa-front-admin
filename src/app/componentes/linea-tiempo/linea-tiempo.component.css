@@ -74,6 +74,17 @@ div.cont-2-column-item:hover {
   /* transform: scale(1.02); */
 }
 
+h2.title-lt {
+  width: 100%;
+  text-align: left;
+}
+
+p.desc-lt {
+  width: 100%;
+  margin-top: 1rem;
+  font-size: 12pt;
+}
+
 div.cont-2-column-item img {
   width: auto;
   max-width: 100%;

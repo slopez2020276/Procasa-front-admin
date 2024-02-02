@@ -15,45 +15,127 @@ div#container-noticias {
 }
 
 div#noticias {
-  width: 80%;
+  max-width: 1202px;
+  width: auto;
   height: auto;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: center;
   align-items: center;
   flex-wrap: wrap;
+  overflow: hidden;
 }
 
 div.noticia {
-    width: 300px;
-    min-width: 200px;
+    width: 400px;
+    position: relative;
     text-align: right;
-    height: 250px;
+    height: auto;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: start;
     flex-wrap: wrap;
-    margin-bottom: 4rem;
-    margin-top: 2rem;
+    margin-bottom: 0;
+    margin-top: 0;
   }
 
-div.noticia h6 {
-    font-size: 14pt;
-    width: 100%;
+div.cont-fill {
+  width: 100%;
+  height: 100px;
+  background: transparent;
+  padding: 1rem 0;
+  border-radius: 0 0 4px 4px;
+}
+
+div.cont-text {
+  padding-top: 1rem;
+  overflow: hidden;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  flex-wrap: wrap;
+  background: rgba(0,0,0,.8);
+  transition: .4s;
+}
+
+div.cont-info {
+  width: 100%;
+  height: 60%;
+  position: relative;
+  text-align: justify;
+  padding: 1rem;
+  color: #e4e4e4;
+  opacity: 0;
+  transition: 1.4s;
+  /* overflow-x: hidden; */
+  /* overflow-y: scroll; */
+}
+
+div.cont-text:hover {
+  height: 100%;
+}
+
+div.cont-text:hover div.cont-info {
+  opacity: 1;
+}
+
+div.see-more-notice {
+  width: 100%;
+  text-align: center;
+  font-size: 12pt;
+  color: #FFF;
+  cursor: pointer;
+  /* transform: translateY(30px); */
+}
+
+h6.title-not {
+    font-size: 13pt;
+    width: 90%;
     text-align: center;
 }
 
-div.noticia h2 {
+div.cont-img {
   width: 100%;
-  font-size: 12pt;
-  text-align: justify;
-  color: #FFF;
+  height: 240px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
 }
 
 div.noticia img {
-  width: auto;
+  width: 100%;
   max-width: 100%;
   height: auto;
-  max-height: 200px;
-  border-radius: 4px;
+  min-height: 100%;
+  border-radius: 4px 4px 0 0;
   display: block;
+  transition: .4s;
+  transform: scale(1);
 }
+
+div.noticia img:hover {transform: scale(1.2);}
+
+
+h6.timeof {
+  font-size: 10pt;
+  color: #888;
+  width: 100%;
+  text-align: center;
+}
+
+div.arrow {
+  width: 100%;
+  transform: rotate(180deg);
+  margin-top: 1rem;
+  text-align: center;
+  font-size: 14pt;
+  position: relative;
+  color: #AAA;
+}
+
+div.cont-text:hover h6.timeof, div.cont-text:hover div.arrow { display: none; }
