@@ -97,30 +97,30 @@ private fileBackgrud:any
 
   constructor(){
     this.formulario = new FormGroup({
-      DescripcionHistoria: new FormControl(),
-      EncalceVideo: new FormControl()
+      DescripcionHistoria: new FormControl((''),[Validators.required]),
+      EncalceVideo: new FormControl((''),[Validators.required])
     })
 
     this.formularioEditlineaTiempo = new FormGroup({
-      titleLineaTiempo: new FormControl(),
+      titleLineaTiempo: new FormControl((''),[Validators.required]),
       descriptionLineaTiempo: new FormControl(),
-      mostrarPor: new FormControl(),
-      fecha: new FormControl(),
+      mostrarPor: new FormControl((''),[Validators.required]),
+      fecha: new FormControl((''),[Validators.required]),
     })
     this.formularioEditHistoria = new FormGroup({
-      EncalceVideo: new FormControl(),
-      DescripcionHistoria: new FormControl()
+      EncalceVideo: new FormControl((''),[Validators.required]),
+      DescripcionHistoria: new FormControl((''),[Validators.required])
     })
     this.formularioMisionValor = new FormGroup({
       textMision: new FormControl((''),[Validators.required]),
       textVIsion: new FormControl((''),[Validators.required])
     })
    this.formularioAgregarLineaTiempo = new FormGroup({
-    titleLineaTiempo: new FormControl(),
-    descriptionLineaTiempo: new FormControl(),
-    fecha: new FormControl(),
-    image: new FormControl(),
-    mostrarPor: new FormControl(),
+    titleLineaTiempo: new FormControl((''),[Validators.required]),
+    descriptionLineaTiempo: new FormControl((''),[Validators.required]),
+    fecha: new FormControl((''),[Validators.required]),
+    image: new FormControl((''),[Validators.required]),
+    mostrarPor: new FormControl((''),[Validators.required]),
     })
     this.formularioValores = new FormGroup({
       Integridad: new FormControl((''),[Validators.required]),
@@ -131,14 +131,14 @@ private fileBackgrud:any
       })
     this.formularioEditarNoticias = new FormGroup({
         title: new FormControl((''),[Validators.required]) ,
-        imgPhat: new FormControl(),
-        descripcion: new FormControl(),
+        imgPhat: new FormControl((''),[Validators.required]),
+        descripcion: new FormControl((''),[Validators.required]),
         })
     this.formularioAgregarNoticias= new FormGroup({
-     title: new FormControl(),
-     imgPhat: new FormControl(),
-     descripcion: new FormControl(),
-     tipo: new FormControl(),
+     title: new FormControl((''),[Validators.required]),
+     imgPhat: new FormControl((''),[Validators.required]),
+     descripcion: new FormControl((''),[Validators.required]),
+     tipo: new FormControl((''),[Validators.required]),
      })
 
   }
@@ -319,7 +319,7 @@ ModalAddTimeLine() { document.getElementById('modal-time-line-add')?.classList.t
 
   async obtnerNoticias (){
     const respuestasobtnerNoticas = await this.noticiasService.obtenerNoticas()
-    this.dataLineaRespuesta = respuestasobtnerNoticas.noticas
+    this.dataLineaRespuesta = respuestasobtnerNoticas.noticias
     console.log(respuestasobtnerNoticas)
   }
 
