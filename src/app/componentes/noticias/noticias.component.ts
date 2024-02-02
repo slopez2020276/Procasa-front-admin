@@ -18,7 +18,7 @@ export class NoticiasComponent implements OnInit{
 
   async ngOnInit()  {
     const response = await this.NoticiasService.obtenerNoticas()
-    this.data = response.noticas
+    this.data = response.noticias
     console.log(this.data)
 
 
