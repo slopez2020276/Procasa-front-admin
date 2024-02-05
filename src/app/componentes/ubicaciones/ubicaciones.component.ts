@@ -23,7 +23,7 @@ export class UbicacionesComponent {
    document.getElementById('cont-slide')?.classList.add('a')
    const response = await this.HistoriaService.obtenerHistoria()
    document.getElementsByClassName('title-sucs')[0]?.classList.add('select')
-   const elements = document.getElementsByClassName('title-sucs') as HTMLCollectionOf<HTMLElement>; elements[0].style.color = '#CC0'
+   const elements = document.getElementsByClassName('title-sucs') as HTMLCollectionOf<HTMLElement>; elements[0].style.background = '#656565'
 
 
     this.data = response.historia
@@ -36,10 +36,7 @@ ShowContSucursales(c:any, h:number){
   this.removeClass()
     document.getElementById('cont-slide')?.classList.add(c)
     const elements = document.getElementsByClassName('title-sucs') as HTMLCollectionOf<HTMLElement>
-    elements[h].style.color = '#CC0'
-
-    console.log(document.getElementsByClassName('title-sucs')[h])
-
+    elements[h].style.background = '#656565'
   }
   removeClass(){
     document.getElementById('cont-slide')?.classList.remove('a')
@@ -49,9 +46,9 @@ ShowContSucursales(c:any, h:number){
       document.getElementsByClassName('title-sucs')[1]?.classList.remove('select')
       document.getElementsByClassName('title-sucs')[2]?.classList.remove('select')
     const elements = document.getElementsByClassName('title-sucs') as HTMLCollectionOf<HTMLElement>
-    elements[0].style.color = '#FFF'
-    elements[1].style.color = '#FFF'
-    elements[2].style.color = '#FFF'
+    elements[0].style.background = '#252525'
+    elements[1].style.background = '#252525'
+    elements[2].style.background = '#252525'
 }
 
 

@@ -56,7 +56,7 @@ div#cont-title {
 
 
 div#cont-title h1 {
-  font-size: 19pt;
+  font-size: 14pt;
   text-decoration: underline;
   padding: 1rem;
   cursor: pointer;
@@ -67,7 +67,15 @@ div#cont-title h1 {
 div#cont-title h1:hover {background: #454545;}
 div#cont-title h1:active {color: #CC0;}
 
-h1.title-sucs { color: #FFF; }
+h1.title-sucs {
+  color: #FFF;
+  position: relative;
+}
+
+h1.title-sucs img {
+  width: 100px;
+  height: auto;
+}
 
 div#cont-all-sucursales {
   width: 100%;
@@ -86,7 +94,7 @@ div#cont-slide {
   justify-content: start;
   align-items: center;
   flex-wrap: nowrap;
-  transition: left 1s ease-in-out;
+  transition: left .7s ease-in-out;
 }
 
 
@@ -154,7 +162,7 @@ div.sub-info h1 {
   color: #252525;
   width: 100%;
   text-align: left;
-  padding: 0 0 .5rem 0;
+  padding: 0;
 }
 
 div.sub-info p {
@@ -170,7 +178,7 @@ div.locations {
   justify-content: center;
   align-items: center;
   flex-wrap: nowrap;
-  margin: 1rem 0;
+  margin: 1rem 0 0 0;
   padding: 1rem 0 0 0;
 }
 
@@ -179,4 +187,8 @@ span.location {
   text-align: center;
 }
 
+span.location img {
+  width: 30px;
+  height: auto;
+}
 
