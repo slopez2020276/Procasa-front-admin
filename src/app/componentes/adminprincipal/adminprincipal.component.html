@@ -9,18 +9,6 @@
   <div id="trans"></div>
 
 
-  <div class="container-alert">
-    <div class="alert-model">
-        <p class="inner-message bold"></p>
-
-        <div class="message"> <h1 class="innermsg"></h1></div>
-        <div class="cont-btns-alert">
-          <button class="confirm" (click)="sendFileBackground()">confirmar</button>
-          <div class="replace-button cancel">cancelar</div>
-        </div>
-      </div>
-    </div>
-
 <div id="space-esp"></div>
 
 <h1 class="bold" id="title-admin">ADMINISTRACIÓN <div class="clip"></div> <p class="light">PÁGINA PRINCIPAL</p></h1>
@@ -50,8 +38,8 @@
 
         <h4>requisitos recomendados</h4>
         <ul>
-          <li> Ancho: <span class="bold">1920 </span> </li>
-          <li> Alto:  <span class="bold">1080 </span></li>
+          <li> Ancho: <span class="bold">1920 px</span> </li>
+          <li> Alto:  <span class="bold">1080 px</span></li>
           <li> Peso: <span class="bold">2 MB</span></li>
         </ul>
       </div>
@@ -68,6 +56,25 @@
 
     </div>
   </div>
+
+<div id="sub-cont-color">
+  <p>Seleccionar color de fondo</p>
+  <input type="color" title="color de fondo" [(ngModel)]="colorBg" (change)="FondoBg()" data-color="">
+</div>
+
+
+  <div class="container-alert">
+    <div class="alert-model">
+        <p class="inner-message bold"></p>
+
+        <div class="message"> <h1 class="innermsg"></h1></div>
+        <div class="cont-btns-alert">
+          <button class="confirm" (click)="sendFileBackground()">confirmar</button>
+          <div class="replace-button cancel">cancelar</div>
+        </div>
+      </div>
+    </div>
+
   <div class="foot-cont">
     <div class="cont-buttons">
       <div (click)="testEmptyBackground()" class="normal replace-button red" id="btn-save-bg">guardar</div>
@@ -99,8 +106,8 @@
 
         <h4>requisitos recomendados</h4>
         <ul>
-          <li> Ancho: <span class="bold">1250</span> </li>
-          <li> Alto:  <span class="bold">875</span></li>
+          <li> Ancho: <span class="bold">1250 px</span> </li>
+          <li> Alto:  <span class="bold">875 px</span></li>
           <li> Peso: <span class="bold">2 MB</span></li>
         </ul>
       </div>
@@ -146,11 +153,12 @@
   <h1 class="bold title-bg">PREVISUALIZACIÓN FINAL</h1>
   <div id="sub-cont-preview-end">
     <img id="nav-end" src="../../../assets/img/navbar.png" alt="navbar" title="navbar preview">
-      <div>
-        <img id="endpreview-bg" [src]="'http://localhost:3002/' + imgfondo" alt="">
-        <img id="endpreview-portada" [src]="'http://localhost:3002/' + imgPrincipal" alt="">
+    <div>
+      <img id="endpreview-portada" [src]="'http://localhost:3002/' + imgPrincipal" alt="">
+      <div id="background-color" style="background: transparent;"></div>
+      <img id="endpreview-bg" [src]="'http://localhost:3002/' + imgfondo" alt="">
       </div>
-    <img id="foo-end" src="../../../assets/img/footer.png" alt="footer" title="footer preview">
+      <img id="foo-end" src="../../../assets/img/footer.png" alt="footer" title="footer preview">
   </div>
 </div>
 
@@ -181,7 +189,6 @@
 
   <div class="cont-buttons">
     <div class="replace-button normal red" (click)="preSaveHistoria()" id="btn-alert-2">guardar</div>
-    <!-- <div class="replace-button normal" (click)="editarHistoria()" id="btn-alert-2">guardar</div> -->
   </div>
 
 
@@ -218,14 +225,10 @@
                   <button class="edit-timeline del-bg" type="button" (click)="eliminarLineaTiempo(os._id)">eliminar</button>
                 </div>
               }
-
             </div>
-
-
 <button id="cont-3-see-all" class="bold red" (click)="ModalAddTimeLine()">Agregar</button>
   <div class="foot-cont">
     <div class="cont-buttons">
-
 
     </div>
   </div>
@@ -243,8 +246,6 @@
     </div>
 
 </div>
-
-
 
 <div class="container" id="container-4">
   <h1 class="bold title-bg">MISIÓN y VISIÓN</h1>
@@ -288,11 +289,8 @@
       </div>
     </div>
 
-
 </form>
 </div>
-
-
 
 <div class="container" id="container-5">
   <h1 class="bold title-bg">VALORES</h1>
@@ -300,8 +298,6 @@
     <button id="vhabilitar" (click)="EnableValores()">Editar</button>
     <button id="vdeshabilitar" (click)="DisableValores()">Cancelar</button>
   </div>
-
-
 
   <form [formGroup]="formularioValores">
     <div id="cont-textareas-valores">
@@ -334,8 +330,6 @@
     </div>
   </div>
 
-
-
   <div class="container-alert" #containerAlertElementVal>
     <div class="alert-model">
         <p class="inner-message bold"></p>
@@ -350,11 +344,8 @@
   </form>
 </div>
 
-
 <div class="container" id="container-6">
   <h1 class="bold title-bg">NOTICIAS</h1>
-
-
 
   <div id="cont-6-noticias">
   @for (os of dataLineaRespuesta; track os._id) {
@@ -378,9 +369,6 @@
     </div>
   </div>
 
-
-
-
   <div class="container-alert">
     <div class="alert-model">
         <p class="inner-message bold"></p>
@@ -399,25 +387,6 @@
   <div id="close-modal-6"></div>
   <h1 class="bold">NOTICIAS</h1>
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

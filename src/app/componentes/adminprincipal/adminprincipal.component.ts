@@ -29,9 +29,10 @@ export class AdminprincipalComponent implements OnInit, AfterViewInit {
   formularioValores:FormGroup
   formularioEditarNoticias: FormGroup
   formularioAgregarNoticias: FormGroup
+  colorBg:any
 
-  imgPrincipal : any;
-  imgfondo:any;
+  imgPrincipal: any
+  imgfondo:any
 
   dataValores
   dataHistoria
@@ -1380,9 +1381,10 @@ if(titulo!=="" && descripcion!==""){
 
 
 
-
-
-
+FondoBg(){
+  console.log(this.colorBg)
+  document.getElementById('background-color')?.setAttribute('style', 'background: '+this.colorBg)
+}
 
 
 
