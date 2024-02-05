@@ -1381,9 +1381,11 @@ if(titulo!=="" && descripcion!==""){
 
 
 
+
+
 FondoBg(){
   console.log(this.colorBg)
-  document.getElementById('background-color')?.setAttribute('style', 'background: '+this.colorBg)
+
 }
 
 
