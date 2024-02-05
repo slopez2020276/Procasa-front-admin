@@ -51,15 +51,23 @@ div#cont-title {
   display: flex;
   justify-content: space-evenly;
   align-items: center;
+  margin-top: 4rem;
 }
 
+
 div#cont-title h1 {
-  color: #FFF;
   font-size: 19pt;
   text-decoration: underline;
   padding: 1rem;
   cursor: pointer;
+  background: #252525;
+  color: #E4E4E4;
+  border-radius: 4px;
 }
+div#cont-title h1:hover {background: #454545;}
+div#cont-title h1:active {color: #CC0;}
+
+h1.title-sucs { color: #FFF; }
 
 div#cont-all-sucursales {
   width: 100%;
