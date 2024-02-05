@@ -90,7 +90,7 @@ export class PruebaMapsComponent implements OnInit, AfterViewInit {
       this.nombreTienda = data.ubi.nombreTienda
       this.tipoTienda = data.ubi.tipoTienda
       this.id = data.ubi._id
-      
+
       this.addMarkers(ubiArr)
     },
     error: (error) => {
@@ -134,7 +134,7 @@ CloseSucursal() {
 }
 
 async ObtnerSucursalesMT(){
-  
+
   this.ubicaciones.ObtenerUbicacionesMt().subscribe({
     next: (data: any) => {
       console.log('Datos recibidos:', data);
@@ -166,7 +166,7 @@ async ObtenerSuccursalesPR(){
       console.log('Suscripción completa');
     }
   });
-  
+
 }
 
 OpenSucursales1(tipo:string){

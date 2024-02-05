@@ -2,5 +2,77 @@
 
 <app-navbar></app-navbar>
 
-<app-prueba-maps></app-prueba-maps>
+<div id="container-main">
+  <div id="container-ubicaciones">
+    <div id="cont-search">
+      <input type="text" class="bold" placeholder="buscar sucursal" title="buscar sucursal">
+    </div>
+
+    <div id="cont-title">
+      <h1 (click)="ShowContSucursales('a')">PROCASA</h1>
+      <h1 (click)="ShowContSucursales('b')">MEAT HOUSE</h1>
+      <h1 (click)="ShowContSucursales('c')">OTRO</h1>
+    </div>
+
+    <div id="cont-all-sucursales">
+      <div id="cont-slide">
+        <div class="cont-sucursal">
+
+          <div class="sucursal">
+                    <div class="sub-img"><img src="../../../assets/img/textura-defult.png" alt=""></div>
+                    <div class="sub-info">
+                      <h1 class="bold">SUCURSALES PROCASA</h1>
+                        <p>dirección completa</p>
+                        <p>+502 0000-0000</p>
+                        <p>procasa gmail.com</p>
+                        <p>Lunes a viernes 1:00 am - 8:00 am</p>
+                        <div class="locations">
+                          <span class="location">WAZE</span>
+                          <span class="location">MAPS</span>
+                        </div>
+                    </div>
+            </div>
+            </div>
+<!-- -------------------------------------------------------------------------------------------- -->
+            <div class="cont-sucursal">
+              <div class="sucursal">
+                <div class="sub-img"><img src="../../../assets/img/textura-defult.png" alt=""></div>
+                <div class="sub-info">
+                  <h1 class="bold">SUCURSALES MEAT HOUSE</h1>
+                    <p>dirección completa</p>
+                    <p>+502 0000-0000</p>
+                    <p>procasa gmail.com</p>
+                    <p>Lunes a viernes 1:00 am - 8:00 am</p>
+                    <div class="locations">
+                      <span class="location">WAZE</span>
+                      <span class="location">MAPS</span>
+                    </div>
+                </div>
+        </div>
+            </div>
+<!-- ------------------------------------------------------------------------------------------ -->
+            <div class="cont-sucursal">
+              <div class="sucursal">
+                <div class="sub-img"><img src="../../../assets/img/textura-defult.png" alt=""></div>
+                <div class="sub-info">
+                  <h1 class="bold">SUCURSALES OTRO</h1>
+                    <p>dirección completa</p>
+                    <p>+502 0000-0000</p>
+                    <p>procasa gmail.com</p>
+                    <p>Lunes a viernes 1:00 am - 8:00 am</p>
+                    <div class="locations">
+                      <span class="location">WAZE</span>
+                      <span class="location">MAPS</span>
+                    </div>
+                </div>
+        </div>
+        </div>
+<!-- ------------------------------------------------------------------------------------------ -->
+
+      </div>
+    </div>
+
+  </div>
+</div>
+
 <app-footer></app-footer>

@@ -20,6 +20,7 @@ export class UbicacionesComponent {
   async onSubmit(){ }
 
  async ngOnInit() {
+  document.getElementById('cont-slide')?.classList.add('a')
     const response = await this.HistoriaService.obtenerHistoria()
     this.data = response.historia
     this.imgPrincipal = this.data[0].imgPathPrincipal
@@ -27,7 +28,17 @@ export class UbicacionesComponent {
   }
 
 
-  }
+ShowContSucursales(c:any){
+  this.removeClass()
+    document.getElementById('cont-slide')?.classList.add(c)
+}
+removeClass(){
+  document.getElementById('cont-slide')?.classList.remove('a')
+  document.getElementById('cont-slide')?.classList.remove('b')
+  document.getElementById('cont-slide')?.classList.remove('c')
+}
 
 
 
+
+}

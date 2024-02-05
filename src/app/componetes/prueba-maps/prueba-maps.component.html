@@ -21,7 +21,6 @@
         <div id="cont-sucursales-buttons-1" class="cont">
           @for (os of data; track os._id) {
               <div class="sucursales bold" (click)="ToggleDetails(os._id)">{{os.nombreTienda}}</div>
-
           }
 
         </div>
