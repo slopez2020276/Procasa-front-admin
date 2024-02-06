@@ -1,13 +1,14 @@
 <img title="imagen de muestra" [src]="'http://localhost:3002/'  + imgFondo"  id="background-texture">
-  <div id="cont-introduction">
-    <div id="intro-1"></div>
-    <div id="intro-2"></div>
+
+<div id="cont-introduction">
+  <div id="intro-1"></div>
+  <div id="intro-2"></div>
 </div>
 
 <app-navbar></app-navbar>
 
 
-<img [src]="'http://localhost:3002/' + imgPrincipal"   alt="section" id="container-principal-img">
+<div id="container-portada-img"> <img [src]="'http://localhost:3002/' + imgPrincipal"   alt="section" id="container-principal-img"> </div>
 
 <section id="historia"> <app-historia/> </section>
 

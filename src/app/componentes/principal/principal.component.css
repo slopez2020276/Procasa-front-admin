@@ -72,15 +72,24 @@ div#intro-2 {
 
 
 
+div#container-portada-img {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  overflow: hidden;
+  position: relative;
+}
+
 
 img#container-principal-img {
-    width: 100vw;
+    width: auto;
     height: auto;
-    max-height: 100vh;
-    margin-top: 62px;
-    background: transparent;
-    position: relative;
-    overflow: hidden;
+    min-height: 100%;
+    max-height: 110%;
+    position: absolute;
+    top: 0;
     z-index: 10;
     transform: scale(1);
     animation: introduction 1.8s ease-in-out;
