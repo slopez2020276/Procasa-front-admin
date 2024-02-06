@@ -146,10 +146,8 @@ private fileBackgrud:any
   ngAfterViewInit(): void {
     this.confirmElement.nativeElement.addEventListener('click', this.onClick.bind(this))
     this.confirmElementVal.nativeElement.addEventListener('click', this.onClickValores.bind(this))
-    this.confirmElementHis.nativeElement.addEventListener('click', this.onClickHistoria.bind(this))
     this.confirmElementTL.nativeElement.addEventListener('click', this.onClickNewTimeLine.bind(this))
     this.confirmNewNoticia.nativeElement.addEventListener('click', this.saveNoticia.bind(this))
-    // this.confirmUpdateNotice.nativeElement.addEventListener('click', this.updateNotice.bind(this))
   }
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -569,16 +567,17 @@ ShowMore(){ this.ObtenerAllnoticas() }
       document.getElementsByClassName('container-alert')[i]?.classList.add('show')
       document.getElementsByClassName('message')[i]?.classList.add('show')
       document.getElementsByClassName('timesuccess')[i]?.classList.toggle('lesswidth')
-
-        document.getElementsByClassName('container-alert')[i]?.classList.remove('show')
-        document.getElementsByClassName('message')[i]?.classList.remove('show')
-        document.getElementsByClassName('timesuccess')[i]?.classList.remove('lesswidth')
-  }
-  }
+setTimeout(function(){
+  document.getElementsByClassName('message')[i]?.classList.remove('show')
+  document.getElementsByClassName('cont-btns-alert')[i]?.classList.remove('show')
+  document.getElementsByClassName('container-alert')[i]?.classList.remove('show')
+  document.getElementsByClassName('timesuccess')[i]?.classList.remove('lesswidth')
+},2000)
+}
+}
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 preSaveBackground(event: Event): void  {
-  this.MessageSuccess("adasdsdads",0)
 
   const fileInput = event.target as HTMLInputElement
   const archivo = fileInput.files?.[0]
@@ -637,11 +636,14 @@ preSaveBackground(event: Event): void  {
   document.getElementsByClassName('cont-btns-alert')[0]?.classList.add('show')
 
   document.getElementsByClassName('cancel')[0]?.addEventListener('click', function(){
+    document.getElementsByClassName('cont-btns-alert')[0]?.classList.remove('show')
     document.getElementsByClassName('container-alert')[0]?.classList.remove('show')
     document.getElementsByClassName('message')[0]?.classList.remove('show')
-    document.getElementsByClassName('cont-btns-alert')[0]?.classList.remove('show')
   },false)
-  document.getElementsByClassName('confirm')[0]?.addEventListener('click', function(){ setTimeout(function() { document.getElementsByClassName('container-alert')[0]?.classList.remove('show') },300) },false)
+  document.getElementsByClassName('confirm')[0]?.addEventListener('click', function(){
+    document.getElementsByClassName('cont-btns-alert')[0]?.classList.remove('show')
+    document.getElementsByClassName('container-alert')[0]?.classList.remove('show')
+},false)
   }
 }
 }, false)
@@ -743,7 +745,9 @@ testEmptyBackground(){
     document.getElementsByClassName('cont-btns-alert')[1]?.classList.remove('show')
   },false)
   document.getElementsByClassName('confirm')[1]?.addEventListener('click', function(){
-    document.getElementsByClassName('container-alert')[1]?.classList.remove('show') },false)
+    document.getElementsByClassName('cont-btns-alert')[1]?.classList.remove('show')
+    document.getElementsByClassName('container-alert')[1]?.classList.remove('show')
+  },false)
   }
 }
 }, false)
@@ -781,9 +785,10 @@ preSaveMisionVision() {
     document.getElementsByClassName('message')[4]?.classList.remove('show')
   },false)
   document.getElementsByClassName('confirm')[4]?.addEventListener('click', function(){
-    setTimeout(function() {
-      document.getElementsByClassName('container-alert')[4]?.classList.remove('show')
-    },300) },false)
+
+    document.getElementsByClassName('cont-btns-alert')[4]?.classList.remove('show')
+    document.getElementsByClassName('container-alert')[4]?.classList.remove('show')
+    },false)
   }
   }else if((mision=="" && vision=="") || mision=="" || vision=="") { this.MessageSuccess("Los campos requeridos no pueden estar vacíos",4) }
 }
@@ -794,9 +799,12 @@ onClick() {
 }
 
 async guardarMision() {
-  let id = this.dataMisionÑ._id
-  const respuestaEdit = await this.misionService.editarMisionValor(id, this.formularioMisionValor.value)
-  console.log(respuestaEdit)
+  try {
+    let id = this.dataMisionÑ._id
+    const respuestaEdit = await this.misionService.editarMisionValor(id, this.formularioMisionValor.value)
+    console.log(respuestaEdit)
+
+    this.MessageSuccess('¡Datos guardados exitosamente!',4) } catch (error) { this.MessageSuccess('Error al guardar los datos',4) }
 
 }
 
@@ -836,9 +844,9 @@ preSaveValores() {
     document.getElementsByClassName('cont-btns-alert')[5]?.classList.remove('show')
   },false)
   document.getElementsByClassName('confirm')[5]?.addEventListener('click', function(){
-    setTimeout(function() {
+
       document.getElementsByClassName('container-alert')[5]?.classList.remove('show')
-    },300) },false)
+    },false)
   }
   }else{ this.MessageSuccess("Los campos requeridos no pueden estar vacíos",5) }
 }
@@ -877,21 +885,33 @@ preSaveHistoria() {
     document.getElementsByClassName('cont-btns-alert')[2]?.classList.remove('show')
   },false)
   document.getElementsByClassName('confirm')[2]?.addEventListener('click', function(){
-    setTimeout(function() {
+
       document.getElementsByClassName('container-alert')[2]?.classList.remove('show')
-    },300) },false)
+      document.getElementsByClassName('cont-btns-alert')[2]?.classList.remove('show')
+    },false)
   }
   }else{ this.MessageSuccess("Los campos requeridos no pueden estar vacíos",2) }
 }
 
 onClickHistoria() {
   this.guardarHistoria()
-  setTimeout(() => { this.containerAlertElementHis.nativeElement.classList.remove('show') }, 300) }
+  this.containerAlertElementHis.nativeElement.classList.remove('show')
+}
+
+// async guardarHistoria() {
+//   const respuestaEdit = await this.historiaService.editarHistoria( this.formularioEditHistoria.value,this._idhistoria)
+//   this.MessageSuccess("¡Datos guardados exitosamente!",2)
+// }
+
 
 async guardarHistoria() {
-
-  const respuestaEdit = await this.historiaService.editarHistoria( this.formularioEditHistoria.value,this._idhistoria)
+  try {
+    const respuestaEdit = await this.historiaService.editarHistoria(this.formularioEditHistoria.value, this._idhistoria)
+    this.MessageSuccess("¡Datos guardados exitosamente!", 2)
+  } catch (error) { this.MessageSuccess("Error al guardar la Historia", 2) }
 }
+
+
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -977,16 +997,16 @@ saveNewTimeLine() {
     document.getElementsByClassName('cont-btns-alert')[7]?.classList.remove('show')
   },false)
   document.getElementsByClassName('confirm')[7]?.addEventListener('click', function(){
-    setTimeout(function() {
+
       document.getElementsByClassName('container-alert')[7]?.classList.remove('show')
-    },300) },false)
+    },false)
   }
   }else{ this.MessageSuccess("Los campos requeridos no pueden estar vacíos",7) }
 }
 
 onClickNewTimeLine() {
   this.sendFile()
-  setTimeout(() => { this.containerAlertElementTL.nativeElement.classList.remove('show') }, 300) }
+  this.containerAlertElementTL.nativeElement.classList.remove('show') }
 
   sendFile():void{
 
@@ -1025,7 +1045,7 @@ async editarModal(id:any) {
 }
  Modal() { document.getElementById('modal-time-line')?.classList.toggle('modal') }
 
-  onClickEditedTimeLineEdited() { this.sendFile(); setTimeout(() => { this.containerAlertElementTLEdited.nativeElement.classList.remove('show') }, 300) }
+  onClickEditedTimeLineEdited() { this.sendFile(); this.containerAlertElementTLEdited.nativeElement.classList.remove('show') }
 
 
 

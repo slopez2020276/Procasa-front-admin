@@ -187,7 +187,7 @@
 
   <div class="cont-buttons">
     <div class="replace-button normal red" (click)="preSaveHistoria()" id="btn-alert-2">guardar</div>
-    <!-- <div class="replace-button normal" (click)="editarHistoria()" id="btn-alert-2">guardar</div> -->
+
   </div>
 
 
@@ -197,7 +197,7 @@
 
         <div class="message"> <h1 class="innermsg"></h1></div>
         <div class="cont-btns-alert">
-          <button class="confirm" #confirmErlementHis>confirmar</button>
+          <button class="confirm" (click)="guardarHistoria()">confirmar</button>
           <div class="replace-button cancel">cancelar</div>
         </div>
       </div>
@@ -278,7 +278,7 @@
 
     <div class="cont-buttons">
       <!-- <div class="normal">guardar</div> -->
-      <div    class="replace-button normal red" id="cancel-c" (click)="preSaveMisionVision()" >guardar</div>
+      <div    class="replace-button normal red" id="cancel-c" (click)="preSaveMisionVision()">guardar</div>
     </div>
   </div>
 

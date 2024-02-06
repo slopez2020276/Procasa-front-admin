@@ -423,6 +423,7 @@ div#contpreimg {
 img#preview-portada {
   width: auto;
   height: auto;
+  max-width: 100%;
   min-height: 100%;
   max-height: 120%;
 }
@@ -514,6 +515,7 @@ img#endpreview-bg {
 img#endpreview-portada {
   width: auto;
   height: auto;
+  max-width: 100%;
   min-height: 100%;
   max-height: 120%;
   position: absolute;
