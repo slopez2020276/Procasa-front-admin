@@ -830,21 +830,22 @@ preSaveValores() {
   if (orientacionTextArea instanceof HTMLTextAreaElement) { orientacion = orientacionTextArea.value }
 
   if(integridad!=="" && pasion!=="" && innovacion!=="" && orientacion!==""){
-  const innerMessage = document.getElementsByClassName('innermsg')[4]
+  const innerMessage = document.getElementsByClassName('innermsg')[5]
   if (innerMessage) { innerMessage.innerHTML = "¿Desea guardar los cambios?"
 
 
-  document.getElementsByClassName('container-alert')[5]?.classList.add('show')
   document.getElementsByClassName('message')[5]?.classList.add('show')
+  document.getElementsByClassName('container-alert')[5]?.classList.add('show')
   document.getElementsByClassName('cont-btns-alert')[5]?.classList.add('show')
 
   document.getElementsByClassName('cancel')[5]?.addEventListener('click', function(){
+    document.getElementsByClassName('cont-btns-alert')[5]?.classList.remove('show')
     document.getElementsByClassName('container-alert')[5]?.classList.remove('show')
     document.getElementsByClassName('message')[5]?.classList.remove('show')
-    document.getElementsByClassName('cont-btns-alert')[5]?.classList.remove('show')
   },false)
-  document.getElementsByClassName('confirm')[5]?.addEventListener('click', function(){
+  document.getElementsByClassName('confirm')[5]?.addEventListener('click', () => {
 
+      document.getElementsByClassName('cont-btns-alert')[5]?.classList.remove('show')
       document.getElementsByClassName('container-alert')[5]?.classList.remove('show')
     },false)
   }
@@ -852,12 +853,16 @@ preSaveValores() {
 }
 
 onClickValores() {
+  document.getElementsByClassName('cont-btns-alert')[5]?.classList.remove('show')
   this.guardarValores()
  this.containerAlertElementVal.nativeElement.classList.remove('show') }
 
 async guardarValores() {
-  let id = this.dataValores._id
-  const respuestaEdit = await this.ValoresService.editarValores(id, this.formularioValores.value)
+  try {
+    let id = this.dataValores._id
+    const respuestaEdit = await this.ValoresService.editarValores(id, this.formularioValores.value)
+    this.MessageSuccess('¡Datos guardados exitosamente!',5)
+  } catch (error) { this.MessageSuccess('Error al guardar los datos',5) }
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////77
@@ -1005,8 +1010,10 @@ saveNewTimeLine() {
 }
 
 onClickNewTimeLine() {
+
   this.sendFile()
-  this.containerAlertElementTL.nativeElement.classList.remove('show') }
+  this.containerAlertElementTL.nativeElement.classList.remove('show')
+}
 
   sendFile():void{
 
@@ -1027,8 +1034,11 @@ onClickNewTimeLine() {
 
     console.log(this.formularioAgregarLineaTiempo.value.fecha)
     this.lineaService.sendPost(body)
-    .subscribe(res =>{console.log(res), this.obtenerLinea(),this.fileTmp = null})
-    this.MessageSuccess('Datos guardados exitosamente',6)
+    .subscribe(res =>{
+      console.log(res), this.obtenerLinea(),this.fileTmp = null
+      this.MessageSuccess('Datos guardados exitosamente',7)
+
+    })
   }
 
 

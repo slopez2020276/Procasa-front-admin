@@ -1,0 +1,42 @@
+
+h1.container-h1 {
+  width: 100%;
+  position: relative;
+  margin-top: 5vh;
+}
+
+div#container-main {
+  width: 100vw;
+  height: auto;
+  min-height: 90vh;
+  padding-bottom: 10vh;
+  position: relative;
+  margin-top: 65px;
+  background: #252525;
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  align-content: start;
+  flex-wrap: wrap;
+}
+
+div#cont-customers {
+  width: 80%;
+  height: auto;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-top: 4rem;
+}
+
+div.cont-img-cust {
+  width: 250px;
+  height: 250px;
+  margin: 1rem .5rem;
+}
+
+div.cont-img-cust img {
+  height: 100%;
+  width: auto;
+}

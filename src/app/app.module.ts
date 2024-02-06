@@ -36,6 +36,8 @@ import { Noticias01Component } from './componentes/noticias0.1/noticias0.1.compo
 import { NoticiasNEWComponent } from './componentes/noticias-new/noticias-new.component';
 import { MostrarPorUbiPipe } from './pipes/mostrar-por-ubi.pipe';
 import { MostrarAliasPipe } from './pipes/mostrar-alias.pipe';
+import { NuestrosClientesComponent } from './nuestros-clientes/nuestros-clientes.component';
+import { ProductosComponent } from './productos/productos.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -69,6 +71,8 @@ import { MostrarAliasPipe } from './pipes/mostrar-alias.pipe';
     NoticiasNEWComponent,
     MostrarPorUbiPipe,
     MostrarAliasPipe,
+    NuestrosClientesComponent,
+    ProductosComponent,
   ],
   imports: [
     BrowserModule,

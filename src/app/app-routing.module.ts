@@ -14,6 +14,8 @@ import { UsuariosComponent } from './componentes/usuarios/usuarios.component';
 import { PruebaMapsComponent } from './componetes/prueba-maps/prueba-maps.component';
 import { PruebaMaps2Component } from './componetes/prueba-maps2/prueba-maps2.component';
 import { NoticiasComponent } from './componentes/noticias/noticias.component';
+import { NuestrosClientesComponent } from './nuestros-clientes/nuestros-clientes.component';
+import { ProductosComponent } from './productos/productos.component';
 
 const routes: Routes = [
   {path:'',redirectTo:'Inicio', pathMatch:'full'},
@@ -30,7 +32,9 @@ const routes: Routes = [
   {path:'admin/suscripciones',title:'suscripciones',component:SuscripcionesComponent},
   {path:'youtube',title:'youtube',component:YoutubeComponent},
   {path:'admin/usuarios',title:'usuarios',component:UsuariosComponent},
-  {path:'noticas', component:NoticiasComponent}
+  {path:'noticas', component:NoticiasComponent},
+  {path:'nuestros-clientes', component:NuestrosClientesComponent},
+  {path:'productos', component:ProductosComponent},
 ];
 
 @NgModule({

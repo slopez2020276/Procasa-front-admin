@@ -540,7 +540,7 @@ div#modal-time-line form, div#modal-time-line-add form, div#modal-edit-notice fo
 
 div#modal-time-line.modal, div#modal-time-line-add.modal, div#modal-edit-notice.modal {
   transform: scale(1);
-  top: 20vh;
+  top: 13vh;
   cursor: default;
   opacity: 1;
   z-index: 999;

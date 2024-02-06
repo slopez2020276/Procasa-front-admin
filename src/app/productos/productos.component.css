@@ -1,0 +1,99 @@
+
+h1.container-h1 {
+  width: 100%;
+  position: relative;
+  margin-top: 5vh;
+}
+
+div#container-main {
+  width: 100vw;
+  height: auto;
+  min-height: 90vh;
+  padding-bottom: 10vh;
+  position: relative;
+  margin-top: 65px;
+  background: #252525;
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  align-content: start;
+  flex-wrap: wrap;
+}
+
+div#cont-products {
+  width: 80%;
+  height: auto;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  align-content: center;
+  flex-wrap: wrap;
+  margin-top: 4rem;
+}
+div.product {
+  width: 200px;
+  height: auto;
+  position: relative;
+  margin: 2rem 1rem;
+}
+
+div.product img {
+  width: 100%;
+  height: auto;
+}
+
+div.product h2 {
+  width: 100%;
+  text-align: center;
+  color: #F4F4F4;
+}
+
+div.cont-details {
+  width: 400px;
+  max-width: 350px;
+  height: auto;
+  top: 50%;
+  left: 10%;
+  position: absolute;
+  background: #F4F4F4;
+  border-radius: 4px;
+  opacity: 0;
+  transition: .4s ease-in-out;
+  z-index: -1;
+  padding: 1rem;
+  padding-top: 4rem;
+}
+
+div.product:hover div.cont-details {
+  opacity: 1;
+  z-index: 10;
+}
+
+div.cont-details h1 {
+  text-align: center;
+  font-size: 14pt;
+  background: #AA182C;
+  color: #F4F4F4;
+  position: absolute;
+  top: 0;
+  left: -2%;
+  width: 104%;
+  border-radius: 4px;
+  padding: .5rem 1rem;
+}
+
+div.cont-ul {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  flex-wrap: wrap;
+}
+
+div.cont-ul ul {
+  position: relative;
+  width: 80%;
+  margin-top: 1rem;
+}
+
+div.cont-ul ul:nth-child(1) {margin-top: 0;}
