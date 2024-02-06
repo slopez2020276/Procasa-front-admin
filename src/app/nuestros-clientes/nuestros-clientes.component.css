@@ -40,3 +40,14 @@ div.cont-img-cust img {
   height: 100%;
   width: auto;
 }
+
+
+
+@media screen and (max-width: 400px) {
+
+  h1.container-h1 {
+    width: 90%;
+    font-size: 20pt;
+    margin-top: 3vh;
+  }
+}
