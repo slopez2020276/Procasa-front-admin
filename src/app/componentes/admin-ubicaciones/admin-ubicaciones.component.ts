@@ -36,17 +36,23 @@ imgPath:any
 constructor (){
   this.fornularioAgregarUbicacion = new FormGroup({
     tipoTienda: new FormControl(),
+    direccion: new FormControl(),
+    telefono: new FormControl(),
+    horario: new FormControl(),
     nombreTienda: new FormControl(),
-    codenadasLng: new FormControl(),
-    codenadaslat: new FormControl(),
     descripcion: new FormControl(),
+    enlaceMaps: new FormControl(),
+    enlaeMaps: new FormControl(),
   })
   this.formularioEditUbicacion  = new FormGroup({
     tipoTienda: new FormControl(),
+    direccion: new FormControl(),
+    telefono: new FormControl(),
+    horario: new FormControl(),
     nombreTienda: new FormControl(),
-    codenadasLng: new FormControl(),
-    codenadaslat: new FormControl(),
     descripcion: new FormControl(),
+    enlaceMaps: new FormControl(),
+    enlaeMaps: new FormControl(),
   })
 }
 

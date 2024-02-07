@@ -1,6 +1,8 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { UbicacionServiceService } from '../../services/ubicacion-service.service';
 import { HistoriaService } from '../../services/historia.service';
+import { MostrarimgsUbicacionPipe } from '../../pipes/mostrarimgs-ubicacion.pipe'
+import { MostrarPorUbiPipe } from '../../pipes/mostrar-por-ubi.pipe'
 
 @Component({
   selector: 'app-ubicaciones',
@@ -16,7 +18,10 @@ export class UbicacionesComponent {
   imgPrincipal
   imgFondo
   HistoriaService = inject(HistoriaService)
-
+  UbicacionesService = inject(UbicacionServiceService)
+  dataUbicaciones
+  filtro
+  filtroIMG
   async onSubmit(){ }
 
  async ngOnInit() {
@@ -29,6 +34,15 @@ export class UbicacionesComponent {
     this.data = response.historia
     this.imgPrincipal = this.data[0].imgPathPrincipal
     this.imgFondo = this.data[0].imgPathFondo
+    this.ObtenerUbicaciones()
+  }
+
+
+  async ObtenerUbicaciones(){
+    const respuesta = await this.UbicacionService.ObtenerUbicaionesAdmin()
+
+    this.dataUbicaciones = respuesta.ubi
+console.log(respuesta, this.dataUbicaciones)
   }
 
 
@@ -37,6 +51,18 @@ ShowContSucursales(c:any, h:number){
     document.getElementById('cont-slide')?.classList.add(c)
     const elements = document.getElementsByClassName('title-sucs') as HTMLCollectionOf<HTMLElement>
     elements[h].style.background = '#656565'
+
+
+
+
+
+
+  }
+
+  showfilterImg(tipoTienda:string){
+    this.filtroIMG = tipoTienda
+    console.log(this.filtroIMG)
+
   }
   removeClass(){
     document.getElementById('cont-slide')?.classList.remove('a')
