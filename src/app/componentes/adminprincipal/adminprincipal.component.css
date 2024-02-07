@@ -1019,32 +1019,6 @@ div.alert-model {
   flex-wrap: wrap;
 }
 
-div#time {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 0%;
-  height: 5px;
-  background: transparent;
-  border-radius: 4px;
-  transition: .1s;
-}
-
-div#time.green {  background: greenyellow; animation: less 2s ease;}
-div#time.red {  background: red; animation: less 2s ease;}
-div#time.orange {  background: orangered; animation: less 2s ease;}
-
-div#time.timeoff {
-  width: 0%;
-}
-
-@keyframes less {
-  0%   {width: 100%;}
-  100% {width: 0%;}
-}
-
-
-
 div.alert-model p {
   font-size: 14pt;
   color: #757575;

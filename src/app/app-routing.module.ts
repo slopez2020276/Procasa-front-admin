@@ -17,6 +17,7 @@ import { NoticiasComponent } from './componentes/noticias/noticias.component';
 import { NuestrosClientesComponent } from './nuestros-clientes/nuestros-clientes.component';
 import { ProductosComponent } from './productos/productos.component';
 import { NuestroEquipoComponent } from './nuestro-equipo/nuestro-equipo.component';
+import { AdminproductosComponent } from './componentes/adminproductos/adminproductos.component';
 
 const routes: Routes = [
   {path:'',redirectTo:'Inicio', pathMatch:'full'},
@@ -37,6 +38,7 @@ const routes: Routes = [
   {path:'nuestros-clientes', component:NuestrosClientesComponent},
   {path:'productos', component:ProductosComponent},
   {path:'unete-nuestro-equipo', component:NuestroEquipoComponent},
+  {path:'admin/Productos', component:AdminproductosComponent},
 ]
 
 @NgModule({

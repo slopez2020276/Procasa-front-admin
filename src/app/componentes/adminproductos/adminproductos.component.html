@@ -1,0 +1,66 @@
+<app-admin-navbar></app-admin-navbar>
+
+<div id="container-2">
+  <h1>Productos</h1>
+    <button id="add-product" (click)="ModalProduct('add')">+ Agregar Producto</button>
+
+    <div id="bar-search">
+      <label for="search">Buscar</label>
+      <input  [(ngModel)]="ProductToSearch"  class="bold" type="text" name="search" placeholder="" title="buscar producto">
+    </div>
+</div>
+
+<div id="container-productos">
+
+
+
+
+<div class="producto">
+  <div class="sub-producto">
+    <img src="../../../assets/img/carne de res.png" alt="producto" title="producto">
+  </div>
+  <div class="sub-producto">
+    <h1>Producto</h1>
+    <div class="sub-details">
+    </div>
+  </div>
+  <div class="actions">
+    <div class="edit-product replace-button" (click)="ModalProduct('edit')">editar</div>
+    <div class="del-product replace-button">eliminar</div>
+  </div>
+</div>
+
+
+
+</div>
+
+
+
+<!-------- MODAL AGREGAR PRODUCTO ------------------------------------------------------------------------------------------------------------------------------------>
+<div id="modal-add-product">
+  <div id="close-modal-add" (click)="ModalProduct('add')">cerrar</div>
+  <h1 class="title-modal">Agregar Producto</h1>
+</div>
+
+
+<!-------- MODAL EDITAR PRODUCTO ------------------------------------------------------------------------------------------------------------------------------------>
+<div id="modal-edit-product">
+  <div id="close-modal-edit" (click)="ModalProduct('edit')">cerrar</div>
+  <h1 class="title-modal">Editar Producto</h1>
+</div>
+
+
+<!-------- A L E R T ---------------------------------------------------------------------------------------------------------------------------------------------------->
+<div class="container-alert">
+  <div class="alert-model">
+      <p class="inner-message bold"></p>
+
+      <div class="message"> <h1 class="innermsg"></h1></div>
+      <div class="cont-btns-alert">
+        <button  class="confirm"> confirmar</button>
+        <div class="replace-button cancel">cancelar</div>
+      </div>
+    </div>
+  </div>
+
+

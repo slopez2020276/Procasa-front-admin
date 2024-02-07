@@ -40,6 +40,7 @@ import { NuestrosClientesComponent } from './nuestros-clientes/nuestros-clientes
 import { ProductosComponent } from './productos/productos.component';
 import { MostrarimgsUbicacionPipe } from './pipes/mostrarimgs-ubicacion.pipe';
 import { NuestroEquipoComponent } from './nuestro-equipo/nuestro-equipo.component';
+import { AdminproductosComponent } from './componentes/adminproductos/adminproductos.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -77,6 +78,7 @@ import { NuestroEquipoComponent } from './nuestro-equipo/nuestro-equipo.componen
     ProductosComponent,
     MostrarimgsUbicacionPipe,
     NuestroEquipoComponent,
+    AdminproductosComponent,
   ],
   imports: [
     BrowserModule,

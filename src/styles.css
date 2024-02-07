@@ -10,7 +10,6 @@ body {
     position: relative;
 }
 
-
 .bold {font-family: realeway_bold;}
 .light {font-family: realeway_light;}
 .normal {font-family: realeway_normal;}
@@ -25,13 +24,13 @@ h1.container-h1 {
   margin-top: 30vh;
 }
 
-* {transition: .2s ease;}
-
+* { transition: .2s ease;
+    scrollbar-width: thin;
+}
 div.container {
   position: relative;
   width: 100%;
   height: auto;
-  /* border: 1px solid red; */
   z-index: 0;
 }
 
