@@ -38,6 +38,7 @@ import { MostrarPorUbiPipe } from './pipes/mostrar-por-ubi.pipe';
 import { MostrarAliasPipe } from './pipes/mostrar-alias.pipe';
 import { NuestrosClientesComponent } from './nuestros-clientes/nuestros-clientes.component';
 import { ProductosComponent } from './productos/productos.component';
+import { NuestroEquipoComponent } from './nuestro-equipo/nuestro-equipo.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -73,6 +74,7 @@ import { ProductosComponent } from './productos/productos.component';
     MostrarAliasPipe,
     NuestrosClientesComponent,
     ProductosComponent,
+    NuestroEquipoComponent,
   ],
   imports: [
     BrowserModule,
