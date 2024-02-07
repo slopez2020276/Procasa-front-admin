@@ -38,6 +38,7 @@ import { MostrarPorUbiPipe } from './pipes/mostrar-por-ubi.pipe';
 import { MostrarAliasPipe } from './pipes/mostrar-alias.pipe';
 import { NuestrosClientesComponent } from './nuestros-clientes/nuestros-clientes.component';
 import { ProductosComponent } from './productos/productos.component';
+import { MostrarimgsUbicacionPipe } from './pipes/mostrarimgs-ubicacion.pipe';
 import { NuestroEquipoComponent } from './nuestro-equipo/nuestro-equipo.component';
 @NgModule({
   declarations: [
@@ -74,7 +75,6 @@ import { NuestroEquipoComponent } from './nuestro-equipo/nuestro-equipo.componen
     MostrarAliasPipe,
     NuestrosClientesComponent,
     ProductosComponent,
-    NuestroEquipoComponent,
   ],
   imports: [
     BrowserModule,
@@ -82,7 +82,7 @@ import { NuestroEquipoComponent } from './nuestro-equipo/nuestro-equipo.componen
     ReactiveFormsModule,
     HttpClientModule,
     FormsModule,
-    NgOptimizedImage,  
+    NgOptimizedImage,
   ],
   providers: [],
   bootstrap: [AppComponent]
