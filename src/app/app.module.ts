@@ -75,6 +75,8 @@ import { NuestroEquipoComponent } from './nuestro-equipo/nuestro-equipo.componen
     MostrarAliasPipe,
     NuestrosClientesComponent,
     ProductosComponent,
+    MostrarimgsUbicacionPipe,
+    NuestroEquipoComponent,
   ],
   imports: [
     BrowserModule,
