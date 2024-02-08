@@ -6,15 +6,9 @@ import { Component } from '@angular/core';
   styleUrl: './navbar.component.css'
 })
 export class NavbarComponent {
-  tohistoria(){
-    document.getElementById("historia")?.scrollIntoView({behavior:"smooth"});
-  }
-  toVision(){
-    document.getElementById("valores")?.scrollIntoView({behavior:"smooth"});
-  }
-  toNoticia(){
-    document.getElementById("news")?.scrollIntoView({behavior:"smooth"});
-  }
+
+ToScrollView(id:string){ document.getElementById(id)?.scrollIntoView({behavior:"smooth"}); }
+
 
   MenuToggle(){
     document.getElementById('cont-menu')?.classList.toggle('activate');

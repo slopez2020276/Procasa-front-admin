@@ -110,13 +110,13 @@ div.navbar-items a:hover {
   transform: scale(1.1);
 }
 
-div#container-list {
+div#container-list, div#container-list-pro {
     position: relative;
     width: 150px;
     height: 100%;
   }
 
-div#list {
+div#list, div#list-products {
     position: relative;
     width: 100%;
     height: auto;
@@ -133,7 +133,9 @@ div#list {
     color: #252525;
 }
 
-div#container-list:hover div#list{
+div#container-list:hover div#list,
+div#container-list-pro:hover div#list-products
+{
     opacity: 1;
     z-index: 100;
     display: block;

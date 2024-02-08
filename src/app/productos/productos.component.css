@@ -2,14 +2,15 @@
 h1.container-h1 {
   width: 100%;
   position: relative;
-  margin-top: 5vh;
+  margin-top: 0;
+  padding-top: 100px;
 }
 
 div#container-main {
   width: 100vw;
   height: auto;
   min-height: 90vh;
-  padding-bottom: 10vh;
+  padding-bottom: 200px;
   position: relative;
   margin-top: 65px;
   background: #252525;
@@ -28,7 +29,7 @@ div#cont-products {
   align-items: center;
   align-content: center;
   flex-wrap: wrap;
-  margin-top: 4rem;
+  margin-top: 1rem;
 }
 
 div.product {
@@ -99,8 +100,100 @@ div.cont-ul ul {
 
 div.cont-ul ul:nth-child(1) {margin-top: 0;}
 
+div#container-promesa {
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  flex-wrap: wrap;
+  margin-top: 4rem;
+  position: relative;
+}
+
+div.cont-promesa {
+  width: 350px;
+  height: 300px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: space-between;
+  flex-wrap: wrap;
+}
+
+div.subcont-promesa {
+  width: 100%;
+  height: 50%;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+div.subcont-promesa img {
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+div.letter-red {
+  text-align: center;
+  font-size: 16pt;
+  color: #AA182C;
+  padding: 0 2rem;
+}
+
+div.cont-promesa:nth-child(2) {
+  border-left: 1px solid whitesmoke;
+  border-right: 1px solid whitesmoke;
+}
 
 
+div#container-marcas {
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  flex-wrap: wrap;
+  margin-top: 4rem;
+  position: relative;
+}
+
+div#carrousel-marcas {
+  width: 90%;
+  position: relative;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+
+div.marca-item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 250px;
+  height: 200px;
+  min-width: 250px;
+  min-height: 200px;
+  margin: 2rem 1rem;
+}
+
+div.marca-item img {
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: 100%;
+}
 
 
 

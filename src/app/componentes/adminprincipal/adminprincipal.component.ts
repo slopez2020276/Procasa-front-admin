@@ -903,11 +903,6 @@ onClickHistoria() {
   this.containerAlertElementHis.nativeElement.classList.remove('show')
 }
 
-// async guardarHistoria() {
-//   const respuestaEdit = await this.historiaService.editarHistoria( this.formularioEditHistoria.value,this._idhistoria)
-//   this.MessageSuccess("¡Datos guardados exitosamente!",2)
-// }
-
 
 async guardarHistoria() {
   try {
@@ -915,8 +910,6 @@ async guardarHistoria() {
     this.MessageSuccess("¡Datos guardados exitosamente!", 2)
   } catch (error) { this.MessageSuccess("Error al guardar la Historia", 2) }
 }
-
-
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -951,21 +944,11 @@ if (saveButtonTL) {
 
 }, false) }
 
-        // document.getElementsByClassName('danger-red')[3]?.classList.remove('limit')
-        // document.getElementsByClassName('danger-red')[4]?.classList.remove('limit')
-        // document.getElementsByClassName('danger-red')[5]?.classList.remove('limit')
-
-        // if(this.anchoimg > 2000){  document.getElementsByClassName('danger-red')[3].classList.add('limit') }
-        // if(this.altoimg > 1500){ document.getElementsByClassName('danger-red')[4].classList.add('limit') }
-        // if((size/1024) > 2048 ){  document.getElementsByClassName('danger-red')[5].classList.add('limit') }
-
         document.getElementsByClassName('innerdetails')[2]!.innerHTML = sizemedida
         document.getElementsByClassName('innerdetails')[0]!.innerHTML = this.anchoimg + " px"
         document.getElementsByClassName('innerdetails')[1]!.innerHTML = this.altoimg + " px"
         document.getElementById('new-file-input')?.setAttribute('data-content', fileName)
-        // document.getElementById('pre-portada')?.removeAttribute('src')
         document.getElementById('img-pre-tl')?.setAttribute('src', img.src)
-        // document.getElementById('pre-portada')?.setAttribute('src', img.src)
       }
     }
     lector.readAsDataURL(archivo)

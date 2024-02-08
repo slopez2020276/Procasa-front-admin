@@ -2,17 +2,17 @@
 
 <div id="container-2">
   <h1>Productos</h1>
-    <button id="add-product" (click)="ModalProduct('add')">+ Agregar Producto</button>
 
-    <div id="bar-search">
-      <label for="search">Buscar</label>
-      <input  [(ngModel)]="ProductToSearch"  class="bold" type="text" name="search" placeholder="" title="buscar producto">
-    </div>
+  <div id="bar-search">
+    <label for="search">Buscar</label>
+    <input  [(ngModel)]="ProductToSearch"  class="bold" type="text" name="search" placeholder="" title="buscar producto">
+  </div>
+  <button id="add-product" (click)="ModalProduct('add')">+ Agregar Producto</button>
 </div>
 
+
+
 <div id="container-productos">
-
-
 
 
 <div class="producto">
@@ -26,11 +26,9 @@
   </div>
   <div class="actions">
     <div class="edit-product replace-button" (click)="ModalProduct('edit')">editar</div>
-    <div class="del-product replace-button">eliminar</div>
+    <div class="del-product replace-button"(click)="DeleteProduct()">eliminar</div>
   </div>
 </div>
-
-
 
 </div>
 
@@ -47,7 +45,13 @@
 <div id="modal-edit-product">
   <div id="close-modal-edit" (click)="ModalProduct('edit')">cerrar</div>
   <h1 class="title-modal">Editar Producto</h1>
+
+<input id="file-edit" (change)="FileEdit($event)" type="file" accept=".jpg, .jpeg, .png, .webp, .avi" title="seleccionar archivo">
+
 </div>
+
+
+
 
 
 <!-------- A L E R T ---------------------------------------------------------------------------------------------------------------------------------------------------->

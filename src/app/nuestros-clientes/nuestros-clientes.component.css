@@ -34,11 +34,18 @@ div.cont-img-cust {
   width: 250px;
   height: 250px;
   margin: 1rem .5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
 }
 
 div.cont-img-cust img {
-  height: 100%;
+  height: auto;
+  max-height: 300px;
   width: auto;
+  max-width: 300px;
+  border-radius: 4px;
 }
 
 
