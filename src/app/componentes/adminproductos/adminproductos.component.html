@@ -38,15 +38,50 @@
 <div id="modal-add-product">
   <div id="close-modal-add" (click)="ModalProduct('add')">cerrar</div>
   <h1 class="title-modal">Agregar Producto</h1>
+
+
+
+  <div class="preview-img-model">
+    <input id="file-edit" (change)="FileEdit($event)" type="file" accept=".jpg, .jpeg, .png, .webp, .avi" title="seleccionar archivo" [attr.data-content]="inputEmpty">
+  <div class="details-img">
+    <ul>
+      <li>ancho: <p class="innerdetails bold"></p></li>
+      <li>alto:<p class="innerdetails bold"></p></li>
+      <li>Realcion:<p class="innerdetails bold"></p></li>
+      <li>tamaño:<p class="innerdetails bold"></p></li>
+    </ul>
+    <img src="" alt="" id="img-pre-tl">
+  </div>
 </div>
 
+<div class="cont-datos">
+  <label for="name-producto" class="padding head-elem">Producto</label>
+  <input type="text" placeholder="" class="bold padding head-elem" name="name-producto" title="nombre del producto">
+  
+  <button (click)="generarProduct()" class="btn-generate">Nueva categoría</button>
+  <button (click)="eliminarUltimoProducto()" class="btn-delete">Eliminar categoría</button>
+
+
+  <div class="cont-actions-subs" *ngFor="let div of productArray; let e = index">
+    <input type="text" placeholder="Categoría" class="input-category bold">
+    <div class="cont-btns-add-del">
+      <button (click)="generarSub()" class="btn-generate">Generar Sub</button>
+      <button (click)="eliminarUltimoSub()" class="btn-delete">Eliminar Sub</button>
+    </div>
+    <div class="cont-generated-input">
+      <input min="0" type="text" class="bold sub-generated" placeholder="sub" *ngFor="let div of subsArray; let i = index">
+    </div>
+  </div>
+  
+  
+</div>
+
+</div>
 
 <!-------- MODAL EDITAR PRODUCTO ------------------------------------------------------------------------------------------------------------------------------------>
 <div id="modal-edit-product">
   <div id="close-modal-edit" (click)="ModalProduct('edit')">cerrar</div>
   <h1 class="title-modal">Editar Producto</h1>
-
-<input id="file-edit" (change)="FileEdit($event)" type="file" accept=".jpg, .jpeg, .png, .webp, .avi" title="seleccionar archivo">
 
 </div>
 

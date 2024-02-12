@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component } from '@angular/core'
+import { v4 as uuidv4 } from 'uuid'
+
 
 @Component({
   selector: 'app-adminproductos',
@@ -7,7 +9,11 @@ import { Component } from '@angular/core';
 })
 export class AdminproductosComponent {
   ProductToSearch: any
-
+  subCount: number = 0
+  subsArray: number[] = []
+  productArray: number[] = []
+  inputEmpty:string = "Seleccionar archivo"
+  
 ModalProduct(type:string){ document.getElementById('modal-'+type+'-product')?.classList.toggle('show') }
 
 DeleteProduct(){
@@ -46,7 +52,8 @@ if (saveButtonTL) {
         document.getElementsByClassName('innerdetails')[2]!.innerHTML = sizemedida
         document.getElementsByClassName('innerdetails')[0]!.innerHTML = imagen.width + " px"
         document.getElementsByClassName('innerdetails')[1]!.innerHTML = imagen.height + " px"
-        document.getElementById('new-file-input')?.setAttribute('data-content', fileName)
+        // document.getElementById('new-file-input')?.setAttribute('data-content', fileName)
+        this.inputEmpty = fileName
         document.getElementById('img-pre-tl')?.setAttribute('src', img.src)
       }
     }
@@ -54,6 +61,12 @@ if (saveButtonTL) {
   }
 }
 
+
+generarSub() { const newSubIndex = this.subsArray.length + 1; this.subsArray.push(newSubIndex) }
+eliminarUltimoSub() { if (this.subsArray.length > 0) { this.subsArray.pop() } }
+
+generarProduct() { const newProIndex = this.productArray.length + 1; this.productArray.push(newProIndex) }
+eliminarUltimoProducto() { if (this.productArray.length > 0) { this.productArray.pop() } }
 
 
 

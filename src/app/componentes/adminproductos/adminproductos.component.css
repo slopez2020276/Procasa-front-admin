@@ -164,27 +164,28 @@ div.del-product {
 /* ----------------------------------------------------------------------------------------------------------------------------------------- */
 
 div#modal-add-product, div#modal-edit-product {
+  font-size: 11pt;
   overflow-y: scroll;
   overflow-x: hidden;
   position: fixed;
-  width: 700px;
-  height: 400px;
+  width: 800px;
+  height: auto;
+  max-height: 80vh;
   background: #FAFAFA;
   box-shadow: 2px 2px 4px rgba(0,0,0,.2);
-  top: 150px;
+  top: 10vh;
   border-radius: 4px;
-  left: calc(50% - 350px);
+  left: calc(50% - 400px);
   transform: scale(.8) translateY(20vh);
   z-index: -10;
   opacity: 0;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
   align-items: start;
+  align-content: start;
   transition: .4s;
-
-  transform: scale(1) translateY(0);
-  opacity: 1;
-  z-index: 10;
+  padding: .5rem  2rem 2rem 2rem;
 }
 
 div#modal-add-product.show,
@@ -221,13 +222,231 @@ h1.title-modal {
   position: relative;
   text-align: center;
   font-size: 18pt;
-  padding: 1rem;
   z-index: 0;
 }
 
+div.preview-img-model {
+  width: 40%;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2rem;
+  flex-wrap: wrap;
+}
+
+div.preview-img-model {
+  width: 300px;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1rem;
+  flex-wrap: wrap;
+}
+
+input[type=file] {
+  position: relative;
+  padding: .5rem;
+  border-radius: 4px;
+  box-shadow: 1px 1px 0px rgba(0,0,0,.2);
+  cursor: pointer;
+  transform: scale(1);
+  transition: transform .1s;
+}
+input[type=file]:active { transform: scale(.9); }
+
+input[type=file]::before {
+  content: attr(data-content);
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: #f4f4f4;
+  color: #252525;
+  display: flex;
+  border-radius: 4px;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  flex-wrap: wrap;
+  box-shadow: 2px 2px 2px rgba(0,0,0,.2);
+}
+
+div.details-img {
+  width: 100%;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  padding-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+div.details-img ul {
+  width: 60%;
+  margin: 0 10%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  text-align: center;
+}
+
+div.details-img ul li {
+  list-style: none;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: nowrap;
+}
+
+div.details-img ul li p {display: inline-block;}
+
+span.danger-red,
+span#width-new-n, span#height-new-n, span#size-new-n { color: #252525; }
+span#width-update-lt, span#height-update-lt, span#size-update-lt { color: #252525; }
+span#width-edit-n, span#height-edit-n, span#size-edit-n { color: #252525; }
+span.danger-red.limit, span.innerdetails.limit,
+span#width-new-n.limit, span#height-new-n.limit, span#size-new-n.limit { color: #FF182C; }
+span#width-update-lt.limit, span#height-update-lt.limit, span#size-update-lt.limit { color: #FF182C; }
+span#width-edit-n.limit, span#height-edit-n.limit, span#size-edit-n.limit { color: #FF182C; }
+
+h1.innermsg {
+  background: transparent;
+}
+
+img#img-pre-tl {
+  max-width: 130px;
+  width: auto;
+  height: auto;
+  max-height: 130px;
+  border-radius: 4px;
+  display: block;
+  margin: 1rem;
+}
+
+div.cont-datos {
+  margin-top: 1rem;
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  align-content: start;
+  flex-wrap: wrap;
+  position: relative;
+}
 
 
+div.cont-datos label.head-elem {
+  width: 37.5%;
+  padding: .5rem 1rem;
+}
 
+div.cont-datos input.head-elem {
+  padding: .5rem 1rem;
+  border-radius: 4px;
+  width: 57.5%;
+  box-shadow: 1px 1px 0px rgba(0,0,0,.2);
+}
+
+.padding {margin-top: 4px;}
+
+div.new-subcategory {
+  padding: 1rem;
+  border: 1px solid violet;
+}
+
+div.cont-actions-subs {
+  width: 100%;
+  height: auto;
+  position: relative;
+  background: rgba(0,0,0,.1);
+  border-radius: 4px;
+  margin-top: .5rem;
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  flex-wrap: wrap;
+  padding-bottom: .5rem;
+}
+
+
+div.cont-btns-add-del {
+  position: relative;
+  display: block;
+  height: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+  align-content: start;
+  flex-wrap: nowrap;
+  margin-top: .5rem;
+  width: 90%;
+}
+
+button.btn-generate, button.btn-delete {
+  position: relative;
+  padding: .5rem 1rem;
+  background: #FAFAFA;
+  box-shadow: 1px 1px 0px rgba(0,0,0,.2);
+  border-radius: 4px;
+  width: 45%;
+  transition: transform .1s;
+  transform: scale(1);
+  cursor: pointer;
+}
+button.btn-generate:active {transform: scale(.9);}
+
+div.cont-generated-input {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  align-content: start;
+  width: 100%;
+  height: auto;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  flex-wrap: wrap;
+  margin-top: .5rem;
+  max-height: 100px;
+}
+
+
+input.sub-generated {
+  width: 80%;
+  position: relative;
+  margin-top: 4px;
+  padding: .5rem 1rem;
+  border-radius: 4px;
+  transition: .4s ease-out;
+}
+
+input.sub-generated:last-child { margin-bottom: 2rem; }
+
+div.cont-product-btns {
+  width: 95%;
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: nowrap;
+  margin-top: .5rem;
+}
+
+input.input-category {
+  width: 90%;
+  position: relative;
+  margin-top: 4px;
+  padding: .5rem 1rem;
+  border-radius: 4px;
+  transition: .4s ease-out;
+  margin-top: .5rem;
+}
 
 
 /*========= A L E R T ================================================================================================================================================*/
@@ -265,7 +484,7 @@ div.alert-model {
 }
 
 div.alert-model p {
-  font-size: 14pt;
+  font-size: 12pt;
   color: #757575;
   width: 100%;
   display: block;
@@ -283,7 +502,8 @@ div.cont-btns-alert {
 
 div.cont-btns-alert.show { display: flex; z-index: 700;}
 
-div.cont-btns-alert button {
+div.cont-btns-alert button,
+div.replace-button {
   text-decoration: none;
   background: #EAEAEA;
   border-radius: 4px;
@@ -296,10 +516,15 @@ div.cont-btns-alert button {
   margin-left: 2rem;
   margin-right: 2rem;
 }
-
-div.cont-btns-alert button:active {
+div.replace-button:active, div.cont-btns-alert button:active {
   transform: scale(.95);
   box-shadow: 0px 0px 0px rgba(0,0,0,.3);
 }
 
-
+div.message h1 {
+  width: 100%;
+  text-align: center;
+  font-size: 14pt;
+  color: #757575;
+  background: transparent;
+}
