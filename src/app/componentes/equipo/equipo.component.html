@@ -2,14 +2,14 @@
 
 <div id="container-2">
     <h1>Plazas</h1>
-  
+
     <div id="bar-search">
       <label for="search">Buscar</label>
       <input class="bold" type="text" name="search" placeholder="" title="buscar producto">
     </div>
-    <button id="add-product">+ Agregar Plaza</button>
+    <button id="add-product" (click)="ModalProduct('add')">+ Agregar Plaza</button>
   </div>
-  
+
 
 
 
@@ -31,7 +31,7 @@
     <li class="bold">Departamento: <span>data</span></li>
     <li class="bold">Empresa: <span>data</span></li>
     <li class="bold">Fecha de publicación: <span>data</span></li>
-    <li class="bold">Funciones Principales: 
+    <li class="bold">Funciones Principales:
         <ul>
             <li>data</li>
             <li>data</li>
@@ -42,7 +42,7 @@
 </ul>
 
 <div class="cont-buttons">
-    <div class="actions">editar</div>
+    <div class="actions" (click)="ModalProduct('edit')">editar</div>
     <div class="actions" (click)="DeletePlaza()">eliminar</div>
 </div>
 
@@ -66,4 +66,95 @@
 </div> <!-- CONTAINER -->
 
 </div> <!-- CONTAINER MAIN -->
+
+
+
+<div class="modal" id="add">
+  <div id="close-edit" (click)="ModalProduct('edit')">cerrar</div>
+  <h1 class="title-modal">Agregar plaza</h1>
+
+<div class="sub-cont">
+  <input type="file" title="seleccionar archivo" accept=".jpg, .png, .jpeg, .avi, .webp" [attr.data-content]="inputEmpty">
+
+  <img src="../../../assets/img/pilotos.jpg" alt="" class="img-preview">
+</div>
+<div class="sub-cont">
+  <div class="sub">
+    <input type="text" placeholder="Nombre plaza/vacante">
+    <input type="text" placeholder="Departamento">
+    <input type="text" placeholder="Empresa">
+    <input type="date">
+  </div>
+
+  <div class="sub">
+    <!-- <div class="fn-principales">
+      <p class="normal">Funciones principales</p> <span id="add-fn" class="normal" (click)="SaveFunctions()">+</span>
+    </div> -->
+
+  <input type="text" placeholder="Educación requerida">
+  <textarea name="" id="" placeholder="Experiencia laboral"></textarea>
+</div>
+</div>
+
+<p class="status normal">etapa 1 de 2</p>
+
+  <div class="cont-btns">
+    <div class="btn-save" (click)="SaveFunctions()">continuar</div>
+  </div>
+
+
+
+
+
+  <div id="cont-modal-inputs">
+    <div id="modal-inputs">
+      <h3>Agregar Funciones</h3>
+      <div id="btns-fn">
+        <div id="create-fn" (click)="generarSub()">agregar</div>
+        <div id="delete-fn" (click)="eliminarUltimoSub()">eliminar</div>
+      </div>
+
+      <input type="text" class="normal fn-generated" placeholder="función" *ngFor="let div of subsArray; let i = index">
+      <div id="save-fn" (click)="SaveFunctions()">guardar</div>
+      <p class="status normal">etapa 2 de 2</p>
+    </div>
+
+  </div>
+
+</div>
+
+<!-- ------------------------------------------------------------------------------------------------------------------------------------------------------------ -->
+
+<div class="modal" id="edit">
+  <div id="close-edit" (click)="ModalProduct('edit')">cerrar</div>
+  <h1 class="title-modal">Editar plaza</h1>
+
+<div class="sub-cont">
+  <input type="file" title="seleccionar archivo" accept=".jpg, .png, .jpeg, .avi, .webp" [attr.data-content]="inputEmpty">
+
+  <img src="../../../assets/img/pilotos.jpg" alt="" class="img-preview">
+</div>
+<div class="sub-cont">
+  <div class="sub">
+    <input type="text" placeholder="Nombre plaza/vacante">
+    <input type="text" placeholder="Departamento">
+    <input type="text" placeholder="Empresa">
+    <input type="date">
+  </div>
+
+  <div class="sub">
+    <p class="fn-principales normal">funciones principales</p>
+  <input type="text" placeholder="función 1">
+
+  <input type="text" placeholder="Educación requerida">
+  <textarea name="" id="" placeholder="Experiencia laboral"></textarea>
+</div>
+</div>
+
+
+  <div class="cont-btns">
+    <div class="btn-save">guardar</div>
+  </div>
+</div>
+
 
