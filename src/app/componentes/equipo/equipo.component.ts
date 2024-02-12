@@ -16,57 +16,86 @@ export class EquipoComponent {
     document.getElementById('cont-modal-inputs')?.classList.remove('show')
    }
 
-  FileEdit(event: Event): void {
-    const fileInput = event.target as HTMLInputElement
-    const archivo = fileInput.files?.[0]
-    if (archivo) {
-      const lector = new FileReader()
+   FileEdit(event: Event): void {
 
-      lector.onload = (eventoLectura:any) => {
-        console.log(eventoLectura)
-        const imagen = new Image()
-        imagen.src = eventoLectura.target.result
-        console.log(imagen.src)
+      const fileInput = event.target as HTMLInputElement
+      const archivo = fileInput.files?.[0]
+
+      if (archivo) { const lector = new FileReader()
+
+        lector.onload = (eventoLectura:any) => {
+          const imagen = new Image()
+          imagen.src = eventoLectura.target.result as string
+
+          imagen.onload = () => {
+            const fileSize: number = archivo.size
+            const size: any = fileSize.toFixed(2)
+            let medida: string
+            let sizemedida: any
+            if((size/1024/1024) < 1.0) {medida = " KB"; sizemedida = (size/1024).toFixed(2).toString() + medida }else{ medida = " MB"; sizemedida = (size/1024/1024).toFixed(2).toString() + medida }
+            const fileName: string = archivo.name
+            let img = new Image()
+            const objectURL = URL.createObjectURL(archivo)
+            img.src = objectURL
+            console.log(archivo)
+            this.inputEmpty = archivo.name
+
+        document.getElementById('width-new-n')?.classList.remove('limit')
+            document.getElementById('height-new-n')?.classList.remove('limit')
+            document.getElementById('size-new-n')?.classList.remove('limit')
+
+            if(1000 > 2000){  document.getElementById('width-new-n')?.classList.add('limit') }
+            if(1000 > 1500){ document.getElementById('height-new-n')?.classList.add('limit') }
+            if((size/1024) > 2048 ){  document.getElementById('size-new-n')?.classList.add('limit') }
+
+            document.getElementById('size-new-n')!.innerHTML = sizemedida
+            document.getElementById('width-new-n')!.innerHTML = " px"
+            document.getElementById('height-new-n')!.innerHTML = " px"
+            // document.getElementById('preview-plaza')?.removeAttribute('src')
+            document.getElementById('preview-plaza')?.setAttribute('src', img.src)
+
+            const saveButtonTL = document.getElementById('presave-noticia')
+            if (saveButtonTL) { saveButtonTL.addEventListener('click', () => {
+
+              const tituloInput: HTMLInputElement | null = document.getElementById('titulo-noticia') as HTMLInputElement | null
+              const descripcionInput: HTMLTextAreaElement | any = document.getElementById('desc-noticia')
+
+              let titulo: string = ''
+              let descripcion: string = ''
+
+              if (tituloInput instanceof HTMLInputElement) { titulo = tituloInput.value }
+              if (descripcionInput instanceof HTMLTextAreaElement) { descripcion = descripcionInput.value }
+
+    if(titulo!=="" && descripcion!==""){
+      const innerMessage = document.getElementsByClassName('innermsg')[9]
+      if (innerMessage) { innerMessage.innerHTML = "¿Desea guardar los cambios?"
 
 
+              document.getElementsByClassName('container-alert')[9]?.classList.add('show')
+              document.getElementsByClassName('message')[9]?.classList.add('show')
+              document.getElementsByClassName('cont-btns-alert')[9]?.classList.add('show')
 
-        function mostrarProgresoCarga(eventoLectura) {
-          if (eventoLectura.lengthComputable) {
-              var porcentajeCargado = Math.round((eventoLectura.loaded / eventoLectura.total) * 100)
-              console.log("Progreso de carga: " + porcentajeCargado + "%")
+                document.getElementsByClassName('cancel')[9]?.addEventListener('click', function(){
+                document.getElementsByClassName('container-alert')[9]?.classList.remove('show')
+                document.getElementsByClassName('message')[9]?.classList.remove('show')
+                document.getElementsByClassName('cont-btns-alert')[9]?.classList.remove('show')
+              },false)
+              document.getElementsByClassName('confirm')[9]?.addEventListener('click', function(){
+                document.getElementsByClassName('container-alert')[9]?.classList.remove('show')
+
+              },false)
+            }
+
+          }else{
+            document.getElementsByClassName('cont-btns-alert')[9]?.classList.remove('show')
+            this.MessageSuccess("Los campos requeridos no pueden estar vacíos",9)
           }
-      }
-
-      lector.onprogress = mostrarProgresoCarga
-
-        imagen.onload = () => {
-          const fileSize: number = archivo.size
-          const size: number = fileSize / 1024
-          let medida: string
-          let sizemedida: any
-          if (size < 1024) {
-            medida = " KB"
-            sizemedida = size.toFixed(2).toString() + medida
-          } else {
-            medida = " MB"
-            sizemedida = (size / 1024).toFixed(2).toString() + medida
+            }, false) }
+            }
           }
-          const fileName: string = archivo.name
-          const img = new Image()
-          const objectURL = URL.createObjectURL(archivo)
-          img.src = objectURL
-
-          document.getElementsByClassName('innerdetails')[2]!.innerHTML = sizemedida
-          document.getElementsByClassName('innerdetails')[0]!.innerHTML = imagen.width + " px"
-          document.getElementsByClassName('innerdetails')[1]!.innerHTML = imagen.height + " px"
-          console.log(fileName)
-          document.getElementById('img-pre-tl')?.setAttribute('src', img.src)
+          lector.readAsDataURL(archivo)
         }
-      }
-      lector.readAsDataURL(archivo)
     }
-  }
-
 
 
 
