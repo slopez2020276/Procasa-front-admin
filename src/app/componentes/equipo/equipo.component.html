@@ -78,9 +78,9 @@
   <h1 class="title-modal">Agregar plaza</h1>
 
 <div class="sub-cont">
-  <input type="file" title="seleccionar archivo" accept=".jpg, .png, .jpeg, .avi, .webp" [attr.data-content]="inputEmpty">
+  <input type="file" (change)="FileEdit($event)" title="seleccionar archivo" accept=".jpg, .png, .jpeg, .avi, .webp" [attr.data-content]="inputEmpty">
 
-  <img src="../../../assets/img/pilotos.jpg" alt="" class="img-preview">
+  <img src="" id="preview-plaza" alt="" class="img-preview">
 </div>
 <div class="sub-cont">
   <div class="sub">
@@ -89,6 +89,7 @@
     <input type="text" placeholder="Empresa">
     <input type="date">
   </div>
+
 
   <div class="sub">
     <!-- <div class="fn-principales">

@@ -24,44 +24,58 @@ export class EquipoComponent {
    }
   FileEdit(event: Event): void  {
 
+  FileEdit(event: Event): void {
     const fileInput = event.target as HTMLInputElement
     const archivo = fileInput.files?.[0]
-  
-    if (archivo) { const lector = new FileReader()
-  
+    if (archivo) {
+      const lector = new FileReader()
+
       lector.onload = (eventoLectura:any) => {
+        console.log(eventoLectura)
         const imagen = new Image()
-        imagen.src = eventoLectura.target.result as string
-  
+        imagen.src = eventoLectura.target.result
+        console.log(imagen.src)
+
+
+
+        function mostrarProgresoCarga(eventoLectura) {
+          if (eventoLectura.lengthComputable) {
+              var porcentajeCargado = Math.round((eventoLectura.loaded / eventoLectura.total) * 100)
+              console.log("Progreso de carga: " + porcentajeCargado + "%")
+          }
+      }
+
+      lector.onprogress = mostrarProgresoCarga
+
         imagen.onload = () => {
           const fileSize: number = archivo.size
-          const size: any = fileSize.toFixed(2)
+          const size: number = fileSize / 1024
           let medida: string
           let sizemedida: any
-          if((size/1024/1024) < 1.0) {medida = " KB"; sizemedida = (size/1024).toFixed(2).toString() + medida }else{ medida = " MB"; sizemedida = (size/1024/1024).toFixed(2).toString() + medida }
+          if (size < 1024) {
+            medida = " KB"
+            sizemedida = size.toFixed(2).toString() + medida
+          } else {
+            medida = " MB"
+            sizemedida = (size / 1024).toFixed(2).toString() + medida
+          }
           const fileName: string = archivo.name
-          let img = new Image()
+          const img = new Image()
           const objectURL = URL.createObjectURL(archivo)
           img.src = objectURL
-  
-  const saveButtonTL = document.getElementById('save-new-tili')
-  if (saveButtonTL) {
-    saveButtonTL.addEventListener('click', () => {
-  
-  }, false) }
-  
+
           document.getElementsByClassName('innerdetails')[2]!.innerHTML = sizemedida
           document.getElementsByClassName('innerdetails')[0]!.innerHTML = imagen.width + " px"
           document.getElementsByClassName('innerdetails')[1]!.innerHTML = imagen.height + " px"
-          // document.getElementById('new-file-input')?.setAttribute('data-content', fileName)
-          this.inputEmpty = fileName
+          console.log(fileName)
           document.getElementById('img-pre-tl')?.setAttribute('src', img.src)
         }
       }
       lector.readAsDataURL(archivo)
     }
   }
-  
+
+
 
 
 DeletePlaza(){
