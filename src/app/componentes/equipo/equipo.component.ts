@@ -11,7 +11,10 @@ export class EquipoComponent {
 
   inputEmpty:string = "Seleccionar archivo"
 
-  ModalProduct(type:string){ document.getElementById(type)?.classList.toggle('show') }
+  ModalProduct(type:string){
+    document.getElementById(type)?.classList.toggle('show')
+    document.getElementById('cont-modal-inputs')?.classList.remove('show')
+   }
 
   FileEdit(event: Event): void {
     const fileInput = event.target as HTMLInputElement

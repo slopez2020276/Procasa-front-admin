@@ -70,7 +70,7 @@
 
 
 <div class="modal" id="add">
-  <div id="close-edit" (click)="ModalProduct('edit')">cerrar</div>
+  <div id="close-edit" (click)="ModalProduct('add')">cerrar</div>
   <h1 class="title-modal">Agregar plaza</h1>
 
 <div class="sub-cont">
@@ -103,9 +103,6 @@
   </div>
 
 
-
-
-
   <div id="cont-modal-inputs">
     <div id="modal-inputs">
       <h3>Agregar Funciones</h3>
@@ -115,7 +112,7 @@
       </div>
 
       <input type="text" class="normal fn-generated" placeholder="función" *ngFor="let div of subsArray; let i = index">
-      <div id="save-fn" (click)="SaveFunctions()">guardar</div>
+      <div id="save-fn" (click)="SaveFunctions()" (click)="ModalProduct('add')">guardar</div>
       <p class="status normal">etapa 2 de 2</p>
     </div>
 
