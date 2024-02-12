@@ -3,6 +3,7 @@ import { UbicacionServiceService } from '../../services/ubicacion-service.servic
 import { HistoriaService } from '../../services/historia.service';
 import { MostrarimgsUbicacionPipe } from '../../pipes/mostrarimgs-ubicacion.pipe'
 import { MostrarPorUbiPipe } from '../../pipes/mostrar-por-ubi.pipe'
+import { UneteEquipoService } from '../../services/unete-equipo.service';
 
 @Component({
   selector: 'app-ubicaciones',

@@ -19,134 +19,39 @@
 
 
 <div id="container-2">
-  <div class="cont-area">
-    <img src="../../assets/img/pilotos.jpg" alt="imagen de área" class="area">
-      <h1 class="title-area bold">CARNICERO</h1>
 
-      <ul class="especificaciones">
-        <li><b class="bold">Ubicación: </b>Boulevard Liberación 5-30 Zona 13. Edificio Procasa</li>
-        <li><b class="bold">Departamento: </b> departamento</li>
-        <li><b class="bold">Empresa: </b>Procasa</li>
-        <li><b class="bold">Fecha de Publicación: </b>01-01-2000</li>
-        <li><b class="bold">Funciones Principales: </b>
-          <ul>
-            <li>función</li>
-            <li>función</li>
-          </ul>
-        </li>
-        <li><b class="bold">Educación: </b>Media</li>
-        <li><b class="bold">Experiencia Laboral: </b># años</li>
-      </ul>
-
-      <div class="cont-to-aplicate">
-          <button class="to-open-form bold">APLICA AQUÍ</button>
-          <p>"Calidad de servicio no es lo que tu da. es lo que el cliente recibe" <br> - Peter Drucker -</p>
-      </div>
-  </div>
-
-
-  <div class="cont-area">
-    <img src="../../assets/img/pilotos.jpg" alt="imagen de área" class="area">
-      <h1 class="title-area bold">CAJERO</h1>
-
-      <ul class="especificaciones">
-        <li><b class="bold">Ubicación: </b>Boulevard Liberación 5-30 Zona 13. Edificio Procasa</li>
-        <li><b class="bold">Departamento: </b> departamento</li>
-        <li><b class="bold">Empresa: </b>Procasa</li>
-        <li><b class="bold">Fecha de Publicación: </b>01-01-2000</li>
-        <li><b class="bold">Funciones Principales: </b>
-          <ul>
-            <li>función</li>
-            <li>función</li>
-          </ul>
-        </li>
-        <li><b class="bold">Educación: </b>Media</li>
-        <li><b class="bold">Experiencia Laboral: </b># años</li>
-      </ul>
-
-      <div class="cont-to-aplicate">
-        <button class="to-open-form bold">APLICA AQUÍ</button>
-        <p>"Calidad de servicio no es lo que tu da. es lo que el cliente recibe" <br> - Peter Drucker -</p>
+  @for (os of dataUnete; track os._id) {
+    <div class="cont-area">
+      <img src="../../assets/img/pilotos.jpg" alt="imagen de área" class="area">
+        <h1 class="title-area bold">{{os.titulo}}</h1>
+  
+        <ul class="especificaciones">
+          <li><b class="bold">Ubicación: </b>{{os.ubicacion}}</li>
+          <li><b class="bold">Departamento: </b> {{os.departamento}}</li>
+          <li><b class="bold">Empresa: </b>{{os.empresa}}</li>
+          <li><b class="bold">Fecha de Publicación: </b>{{os.fecha}}</li>
+          <li><b class="bold">Funciones Principales: </b>
+            <ul>
+              @for (ositems of os.funciones; track $index) {
+                <li  (click)="obtenerItemd($index)" >  {{ositems}}</li>
+              
+              }
+            </ul>
+          </li>
+          <li><b class="bold">Educación: </b>{{os.educacion}}</li>
+          <li><b class="bold">Experiencia Laboral: </b>{{os.experecia}}</li>
+        </ul>
+  
+        <div class="cont-to-aplicate">
+            <button class="to-open-form bold">APLICA AQUÍ</button>
+            <p>"Calidad de servicio no es lo que tu da. es lo que el cliente recibe" <br> - Peter Drucker -</p>
+        </div>
+        <br>
     </div>
-  </div>
+    <br>
+}
 
-
-  <div class="cont-area">
-    <img src="../../assets/img/pilotos.jpg" alt="imagen de área" class="area">
-      <h1 class="title-area bold">ASISTENTE CONTABLE</h1>
-
-      <ul class="especificaciones">
-        <li><b class="bold">Ubicación: </b>Boulevard Liberación 5-30 Zona 13. Edificio Procasa</li>
-        <li><b class="bold">Departamento: </b> departamento</li>
-        <li><b class="bold">Empresa: </b>Procasa</li>
-        <li><b class="bold">Fecha de Publicación: </b>01-01-2000</li>
-        <li><b class="bold">Funciones Principales: </b>
-          <ul>
-            <li>función</li>
-            <li>función</li>
-          </ul>
-        </li>
-        <li><b class="bold">Educación: </b>Media</li>
-        <li><b class="bold">Experiencia Laboral: </b># años</li>
-      </ul>
-
-      <div class="cont-to-aplicate">
-        <button class="to-open-form bold">APLICA AQUÍ</button>
-        <p>"Calidad de servicio no es lo que tu da. es lo que el cliente recibe" <br> - Peter Drucker -</p>
-    </div>
-  </div>
-
-
-  <div class="cont-area">
-    <img src="../../assets/img/pilotos.jpg" alt="imagen de área" class="area">
-      <h1 class="title-area bold">BODEGUERO</h1>
-
-      <ul class="especificaciones">
-        <li><b class="bold">Ubicación: </b>Boulevard Liberación 5-30 Zona 13. Edificio Procasa</li>
-        <li><b class="bold">Departamento: </b> departamento</li>
-        <li><b class="bold">Empresa: </b>Procasa</li>
-        <li><b class="bold">Fecha de Publicación: </b>01-01-2000</li>
-        <li><b class="bold">Funciones Principales: </b>
-          <ul>
-            <li>función</li>
-            <li>función</li>
-          </ul>
-        </li>
-        <li><b class="bold">Educación: </b>Media</li>
-        <li><b class="bold">Experiencia Laboral: </b># años</li>
-      </ul>
-
-      <div class="cont-to-aplicate">
-        <button class="to-open-form bold">APLICA AQUÍ</button>
-        <p>"Calidad de servicio no es lo que tu da. es lo que el cliente recibe" <br> - Peter Drucker -</p>
-    </div>
-  </div>
-
-
-  <div class="cont-area">
-    <img src="../../assets/img/pilotos.jpg" alt="imagen de área" class="area">
-      <h1 class="title-area bold">PILOTO</h1>
-
-      <ul class="especificaciones">
-        <li><b class="bold">Ubicación: </b>Boulevard Liberación 5-30 Zona 13. Edificio Procasa</li>
-        <li><b class="bold">Departamento: </b> departamento</li>
-        <li><b class="bold">Empresa: </b>Procasa</li>
-        <li><b class="bold">Fecha de Publicación: </b>01-01-2000</li>
-        <li><b class="bold">Funciones Principales: </b>
-          <ul>
-            <li>función</li>
-            <li>función</li>
-          </ul>
-        </li>
-        <li><b class="bold">Educación: </b>Media</li>
-        <li><b class="bold">Experiencia Laboral: </b># años</li>
-      </ul>
-
-      <div class="cont-to-aplicate">
-        <button class="to-open-form bold">APLICA AQUÍ</button>
-        <p>"Calidad de servicio no es lo que tu da. es lo que el cliente recibe" <br> - Peter Drucker -</p>
-    </div>
-  </div>
+<br>
 
 
 
