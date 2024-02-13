@@ -22,7 +22,7 @@ export class EquipoComponent {
     document.getElementById(type)?.classList.toggle('show')
     document.getElementById('cont-modal-inputs')?.classList.remove('show')
    }
-  FileEdit(event: Event): void  {
+
 
   FileEdit(event: Event): void {
     const fileInput = event.target as HTMLInputElement
@@ -137,3 +137,4 @@ eliminarUltimoSub() { if (this.subsArray.length > 0) { this.subsArray.pop() } }
 SaveFunctions(){ document.getElementById('cont-modal-inputs')?.classList.toggle('show') }
 
 }
+ 
