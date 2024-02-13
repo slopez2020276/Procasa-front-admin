@@ -354,6 +354,11 @@ div#cont-modal-inputs h3 {
   padding: 1rem;
 }
 
+img#preview-plaza {
+  position: relative;
+  width: 90%;
+}
+
 div#modal-inputs {
   width: 100%;
   height: 100%;

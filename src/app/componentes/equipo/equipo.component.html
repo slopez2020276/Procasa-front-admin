@@ -37,7 +37,6 @@
               <ul>
                 @for (ositems of os.funciones; track $index) {
                   <li  (click)="obtenerItemd($index)" >  {{ositems}}</li>
-
                 }
               </ul>
           </li>
@@ -80,7 +79,7 @@
 <div class="sub-cont">
   <input type="file" (change)="FileEdit($event)" title="seleccionar archivo" accept=".jpg, .png, .jpeg, .avi, .webp" [attr.data-content]="inputEmpty">
 
-  <img src="" id="preview-plaza" alt="" class="img-preview">
+  <img [attr.src]="srcPreview" id="preview-plaza" alt="" class="img-preview">
 </div>
 <div class="sub-cont">
   <div class="sub">

@@ -13,6 +13,7 @@ export class EquipoComponent {
   subsArray: number[] = []
   inputEmpty:string = "Seleccionar archivo"
   inputEmptyB:string = "Seleccionar archivo"
+  srcPreview
 
   ngOnInit(): void {
     this.obtenerUnete()
@@ -28,13 +29,15 @@ export class EquipoComponent {
     const fileInput = event.target as HTMLInputElement
     const archivo = fileInput.files?.[0]
     if (archivo) {
+      console.log(archivo)
+
       const lector = new FileReader()
 
       lector.onload = (eventoLectura:any) => {
         console.log(eventoLectura)
         const imagen = new Image()
         imagen.src = eventoLectura.target.result
-
+          this.srcPreview = imagen.src
         imagen.onload = () => {
           const fileSize: number = archivo.size
           const size: number = fileSize / 1024
