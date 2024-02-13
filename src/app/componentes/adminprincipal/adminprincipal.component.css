@@ -154,6 +154,43 @@ img#navbar-pre-bg, img#preview-bg, img#footer-bg { width: 100%; }
 
 
 
+div#cont-separador {
+  width: 100%;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+div#separador {
+  position: relative;
+  width: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: nowrap;
+}
+
+div.sl-img, div.sl-color {
+  width: 50%;
+  position: relative;
+  padding: .5rem 2rem;
+  background: transparent;
+  color: #252525;
+  /* box-shadow: 2px 0px 4px rgba(0,0,0,.2); */
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background .2s ease-in-out;
+}
+
+
+
+div.sl-img.selected, div.sl-color.selected {
+  background: #AA182C;
+  color: #FFF;
+}
+
+
 div#container-5 form {
   width: 100%;
   display: flex;

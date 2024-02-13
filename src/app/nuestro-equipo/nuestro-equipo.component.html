@@ -24,7 +24,7 @@
     <div class="cont-area">
       <img src="../../assets/img/pilotos.jpg" alt="imagen de área" class="area">
         <h1 class="title-area bold">{{os.titulo}}</h1>
-  
+
         <ul class="especificaciones">
           <li><b class="bold">Ubicación: </b>{{os.ubicacion}}</li>
           <li><b class="bold">Departamento: </b> {{os.departamento}}</li>
@@ -34,14 +34,14 @@
             <ul>
               @for (ositems of os.funciones; track $index) {
                 <li  (click)="obtenerItemd($index)" >  {{ositems}}</li>
-              
+
               }
             </ul>
           </li>
           <li><b class="bold">Educación: </b>{{os.educacion}}</li>
           <li><b class="bold">Experiencia Laboral: </b>{{os.experecia}}</li>
         </ul>
-  
+
         <div class="cont-to-aplicate">
             <button class="to-open-form bold">APLICA AQUÍ</button>
             <p>"Calidad de servicio no es lo que tu da. es lo que el cliente recibe" <br> - Peter Drucker -</p>

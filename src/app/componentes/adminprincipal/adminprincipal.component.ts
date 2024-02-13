@@ -7,8 +7,6 @@ import { NoticasService } from '../../services/noticas.service';
 import { ValoresService } from '../../services/valores.service';
 import { AfterViewInit } from '@angular/core';
 
-
-
 interface HtmlInputEvent extends Event { target: HTMLInputElement }
 
 @Component({
@@ -18,6 +16,7 @@ interface HtmlInputEvent extends Event { target: HTMLInputElement }
 })
 
 export class AdminprincipalComponent implements OnInit, AfterViewInit {
+  statusBackground
   anchoimg:any
   altoimg:any
   desgloce: any|undefined
@@ -96,7 +95,8 @@ private fileUpdateLineaTiempo: any;
 private fileUpdateNoticia:any;
 private fileBackgrud:any
 
-  constructor(){
+constructor(){
+
     this.formulario = new FormGroup({
       DescripcionHistoria: new FormControl((''),[Validators.required]),
       EncalceVideo: new FormControl((''),[Validators.required])
@@ -142,6 +142,8 @@ private fileBackgrud:any
      tipo: new FormControl((''),[Validators.required]),
      })
 
+
+
   }
   ngAfterViewInit(): void {
     this.confirmElement.nativeElement.addEventListener('click', this.onClick.bind(this))
@@ -153,6 +155,7 @@ private fileBackgrud:any
 
 // AL INICIAR
   async ngOnInit()  {
+    document.getElementsByClassName('sl-img')[0]?.classList.toggle('selected')
       const inputfileBefore: any = (document.getElementById('file-portada') as HTMLInputElement | null)?.value
       const inputfileBefbg: any = (document.getElementById('file-bg') as HTMLInputElement | null)?.value
 
@@ -1401,6 +1404,11 @@ FondoBg(){
 
 }
 
+toggleImgColor(status:number){
+  document.getElementsByClassName('sl-img')[0]?.classList.toggle('selected')
+  document.getElementsByClassName('sl-color')[0]?.classList.toggle('selected')
+  this.statusBackground = status
+}
 
 
 

@@ -9,7 +9,7 @@ import { UneteEquipoService } from '../services/unete-equipo.service';
 export class NuestroEquipoComponent implements OnInit{
 
   uneteEquipoService = inject(UneteEquipoService)
-   dataUnete 
+   dataUnete
 
 
   toA(){ document.getElementsByClassName('area')[0]?.scrollIntoView({behavior:"smooth"}) }
@@ -18,12 +18,13 @@ export class NuestroEquipoComponent implements OnInit{
   toD(){ document.getElementsByClassName('area')[3]?.scrollIntoView({behavior:"smooth"}) }
   toE(){ document.getElementsByClassName('area')[4]?.scrollIntoView({behavior:"smooth"}) }
 
+  // toScroll(i:number){ document.getElementsByClassName('area')[i]?.scrollIntoView({behavior:"smooth"}) }
 
 
   ngOnInit(){
     this.getDataUneteEquipo()
   }
-  
+
 async getDataUneteEquipo(){
  const data = await this.uneteEquipoService.otenerUneteEquipo()
  this.dataUnete = data.unete
@@ -36,6 +37,6 @@ obtenerItemd(index:any){
 }
 
 obternerFondo(){
-  
+
 }
 }

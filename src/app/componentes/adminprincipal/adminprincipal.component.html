@@ -18,7 +18,14 @@
 
 
 <div class="container" id="container-bg">
-  <h1 class="bold title-bg">IMAGEN DE FONDO</h1>
+
+  <h1 class="bold title-bg">FONDO DE LA PÁGINA</h1>
+  <div id="cont-separador">
+    <div id="separador">
+      <div class="normal sl-img" (click)="toggleImgColor(0)">imagen</div>
+      <div class="normal sl-color" (click)="toggleImgColor(1)">color</div>
+    </div>
+  </div>
   <div class="sub-container-items">
     <div id="cont-input-file-bg" class="sub-items">
       <input (change)="preSaveBackground($event)" (change)="getFileBack($event)" aaccept="image/png, image/jpeg, image/jpg" id="file-bg" type="file" title="seleccionar archivo" data-content="seleccionar archivo">
