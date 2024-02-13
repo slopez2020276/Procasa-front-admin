@@ -5,7 +5,7 @@
 
   <div id="bar-search">
     <label for="search">Buscar</label>
-    <input  [(ngModel)]="ProductToSearch"  class="bold" type="text" name="search" placeholder="" title="buscar producto">
+    <input class="bold" type="text" name="search" placeholder="" title="buscar producto">
   </div>
   <button id="add-product" (click)="ModalProduct('add')">+ Agregar Producto</button>
 </div>
@@ -16,17 +16,18 @@
 
 
 <div class="producto">
+  <h1 class="normal h1-title-pro">Producto</h1>
   <div class="sub-producto">
     <img src="../../../assets/img/carne de res.png" alt="producto" title="producto">
   </div>
   <div class="sub-producto">
-    <h1>Producto</h1>
     <div class="sub-details">
-      
-      
+
       <ul class="category">
-        <li>CATEGORÍA</li>
+        <li class="normal">CATEGORÍA</li>
           <ul>
+            <li>Sub Categoría</li>
+            <li>Sub Categoría</li>
             <li>Sub Categoría</li>
           </ul>
       </ul>
@@ -37,8 +38,8 @@
 
 
   <div class="actions">
-    <div class="edit-product replace-button" (click)="ModalProduct('edit')">editar</div>
-    <div class="del-product replace-button"(click)="DeleteProduct()">eliminar</div>
+    <div class="edit-product actns" (click)="ModalProduct('edit')">editar</div>
+    <div class="del-product actns"(click)="DeleteProduct()">eliminar</div>
   </div>
 </div>
 
@@ -48,13 +49,13 @@
 
 <!-------- MODAL AGREGAR PRODUCTO ------------------------------------------------------------------------------------------------------------------------------------>
 <div id="modal-add-product">
-  <div id="close-modal-add" (click)="ModalProduct('add')">cerrar</div>
   <h1 class="title-modal">Agregar Producto</h1>
+  <div id="close-modal-add" (click)="ModalProduct('add')">cerrar</div>
 
+  <div class="cont-blocks">
 
-
-  <div class="preview-img-model">
-    <input id="file-edit" (change)="FileEdit($event)" type="file" accept=".jpg, .jpeg, .png, .webp, .avi" title="seleccionar archivo" [attr.data-content]="inputEmpty">
+    <div class="preview-img-model">
+    <input id="file-edit" (change)="FileEdit($event, 'img-pre-tl')" type="file" accept=".jpg, .jpeg, .png, .webp, .avi" title="seleccionar archivo" [attr.data-content]="inputEmpty">
   <div class="details-img">
     <ul>
       <li>ancho: <p class="innerdetails bold"></p></li>
@@ -67,25 +68,27 @@
 </div>
 
 <div class="cont-datos">
-  <label for="name-producto" class="padding head-elem">Producto</label>
-  <input type="text" placeholder="" class="bold padding head-elem" name="name-producto" title="nombre del producto">
-  
-  <button (click)="generarProduct()" class="btn-generate">Nueva categoría</button>
-  <button (click)="eliminarUltimoProducto()" class="btn-delete">Eliminar categoría</button>
+  <input type="text" placeholder="Producto" class="normal" name="name-producto" title="nombre del producto">
 
+  <button (click)="generarSub()" class="btn-generate normal">Nueva categoría</button>
+  <button (click)="eliminarUltimoSub()" class="btn-delete normal">Eliminar categoría</button>
+  <input type="text" class="normal cat-generated" placeholder="categoría" *ngFor="let div of subsArray; let i = index">
 
-  <div class="cont-actions-subs" *ngFor="let div of productArray; let e = index">
+  <!-- <div class="cont-actions-subs" *ngFor="let div of productArray; let e = index">
     <input type="text" placeholder="Categoría" class="input-category bold">
     <div class="cont-btns-add-del">
       <button (click)="generarSub()" class="btn-generate">Generar Sub</button>
       <button (click)="eliminarUltimoSub()" class="btn-delete">Eliminar Sub</button>
     </div>
     <div class="cont-generated-input">
-      <input min="0" type="text" class="bold sub-generated" placeholder="sub" *ngFor="let div of subsArray; let i = index">
     </div>
-  </div>
-  
-  
+  </div> -->
+</div>
+
+<div class="cont-btn-save">
+  <div class="add-save normal">guardar</div>
+</div>
+
 </div>
 
 </div>
@@ -93,7 +96,38 @@
 <!-------- MODAL EDITAR PRODUCTO ------------------------------------------------------------------------------------------------------------------------------------>
 <div id="modal-edit-product">
   <div id="close-modal-edit" (click)="ModalProduct('edit')">cerrar</div>
+
   <h1 class="title-modal">Editar Producto</h1>
+  <div id="close-modal-add" (click)="ModalProduct('edit')">cerrar</div>
+
+  <div class="cont-blocks">
+
+    <div class="preview-img-model">
+    <input id="file-edit" (change)="FileEdit($event, 'img-pre-edit')" type="file" accept=".jpg, .jpeg, .png, .webp, .avi" title="seleccionar archivo" [attr.data-content]="inputEmpty">
+  <div class="details-img">
+    <ul>
+      <li>ancho: <p class="innerdetails bold"></p></li>
+      <li>alto:<p class="innerdetails bold"></p></li>
+      <li>Realcion:<p class="innerdetails bold"></p></li>
+      <li>tamaño:<p class="innerdetails bold"></p></li>
+    </ul>
+    <img src="" alt="" id="img-pre-edit">
+  </div>
+</div>
+
+<div class="cont-datos">
+  <input type="text" placeholder="Producto" class="normal" name="name-producto" title="nombre del producto">
+
+  <!-- <button (click)="generarSubB()" class="btn-generate normal">Nueva categoría</button>
+  <button (click)="eliminarUltimoSubB()" class="btn-delete normal">Eliminar categoría</button> -->
+  <!-- <input type="text" class="normal cat-generated" placeholder="categoría" *ngFor="let div of subsArrayB; let i = index"> -->
+  <input type="text" class="normal cat-generated" placeholder="categoría">
+  <input type="text" class="normal subcat-generated" placeholder="sub categoría">
+</div>
+
+<div class="cont-btn-save">
+  <div class="add-save normal">guardar</div>
+</div>
 
 </div>
 
@@ -101,6 +135,16 @@
 
 
 
+
+
+
+
+
+
+
+
+
+</div>
 <!-------- A L E R T ---------------------------------------------------------------------------------------------------------------------------------------------------->
 <div class="container-alert">
   <div class="alert-model">

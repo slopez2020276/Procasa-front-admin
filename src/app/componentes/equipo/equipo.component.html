@@ -20,42 +20,42 @@
 
 
   @for (os of dataUnete; track os._id) {
-   
+
     <div class="cont">
       <img src="../../../assets/img/pilotos.jpg" alt="">
-      
+
       <h2 class="bold">{{os.titulo}}</h2>
-      
+
       <div class="datos">
-      
+
       <ul class="ul-data">
           <li class="bold">Ubicación: <span>{{os.ubicacion}}</span></li>
           <li class="bold">Departamento: <span>{{os.departamento}}</span></li>
           <li class="bold">Empresa: <span>{{os.empresa}}</span></li>
           <li class="bold">Fecha de publicación: <span>{{os.fecha}}</span></li>
-          <li class="bold">Funciones Principales: 
+          <li class="bold">Funciones Principales:
               <ul>
                 @for (ositems of os.funciones; track $index) {
                   <li  (click)="obtenerItemd($index)" >  {{ositems}}</li>
-                
+
                 }
               </ul>
           </li>
           <li class="bold">Educación: <span></span>{{os.educacion}}</li>
           <li class="bold">Experiencia laboral: <span>{{os.experecia}}</span></li>
       </ul>
-      
+
       <div class="cont-buttons">
           <div class="actions">editar</div>
           <div class="actions" (click)="DeletePlaza()">eliminar</div>
       </div>
-      
-      
-      
+
+
+
       <div class="container-alert">
           <div class="alert-model">
               <p class="inner-message bold"></p>
-      
+
               <div class="message"> <h1 class="innermsg"></h1></div>
               <div class="cont-btns-alert">
                 <button class="confirm">confirmar</button>
@@ -64,7 +64,7 @@
             </div>
       </div>
       </div> <!-- DATOS -->
-      
+
       </div>
     }
 </div> <!-- CONTAINER -->

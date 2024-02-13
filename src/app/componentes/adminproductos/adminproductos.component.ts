@@ -1,5 +1,4 @@
 import { Component } from '@angular/core'
-import { v4 as uuidv4 } from 'uuid'
 
 
 @Component({
@@ -11,17 +10,19 @@ export class AdminproductosComponent {
   ProductToSearch: any
   subCount: number = 0
   subsArray: number[] = []
+  subsArrayB: number[] = []
   productArray: number[] = []
   inputEmpty:string = "Seleccionar archivo"
-  
+  inputEmptyEdit:string = "Seleccionar archivo"
+
 ModalProduct(type:string){ document.getElementById('modal-'+type+'-product')?.classList.toggle('show') }
 
 DeleteProduct(){
-  confirm("¿eliminar?")
+
 }
 
 
-FileEdit(event: Event): void  {
+FileEdit(event: Event, idfile:string): void  {
 
   const fileInput = event.target as HTMLInputElement
   const archivo = fileInput.files?.[0]
@@ -54,7 +55,7 @@ if (saveButtonTL) {
         document.getElementsByClassName('innerdetails')[1]!.innerHTML = imagen.height + " px"
         // document.getElementById('new-file-input')?.setAttribute('data-content', fileName)
         this.inputEmpty = fileName
-        document.getElementById('img-pre-tl')?.setAttribute('src', img.src)
+        document.getElementById(idfile)?.setAttribute('src', img.src)
       }
     }
     lector.readAsDataURL(archivo)
@@ -67,6 +68,11 @@ eliminarUltimoSub() { if (this.subsArray.length > 0) { this.subsArray.pop() } }
 
 generarProduct() { const newProIndex = this.productArray.length + 1; this.productArray.push(newProIndex) }
 eliminarUltimoProducto() { if (this.productArray.length > 0) { this.productArray.pop() } }
+
+
+generarSubB() { const newSubIndex = this.subsArrayB.length + 1; this.subsArrayB.push(newSubIndex) }
+eliminarUltimoSubB() { if (this.subsArrayB.length > 0) { this.subsArrayB.pop() } }
+
 
 
 

@@ -131,10 +131,10 @@ img#logo-menu {
 
 div#event-hover {
   position: absolute;
-  width: 20px;
+  width: 30px;
   height: 100%;
   top: 0;
-  right: -20px;
+  right: -30px;
   background: transparent;
   z-index: 999;
 }

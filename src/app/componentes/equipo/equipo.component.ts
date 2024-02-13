@@ -11,9 +11,9 @@ export class EquipoComponent {
   dataUnete
   subCount: number = 0
   subsArray: number[] = []
-
   inputEmpty:string = "Seleccionar archivo"
-  
+  inputEmptyB:string = "Seleccionar archivo"
+
   ngOnInit(): void {
     this.obtenerUnete()
   }
@@ -34,18 +34,6 @@ export class EquipoComponent {
         console.log(eventoLectura)
         const imagen = new Image()
         imagen.src = eventoLectura.target.result
-        console.log(imagen.src)
-
-
-
-        function mostrarProgresoCarga(eventoLectura) {
-          if (eventoLectura.lengthComputable) {
-              var porcentajeCargado = Math.round((eventoLectura.loaded / eventoLectura.total) * 100)
-              console.log("Progreso de carga: " + porcentajeCargado + "%")
-          }
-      }
-
-      lector.onprogress = mostrarProgresoCarga
 
         imagen.onload = () => {
           const fileSize: number = archivo.size
@@ -67,7 +55,6 @@ export class EquipoComponent {
           document.getElementsByClassName('innerdetails')[2]!.innerHTML = sizemedida
           document.getElementsByClassName('innerdetails')[0]!.innerHTML = imagen.width + " px"
           document.getElementsByClassName('innerdetails')[1]!.innerHTML = imagen.height + " px"
-          console.log(fileName)
           document.getElementById('img-pre-tl')?.setAttribute('src', img.src)
         }
       }
@@ -110,7 +97,7 @@ MessageSuccess(text: string, i: number){
       document.getElementsByClassName('message')[i]?.classList.add('show')
       document.getElementsByClassName('timesuccess')[i]?.classList.toggle('lesswidth')
       document.getElementsByClassName('cont-btns-alert')[i]?.classList.add('show')
-      
+
 setTimeout(function(){
   document.getElementsByClassName('message')[i]?.classList.remove('show')
   document.getElementsByClassName('cont-btns-alert')[i]?.classList.remove('show')
@@ -124,12 +111,12 @@ async obtenerUnete(){
   this.dataUnete = data.unete
   console.log(data)
   }
-  
-  
+
+
   obtenerItemd(index:any){
   console.log(index)
   }
-  
+
 
 generarSub() { const newSubIndex = this.subsArray.length + 1; this.subsArray.push(newSubIndex) }
 eliminarUltimoSub() { if (this.subsArray.length > 0) { this.subsArray.pop() } }
@@ -137,4 +124,3 @@ eliminarUltimoSub() { if (this.subsArray.length > 0) { this.subsArray.pop() } }
 SaveFunctions(){ document.getElementById('cont-modal-inputs')?.classList.toggle('show') }
 
 }
- 
