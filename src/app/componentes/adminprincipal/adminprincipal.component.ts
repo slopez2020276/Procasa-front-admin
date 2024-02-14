@@ -21,6 +21,7 @@ export class AdminprincipalComponent implements OnInit, AfterViewInit {
   altoimg:any
   desgloce: any|undefined
   formulario: FormGroup
+  
   formularioEditHistoria: FormGroup
   formularioEditlineaTiempo: FormGroup
   formularioMisionValor: FormGroup
@@ -1020,8 +1021,9 @@ onClickNewTimeLine() {
 
     console.log(this.formularioAgregarLineaTiempo.value.fecha)
     this.lineaService.sendPost(body)
+
     .subscribe(res =>{
-      console.log(res), this.obtenerLinea(),this.fileTmp = null
+      console.log(res),console.log(body), this.obtenerLinea(),this.fileTmp = null
       this.MessageSuccess('Datos guardados exitosamente',7)
 
     })

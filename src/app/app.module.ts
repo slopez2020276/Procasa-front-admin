@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, NgModel } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { PrincipalComponent } from './componentes/principal/principal.component';
@@ -89,8 +89,9 @@ import { EquipoComponent } from './componentes/equipo/equipo.component';
     HttpClientModule,
     FormsModule,
     NgOptimizedImage,
+    
   ],
-  providers: [],
+  providers: [NgModel],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
