@@ -72,7 +72,6 @@ constructor(){
           const objectURL = URL.createObjectURL(archivo)
           img.src = objectURL
 
-          document.getElementById('preview-plaza')?.setAttribute('src', img.src)
           document.getElementsByClassName('innerdetails')[2]!.innerHTML = sizemedida
           document.getElementsByClassName('innerdetails')[0]!.innerHTML = imagen.width + " px"
           document.getElementsByClassName('innerdetails')[1]!.innerHTML = imagen.height + " px"
