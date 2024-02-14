@@ -29,7 +29,6 @@ ModalProduct(type:string){
     const fileInput = event.target as HTMLInputElement
     const archivo = fileInput.files?.[0]
     if (archivo) {
-      console.log(archivo)
 
       const lector = new FileReader()
 
@@ -125,6 +124,6 @@ async obtenerUnete(){
 generarSub() { const newSubIndex = this.subsArray.length + 1; this.subsArray.push(newSubIndex) }
 eliminarUltimoSub() { if (this.subsArray.length > 0) { this.subsArray.pop() } }
 
-SaveFunctions(){ document.getElementById('cont-modal-inputs')?.classList.toggle('show') }
+SaveFunctions(){ }
 
 }
