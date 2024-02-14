@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
-import { first, firstValueFrom } from 'rxjs';
+import { Observable, first, firstValueFrom } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -22,8 +22,20 @@ export class UneteEquipoService {
    }
 
     crearUneteEquipo(fromValue:any){
+      console.log(fromValue)
       return firstValueFrom(
-        this.httClient.post<any>(`${this.baseUrl}/agregarEmpleo`,fromValue)
+        this.httClient.post<any>(`${this.baseUrl}/crearEmpleo`, fromValue )
+        
       )
     }
+
+    sendPost(body:FormData):Observable<any>{
+      return this.httClient.post(`${this.baseUrl}/agregarEventoLineadeTiempo`, body)
+    }
+    
+
+    sendCreatePlaza(body:FormData):Observable<any>{
+      return this.httClient.post(`${this.baseUrl}/crearEmpleo`, body)
+    }
+    
 }

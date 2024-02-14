@@ -16,9 +16,9 @@
 <div id="container">
 
 
-  <!-- @for (os of dataUnete; track os._id) { -->
+  @for (os of dataUnete; track os._id) { -->
 
-    <!-- <div class="cont">
+    <div class="cont"> 
       <img src="../../../assets/img/pilotos.jpg" alt="">
 
       <h2 class="bold">{{os.titulo}}</h2>
@@ -61,125 +61,71 @@
       </div>
       </div> <!-- DATOS -->
 
-      <!-- </div> -->
-    <!-- } -->
-    <!-- - - - - - - - - - - - -  - - - - - -  - - - - - - - - - - - - - - - -->
-
-    <div class="cont">
-      <img src="../../../assets/img/pilotos.jpg" alt="">
-
-      <h2 class="bold">TITLE</h2>
-
-      <div class="datos">
-
-      <ul class="ul-data">
-          <li class="bold">Ubicación: <span>...</span></li>
-          <li class="bold">Departamento: <span>...</span></li>
-          <li class="bold">Empresa: <span>...</span></li>
-          <li class="bold">Fecha de publicación: <span>...</span></li>
-          <li class="bold">Funciones Principales:
-              <ul>
-                  <li> .... </li>
-                  <li> .... </li>
-              </ul>
-          </li>
-          <li class="bold">Educación: <span></span>...</li>
-          <li class="bold">Experiencia laboral: <span>...</span></li>
-      </ul>
-
-      <div class="cont-buttons">
-          <div class="actions" (click)="ModalFunctions(0)">funciones</div>
-          <div class="actions" (click)="ModalProduct('edit')">editar</div>
-          <div class="actions" (click)="DeletePlaza()">eliminar</div>
       </div>
+    }
+  
 
-      <div class="fns-add">
-        <div class="close-minmodal" (click)="ModalFunctions(0)">cerrar</div>
 
-        <div class="cont-in-fns">
-          <div class="btns-micmodal" (click)="generarSub()">crear</div>
-          <div class="btns-micmodal" (click)="eliminarUltimoSub()">eliminar</div>
-          <input type="text" placeholder="función" title="Función de plaza" *ngFor="let div of subsArray; let i = index">
 
-          <div id="save-fns" (click)="ModalFunctions(0)">guardar</div>
+
+<form [formGroup]="formAgregarPlaza" >
+
+  
+  <div class="modal" id="add">
+    <div id="close-edit" (click)="ModalProduct('add')">cerrar</div>
+    <h1 class="title-modal">Agregar plaza</h1>
+    
+    <div class="sub-cont">
+      <div id="sub-cont-details-img">
+        <input type="file" (change)="FileEdit($event)"   (change)="getFile($event)" title="seleccionar archivo" accept=".jpg, .png, .jpeg, .avi, .webp" [attr.data-content]="inputEmpty">
+        <div>
+          <ul>
+            <li>ancho: <span class="bold danger-red" id="innerwidth-add"></span> </li>
+            <li>alto:  <span class="bold danger-red" id="innerheight-add"></span> </li>
+            <li>peso:  <span class="bold danger-red" id="innersize-add"></span></li>
+          </ul>
         </div>
-      </div>
-
-
-      <div class="container-alert">
-          <div class="alert-model">
-              <p class="inner-message bold"></p>
-
-              <div class="message"> <h1 class="innermsg"></h1></div>
-              <div class="cont-btns-alert">
-                <button class="confirm">confirmar</button>
-                <div class="replace-button cancel">cancelar</div>
-              </div>
-            </div>
-      </div>
-      </div> <!-- DATOS -->
-
-      </div>
-
-
-</div> <!-- CONTAINER -->
-
-</div> <!-- CONTAINER MAIN -->
-
-
-
-<div class="modal" id="add">
-  <div id="close-edit" (click)="ModalProduct('add')">cerrar</div>
-  <h1 class="title-modal">Agregar plaza</h1>
-
-<div class="sub-cont">
-  <div id="sub-cont-details-img">
-    <input type="file" (change)="FileAdd($event)" title="seleccionar archivo" accept=".jpg, .png, .jpeg, .avi, .webp" [attr.data-content]="inputEmpty">
-      <div>
-        <ul>
-          <li>ancho: <span class="bold danger-red" id="innerwidth-add"></span> </li>
-          <li>alto:  <span class="bold danger-red" id="innerheight-add"></span> </li>
-          <li>peso:  <span class="bold danger-red" id="innersize-add"></span></li>
-        </ul>
-      </div>
   </div>
 
   <img [attr.src]="srcPreviewAdd" id="preview-plaza" alt="" class="img-preview">
 </div>
 <div class="sub-cont">
   <div class="sub">
-    <input type="text" class="normal" placeholder="Nombre plaza/vacante">
-    <input type="text" class="normal" placeholder="Departamento">
-    <input type="text" class="normal" placeholder="Empresa">
+    <input type="text"  formControlName="titulo" class="normal" placeholder="Nombre plaza/vacante">
+    <input type="text" formControlName="departamento" class="normal" placeholder="Departamento">
+    <input type="text" formControlName="empresa" class="normal" placeholder="Empresa">
     <input type="date" class="normal">
   </div>
-
-
+  
+  
   <div class="sub">
     <!-- <div class="fn-principales">
       <p class="normal">Funciones principales</p> <span id="add-fn" class="normal" (click)="SaveFunctions()">+</span>
     </div> -->
-
-  <input type="text" class="normal" placeholder="Educación requerida">
-  <textarea name="" id="" class="normal" placeholder="Experiencia laboral"></textarea>
-</div>
-</div>
-
-<!-- <p class="status normal">etapa 1 de 2</p> -->
-
-  <div class="cont-btns">
-    <div class="btn-save" (click)="SaveFunctions()">continuar</div>
+    
+    <input type="text" formControlName="educacion" class="normal" placeholder="Educación requerida">
+    <textarea name="" id=""  formControlName="experiencia"  class="normal" placeholder="Experiencia laboral"></textarea>
   </div>
+</div>
+
+<p class="status normal">etapa 1 de 2</p>
+
+<div class="cont-btns">
+  <div class="btn-save" (click)="crearPlaza()">continuar</div>
+  
+  <button (click)="sendFileplaza()" >hola</button>
+  
+</div>
 
 
-  <!-- <div id="cont-modal-inputs">
-    <div id="modal-inputs">
-      <h3>Agregar Funciones</h3>
-      <div class="btns-fn">
-        <div id="create-fn" (click)="generarSub()">agregar</div>
-        <div id="delete-fn" (click)="eliminarUltimoSub()">eliminar</div>
+<!-- <!-- <div id="cont-modal-inputs"> 
+  <div id="modal-inputs">
+    <h3>Agregar Funciones</h3>
+    <div class="btns-fn">
+      <div id="create-fn" (click)="generarSub()">agregar</div>
+      <div id="delete-fn" (click)="eliminarUltimoSub()">eliminar</div>
       </div>
-
+      
       <input type="text" class="normal fn-generated" placeholder="función" *ngFor="let div of subsArray; let i = index">
       <div class="btns-fn">
         <div id="back-fn" (click)="SaveFunctions()">regresar</div>
@@ -187,10 +133,11 @@
       </div>
       <p class="status normal">etapa 2 de 2</p>
     </div>
-
+    
   </div> -->
-
+  
 </div>
+</form>
 
 <!-- ------------------------------------------------------------------------------------------------------------------------------------------------------------ -->
 

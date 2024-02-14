@@ -1,6 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { UneteEquipoService } from '../../services/unete-equipo.service';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-equipo',
@@ -17,12 +17,26 @@ export class EquipoComponent {
   inputEmptyB:string = "Seleccionar archivo"
   srcPreviewAdd
   srcPreviewEdit
+
+
   fomrumarioAgregarPlaza : FormGroup
+
+  formAgregarPlaza: FormGroup
+
 
   private fileTmp:any;
 
 
 constructor(){
+
+  this.formAgregarPlaza = new FormGroup({
+    ubicacion : new FormControl(),
+    departamento : new FormControl(),
+    empresa : new FormControl(),
+    educacion : new FormControl(),
+    experiencia : new FormControl(),
+    titulo : new FormControl(),
+  })
   this.fomrumarioAgregarPlaza = new FormGroup({
     ubicacion : new FormControl(),
     departamento : new FormControl(),
@@ -33,7 +47,6 @@ constructor(){
     titulo : new FormControl(),
   })
 }
-
   ngOnInit(): void {
     this.obtenerUnete()
   }
@@ -43,6 +56,15 @@ constructor(){
     document.getElementById('cont-modal-inputs')?.classList.remove('show')
    }
 
+
+   getFile($event: any): void {
+    //TODO esto captura el archivo!
+    const [ file ] = $event.target.files;
+    this.fileTmp = {
+      fileRaw:file,
+      fileName:file.name
+    }
+  }
 
   FileEdit(event: Event): void {
     const fileInput = event.target as HTMLInputElement
@@ -199,6 +221,94 @@ SaveFunctions(){ }
 
 
 ModalFunctions(i:number){ document.getElementsByClassName('fns-add')[i]?.classList.toggle('show') }
+
+
+async NuevaPlaza(){
+  const rest =  await this.uneterService.crearUneteEquipo(this.formAgregarPlaza.value)
+  console.log(rest)
+
+}
+
+
+agregarPlaza():void{
+
+  const body = new FormData()
+
+  if(this.fileTmp){
+    body.append('imgPhat', this.fileTmp.fileRaw, this.fileTmp.fileName)
+    body.append('titulo', this.fomrumarioAgregarPlaza.value.titulo)
+    body.append('ubicacion', this.fomrumarioAgregarPlaza.value.ubicacion)
+    body.append('departamento',this.fomrumarioAgregarPlaza.value.departamento)
+    body.append('empresa',this.fomrumarioAgregarPlaza.value.empresa)
+    body.append('educacion',this.fomrumarioAgregarPlaza.value.educacion)
+    body.append('experecia',this.fomrumarioAgregarPlaza.value.experiencia)
+    body.append('fecha',this.fomrumarioAgregarPlaza.value.fecha)
+
+
+  }else{
+    body.append('titulo', this.fomrumarioAgregarPlaza.value.titulo)
+    body.append('ubicacion', this.fomrumarioAgregarPlaza.value.ubicacion)
+    body.append('departamento',this.fomrumarioAgregarPlaza.value.departamento)
+    body.append('empresa',this.fomrumarioAgregarPlaza.value.empresa)
+    body.append('educacion',this.fomrumarioAgregarPlaza.value.educacion)
+    body.append('experecia',this.fomrumarioAgregarPlaza.value.experiencia)
+    body.append('fecha',this.fomrumarioAgregarPlaza.value.fecha)
+
+  }
+  this.uneterService.sendCreatePlaza(body)
+
+
+  .subscribe(res =>{console.log(res),  console.log(body), this.obtenerUnete(),this.fileTmp = null})
+
+}
+
+
+
+/**
+ * Sends a file to create a plaza.
+ */
+sendFileplaza():void{
+
+  const body = new FormData()
+  if(this.fileTmp){
+    body.append('imgPhat', this.fileTmp.fileRaw, this.fileTmp.fileName)
+    body.append('titulo', this.formAgregarPlaza.value.titulo)
+    body.append('ubicacion', this.formAgregarPlaza.value.ubicacion)
+    body.append('departamento',this.formAgregarPlaza.value.departamento)
+    body.append('empresa',this.formAgregarPlaza.value.empresa)
+    body.append('educacion',this.formAgregarPlaza.value.educacion)
+    body.append('experecia',this.formAgregarPlaza.value.experiencia)
+    body.append('fecha',this.formAgregarPlaza.value.fecha)
+    console.log('con imagen')
+
+
+
+  }else{
+    console.log('sin img')
+    body.append('titulo', this.formAgregarPlaza.value.titulo)
+    body.append('ubicacion', this.formAgregarPlaza.value.ubicacion)
+    body.append('departamento',this.formAgregarPlaza.value.departamento)
+    body.append('empresa',this.formAgregarPlaza.value.empresa)
+    body.append('educacion',this.formAgregarPlaza.value.educacion)
+    body.append('experecia',this.formAgregarPlaza.value.experiencia)
+    body.append('fecha',this.formAgregarPlaza.value.fecha)
+    
+
+
+  }
+
+  this.uneterService.sendCreatePlaza(body)
+  .subscribe(res => {console.log(res), console.log(body) ,this.obtenerUnete(),this.fileTmp = null})
+}
+
+
+async crearPlaza(){
+  const respuestaCrearNoticia = await this.uneterService.crearUneteEquipo(this.fomrumarioAgregarPlaza.value)
+  console.log(respuestaCrearNoticia)
+  this.obtenerUnete()
+ }
+
+
 }
 
 
