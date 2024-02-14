@@ -1023,7 +1023,6 @@ div#sub-cont-color.selected {display: flex;}
 
 
 div#sub-cont-color input[type=color] {
-  margin-left: 2rem;
   width: 100px;
   height: 50px;
   padding: 0;

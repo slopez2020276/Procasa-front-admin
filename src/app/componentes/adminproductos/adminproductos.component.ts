@@ -69,11 +69,7 @@ eliminarUltimoSub() { if (this.subsArray.length > 0) { this.subsArray.pop() } }
 generarProduct() { const newProIndex = this.productArray.length + 1; this.productArray.push(newProIndex) }
 eliminarUltimoProducto() { if (this.productArray.length > 0) { this.productArray.pop() } }
 
-
 generarSubB() { const newSubIndex = this.subsArrayB.length + 1; this.subsArrayB.push(newSubIndex) }
 eliminarUltimoSubB() { if (this.subsArrayB.length > 0) { this.subsArrayB.pop() } }
-
-
-
 
 }
