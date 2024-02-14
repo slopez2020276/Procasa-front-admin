@@ -1,5 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { UneteEquipoService } from '../../services/unete-equipo.service';
+import { FormControl, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-equipo',
@@ -7,6 +8,7 @@ import { UneteEquipoService } from '../../services/unete-equipo.service';
   styleUrl: './equipo.component.css'
 })
 export class EquipoComponent {
+
   uneterService = inject(UneteEquipoService)
   dataUnete
   subCount: number = 0
@@ -14,15 +16,30 @@ export class EquipoComponent {
   inputEmpty:string = "Seleccionar archivo"
   inputEmptyB:string = "Seleccionar archivo"
   srcPreview
+  fomrumarioAgregarPlaza : FormGroup
 
+  private fileTmp:any;
+
+
+constructor(){
+  this.fomrumarioAgregarPlaza = new FormGroup({
+    ubicacion : new FormControl(),
+    departamento : new FormControl(),
+    empresa : new FormControl(),
+    fecha : new FormControl(),
+    educacion : new FormControl(),
+    experiencia : new FormControl(),
+    titulo : new FormControl(),
+  })
+}
   ngOnInit(): void {
     this.obtenerUnete()
   }
 
-ModalProduct(type:string){
+  ModalProduct(type:string){
     document.getElementById(type)?.classList.toggle('show')
     document.getElementById('cont-modal-inputs')?.classList.remove('show')
-}
+   }
 
 
   FileEdit(event: Event): void {
@@ -55,11 +72,11 @@ ModalProduct(type:string){
           const objectURL = URL.createObjectURL(archivo)
           img.src = objectURL
 
-          document.getElementById('innersize-add')!.innerHTML = sizemedida
-          document.getElementById('innerwidth-add')!.innerHTML = imagen.width + " px"
-          document.getElementById('innerheight-add')!.innerHTML = imagen.height + " px"
           document.getElementById('preview-plaza')?.setAttribute('src', img.src)
-          this.inputEmpty = fileName
+          document.getElementsByClassName('innerdetails')[2]!.innerHTML = sizemedida
+          document.getElementsByClassName('innerdetails')[0]!.innerHTML = imagen.width + " px"
+          document.getElementsByClassName('innerdetails')[1]!.innerHTML = imagen.height + " px"
+          document.getElementById('img-pre-tl')?.setAttribute('src', img.src)
         }
       }
       lector.readAsDataURL(archivo)
@@ -127,4 +144,10 @@ eliminarUltimoSub() { if (this.subsArray.length > 0) { this.subsArray.pop() } }
 
 SaveFunctions(){ document.getElementById('cont-modal-inputs')?.classList.toggle('show') }
 
+
+
+
 }
+
+
+
