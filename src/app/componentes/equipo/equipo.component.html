@@ -97,7 +97,11 @@
         <div class="close-minmodal" (click)="ModalFunctions(0)">cerrar</div>
 
         <div class="cont-in-fns">
-          <input type="text" placeholder="función" title="Función de plaza">
+          <div class="btns-micmodal" (click)="generarSub()">crear</div>
+          <div class="btns-micmodal" (click)="eliminarUltimoSub()">eliminar</div>
+          <input type="text" placeholder="función" title="Función de plaza" *ngFor="let div of subsArray; let i = index">
+
+          <div id="save-fns" (click)="ModalFunctions(0)">guardar</div>
         </div>
       </div>
 
