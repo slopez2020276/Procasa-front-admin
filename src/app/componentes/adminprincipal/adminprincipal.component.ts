@@ -155,7 +155,7 @@ constructor(){
 
 // AL INICIAR
   async ngOnInit()  {
-    document.getElementsByClassName('sl-img')[0]?.classList.toggle('selected')
+    // document.getElementsByClassName('sl-img')[0]?.classList.toggle('selected')
       const inputfileBefore: any = (document.getElementById('file-portada') as HTMLInputElement | null)?.value
       const inputfileBefbg: any = (document.getElementById('file-bg') as HTMLInputElement | null)?.value
 
@@ -1404,12 +1404,16 @@ FondoBg(){
 
 }
 
-toggleImgColor(status:number){
-  document.getElementsByClassName('sl-img')[0]?.classList.toggle('selected')
-  document.getElementsByClassName('sl-color')[0]?.classList.toggle('selected')
+toggleImgColor(status:number, cont:string){
+  document.getElementById('sub-cont-img')?.classList.remove('selected')
+  document.getElementById('sub-cont-color')?.classList.remove('selected')
+  document.getElementsByClassName('sl-img')[0]?.classList.remove('selected')
+  document.getElementsByClassName('sl-color')[0]?.classList.remove('selected')
+
+  document.getElementsByClassName('sl-'+cont)[0]?.classList.add('selected')
+  document.getElementById('sub-cont-'+cont)?.classList.add('selected')
   this.statusBackground = status
 }
-
 
 
 

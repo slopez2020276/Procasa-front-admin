@@ -22,11 +22,13 @@
   <h1 class="bold title-bg">FONDO DE LA PÁGINA</h1>
   <div id="cont-separador">
     <div id="separador">
-      <div class="normal sl-img" (click)="toggleImgColor(0)">imagen</div>
-      <div class="normal sl-color" (click)="toggleImgColor(1)">color</div>
+      <div class="normal sl-img" (click)="toggleImgColor(0, 'img')">imagen</div>
+      <div class="normal sl-color" (click)="toggleImgColor(1, 'color')">color</div>
     </div>
   </div>
-  <div class="sub-container-items">
+
+
+  <div class="sub-container-items" id="sub-cont-img">
     <div id="cont-input-file-bg" class="sub-items">
       <input (change)="preSaveBackground($event)" (change)="getFileBack($event)" aaccept="image/png, image/jpeg, image/jpg" id="file-bg" type="file" title="seleccionar archivo" data-content="seleccionar archivo">
       <!-- <input type="file" (change)="manejarCambioArchivo($event)" title="input for demo"> -->
@@ -65,7 +67,7 @@
   </div>
 
 <div id="sub-cont-color">
-  <p>Seleccionar color de fondo</p>
+  <p class="normal">Seleccionar color de fondo</p>
   <input type="color" title="color de fondo" [(ngModel)]="colorBg" (change)="FondoBg()" data-color="">
 </div>
 

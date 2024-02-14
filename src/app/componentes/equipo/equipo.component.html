@@ -77,16 +77,25 @@
   <h1 class="title-modal">Agregar plaza</h1>
 
 <div class="sub-cont">
-  <input type="file" (change)="FileEdit($event)" title="seleccionar archivo" accept=".jpg, .png, .jpeg, .avi, .webp" [attr.data-content]="inputEmpty">
+  <div id="sub-cont-details-img">
+    <input type="file" (change)="FileEdit($event)" title="seleccionar archivo" accept=".jpg, .png, .jpeg, .avi, .webp" [attr.data-content]="inputEmpty">
+      <div>
+        <ul>
+          <li>ancho: <span class="bold danger-red" id="innerwidth-add"></span> </li>
+          <li>alto:  <span class="bold danger-red" id="innerheight-add"></span> </li>
+          <li>peso:  <span class="bold danger-red" id="innersize-add"></span></li>
+        </ul>
+      </div>
+  </div>
 
   <img [attr.src]="srcPreview" id="preview-plaza" alt="" class="img-preview">
 </div>
 <div class="sub-cont">
   <div class="sub">
-    <input type="text" placeholder="Nombre plaza/vacante">
-    <input type="text" placeholder="Departamento">
-    <input type="text" placeholder="Empresa">
-    <input type="date">
+    <input type="text" class="normal" placeholder="Nombre plaza/vacante">
+    <input type="text" class="normal" placeholder="Departamento">
+    <input type="text" class="normal" placeholder="Empresa">
+    <input type="date" class="normal">
   </div>
 
 
@@ -95,8 +104,8 @@
       <p class="normal">Funciones principales</p> <span id="add-fn" class="normal" (click)="SaveFunctions()">+</span>
     </div> -->
 
-  <input type="text" placeholder="Educación requerida">
-  <textarea name="" id="" placeholder="Experiencia laboral"></textarea>
+  <input type="text" class="normal" placeholder="Educación requerida">
+  <textarea name="" id="" class="normal" placeholder="Experiencia laboral"></textarea>
 </div>
 </div>
 
@@ -110,13 +119,16 @@
   <div id="cont-modal-inputs">
     <div id="modal-inputs">
       <h3>Agregar Funciones</h3>
-      <div id="btns-fn">
+      <div class="btns-fn">
         <div id="create-fn" (click)="generarSub()">agregar</div>
         <div id="delete-fn" (click)="eliminarUltimoSub()">eliminar</div>
       </div>
 
       <input type="text" class="normal fn-generated" placeholder="función" *ngFor="let div of subsArray; let i = index">
-      <div id="save-fn" (click)="SaveFunctions()" (click)="ModalProduct('add')">guardar</div>
+      <div class="btns-fn">
+        <div id="back-fn" (click)="SaveFunctions()">regresar</div>
+        <div id="save-fn" (click)="SaveFunctions()" (click)="ModalProduct('add')">guardar</div>
+      </div>
       <p class="status normal">etapa 2 de 2</p>
     </div>
 

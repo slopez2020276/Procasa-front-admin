@@ -19,10 +19,10 @@ export class EquipoComponent {
     this.obtenerUnete()
   }
 
-  ModalProduct(type:string){
+ModalProduct(type:string){
     document.getElementById(type)?.classList.toggle('show')
     document.getElementById('cont-modal-inputs')?.classList.remove('show')
-   }
+}
 
 
   FileEdit(event: Event): void {
@@ -55,10 +55,11 @@ export class EquipoComponent {
           const objectURL = URL.createObjectURL(archivo)
           img.src = objectURL
 
-          document.getElementsByClassName('innerdetails')[2]!.innerHTML = sizemedida
-          document.getElementsByClassName('innerdetails')[0]!.innerHTML = imagen.width + " px"
-          document.getElementsByClassName('innerdetails')[1]!.innerHTML = imagen.height + " px"
-          document.getElementById('img-pre-tl')?.setAttribute('src', img.src)
+          document.getElementById('innersize-add')!.innerHTML = sizemedida
+          document.getElementById('innerwidth-add')!.innerHTML = imagen.width + " px"
+          document.getElementById('innerheight-add')!.innerHTML = imagen.height + " px"
+          document.getElementById('preview-plaza')?.setAttribute('src', img.src)
+          this.inputEmpty = fileName
         }
       }
       lector.readAsDataURL(archivo)

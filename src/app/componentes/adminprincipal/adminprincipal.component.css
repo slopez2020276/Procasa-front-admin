@@ -150,6 +150,9 @@ div.sub-items {
   position: relative;
 }
 
+div#sub-cont-img { display: none; }
+div#sub-cont-img.selected { display: flex; }
+
 img#navbar-pre-bg, img#preview-bg, img#footer-bg { width: 100%; }
 
 
@@ -1004,13 +1007,20 @@ div#sub-cont-color {
   position: relative;
   padding: 1rem;
   margin-top: 2rem;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+div#sub-cont-color p {
+  width: 100%;
+  text-align: center;
+  font-size: 12pt;
+  padding: 1rem ;
 }
 
-div#sub-cont-color {
-  display: flex;
-  justify-content: start;
-  align-items: center;
-}
+div#sub-cont-color.selected {display: flex;}
+
 
 div#sub-cont-color input[type=color] {
   margin-left: 2rem;

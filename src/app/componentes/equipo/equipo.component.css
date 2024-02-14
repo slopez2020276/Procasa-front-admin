@@ -261,6 +261,39 @@ input[type=text], input[type=date], textarea{
   padding: .5rem 1rem;
 }
 
+div#sub-cont-details-img {
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+  align-content: space-between;
+  flex-wrap: wrap;
+  width: 90%;
+  margin-top: 1rem;
+}
+
+div#sub-cont-details-img input {
+  width: 45%;
+  margin-top: 0;
+}
+
+div#sub-cont-details-img div {
+  width: 45%;
+}
+
+div#sub-cont-details-img div ul {
+  width: 100%;
+  list-style: none;
+}
+
+div#sub-cont-details-img div ul li {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: nowrap;
+}
+
+
 div.fn-principales {
   font-size: 11pt;
   position: relative;
@@ -325,6 +358,7 @@ div.btn-save:active {transform: scale(.9);}
 img.img-preview {
   width: 90%;
   margin-top: 1rem;
+  border-radius: 4px;
 }
 
 div#cont-modal-inputs {
@@ -356,7 +390,10 @@ div#cont-modal-inputs h3 {
 
 img#preview-plaza {
   position: relative;
-  width: 90%;
+  width: auto;
+  max-width: 90%;
+  height: auto;
+  max-height: 100px;
 }
 
 div#modal-inputs {
@@ -381,7 +418,8 @@ p.status {
   font-size: 10pt;
 }
 
-div#btns-fn {
+
+div.btns-fn {
   position: relative;
   width: 100%;
   display: flex;
@@ -391,8 +429,8 @@ div#btns-fn {
   padding: 1rem;
 }
 
-div#btns-fn div {
-  width: 40%;
+div.btns-fn div {
+  width: 30%;
   border-radius: 4px;
   padding: .5rem 1rem;
   box-shadow: 1px 1px 1px rgba(0, 0, 0, .2);
@@ -402,7 +440,7 @@ div#btns-fn div {
   transition: transform .1s;
   transform: scale(1);
 }
-div#btns-fn div:active {transform: scale(.9);}
+div.btns-fn div:active {transform: scale(.9);}
 
 input.fn-generated {
   width: 60%;
@@ -411,7 +449,6 @@ input.fn-generated {
 
 div#save-fn {
   padding: .5rem 4rem;
-  margin: 1rem 4rem;
   background: #F4F4F4;
   border-radius: 4px;
   box-shadow: 1px 1px 1px rgba(0, 0, 0, .2);
