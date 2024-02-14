@@ -15,7 +15,8 @@ export class EquipoComponent {
   subsArray: number[] = []
   inputEmpty:string = "Seleccionar archivo"
   inputEmptyB:string = "Seleccionar archivo"
-  srcPreview
+  srcPreviewAdd
+  srcPreviewEdit
   fomrumarioAgregarPlaza : FormGroup
 
   private fileTmp:any;
@@ -32,6 +33,7 @@ constructor(){
     titulo : new FormControl(),
   })
 }
+
   ngOnInit(): void {
     this.obtenerUnete()
   }
@@ -53,7 +55,7 @@ constructor(){
         console.log(eventoLectura)
         const imagen = new Image()
         imagen.src = eventoLectura.target.result
-          this.srcPreview = imagen.src
+          this.srcPreviewEdit = imagen.src
         imagen.onload = () => {
           const fileSize: number = archivo.size
           const size: number = fileSize / 1024
@@ -70,16 +72,68 @@ constructor(){
           const img = new Image()
           const objectURL = URL.createObjectURL(archivo)
           img.src = objectURL
+          this.inputEmptyB = fileName
 
-          document.getElementsByClassName('innerdetails')[2]!.innerHTML = sizemedida
-          document.getElementsByClassName('innerdetails')[0]!.innerHTML = imagen.width + " px"
-          document.getElementsByClassName('innerdetails')[1]!.innerHTML = imagen.height + " px"
+          document.getElementById('innersize-edit')!.innerHTML = sizemedida
+          document.getElementById('innerwidth-edit')!.innerHTML = imagen.width + " px"
+          document.getElementById('innerheight-edit')!.innerHTML = imagen.height + " px"
+          document.getElementById('img-pre-edit')?.setAttribute('src', fileName)
+        }
+      }
+      lector.readAsDataURL(archivo)
+    }
+  }
+
+
+
+
+
+
+
+  FileAdd(event: Event): void {
+    const fileInput = event.target as HTMLInputElement
+    const archivo = fileInput.files?.[0]
+    if (archivo) {
+
+      const lector = new FileReader()
+
+      lector.onload = (eventoLectura:any) => {
+        console.log(eventoLectura)
+        const imagen = new Image()
+        imagen.src = eventoLectura.target.result
+          this.srcPreviewAdd = imagen.src
+        imagen.onload = () => {
+          const fileSize: number = archivo.size
+          const size: number = fileSize / 1024
+          let medida: string
+          let sizemedida: any
+          if (size < 1024) {
+            medida = " KB"
+            sizemedida = size.toFixed(2).toString() + medida
+          } else {
+            medida = " MB"
+            sizemedida = (size / 1024).toFixed(2).toString() + medida
+          }
+          const fileName: string = archivo.name
+          const img = new Image()
+          const objectURL = URL.createObjectURL(archivo)
+          img.src = objectURL
+          this.inputEmpty = fileName
+
+          document.getElementById('innersize-add')!.innerHTML = sizemedida
+          document.getElementById('innerwidth-add')!.innerHTML = imagen.width + " px"
+          document.getElementById('innerheight-add')!.innerHTML = imagen.height + " px"
           document.getElementById('img-pre-tl')?.setAttribute('src', img.src)
         }
       }
       lector.readAsDataURL(archivo)
     }
   }
+
+
+
+
+
 
 
 
@@ -129,7 +183,7 @@ async obtenerUnete(){
   const data = await this.uneterService.otenerUneteEquipo();
   this.dataUnete = data.unete
   console.log(data)
-  }
+}
 
 
   obtenerItemd(index:any){
@@ -144,7 +198,7 @@ SaveFunctions(){ }
 
 
 
-
+ModalFunctions(i:number){ document.getElementsByClassName('fns-add')[i]?.classList.toggle('show') }
 }
 
 
