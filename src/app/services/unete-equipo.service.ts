@@ -37,5 +37,11 @@ export class UneteEquipoService {
     sendCreatePlaza(body:FormData):Observable<any>{
       return this.httClient.post(`${this.baseUrl}/crearEmpleo`, body)
     }
+
+    agregarFunciones(id:any, formValue:any){
+      return firstValueFrom(
+        this.httClient.put<any>(`${this.baseUrl}/agregarFuncionesAUnete/${id}`, formValue)
+      )
+    }
     
 }

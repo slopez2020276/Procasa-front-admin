@@ -50,15 +50,17 @@
 
 <div class="fns-add">
   <div class="close-minmodal" (click)="ModalFunctions($index)">cerrar</div>
+<form [formGroup]="formAgregarFuncion">
 
   <div class="cont-in-fns">
     <!-- <div class="btns-micmodal" (click)="generarSub()">agregar</div> -->
     <!-- <div class="btns-micmodal" (click)="eliminarUltimoSub()">eliminar</div> -->
-    <textarea name="" class="normal" id="fn-to-add" placeholder="función nueva"></textarea>
-
-    <div id="save-fns" (click)="ModalFunctions($index)">guardar</div>
+    <textarea formControlName="funcion" name="" class="normal" id="fn-to-add" placeholder="función nueva"></textarea>
+    
+    <div id="save-fns" (click)="ModalFunctions($index)" (click)="agregarfuncion(os._id)" >guardar</div>
   </div>
-
+  
+</form>
 </div>
 
 

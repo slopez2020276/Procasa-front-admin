@@ -18,6 +18,10 @@ export class EquipoComponent {
   srcPreviewAdd
   srcPreviewEdit
 
+  formAgregarFuncion: FormGroup
+
+
+
 
   fomrumarioAgregarPlaza : FormGroup
 
@@ -28,6 +32,9 @@ export class EquipoComponent {
 
 
 constructor(){
+  this.formAgregarFuncion = new FormGroup({
+    funcion: new FormControl(),
+  })
 
   this.formAgregarPlaza = new FormGroup({
     ubicacion : new FormControl(),
@@ -310,6 +317,13 @@ async crearPlaza(){
   this.obtenerUnete()
  }
 
+ 
+async agregarfuncion(id:any){
+  const respuestaAgregarFuncion = await this.uneterService.agregarFunciones(id,this.formAgregarFuncion.value)
+  console.log(respuestaAgregarFuncion)
+  this.obtenerUnete()
+
+}
 
 }
 
