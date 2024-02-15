@@ -425,13 +425,16 @@ div.btns-micmodal {
   color: #252525;
 }
 
-div.cont-in-fns input {
+div.cont-in-fns textarea {
   width: 60%;
+  height: 6rem;
   padding: .5rem 1rem;
   border-radius: 4px;
   box-shadow: 1px 1px 1px rgba(0, 0, 0, .2);
   margin-top: .5rem;
 }
+
+
 
 
 img.img-preview {
