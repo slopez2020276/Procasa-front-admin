@@ -22,7 +22,6 @@
       <img src="../../../assets/img/pilotos.jpg" alt="">
 
       <h2 class="bold">{{os.titulo}}</h2>
-      <h1>{{$index}} </h1>
       <div class="datos">
 
       <ul class="ul-data">
@@ -37,14 +36,14 @@
                 }
               </ul>
           </li>
-          <li class="bold">Educación: <span></span>{{os.educacion}}</li>
+          <li class="bold">Educación: <span>{{os.educacion}}</span></li>
           <li class="bold">Experiencia laboral: <span>{{os.experecia}}</span></li>
       </ul>
 
       <div class="cont-buttons">
         <div class="actions" (click)="ModalFunctions($index)">funciones</div>
-          <div class="actions" (click)="ModalProduct('edit')">editar</div>
-          <div class="actions" (click)="DeletePlaza()">eliminar</div>
+          <div class="actions" (click)="ModalProduct('edit')" (click)="obtenerPlazaId(os._id)" >editar</div>
+          <div class="actions" (click)="DeletePlaza()" (click)="eliminarPlaza(os._id)">eliminar</div>
       </div>
 
 
@@ -119,7 +118,10 @@
       <p class="normal">Funciones principales</p> <span id="add-fn" class="normal" (click)="SaveFunctions()">+</span>
     </div> -->
 
+    <input type="text" formControlName="ubicacion" class="normal" placeholder="Ubicacion">
     <input type="text" formControlName="educacion" class="normal" placeholder="Educación requerida">
+    <input type="text" formControlName="formulario" class="normal" placeholder="Enlace del Formulario">
+
     <textarea name="" id=""  formControlName="experiencia"  class="normal" placeholder="Experiencia laboral"></textarea>
   </div>
 </div>
@@ -127,9 +129,8 @@
 <!-- <p class="status normal">etapa 1 de 2</p> -->
 
 <div class="cont-btns">
-  <div class="btn-save" (click)="crearPlaza()">continuar</div>
+  <div class="btn-save" (click)="sendFileplaza()">continuar</div>
 
-  <button (click)="sendFileplaza()" >hola</button>
 
 </div>
 
@@ -163,38 +164,47 @@
 
 <div class="sub-cont">
 
+  
   <div class="sub-cont">
     <div id="sub-cont-details-img-edit">
       <input type="file" (change)="FileEdit($event)" title="seleccionar archivo" accept=".jpg, .png, .jpeg, .avi, .webp" [attr.data-content]="inputEmptyB">
-        <div>
-          <ul>
-            <li>ancho: <span class="bold danger-red" id="innerwidth-edit"></span> </li>
-            <li>alto:  <span class="bold danger-red" id="innerheight-edit"></span> </li>
-            <li>peso:  <span class="bold danger-red" id="innersize-edit"></span></li>
-          </ul>
-        </div>
+      <div>
+        <ul>
+          <li>ancho: <span class="bold danger-red" id="innerwidth-edit"></span> </li>
+          <li>alto:  <span class="bold danger-red" id="innerheight-edit"></span> </li>
+          <li>peso:  <span class="bold danger-red" id="innersize-edit"></span></li>
+        </ul>
+      </div>
     </div>
-
+    
     <img [attr.src]="srcPreviewEdit" id="preview-plaza-edit" alt="" class="img-preview">
   </div>
-<div class="sub-cont">
-  <div class="sub">
-    <input type="text" placeholder="Nombre plaza/vacante">
-    <input type="text" placeholder="Departamento">
-    <input type="text" placeholder="Empresa">
-  </div>
 
-<div class="sub">
-  <div id="open-modal-edit-fn" class="btn-click" (click)="ModalEditFunctions()">editar funciones</div>
+  
+  
+  <form [formGroup]="formEditarPlaza">
+  <div class="sub-cont">
+    <div class="sub">
+        <input type="text" [(ngModel)]="NombrePlaza" formControlName="titulo"  placeholder="Nombre plaza/vacante">
+        <input type="text" [(ngModel)]="DepartamentoPlaza"  formControlName="departamento"  placeholder="Departamento">
+        <input type="text"  [(ngModel)]="EmpresaPlaza"   formControlName="empresa" placeholder="Empresa">
+      </div>
+      
+      <div class="sub">
+        <div id="open-modal-edit-fn" class="btn-click" (click)="ModalEditFunctions()">editar funciones</div>
+        
+        <input type="text"  [(ngModel)]="UbicacionPlaza" formControlName="ubicacion"  placeholder="Ubicacion">
+        
+        <input type="text"  [(ngModel)]="EducacionPlaza" formControlName="educacion" placeholder="Educación requerida">
+        <textarea name="" id=""  [(ngModel)]="ExperienciaPlaza" formControlName="experiencia"  placeholder="Experiencia laboral"></textarea>
+        
+      </div>
+    </div>
+  </form>
 
-  <input type="text" placeholder="Educación requerida">
-  <textarea name="" id="" placeholder="Experiencia laboral"></textarea>
-</div>
-</div>
 
-
-  <div class="cont-btns">
-    <div class="btn-save">guardar</div>
+<div class="cont-btns">
+    <div class="btn-save" (click)="editarPlaza()">guardar</div>
   </div>
 </div>
 
@@ -207,10 +217,10 @@
 
   <div class="actions-input-del">
     <input type="text" placeholder="función">
-    <div class="del-edit-fn" (click)="DeleteFunction()">eliminar</div>
+    <div class="del-edit-fn" (click)="DeleteFunction()" >eliminar</div>
   </div>
 
-  <div id="save-edit-fn" class="btn-click" (click)="ModalEditFunctions()">guardar</div>
+  <div id="save-edit-fn" class="btn-click" (click)="ModalEditFunctions()"  >guardar</div>
 </div>
 </div>
 

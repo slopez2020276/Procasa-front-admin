@@ -43,5 +43,23 @@ export class UneteEquipoService {
         this.httClient.put<any>(`${this.baseUrl}/agregarFuncionesAUnete/${id}`, formValue)
       )
     }
+
+
+    ObtenerPlazaid(id:any){
+      return firstValueFrom(
+        this.httClient.get<any>(`${this.baseUrl}/obtenerPlazaId/${id}`)
+      )
+    }
+
+    editarPlaza(id:any, formValue:any){
+      return firstValueFrom(
+        this.httClient.put<any>(`${this.baseUrl}/editarPlaza/${id}`, formValue)
+      )
+    }
     
+    eliminarPlaza(id:any){
+      return firstValueFrom(
+        this.httClient.delete<any>(`${this.baseUrl}/eliminarPlaza/${id}`)
+      )
+    }
 }
