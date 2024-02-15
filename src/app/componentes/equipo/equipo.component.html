@@ -16,13 +16,13 @@
 <div id="container">
 
 
-  @for (os of dataUnete; track os._id) { -->
+  @for (os of dataUnete; track os._id  ) { 
 
     <div class="cont">
       <img src="../../../assets/img/pilotos.jpg" alt="">
 
       <h2 class="bold">{{os.titulo}}</h2>
-
+      <h1>{{$index}} </h1>
       <div class="datos">
 
       <ul class="ul-data">
@@ -34,6 +34,9 @@
               <ul>
                 @for (ositems of os.funciones; track $index) {
                   <li  (click)="obtenerItemd($index)" >  {{ositems}}</li>
+
+
+
                 }
               </ul>
           </li>
@@ -42,7 +45,7 @@
       </ul>
 
       <div class="cont-buttons">
-        <div class="actions" (click)="ModalFunctions(0)">función</div>
+        <div class="actions" (click)="ModalFunctions(0)">funciones</div>
           <div class="actions" (click)="ModalProduct('edit')">editar</div>
           <div class="actions" (click)="DeletePlaza()">eliminar</div>
       </div>
@@ -52,10 +55,10 @@
   <div class="close-minmodal" (click)="ModalFunctions(0)">cerrar</div>
 
   <div class="cont-in-fns">
-    <!-- <div class="btns-micmodal" (click)="generarSub()">agregar</div> -->
-    <!-- <div class="btns-micmodal" (click)="eliminarUltimoSub()">eliminar</div> -->
-    <!-- <input type="text" placeholder="función nueva" id="fn-to-add"> -->
+    <div class="btns-micmodal" (click)="generarSub()">agregar</div>
+    <div class="btns-micmodal" (click)="eliminarUltimoSub()">eliminar</div>
     <textarea name="" class="normal" id="fn-to-add" placeholder="función nueva"></textarea>
+
     <div id="save-fns" (click)="ModalFunctions(0)">guardar</div>
   </div>
 
