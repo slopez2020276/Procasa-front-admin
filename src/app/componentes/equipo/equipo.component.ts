@@ -32,6 +32,7 @@ export class EquipoComponent {
   FechaPlaza:any
   fecha:any
   idPlaza:any
+  funciones:any
   
   
   
@@ -368,6 +369,7 @@ async obtenerPlazaId(id:any){
   this.FechaPlaza = respuestaid.plaza.fecha
   this.fecha = respuestaid.plaza.fecha
   this.idPlaza = respuestaid.plaza._id
+  this.data = respuestaid.plaza
   console.log(this.NombrePlaza)
  
 }
@@ -385,6 +387,12 @@ async eliminarPlaza(id:any){
   const respuestaEliminarPlaza = await this.uneterService.eliminarPlaza(id)
   console.log(respuestaEliminarPlaza)
   this.obtenerUnete()
+}
+
+async obtenerFunciones(){
+ this.funciones =  this.data.funciones
+  console.log(this.funciones)
+
 }
 
 }
