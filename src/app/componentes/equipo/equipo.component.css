@@ -434,6 +434,77 @@ div.cont-in-fns textarea {
   margin-top: .5rem;
 }
 
+div#open-modal-edit-fn {
+  padding: .5rem 1rem;
+  cursor: pointer;
+  background: #F4F4F4;
+  border-radius: 4px;
+  box-shadow: 1px 1px 1px rgba(0, 0, 0, .2);
+}
+
+div#modal-edit-fns {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 995;
+  background: #FAFAFA;
+  display: none;
+  justify-content: center;
+  align-items: start;
+  flex-wrap: wrap;
+}
+div#modal-edit-fns.show { display: flex; }
+
+div#cont-input-edit {
+  display: flex;
+  width: 300px;
+  justify-content: center;
+  align-items: start;
+  align-content: start;
+  flex-wrap: wrap;
+  margin-top: 2rem;
+  padding-top: 2rem;
+}
+
+div#close-edit-fn {
+  position: absolute;
+  top: .5rem;
+  right: .5rem;
+  padding: .5rem 1rem;
+  box-shadow: 1px 1px 1px rgba(0, 0, 0, .2);
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+div#modal-edit-fns input {
+  width: 100%;
+  margin-top: 4px;
+}
+
+
+div#save-edit-fn {
+  padding: .5rem 2rem;
+  background: #AA182C;
+  color: #252525;
+  box-shadow: 2px 2px 0px rgba(0, 0, 0, .2);
+  border-radius: 4px;
+  color: #FFF;
+  cursor: pointer;
+  margin-top: 2rem;
+}
+
+
+
+
+
+
+
+
+
+
+
 
 
 

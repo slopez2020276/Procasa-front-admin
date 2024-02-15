@@ -225,6 +225,9 @@ eliminarUltimoSub() { if (this.subsArray.length > 0) { this.subsArray.pop() } }
 
 SaveFunctions(){ }
 
+ModalEditFunctions() { document.getElementById('modal-edit-fns')?.classList.toggle('show') }
+
+
 
 
 ModalFunctions(i:number){ document.getElementsByClassName('fns-add')[i]?.classList.toggle('show') }
@@ -317,7 +320,7 @@ async crearPlaza(){
   this.obtenerUnete()
  }
 
- 
+
 async agregarfuncion(id:any){
   const respuestaAgregarFuncion = await this.uneterService.agregarFunciones(id,this.formAgregarFuncion.value)
   console.log(respuestaAgregarFuncion)
