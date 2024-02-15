@@ -18,14 +18,28 @@ export class EquipoComponent {
   srcPreviewAdd
   srcPreviewEdit
 
+
+  
+  
+  data:any
+
+  NombrePlaza:any
+  UbicacionPlaza:any
+  DepartamentoPlaza:any
+  EmpresaPlaza:any
+  EducacionPlaza:any
+  ExperienciaPlaza:any
+  FechaPlaza:any
+  fecha:any
+  idPlaza:any
+  
+  
+  
+  
   formAgregarFuncion: FormGroup
-
-
-
-
   fomrumarioAgregarPlaza : FormGroup
-
   formAgregarPlaza: FormGroup
+  formEditarPlaza: FormGroup
 
 
   private fileTmp:any;
@@ -43,8 +57,19 @@ constructor(){
     educacion : new FormControl(),
     experiencia : new FormControl(),
     titulo : new FormControl(),
+    formulario : new FormControl(),
   })
   this.fomrumarioAgregarPlaza = new FormGroup({
+    ubicacion : new FormControl(),
+    departamento : new FormControl(),
+    empresa : new FormControl(),
+    fecha : new FormControl(),
+    educacion : new FormControl(),
+    experiencia : new FormControl(),
+    titulo : new FormControl(),
+  })
+
+  this.formEditarPlaza = new FormGroup({
     ubicacion : new FormControl(),
     departamento : new FormControl(),
     empresa : new FormControl(),
@@ -331,7 +356,36 @@ async agregarfuncion(id:any){
 
 }
 
+async obtenerPlazaId(id:any){
+  const respuestaid = await this.uneterService.ObtenerPlazaid(id)
+  console.log(respuestaid)
+  this.NombrePlaza = respuestaid.plaza.titulo
+  this.UbicacionPlaza = respuestaid.plaza.ubicacion
+  this.DepartamentoPlaza = respuestaid.plaza.departamento
+  this.EmpresaPlaza = respuestaid.plaza.empresa
+  this.EducacionPlaza = respuestaid.plaza.educacion
+  this.ExperienciaPlaza = respuestaid.plaza.experecia
+  this.FechaPlaza = respuestaid.plaza.fecha
+  this.fecha = respuestaid.plaza.fecha
+  this.idPlaza = respuestaid.plaza._id
+  console.log(this.NombrePlaza)
+ 
 }
 
 
+
+async editarPlaza(){
+   let id = this.idPlaza
+  const respuestaEditarPlaza = await this.uneterService.editarPlaza(id,this.formEditarPlaza.value)
+  console.log(respuestaEditarPlaza)
+  this.obtenerUnete()
+}
+
+async eliminarPlaza(id:any){
+  const respuestaEliminarPlaza = await this.uneterService.eliminarPlaza(id)
+  console.log(respuestaEliminarPlaza)
+  this.obtenerUnete()
+}
+
+}
 
