@@ -21,7 +21,7 @@ export class AdminprincipalComponent implements OnInit, AfterViewInit {
   altoimg:any
   desgloce: any|undefined
   formulario: FormGroup
-  
+
   formularioEditHistoria: FormGroup
   formularioEditlineaTiempo: FormGroup
   formularioMisionValor: FormGroup
@@ -156,7 +156,15 @@ constructor(){
 
 // AL INICIAR
   async ngOnInit()  {
-    // document.getElementsByClassName('sl-img')[0]?.classList.toggle('selected')
+
+    const alertas = document.querySelectorAll('.container-alert')
+    for(let i = 0; i < alertas.length; i++){
+      console.log("---------------------------------------------");
+      console.log(i);
+      console.log(alertas[i].parentElement)
+      console.log(alertas[i]);
+    }
+
       const inputfileBefore: any = (document.getElementById('file-portada') as HTMLInputElement | null)?.value
       const inputfileBefbg: any = (document.getElementById('file-bg') as HTMLInputElement | null)?.value
 
@@ -391,8 +399,6 @@ async eliminarLineaTiempo(id:any){
       const respuestaDelete = await this.lineaService.eliminarLineaTIempo(id)
       this.obtenerLinea()
       document.getElementsByClassName('cont-btns-alert')[3]?.classList.remove('show'); this.MessageSuccess('Evento eliminado',3) }, false) }
-
-
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -669,8 +675,7 @@ sendFileBackground():void{
 
 
 getFileBack($event: any): void {
-  //TODO esto captura el archivo!
-  const [ file ] = $event.target.files;
+  const [ file ] = $event.target.files
   this.fileBackgrud = {
     fileRaw:file,
     fileName:file.name
@@ -798,11 +803,10 @@ preSaveMisionVision() {
 }
 
 onClick() {
-  this.guardarMision()
-  this.containerAlertElement.nativeElement.classList.remove('show')
 }
 
 async guardarMision() {
+  this.containerAlertElement.nativeElement.classList.remove('show')
   try {
     let id = this.dataMisionÑ._id
     const respuestaEdit = await this.misionService.editarMisionValor(id, this.formularioMisionValor.value)
@@ -1210,9 +1214,7 @@ updateNoticia(event: Event) {
 
         const saveButtonTL = document.getElementById('update-noticia')
         if (saveButtonTL) { saveButtonTL.addEventListener('click', () => {
-          // this.saveNoticia()
-console.log("CLICKED SAVE BUTTON")
-
+console.log("TEST 01")
 
           const tituloInput: HTMLInputElement | null = document.getElementById('title-update-noticia') as HTMLInputElement | null
           const descripcionInput: HTMLTextAreaElement | any = document.getElementById('desc-update-noticia')
@@ -1239,21 +1241,11 @@ if(namefile!=="" && titulo!=="" && descripcion!==""){
           },false)
           document.getElementsByClassName('confirm')[11]?.addEventListener('click', () =>{
             document.getElementsByClassName('container-alert')[11]?.classList.remove('show')
-//************************************************************************ */
-
-
-
-//************************************************************************ */
           },false)
         }
-
       }else{
-
-
         document.getElementsByClassName('cont-btns-alert')[11]?.classList.remove('show')
         this.MessageSuccess("Los campos requeridos no pueden estar vacíos",11)
-
-
 
       }
         }, false) }
@@ -1398,13 +1390,6 @@ if(titulo!=="" && descripcion!==""){
 }
 
 
-
-
-
-FondoBg(){
-  console.log(this.colorBg)
-
-}
 
 toggleImgColor(status:number, cont:string){
   document.getElementById('sub-cont-img')?.classList.remove('selected')

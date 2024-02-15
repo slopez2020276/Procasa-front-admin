@@ -332,7 +332,7 @@ span#width-edit-n.limit, span#height-edit-n.limit, span#size-edit-n.limit { colo
 
 h1.innermsg { background: transparent; }
 
-img#img-pre-tl, img#img-pre-edit {
+img#img-pre-add, img#img-pre-edit {
   max-width: 130px;
   width: auto;
   height: auto;
@@ -361,6 +361,7 @@ div.cont-datos input {
   margin-bottom: 4px;
   box-shadow: 1px 1px 1px rgba(0,0,0, .2);
 }
+
 
 div.cont-blocks {
   width: 100%;

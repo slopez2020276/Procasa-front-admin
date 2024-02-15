@@ -55,7 +55,7 @@
   <div class="cont-blocks">
 
     <div class="preview-img-model">
-    <input id="file-edit" (change)="FileEdit($event, 'img-pre-tl')" type="file" accept=".jpg, .jpeg, .png, .webp, .avi" title="seleccionar archivo" [attr.data-content]="inputEmpty">
+    <input id="file-edit" (change)="FileAdd($event, 'img-pre-add')" type="file" accept=".jpg, .jpeg, .png, .webp, .avi" title="seleccionar archivo" [attr.data-content]="inputEmpty">
   <div class="details-img">
     <ul>
       <li>ancho: <p class="innerdetails bold"></p></li>
@@ -63,7 +63,7 @@
       <li>Realcion:<p class="innerdetails bold"></p></li>
       <li>tamaño:<p class="innerdetails bold"></p></li>
     </ul>
-    <img src="" alt="" id="img-pre-tl">
+    <img src="" alt="" id="img-pre-add">
   </div>
 </div>
 
@@ -103,7 +103,7 @@
   <div class="cont-blocks">
 
     <div class="preview-img-model">
-    <input id="file-edit" (change)="FileEdit($event, 'img-pre-edit')" type="file" accept=".jpg, .jpeg, .png, .webp, .avi" title="seleccionar archivo" [attr.data-content]="inputEmpty">
+    <input id="file-edit" (change)="FileEdit($event, 'img-pre-edit')" type="file" accept=".jpg, .jpeg, .png, .webp, .avi" title="seleccionar archivo" [attr.data-content]="inputEmptyEdit">
   <div class="details-img">
     <ul>
       <li>ancho: <p class="innerdetails bold"></p></li>

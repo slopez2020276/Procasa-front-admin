@@ -64,11 +64,20 @@
       </div>
 
     </div>
+
+
+    <div class="cont-buttons">
+      <div class="btn-click btn-red">guardar imagen de fondo</div>
+    </div>
   </div>
 
 <div id="sub-cont-color">
   <p class="normal">Seleccionar color de fondo</p>
-  <input type="color" title="color de fondo" [(ngModel)]="colorBg" (change)="FondoBg()" data-color="">
+  <input type="color" title="color de fondo" [(ngModel)]="colorBg" data-color="">
+
+  <div class="cont-buttons">
+    <div class="btn-click btn-red">guardar color de fondo</div>
+  </div>
 </div>
 
 
@@ -86,7 +95,7 @@
 
   <div class="foot-cont">
     <div class="cont-buttons">
-      <div (click)="testEmptyBackground()" class="normal replace-button red" id="btn-save-bg">guardar</div>
+      <!-- <div (click)="testEmptyBackground()" class="normal replace-button red btn-click btn-red" id="btn-save-bg">guardar</div> -->
     </div>
   </div>
 
@@ -200,6 +209,7 @@
   </div>
 
 
+</div>
   <div class="container-alert" #containerAlertElementHis>
     <div class="alert-model">
         <p class="inner-message bold"></p>
@@ -211,7 +221,6 @@
         </div>
       </div>
     </div>
-</div>
 </form>
 </div>
 
