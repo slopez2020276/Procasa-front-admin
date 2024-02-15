@@ -718,11 +718,3 @@ div.message h1 {
     color: #757575;
     background: transparent;
   }
-
-
-
-
-  /* ------------------------------------------------ */
-
-.btn-click { transform: scale(1); transition: transform .1s; }
-.btn-click:active { transform: scale(.9); }
