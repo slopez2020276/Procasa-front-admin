@@ -19,8 +19,8 @@ export class EquipoComponent {
   srcPreviewEdit
 
 
-  
-  
+
+
   data:any
 
   NombrePlaza:any
@@ -32,10 +32,10 @@ export class EquipoComponent {
   FechaPlaza:any
   fecha:any
   idPlaza:any
-  
-  
-  
-  
+
+
+
+
   formAgregarFuncion: FormGroup
   fomrumarioAgregarPlaza : FormGroup
   formAgregarPlaza: FormGroup
@@ -369,7 +369,7 @@ async obtenerPlazaId(id:any){
   this.fecha = respuestaid.plaza.fecha
   this.idPlaza = respuestaid.plaza._id
   console.log(this.NombrePlaza)
- 
+
 }
 
 
@@ -382,6 +382,8 @@ async editarPlaza(){
 }
 
 async eliminarPlaza(id:any){
+
+
   const respuestaEliminarPlaza = await this.uneterService.eliminarPlaza(id)
   console.log(respuestaEliminarPlaza)
   this.obtenerUnete()

@@ -52,8 +52,6 @@
 <form [formGroup]="formAgregarFuncion">
 
   <div class="cont-in-fns">
-    <!-- <div class="btns-micmodal" (click)="generarSub()">agregar</div> -->
-    <!-- <div class="btns-micmodal" (click)="eliminarUltimoSub()">eliminar</div> -->
     <textarea formControlName="funcion" name="" class="normal" id="fn-to-add" placeholder="función nueva"></textarea>
 
     <div id="save-fns" (click)="ModalFunctions($index)" (click)="agregarfuncion(os._id)" >guardar</div>
@@ -61,21 +59,20 @@
 
 </form>
 </div>
-
-
-
-      <!-- <div class="container-alert">
-          <div class="alert-model">
-              <p class="inner-message bold"></p>
-
-              <div class="message"> <h1 class="innermsg"></h1></div>
-              <div class="cont-btns-alert">
-                <button class="confirm">confirmar</button>
-                <div class="replace-button cancel">cancelar</div>
-              </div>
-            </div>
-      </div> -->
       </div> <!-- DATOS -->
+
+      <div class="container-alert" forelem="-eliminar-">
+        <div class="alert-model">
+            <p class="inner-message bold"></p>
+
+            <div class="message"> <h1 class="innermsg"></h1></div>
+            <div class="cont-btns-alert">
+              <button class="confirm">confirmar</button>
+              <div class="replace-button cancel">cancelar</div>
+            </div>
+          </div>
+      </div>
+
 
       </div>
     }
@@ -114,10 +111,6 @@
 
 
   <div class="sub">
-    <!-- <div class="fn-principales">
-      <p class="normal">Funciones principales</p> <span id="add-fn" class="normal" (click)="SaveFunctions()">+</span>
-    </div> -->
-
     <input type="text" formControlName="ubicacion" class="normal" placeholder="Ubicacion">
     <input type="text" formControlName="educacion" class="normal" placeholder="Educación requerida">
     <input type="text" formControlName="formulario" class="normal" placeholder="Enlace del Formulario">
@@ -126,32 +119,11 @@
   </div>
 </div>
 
-<!-- <p class="status normal">etapa 1 de 2</p> -->
-
 <div class="cont-btns">
   <div class="btn-save" (click)="sendFileplaza()">continuar</div>
 
 
 </div>
-
-
-<!-- <!-- <div id="cont-modal-inputs">
-  <div id="modal-inputs">
-    <h3>Agregar Funciones</h3>
-    <div class="btns-fn">
-      <div id="create-fn" (click)="generarSub()">agregar</div>
-      <div id="delete-fn" (click)="eliminarUltimoSub()">eliminar</div>
-      </div>
-
-      <input type="text" class="normal fn-generated" placeholder="función" *ngFor="let div of subsArray; let i = index">
-      <div class="btns-fn">
-        <div id="back-fn" (click)="SaveFunctions()">regresar</div>
-        <div id="save-fn" (click)="SaveFunctions()" (click)="ModalProduct('add')">guardar</div>
-      </div>
-      <p class="status normal">etapa 2 de 2</p>
-    </div>
-
-  </div> -->
 
 </div>
 </form>
@@ -164,7 +136,7 @@
 
 <div class="sub-cont">
 
-  
+
   <div class="sub-cont">
     <div id="sub-cont-details-img-edit">
       <input type="file" (change)="FileEdit($event)" title="seleccionar archivo" accept=".jpg, .png, .jpeg, .avi, .webp" [attr.data-content]="inputEmptyB">
@@ -176,12 +148,12 @@
         </ul>
       </div>
     </div>
-    
+
     <img [attr.src]="srcPreviewEdit" id="preview-plaza-edit" alt="" class="img-preview">
   </div>
 
-  
-  
+
+
   <form [formGroup]="formEditarPlaza">
   <div class="sub-cont">
     <div class="sub">
@@ -189,15 +161,15 @@
         <input type="text" [(ngModel)]="DepartamentoPlaza"  formControlName="departamento"  placeholder="Departamento">
         <input type="text"  [(ngModel)]="EmpresaPlaza"   formControlName="empresa" placeholder="Empresa">
       </div>
-      
+
       <div class="sub">
         <div id="open-modal-edit-fn" class="btn-click" (click)="ModalEditFunctions()">editar funciones</div>
-        
+
         <input type="text"  [(ngModel)]="UbicacionPlaza" formControlName="ubicacion"  placeholder="Ubicacion">
-        
+
         <input type="text"  [(ngModel)]="EducacionPlaza" formControlName="educacion" placeholder="Educación requerida">
         <textarea name="" id=""  [(ngModel)]="ExperienciaPlaza" formControlName="experiencia"  placeholder="Experiencia laboral"></textarea>
-        
+
       </div>
     </div>
   </form>
