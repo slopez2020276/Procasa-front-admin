@@ -312,7 +312,7 @@ sendFileplaza():void{
   }
 
   this.uneterService.sendCreatePlaza(body)
-  .subscribe(res => {console.log(res), console.log(body) ,this.obtenerUnete(),this.fileTmp = null})
+  .subscribe(res => {console.log(res), console.log(body) ,this.formAgregarPlaza.reset(),this.obtenerUnete(),this.fileTmp = null})
 }
 
 
@@ -327,6 +327,7 @@ async agregarfuncion(id:any){
   const respuestaAgregarFuncion = await this.uneterService.agregarFunciones(id,this.formAgregarFuncion.value)
   console.log(respuestaAgregarFuncion)
   this.obtenerUnete()
+  this.formAgregarFuncion.reset()
 
 }
 
