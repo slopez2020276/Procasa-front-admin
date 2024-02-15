@@ -18,7 +18,7 @@
 
   @for (os of dataUnete; track os._id) { -->
 
-    <div class="cont"> 
+    <div class="cont">
       <img src="../../../assets/img/pilotos.jpg" alt="">
 
       <h2 class="bold">{{os.titulo}}</h2>
@@ -42,9 +42,24 @@
       </ul>
 
       <div class="cont-buttons">
+        <div class="actions" (click)="ModalFunctions(0)">funciones</div>
           <div class="actions">editar</div>
           <div class="actions" (click)="DeletePlaza()">eliminar</div>
       </div>
+
+
+<div class="fns-add">
+  <div class="close-minmodal">cerrar</div>
+
+  <div class="cont-in-fns">
+    <div class="btns-micmodal" (click)="generarSub()">agregar</div>
+    <div class="btns-micmodal" (click)="eliminarUltimoSub()">eliminar</div>
+    <input type="text" placeholder="función" *ngFor="let div of subsArray; let i = index">
+
+    <div id="save-fns" (click)="ModalFunctions(0)">guardar</div>
+  </div>
+
+</div>
 
 
 
@@ -63,18 +78,18 @@
 
       </div>
     }
-  
+
 
 
 
 
 <form [formGroup]="formAgregarPlaza" >
 
-  
+
   <div class="modal" id="add">
     <div id="close-edit" (click)="ModalProduct('add')">cerrar</div>
     <h1 class="title-modal">Agregar plaza</h1>
-    
+
     <div class="sub-cont">
       <div id="sub-cont-details-img">
         <input type="file" (change)="FileEdit($event)"   (change)="getFile($event)" title="seleccionar archivo" accept=".jpg, .png, .jpeg, .avi, .webp" [attr.data-content]="inputEmpty">
@@ -96,13 +111,13 @@
     <input type="text" formControlName="empresa" class="normal" placeholder="Empresa">
     <input type="date" class="normal">
   </div>
-  
-  
+
+
   <div class="sub">
     <!-- <div class="fn-principales">
       <p class="normal">Funciones principales</p> <span id="add-fn" class="normal" (click)="SaveFunctions()">+</span>
     </div> -->
-    
+
     <input type="text" formControlName="educacion" class="normal" placeholder="Educación requerida">
     <textarea name="" id=""  formControlName="experiencia"  class="normal" placeholder="Experiencia laboral"></textarea>
   </div>
@@ -112,20 +127,20 @@
 
 <div class="cont-btns">
   <div class="btn-save" (click)="crearPlaza()">continuar</div>
-  
+
   <button (click)="sendFileplaza()" >hola</button>
-  
+
 </div>
 
 
-<!-- <!-- <div id="cont-modal-inputs"> 
+<!-- <!-- <div id="cont-modal-inputs">
   <div id="modal-inputs">
     <h3>Agregar Funciones</h3>
     <div class="btns-fn">
       <div id="create-fn" (click)="generarSub()">agregar</div>
       <div id="delete-fn" (click)="eliminarUltimoSub()">eliminar</div>
       </div>
-      
+
       <input type="text" class="normal fn-generated" placeholder="función" *ngFor="let div of subsArray; let i = index">
       <div class="btns-fn">
         <div id="back-fn" (click)="SaveFunctions()">regresar</div>
@@ -133,9 +148,9 @@
       </div>
       <p class="status normal">etapa 2 de 2</p>
     </div>
-    
+
   </div> -->
-  
+
 </div>
 </form>
 
@@ -166,7 +181,6 @@
     <input type="text" placeholder="Nombre plaza/vacante">
     <input type="text" placeholder="Departamento">
     <input type="text" placeholder="Empresa">
-    <input type="date">
   </div>
 
   <div class="sub">

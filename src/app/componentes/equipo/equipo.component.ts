@@ -230,6 +230,8 @@ async NuevaPlaza(){
 }
 
 
+
+
 agregarPlaza():void{
 
   const body = new FormData()
@@ -292,7 +294,7 @@ sendFileplaza():void{
     body.append('educacion',this.formAgregarPlaza.value.educacion)
     body.append('experecia',this.formAgregarPlaza.value.experiencia)
     body.append('fecha',this.formAgregarPlaza.value.fecha)
-    
+
 
 
   }
