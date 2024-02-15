@@ -440,10 +440,10 @@ div.actions-input-del {
   justify-content: space-evenly;
   align-items: center;
   align-content: center;
-  flex-wrap: nowrap;
+  flex-wrap: wrap;
 }
 
-div.del-edit-fn {
+div.del-edit-fn, div.edit-edit-fn {
   background: #AA182C;
   color: #FFF;
   padding: .5rem 1rem;
@@ -452,7 +452,8 @@ div.del-edit-fn {
   transition: transform .1s;
   transform: scale(1);
 }
-div.del-edit-fn:active { transform: scale(.9); }
+div.del-edit-fn:active,
+div.edit-edit-fn:active { transform: scale(.9); }
 
 div#open-modal-edit-fn {
   padding: .5rem 1rem;
@@ -482,13 +483,16 @@ div#modal-edit-fns.show { display: flex; }
 
 div#cont-input-edit {
   display: flex;
-  width: 400px;
+  width: 600px;
+  height: 90%;
   justify-content: center;
   align-items: start;
   align-content: start;
   flex-wrap: wrap;
   margin-top: 2rem;
   padding-top: 2rem;
+  overflow-x: hidden;
+  overflow-y: scroll;
 }
 
 div#close-edit-fn {
@@ -508,8 +512,7 @@ div.actions-input-del input {
 
 
 div#save-edit-fn {
-  padding: .5rem 2rem;
-  background: #AA182C;
+  padding:: #AA182C;
   color: #252525;
   box-shadow: 2px 2px 0px rgba(0, 0, 0, .2);
   border-radius: 4px;
