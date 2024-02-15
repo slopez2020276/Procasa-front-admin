@@ -434,13 +434,36 @@ div.cont-in-fns textarea {
   margin-top: .5rem;
 }
 
+div.actions-input-del {
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  align-content: center;
+  flex-wrap: nowrap;
+}
+
+div.del-edit-fn {
+  background: #AA182C;
+  color: #FFF;
+  padding: .5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: transform .1s;
+  transform: scale(1);
+}
+div.del-edit-fn:active { transform: scale(.9); }
+
 div#open-modal-edit-fn {
   padding: .5rem 1rem;
   cursor: pointer;
-  background: #F4F4F4;
+  background: #AA182C;
+  color: #FFF;
   border-radius: 4px;
   box-shadow: 1px 1px 1px rgba(0, 0, 0, .2);
 }
+
+
 
 div#modal-edit-fns {
   width: 100%;
@@ -459,7 +482,7 @@ div#modal-edit-fns.show { display: flex; }
 
 div#cont-input-edit {
   display: flex;
-  width: 300px;
+  width: 400px;
   justify-content: center;
   align-items: start;
   align-content: start;
@@ -478,8 +501,8 @@ div#close-edit-fn {
   cursor: pointer;
 }
 
-div#modal-edit-fns input {
-  width: 100%;
+div.actions-input-del input {
+  width: 250px;
   margin-top: 4px;
 }
 
@@ -695,3 +718,11 @@ div.message h1 {
     color: #757575;
     background: transparent;
   }
+
+
+
+
+  /* ------------------------------------------------ */
+
+.btn-click { transform: scale(1); transition: transform .1s; }
+.btn-click:active { transform: scale(.9); }

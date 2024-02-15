@@ -185,7 +185,7 @@
   </div>
 
 <div class="sub">
-  <div id="open-modal-edit-fn" (click)="ModalEditFunctions()">editar funciones</div>
+  <div id="open-modal-edit-fn" class="btn-click" (click)="ModalEditFunctions()">editar funciones</div>
 
   <input type="text" placeholder="Educación requerida">
   <textarea name="" id="" placeholder="Experiencia laboral"></textarea>
@@ -204,9 +204,13 @@
   <div id="close-edit-fn" (click)="ModalEditFunctions()">cerrar</div>
 
 <div id="cont-input-edit">
-  <input type="text" placeholder="función">
 
-  <div id="save-edit-fn" (click)="ModalEditFunctions()">guardar</div>
+  <div class="actions-input-del">
+    <input type="text" placeholder="función">
+    <div class="del-edit-fn" (click)="DeleteFunction()">eliminar</div>
+  </div>
+
+  <div id="save-edit-fn" class="btn-click" (click)="ModalEditFunctions()">guardar</div>
 </div>
 </div>
 

@@ -227,7 +227,9 @@ SaveFunctions(){ }
 
 ModalEditFunctions() { document.getElementById('modal-edit-fns')?.classList.toggle('show') }
 
+DeleteFunction(){
 
+}
 
 
 ModalFunctions(i:number){ document.getElementsByClassName('fns-add')[i]?.classList.toggle('show') }
