@@ -43,7 +43,7 @@
 
       <div class="cont-buttons">
         <div class="actions" (click)="ModalFunctions(0)">funciones</div>
-          <div class="actions">editar</div>
+          <div class="actions" (click)="ModalProduct('edit')">editar</div>
           <div class="actions" (click)="DeletePlaza()">eliminar</div>
       </div>
 
@@ -109,7 +109,6 @@
     <input type="text"  formControlName="titulo" class="normal" placeholder="Nombre plaza/vacante">
     <input type="text" formControlName="departamento" class="normal" placeholder="Departamento">
     <input type="text" formControlName="empresa" class="normal" placeholder="Empresa">
-    <input type="date" class="normal">
   </div>
 
 
@@ -123,7 +122,7 @@
   </div>
 </div>
 
-<p class="status normal">etapa 1 de 2</p>
+<!-- <p class="status normal">etapa 1 de 2</p> -->
 
 <div class="cont-btns">
   <div class="btn-save" (click)="crearPlaza()">continuar</div>
