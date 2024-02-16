@@ -19,8 +19,8 @@ export class EquipoComponent {
   srcPreviewEdit
 
 
-
-
+  
+  
   data:any
 
   NombrePlaza:any
@@ -33,13 +33,16 @@ export class EquipoComponent {
   fecha:any
   idPlaza:any
   funciones:any
-
-
-
+  
+  
+  
+  
   formAgregarFuncion: FormGroup
   fomrumarioAgregarPlaza : FormGroup
   formAgregarPlaza: FormGroup
   formEditarPlaza: FormGroup
+  formEditarFuncion:FormGroup
+
 
 
   private fileTmp:any;
@@ -77,6 +80,11 @@ constructor(){
     educacion : new FormControl(),
     experiencia : new FormControl(),
     titulo : new FormControl(),
+  })
+
+
+  this.formEditarFuncion = new FormGroup({
+    funciones: new FormControl(),
   })
 }
   ngOnInit(): void {
@@ -369,8 +377,10 @@ async obtenerPlazaId(id:any){
   this.fecha = respuestaid.plaza.fecha
   this.idPlaza = respuestaid.plaza._id
   this.data = respuestaid.plaza
+  this.funciones = respuestaid.plaza.funciones
   console.log(this.NombrePlaza)
-
+  this.obtenerFunciones()
+ 
 }
 
 
@@ -383,8 +393,6 @@ async editarPlaza(){
 }
 
 async eliminarPlaza(id:any){
-
-
   const respuestaEliminarPlaza = await this.uneterService.eliminarPlaza(id)
   console.log(respuestaEliminarPlaza)
   this.obtenerUnete()
@@ -395,6 +403,35 @@ async obtenerFunciones(){
   console.log(this.funciones)
 
 }
+
+obtenerIndiceFunciones(indice:any){
+  
+console.log(indice)
+
+console.log(this.formEditarFuncion.value)
+}
+
+async editarFuncion(indice:any){
+  let id = this.idPlaza
+  const respuestaEditarFuncion = await this.uneterService.editarFuncion(indice,this.formEditarFuncion.value,id)
+  console.log(respuestaEditarFuncion)
+  this.obtenerUnete()
+  this.formEditarFuncion.reset()
+ this.obtenerFunciones()
+ this.obtenerPlazaId(id)
+  console.log(this.formEditarFuncion.value)
+}
+
+async eliminarFuncion(indice:any){
+  let id = this.idPlaza
+  const respuestaEliminarFuncion = await this.uneterService.eliminarFuncion(id,indice)
+  console.log(respuestaEliminarFuncion)
+  this.obtenerUnete()
+  this.obtenerFunciones()
+  this.obtenerPlazaId(id)
+}
+
+
 
 }
 

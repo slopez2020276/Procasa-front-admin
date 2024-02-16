@@ -189,9 +189,12 @@
 
   @for (ositems of funciones; track $index) {
   <div class="actions-input-del">
-      <div class="del-edit-fn" (click)="DeleteFunction()" >eliminar</div>
-      <div class="edit-edit-fn" >editar</div>
-      <input  type="text" placeholder="{{ositems}}">
+    <div class="del-edit-fn" (click)="DeleteFunction()"  (click)="eliminarFuncion($index)">eliminar</div>
+    
+    <div class="edit-edit-fn" (click)="editarFuncion($index)" >editar</div>
+    <form [formGroup]="formEditarFuncion">
+      <input  formControlName="funciones" (click)="obtenerIndiceFunciones($index)"  type="text" placeholder="{{ositems}}">
+    </form>
     </div>
   }
 
