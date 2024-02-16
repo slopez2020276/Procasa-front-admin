@@ -32,7 +32,6 @@
           </ul>
       </ul>
 
-
     </div>
   </div>
 
@@ -86,10 +85,23 @@
 </div>
 
 <div class="cont-btn-save">
-  <div class="add-save normal">guardar</div>
+  <div class="add-save normal" (click)="AlertConfirm($event)">guardar</div>
 </div>
 
 </div>
+
+
+<div class="container-alert">
+  <div class="alert-model">
+      <p class="inner-message bold"></p>
+
+      <div class="message"> <h1 class="innermsg"></h1></div>
+      <div class="cont-btns-alert">
+        <button  class="confirm"> confirmar</button>
+        <div class="replace-button cancel" (click)="closeAlert($event)">cancelar</div>
+      </div>
+    </div>
+  </div>
 
 </div>
 
@@ -131,20 +143,14 @@
 
 </div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 </div>
+
+
+
+
+
+
+
 <!-------- A L E R T ---------------------------------------------------------------------------------------------------------------------------------------------------->
 <div class="container-alert">
   <div class="alert-model">

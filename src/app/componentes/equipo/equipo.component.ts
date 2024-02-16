@@ -375,7 +375,6 @@ async eliminarPlaza(id:any){
 async obtenerFunciones(){
  this.funciones =  this.data.funciones
   console.log(this.funciones)
-
 }
 
 obtenerIndiceFunciones(indice:any){

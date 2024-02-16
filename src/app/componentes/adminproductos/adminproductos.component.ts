@@ -121,4 +121,38 @@ eliminarUltimoProducto() { if (this.productArray.length > 0) { this.productArray
 generarSubB() { const newSubIndex = this.subsArrayB.length + 1; this.subsArrayB.push(newSubIndex) }
 eliminarUltimoSubB() { if (this.subsArrayB.length > 0) { this.subsArrayB.pop() } }
 
+
+
+
+
+async AlertConfirm(event: MouseEvent) {
+  const node = event.target as HTMLElement | null
+  const parent = node?.parentNode?.parentNode?.parentNode?.children[3] as HTMLElement | undefined
+  parent?.classList.add('show')
+  const inner = parent?.childNodes[0]?.childNodes[0] as HTMLElement | undefined
+  const btns = parent?.childNodes[0]?.childNodes[2] as HTMLElement | undefined
+  inner?.classList.add('show')
+  inner!.innerHTML = "¿Desea guardar los datos de producto?"
+  btns?.classList.add('show')
+
+}
+
+
+
+closeAlert(event: MouseEvent){
+  const node = event.target as HTMLElement | null
+  const parent = node?.parentNode?.parentNode?.parentNode as HTMLElement | undefined
+  parent?.classList.remove('show')
+  const inner = parent?.childNodes[0]?.childNodes[0] as HTMLElement | undefined
+  const btns = parent?.childNodes[0]?.childNodes[2] as HTMLElement | undefined
+  inner?.classList.remove('show')
+  inner!.innerHTML = ""
+  btns?.classList.remove('show')
+}
+
+
+
+
+
+
 }
