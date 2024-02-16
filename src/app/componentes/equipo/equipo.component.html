@@ -43,7 +43,7 @@
       <div class="cont-buttons">
         <div class="actions" (click)="ModalFunctions($index)">funciones</div>
           <div class="actions" (click)="ModalProduct('edit')" (click)="obtenerPlazaId(os._id)" >editar</div>
-          <div class="actions" (click)="DeletePlaza()" (click)="eliminarPlaza(os._id)">eliminar</div>
+          <div class="actions" (click)="AlertConfirm($event)">eliminar</div>
       </div>
 
 
@@ -67,8 +67,8 @@
 
             <div class="message"> <h1 class="innermsg"></h1></div>
             <div class="cont-btns-alert">
-              <button class="confirm">confirmar</button>
-              <div class="replace-button cancel">cancelar</div>
+              <button class="confirm" (click)="eliminarId(os._id, $index)">confirmar</button>
+              <div class="replace-button cancel" (click)="closeAlert($event)">cancelar</div>
             </div>
           </div>
       </div>
@@ -176,10 +176,10 @@
 
 
 <div class="cont-btns">
-    <div class="btn-save" (click)="editarPlaza()">guardar</div>
+    <div class="btn-save" (click)="Edit($event)">guardar</div>
   </div>
 </div>
-
+<!--  -->
 
 
 <div id="modal-edit-fns">
@@ -195,8 +195,21 @@
     </div>
   }
 
-  <div id="save-edit-fn" class="btn-click" (click)="ModalEditFunctions()"  >guardar</div>
+  <div id="save-edit-fn" class="btn-click" (click)="ModalEditFunctions()">guardar</div>
 </div>
+</div>
+
+
+<div class="container-alert" forelem="-editar-">
+  <div class="alert-model">
+      <p class="inner-message bold"></p>
+
+      <div class="message"> <h1 class="innermsg"></h1></div>
+      <div class="cont-btns-alert">
+        <button class="confirm" (click)="editarPlaza()" (click)="closeAlert($event)">confirmar</button>
+        <div class="replace-button cancel" (click)="closeAlert($event)">cancelar</div>
+      </div>
+    </div>
 </div>
 
 </div>

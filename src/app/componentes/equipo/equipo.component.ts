@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, ViewChild } from '@angular/core';
 import { UneteEquipoService } from '../../services/unete-equipo.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
@@ -190,33 +190,6 @@ constructor(){
 
 
 
-
-
-DeletePlaza(){
-  const innerMessage = document.getElementsByClassName('innermsg')[0]
-  if (innerMessage) { innerMessage.innerHTML = "¿Desea eliminar el evento seleccionado?"
-
-  document.getElementsByClassName('container-alert')[0]?.classList.add('show')
-  document.getElementsByClassName('message')[0]?.classList.add('show')
-  document.getElementsByClassName('cont-btns-alert')[0]?.classList.add('show')
-
-  document.getElementsByClassName('cancel')[0]?.addEventListener('click', function(){
-    document.getElementsByClassName('container-alert')[0]?.classList.remove('show')
-    document.getElementsByClassName('message')[0]?.classList.remove('show')
-    document.getElementsByClassName('cont-btns-alert')[0]?.classList.remove('show')
-  },false)
-
-  document.getElementsByClassName('confirm')[0]?.addEventListener('click', async () => {
-    document.getElementsByClassName('cont-btns-alert')[0]?.classList.remove('show')
-    // const respuestaDelete = await this.lineaService.eliminarLineaTIempo(id)
-    document.getElementsByClassName('cont-btns-alert')[0]?.classList.remove('show'); this.MessageSuccess('Plaza eliminada',0) }, false) }
-}
-
-
-
-
-
-
 MessageSuccess(text: string, i: number){
     const innermsg = document.getElementsByClassName('innermsg')[i]
     if (innermsg) { innermsg.innerHTML = text
@@ -376,25 +349,74 @@ async obtenerPlazaId(id:any){
 
 
 async editarPlaza(){
-   let id = this.idPlaza
+  let id = this.idPlaza
+    console.log(this.idPlaza)
   const respuestaEditarPlaza = await this.uneterService.editarPlaza(id,this.formEditarPlaza.value)
   console.log(respuestaEditarPlaza)
   this.obtenerUnete()
 }
 
-async eliminarPlaza(id:any){
-
-
-  const respuestaEliminarPlaza = await this.uneterService.eliminarPlaza(id)
-  console.log(respuestaEliminarPlaza)
-  this.obtenerUnete()
-}
 
 async obtenerFunciones(){
  this.funciones =  this.data.funciones
   console.log(this.funciones)
 
 }
+
+
+
+async eliminarId(id: number, i:any){
+  try {
+    const respuestaEliminarPlaza = await this.uneterService.eliminarPlaza(id)
+    console.log(respuestaEliminarPlaza)
+    this.obtenerUnete()
+  } catch (error) {
+    console.log(error)
+    this.MessageSuccess('Error al eliminar plaza', i)
+}
+}
+
+
+async AlertConfirm(event: MouseEvent) {
+  const node = event.target as HTMLElement | null
+  const parent = node?.parentNode?.parentNode?.parentNode?.children[3] as HTMLElement | undefined
+  parent?.classList.add('show')
+  const inner = parent?.childNodes[0]?.childNodes[0] as HTMLElement | undefined
+  const btns = parent?.childNodes[0]?.childNodes[2] as HTMLElement | undefined
+  inner?.classList.add('show')
+  inner!.innerHTML = "¿Desea eliminar la plaza?"
+  btns?.classList.add('show')
+}
+
+
+async Edit(event: MouseEvent) {
+      let id = this.idPlaza
+
+  const node = event.target as HTMLElement | null
+  const parent = node?.parentNode?.parentNode?.parentNode?.childNodes[4] as HTMLElement | undefined
+
+  parent?.classList.add('show')
+  const inner = parent?.childNodes[0]?.childNodes[0] as HTMLElement | undefined
+  const btns = parent?.childNodes[0]?.childNodes[2] as HTMLElement | undefined
+  inner?.classList.add('show')
+  inner!.innerHTML = "¿Desea guardar los cambios?"
+  btns?.classList.add('show')
+
+}
+
+
+closeAlert(event: MouseEvent){
+  const node = event.target as HTMLElement | null
+  const parent = node?.parentNode?.parentNode?.parentNode as HTMLElement | undefined
+  parent?.classList.remove('show')
+  const inner = parent?.childNodes[0]?.childNodes[0] as HTMLElement | undefined
+  const btns = parent?.childNodes[0]?.childNodes[2] as HTMLElement | undefined
+  inner?.classList.remove('show')
+  inner!.innerHTML = ""
+  btns?.classList.remove('show')
+}
+
+
 
 }
 
