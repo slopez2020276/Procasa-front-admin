@@ -407,5 +407,59 @@ async eliminarFuncion(indice:any){
 
 
 
+
+async eliminarId(id: number, i:any){
+  try {
+    const respuestaEliminarPlaza = await this.uneterService.eliminarPlaza(id)
+    console.log(respuestaEliminarPlaza)
+    this.obtenerUnete()
+  } catch (error) {
+    console.log(error)
+    this.MessageSuccess('Error al eliminar plaza', i)
+}
+}
+
+
+async AlertConfirm(event: MouseEvent) {
+  const node = event.target as HTMLElement | null
+  const parent = node?.parentNode?.parentNode?.parentNode?.children[3] as HTMLElement | undefined
+  parent?.classList.add('show')
+  const inner = parent?.childNodes[0]?.childNodes[0] as HTMLElement | undefined
+  const btns = parent?.childNodes[0]?.childNodes[2] as HTMLElement | undefined
+  inner?.classList.add('show')
+  inner!.innerHTML = "¿Desea eliminar la plaza?"
+  btns?.classList.add('show')
+}
+
+
+async Edit(event: MouseEvent) {
+      let id = this.idPlaza
+
+  const node = event.target as HTMLElement | null
+  const parent = node?.parentNode?.parentNode?.parentNode?.childNodes[4] as HTMLElement | undefined
+
+  parent?.classList.add('show')
+  const inner = parent?.childNodes[0]?.childNodes[0] as HTMLElement | undefined
+  const btns = parent?.childNodes[0]?.childNodes[2] as HTMLElement | undefined
+  inner?.classList.add('show')
+  inner!.innerHTML = "¿Desea guardar los cambios?"
+  btns?.classList.add('show')
+
+}
+
+
+closeAlert(event: MouseEvent){
+  const node = event.target as HTMLElement | null
+  const parent = node?.parentNode?.parentNode?.parentNode as HTMLElement | undefined
+  parent?.classList.remove('show')
+  const inner = parent?.childNodes[0]?.childNodes[0] as HTMLElement | undefined
+  const btns = parent?.childNodes[0]?.childNodes[2] as HTMLElement | undefined
+  inner?.classList.remove('show')
+  inner!.innerHTML = ""
+  btns?.classList.remove('show')
+}
+
+
+
 }
 
