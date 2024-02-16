@@ -36,10 +36,13 @@ export class EquipoComponent {
 
 
 
+
   formAgregarFuncion: FormGroup
   fomrumarioAgregarPlaza : FormGroup
   formAgregarPlaza: FormGroup
   formEditarPlaza: FormGroup
+  formEditarFuncion:FormGroup
+
 
 
   private fileTmp:any;
@@ -77,6 +80,11 @@ constructor(){
     educacion : new FormControl(),
     experiencia : new FormControl(),
     titulo : new FormControl(),
+  })
+
+
+  this.formEditarFuncion = new FormGroup({
+    funciones: new FormControl(),
   })
 }
   ngOnInit(): void {
@@ -342,7 +350,9 @@ async obtenerPlazaId(id:any){
   this.fecha = respuestaid.plaza.fecha
   this.idPlaza = respuestaid.plaza._id
   this.data = respuestaid.plaza
+  this.funciones = respuestaid.plaza.funciones
   console.log(this.NombrePlaza)
+  this.obtenerFunciones()
 
 }
 
@@ -356,6 +366,11 @@ async editarPlaza(){
   this.obtenerUnete()
 }
 
+async eliminarPlaza(id:any){
+  const respuestaEliminarPlaza = await this.uneterService.eliminarPlaza(id)
+  console.log(respuestaEliminarPlaza)
+  this.obtenerUnete()
+}
 
 async obtenerFunciones(){
  this.funciones =  this.data.funciones
@@ -363,57 +378,31 @@ async obtenerFunciones(){
 
 }
 
+obtenerIndiceFunciones(indice:any){
 
+console.log(indice)
 
-async eliminarId(id: number, i:any){
-  try {
-    const respuestaEliminarPlaza = await this.uneterService.eliminarPlaza(id)
-    console.log(respuestaEliminarPlaza)
-    this.obtenerUnete()
-  } catch (error) {
-    console.log(error)
-    this.MessageSuccess('Error al eliminar plaza', i)
-}
+console.log(this.formEditarFuncion.value)
 }
 
-
-async AlertConfirm(event: MouseEvent) {
-  const node = event.target as HTMLElement | null
-  const parent = node?.parentNode?.parentNode?.parentNode?.children[3] as HTMLElement | undefined
-  parent?.classList.add('show')
-  const inner = parent?.childNodes[0]?.childNodes[0] as HTMLElement | undefined
-  const btns = parent?.childNodes[0]?.childNodes[2] as HTMLElement | undefined
-  inner?.classList.add('show')
-  inner!.innerHTML = "¿Desea eliminar la plaza?"
-  btns?.classList.add('show')
+async editarFuncion(indice:any){
+  let id = this.idPlaza
+  const respuestaEditarFuncion = await this.uneterService.editarFuncion(indice,this.formEditarFuncion.value,id)
+  console.log(respuestaEditarFuncion)
+  this.obtenerUnete()
+  this.formEditarFuncion.reset()
+ this.obtenerFunciones()
+ this.obtenerPlazaId(id)
+  console.log(this.formEditarFuncion.value)
 }
 
-
-async Edit(event: MouseEvent) {
-      let id = this.idPlaza
-
-  const node = event.target as HTMLElement | null
-  const parent = node?.parentNode?.parentNode?.parentNode?.childNodes[4] as HTMLElement | undefined
-
-  parent?.classList.add('show')
-  const inner = parent?.childNodes[0]?.childNodes[0] as HTMLElement | undefined
-  const btns = parent?.childNodes[0]?.childNodes[2] as HTMLElement | undefined
-  inner?.classList.add('show')
-  inner!.innerHTML = "¿Desea guardar los cambios?"
-  btns?.classList.add('show')
-
-}
-
-
-closeAlert(event: MouseEvent){
-  const node = event.target as HTMLElement | null
-  const parent = node?.parentNode?.parentNode?.parentNode as HTMLElement | undefined
-  parent?.classList.remove('show')
-  const inner = parent?.childNodes[0]?.childNodes[0] as HTMLElement | undefined
-  const btns = parent?.childNodes[0]?.childNodes[2] as HTMLElement | undefined
-  inner?.classList.remove('show')
-  inner!.innerHTML = ""
-  btns?.classList.remove('show')
+async eliminarFuncion(indice:any){
+  let id = this.idPlaza
+  const respuestaEliminarFuncion = await this.uneterService.eliminarFuncion(id,indice)
+  console.log(respuestaEliminarFuncion)
+  this.obtenerUnete()
+  this.obtenerFunciones()
+  this.obtenerPlazaId(id)
 }
 
 

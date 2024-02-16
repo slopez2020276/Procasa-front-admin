@@ -62,4 +62,17 @@ export class UneteEquipoService {
         this.httClient.delete<any>(`${this.baseUrl}/eliminarPlaza/${id}`)
       )
     }
+
+    eliminarFuncion(id:any,indice:any){
+      return firstValueFrom(
+        this.httClient.put<any>(`${this.baseUrl}/eliminarFuncion/${id}/${indice}`,{})
+      )
+    
+    }
+
+    editarFuncion(indice:any,formValue:any,id:any){
+      return firstValueFrom(
+        this.httClient.put<any>(`${this.baseUrl}/editarPlazaV2/${id}/${indice}`, formValue)
+      )
+    }
 }
