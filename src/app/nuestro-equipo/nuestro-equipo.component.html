@@ -10,6 +10,11 @@
   <h2 (click)="toD()">BODEGUERO</h2>
   <h2 (click)="toE()">PILOTO</h2>
 
+  @for (os of dataUnete; track os._id) {
+    <h2 (click)="toA()">{{os.titulo}}</h2>
+
+}
+
 
   <div id="foot-area">
     <p>Puedes enviar tu CV al correo: <b>contrataciones procasa.com.gt</b></p>
