@@ -42,6 +42,7 @@ import { MostrarimgsUbicacionPipe } from './pipes/mostrarimgs-ubicacion.pipe';
 import { NuestroEquipoComponent } from './nuestro-equipo/nuestro-equipo.component';
 import { AdminproductosComponent } from './componentes/adminproductos/adminproductos.component';
 import { EquipoComponent } from './componentes/equipo/equipo.component';
+import { BackgroundComponent } from './componentes/background/background.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -81,6 +82,7 @@ import { EquipoComponent } from './componentes/equipo/equipo.component';
     NuestroEquipoComponent,
     AdminproductosComponent,
     EquipoComponent,
+    BackgroundComponent,
   ],
   imports: [
     BrowserModule,

@@ -158,12 +158,6 @@ constructor(){
   async ngOnInit()  {
 
     const alertas = document.querySelectorAll('.container-alert')
-    for(let i = 0; i < alertas.length; i++){
-      console.log("---------------------------------------------");
-      console.log(i);
-      console.log(alertas[i].parentElement)
-      console.log(alertas[i]);
-    }
 
       const inputfileBefore: any = (document.getElementById('file-portada') as HTMLInputElement | null)?.value
       const inputfileBefbg: any = (document.getElementById('file-bg') as HTMLInputElement | null)?.value
@@ -173,6 +167,7 @@ if(inputfileBefore==""){
     document.getElementById('pre-portada')?.setAttribute('src', "../../../assets/img/empty.jpg")
     document.getElementById('file-portada')?.setAttribute('data-content', 'seleccionar archivo')
 }
+
 if(inputfileBefbg==""){
     document.getElementById('preview-bg')?.setAttribute('src', "../../../assets/img/empty.jpg")
     document.getElementById('pre-bg')?.setAttribute('src', "../../../assets/img/empty.jpg")

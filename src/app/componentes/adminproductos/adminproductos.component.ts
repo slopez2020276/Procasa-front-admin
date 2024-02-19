@@ -21,8 +21,8 @@ ModalProduct(type:string){ document.getElementById('modal-'+type+'-product')?.cl
 
 DeleteProduct(event: MouseEvent){
   const node = event.target as HTMLElement | null
-  const parent = node?.parentNode?.parentNode?.childNodes[6] as HTMLElement | undefined
-console.log(parent)
+  const parent = node?.parentNode?.parentNode?.childNodes[4] as HTMLElement | undefined
+
   parent?.classList.add('show')
   const inner = parent?.childNodes[0]?.childNodes[0] as HTMLElement | undefined
   const btns = parent?.childNodes[0]?.childNodes[2] as HTMLElement | undefined
@@ -185,7 +185,6 @@ SaveNewSubCategory(){
 OpenAddCategory(event: MouseEvent){
   const node = event.target as HTMLElement | null
   const parent = node?.parentNode?.parentNode?.parentNode?.parentNode?.childNodes[4]?.childNodes[4] as HTMLElement | undefined
-  console.log(parent)
   parent?.classList.add('show')
 }
 
@@ -202,20 +201,18 @@ CloseAddCategory(event: MouseEvent){
   const node = event.target as HTMLElement | null
   const parent = node?.parentNode as HTMLElement | undefined
 
-  console.log(parent)
-
   parent?.classList.remove('show')
 }
 
 CloseAddSubCategory(event: MouseEvent){
   const node = event.target as HTMLElement | null
   const parent = node?.parentNode as HTMLElement | undefined
-  console.log(parent)
-
   parent?.classList.remove('show')
 }
 
+eliminarProducto(){
 
+}
 
 
 
