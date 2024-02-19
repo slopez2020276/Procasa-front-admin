@@ -6,7 +6,7 @@
 <div id="container-1">
 
   @for (os of dataUnete; track os._id) {
-    <h2 (click)="toScrollPlaza()">{{os.titulo}}</h2>
+    <h2 (click)="toScrollPlaza($index)">{{os.titulo}}</h2>
 }
 
 
