@@ -4,15 +4,9 @@
   <h1 class="container-h1 bold">OPORTUNIDAD DE EMPLEO</h1>
 
 <div id="container-1">
-  <h2 (click)="toA()">CARNICERO</h2>
-  <h2 (click)="toB()">CAJERO</h2>
-  <h2 (click)="toC()">ASISTENTE CONTABLE</h2>
-  <h2 (click)="toD()">BODEGUERO</h2>
-  <h2 (click)="toE()">PILOTO</h2>
 
   @for (os of dataUnete; track os._id) {
-    <h2 (click)="toA()">{{os.titulo}}</h2>
-
+    <h2 (click)="toScrollPlaza()">{{os.titulo}}</h2>
 }
 
 
@@ -48,7 +42,7 @@
         </ul>
 
         <div class="cont-to-aplicate">
-             <a href="{{os.enlaceFormualario}}"><button class="to-open-form bold"  >APLICA AQUÍ</button></a> 
+             <a href="{{os.enlaceFormualario}}"><button class="to-open-form bold"  >APLICA AQUÍ</button></a>
             <p>"Calidad de servicio no es lo que tu da. es lo que el cliente recibe" <br> - Peter Drucker -</p>
         </div>
         <br>

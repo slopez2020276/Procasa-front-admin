@@ -12,14 +12,10 @@ export class NuestroEquipoComponent implements OnInit{
    dataUnete
 
 
-  toA(){ document.getElementsByClassName('area')[0]?.scrollIntoView({behavior:"smooth"}) }
-  toB(){ document.getElementsByClassName('area')[1]?.scrollIntoView({behavior:"smooth"}) }
-  toC(){ document.getElementsByClassName('area')[2]?.scrollIntoView({behavior:"smooth"}) }
-  toD(){ document.getElementsByClassName('area')[3]?.scrollIntoView({behavior:"smooth"}) }
-  toE(){ document.getElementsByClassName('area')[4]?.scrollIntoView({behavior:"smooth"}) }
-
-  // toScroll(i:number){ document.getElementsByClassName('area')[i]?.scrollIntoView({behavior:"smooth"}) }
-
+toScrollPlaza(){
+  const plazas = document.getElementsByClassName('cont-area')
+  for(let i = 0;  i < plazas.length; i++){ document.getElementsByClassName('cont-area')[i]?.scrollIntoView({behavior:"smooth"}) }
+}
 
   ngOnInit(){
     this.getDataUneteEquipo()

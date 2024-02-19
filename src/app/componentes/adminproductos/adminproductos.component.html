@@ -38,9 +38,69 @@
 
   <div class="actions">
     <div class="edit-product actns" (click)="ModalProduct('edit')">editar</div>
-    <div class="del-product actns"(click)="DeleteProduct()">eliminar</div>
+    <div class="del-product actns"(click)="DeleteProduct($event)">eliminar</div>
+    <button class="btn-click" (click)="OpenAddCategory($event)">categoría</button>
   </div>
+
+
+<div class="cont-add-cat">
+  <h1 class="title-modal">Agregar Categoría</h1>
+  <div class="btn-click btn-close-addcat" (click)="CloseAddCategory($event)">cerrar</div>
+
+<div class="cont-categories">
+  <button (click)="generarCate()" class="btn-generate normal">Nueva categoría</button>
+  <button (click)="EliminarUltimaCate()" class="btn-delete normal">Eliminar categoría</button>
+
+  <div class="cont-input-btn " *ngFor="let div of categoryArray; let i = index">
+      <input type="text" placeholder="nueva categoría">
+      <div class="btn-sub btn-click btn-red" (click)="OpenAddSubCategory($event)">sub</div>
+  </div>
+
+  <div class="save-added-categories btn-click btn-red" (click)="SaveNewCategory()" (click)="CloseAddCategory($event)">guardar</div>
 </div>
+</div>
+
+
+<div class="cont-subcategories">
+  <h1 class="title-modal">Agregar Sub-Categoría</h1>
+  <div class="btn-click close-cont-subcate" (click)="CloseAddSubCategory($event)">cerrar</div>
+
+
+<div class="cont-categories">
+    <button (click)="generarSubCate()" class="btn-generate normal">Nueva Sub</button>
+    <button (click)="EliminarUltimaSubCate()" class="btn-delete normal">Eliminar Sub</button>
+
+    <div class="cont-input-btn " *ngFor="let div of subCategoryArray; let i = index">
+      <input type="text" placeholder="nueva sub categoría">
+    </div>
+</div>
+
+  <div class="save-added-categories btn-click btn-red" (click)="SaveNewSubCategory()" (click)="CloseAddSubCategory($event)">guardar</div>
+
+
+</div>
+
+
+
+  <div class="container-alert">
+    <div class="alert-model">
+        <p class="inner-message bold"></p>
+
+        <div class="message"> <h1 class="innermsg"></h1></div>
+        <div class="cont-btns-alert">
+          <button  class="confirm" (click)="closeAlert($event)">confirmar</button>
+          <div class="replace-button cancel" (click)="closeAlert($event)">cancelar</div>
+        </div>
+      </div>
+  </div>
+
+</div>
+
+
+
+
+
+
 
 </div>
 
@@ -72,16 +132,6 @@
   <button (click)="generarSub()" class="btn-generate normal">Nueva categoría</button>
   <button (click)="eliminarUltimoSub()" class="btn-delete normal">Eliminar categoría</button>
   <input type="text" class="normal cat-generated" placeholder="categoría" *ngFor="let div of subsArray; let i = index">
-
-  <!-- <div class="cont-actions-subs" *ngFor="let div of productArray; let e = index">
-    <input type="text" placeholder="Categoría" class="input-category bold">
-    <div class="cont-btns-add-del">
-      <button (click)="generarSub()" class="btn-generate">Generar Sub</button>
-      <button (click)="eliminarUltimoSub()" class="btn-delete">Eliminar Sub</button>
-    </div>
-    <div class="cont-generated-input">
-    </div>
-  </div> -->
 </div>
 
 <div class="cont-btn-save">

@@ -11,15 +11,28 @@ export class AdminproductosComponent {
   subCount: number = 0
   subsArray: number[] = []
   subsArrayB: number[] = []
+  categoryArray: number[] = []
+  subCategoryArray: number[] = []
   productArray: number[] = []
   inputEmpty:string = "Seleccionar archivo"
   inputEmptyEdit:string = "Seleccionar archivo"
 
 ModalProduct(type:string){ document.getElementById('modal-'+type+'-product')?.classList.toggle('show') }
 
-DeleteProduct(){
-
+DeleteProduct(event: MouseEvent){
+  const node = event.target as HTMLElement | null
+  const parent = node?.parentNode?.parentNode?.childNodes[6] as HTMLElement | undefined
+console.log(parent)
+  parent?.classList.add('show')
+  const inner = parent?.childNodes[0]?.childNodes[0] as HTMLElement | undefined
+  const btns = parent?.childNodes[0]?.childNodes[2] as HTMLElement | undefined
+  inner?.classList.add('show')
+  inner!.innerHTML = "¿Desea eliminar el producto?"
+  btns?.classList.add('show')
 }
+
+
+
 
 
 FileEdit(event: Event, idfile:string): void  {
@@ -121,6 +134,11 @@ eliminarUltimoProducto() { if (this.productArray.length > 0) { this.productArray
 generarSubB() { const newSubIndex = this.subsArrayB.length + 1; this.subsArrayB.push(newSubIndex) }
 eliminarUltimoSubB() { if (this.subsArrayB.length > 0) { this.subsArrayB.pop() } }
 
+generarCate() { const newSubIndex = this.categoryArray.length + 1; this.categoryArray.push(newSubIndex) }
+EliminarUltimaCate() { if (this.categoryArray.length > 0) { this.categoryArray.pop() } }
+
+generarSubCate() { const newSubIndex = this.subCategoryArray.length + 1; this.subCategoryArray.push(newSubIndex) }
+EliminarUltimaSubCate() { if (this.subCategoryArray.length > 0) { this.subCategoryArray.pop() } }
 
 
 
@@ -152,6 +170,44 @@ closeAlert(event: MouseEvent){
 
 
 
+OpenAddCategory(event: MouseEvent){
+  const node = event.target as HTMLElement | null
+  const parent = node?.parentNode?.parentNode?.childNodes[4] as HTMLElement | undefined
+console.log(parent)
+  parent?.classList.add('show')
+}
+
+
+
+CloseAddCategory(event: MouseEvent){
+  const node = event.target as HTMLElement | null
+  const parent = node?.parentNode?.parentNode?.parentNode?.childNodes[4] as HTMLElement | undefined
+  parent?.classList.remove('show')
+}
+
+CloseAddSubCategory(event: MouseEvent){
+  const node = event.target as HTMLElement | null
+  const parent = node?.parentNode?.parentNode?.childNodes[5] as HTMLElement | undefined
+  parent?.classList.remove('show')
+}
+
+
+
+SaveNewCategory(){
+  console.log("SAVE CATEGORY")
+}
+
+SaveNewSubCategory(){
+  console.log("SAVE SUB CATEGORY")
+
+}
+
+
+OpenAddSubCategory(event: MouseEvent){
+  const node = event.target as HTMLElement | null
+  const parent = node?.parentNode?.parentNode?.parentNode?.parentNode?.childNodes[5] as HTMLElement | undefined
+  parent?.classList.add('show')
+}
 
 
 
