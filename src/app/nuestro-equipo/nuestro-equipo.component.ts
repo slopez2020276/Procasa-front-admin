@@ -12,10 +12,7 @@ export class NuestroEquipoComponent implements OnInit{
    dataUnete
 
 
-toScrollPlaza(){
-  const plazas = document.getElementsByClassName('cont-area')
-  for(let i = 0;  i < plazas.length; i++){ document.getElementsByClassName('cont-area')[i]?.scrollIntoView({behavior:"smooth"}) }
-}
+toScrollPlaza(i:any){ document.getElementsByClassName('cont-area')[i]?.scrollIntoView({behavior:"smooth"}) }
 
   ngOnInit(){
     this.getDataUneteEquipo()
