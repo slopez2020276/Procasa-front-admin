@@ -224,7 +224,7 @@ div#close-modal-edit {
   opacity: 1;
   cursor: pointer;
   transition: transform .1s;
-  z-index: 10;
+  z-index: 1;
 }
 
 div#close-modal-add:hover,
@@ -510,10 +510,16 @@ div.actns {
 
 div.actns:active { transform: scale(.9); }
 
-
+div.cont-btn-save {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
 div.cont-input-btn {
-  width: 100%;
+  width: 400px;
   position: relative;
   display: flex;
   justify-content: center;
@@ -534,7 +540,7 @@ div.save-added-categories {
 /*========= C A T E G O R Í A ================================================================================================================================================*/
 
 div.cont-add-cat, div.cont-subcategories {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
@@ -547,7 +553,7 @@ div.cont-add-cat, div.cont-subcategories {
   align-content: start;
   flex-wrap: wrap;
   display: none;
-  z-index: 0;
+  z-index: 1;
 }
 
 div.cont-subcategories {z-index: 1;}
@@ -564,7 +570,7 @@ div.btn-close-addcat, div.close-cont-subcate {
 }
 
 div.cont-categories {
-  width: 100%;
+  width: 80%;
   position: relative;
   display: flex;
   justify-content: center;

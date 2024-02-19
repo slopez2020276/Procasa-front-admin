@@ -39,48 +39,7 @@
   <div class="actions">
     <div class="edit-product actns" (click)="ModalProduct('edit')">editar</div>
     <div class="del-product actns"(click)="DeleteProduct($event)">eliminar</div>
-    <button class="btn-click" (click)="OpenAddCategory($event)">categoría</button>
   </div>
-
-
-<div class="cont-add-cat">
-  <h1 class="title-modal">Agregar Categoría</h1>
-  <div class="btn-click btn-close-addcat" (click)="CloseAddCategory($event)">cerrar</div>
-
-<div class="cont-categories">
-  <button (click)="generarCate()" class="btn-generate normal">Nueva categoría</button>
-  <button (click)="EliminarUltimaCate()" class="btn-delete normal">Eliminar categoría</button>
-
-  <div class="cont-input-btn " *ngFor="let div of categoryArray; let i = index">
-      <input type="text" placeholder="nueva categoría">
-      <div class="btn-sub btn-click btn-red" (click)="OpenAddSubCategory($event)">sub</div>
-  </div>
-
-  <div class="save-added-categories btn-click btn-red" (click)="SaveNewCategory()" (click)="CloseAddCategory($event)">guardar</div>
-</div>
-</div>
-
-
-<div class="cont-subcategories">
-  <h1 class="title-modal">Agregar Sub-Categoría</h1>
-  <div class="btn-click close-cont-subcate" (click)="CloseAddSubCategory($event)">cerrar</div>
-
-
-<div class="cont-categories">
-    <button (click)="generarSubCate()" class="btn-generate normal">Nueva Sub</button>
-    <button (click)="EliminarUltimaSubCate()" class="btn-delete normal">Eliminar Sub</button>
-
-    <div class="cont-input-btn " *ngFor="let div of subCategoryArray; let i = index">
-      <input type="text" placeholder="nueva sub categoría">
-    </div>
-</div>
-
-  <div class="save-added-categories btn-click btn-red" (click)="SaveNewSubCategory()" (click)="CloseAddSubCategory($event)">guardar</div>
-
-
-</div>
-
-
 
   <div class="container-alert">
     <div class="alert-model">
@@ -155,6 +114,11 @@
 
 </div>
 
+
+
+
+
+
 <!-------- MODAL EDITAR PRODUCTO ------------------------------------------------------------------------------------------------------------------------------------>
 <div id="modal-edit-product">
   <div id="close-modal-edit" (click)="ModalProduct('edit')">cerrar</div>
@@ -180,11 +144,7 @@
 <div class="cont-datos">
   <input type="text" placeholder="Producto" class="normal" name="name-producto" title="nombre del producto">
 
-  <!-- <button (click)="generarSubB()" class="btn-generate normal">Nueva categoría</button>
-  <button (click)="eliminarUltimoSubB()" class="btn-delete normal">Eliminar categoría</button> -->
-  <!-- <input type="text" class="normal cat-generated" placeholder="categoría" *ngFor="let div of subsArrayB; let i = index"> -->
-  <input type="text" class="normal cat-generated" placeholder="categoría">
-  <input type="text" class="normal subcat-generated" placeholder="sub categoría">
+<button class="btn-click btn-red" (click)="OpenAddCategory($event)">editar categorías</button>
 </div>
 
 <div class="cont-btn-save">
@@ -193,8 +153,54 @@
 
 </div>
 
+
+
+
+
+<div class="cont-add-cat">
+  <h1 class="title-modal">Agregar Categoría</h1>
+  <div class="btn-click btn-close-addcat" (click)="CloseAddCategory($event)">cerrar</div>
+
+<div class="cont-categories">
+  <button (click)="generarCate()" class="btn-generate normal">Nueva categoría</button>
+  <button (click)="EliminarUltimaCate()" class="btn-delete normal">Eliminar categoría</button>
+
+  <div class="cont-input-btn " *ngFor="let div of categoryArray; let i = index">
+      <input type="text" placeholder="nueva categoría">
+      <div class="btn-sub btn-click btn-red" (click)="OpenAddSubCategory($event)">sub</div>
+  </div>
+
+<div class="cont-btn-save">
+  <div class="save-added-categories btn-click btn-red" (click)="SaveNewCategory()" (click)="CloseAddCategory($event)">guardar</div>
+</div>
+</div>
 </div>
 
+
+<div class="cont-subcategories">
+  <h1 class="title-modal">Agregar Sub-Categoría</h1>
+  <div class="btn-click close-cont-subcate" (click)="CloseAddSubCategory($event)">cerrar</div>
+
+
+<div class="cont-categories">
+    <button (click)="generarSubCate()" class="btn-generate normal">Nueva Sub</button>
+    <button (click)="EliminarUltimaSubCate()" class="btn-delete normal">Eliminar Sub</button>
+
+    <div class="cont-input-btn " *ngFor="let div of subCategoryArray; let i = index">
+      <input type="text" placeholder="nueva sub categoría">
+    </div>
+</div>
+
+
+<div class="cont-btn-save">
+  <div class="save-added-categories btn-click btn-red" (click)="SaveNewSubCategory()" (click)="CloseAddSubCategory($event)">guardar</div>
+</div>
+
+
+</div>
+
+</div>
+<!-- -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- -->
 
 
 

@@ -170,28 +170,6 @@ closeAlert(event: MouseEvent){
 
 
 
-OpenAddCategory(event: MouseEvent){
-  const node = event.target as HTMLElement | null
-  const parent = node?.parentNode?.parentNode?.childNodes[4] as HTMLElement | undefined
-console.log(parent)
-  parent?.classList.add('show')
-}
-
-
-
-CloseAddCategory(event: MouseEvent){
-  const node = event.target as HTMLElement | null
-  const parent = node?.parentNode?.parentNode?.parentNode?.childNodes[4] as HTMLElement | undefined
-  parent?.classList.remove('show')
-}
-
-CloseAddSubCategory(event: MouseEvent){
-  const node = event.target as HTMLElement | null
-  const parent = node?.parentNode?.parentNode?.childNodes[5] as HTMLElement | undefined
-  parent?.classList.remove('show')
-}
-
-
 
 SaveNewCategory(){
   console.log("SAVE CATEGORY")
@@ -203,11 +181,41 @@ SaveNewSubCategory(){
 }
 
 
+
+OpenAddCategory(event: MouseEvent){
+  const node = event.target as HTMLElement | null
+  const parent = node?.parentNode?.parentNode?.parentNode?.parentNode?.childNodes[4]?.childNodes[4] as HTMLElement | undefined
+  console.log(parent)
+  parent?.classList.add('show')
+}
+
 OpenAddSubCategory(event: MouseEvent){
   const node = event.target as HTMLElement | null
   const parent = node?.parentNode?.parentNode?.parentNode?.parentNode?.childNodes[5] as HTMLElement | undefined
   parent?.classList.add('show')
 }
+
+
+
+
+CloseAddCategory(event: MouseEvent){
+  const node = event.target as HTMLElement | null
+  const parent = node?.parentNode as HTMLElement | undefined
+
+  console.log(parent)
+
+  parent?.classList.remove('show')
+}
+
+CloseAddSubCategory(event: MouseEvent){
+  const node = event.target as HTMLElement | null
+  const parent = node?.parentNode as HTMLElement | undefined
+  console.log(parent)
+
+  parent?.classList.remove('show')
+}
+
+
 
 
 
