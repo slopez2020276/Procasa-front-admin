@@ -30,6 +30,8 @@ div#cont-products {
   align-content: center;
   flex-wrap: wrap;
   margin-top: 1rem;
+  border: 1px solid #FFF;
+
 }
 
 div.product {
@@ -211,6 +213,7 @@ h1.container-h1 {
 div#cont-products {
   width: 90%;
   justify-content: center;
+  flex-wrap: wrap;
 }
 
 div.product {

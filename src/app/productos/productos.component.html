@@ -39,27 +39,31 @@
   <div id="cont-products">
 
       <div class="product">
-        <img src="../../assets/img/carne de res.png" alt="" class="img-product">
-        <h2>Producto</h2>
-            <div class="cont-details">
-              <h1 class="bold">PRODUCTO</h1>
-                <div class="cont-ul">
-                  <ul>
-                    <li class="bold">Title</li>
-                    <li>item</li>
-                    <li>item</li>
-                    <li>item</li>
-                    <li>item</li>
-                  </ul>
-                  <ul>
-                    <li class="bold">Title</li>
-                    <li>item</li>
-                    <li>item</li>
-                    <li>item</li>
-                    <li>item</li>
-                  </ul>
+
+        @for (os of dataProductos; track os._id  ) {
+          <img src="../../assets/img/carne de res.png" alt="" class="img-product">
+          <h2>{{os.nombreProducto}}</h2>
+              <div class="cont-details">
+                <h1 class="bold">{{os.nombreProducto}}</h1>
+                  <div class="cont-ul">
+                    <ul>
+                      @for (categoria of os.categorias; track $index) {
+                        <li class="bold">{{categoria.Nombre}}</li>
+                        @for (items of categoria.items; track $index) {
+                          <li>{{items}}</li>
+                        }
+                      
+                      }
+                      
+                    </ul>
+                  
+                  </div>
+                  
                 </div>
-            </div>
+          }
+      
+
+       
       </div>
 
 
