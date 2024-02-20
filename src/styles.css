@@ -2,7 +2,7 @@
 @font-face { font-family: 'realeway_normal'; src: url('./assets/font/static/Raleway-Medium.ttf'); }
 @font-face { font-family: 'realeway_bold'; src: url('./assets/font/static/Raleway-Bold.ttf'); }
 
-* {box-sizing: border-box; outline: none; padding: 0; margin: 0; border: none; font-family: realeway_light;}
+* {box-sizing: border-box; outline: none; padding: 0; margin: 0; border: none; font-family: realeway_light; font-size: 11pt;}
 
 body {
     overflow-x: hidden;

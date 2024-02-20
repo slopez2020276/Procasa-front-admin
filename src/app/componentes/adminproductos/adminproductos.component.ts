@@ -12,6 +12,8 @@ export class AdminproductosComponent {
   subsArray: number[] = []
   subsArrayB: number[] = []
   categoryArray: number[] = []
+  categoryAddArray: number[] = []
+  categorySubArray: number[] = []
   subCategoryArray: number[] = []
   productArray: number[] = []
   inputEmpty:string = "Seleccionar archivo"
@@ -140,6 +142,12 @@ EliminarUltimaCate() { if (this.categoryArray.length > 0) { this.categoryArray.p
 generarSubCate() { const newSubIndex = this.subCategoryArray.length + 1; this.subCategoryArray.push(newSubIndex) }
 EliminarUltimaSubCate() { if (this.subCategoryArray.length > 0) { this.subCategoryArray.pop() } }
 
+generarnewCate() { const newSubIndex = this.categoryAddArray.length + 1; this.categoryAddArray.push(newSubIndex) }
+EliminarUltimaSubCat() { if (this.categoryAddArray.length > 0) { this.categoryAddArray.pop() } }
+
+generarnewSubCate() { const newSubIndex = this.categorySubArray.length + 1; this.categorySubArray.push(newSubIndex) }
+EliminarUltimaSub() { if (this.categorySubArray.length > 0) { this.categorySubArray.pop() } }
+
 
 
 
@@ -152,7 +160,6 @@ async AlertConfirm(event: MouseEvent) {
   inner?.classList.add('show')
   inner!.innerHTML = "¿Desea guardar los datos de producto?"
   btns?.classList.add('show')
-
 }
 
 
@@ -190,7 +197,7 @@ OpenAddCategory(event: MouseEvent){
 
 OpenAddSubCategory(event: MouseEvent){
   const node = event.target as HTMLElement | null
-  const parent = node?.parentNode?.parentNode?.parentNode?.parentNode?.childNodes[5] as HTMLElement | undefined
+  const parent = node?.parentNode?.parentNode?.parentNode?.parentNode?.children[6] as HTMLElement | undefined
   parent?.classList.add('show')
 }
 
@@ -215,5 +222,15 @@ eliminarProducto(){
 }
 
 
+
+
+
+openAddCategory(event: MouseEvent){
+  const node = event.target as HTMLElement | null
+  const parent = node?.parentNode?.parentNode as HTMLElement | undefined
+  const modal = parent?.childNodes[5] as HTMLAnchorElement | undefined
+    
+  modal?.classList.add('show')
+}
 
 }
