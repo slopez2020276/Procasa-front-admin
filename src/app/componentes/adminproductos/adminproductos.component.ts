@@ -268,5 +268,21 @@ openEditItems(event: MouseEvent) {
   item?.classList.add('show')
 }
 
+// EVENTOS DE ELIMINACIÓN CONFIRMADA ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////777
+
+confirmedDeleteProduct(event: MouseEvent) {
+  const node = event.target as HTMLElement | null
+  const parent = node?.parentNode?.parentNode?.parentNode?.parentNode as HTMLElement | undefined
+  const message = parent?.childNodes[7] as HTMLElement | undefined
+        message?.classList.add('show')
+        const inner = message?.childNodes[0] as HTMLElement | undefined
+        inner!.innerHTML = "¡Noticia eliminada con éxito!"
+        
+        setTimeout(() => {
+          inner!.innerHTML = ""
+          message?.classList.remove('show')
+    }, 1500)
+}
+
 
 }

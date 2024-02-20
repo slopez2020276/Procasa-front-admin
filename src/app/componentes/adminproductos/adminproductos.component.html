@@ -44,11 +44,11 @@
 
   <div class="container-alert">
     <div class="alert-model">
-        <p class="inner-message bold"></p>
+        <p class="inner-message normal"></p>
 
         <div class="message"> <h1 class="innermsg"></h1></div>
         <div class="cont-btns-alert">
-          <button  class="confirm" (click)="closeAlert($event)">confirmar</button>
+          <button  class="confirm" (click)="closeAlert($event)" (click)="confirmedDeleteProduct($event)">confirmar</button>
           <div class="replace-button cancel" (click)="closeAlert($event)">cancelar</div>
         </div>
       </div>
@@ -93,6 +93,8 @@
 
   </div>
 
+
+                          <div class="message-success"> <p class="inner-message normal">message status</p> </div>
 </div>
 
 
@@ -147,7 +149,7 @@
 
 <div class="container-alert">
   <div class="alert-model">
-      <p class="inner-message bold"></p>
+      <p class="inner-message normal"></p>
 
       <div class="message"> <h1 class="innermsg"></h1></div>
       <div class="cont-btns-alert">
@@ -267,7 +269,7 @@
 
 <div class="container-alert">
   <div class="alert-model">
-      <p class="inner-message bold"></p>
+      <p class="inner-message normal"></p>
 
       <div class="message"> <h1 class="innermsg"></h1></div>
       <div class="cont-btns-alert">
@@ -289,8 +291,8 @@
 <!-------- A L E R T ---------------------------------------------------------------------------------------------------------------------------------------------------->
 <div class="container-alert">
   <div class="alert-model">
-      <p class="inner-message bold"></p>
-
+      <p class="inner-message normal"></p>
+      
       <div class="message"> <h1 class="innermsg"></h1></div>
       <div class="cont-btns-alert">
         <button  class="confirm"> confirmar</button>
@@ -298,5 +300,5 @@
       </div>
     </div>
   </div>
-
-
+  
+<!-- <div class="message-success"> <p class="inner-message normal">message status</p> </div> -->

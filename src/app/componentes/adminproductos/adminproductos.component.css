@@ -830,3 +830,23 @@ div.message h1 {
 
 
 input.ng-dirty.ng-invalid { border: 1px solid red; }
+
+
+/*======================================================================================================================================================================*/
+
+div.message-success {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 50;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background: #FAFAFA;
+}
+
+div.message-success.show { display: flex; }
+
