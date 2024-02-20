@@ -16,6 +16,7 @@ export class AdminproductosComponent {
   categoryAddArray: number[] = []
   categorySubArray: number[] = []
   subCategoryArray: number[] = []
+  addItemsArray: number[] = []
   productArray: number[] = []
   inputEmpty:string = "Seleccionar archivo"
   inputEmptyEdit:string = "Seleccionar archivo"
@@ -155,6 +156,9 @@ EliminarUltimaSubCat() { if (this.categoryAddArray.length > 0) { this.categoryAd
 generarnewSubCate() { const newSubIndex = this.categorySubArray.length + 1; this.categorySubArray.push(newSubIndex) }
 EliminarUltimaSub() { if (this.categorySubArray.length > 0) { this.categorySubArray.pop() } }
 
+addItem() { const newSubIndex = this.addItemsArray.length + 1; this.addItemsArray.push(newSubIndex) }
+deleteItem() { if (this.addItemsArray.length > 0) { this.addItemsArray.pop() } }
+
 
 
 
@@ -254,6 +258,15 @@ saveEditedProduct(event: MouseEvent){
   alert?.classList.add('show')
 }
 
+
+
+
+openEditItems(event: MouseEvent) {
+  const node = event.target as HTMLElement | null
+  const parent = node?.parentNode?.parentNode?.parentNode as HTMLElement | undefined
+  const item = parent?.childNodes[3] as HTMLElement | undefined  
+  item?.classList.add('show')
+}
 
 
 }

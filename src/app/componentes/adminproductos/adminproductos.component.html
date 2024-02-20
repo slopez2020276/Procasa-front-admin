@@ -211,7 +211,7 @@
 
   <div class="cont-input-btn">
     <div class="btn-sub btn-click btn-red">eliminar</div>
-    <div class="btn-sub btn-click btn-red">editar</div>
+    <div class="btn-sub btn-click btn-red" (click)="openEditItems($event)">editar</div>
     <div class="btn-sub btn-click btn-red">guardar</div>
       <input type="text" placeholder="nueva categoría">
   </div>
@@ -219,6 +219,27 @@
 <div class="cont-btn-save">
   <div class="save-added-categories btn-click btn-red" (click)="SaveNewCategory()" (click)="CloseAddCategory($event)">guardar</div>
 </div>
+</div>
+
+<div class="add-items">
+  <div class="btn-click close-item" (click)="CloseAddCategory($event)">cerrar</div>
+
+  <div class="cont-middle">
+
+  <div class="cont-adddel">
+
+  <div class="sub-cont-btns">
+    <div class="btn-click btn-red" (click)="addItem()">agregar</div>
+    <div class="btn-click btn-red" (click)="deleteItem()">eliminar</div>
+  </div>
+  <div class="cont-input-item" *ngFor="let div of addItemsArray; let i = index">
+    <input type="text" placeholder="...">
+  </div>
+
+  <div class="btn-click btn-red save-items">guardar</div>
+</div>
+  </div>
+
 </div>
 </div>
 
@@ -232,7 +253,7 @@
     <button (click)="generarSubCate()" class="btn-generate normal">Nueva Sub</button>
     <button (click)="EliminarUltimaSubCate()" class="btn-delete normal">Eliminar Sub</button>
 
-    <div class="cont-input-btn " *ngFor="let div of subCategoryArray; let i = index">
+    <div class="cont-input-btn" *ngFor="let div of subCategoryArray; let i = index">
       <input type="text" placeholder="nueva sub categoría">
     </div>
 </div>
