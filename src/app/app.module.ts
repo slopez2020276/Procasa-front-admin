@@ -91,7 +91,6 @@ import { BackgroundComponent } from './componentes/background/background.compone
     HttpClientModule,
     FormsModule,
     NgOptimizedImage,
-    ReactiveFormsModule
   ],
   providers: [NgModel],
   bootstrap: [AppComponent]

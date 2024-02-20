@@ -1,4 +1,5 @@
-import { Component } from '@angular/core'
+import { Component } from '@angular/core';
+import { FormControl, Validators } from '@angular/forms';
 
 
 @Component({
@@ -18,6 +19,12 @@ export class AdminproductosComponent {
   productArray: number[] = []
   inputEmpty:string = "Seleccionar archivo"
   inputEmptyEdit:string = "Seleccionar archivo"
+
+  nombreControl = new FormControl('', Validators.required)
+  emailControl = new FormControl('', [Validators.required, Validators.email])
+
+
+
 
 ModalProduct(type:string){ document.getElementById('modal-'+type+'-product')?.classList.toggle('show') }
 

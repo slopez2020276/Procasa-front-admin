@@ -751,3 +751,5 @@ div.message h1 {
 }
 
 
+
+input.ng-dirty.ng-invalid { border: 1px solid red; }
