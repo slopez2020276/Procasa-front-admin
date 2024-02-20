@@ -16,6 +16,7 @@ interface HtmlInputEvent extends Event { target: HTMLInputElement }
 })
 
 export class AdminprincipalComponent implements OnInit, AfterViewInit {
+
   statusBackground
   anchoimg:any
   altoimg:any
@@ -83,10 +84,10 @@ dataLineaRespuesta: any
 fechaModal
 mostrarPorModal
 
-  tituloNoticia:string = ''
-  descripcionNoticia:string = ''
+tituloNoticia:string = ''
+descripcionNoticia:string = ''
 
-  photoSelected: string | ArrayBuffer | null = null;
+photoSelected: string | ArrayBuffer | null = null;
 file: File | undefined;
 
 private fileTmp:any;
@@ -189,37 +190,19 @@ if(inputfileBefbg==""){
     this.obtnerValores()
 }
 
-  async obtenerMision(){
-    const respuesta = await this.misionService.obtenerMsion()
-    this.dataMisionÑ = respuesta.Mision[0]
-    this.mision = this.dataMisionÑ.textMision
-    this.vision = this.dataMisionÑ.textVIsion
 
-    document.getElementById('mision-txt')?.setAttribute('disabled', 'true')
-    document.getElementById('vision-txt')?.setAttribute('disabled', 'true')
-  }
+//Todos los metodos de mision 
 
-  async obtenerHistoria(){
-    const responsivehistoria = await this.historiaService.obtenerHistoria()
-    this.data = responsivehistoria.historia[0]
-    this.textoHistoria = responsivehistoria.historia[0].DescripcionHistoria
-    this.EncalceVideo = responsivehistoria.historia[0].EncalceVideo
-    this._idhistoria = responsivehistoria.historia[0]._id
-    this.imgPrincipal =  responsivehistoria.historia[0].imgPathPrincipal
-    this.imgfondo = responsivehistoria.historia[0].imgPathFondo
-     console.log(this._idhistoria)
+async obtenerMision(){
+  const respuesta = await this.misionService.obtenerMsion()
+  this.dataMisionÑ = respuesta.Mision[0]
+  this.mision = this.dataMisionÑ.textMision
+  this.vision = this.dataMisionÑ.textVIsion
 
-    document.getElementById('iframe-value')?.setAttribute('disabled', 'true')
-    document.getElementById('textareaValidate')?.setAttribute('disabled', 'true')
-  }
+  document.getElementById('mision-txt')?.setAttribute('disabled', 'true')
+  document.getElementById('vision-txt')?.setAttribute('disabled', 'true')
+}
 
-  async obtenerLinea(){
-    const repuestaLinea = await this.lineaService.obtenerLineaTiempo()
-    this.dataLinea = repuestaLinea[1].lineas
-    console.log(this.dataLinea)
-  }
-
-// ______________________________________________________________________________________________________________________________________________________________________________________________
 // HABILITAR Y DESHABILITAR TEXTARES DE VISION Y MISIÓN
 EnableMisionVision(){
   document.getElementById('mision-txt')?.removeAttribute('disabled')
@@ -237,31 +220,56 @@ DisableMisionVision(){
   document.getElementById('deshabilitar-mv')?.classList.toggle('hide')
 }
 
-EnableHistoria(){
-  document.getElementById('iframe-value')?.removeAttribute('disabled')
-  document.getElementById('textareaValidate')?.removeAttribute('disabled')
+preSaveMisionVision() {
+  const misionTextArea: HTMLTextAreaElement | any = document.getElementById('mision-txt')
+  const visionTextArea: HTMLTextAreaElement | any = document.getElementById('vision-txt')
 
-  document.getElementById('habilitar-hs')?.classList.toggle('hide')
-  document.getElementById('deshabilitar-hs')?.classList.toggle('hide')
+  let mision: string = ''
+  let vision: string = ''
+
+  if (misionTextArea instanceof HTMLTextAreaElement) { mision = misionTextArea.value }
+  if (visionTextArea instanceof HTMLTextAreaElement) { vision = visionTextArea.value }
+
+  if(mision!=="" && vision!==""){
+
+  const innerMessage = document.getElementsByClassName('innermsg')[4]
+  if (innerMessage) { innerMessage.innerHTML = "¿Desea guardar los cambios?"
+
+
+  document.getElementsByClassName('container-alert')[4]?.classList.add('show')
+  document.getElementsByClassName('message')[4]?.classList.add('show')
+  document.getElementsByClassName('cont-btns-alert')[4]?.classList.add('show')
+
+  document.getElementsByClassName('cancel')[4]?.addEventListener('click', function(){
+    document.getElementsByClassName('cont-btns-alert')[4]?.classList.remove('show')
+    document.getElementsByClassName('container-alert')[4]?.classList.remove('show')
+    document.getElementsByClassName('message')[4]?.classList.remove('show')
+  },false)
+  document.getElementsByClassName('confirm')[4]?.addEventListener('click', function(){
+
+    document.getElementsByClassName('cont-btns-alert')[4]?.classList.remove('show')
+    document.getElementsByClassName('container-alert')[4]?.classList.remove('show')
+    },false)
+  }
+  }else if((mision=="" && vision=="") || mision=="" || vision=="") { this.MessageSuccess("Los campos requeridos no pueden estar vacíos",4) }
 }
 
-DisableHistoria(){
-  document.getElementById('iframe-value')?.setAttribute('disabled', 'disabled')
-  document.getElementById('textareaValidate')?.setAttribute('disabled', 'disabled')
+async guardarMision() {
+  this.containerAlertElement.nativeElement.classList.remove('show')
+  try {
+    let id = this.dataMisionÑ._id
+    const respuestaEdit = await this.misionService.editarMisionValor(id, this.formularioMisionValor.value)
+    console.log(respuestaEdit)
 
-  document.getElementById('habilitar-hs')?.classList.toggle('hide')
-  document.getElementById('deshabilitar-hs')?.classList.toggle('hide')
+    this.MessageSuccess('¡Datos guardados exitosamente!',4) } catch (error) { this.MessageSuccess('Error al guardar los datos',4) }
+
 }
+//Fin de los Metodos de Mision
+
+//Todos los metodos de Valores 
 
 
 
-
-
-
-
-
-
-// SISTEMA DE HABILITAR Y DESHABILITAR TEXTAREA DE VALORES
 EnableValores() {
   const valores = document.getElementsByClassName('valores-txt')
 for(let e = 0; e < valores.length; e++){
@@ -282,6 +290,189 @@ for(let e = 0; e < valores.length; e++){
   document.getElementById('vdeshabilitar')?.classList.toggle('hide')
 }
 
+async obtnerValores(){
+  const respuesta = await this.ValoresService.obtenerValores()
+  this.dataValores = respuesta.valores[0]
+  this.Integridadmodel = this.dataValores.Innovacion
+  this.PasionModel = this.dataValores.Pasion
+  this.InnovacionModel = this.dataValores.Integridad
+  this.OrientacionModel = this.dataValores.Orientacion
+  console.log(this.dataValores)
+
+
+  document.getElementById('txt-integridad')?.setAttribute('disabled', 'true')
+  document.getElementById('txt-pasion')?.setAttribute('disabled', 'true')
+  document.getElementById('txt-innovacion')?.setAttribute('disabled', 'true')
+  document.getElementById('txt-orientacion')?.setAttribute('disabled', 'true')
+
+
+  // this.MessageAlert("¡Bienvenido al Administrador de Procasa!",1,2000)
+}
+
+async editarValores(){
+  let id =  this.dataValores._id
+  const respuestaEdit = await this.ValoresService.editarValores(id,this.formularioValores.value)
+  console.log(respuestaEdit)
+ }
+
+ preSaveValores() {
+  const integridadTextArea: HTMLTextAreaElement | any = document.getElementById('txt-integridad')
+  const pasionTextArea: HTMLTextAreaElement | any = document.getElementById('txt-pasion')
+  const innovacionTextArea: HTMLTextAreaElement | any = document.getElementById('txt-innovacion')
+  const orientacionTextArea: HTMLTextAreaElement | any = document.getElementById('txt-orientacion')
+
+  let integridad: string = ''
+  let pasion: string = ''
+  let innovacion: string = ''
+  let orientacion: string = ''
+
+  if (integridadTextArea instanceof HTMLTextAreaElement) { integridad = integridadTextArea.value }
+  if (pasionTextArea instanceof HTMLTextAreaElement) { pasion = pasionTextArea.value }
+  if (innovacionTextArea instanceof HTMLTextAreaElement) { innovacion = innovacionTextArea.value }
+  if (orientacionTextArea instanceof HTMLTextAreaElement) { orientacion = orientacionTextArea.value }
+
+  if(integridad!=="" && pasion!=="" && innovacion!=="" && orientacion!==""){
+  const innerMessage = document.getElementsByClassName('innermsg')[5]
+  if (innerMessage) { innerMessage.innerHTML = "¿Desea guardar los cambios?"
+
+
+  document.getElementsByClassName('message')[5]?.classList.add('show')
+  document.getElementsByClassName('container-alert')[5]?.classList.add('show')
+  document.getElementsByClassName('cont-btns-alert')[5]?.classList.add('show')
+
+  document.getElementsByClassName('cancel')[5]?.addEventListener('click', function(){
+    document.getElementsByClassName('cont-btns-alert')[5]?.classList.remove('show')
+    document.getElementsByClassName('container-alert')[5]?.classList.remove('show')
+    document.getElementsByClassName('message')[5]?.classList.remove('show')
+  },false)
+  document.getElementsByClassName('confirm')[5]?.addEventListener('click', () => {
+
+      document.getElementsByClassName('cont-btns-alert')[5]?.classList.remove('show')
+      document.getElementsByClassName('container-alert')[5]?.classList.remove('show')
+    },false)
+  }
+  }else{ this.MessageSuccess("Los campos requeridos no pueden estar vacíos",5) }
+}
+
+onClickValores() {
+  document.getElementsByClassName('cont-btns-alert')[5]?.classList.remove('show')
+  this.guardarValores()
+ this.containerAlertElementVal.nativeElement.classList.remove('show') }
+
+async guardarValores() {
+  try {
+    let id = this.dataValores._id
+    const respuestaEdit = await this.ValoresService.editarValores(id, this.formularioValores.value)
+    this.MessageSuccess('¡Datos guardados exitosamente!',5)
+  } catch (error) { this.MessageSuccess('Error al guardar los datos',5) }
+}
+
+
+//TODOS LOS METODOS DE HISTORIA
+
+
+async obtenerHistoria(){
+  const responsivehistoria = await this.historiaService.obtenerHistoria()
+  this.data = responsivehistoria.historia[0]
+  this.textoHistoria = responsivehistoria.historia[0].DescripcionHistoria
+  this.EncalceVideo = responsivehistoria.historia[0].EncalceVideo
+  this._idhistoria = responsivehistoria.historia[0]._id
+  this.imgPrincipal =  responsivehistoria.historia[0].imgPathPrincipal
+  this.imgfondo = responsivehistoria.historia[0].imgPathFondo
+   console.log(this._idhistoria)
+
+  document.getElementById('iframe-value')?.setAttribute('disabled', 'true')
+  document.getElementById('textareaValidate')?.setAttribute('disabled', 'true')
+}
+async editarHistoriaA(){
+  let id =  this.dataLieneaxId._id
+ const guardarRes = await this.lineaService.editarLineaforID(id,this.formularioEditlineaTiempo.value)
+ this.obtenerLinea()
+ this.Modal()
+}
+
+
+
+
+
+
+EnableHistoria(){
+  document.getElementById('iframe-value')?.removeAttribute('disabled')
+  document.getElementById('textareaValidate')?.removeAttribute('disabled')
+
+  document.getElementById('habilitar-hs')?.classList.toggle('hide')
+  document.getElementById('deshabilitar-hs')?.classList.toggle('hide')
+}
+
+DisableHistoria(){
+  document.getElementById('iframe-value')?.setAttribute('disabled', 'disabled')
+  document.getElementById('textareaValidate')?.setAttribute('disabled', 'disabled')
+
+  document.getElementById('habilitar-hs')?.classList.toggle('hide')
+  document.getElementById('deshabilitar-hs')?.classList.toggle('hide')
+}
+
+
+preSaveHistoria() {
+
+  let enlace: any = (document.getElementById('iframe-value') as HTMLInputElement | any)?.value
+  const preEnlace: HTMLInputElement | null = document.getElementById('iframe-value') as HTMLInputElement
+  const descTextArea: HTMLTextAreaElement | any = document.getElementById('textareaValidate')
+  let desc: string = ''
+
+  if (preEnlace instanceof HTMLTextAreaElement) { enlace = preEnlace.value }
+  if (descTextArea instanceof HTMLTextAreaElement) { desc = descTextArea.value }
+
+  if(enlace!=="" && desc!==""){
+  const innerMessage = document.getElementsByClassName('innermsg')[2]
+  if (innerMessage) { innerMessage.innerHTML = "¿Desea guardar los cambios?"
+
+  document.getElementsByClassName('container-alert')[2]?.classList.add('show')
+  document.getElementsByClassName('message')[2]?.classList.add('show')
+  document.getElementsByClassName('cont-btns-alert')[2]?.classList.add('show')
+
+  document.getElementsByClassName('cancel')[2]?.addEventListener('click', function(){
+    document.getElementsByClassName('container-alert')[2]?.classList.remove('show')
+    document.getElementsByClassName('message')[2]?.classList.remove('show')
+    document.getElementsByClassName('cont-btns-alert')[2]?.classList.remove('show')
+  },false)
+  document.getElementsByClassName('confirm')[2]?.addEventListener('click', function(){
+
+      document.getElementsByClassName('container-alert')[2]?.classList.remove('show')
+      document.getElementsByClassName('cont-btns-alert')[2]?.classList.remove('show')
+    },false)
+  }
+  }else{ this.MessageSuccess("Los campos requeridos no pueden estar vacíos",2) }
+}
+
+onClickHistoria() {
+  this.guardarHistoria()
+  this.containerAlertElementHis.nativeElement.classList.remove('show')
+}
+
+
+async guardarHistoria() {
+  try {
+    const respuestaEdit = await this.historiaService.editarHistoria(this.formularioEditHistoria.value, this._idhistoria)
+    this.MessageSuccess("¡Datos guardados exitosamente!", 2)
+  } catch (error) { this.MessageSuccess("Error al guardar la Historia", 2) }
+}
+
+async obtnerHistorias (){
+  let respuestasobtnerHistoria = await this.historiaService.obtenerHistoria()
+  this.dataLineaRespuesta = respuestasobtnerHistoria.historia
+}
+
+//FIN DE LOS METDOOS DE HISTORIA  
+
+//Metodos de linea de tiempo
+
+async obtenerLinea(){
+  const repuestaLinea = await this.lineaService.obtenerLineaTiempo()
+  this.dataLinea = repuestaLinea[1].lineas
+  console.log(this.dataLinea)
+}
+
 
 async buscarporID(id:any){
   const respuestaID = await this.lineaService.obtenerLineaxID(id)
@@ -296,24 +487,8 @@ async editarTime(){
  this.Modal()
 
 }
-
-async editarHistoriaA(){
-  let id =  this.dataLieneaxId._id
- const guardarRes = await this.lineaService.editarLineaforID(id,this.formularioEditlineaTiempo.value)
- this.obtenerLinea()
- this.Modal()
-}
-
-
-
-
 ModalTimeLine() {document.getElementById('modal-time-line')?.classList.toggle('modal') }
 
-
-
- async onSubmit(){}
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 ModalAddTimeLine() { document.getElementById('modal-time-line-add')?.classList.toggle('modal') }
 
@@ -323,59 +498,7 @@ ModalAddTimeLine() { document.getElementById('modal-time-line-add')?.classList.t
 
   }
 
-  async obtnerNoticias (){
-    const respuestasobtnerNoticas = await this.noticiasService.obtenerNoticas()
-    this.dataLineaRespuesta = respuestasobtnerNoticas.noticias
-    console.log(respuestasobtnerNoticas)
-  }
-
-  async obtnerHistorias (){
-    let respuestasobtnerHistoria = await this.historiaService.obtenerHistoria()
-    this.dataLineaRespuesta = respuestasobtnerHistoria.historia
-  }
-
-  ModalEditNotice() { document.getElementById('modal-edit-notice')?.classList.toggle('show') }
-  NewModalNotice() { document.getElementById('modal-new-notice')?.classList.toggle('show') }
-
-
-
-  async obtnerValores(){
-    const respuesta = await this.ValoresService.obtenerValores()
-    this.dataValores = respuesta.valores[0]
-    this.Integridadmodel = this.dataValores.Innovacion
-    this.PasionModel = this.dataValores.Pasion
-    this.InnovacionModel = this.dataValores.Integridad
-    this.OrientacionModel = this.dataValores.Orientacion
-    console.log(this.dataValores)
-
-
-    document.getElementById('txt-integridad')?.setAttribute('disabled', 'true')
-    document.getElementById('txt-pasion')?.setAttribute('disabled', 'true')
-    document.getElementById('txt-innovacion')?.setAttribute('disabled', 'true')
-    document.getElementById('txt-orientacion')?.setAttribute('disabled', 'true')
-
-
-    // this.MessageAlert("¡Bienvenido al Administrador de Procasa!",1,2000)
-  }
-
-  async editarValores(){
-   let id =  this.dataValores._id
-   const respuestaEdit = await this.ValoresService.editarValores(id,this.formularioValores.value)
-   console.log(respuestaEdit)
-  }
-
-
-
-  async obtenerxidNoticias(id:any){
-    const respuestaObtnerid = await this.noticiasService.obtenerxID(id)
-    this.dataNoticiasxID = respuestaObtnerid.noticia
-    console.log(this.dataNoticiasxID)
-    this.tituloNoticia = this.dataNoticiasxID.title
-    this.descripcionNoticia = this.dataNoticiasxID.descripcion
-}
-
-
-async eliminarLineaTiempo(id:any){
+  async eliminarLineaTiempo(id:any){
 
     const innerMessage = document.getElementsByClassName('innermsg')[3]
     if (innerMessage) { innerMessage.innerHTML = "¿Desea eliminar el evento seleccionado?"
@@ -395,6 +518,313 @@ async eliminarLineaTiempo(id:any){
       this.obtenerLinea()
       document.getElementsByClassName('cont-btns-alert')[3]?.classList.remove('show'); this.MessageSuccess('Evento eliminado',3) }, false) }
 }
+
+
+
+
+getFileUpdateTiempo($event: any): void {
+  //TODO esto captura el archivo!
+  const [ file ] = $event.target.files;
+  this.fileUpdateLineaTiempo = {
+    fileRaw:file,
+    fileName:file.name
+  }
+}
+
+sendFileUpdateTiempo():void{
+
+  let id = this.dataLieneaxId._id
+  const body = new FormData()
+  if(this.fileUpdateLineaTiempo){
+    body.append('ImgPathLineaTiempo', this.fileUpdateLineaTiempo.fileRaw, this.fileUpdateLineaTiempo.fileName)
+    body.append('titleLineaTiempo', this.formularioEditlineaTiempo.value.titleLineaTiempo)
+    body.append('descriptionLineaTiempo',this.formularioEditlineaTiempo.value.descriptionLineaTiempo)
+    body.append('fecha',this.formularioAgregarLineaTiempo.value.fecha)
+    body.append('mostrarPor',this.formularioAgregarLineaTiempo.value.mostrarPor)
+
+  }else{
+    body.append('titleLineaTiempo', this.formularioEditlineaTiempo.value.titleLineaTiempo)
+    body.append('descriptionLineaTiempo',this.formularioEditlineaTiempo.value.descriptionLineaTiempo)
+    body.append('fecha',this.formularioAgregarLineaTiempo.value.fecha)
+    body.append('mostrarPor',this.formularioAgregarLineaTiempo.value.mostrarPor)
+  }
+  this.lineaService.sendEdit(body,id)
+  .subscribe(res =>{console.log(res), this.obtenerLinea(),this.fileUpdateLineaTiempo = null})
+}
+
+  
+
+preSaveTimeLine(event: Event): void  {
+
+  const fileInput = event.target as HTMLInputElement
+  const archivo = fileInput.files?.[0]
+
+  if (archivo) { const lector = new FileReader()
+
+    lector.onload = (eventoLectura:any) => {
+      const imagen = new Image()
+      imagen.src = eventoLectura.target.result as string
+
+      imagen.onload = () => {
+        const fileSize: number = archivo.size
+        const size: any = fileSize.toFixed(2)
+        let medida: string
+        let sizemedida: any
+        if((size/1024/1024) < 1.0) {medida = " KB"; sizemedida = (size/1024).toFixed(2).toString() + medida }else{ medida = " MB"; sizemedida = (size/1024/1024).toFixed(2).toString() + medida }
+        const fileName: string = archivo.name
+        let img = new Image()
+        const objectURL = URL.createObjectURL(archivo)
+        img.src = objectURL
+        this.anchoimg = imagen.width, this.altoimg = imagen.height
+
+const saveButtonTL = document.getElementById('save-new-tili')
+if (saveButtonTL) {
+  saveButtonTL.addEventListener('click', () => {
+
+    this.saveNewTimeLine()
+
+}, false) }
+
+        document.getElementsByClassName('innerdetails')[2]!.innerHTML = sizemedida
+        document.getElementsByClassName('innerdetails')[0]!.innerHTML = this.anchoimg + " px"
+        document.getElementsByClassName('innerdetails')[1]!.innerHTML = this.altoimg + " px"
+        document.getElementById('new-file-input')?.setAttribute('data-content', fileName)
+        document.getElementById('img-pre-tl')?.setAttribute('src', img.src)
+      }
+    }
+    lector.readAsDataURL(archivo)
+  }
+}
+
+
+
+saveNewTimeLine() {
+
+  const fileInput: HTMLInputElement | null = document.getElementById('new-file-input') as HTMLInputElement | null
+
+  const tituloInput: HTMLInputElement | null = document.getElementById('new-titulo-tl') as HTMLInputElement | null
+  const descripcionInput: HTMLInputElement | null = document.getElementById('new-desc-tl') as HTMLInputElement | null
+
+  let file: string = 'empty.jpg'
+  let titulo: string = ''
+  let descripcion: string = ''
+
+  if (fileInput instanceof HTMLInputElement) { file = fileInput.value }
+  if (tituloInput instanceof HTMLInputElement) { titulo = tituloInput.value }
+  if (descripcionInput instanceof HTMLInputElement) { descripcion = descripcionInput.value }
+
+  if(file!=="" && titulo!=="" && descripcion!==""){
+  const innerMessage = document.getElementsByClassName('innermsg')[7]
+  if (innerMessage) { innerMessage.innerHTML = "¿Desea guardar los cambios?"
+
+  document.getElementsByClassName('container-alert')[7]?.classList.add('show')
+  document.getElementsByClassName('message')[7]?.classList.add('show')
+  document.getElementsByClassName('cont-btns-alert')[7]?.classList.add('show')
+
+    document.getElementsByClassName('cancel')[7]?.addEventListener('click', function(){
+    document.getElementsByClassName('container-alert')[7]?.classList.remove('show')
+    document.getElementsByClassName('message')[7]?.classList.remove('show')
+    document.getElementsByClassName('cont-btns-alert')[7]?.classList.remove('show')
+  },false)
+  document.getElementsByClassName('confirm')[7]?.addEventListener('click', function(){
+
+      document.getElementsByClassName('container-alert')[7]?.classList.remove('show')
+    },false)
+  }
+  }else{ this.MessageSuccess("Los campos requeridos no pueden estar vacíos",7) }
+}
+
+onClickNewTimeLine() {
+
+  this.sendFile()
+  this.containerAlertElementTL.nativeElement.classList.remove('show')
+}
+
+  sendFile():void{
+
+    const body = new FormData()
+
+    if(this.fileTmp){
+      body.append('ImgPathLineaTiempo', this.fileTmp.fileRaw, this.fileTmp.fileName);
+      body.append('titleLineaTiempo', this.formularioAgregarLineaTiempo.value.titleLineaTiempo)
+      body.append('descriptionLineaTiempo',this.formularioAgregarLineaTiempo.value.descriptionLineaTiempo)
+      body.append('fecha',this.formularioAgregarLineaTiempo.value.fecha)
+      body.append('mostrarPor',this.formularioAgregarLineaTiempo.value.mostrarPor)
+    }else{
+      body.append('titleLineaTiempo', this.formularioAgregarLineaTiempo.value.titleLineaTiempo)
+      body.append('descriptionLineaTiempo',this.formularioAgregarLineaTiempo.value.descriptionLineaTiempo)
+      body.append('fecha',this.formularioAgregarLineaTiempo.value.fecha)
+      body.append('mostrarPor',this.formularioAgregarLineaTiempo.value.mostrarPor)
+    }
+
+    console.log(this.formularioAgregarLineaTiempo.value.fecha)
+    this.lineaService.sendPost(body)
+
+    .subscribe(res =>{
+      console.log(res),console.log(body), this.obtenerLinea(),this.fileTmp = null
+      this.MessageSuccess('Datos guardados exitosamente',7)
+
+    })
+  }
+
+  toUpdateLineaTiempo(event: Event) {
+
+
+
+    const fileInput = event.target as HTMLInputElement
+    const archivo = fileInput.files?.[0]
+  
+    if (archivo) { const lector = new FileReader()
+  
+      lector.onload = (eventoLectura:any) => {
+        const imagen = new Image()
+        imagen.src = eventoLectura.target.result as string
+  
+        imagen.onload = () => {
+          const fileSize: number = archivo.size
+          const size: any = fileSize.toFixed(2)
+          let medida: string
+          let sizemedida: any
+          if((size/1024/1024) < 1.0) {medida = " KB"; sizemedida = (size/1024).toFixed(2).toString() + medida }else{ medida = " MB"; sizemedida = (size/1024/1024).toFixed(2).toString() + medida }
+          const fileName: string = archivo.name
+          let img = new Image()
+          const objectURL = URL.createObjectURL(archivo)
+          img.src = objectURL
+          this.anchoimg = imagen.width, this.altoimg = imagen.height
+          let namefile = archivo.name
+  
+      document.getElementById('width-update-lt')?.classList.remove('limit')
+          document.getElementById('height-update-lt')?.classList.remove('limit')
+          document.getElementById('size-update-lt')?.classList.remove('limit')
+  
+          if(this.anchoimg > 2000){  document.getElementById('width-update-lt')?.classList.add('limit') }
+          if(this.altoimg > 1500){ document.getElementById('height-update-lt')?.classList.add('limit') }
+          if((size/1024) > 2048 ){  document.getElementById('size-update-lt')?.classList.add('limit') }
+  
+          document.getElementById('size-update-lt')!.innerHTML = sizemedida
+          document.getElementById('width-update-lt')!.innerHTML = this.anchoimg + " px"
+          document.getElementById('height-update-lt')!.innerHTML = this.altoimg + " px"
+          document.getElementById('file-update-lt')?.setAttribute('data-content', fileName)
+          document.getElementById('img-update-tl')?.removeAttribute('src')
+          document.getElementById('img-update-tl')?.setAttribute('src', img.src)
+  
+          const saveButtonTL = document.getElementById('update-time-line')
+          if (saveButtonTL) { saveButtonTL.addEventListener('click', () => {
+  
+            const tituloInput: HTMLInputElement | null = document.getElementById('titulo-update-lt') as HTMLInputElement | null
+            const descripcionInput: HTMLInputElement | null = document.getElementById('desc-update-lt') as HTMLInputElement | null
+  
+  
+            let titulo: string = ''
+            let descripcion: string = ''
+  
+            if (tituloInput instanceof HTMLInputElement) { titulo = tituloInput.value }
+            if (descripcionInput instanceof HTMLInputElement) { descripcion = descripcionInput.value }
+  
+            // Mostrando valores de los inputs
+            console.log(titulo)
+            console.log(descripcion)
+  
+  if(titulo!=="" && descripcion!==""){
+    const innerMessage = document.getElementsByClassName('innermsg')[8]
+    if (innerMessage) { innerMessage.innerHTML = "¿Desea guardar los cambios?"
+  
+  
+            document.getElementsByClassName('container-alert')[8]?.classList.add('show')
+            document.getElementsByClassName('message')[8]?.classList.add('show')
+            document.getElementsByClassName('cont-btns-alert')[8]?.classList.add('show')
+  
+              document.getElementsByClassName('cancel')[8]?.addEventListener('click', function(){
+              document.getElementsByClassName('container-alert')[8]?.classList.remove('show')
+              document.getElementsByClassName('message')[8]?.classList.remove('show')
+              document.getElementsByClassName('cont-btns-alert')[8]?.classList.remove('show')
+            },false)
+            document.getElementsByClassName('confirm')[8]?.addEventListener('click', () =>{
+              document.getElementsByClassName('container-alert')[8]?.classList.remove('show')
+  //************************************************************************ */
+  
+  
+  
+  //************************************************************************ */
+            },false)
+          }
+  
+        }else{
+  
+  
+          document.getElementsByClassName('cont-btns-alert')[8]?.classList.remove('show')
+          this.MessageSuccess("Los campos requeridos no pueden estar vacíos",8)
+  
+  
+  
+        }
+          }, false) }
+          }
+        }
+        lector.readAsDataURL(archivo)
+      }
+  }
+  
+
+
+
+  //Fin de los metodos de linea de tiempo
+// _______________________________________________________________________________________________________________________________________________________________________________________
+
+
+
+
+
+
+
+
+
+
+
+// SISTEMA DE HABILITAR Y DESHABILITAR TEXTAREA DE VALORES
+
+
+
+
+
+
+
+
+
+ async onSubmit(){}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+  async obtnerNoticias (){
+    const respuestasobtnerNoticas = await this.noticiasService.obtenerNoticas()
+    this.dataLineaRespuesta = respuestasobtnerNoticas.noticias
+    console.log(respuestasobtnerNoticas)
+  }
+
+
+
+  ModalEditNotice() { document.getElementById('modal-edit-notice')?.classList.toggle('show') }
+  NewModalNotice() { document.getElementById('modal-new-notice')?.classList.toggle('show') }
+
+
+
+ 
+
+
+
+
+  async obtenerxidNoticias(id:any){
+    const respuestaObtnerid = await this.noticiasService.obtenerxID(id)
+    this.dataNoticiasxID = respuestaObtnerid.noticia
+    console.log(this.dataNoticiasxID)
+    this.tituloNoticia = this.dataNoticiasxID.title
+    this.descripcionNoticia = this.dataNoticiasxID.descripcion
+}
+
+
+
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
   async editarNoticiasxid(){
@@ -495,14 +925,6 @@ async eliminarLineaTiempo(id:any){
   }
 
 
-  getFileUpdateTiempo($event: any): void {
-    //TODO esto captura el archivo!
-    const [ file ] = $event.target.files;
-    this.fileUpdateLineaTiempo = {
-      fileRaw:file,
-      fileName:file.name
-    }
-  }
 
   async ObtenerAllnoticas(){
     const dataLineaRespuesta = await this.noticiasService.obtnenerNoticasAll()
@@ -510,27 +932,7 @@ async eliminarLineaTiempo(id:any){
     console.log(this.dataLineaRespuesta )
   }
 
-  sendFileUpdateTiempo():void{
-
-    let id = this.dataLieneaxId._id
-    const body = new FormData()
-    if(this.fileUpdateLineaTiempo){
-      body.append('ImgPathLineaTiempo', this.fileUpdateLineaTiempo.fileRaw, this.fileUpdateLineaTiempo.fileName)
-      body.append('titleLineaTiempo', this.formularioEditlineaTiempo.value.titleLineaTiempo)
-      body.append('descriptionLineaTiempo',this.formularioEditlineaTiempo.value.descriptionLineaTiempo)
-      body.append('fecha',this.formularioAgregarLineaTiempo.value.fecha)
-      body.append('mostrarPor',this.formularioAgregarLineaTiempo.value.mostrarPor)
-
-    }else{
-      body.append('titleLineaTiempo', this.formularioEditlineaTiempo.value.titleLineaTiempo)
-      body.append('descriptionLineaTiempo',this.formularioEditlineaTiempo.value.descriptionLineaTiempo)
-      body.append('fecha',this.formularioAgregarLineaTiempo.value.fecha)
-      body.append('mostrarPor',this.formularioAgregarLineaTiempo.value.mostrarPor)
-    }
-    this.lineaService.sendEdit(body,id)
-    .subscribe(res =>{console.log(res), this.obtenerLinea(),this.fileUpdateLineaTiempo = null})
-  }
-
+  
   getFileUpdateNoticia($event: any): void {
     //TODO esto captura el archivo!
     const [ file ] = $event.target.files;
@@ -763,270 +1165,29 @@ testEmptyPortada(){
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////7
-preSaveMisionVision() {
-  const misionTextArea: HTMLTextAreaElement | any = document.getElementById('mision-txt')
-  const visionTextArea: HTMLTextAreaElement | any = document.getElementById('vision-txt')
 
-  let mision: string = ''
-  let vision: string = ''
-
-  if (misionTextArea instanceof HTMLTextAreaElement) { mision = misionTextArea.value }
-  if (visionTextArea instanceof HTMLTextAreaElement) { vision = visionTextArea.value }
-
-  if(mision!=="" && vision!==""){
-
-  const innerMessage = document.getElementsByClassName('innermsg')[4]
-  if (innerMessage) { innerMessage.innerHTML = "¿Desea guardar los cambios?"
-
-
-  document.getElementsByClassName('container-alert')[4]?.classList.add('show')
-  document.getElementsByClassName('message')[4]?.classList.add('show')
-  document.getElementsByClassName('cont-btns-alert')[4]?.classList.add('show')
-
-  document.getElementsByClassName('cancel')[4]?.addEventListener('click', function(){
-    document.getElementsByClassName('cont-btns-alert')[4]?.classList.remove('show')
-    document.getElementsByClassName('container-alert')[4]?.classList.remove('show')
-    document.getElementsByClassName('message')[4]?.classList.remove('show')
-  },false)
-  document.getElementsByClassName('confirm')[4]?.addEventListener('click', function(){
-
-    document.getElementsByClassName('cont-btns-alert')[4]?.classList.remove('show')
-    document.getElementsByClassName('container-alert')[4]?.classList.remove('show')
-    },false)
-  }
-  }else if((mision=="" && vision=="") || mision=="" || vision=="") { this.MessageSuccess("Los campos requeridos no pueden estar vacíos",4) }
-}
 
 onClick() {
 }
 
-async guardarMision() {
-  this.containerAlertElement.nativeElement.classList.remove('show')
-  try {
-    let id = this.dataMisionÑ._id
-    const respuestaEdit = await this.misionService.editarMisionValor(id, this.formularioMisionValor.value)
-    console.log(respuestaEdit)
 
-    this.MessageSuccess('¡Datos guardados exitosamente!',4) } catch (error) { this.MessageSuccess('Error al guardar los datos',4) }
-
-}
 
 
 
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////77
-preSaveValores() {
-  const integridadTextArea: HTMLTextAreaElement | any = document.getElementById('txt-integridad')
-  const pasionTextArea: HTMLTextAreaElement | any = document.getElementById('txt-pasion')
-  const innovacionTextArea: HTMLTextAreaElement | any = document.getElementById('txt-innovacion')
-  const orientacionTextArea: HTMLTextAreaElement | any = document.getElementById('txt-orientacion')
 
-  let integridad: string = ''
-  let pasion: string = ''
-  let innovacion: string = ''
-  let orientacion: string = ''
-
-  if (integridadTextArea instanceof HTMLTextAreaElement) { integridad = integridadTextArea.value }
-  if (pasionTextArea instanceof HTMLTextAreaElement) { pasion = pasionTextArea.value }
-  if (innovacionTextArea instanceof HTMLTextAreaElement) { innovacion = innovacionTextArea.value }
-  if (orientacionTextArea instanceof HTMLTextAreaElement) { orientacion = orientacionTextArea.value }
-
-  if(integridad!=="" && pasion!=="" && innovacion!=="" && orientacion!==""){
-  const innerMessage = document.getElementsByClassName('innermsg')[5]
-  if (innerMessage) { innerMessage.innerHTML = "¿Desea guardar los cambios?"
-
-
-  document.getElementsByClassName('message')[5]?.classList.add('show')
-  document.getElementsByClassName('container-alert')[5]?.classList.add('show')
-  document.getElementsByClassName('cont-btns-alert')[5]?.classList.add('show')
-
-  document.getElementsByClassName('cancel')[5]?.addEventListener('click', function(){
-    document.getElementsByClassName('cont-btns-alert')[5]?.classList.remove('show')
-    document.getElementsByClassName('container-alert')[5]?.classList.remove('show')
-    document.getElementsByClassName('message')[5]?.classList.remove('show')
-  },false)
-  document.getElementsByClassName('confirm')[5]?.addEventListener('click', () => {
-
-      document.getElementsByClassName('cont-btns-alert')[5]?.classList.remove('show')
-      document.getElementsByClassName('container-alert')[5]?.classList.remove('show')
-    },false)
-  }
-  }else{ this.MessageSuccess("Los campos requeridos no pueden estar vacíos",5) }
-}
-
-onClickValores() {
-  document.getElementsByClassName('cont-btns-alert')[5]?.classList.remove('show')
-  this.guardarValores()
- this.containerAlertElementVal.nativeElement.classList.remove('show') }
-
-async guardarValores() {
-  try {
-    let id = this.dataValores._id
-    const respuestaEdit = await this.ValoresService.editarValores(id, this.formularioValores.value)
-    this.MessageSuccess('¡Datos guardados exitosamente!',5)
-  } catch (error) { this.MessageSuccess('Error al guardar los datos',5) }
-}
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////77
-preSaveHistoria() {
 
-  let enlace: any = (document.getElementById('iframe-value') as HTMLInputElement | any)?.value
-  const preEnlace: HTMLInputElement | null = document.getElementById('iframe-value') as HTMLInputElement
-  const descTextArea: HTMLTextAreaElement | any = document.getElementById('textareaValidate')
-  let desc: string = ''
-
-  if (preEnlace instanceof HTMLTextAreaElement) { enlace = preEnlace.value }
-  if (descTextArea instanceof HTMLTextAreaElement) { desc = descTextArea.value }
-
-  if(enlace!=="" && desc!==""){
-  const innerMessage = document.getElementsByClassName('innermsg')[2]
-  if (innerMessage) { innerMessage.innerHTML = "¿Desea guardar los cambios?"
-
-  document.getElementsByClassName('container-alert')[2]?.classList.add('show')
-  document.getElementsByClassName('message')[2]?.classList.add('show')
-  document.getElementsByClassName('cont-btns-alert')[2]?.classList.add('show')
-
-  document.getElementsByClassName('cancel')[2]?.addEventListener('click', function(){
-    document.getElementsByClassName('container-alert')[2]?.classList.remove('show')
-    document.getElementsByClassName('message')[2]?.classList.remove('show')
-    document.getElementsByClassName('cont-btns-alert')[2]?.classList.remove('show')
-  },false)
-  document.getElementsByClassName('confirm')[2]?.addEventListener('click', function(){
-
-      document.getElementsByClassName('container-alert')[2]?.classList.remove('show')
-      document.getElementsByClassName('cont-btns-alert')[2]?.classList.remove('show')
-    },false)
-  }
-  }else{ this.MessageSuccess("Los campos requeridos no pueden estar vacíos",2) }
-}
-
-onClickHistoria() {
-  this.guardarHistoria()
-  this.containerAlertElementHis.nativeElement.classList.remove('show')
-}
-
-
-async guardarHistoria() {
-  try {
-    const respuestaEdit = await this.historiaService.editarHistoria(this.formularioEditHistoria.value, this._idhistoria)
-    this.MessageSuccess("¡Datos guardados exitosamente!", 2)
-  } catch (error) { this.MessageSuccess("Error al guardar la Historia", 2) }
-}
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-preSaveTimeLine(event: Event): void  {
 
-  const fileInput = event.target as HTMLInputElement
-  const archivo = fileInput.files?.[0]
-
-  if (archivo) { const lector = new FileReader()
-
-    lector.onload = (eventoLectura:any) => {
-      const imagen = new Image()
-      imagen.src = eventoLectura.target.result as string
-
-      imagen.onload = () => {
-        const fileSize: number = archivo.size
-        const size: any = fileSize.toFixed(2)
-        let medida: string
-        let sizemedida: any
-        if((size/1024/1024) < 1.0) {medida = " KB"; sizemedida = (size/1024).toFixed(2).toString() + medida }else{ medida = " MB"; sizemedida = (size/1024/1024).toFixed(2).toString() + medida }
-        const fileName: string = archivo.name
-        let img = new Image()
-        const objectURL = URL.createObjectURL(archivo)
-        img.src = objectURL
-        this.anchoimg = imagen.width, this.altoimg = imagen.height
-
-const saveButtonTL = document.getElementById('save-new-tili')
-if (saveButtonTL) {
-  saveButtonTL.addEventListener('click', () => {
-
-    this.saveNewTimeLine()
-
-}, false) }
-
-        document.getElementsByClassName('innerdetails')[2]!.innerHTML = sizemedida
-        document.getElementsByClassName('innerdetails')[0]!.innerHTML = this.anchoimg + " px"
-        document.getElementsByClassName('innerdetails')[1]!.innerHTML = this.altoimg + " px"
-        document.getElementById('new-file-input')?.setAttribute('data-content', fileName)
-        document.getElementById('img-pre-tl')?.setAttribute('src', img.src)
-      }
-    }
-    lector.readAsDataURL(archivo)
-  }
-}
 
 //#################################################################################################################################
-saveNewTimeLine() {
 
-  const fileInput: HTMLInputElement | null = document.getElementById('new-file-input') as HTMLInputElement | null
-
-  const tituloInput: HTMLInputElement | null = document.getElementById('new-titulo-tl') as HTMLInputElement | null
-  const descripcionInput: HTMLInputElement | null = document.getElementById('new-desc-tl') as HTMLInputElement | null
-
-  let file: string = 'empty.jpg'
-  let titulo: string = ''
-  let descripcion: string = ''
-
-  if (fileInput instanceof HTMLInputElement) { file = fileInput.value }
-  if (tituloInput instanceof HTMLInputElement) { titulo = tituloInput.value }
-  if (descripcionInput instanceof HTMLInputElement) { descripcion = descripcionInput.value }
-
-  if(file!=="" && titulo!=="" && descripcion!==""){
-  const innerMessage = document.getElementsByClassName('innermsg')[7]
-  if (innerMessage) { innerMessage.innerHTML = "¿Desea guardar los cambios?"
-
-  document.getElementsByClassName('container-alert')[7]?.classList.add('show')
-  document.getElementsByClassName('message')[7]?.classList.add('show')
-  document.getElementsByClassName('cont-btns-alert')[7]?.classList.add('show')
-
-    document.getElementsByClassName('cancel')[7]?.addEventListener('click', function(){
-    document.getElementsByClassName('container-alert')[7]?.classList.remove('show')
-    document.getElementsByClassName('message')[7]?.classList.remove('show')
-    document.getElementsByClassName('cont-btns-alert')[7]?.classList.remove('show')
-  },false)
-  document.getElementsByClassName('confirm')[7]?.addEventListener('click', function(){
-
-      document.getElementsByClassName('container-alert')[7]?.classList.remove('show')
-    },false)
-  }
-  }else{ this.MessageSuccess("Los campos requeridos no pueden estar vacíos",7) }
-}
-
-onClickNewTimeLine() {
-
-  this.sendFile()
-  this.containerAlertElementTL.nativeElement.classList.remove('show')
-}
-
-  sendFile():void{
-
-    const body = new FormData()
-
-    if(this.fileTmp){
-      body.append('ImgPathLineaTiempo', this.fileTmp.fileRaw, this.fileTmp.fileName);
-      body.append('titleLineaTiempo', this.formularioAgregarLineaTiempo.value.titleLineaTiempo)
-      body.append('descriptionLineaTiempo',this.formularioAgregarLineaTiempo.value.descriptionLineaTiempo)
-      body.append('fecha',this.formularioAgregarLineaTiempo.value.fecha)
-      body.append('mostrarPor',this.formularioAgregarLineaTiempo.value.mostrarPor)
-    }else{
-      body.append('titleLineaTiempo', this.formularioAgregarLineaTiempo.value.titleLineaTiempo)
-      body.append('descriptionLineaTiempo',this.formularioAgregarLineaTiempo.value.descriptionLineaTiempo)
-      body.append('fecha',this.formularioAgregarLineaTiempo.value.fecha)
-      body.append('mostrarPor',this.formularioAgregarLineaTiempo.value.mostrarPor)
-    }
-
-    console.log(this.formularioAgregarLineaTiempo.value.fecha)
-    this.lineaService.sendPost(body)
-
-    .subscribe(res =>{
-      console.log(res),console.log(body), this.obtenerLinea(),this.fileTmp = null
-      this.MessageSuccess('Datos guardados exitosamente',7)
-
-    })
-  }
 
 
 
@@ -1286,103 +1447,6 @@ updateNotice() {
 
 
 //#################################################################################################################################
-toUpdateLineaTiempo(event: Event) {
-
-
-
-  const fileInput = event.target as HTMLInputElement
-  const archivo = fileInput.files?.[0]
-
-  if (archivo) { const lector = new FileReader()
-
-    lector.onload = (eventoLectura:any) => {
-      const imagen = new Image()
-      imagen.src = eventoLectura.target.result as string
-
-      imagen.onload = () => {
-        const fileSize: number = archivo.size
-        const size: any = fileSize.toFixed(2)
-        let medida: string
-        let sizemedida: any
-        if((size/1024/1024) < 1.0) {medida = " KB"; sizemedida = (size/1024).toFixed(2).toString() + medida }else{ medida = " MB"; sizemedida = (size/1024/1024).toFixed(2).toString() + medida }
-        const fileName: string = archivo.name
-        let img = new Image()
-        const objectURL = URL.createObjectURL(archivo)
-        img.src = objectURL
-        this.anchoimg = imagen.width, this.altoimg = imagen.height
-        let namefile = archivo.name
-
-    document.getElementById('width-update-lt')?.classList.remove('limit')
-        document.getElementById('height-update-lt')?.classList.remove('limit')
-        document.getElementById('size-update-lt')?.classList.remove('limit')
-
-        if(this.anchoimg > 2000){  document.getElementById('width-update-lt')?.classList.add('limit') }
-        if(this.altoimg > 1500){ document.getElementById('height-update-lt')?.classList.add('limit') }
-        if((size/1024) > 2048 ){  document.getElementById('size-update-lt')?.classList.add('limit') }
-
-        document.getElementById('size-update-lt')!.innerHTML = sizemedida
-        document.getElementById('width-update-lt')!.innerHTML = this.anchoimg + " px"
-        document.getElementById('height-update-lt')!.innerHTML = this.altoimg + " px"
-        document.getElementById('file-update-lt')?.setAttribute('data-content', fileName)
-        document.getElementById('img-update-tl')?.removeAttribute('src')
-        document.getElementById('img-update-tl')?.setAttribute('src', img.src)
-
-        const saveButtonTL = document.getElementById('update-time-line')
-        if (saveButtonTL) { saveButtonTL.addEventListener('click', () => {
-
-          const tituloInput: HTMLInputElement | null = document.getElementById('titulo-update-lt') as HTMLInputElement | null
-          const descripcionInput: HTMLInputElement | null = document.getElementById('desc-update-lt') as HTMLInputElement | null
-
-
-          let titulo: string = ''
-          let descripcion: string = ''
-
-          if (tituloInput instanceof HTMLInputElement) { titulo = tituloInput.value }
-          if (descripcionInput instanceof HTMLInputElement) { descripcion = descripcionInput.value }
-
-          // Mostrando valores de los inputs
-          console.log(titulo)
-          console.log(descripcion)
-
-if(titulo!=="" && descripcion!==""){
-  const innerMessage = document.getElementsByClassName('innermsg')[8]
-  if (innerMessage) { innerMessage.innerHTML = "¿Desea guardar los cambios?"
-
-
-          document.getElementsByClassName('container-alert')[8]?.classList.add('show')
-          document.getElementsByClassName('message')[8]?.classList.add('show')
-          document.getElementsByClassName('cont-btns-alert')[8]?.classList.add('show')
-
-            document.getElementsByClassName('cancel')[8]?.addEventListener('click', function(){
-            document.getElementsByClassName('container-alert')[8]?.classList.remove('show')
-            document.getElementsByClassName('message')[8]?.classList.remove('show')
-            document.getElementsByClassName('cont-btns-alert')[8]?.classList.remove('show')
-          },false)
-          document.getElementsByClassName('confirm')[8]?.addEventListener('click', () =>{
-            document.getElementsByClassName('container-alert')[8]?.classList.remove('show')
-//************************************************************************ */
-
-
-
-//************************************************************************ */
-          },false)
-        }
-
-      }else{
-
-
-        document.getElementsByClassName('cont-btns-alert')[8]?.classList.remove('show')
-        this.MessageSuccess("Los campos requeridos no pueden estar vacíos",8)
-
-
-
-      }
-        }, false) }
-        }
-      }
-      lector.readAsDataURL(archivo)
-    }
-}
 
 
 
