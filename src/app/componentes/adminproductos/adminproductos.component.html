@@ -60,12 +60,8 @@
     <div class="btn-click btn-close-addcat" (click)="CloseAddCategory($event)">cerrar</div>
   
   <div class="cont-categories">
-    <button (click)="generarnewCate()" class="btn-generate normal">agregar</button>
-    <button (click)="EliminarUltimaSubCat()" class="btn-delete normal">eliminar</button>
-  
-    <div class="cont-input-btn " *ngFor="let div of categoryAddArray; let i = index">
+    <div class="cont-input-btn">
         <input type="text" placeholder="nueva categoría">
-        <div class="btn-sub btn-click btn-red" (click)="OpenAddSubCategory($event)">sub</div>
     </div>
 
   <div class="cont-btn-save">
@@ -100,11 +96,12 @@
 </div>
 
 
+<!--    Pruebas de FormControl
 <form>
-    <input id="nombre" type="text" [formControl]="nombreControl">
-    <input id="email" type="email" [formControl]="emailControl">
-        <button type="submit">Enviar</button>
-</form>
+  <input id="nombre" type="text" [formControl]="nombreControl">
+  <input id="email" type="email" [formControl]="emailControl">
+      <button type="submit">Enviar</button>
+</form> -->
 
 
 
@@ -120,7 +117,7 @@
   <div class="cont-blocks">
 
     <div class="preview-img-model">
-    <input id="file-edit" (change)="FileAdd($event, 'img-pre-add')" type="file" accept=".jpg, .jpeg, .png, .webp, .avi" title="seleccionar archivo" [attr.data-content]="inputEmpty">
+    <input [formControl]="addImgProduct" id="file-edit" (change)="FileAdd($event, 'img-pre-add')" type="file" accept=".jpg, .jpeg, .png, .webp, .avi" title="seleccionar archivo" [attr.data-content]="inputEmpty">
   <div class="details-img">
     <ul>
       <li>ancho: <p class="innerdetails bold"></p></li>
@@ -133,11 +130,12 @@
 </div>
 
 <div class="cont-datos">
-  <input type="text" placeholder="Producto" class="normal" name="name-producto" title="nombre del producto">
+  <input [formControl]="addProduct" type="text" placeholder="Producto" class="normal" name="name-producto" title="nombre del producto">
 
-  <button (click)="generarSub()" class="btn-generate normal">Nueva categoría</button>
-  <button (click)="eliminarUltimoSub()" class="btn-delete normal">Eliminar categoría</button>
-  <input type="text" class="normal cat-generated" placeholder="categoría" *ngFor="let div of subsArray; let i = index">
+  <!-- <button (click)="generarSub()" class="btn-generate normal">Nueva categoría</button>
+  <button (click)="eliminarUltimoSub()" class="btn-delete normal">Eliminar categoría</button> -->
+  <!-- <input type="text" class="normal cat-generated" placeholder="categoría" *ngFor="let div of subsArray; let i = index"> -->
+  <input type="text" class="normal cat-generated" placeholder="categoría">
 </div>
 
 <div class="cont-btn-save">
@@ -195,7 +193,7 @@
 </div>
 
 <div class="cont-btn-save">
-  <div class="add-save normal">guardar</div>
+  <div class="add-save normal" (click)="saveEditedProduct($event)">guardar</div>
 </div>
 
 </div>
@@ -207,12 +205,15 @@
   <div class="btn-click btn-close-addcat" (click)="CloseAddCategory($event)">cerrar</div>
 
 <div class="cont-categories">
-  <button (click)="generarCate()" class="btn-generate normal">Nueva categoría</button>
-  <button (click)="EliminarUltimaCate()" class="btn-delete normal">Eliminar categoría</button>
+  <!-- <button (click)="generarCate()" class="btn-generate normal">Nueva categoría</button> -->
+  <!-- <button (click)="EliminarUltimaCate()" class="btn-delete normal">Eliminar categoría</button> -->
+  <!-- <div class="cont-input-btn" *ngFor="let div of categoryArray; let i = index"> -->
 
-  <div class="cont-input-btn " *ngFor="let div of categoryArray; let i = index">
+  <div class="cont-input-btn">
+    <div class="btn-sub btn-click btn-red">eliminar</div>
+    <div class="btn-sub btn-click btn-red">editar</div>
+    <div class="btn-sub btn-click btn-red">guardar</div>
       <input type="text" placeholder="nueva categoría">
-      <div class="btn-sub btn-click btn-red" (click)="OpenAddSubCategory($event)">sub</div>
   </div>
 
 <div class="cont-btn-save">
@@ -241,6 +242,20 @@
 </div>
 
 </div>
+
+
+<div class="container-alert">
+  <div class="alert-model">
+      <p class="inner-message bold"></p>
+
+      <div class="message"> <h1 class="innermsg"></h1></div>
+      <div class="cont-btns-alert">
+        <button  class="confirm" (click)="closeAlert($event)">confirmar</button>
+        <div class="replace-button cancel" (click)="closeAlert($event)">cancelar</div>
+      </div>
+    </div>
+  </div>
+
 
 </div>
 <!-- -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- -->

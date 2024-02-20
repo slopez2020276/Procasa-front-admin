@@ -23,8 +23,8 @@ export class AdminproductosComponent {
   nombreControl = new FormControl('', Validators.required)
   emailControl = new FormControl('', [Validators.required, Validators.email])
 
-
-
+  addProduct = new FormControl('', Validators.required)
+  addImgProduct = new FormControl('', Validators.required)
 
 ModalProduct(type:string){ document.getElementById('modal-'+type+'-product')?.classList.toggle('show') }
 
@@ -239,5 +239,21 @@ openAddCategory(event: MouseEvent){
     
   modal?.classList.add('show')
 }
+
+
+saveEditedProduct(event: MouseEvent){
+  const node = event.target as HTMLElement | null
+  const parent = node?.parentNode?.parentNode?.parentNode as HTMLElement | undefined
+  const alert = parent?.childNodes[6] as HTMLElement | undefined
+  const inner = alert?.childNodes[0]?.childNodes[0] as HTMLElement | undefined
+  const btns = alert?.childNodes[0]?.childNodes[2] as HTMLElement | undefined
+  inner!.innerHTML = "¿Desea guardar los cambios?"
+  inner?.classList.add('show')
+  btns?.classList.add('show')
+
+  alert?.classList.add('show')
+}
+
+
 
 }
