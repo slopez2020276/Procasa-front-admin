@@ -40,7 +40,7 @@
     <div class="edit-product actns" (click)="ModalProduct('edit')">editar</div>
     <div class="del-product actns"(click)="DeleteProduct($event)">eliminar</div>
     <div class="btn-click btn-dark" (click)="openAddCategory($event)">categoría</div>
-  </div>
+
 
   <div class="container-alert">
     <div class="alert-model">
@@ -115,24 +115,26 @@
 <div id="modal-add-product">
   <h1 class="title-modal">Agregar Producto</h1>
   <div id="close-modal-add" (click)="ModalProduct('add')">cerrar</div>
-
+  
+  <form  [formGroup]="formularioAgregarProducto">
   <div class="cont-blocks">
-
-    <div class="preview-img-model">
-    <input [formControl]="addImgProduct" id="file-edit" (change)="FileAdd($event, 'img-pre-add')" type="file" accept=".jpg, .jpeg, .png, .webp, .avi" title="seleccionar archivo" [attr.data-content]="inputEmpty">
-  <div class="details-img">
-    <ul>
-      <li>ancho: <p class="innerdetails bold"></p></li>
-      <li>alto:<p class="innerdetails bold"></p></li>
-      <li>Realcion:<p class="innerdetails bold"></p></li>
-      <li>tamaño:<p class="innerdetails bold"></p></li>
-    </ul>
-    <img src="" alt="" id="img-pre-add">
-  </div>
-</div>
-
-<div class="cont-datos">
-  <input [formControl]="addProduct" type="text" placeholder="Producto" class="normal" name="name-producto" title="nombre del producto">
+    
+      <div class="preview-img-model">
+        <input [formControl]="addImgProduct" id="file-edit" (change)="FileAdd($event, 'img-pre-add')" (change)="getFile($event)"  type="file" accept=".jpg, .jpeg, .png, .webp, .avi" title="seleccionar archivo" [attr.data-content]="inputEmpty">
+        <div class="details-img">
+          <ul>
+            <li>ancho: <p class="innerdetails bold"></p></li>
+            <li>alto:<p class="innerdetails bold"></p></li>
+            <li>Realcion:<p class="innerdetails bold"></p></li>
+            <li>tamaño:<p class="innerdetails bold"></p></li>
+          </ul>
+          <img src="" alt="" id="img-pre-add">
+        </div>
+      </div>
+      
+      <div class="cont-datos">
+        <input [formControl]="addProduct" type="text" formControlName="nombreProducto" placeholder="Producto" class="normal" name="name-producto" title="nombre del producto">
+      
 
   <!-- <button (click)="generarSub()" class="btn-generate normal">Nueva categoría</button>
   <button (click)="eliminarUltimoSub()" class="btn-delete normal">Eliminar categoría</button> -->
@@ -141,10 +143,11 @@
 </div>
 
 <div class="cont-btn-save">
-  <div class="add-save normal" (click)="AlertConfirm($event)">guardar</div>
+  <div class="add-save normal" (click)="sendFile()" (click)="AlertConfirm($event)">guardar</div>
 </div>
 
 </div>
+</form>
 
 
 <div class="container-alert">
@@ -153,7 +156,7 @@
 
       <div class="message"> <h1 class="innermsg"></h1></div>
       <div class="cont-btns-alert">
-        <button  class="confirm"> confirmar</button>
+        <button  class="confirm" (click)="sendFile()" > confirmar</button>
         <div class="replace-button cancel" (click)="closeAlert($event)">cancelar</div>
       </div>
     </div>
@@ -260,9 +263,11 @@
     </div>
 </div>
 
+
 <div class="cont-btn-save">
   <div class="save-added-categories btn-click btn-red" (click)="SaveNewSubCategory()" (click)="CloseAddSubCategory($event)">guardar</div>
 </div>
+
 
 </div>
 

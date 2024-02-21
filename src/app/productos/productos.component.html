@@ -38,10 +38,10 @@
   <h1 class="container-h1 bold" id="h1-catalogo">CATÁLOGO</h1>
   <div id="cont-products">
 
+      <div class="product">
 
-    @for (os of dataProductos; track os._id  ) {
-          <div class="product">
-          <img src="../../assets/img/carne de res.png" alt="" class="img-product">
+        @for (os of dataProductos; track os._id  ) {
+          <img [ngSrc]="'http://localhost:3002/' + os.imgPath" [width]="500" [height]="500" class="img-product">
           <h2>{{os.nombreProducto}}</h2>
               <div class="cont-details">
                 <h1 class="bold">{{os.nombreProducto}}</h1>
@@ -52,19 +52,19 @@
                         @for (items of categoria.items; track $index) {
                           <li>{{items}}</li>
                         }
-
+                      
                       }
-
+                      
                     </ul>
-
+                  
                   </div>
-
+                  
                 </div>
-              </div>
           }
+      
 
-
-
+       
+      </div>
 
 
 

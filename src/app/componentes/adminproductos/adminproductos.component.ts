@@ -1,14 +1,21 @@
-import { Component } from '@angular/core';
-import { FormControl, Validators } from '@angular/forms';
-
+import { Component, OnInit, inject } from '@angular/core'
+import { ProductosService } from '../../services/productos.service'
+import { FormControl, FormGroup, Validators } from '@angular/forms'
 
 @Component({
   selector: 'app-adminproductos',
   templateUrl: './adminproductos.component.html',
   styleUrl: './adminproductos.component.css'
 })
-export class AdminproductosComponent {
+export class AdminproductosComponent implements OnInit {
+  
+  productosServices= inject(ProductosService)
+
+  formularioAgregarProducto : FormGroup
+  private fileTmp: any
+
   ProductToSearch: any
+  dataProductos: any
   subCount: number = 0
   subsArray: number[] = []
   subsArrayB: number[] = []
@@ -21,11 +28,14 @@ export class AdminproductosComponent {
   inputEmpty:string = "Seleccionar archivo"
   inputEmptyEdit:string = "Seleccionar archivo"
 
-  nombreControl = new FormControl('', Validators.required)
-  emailControl = new FormControl('', [Validators.required, Validators.email])
+ 
 
-  addProduct = new FormControl('', Validators.required)
-  addImgProduct = new FormControl('', Validators.required)
+
+  constructor(){
+    this.formularioAgregarProducto = new FormGroup({
+      nombreProducto : new FormControl('', [Validators.required]),
+    })
+  }
 
 ModalProduct(type:string){ document.getElementById('modal-'+type+'-product')?.classList.toggle('show') }
 
@@ -42,9 +52,38 @@ DeleteProduct(event: MouseEvent){
 }
 
 
+ngOnInit(): void {
+  this.obtenerProductos()
+}
 
 
+getFile($event: any): void {
+  //TODO esto captura el archivo!
+  const [ file ] = $event.target.files;
+  this.fileTmp = {
+    fileRaw:file,
+    fileName:file.name
+  }
+}
 
+sendFile():void{
+
+  const body = new FormData()
+
+  if(this.fileTmp){
+    body.append('imgPath', this.fileTmp.fileRaw, this.fileTmp.fileName);
+    body.append('nombreProducto', this.formularioAgregarProducto.value.nombreProducto)
+   
+
+  }else{
+    body.append('nombreProducto', this.formularioAgregarProducto.value.nombreProducto)
+
+  }
+
+  console.log(this.formularioAgregarProducto.value.nombreProducto)
+  this.productosServices.CrearUbicacion(body)
+  .subscribe(res =>{console.log(res), this.obtenerProductos(),this.fileTmp = null})
+}
 FileEdit(event: Event, idfile:string): void  {
 
   const fileInput = event.target as HTMLInputElement
@@ -227,6 +266,23 @@ CloseAddSubCategory(event: MouseEvent){
   const parent = node?.parentNode as HTMLElement | undefined
   parent?.classList.remove('show')
 }
+
+
+obtenerProductos(){
+  this.productosServices.obtenerProductos().subscribe(
+    (res:any) => {
+      this.dataProductos = res.productosEncontrados
+      console.log(this.dataProductos[0].categorias[7].items)
+    }
+  )
+}
+
+
+
+
+
+
+
 
 eliminarProducto(){
 
