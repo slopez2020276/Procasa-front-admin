@@ -33,7 +33,7 @@ export class AdminproductosComponent implements OnInit {
 
   constructor(){
     this.formularioAgregarProducto = new FormGroup({
-      nombreProducto : new FormControl('', [Validators.required]),
+      nombreProducto : new FormControl(),
     })
   }
 
@@ -73,7 +73,7 @@ sendFile():void{
   if(this.fileTmp){
     body.append('imgPath', this.fileTmp.fileRaw, this.fileTmp.fileName);
     body.append('nombreProducto', this.formularioAgregarProducto.value.nombreProducto)
-   
+   console.log(this.formularioAgregarProducto.value.nombreProducto)
 
   }else{
     body.append('nombreProducto', this.formularioAgregarProducto.value.nombreProducto)
@@ -269,10 +269,11 @@ CloseAddSubCategory(event: MouseEvent){
 
 
 obtenerProductos(){
+  
   this.productosServices.obtenerProductos().subscribe(
     (res:any) => {
       this.dataProductos = res.productosEncontrados
-      console.log(this.dataProductos[0].categorias[7].items)
+      console.log(this.dataProductos[0].categorias[1].items)
     }
   )
 }
