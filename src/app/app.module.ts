@@ -43,6 +43,8 @@ import { NuestroEquipoComponent } from './nuestro-equipo/nuestro-equipo.componen
 import { AdminproductosComponent } from './componentes/adminproductos/adminproductos.component';
 import { EquipoComponent } from './componentes/equipo/equipo.component';
 import { BackgroundComponent } from './componentes/background/background.component';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { MatIconModule } from '@angular/material/icon';
 @NgModule({
   declarations: [
     AppComponent,
@@ -91,8 +93,9 @@ import { BackgroundComponent } from './componentes/background/background.compone
     HttpClientModule,
     FormsModule,
     NgOptimizedImage,
+    MatIconModule,
   ],
-  providers: [NgModel],
+  providers: [NgModel, provideAnimationsAsync('noop')],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
