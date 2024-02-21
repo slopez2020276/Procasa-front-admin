@@ -26,6 +26,7 @@ h1.container-h1 {
 
 * { transition: .2s ease;
     scrollbar-width: thin;
+    color: #252525;
 }
 div.container {
   position: relative;
@@ -40,10 +41,13 @@ div.container {
   transform: scale(1);
   transition: transform .1s opacity .2s;
   opacity: 1;
-  box-shadow: 2px 2px 2px rgba(0, 0, 0, .2);
+  box-shadow: 1px 1px 0px rgba(0, 0, 0, .2);
   border-radius: 4px;
   padding: .5rem 1rem;
   cursor: pointer;
+  background: #FAFAFA;
+  color: #252525;
+  transition: .1s;
 }
 .btn-click:active {
   transform: scale(.93);
@@ -53,7 +57,7 @@ div.container {
 .btn-click:hover { opacity: .8; }
 
 .btn-red {background: #AA182C; color: #FFF;}
-.btn-gray {background: #FAFAFA; color: #252525;}
+.btn-dark {background: #EB9928; color: #FFF;}
 
 input[type=file] { position: relative; box-shadow: 2px 2px 0px rgba(0, 0, 0, .2);}
 input[type=file]::before {
@@ -84,6 +88,7 @@ input[type=file]:active { transform: scale(.93); box-shadow: 0px 0px 0px rgba(0,
   font-size: 18pt;
   z-index: 0;
   padding: 1rem 0;
+  color: #252525;
 }
 
 
