@@ -14,6 +14,8 @@ constructor(){ }
    data
    imgPrincipal
    imgFondo
+   colorn
+   tipoBack 
   HistoriaService = inject(HistoriaService)
 
    async onSubmit(){ }
@@ -23,5 +25,19 @@ constructor(){ }
      this.data = response.historia
      this.imgPrincipal = this.data[0].imgPathPrincipal
      this.imgFondo = this.data[0].imgPathFondo
+     this.evaluarTipoBack()
+     this.colorn = this.data[0].colorFondo
+     console.log(this.data)
+     console.log(this.colorn)
    }
+
+
+evaluarTipoBack(){
+  if(this.data[0].backgroundTipo == true){
+    this.tipoBack = true
+  }else if(this.data[0].backgroundTipo == false){
+    this.tipoBack = false
+  }
+}
+
 }
