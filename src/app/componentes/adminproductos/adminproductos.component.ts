@@ -27,6 +27,7 @@ export class AdminproductosComponent implements OnInit {
   productArray: number[] = []
   inputEmpty:string = "Seleccionar archivo"
   inputEmptyEdit:string = "Seleccionar archivo"
+  addProduct: FormControl | any
 
  
 
