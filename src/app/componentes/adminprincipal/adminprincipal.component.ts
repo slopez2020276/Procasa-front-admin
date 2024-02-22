@@ -30,6 +30,7 @@ export class AdminprincipalComponent implements OnInit, AfterViewInit {
   formularioValores:FormGroup
   formularioEditarNoticias: FormGroup
   formularioAgregarNoticias: FormGroup
+  formularioEditarFondoColor: FormGroup
   colorBg:any
 
   imgPrincipal: any
@@ -143,6 +144,9 @@ constructor(){
      descripcion: new FormControl((''),[Validators.required]),
      tipo: new FormControl((''),[Validators.required]),
      })
+this.formularioEditarFondoColor = new FormGroup({
+  colorFondo: new FormControl((''),[Validators.required]),
+})
 
 
 
@@ -1206,6 +1210,18 @@ getFileBack($event: any): void {
     fileRaw:file,
     fileName:file.name
   }
+}
+
+sendColorbackGord(){
+
+ 
+  this.formularioEditarFondoColor.value.colorFondo = this.colorBg 
+  const body = this.formularioEditarFondoColor.value
+  console.log(body)
+  this.historiaService.sendback(body,this._idhistoria)
+  .subscribe(res =>{ this.MessageSuccess('¡Guardado exitosamente!',1)
+  document.getElementById('container-alert-a')?.classList.remove('show')
+    console.log(res), this.obtenerHistoria() })
 }
 
 

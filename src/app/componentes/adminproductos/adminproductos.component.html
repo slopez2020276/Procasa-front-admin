@@ -12,91 +12,108 @@
   <button id="add-product" (click)="ModalProduct('add')"><mat-icon>add</mat-icon> Agregar</button>
 </div>
 
-
+  
 
 <div id="container-productos">
+  @for (os of dataProductos; track os._id) {
+  
 
-
-<div class="producto">
-  <h1 class="normal h1-title-pro">Producto</h1>
-
+  <div class="producto">
+      
+      
   <div class="sub-producto">
-    <img src="../../../assets/img/carne de res.png" alt="producto" title="producto">
-  </div>
-  <div class="sub-producto">
-    <div class="sub-details">
-
-      <ul class="category">
-        <li class="normal">CATEGORÍA</li>
-          <ul>
-            <li>Sub Categoría</li>
-            <li>Sub Categoría</li>
-            <li>Sub Categoría</li>
-          </ul>
-      </ul>
-
+          <img src="../../../assets/img/carne de res.png" alt="producto" title="producto">
+        </div>
+        <h1>{{os.nombreProducto}}</h1>
+        <div class="sub-producto">
+          <div class="sub-details">
+            <ul class="category">
+              <li class="normal">CATEGORÍA</li>
+                <ul>
+                  <li>Sub Categoría</li>
+                  <li>Sub Categoría</li>
+                  <li>Sub Categoría</li>
+                </ul>
+              </ul>
+            </div>
+          </div>
+          
+        
+        
+        <div class="actions">
+          <div class="edit-product btn-click btn-gold" (click)="ModalProduct('edit')"><mat-icon>edit</mat-icon></div>
+          <div class="del-product btn-click btn-red"(click)="DeleteProduct($event)"> <mat-icon>delete</mat-icon></div>
+          <div class="btn-click btn-gold" (click)="openAddCategory($event)"><mat-icon>list</mat-icon></div>
+            </div>
+          
+          <div class="container-alert">
+            <div class="alert-model">
+              <p class="inner-message normal"></p>
+              
+              <div class="message"> <h1 class="innermsg"></h1></div>
+              <div class="cont-btns-alert">
+                <button  class="confirm replace-button btn-click" (click)="closeAlert($event)" (click)="confirmedDeleteProduct($event)"><mat-icon>done</mat-icon></button>
+                <div class="replace-button btn-click cancel" (click)="closeAlert($event)"><mat-icon>close</mat-icon></div>
+              </div>
+            </div>
+          </div>
+          
+            
+          <div class="cont-add-cat cont-add-cat-new">
+            <h1 class="title-modal">Agregar Categoría</h1>
+            <div class="btn-click btn-close-addcat" (click)="CloseAddCategory($event)"><mat-icon>close</mat-icon></div>
+          
+            <div class="cont-categories">
+              <div class="cont-input-btn">
+          <input type="text" placeholder="nueva categoría">
+        </div>
+        
+        
+        <div class="cont-btn-save">
+          <div class="save-added-categories btn-click btn-red" (click)="SaveNewCategory()" (click)="CloseAddCategory($event)"><mat-icon>save</mat-icon></div>
+        </div>
+      </div>
     </div>
-  </div>
-
-
-  <div class="actions">
-    <div class="btn-click btn-gold" (click)="ModalProduct('edit')"><mat-icon>edit</mat-icon></div>
-    <div class="btn-click btn-red"(click)="DeleteProduct()"> <mat-icon>delete</mat-icon></div>
-    <div class="btn-click btn-gold" (click)="openAddCategory($event)"><mat-icon>list</mat-icon></div>
-  </div>
-
- 
-  <div class="cont-add-cat cont-add-cat-new">
-    <h1 class="title-modal">Agregar Categoría</h1>
-    <div class="btn-click btn-close-addcat" (click)="CloseAddCategory($event)"><mat-icon>close</mat-icon></div>
-
-  <div class="cont-categories">
-    <div class="cont-input-btn">
-        <input type="text" placeholder="nueva categoría">
-    </div>
-
-  <div class="cont-btn-save">
-    <div class="save-added-categories btn-click btn-red" (click)="SaveNewCategory()" (click)="CloseAddCategory($event)"><mat-icon>save</mat-icon> guardar</div>
-  </div>
-  </div>
-  </div>
-
-
-
-
-
+    
+  
+  
+  
+  
   <div class="cont-subcategories subcategories">
     <h1 class="title-modal">Agregar Sub-Categoría</h1>
     <div class="btn-click close-cont-subcate" (click)="CloseAddSubCategory($event)"><mat-icon>close</mat-icon></div>
-  
-  <div class="cont-categories">
+    
+    <div class="cont-categories">
       <button (click)="generarnewSubCate()" class="btn-generate normal">Nueva Sub</button>
       <button (click)="EliminarUltimaSub()" class="btn-delete normal">Eliminar Sub</button>
-  
+      
       <div class="cont-input-btn " *ngFor="let div of categorySubArray; let i = index">
         <input type="text" placeholder="nueva sub categoría">
       </div>
-  </div>
-  
-  <div class="cont-btn-save">
-    <div class="save-added-categories btn-click btn-red" (click)="SaveNewSubCategory()" (click)="CloseAddSubCategory($event)"><mat-icon>save</mat-icon> guardar</div>
+    </div>
+    
+    <div class="cont-btn-save">
+      <div class="save-added-categories btn-click btn-red" (click)="SaveNewSubCategory()" (click)="CloseAddSubCategory($event)"><mat-icon>save</mat-icon></div>
+    </div>
+    
   </div>
 
-  </div>
 
+                          <div class="message-success"> <p class="inner-message normal">message status</p> </div>
 </div>
 
-
+}
 <!--    Pruebas de FormControl
 <form>
   <input id="nombre" type="text" [formControl]="nombreControl">
   <input id="email" type="email" [formControl]="emailControl">
-      <button type="submit">Enviar</button>
+  <button type="submit">Enviar</button>
 </form> -->
 
-
-
 </div>
+
+
+
 
 
 
@@ -105,10 +122,11 @@
   <h1 class="title-modal">Agregar Producto</h1>
   <div id="close-modal-add" (click)="ModalProduct('add')">cerrar</div>
 <form action="" [formGroup]="formularioAgregarProducto">
+
   <div class="cont-blocks">
     
       <div class="preview-img-model">
-        <input [formControl]="addProduct" id="file-edit" (change)="FileAdd($event, 'img-pre-add')" (change)="getFile($event)"  type="file" accept=".jpg, .jpeg, .png, .webp, .avi" title="seleccionar archivo" [attr.data-content]="inputEmpty">
+        <input id="file-edit" (change)="FileAdd($event, 'img-pre-add')" (change)="getFile($event)"  type="file" accept=".jpg, .jpeg, .png, .webp, .avi" title="seleccionar archivo" [attr.data-content]="inputEmpty">
         <div class="details-img">
           <ul>
             <li>ancho: <p class="innerdetails bold"></p></li>
@@ -121,8 +139,10 @@
       </div>
       
       <div class="cont-datos">
-        <input [formControl]="addProduct" type="text" formControlName="nombreProducto" placeholder="Producto" class="normal" name="name-producto" title="nombre del producto">
-        <input [formControl]="addProduct" type="text" class="normal cat-generated" placeholder="categoría">
+        <input  type="text" formControlName="nombreProducto" placeholder="Producto" class="normal" name="name-producto" title="nombre del producto">
+      
+
+  <input type="text" class="normal cat-generated" placeholder="categoría">
 </div>
 
 <div class="cont-btn-save">
@@ -132,8 +152,8 @@
 </div>
 </form>
 
-</div>
 
+</div>
 
 
 
