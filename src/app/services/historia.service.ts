@@ -35,7 +35,7 @@ export class HistoriaService {
       this.httpClient.put<any>(`${this.baseUrl}/editarHistoria/${idhistoria}`,fromValue, this.createHeaders())
     )
   }
-  sendPost(body:FormData,id:any):Observable<any>{
+  sendPost(body:any,id:any):Observable<any>{
     return this.httpClient.put(`${this.baseUrl}/editarHistoria/${id}`, body)
   }
   sendback(body:FormData,id:any):Observable<any>{

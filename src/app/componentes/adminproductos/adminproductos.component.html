@@ -10,18 +10,19 @@
   <button id="add-product" (click)="ModalProduct('add')"><mat-icon>add</mat-icon> Agregar</button>
 </div>
 
-
+  
 
 <div id="container-productos">
-  
-  
   @for (os of dataProductos; track os._id) {
+  
+
   <div class="producto">
-        <h1 class="normal h1-title-pro">{{os.nombreProducto}}</h1>
+      
       
   <div class="sub-producto">
           <img src="../../../assets/img/carne de res.png" alt="producto" title="producto">
         </div>
+        <h1>{{os.nombreProducto}}</h1>
         <div class="sub-producto">
           <div class="sub-details">
             <ul class="category">
@@ -99,7 +100,7 @@
   <div class="message-success"> <p class="inner-message normal">message status</p> </div>
 </div>
 
-
+}
 <!--    Pruebas de FormControl
 <form>
   <input id="nombre" type="text" [formControl]="nombreControl">
@@ -108,7 +109,7 @@
 </form> -->
 
 </div>
-}
+
 
 
 
@@ -148,7 +149,7 @@
 </div>
 
 </div>
-</form>
+
 
 
 <div class="container-alert">
