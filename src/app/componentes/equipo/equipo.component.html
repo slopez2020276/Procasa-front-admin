@@ -43,7 +43,7 @@
       <div class="cont-buttons">
         <div class="actions btn-click btn-red" (click)="ModalFunctions($index)"><mat-icon>add</mat-icon></div>
           <div class="actions btn-click btn-red" (click)="ModalProduct('edit')" (click)="obtenerPlazaId(os._id)" ><mat-icon>edit</mat-icon></div>
-          <div class="actions btn-click btn-red" (click)="AlertConfirm($event)"><mat-icon>delete</mat-icon></div>
+          <div class="actions btn-click btn-red" (click)="EliminarP(os._id)"><mat-icon>delete</mat-icon> ...</div>
       </div>
 
 
@@ -60,18 +60,6 @@
 </form>
 </div>
       </div> <!-- DATOS -->
-
-      <div class="container-alert" forelem="-eliminar-">
-        <div class="alert-model">
-            <p class="inner-message bold"></p>
-
-            <div class="message"> <h1 class="innermsg"></h1></div>
-            <div class="cont-btns-alert">
-              <button class="confirm btn-click" (click)="eliminarId(os._id, $index)"><mat-icon>done</mat-icon></button>
-              <div class="replace-button cancel btn-click" (click)="closeAlert($event)"><mat-icon>close</mat-icon></div>
-            </div>
-          </div>
-      </div>
 
 
       </div>
@@ -218,3 +206,17 @@
 </div>
 
 
+
+<!-------- A L E R T ---------------------------------------------------------------------------------------------------------------------------------------------------->
+<div id="background-alert">
+  <div class="container-alert" id="container-alert">
+    <div class="alert-model">
+      <p class="message bold"></p>
+      <div class="cont-btns-alert" id="btns">
+        <div class="btn-click btn-red"><mat-icon>done</mat-icon> confirmar</div>
+        <div class="btn-click btn-gray" (click)="AlertClose()"><mat-icon>close</mat-icon> cancelar</div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- -->

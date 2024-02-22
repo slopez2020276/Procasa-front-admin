@@ -1,5 +1,7 @@
 <app-admin-navbar></app-admin-navbar>
 
+
+
 <div id="container-2">
   <h1>Productos</h1>
 
@@ -38,24 +40,12 @@
 
 
   <div class="actions">
-    <div class="edit-product btn-click btn-gold" (click)="ModalProduct('edit')"><mat-icon>edit</mat-icon></div>
-    <div class="del-product btn-click btn-red"(click)="DeleteProduct($event)"> <mat-icon>delete</mat-icon></div>
+    <div class="btn-click btn-gold" (click)="ModalProduct('edit')"><mat-icon>edit</mat-icon></div>
+    <div class="btn-click btn-red"(click)="DeleteProduct()"> <mat-icon>delete</mat-icon></div>
     <div class="btn-click btn-gold" (click)="openAddCategory($event)"><mat-icon>list</mat-icon></div>
   </div>
 
-  <div class="container-alert">
-    <div class="alert-model">
-        <p class="inner-message normal"></p>
-
-        <div class="message"> <h1 class="innermsg"></h1></div>
-        <div class="cont-btns-alert">
-          <button  class="confirm replace-button btn-click" (click)="closeAlert($event)" (click)="confirmedDeleteProduct($event)"><mat-icon>done</mat-icon></button>
-          <div class="replace-button btn-click cancel" (click)="closeAlert($event)"><mat-icon>close</mat-icon></div>
-        </div>
-      </div>
-  </div>
-
-  
+ 
   <div class="cont-add-cat cont-add-cat-new">
     <h1 class="title-modal">Agregar Categoría</h1>
     <div class="btn-click btn-close-addcat" (click)="CloseAddCategory($event)"><mat-icon>close</mat-icon></div>
@@ -66,7 +56,7 @@
     </div>
 
   <div class="cont-btn-save">
-    <div class="save-added-categories btn-click btn-red" (click)="SaveNewCategory()" (click)="CloseAddCategory($event)"><mat-icon>save</mat-icon></div>
+    <div class="save-added-categories btn-click btn-red" (click)="SaveNewCategory()" (click)="CloseAddCategory($event)"><mat-icon>save</mat-icon> guardar</div>
   </div>
   </div>
   </div>
@@ -89,13 +79,11 @@
   </div>
   
   <div class="cont-btn-save">
-    <div class="save-added-categories btn-click btn-red" (click)="SaveNewSubCategory()" (click)="CloseAddSubCategory($event)"><mat-icon>save</mat-icon></div>
+    <div class="save-added-categories btn-click btn-red" (click)="SaveNewSubCategory()" (click)="CloseAddSubCategory($event)"><mat-icon>save</mat-icon> guardar</div>
   </div>
 
   </div>
 
-
-                          <div class="message-success"> <p class="inner-message normal">message status</p> </div>
 </div>
 
 
@@ -134,30 +122,15 @@
       
       <div class="cont-datos">
         <input [formControl]="addProduct" type="text" formControlName="nombreProducto" placeholder="Producto" class="normal" name="name-producto" title="nombre del producto">
-
-
-  <input type="text" class="normal cat-generated" placeholder="categoría">
+        <input [formControl]="addProduct" type="text" class="normal cat-generated" placeholder="categoría">
 </div>
 
 <div class="cont-btn-save">
-  <div class="add-save normal" (click)="AlertConfirm($event)">guardar</div>
+  <div class="btn-click btn-red normal" (click)="SaveNewProduct()"><mat-icon>save</mat-icon> guardar</div>
 </div>
 
 </div>
 </form>
-
-
-<div class="container-alert">
-  <div class="alert-model">
-      <p class="inner-message normal"></p>
-
-      <div class="message"> <h1 class="innermsg"></h1></div>
-      <div class="cont-btns-alert">
-        <button  class="confirm"> confirmar</button>
-        <div class="replace-button cancel" (click)="closeAlert($event)">cancelar</div>
-      </div>
-    </div>
-  </div>
 
 </div>
 
@@ -269,38 +242,19 @@
 </div>
 
 
-<div class="container-alert">
-  <div class="alert-model">
-      <p class="inner-message normal"></p>
-
-      <div class="message"> <h1 class="innermsg"></h1></div>
-      <div class="cont-btns-alert">
-        <button  class="confirm replace-button btn-click" (click)="closeAlert($event)"><mat-icon>done</mat-icon></button>
-        <div class="replace-button btn-click cancel" (click)="closeAlert($event)"><mat-icon>close</mat-icon></div>
-      </div>
-    </div>
-  </div>
-
-
 </div>
-<!-- -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- -->
-
-
-
-
 
 
 <!-------- A L E R T ---------------------------------------------------------------------------------------------------------------------------------------------------->
-<div class="container-alert">
-  <div class="alert-model">
-      <p class="inner-message normal"></p>
-      
-      <div class="message"> <h1 class="innermsg"></h1></div>
-      <div class="cont-btns-alert">
-        <button  class="confirm replace-button btn-click"> confirmar</button>
-        <div class="replace-button btn-click cancel"><mat-icon>close</mat-icon></div>
+<div id="background-alert">
+  <div class="container-alert" id="container-alert">
+    <div class="alert-model">
+      <p class="message bold"></p>
+      <div class="cont-btns-alert" id="btns">
+        <div class="btn-click btn-red"><mat-icon>done</mat-icon> confirmar</div>
+        <div class="btn-click btn-gray" (click)="AlertClose()"><mat-icon>close</mat-icon> cancelar</div>
       </div>
     </div>
   </div>
-  
-<!-- <div class="message-success"> <p class="inner-message normal">message status</p> </div> -->
+</div>
+<!-- ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- -->

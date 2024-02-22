@@ -27,6 +27,7 @@ h1.container-h1 {
 * { transition: .2s ease;
     scrollbar-width: thin;
     color: #252525;
+    font-size: 12pt;
 }
 div.container {
   position: relative;
@@ -74,8 +75,8 @@ div.container {
 
 
 
-.btn-red {background: #AA182C; color: #FFF;}
-.btn-gold {background: #EB9928; color: #FFF;}
+.btn-red {background: #AA182C; color: #FAFAFA;}
+.btn-gray {background: #F4F4F4; color: #252525;}
 
 input[type=file] { position: relative; box-shadow: 2px 2px 0px rgba(0, 0, 0, .2);}
 input[type=file]::before {
@@ -103,7 +104,7 @@ input[type=file]:active { transform: scale(.93); box-shadow: 0px 0px 0px rgba(0,
   width: 100%;
   position: relative;
   text-align: center;
-  font-size: 18pt;
+  font-size: 16pt;
   z-index: 0;
   padding: 1rem 0;
   color: #252525;
@@ -122,4 +123,100 @@ span.icon {
 
 
 html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+
+
+
+/*========= A L E R T ================================================================================================================================================*/
+div.container-alert {display: none;}
+
+div#background-alert {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, .5);
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  align-content: start;
+  flex-wrap: wrap;
+  z-index: -100;
+  opacity: 0;
+  transition: opacity .2s ease-out;
+}
+
+div#background-alert.show { z-index: 50; opacity: 1;}
+
+div#container-alert {
+  width: 500px;
+  height: auto;
+  position: fixed;
+  transition: top 2s ease-in-out, display .1s;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  background: #FAFAFA;
+  text-align: center;
+  z-index: -10;
+  border-radius: 4px;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, .4);
+  padding: 2rem;
+}
+
+div#container-alert.show { 
+  z-index: 1;
+  display: flex;
+  top: 10vh;
+  animation: alert .4s ease-in-out;
+}
+
+@keyframes alert {
+    0% {display: flex; top: -400px;}
+  100% {display: flex; top: 10vh;}
+}
+
+div.alert-model {
+  width: 100%;
+  height: auto;
+  padding: 1rem;
+  border-radius: 4px;
+  position: relative;
+  z-index: 1;
+  background: transparent;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.message {
+  font-size: 16pt;
+  width: 80%;
+  position: relative;
+  text-align: center;
+  color: #252525;
+  background: transparent;
+}
+
+
+div.cont-btns-alert {
+  width: 80%;
+  position: relative;
+  justify-content: space-evenly;
+  align-items: center;
+  align-content: center;
+  flex-wrap: nowrap;
+  display: none;
+  margin-top: 2rem;
+}
+
+div.cont-btns-alert.show { display: flex; z-index: 700;}
+
+div.cont-btns-alert div {
+  margin-top: .5rem;
+  width: 40%;
+  text-align: center;
+  border-radius: 4px;
+}

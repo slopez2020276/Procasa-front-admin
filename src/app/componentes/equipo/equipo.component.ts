@@ -17,9 +17,7 @@ export class EquipoComponent {
   inputEmptyB:string = "Seleccionar archivo"
   srcPreviewAdd
   srcPreviewEdit
-
-
-
+  containerAlert: HTMLElement | any
 
   data:any
 
@@ -33,9 +31,6 @@ export class EquipoComponent {
   fecha:any
   idPlaza:any
   funciones:any
-
-
-
 
   formAgregarFuncion: FormGroup
   fomrumarioAgregarPlaza : FormGroup
@@ -88,6 +83,7 @@ constructor(){
   })
 }
   ngOnInit(): void {
+    this.containerAlert = document.getElementById('background-alert')
     this.obtenerUnete()
   }
 
@@ -407,14 +403,14 @@ async eliminarFuncion(indice:any){
 
 
 
-async eliminarId(id: number, i:any){
+async eliminarId(id: number){
   try {
     const respuestaEliminarPlaza = await this.uneterService.eliminarPlaza(id)
     console.log(respuestaEliminarPlaza)
+    this.AlertMessage('¡Plaza eliminada!',1500)
     this.obtenerUnete()
   } catch (error) {
     console.log(error)
-    this.MessageSuccess('Error al eliminar plaza', i)
 }
 }
 
@@ -457,6 +453,73 @@ closeAlert(event: MouseEvent){
   inner!.innerHTML = ""
   btns?.classList.remove('show')
 }
+
+
+
+
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// S Y S T E M A      D E     A L E R T A S
+AlertOption(message:string) {
+  const parent: HTMLElement | any = this.containerAlert
+  parent?.classList.add('show')
+  const alert: HTMLElement | any = parent?.childNodes[0]
+  alert?.classList.add('show')
+  const inner: HTMLElement | any = alert?.childNodes[0]?.childNodes[0]
+  inner!.innerText = message
+  const btns: HTMLElement | any = alert?.childNodes[0]?.childNodes[1]
+  btns?.classList.add('show')
+}
+
+AlertMessage(message:string, time:number) {
+  const parent: HTMLElement | any = this.containerAlert
+  parent?.classList.add('show')
+  const alert: HTMLElement | any = parent?.childNodes[0]
+  alert?.classList.add('show')
+  const inner: HTMLElement | any = alert?.childNodes[0]?.childNodes[0]
+  inner!.innerText = message
+  const btns: HTMLElement | any = alert?.childNodes[0]?.childNodes[1]
+  btns?.classList.remove('show')
+  setTimeout(() => { this.AlertClose() }, time)
+}
+
+
+AlertClose(){
+  const parent: HTMLElement | any = this.containerAlert
+  parent?.classList.remove('show')
+  const alert: HTMLElement | any = parent?.childNodes[0]
+  alert?.classList.remove('show')
+  const inner: HTMLElement | any = alert?.childNodes[0]?.childNodes[0]
+  inner!.innerText = ""
+  const btns: HTMLElement | any = alert?.childNodes[0]?.childNodes[1]
+  btns?.classList.remove('show')
+}
+
+
+
+EliminarP(id:number) {
+  this.AlertOption("¿Desea eliminar el producto seleccionado?")
+  const parent: HTMLElement | any = this.containerAlert
+  const btn: HTMLElement | any = parent?.childNodes[0]?.childNodes[0]?.childNodes[1]?.childNodes[0]
+  const btnClickPromise = new Promise<void>((resolve) => {
+    const clickHandler = () => { 
+      resolve()
+      
+      this.eliminarId(id)
+      btn.removeEventListener('click', clickHandler)
+    } 
+    btn?.addEventListener('click', clickHandler)
+  })
+  btnClickPromise.then(() => {
+    
+  })
+}
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
 
 
 

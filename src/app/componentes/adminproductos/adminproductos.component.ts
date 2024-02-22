@@ -28,32 +28,21 @@ export class AdminproductosComponent implements OnInit {
   inputEmpty:string = "Seleccionar archivo"
   inputEmptyEdit:string = "Seleccionar archivo"
   addProduct: FormControl | any
-
+  Alert: Boolean | any
+  containerAlert: HTMLElement | any
  
 
 
-  constructor(){
+constructor(){
     this.formularioAgregarProducto = new FormGroup({
       nombreProducto : new FormControl('', [Validators.required]),
     })
-  }
+}
 
 ModalProduct(type:string){ document.getElementById('modal-'+type+'-product')?.classList.toggle('show') }
 
-DeleteProduct(event: MouseEvent){
-  const node = event.target as HTMLElement | null
-  const parent = node?.parentNode?.parentNode?.childNodes[4] as HTMLElement | undefined
-
-  parent?.classList.add('show')
-  const inner = parent?.childNodes[0]?.childNodes[0] as HTMLElement | undefined
-  const btns = parent?.childNodes[0]?.childNodes[2] as HTMLElement | undefined
-  inner?.classList.add('show')
-  inner!.innerHTML = "¿Desea eliminar el producto?"
-  btns?.classList.add('show')
-}
-
-
 ngOnInit(): void {
+  this.containerAlert = document.getElementById('background-alert')
   this.obtenerProductos()
 }
 
@@ -214,7 +203,6 @@ async AlertConfirm(event: MouseEvent) {
 }
 
 
-
 closeAlert(event: MouseEvent){
   const node = event.target as HTMLElement | null
   const parent = node?.parentNode?.parentNode?.parentNode as HTMLElement | undefined
@@ -341,5 +329,81 @@ confirmedDeleteProduct(event: MouseEvent) {
     }, 1500)
 }
 
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// S Y S T E M A      D E     A L E R T A S
+AlertOption(message:string) {
+  const parent: HTMLElement | any = this.containerAlert
+  parent?.classList.add('show')
+  const alert: HTMLElement | any = parent?.childNodes[0]
+  alert?.classList.add('show')
+  const inner: HTMLElement | any = alert?.childNodes[0]?.childNodes[0]
+  inner!.innerText = message
+  const btns: HTMLElement | any = alert?.childNodes[0]?.childNodes[1]
+  btns?.classList.add('show')
+}
+
+AlertMessage(message:string, time:number) {
+  const parent: HTMLElement | any = this.containerAlert
+  parent?.classList.add('show')
+  const alert: HTMLElement | any = parent?.childNodes[0]
+  alert?.classList.add('show')
+  const inner: HTMLElement | any = alert?.childNodes[0]?.childNodes[0]
+  inner!.innerText = message
+  const btns: HTMLElement | any = alert?.childNodes[0]?.childNodes[1]
+  btns?.classList.remove('show')
+  setTimeout(() => { this.AlertClose() }, time)
+}
+
+
+AlertClose(){
+  const parent: HTMLElement | any = this.containerAlert
+  parent?.classList.remove('show')
+  const alert: HTMLElement | any = parent?.childNodes[0]
+  alert?.classList.remove('show')
+  const inner: HTMLElement | any = alert?.childNodes[0]?.childNodes[0]
+  inner!.innerText = ""
+  const btns: HTMLElement | any = alert?.childNodes[0]?.childNodes[1]
+  btns?.classList.remove('show')
+}
+
+// async FuncionDePrueba() {
+//   this.AlertOption("¿Desea eliminar el producto seleccionado?")
+//   const parent: HTMLElement | any = this.containerAlert
+//   const btn: HTMLElement | any = parent?.childNodes[0]?.childNodes[0]?.childNodes[1]?.childNodes[0]
+//   const btnClickPromise = new Promise<void>((resolve) => {
+//     const clickHandler = () => { resolve()
+      
+//       // B A C K E N D !! -----------------------------
+//       this.AlertMessage("¡Eliminado exitosamente!",1500)
+
+
+//       btn.removeEventListener('click', clickHandler) }; btn?.addEventListener('click', clickHandler)
+//     })
+//   await btnClickPromise
+// }
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+async DeleteProduct() {
+  this.AlertOption("¿Desea eliminar el producto seleccionado?")
+  const parent: HTMLElement | any = this.containerAlert
+  const btn: HTMLElement | any = parent?.childNodes[0]?.childNodes[0]?.childNodes[1]?.childNodes[0]
+  const btnClickPromise = new Promise<void>((resolve) => {
+    const clickHandler = () => { resolve()
+      
+      // B A C K E N D !! -----------------------------
+      this.AlertMessage("¡Eliminado exitosamente!",1500)
+
+
+      btn.removeEventListener('click', clickHandler) }; btn?.addEventListener('click', clickHandler)
+    })
+  await btnClickPromise
+}
+
+SaveNewProduct(){
+  this.AlertMessage("¡Producto agregado exitosamente!", 1500)
+}
 
 }
