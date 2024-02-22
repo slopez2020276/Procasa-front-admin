@@ -116,7 +116,7 @@
 <div id="modal-add-product">
   <h1 class="title-modal">Agregar Producto</h1>
   <div id="close-modal-add" (click)="ModalProduct('add')">cerrar</div>
-<form action="">
+<form action="" [formGroup]="formularioAgregarProducto">
   <div class="cont-blocks">
     
       <div class="preview-img-model">
@@ -134,7 +134,7 @@
       
       <div class="cont-datos">
         <input [formControl]="addProduct" type="text" formControlName="nombreProducto" placeholder="Producto" class="normal" name="name-producto" title="nombre del producto">
-      
+
 
   <input type="text" class="normal cat-generated" placeholder="categoría">
 </div>
