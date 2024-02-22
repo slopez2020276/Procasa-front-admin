@@ -116,11 +116,11 @@
 <div id="modal-add-product">
   <h1 class="title-modal">Agregar Producto</h1>
   <div id="close-modal-add" (click)="ModalProduct('add')">cerrar</div>
-
+<form action="">
   <div class="cont-blocks">
     
       <div class="preview-img-model">
-        <input [formControl]="addImgProduct" id="file-edit" (change)="FileAdd($event, 'img-pre-add')" (change)="getFile($event)"  type="file" accept=".jpg, .jpeg, .png, .webp, .avi" title="seleccionar archivo" [attr.data-content]="inputEmpty">
+        <input [formControl]="addProduct" id="file-edit" (change)="FileAdd($event, 'img-pre-add')" (change)="getFile($event)"  type="file" accept=".jpg, .jpeg, .png, .webp, .avi" title="seleccionar archivo" [attr.data-content]="inputEmpty">
         <div class="details-img">
           <ul>
             <li>ancho: <p class="innerdetails bold"></p></li>
@@ -136,9 +136,6 @@
         <input [formControl]="addProduct" type="text" formControlName="nombreProducto" placeholder="Producto" class="normal" name="name-producto" title="nombre del producto">
       
 
-  <!-- <button (click)="generarSub()" class="btn-generate normal">Nueva categoría</button>
-  <button (click)="eliminarUltimoSub()" class="btn-delete normal">Eliminar categoría</button> -->
-  <!-- <input type="text" class="normal cat-generated" placeholder="categoría" *ngFor="let div of subsArray; let i = index"> -->
   <input type="text" class="normal cat-generated" placeholder="categoría">
 </div>
 
