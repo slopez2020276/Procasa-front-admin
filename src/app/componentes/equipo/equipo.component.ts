@@ -539,9 +539,9 @@ EliminarP(id:number) {
   const parent: HTMLElement | any = this.containerAlert
   const btn: HTMLElement | any = parent?.childNodes[0]?.childNodes[0]?.childNodes[1]?.childNodes[0]
   console.log(btn)
-  
+
   const clickHandler = () => {
-    
+
     this.eliminarId(id)
   }
 
@@ -565,6 +565,8 @@ FuntionAlert(id:number) {
 
   if (!btn.__clickHandlerAdded) { btn.addEventListener('click', clickHandler); btn.__clickHandlerAdded = true }
 }
+
+
 
 }
 
