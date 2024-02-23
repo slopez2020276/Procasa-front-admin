@@ -7,13 +7,13 @@
       <label for="search">Buscar</label>
       <input class="bold" type="text" name="search" placeholder="" title="buscar producto">
     </div>
-    <button id="add-product" (click)="ModalProduct('add')">+ Agregar Plaza</button>
+    <button id="add-product" (click)="ModalProduct('add')"><mat-icon>add</mat-icon> Agregar Plaza</button>
   </div>
 
 
 <div id="container-main">
 
-<div id=" container">
+<div id="container">
 
 
   @for (os of dataUnete; track os._id  ) {
@@ -43,7 +43,7 @@
       <div class="cont-buttons">
         <div class="actions btn-click btn-red" (click)="ModalFunctions($index)"><mat-icon>add</mat-icon></div>
           <div class="actions btn-click btn-red" (click)="ModalProduct('edit')" (click)="obtenerPlazaId(os._id)" ><mat-icon>edit</mat-icon></div>
-          <div class="actions btn-click btn-red" (click)="EliminarP(os._id)"><mat-icon>delete</mat-icon> ...</div>
+          <div class="actions btn-click btn-red" (click)="EliminarP(os._id)"><mat-icon>delete</mat-icon></div>
       </div>
 
 
@@ -54,7 +54,7 @@
   <div class="cont-in-fns">
     <textarea formControlName="funcion" name="" class="normal" id="fn-to-add" placeholder="función nueva"></textarea>
 
-    <div id="save-fns" (click)="ModalFunctions($index)" (click)="agregarfuncion(os._id)" ><mat-icon>save</mat-icon></div>
+    <div id="save-fns" (click)="ModalFunctions($index)" (click)="agregarfuncion(os._id)" ><mat-icon>save</mat-icon> guardar</div>
   </div>
 
 </form>
@@ -71,24 +71,28 @@
 
 <form [formGroup]="formAgregarPlaza" >
 
-
   <div class="modal" id="add">
     <div id="close-edit" (click)="ModalProduct('add')"><mat-icon>close</mat-icon></div>
     <h1 class="title-modal">Agregar plaza</h1>
-
     <div class="sub-cont">
-      <div id="sub-cont-details-img">
-        <input type="file" (change)="FileEdit($event)"   (change)="getFile($event)" title="seleccionar archivo" accept=".jpg, .png, .jpeg, .avi, .webp" [attr.data-content]="inputEmpty">
-        <div>
+
+
+<div id="sub-cont-details-img">
+        <div class="sub-details">
+            <div class="sub-img-btn">
+              <input type="file" (change)="FileEdit($event)" (change)="getFile($event)" title="seleccionar archivo" accept=".jpg, .png, .jpeg, .avi, .webp" data-content="seleccionar archivo">
+              <mat-icon>delete</mat-icon>
+            </div>
           <ul>
             <li>ancho: <span class="bold danger-red" id="innerwidth-add"></span> </li>
             <li>alto:  <span class="bold danger-red" id="innerheight-add"></span> </li>
             <li>peso:  <span class="bold danger-red" id="innersize-add"></span></li>
           </ul>
         </div>
+        <div class="cont-details-img"><img alt="" src=""></div>
   </div>
 
-  <img [attr.src]="srcPreviewAdd" id="preview-plaza" alt="" class="img-preview">
+
 </div>
 <div class="sub-cont">
   <div class="sub">
@@ -108,9 +112,7 @@
 </div>
 
 <div class="cont-btns">
-  <div class="btn-click btn-red" (click)="sendFileplaza()">continuar</div>
-
-
+  <div class="btn-click btn-red" (click)="sendFileplaza()"><mat-icon>save</mat-icon> guardar</div>
 </div>
 
 </div>
@@ -126,24 +128,34 @@
 
 
   <div class="sub-cont">
-    <div id="sub-cont-details-img-edit">
-      <input type="file" (change)="FileEdit($event)" title="seleccionar archivo" accept=".jpg, .png, .jpeg, .avi, .webp" [attr.data-content]="inputEmptyB">
-      <div>
-        <ul>
-          <li>ancho: <span class="bold danger-red" id="innerwidth-edit"></span> </li>
-          <li>alto:  <span class="bold danger-red" id="innerheight-edit"></span> </li>
-          <li>peso:  <span class="bold danger-red" id="innersize-edit"></span></li>
-        </ul>
-      </div>
-    </div>
 
-    <img [attr.src]="srcPreviewEdit" id="preview-plaza-edit" alt="" class="img-preview">
+
+
+<!-- ALSSALKASLKCDANCOJSDNCJDSNCJSNDCJLDNSLCNDSLCNDSLKNCLDSNCLKSDNCKLDSNCKLNC -->
+
   </div>
 
 
 
   <form [formGroup]="formEditarPlaza">
   <div class="sub-cont">
+
+<div id="sub-cont-details-img">
+      <div class="sub-details">
+          <div class="sub-img-btn">
+            <input type="file" (change)="FileEdit($event)" (change)="getFile($event)" title="seleccionar archivo" accept=".jpg, .png, .jpeg, .avi, .webp" data-content="seleccionar archivo">
+            <mat-icon>delete</mat-icon>
+          </div>
+        <ul>
+          <li>ancho: <span class="bold danger-red" id="innerwidth-add"></span> </li>
+          <li>alto:  <span class="bold danger-red" id="innerheight-add"></span> </li>
+          <li>peso:  <span class="bold danger-red" id="innersize-add"></span></li>
+        </ul>
+      </div>
+      <div class="cont-details-img"><img alt="" src=""></div>
+</div>
+
+
     <div class="sub">
         <input type="text" [(ngModel)]="NombrePlaza" formControlName="titulo"  placeholder="Nombre plaza/vacante">
         <input type="text" [(ngModel)]="DepartamentoPlaza"  formControlName="departamento"  placeholder="Departamento">
@@ -164,7 +176,7 @@
 
 
 <div class="cont-btns">
-    <div class="btn-click btn-red" (click)="Edit($event)"><mat-icon>save</mat-icon></div>
+    <div class="btn-click btn-red" (click)="Edit($event)"><mat-icon>save</mat-icon> guardar</div>
   </div>
 </div>
 <!--  -->

@@ -30,6 +30,8 @@ export class AdminproductosComponent implements OnInit {
   addProduct: FormControl | any
   Alert: Boolean | any
   containerAlert: HTMLElement | any
+  inputEmptyB
+  srcPreviewEdit
  
 
 
@@ -74,45 +76,75 @@ sendFile():void{
   this.productosServices.CrearUbicacion(body)
   .subscribe(res =>{console.log(res), this.obtenerProductos(),this.fileTmp = null})
 }
-FileEdit(event: Event, idfile:string): void  {
 
-  const fileInput = event.target as HTMLInputElement
-  const archivo = fileInput.files?.[0]
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-  if (archivo) { const lector = new FileReader()
 
-    lector.onload = (eventoLectura:any) => {
-      const imagen = new Image()
-      imagen.src = eventoLectura.target.result as string
 
-      imagen.onload = () => {
-        const fileSize: number = archivo.size
-        const size: any = fileSize.toFixed(2)
-        let medida: string
-        let sizemedida: any
-        if((size/1024/1024) < 1.0) {medida = " KB"; sizemedida = (size/1024).toFixed(2).toString() + medida }else{ medida = " MB"; sizemedida = (size/1024/1024).toFixed(2).toString() + medida }
-        const fileName: string = archivo.name
-        let img = new Image()
-        const objectURL = URL.createObjectURL(archivo)
-        img.src = objectURL
 
-const saveButtonTL = document.getElementById('save-new-tili')
-if (saveButtonTL) {
-  saveButtonTL.addEventListener('click', () => {
+  FileEdit(event: Event): void {
+    const fileInput = event.target as HTMLInputElement
+    const parent: HTMLElement | any = fileInput?.parentElement?.parentElement?.parentElement
+    const clean: HTMLElement | undefined = parent?.children[0]?.children[0]?.children[1]
+    
+    const archivo = fileInput.files?.[0]
+    if (archivo) {
 
-}, false) }
+      const lector = new FileReader()
 
-document.getElementsByClassName('innerdetails')[4]!.innerHTML = imagen.width + " px"
-document.getElementsByClassName('innerdetails')[5]!.innerHTML = imagen.height + " px"
-document.getElementsByClassName('innerdetails')[7]!.innerHTML = sizemedida
-        // document.getElementById('new-file-input')?.setAttribute('data-content', fileName)
-        this.inputEmptyEdit = fileName
-        document.getElementById(idfile)?.setAttribute('src', img.src)
+      lector.onload = (eventoLectura:any) => {
+        console.log(eventoLectura)
+        const imagen = new Image()
+        imagen.src = eventoLectura.target.result
+          this.srcPreviewEdit = imagen.src
+        imagen.onload = () => {
+          const fileSize: number = archivo.size
+          const size: number = fileSize / 1024
+          let medida: string
+          let sizemedida: any
+          if (size < 1024) {
+            medida = " KB"
+            sizemedida = size.toFixed(2).toString() + medida
+          } else {
+            medida = " MB"
+            sizemedida = (size / 1024).toFixed(2).toString() + medida
+          }
+          const fileName: string = archivo.name
+          const img = new Image()
+          const objectURL = URL.createObjectURL(archivo)
+          img.src = objectURL
+          this.inputEmptyB = fileName
+
+
+          if (parent) {
+            console.log(parent)
+            
+            parent.children[0].children[1].children[0].children[0].innerHTML = imagen.width + " px"
+            parent.children[0].children[1].children[1].children[0].innerHTML = imagen.height + " px"
+            parent.children[0].children[1].children[2].children[0].innerHTML = sizemedida
+            const attr: HTMLElement | undefined = parent.children[0].children[0].children[0]
+            const img: HTMLElement | undefined = parent.children[1].children[0]
+            attr?.setAttribute('data-content', fileName)
+            attr?.setAttribute('src', fileName)
+            img?.setAttribute('src', imagen.src)
+            
+            clean?.addEventListener('click',() => {
+              parent.children[0].children[1].children[0].children[0].innerHTML = ''
+              parent.children[0].children[1].children[1].children[0].innerHTML = ''
+              parent.children[0].children[1].children[2].children[0].innerHTML = ''
+              attr?.setAttribute('data-content', 'seleccionar archivo')
+              attr?.setAttribute('src', '')
+              img?.setAttribute('src', '')
+            }, false)
+            
+        } 
+        }
       }
+      lector.readAsDataURL(archivo)
     }
-    lector.readAsDataURL(archivo)
   }
-}
+
+
 
 
 

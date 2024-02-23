@@ -31,11 +31,10 @@ div#container-2 {
   }
 
 
-  div#container-2 button#add-product {
+  button#add-product {
     background: #AA182C;
     color: #FFF;
     text-align: center;
-    padding: 1rem 2rem;
     border-radius: 2rem;
     font-size: 9pt;
     position: relative;
@@ -43,9 +42,14 @@ div#container-2 {
     transform: scale(1);
     transition: .2s;
     opacity: 1;
+    padding: .5rem 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: nowrap;
   }
 
-  div#container-2 button#add-product:active {
+  button#add-product:active {
     transform: scale(.9);
     opacity: .8;
   }
@@ -74,22 +78,23 @@ div#container-2 {
     width: 10%;
     background: transparent;
   }
+
 /*-------------------------------------------------------------------------------------------------*/
 
 div#container-main {
     position: relative;
     width: 100vw;
     height: auto;
+    min-height: 100vh;
     display: flex;
     justify-content: center;
-    align-items: center;
-    align-content: center;
+    align-items: start;
+    align-content: start;
     flex-wrap: wrap;
     margin-top: 60px;
 }
 
 div#container {
-    font-size: 11pt;
     position: relative;
     width: auto;
     max-width: 90%;
@@ -97,6 +102,7 @@ div#container {
     display: flex;
     justify-content: center;
     align-items: start;
+    align-content: start;
     flex-wrap: wrap;
 }
 
@@ -149,6 +155,9 @@ div.modal {
   position: fixed;
   width: 600px;
   height: auto;
+  max-height: 450px;
+  overflow-y: scroll;
+  overflow-x: hidden;
   padding: 1rem;
   top: 10vh;
   left: calc(50% - 300px);
@@ -216,32 +225,7 @@ div.sub {
   justify-content: center;
   align-items: start;
   flex-wrap: wrap;
-  margin-top: 1rem;
-}
-
-input[type=file] {
-  position: relative;
-  width: 90%;
-  height: auto;
-  border-radius: 4px;
-  cursor: pointer;
-  padding: .5rem 1rem;
-  margin-top: 1rem;
-}
-
-input[type=file]::before {
-  content: attr(data-content);
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  background: #EAEAEA;
-  text-align: center;
-  z-index: 990;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  margin-top: 0rem;
 }
 
 input[type=text], input[type=date], textarea{
@@ -251,43 +235,7 @@ input[type=text], input[type=date], textarea{
   margin-top: .5rem;
   border-radius: 4px;
   padding: .5rem 1rem;
-}
-
-div#sub-cont-details-img,
-div#sub-cont-details-img-edit {
-  display: flex;
-  justify-content: space-between;
-  align-items: start;
-  align-content: space-between;
-  flex-wrap: wrap;
-  width: 90%;
-  margin-top: 1rem;
-}
-
-div#sub-cont-details-img input,
-div#sub-cont-details-img-edit input {
-  width: 45%;
-  margin-top: 0;
-}
-
-div#sub-cont-details-img div,
-div#sub-cont-details-img-edit div {
-  width: 45%;
-}
-
-div#sub-cont-details-img div ul,
-div#sub-cont-details-img-edit div ul {
-  width: 100%;
-  list-style: none;
-}
-
-div#sub-cont-details-img div ul li,
-div#sub-cont-details-img-edit div ul li {
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: nowrap;
+  font-size: 11pt;
 }
 
 
@@ -362,9 +310,20 @@ div.fns-add {
   z-index: -10;
   border-radius: 4px;
   opacity: 0;
+  overflow-x: hidden;
+  overflow-y: scroll;
 }
 
-div.fns-add.show {opacity: 1; z-index: 995;}
+div.fns-add form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  flex-wrap: wrap;
+  overflow: hidden;
+}
+
+div.fns-add.show {opacity: 1; z-index: 45;}
 
 div.close-minmodal {
   position: absolute;
@@ -378,10 +337,9 @@ div.close-minmodal {
 }
 
 div.cont-in-fns {
-  width: 100%;
+  width: 80%;
   height: 85%;
   margin-top: 15%;
-  overflow-y: scroll;
   padding-bottom: 4rem;
   overflow-x: hidden;
   display: flex;
@@ -391,8 +349,10 @@ div.cont-in-fns {
   flex-wrap: wrap;
 }
 
+div.cont-in-fns textarea {min-width: 100%; width: 100%; display: block;}
+
 div#save-fns {
-  width: 60%;
+  width: auto;
   padding: .5rem 1rem;
   border-radius: 4px;
   text-align: center;
@@ -401,6 +361,8 @@ div#save-fns {
   background: #AA182C;
   color: #FFF;
   margin-top: 1rem;
+  display: flex;
+  flex-wrap: nowrap;
 }
 
 div.btns-micmodal {
@@ -518,19 +480,6 @@ div#save-edit-fn {
 
 
 
-
-
-
-
-
-
-
-img.img-preview {
-  width: 90%;
-  margin-top: 1rem;
-  border-radius: 4px;
-}
-
 div#cont-modal-inputs {
   width: 100%;
   height: 100%;
@@ -558,14 +507,6 @@ div#cont-modal-inputs h3 {
   padding: 1rem;
 }
 
-img#preview-plaza,
-img#preview-plaza-edit {
-  position: relative;
-  width: auto;
-  max-width: 90%;
-  height: auto;
-  max-height: 100px;
-}
 
 div#modal-inputs {
   width: 100%;

@@ -15,11 +15,10 @@
   
 
 <div id="container-productos">
-  @for (os of dataProductos; track os._id) {
-  
 
-  <div class="producto">
-      
+
+  @for (os of dataProductos; track os._id) {
+  <div class="producto">      
       
   <div class="sub-producto">
           <img src="../../../assets/img/carne de res.png" alt="producto" title="producto">
@@ -37,9 +36,7 @@
               </ul>
             </div>
           </div>
-          
-        
-        
+
         <div class="actions">
           <div class="edit-product btn-click btn-gold" (click)="ModalProduct('edit')"><mat-icon>edit</mat-icon></div>
           <div class="del-product btn-click btn-red"> <mat-icon>delete</mat-icon></div>
@@ -73,11 +70,7 @@
           <div class="save-added-categories btn-click btn-red" (click)="SaveNewCategory()" (click)="CloseAddCategory($event)"><mat-icon>save</mat-icon></div>
         </div>
       </div>
-    </div>
-    
-  
-  
-  
+    </div>  
   
   <div class="cont-subcategories subcategories">
     <h1 class="title-modal">Agregar Sub-Categoría</h1>
@@ -98,17 +91,9 @@
     
   </div>
 
-
-                          <div class="message-success"> <p class="inner-message normal">message status</p> </div>
 </div>
 
 }
-<!--    Pruebas de FormControl
-<form>
-  <input id="nombre" type="text" [formControl]="nombreControl">
-  <input id="email" type="email" [formControl]="emailControl">
-  <button type="submit">Enviar</button>
-</form> -->
 
 </div>
 
@@ -124,19 +109,22 @@
 <form action="" [formGroup]="formularioAgregarProducto">
 
   <div class="cont-blocks">
-    
-      <div class="preview-img-model">
-        <input id="file-edit" (change)="FileAdd($event, 'img-pre-add')" (change)="getFile($event)"  type="file" accept=".jpg, .jpeg, .png, .webp, .avi" title="seleccionar archivo" [attr.data-content]="inputEmpty">
-        <div class="details-img">
-          <ul>
-            <li>ancho: <p class="innerdetails bold"></p></li>
-            <li>alto:<p class="innerdetails bold"></p></li>
-            <li>Realcion:<p class="innerdetails bold"></p></li>
-            <li>tamaño:<p class="innerdetails bold"></p></li>
-          </ul>
-          <img src="" alt="" id="img-pre-add">
-        </div>
+
+    <div id="sub-cont-details-img">
+      <div class="sub-details">
+          <div class="sub-img-btn">
+            <input type="file" (change)="FileEdit($event)" (change)="getFile($event)" title="seleccionar archivo" accept=".jpg, .png, .jpeg, .avi, .webp" data-content="seleccionar archivo">
+            <mat-icon>delete</mat-icon>
+          </div>
+        <ul>
+          <li>ancho: <span class="bold danger-red" id="innerwidth-add"></span> </li>
+          <li>alto:  <span class="bold danger-red" id="innerheight-add"></span> </li>
+          <li>peso:  <span class="bold danger-red" id="innersize-add"></span></li>
+        </ul>
       </div>
+      <div class="cont-details-img"><img alt="" src=""></div>
+</div>
+
       
       <div class="cont-datos">
         <input  type="text" formControlName="nombreProducto" placeholder="Producto" class="normal" name="name-producto" title="nombre del producto">
@@ -168,18 +156,21 @@
 
   <div class="cont-blocks">
 
-    <div class="preview-img-model">
-    <input id="file-edit" (change)="FileEdit($event, 'img-pre-edit')" type="file" accept=".jpg, .jpeg, .png, .webp, .avi" title="seleccionar archivo" [attr.data-content]="inputEmptyEdit">
-  <div class="details-img">
-    <ul>
-      <li>ancho: <p class="innerdetails bold"></p></li>
-      <li>alto:<p class="innerdetails bold"></p></li>
-      <li>Realcion:<p class="innerdetails bold"></p></li>
-      <li>tamaño:<p class="innerdetails bold"></p></li>
-    </ul>
-    <img src="" alt="" id="img-pre-edit">
-  </div>
+    <div id="sub-cont-details-img">
+      <div class="sub-details">
+          <div class="sub-img-btn">
+            <input type="file" (change)="FileEdit($event)" (change)="getFile($event)" title="seleccionar archivo" accept=".jpg, .png, .jpeg, .avi, .webp" data-content="seleccionar archivo">
+            <mat-icon>delete</mat-icon>
+          </div>
+        <ul>
+          <li>ancho: <span class="bold danger-red" id="innerwidth-add"></span> </li>
+          <li>alto:  <span class="bold danger-red" id="innerheight-add"></span> </li>
+          <li>peso:  <span class="bold danger-red" id="innersize-add"></span></li>
+        </ul>
+      </div>
+      <div class="cont-details-img"><img alt="" src=""></div>
 </div>
+
 
 <div class="cont-datos">
   <input type="text" placeholder="Producto" class="normal" name="name-producto" title="nombre del producto">
@@ -258,9 +249,7 @@
   <div class="save-added-categories btn-click btn-red" (click)="SaveNewSubCategory()" (click)="CloseAddSubCategory($event)"><mat-icon>save</mat-icon></div>
 </div>
 
-
 </div>
-
 
 </div>
 

@@ -41,6 +41,7 @@ export class EquipoComponent {
 
 
   private fileTmp:any;
+  $element: MouseEvent | any
 
 
 constructor(){
@@ -102,8 +103,15 @@ constructor(){
     }
   }
 
+
+
+
+
   FileEdit(event: Event): void {
     const fileInput = event.target as HTMLInputElement
+    const parent: HTMLElement | any = fileInput?.parentElement?.parentElement?.parentElement
+    const clean: HTMLElement | undefined = parent?.children[0]?.children[0]?.children[1]
+    
     const archivo = fileInput.files?.[0]
     if (archivo) {
 
@@ -132,10 +140,29 @@ constructor(){
           img.src = objectURL
           this.inputEmptyB = fileName
 
-          document.getElementById('innersize-edit')!.innerHTML = sizemedida
-          document.getElementById('innerwidth-edit')!.innerHTML = imagen.width + " px"
-          document.getElementById('innerheight-edit')!.innerHTML = imagen.height + " px"
-          document.getElementById('img-pre-edit')?.setAttribute('src', fileName)
+
+          if (parent) {
+            console.log(parent)
+            
+            parent.children[0].children[1].children[0].children[0].innerHTML = imagen.width + " px"
+            parent.children[0].children[1].children[1].children[0].innerHTML = imagen.height + " px"
+            parent.children[0].children[1].children[2].children[0].innerHTML = sizemedida
+            const attr: HTMLElement | undefined = parent.children[0].children[0].children[0]
+            const img: HTMLElement | undefined = parent.children[1].children[0]
+            attr?.setAttribute('data-content', fileName)
+            attr?.setAttribute('src', fileName)
+            img?.setAttribute('src', imagen.src)
+            
+            clean?.addEventListener('click',() => {
+              parent.children[0].children[1].children[0].children[0].innerHTML = ''
+              parent.children[0].children[1].children[1].children[0].innerHTML = ''
+              parent.children[0].children[1].children[2].children[0].innerHTML = ''
+              attr?.setAttribute('data-content', 'seleccionar archivo')
+              attr?.setAttribute('src', '')
+              img?.setAttribute('src', '')
+            }, false)
+            
+        } 
         }
       }
       lector.readAsDataURL(archivo)
@@ -283,38 +310,50 @@ agregarPlaza():void{
 /**
  * Sends a file to create a plaza.
  */
-sendFileplaza():void{
-
-  const body = new FormData()
-  if(this.fileTmp){
-    body.append('imgPhat', this.fileTmp.fileRaw, this.fileTmp.fileName)
-    body.append('titulo', this.formAgregarPlaza.value.titulo)
-    body.append('ubicacion', this.formAgregarPlaza.value.ubicacion)
-    body.append('departamento',this.formAgregarPlaza.value.departamento)
-    body.append('empresa',this.formAgregarPlaza.value.empresa)
-    body.append('educacion',this.formAgregarPlaza.value.educacion)
-    body.append('experecia',this.formAgregarPlaza.value.experiencia)
-    body.append('fecha',this.formAgregarPlaza.value.fecha)
-    console.log('con imagen')
 
 
 
-  }else{
-    console.log('sin img')
-    body.append('titulo', this.formAgregarPlaza.value.titulo)
-    body.append('ubicacion', this.formAgregarPlaza.value.ubicacion)
-    body.append('departamento',this.formAgregarPlaza.value.departamento)
-    body.append('empresa',this.formAgregarPlaza.value.empresa)
-    body.append('educacion',this.formAgregarPlaza.value.educacion)
-    body.append('experecia',this.formAgregarPlaza.value.experiencia)
-    body.append('fecha',this.formAgregarPlaza.value.fecha)
+
+
+
+sendFileplaza(): void {
+  this.AlertOption("¿Desea guardar la nueva plaza?")
+  const parent: HTMLElement | any = this.containerAlert
+  const btn: HTMLElement | any = parent?.childNodes[0]?.childNodes[0]?.childNodes[1]?.childNodes[0]
+  
+  const clickHandler = () => {
+
+ 
+    const body = new FormData()
+    if(this.fileTmp){
+      body.append('imgPhat', this.fileTmp.fileRaw, this.fileTmp.fileName)
+      body.append('titulo', this.formAgregarPlaza.value.titulo)
+      body.append('ubicacion', this.formAgregarPlaza.value.ubicacion)
+      body.append('departamento',this.formAgregarPlaza.value.departamento)
+      body.append('empresa',this.formAgregarPlaza.value.empresa)
+      body.append('educacion',this.formAgregarPlaza.value.educacion)
+      body.append('experecia',this.formAgregarPlaza.value.experiencia)
+      body.append('fecha',this.formAgregarPlaza.value.fecha)
+      console.log('con imagen')
+  
+    }else{
+      console.log('sin img')
+      body.append('titulo', this.formAgregarPlaza.value.titulo)
+      body.append('ubicacion', this.formAgregarPlaza.value.ubicacion)
+      body.append('departamento',this.formAgregarPlaza.value.departamento)
+      body.append('empresa',this.formAgregarPlaza.value.empresa)
+      body.append('educacion',this.formAgregarPlaza.value.educacion)
+      body.append('experecia',this.formAgregarPlaza.value.experiencia)
+      body.append('fecha',this.formAgregarPlaza.value.fecha)
+  }
+  
+    this.uneterService.sendCreatePlaza(body)
+    .subscribe(res => {console.log(res), console.log(body) ,this.formAgregarPlaza.reset(),this.obtenerUnete(),this.fileTmp = null, this.AlertMessage('¡Plaza guardada exitosamente!', 1500)})
 
 
 
   }
-
-  this.uneterService.sendCreatePlaza(body)
-  .subscribe(res => {console.log(res), console.log(body) ,this.formAgregarPlaza.reset(),this.obtenerUnete(),this.fileTmp = null})
+  if (!btn.__clickHandlerAdded) { btn.addEventListener('click', clickHandler); btn.__clickHandlerAdded = true }
 }
 
 
@@ -333,6 +372,8 @@ async agregarfuncion(id:any){
 
 }
 
+
+
 async obtenerPlazaId(id:any){
   const respuestaid = await this.uneterService.ObtenerPlazaid(id)
   console.log(respuestaid)
@@ -349,7 +390,6 @@ async obtenerPlazaId(id:any){
   this.funciones = respuestaid.plaza.funciones
   console.log(this.NombrePlaza)
   this.obtenerFunciones()
-
 }
 
 
@@ -429,17 +469,15 @@ async AlertConfirm(event: MouseEvent) {
 
 async Edit(event: MouseEvent) {
       let id = this.idPlaza
+      this.AlertOption("¿Desea guardar los cambios?")
+      const parent: HTMLElement | any = this.containerAlert
+      const btn: HTMLElement | any = parent?.childNodes[0]?.childNodes[0]?.childNodes[1]?.childNodes[0]
 
-  const node = event.target as HTMLElement | null
-  const parent = node?.parentNode?.parentNode?.parentNode?.childNodes[4] as HTMLElement | undefined
+      const clickHandler = () => {
+        // A C T I O N
+      }
 
-  parent?.classList.add('show')
-  const inner = parent?.childNodes[0]?.childNodes[0] as HTMLElement | undefined
-  const btns = parent?.childNodes[0]?.childNodes[2] as HTMLElement | undefined
-  inner?.classList.add('show')
-  inner!.innerHTML = "¿Desea guardar los cambios?"
-  btns?.classList.add('show')
-
+      if (!btn.__clickHandlerAdded) { btn.addEventListener('click', clickHandler); btn.__clickHandlerAdded = true }
 }
 
 
@@ -496,32 +534,37 @@ AlertClose(){
   btns?.classList.remove('show')
 }
 
-
-
 EliminarP(id:number) {
   this.AlertOption("¿Desea eliminar el producto seleccionado?")
   const parent: HTMLElement | any = this.containerAlert
   const btn: HTMLElement | any = parent?.childNodes[0]?.childNodes[0]?.childNodes[1]?.childNodes[0]
-  const btnClickPromise = new Promise<void>((resolve) => {
-    const clickHandler = () => { 
-      resolve()
-      
-      this.eliminarId(id)
-      btn.removeEventListener('click', clickHandler)
-    } 
-    btn?.addEventListener('click', clickHandler)
-  })
-  btnClickPromise.then(() => {
+  console.log(btn)
+  
+  const clickHandler = () => {
     
-  })
+    this.eliminarId(id)
+  }
+
+  if (!btn.__clickHandlerAdded) { btn.addEventListener('click', clickHandler); btn.__clickHandlerAdded = true }
 }
 
+
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
+// P L A N T I L L A      D E      S Y S T E M     A L E R T 
+FuntionAlert(id:number) {
+  this.AlertOption("Message")
+  const parent: HTMLElement | any = this.containerAlert
+  const btn: HTMLElement | any = parent?.childNodes[0]?.childNodes[0]?.childNodes[1]?.childNodes[0]
+  
+  const clickHandler = () => {
+    // A C T I O N
+  }
 
-
+  if (!btn.__clickHandlerAdded) { btn.addEventListener('click', clickHandler); btn.__clickHandlerAdded = true }
+}
 
 }
 
