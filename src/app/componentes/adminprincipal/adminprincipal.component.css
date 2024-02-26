@@ -1289,3 +1289,7 @@ div#background-color {
   left: 0;
   z-index: 100;
 }
+
+div#saveBgImg { display: none; }
+div#saveBgImg.show { display: block; }
+

@@ -27,10 +27,9 @@
     </div>
   </div>
 
-
   <div class="sub-container-items" id="sub-cont-img">
     <div id="cont-input-file-bg" class="sub-items">
-      <input (change)="preSaveBackground($event)" (change)="getFileBack($event)" aaccept="image/png, image/jpeg, image/jpg" id="file-bg" type="file" title="seleccionar archivo" data-content="seleccionar archivo">
+      <input (change)="ChangeFileBackground($event)" (change)="getFileBack($event)" accept="image/png, image/jpeg, image/jpg" id="file-bg" type="file" title="seleccionar archivo" data-content="seleccionar archivo">
       <!-- <input type="file" (change)="manejarCambioArchivo($event)" title="input for demo"> -->
       <img id="pre-bg" [src]="'http://localhost:3002/' + imgfondo" alt="portada" title="previsualización del archivo">
     </div>
@@ -67,7 +66,7 @@
 
 
     <div class="cont-buttons">
-      <div class="btn-click btn-red"  (click)="sendFileBackground()">guardar imagen de fondo</div>
+      <div class="btn-click btn-red" id="saveBgImg">guardar imagen de fondo</div>
     </div>
   </div>
 
@@ -80,18 +79,6 @@
   </div>
 </div>
 
-
-  <div class="container-alert">
-    <div class="alert-model">
-        <p class="inner-message bold"></p>
-
-        <div class="message"> <h1 class="innermsg"></h1></div>
-        <div class="cont-btns-alert">
-          <button class="confirm" (click)="sendFileBackground()">confirmar</button>
-          <div class="replace-button cancel">cancelar</div>
-        </div>
-      </div>
-    </div>
 
   <div class="foot-cont">
     <div class="cont-buttons">

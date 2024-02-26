@@ -35,6 +35,7 @@ export class AdminprincipalComponent implements OnInit, AfterViewInit {
   containerAlert: HTMLElement | any
   imgPrincipal: any
   imgfondo:any
+  fileBg
 
   dataValores
   dataHistoria
@@ -162,7 +163,7 @@ this.formularioEditarFondoColor = new FormGroup({
 // AL INICIAR
   async ngOnInit()  {
     this.containerAlert = document.getElementById('background-alert')
-
+    this.fileBg = document.querySelector('#file-bg')
 
     const alertas = document.querySelectorAll('.container-alert')
 
@@ -1124,111 +1125,106 @@ updateNotice() {
     this.lineaService.sendPost(body)
     .subscribe(res =>{console.log(res), this.obtenerLinea(),this.fileTmp = null})
     // 
+}
+  
+
+  ChangeFileBackground(event: Event): void {
+    const fileInput = event.target as HTMLInputElement
+    const archivo = fileInput.files?.[0]
+
+    // const element = this.fileBg
+    // const parent = element?.parentElement?.parentElement as HTMLElement
+  
+    if (archivo) {
+      const lector = new FileReader()
+      lector.onload = (eventoLectura: any) => {
+        const imagen = new Image()
+        imagen.src = eventoLectura.target.result as string
+  
+        imagen.onload = () => {
+          const fileSize: number = archivo.size
+          const size: any = fileSize.toFixed(2)
+          let medida: string
+          let sizemedida: any
+  
+          if ((size / 1024 / 1024) < 1.0) {
+            medida = " KB"
+            sizemedida = (size / 1024).toFixed(2).toString() + medida
+          } else {
+            medida = " MB"
+            sizemedida = (size / 1024 / 1024).toFixed(2).toString() + medida
+          }
+  
+          const fileName: string = archivo.name
+          let img = new Image()
+          const objectURL = URL.createObjectURL(archivo)
+          img.src = objectURL
+          this.anchoimg = imagen.width
+          this.altoimg = imagen.height
+  
+          const dangerRedElements = document.getElementsByClassName('danger-red')
+          dangerRedElements[0]?.classList.remove('limit')
+          dangerRedElements[1]?.classList.remove('limit')
+          dangerRedElements[2]?.classList.remove('limit')
+  
+          if (this.anchoimg > 2000) {
+            dangerRedElements[0]?.classList.add('limit')
+          }
+          if (this.altoimg > 1500) {
+            dangerRedElements[1]?.classList.add('limit')
+          }
+          if ((size / 1024) > 2048) {
+            dangerRedElements[2]?.classList.add('limit')
+          }
+  
+          // console.log(parent?.children[2]?.children[0])
+          
+
+          document.getElementById('innersize-bg')!.innerHTML = sizemedida
+          document.getElementById('innerwidth-bg')!.innerHTML = this.anchoimg + " px"
+          document.getElementById('innerheight-bg')!.innerHTML = this.altoimg + " px"
+          document.getElementById('file-bg')?.setAttribute('data-content', fileName)
+          document.getElementById('pre-bg')?.removeAttribute('src')
+          document.getElementById('preview-bg')?.removeAttribute('src')
+          document.getElementById('preview-bg')?.setAttribute('src', img.src)
+          document.getElementById('pre-bg')?.setAttribute('src', img.src)
+          document.getElementById('endpreview-bg')?.setAttribute('src', img.src)
+        }
+      }
+      lector.readAsDataURL(archivo)
+  
+      const btnSaveBg: HTMLElement | any = document.querySelector('#saveBgImg')
+      btnSaveBg?.classList.add('show')
+      btnSaveBg.onclick = () => { this.sendFileBackground() }
+    }
   }
   
-  //fin de los metodos de noticias
+  sendFileBackground(): void {
+    this.AlertOption("¿Desea guardar la nueva imagen de fondo?")
+    const parent: HTMLElement | any = this.containerAlert
+    const btn: HTMLElement | any = parent?.childNodes[0]?.childNodes[0]?.childNodes[1]?.childNodes[0]
   
-  //Metodos de Fondo de pantalla
-
-preSaveBackground(event: Event): void  {
-
-  const fileInput = event.target as HTMLInputElement
-  const archivo = fileInput.files?.[0]
-
-  if (archivo) { const lector = new FileReader()
-
-    lector.onload = (eventoLectura:any) => {
-      const imagen = new Image()
-      imagen.src = eventoLectura.target.result as string
-
-      imagen.onload = () => {
-        const fileSize: number = archivo.size
-        const size: any = fileSize.toFixed(2)
-        let medida: string
-        let sizemedida: any
-        if((size/1024/1024) < 1.0) {medida = " KB"; sizemedida = (size/1024).toFixed(2).toString() + medida }else{ medida = " MB"; sizemedida = (size/1024/1024).toFixed(2).toString() + medida }
-        const fileName: string = archivo.name
-        let img = new Image()
-        const objectURL = URL.createObjectURL(archivo)
-        img.src = objectURL
-        this.anchoimg = imagen.width, this.altoimg = imagen.height
-
-
-        document.getElementsByClassName('danger-red')[0]?.classList.remove('limit')
-        document.getElementsByClassName('danger-red')[1]?.classList.remove('limit')
-        document.getElementsByClassName('danger-red')[2]?.classList.remove('limit')
-
-        if(this.anchoimg > 2000){  document.getElementsByClassName('danger-red')[0].classList.add('limit') }
-        if(this.altoimg > 1500){ document.getElementsByClassName('danger-red')[1].classList.add('limit') }
-        if((size/1024) > 2048 ){  document.getElementsByClassName('danger-red')[2].classList.add('limit') }
-
-        document.getElementById('innersize-bg')!.innerHTML = sizemedida
-        document.getElementById('innerwidth-bg')!.innerHTML = this.anchoimg + " px"
-        document.getElementById('innerheight-bg')!.innerHTML = this.altoimg + " px"
-        document.getElementById('file-bg')?.setAttribute('data-content', fileName)
-        document.getElementById('pre-bg')?.removeAttribute('src')
-        document.getElementById('preview-bg')?.removeAttribute('src')
-        document.getElementById('preview-bg')?.setAttribute('src', img.src)
-        document.getElementById('pre-bg')?.setAttribute('src', img.src)
-        document.getElementById('endpreview-bg')?.setAttribute('src', img.src)
+    if (btn) {
+      btn.onclick = () => {
+        const body = new FormData()
+        if (this.fileBackgrud) {
+          body.append('imgPathFondo', this.fileBackgrud.fileRaw, this.fileBackgrud.fileName)
+          try {
+            this.historiaService.sendback(body, this._idhistoria).subscribe(res => {
+              this.AlertMessage("¡Nueva imagen de fondo con éxito!", 1500)
+              console.log(res)
+              this.obtenerHistoria()
+            })
+          } catch (error) {
+            this.AlertMessage("Error :(", 1500)
+          }
+        } else {
+          this.AlertMessage("Selecciona una imagen de fondo por favor", 1500)
+        }
       }
     }
-    lector.readAsDataURL(archivo)
   }
-
-  document.getElementById('btn-save-bg')?.addEventListener('click', () => {
-
-    if(archivo!==null || archivo!==undefined){
-
-  const innerMessage = document.getElementsByClassName('innermsg')[0]
-  if (innerMessage) { innerMessage.innerHTML = "¿Desea guardar los cambios?"
-
-
-  document.getElementsByClassName('container-alert')[0]?.classList.add('show')
-  document.getElementsByClassName('message')[0]?.classList.add('show')
-  document.getElementsByClassName('cont-btns-alert')[0]?.classList.add('show')
-
-  document.getElementsByClassName('cancel')[0]?.addEventListener('click', function(){
-    document.getElementsByClassName('cont-btns-alert')[0]?.classList.remove('show')
-    document.getElementsByClassName('container-alert')[0]?.classList.remove('show')
-    document.getElementsByClassName('message')[0]?.classList.remove('show')
-  },false)
-  document.getElementsByClassName('confirm')[0]?.addEventListener('click', function(){
-    document.getElementsByClassName('cont-btns-alert')[0]?.classList.remove('show')
-    document.getElementsByClassName('container-alert')[0]?.classList.remove('show')
-},false)
-  }
-}
-}, false)
-}
-
-
-sendFileBackground():void{
-
-  this.AlertOption("¿Desea guardar la nueva imagen de fondo?")
-  const parent: HTMLElement | any = this.containerAlert
-  const btn: HTMLElement | any = parent?.childNodes[0]?.childNodes[0]?.childNodes[1]?.childNodes[0]
-
-  if (btn) { btn.onclick = () => {
-
-  const body = new FormData()
-  if(this.fileBackgrud){
-    body.append('imgPathFondo', this.fileBackgrud.fileRaw, this.fileBackgrud.fileName)
-    try{
-      this.historiaService.sendback(body,this._idhistoria).subscribe(res =>{
-        this.AlertMessage("¡Nueva imagen de fondo con éxito!", 1500)
-        document.getElementById('container-alert-a')?.classList.remove('show')
-        console.log(res), this.obtenerHistoria() })
-      }catch(error) { this.AlertMessage("Error :(", 1500) }
-  }else{
-    this.AlertMessage("Selecciona una imagen de fondo por favor", 1500)
-  }
-
-}
-}
-
-
-}
+  
 
 
 getFileBack($event: any): void {
