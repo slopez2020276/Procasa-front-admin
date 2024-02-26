@@ -1273,7 +1273,7 @@ getFilePortada($event: any): void {
 sendFilePortada():void{
   const body = new FormData()
   if(this.imgPathPrincipal){
-    body.append('imgPathPrincipal', this.imgPathPrincipal.fileRaw, this.imgPathPrincipal.fileName);
+    body.append('imgPathPortada', this.imgPathPrincipal.fileRaw, this.imgPathPrincipal.fileName);
     this.historiaService.sendPost(body,this._idhistoria)
     .subscribe(res =>{
       // 
