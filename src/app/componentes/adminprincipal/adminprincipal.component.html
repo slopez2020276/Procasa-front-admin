@@ -385,7 +385,7 @@
 
 
     <div class="noticia">
-      <img  [ngSrc]="'http://localhost:3002/' + os.imgPhat" [width]="300" [height]="300" alt="noticia">
+      <img [src]="os.imgPhat"  alt="noticia">
     <h2>{{os.title}}</h2>
     <p>{{os.descripcion}}</p>
           <button type="button" class="edit-notice" (click)="obtenerxidNoticias(os._id)" (click)="ModalEditNotice()">editar</button>
