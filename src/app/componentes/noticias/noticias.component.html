@@ -5,7 +5,7 @@
         @for (os of data; track os._id) {
             <div class="noticia">
               <div class="cont-img">
-                <img  [ngSrc]="'http://localhost:3002/' + os.imgPhat" [width]="500" [height]="500" alt="">
+                <img   [src]="os.imgPhat" alt="">
               </div>
               <div class="cont-fill"></div>
                 <div class="cont-text">
