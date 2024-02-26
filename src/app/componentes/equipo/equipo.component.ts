@@ -221,22 +221,6 @@ constructor(){
 
 
 
-MessageSuccess(text: string, i: number){
-    const innermsg = document.getElementsByClassName('innermsg')[i]
-    if (innermsg) { innermsg.innerHTML = text
-      document.getElementsByClassName('container-alert')[i]?.classList.add('show')
-      document.getElementsByClassName('message')[i]?.classList.add('show')
-      document.getElementsByClassName('timesuccess')[i]?.classList.toggle('lesswidth')
-      document.getElementsByClassName('cont-btns-alert')[i]?.classList.add('show')
-
-setTimeout(function(){
-  document.getElementsByClassName('message')[i]?.classList.remove('show')
-  document.getElementsByClassName('cont-btns-alert')[i]?.classList.remove('show')
-  document.getElementsByClassName('container-alert')[i]?.classList.remove('show')
-  document.getElementsByClassName('timesuccess')[i]?.classList.remove('lesswidth')
-},2000)
-}
-}
 async obtenerUnete(){
   const data = await this.uneterService.otenerUneteEquipo();
   this.dataUnete = data.unete
@@ -311,8 +295,7 @@ agregarPlaza():void{
  * Sends a file to create a plaza.
  */
 
-
-
+ 
 
 
 
@@ -321,9 +304,7 @@ sendFileplaza(): void {
   const parent: HTMLElement | any = this.containerAlert
   const btn: HTMLElement | any = parent?.childNodes[0]?.childNodes[0]?.childNodes[1]?.childNodes[0]
   
-  const clickHandler = () => {
-
- 
+  if (btn) { btn.onclick = () => {
     const body = new FormData()
     if(this.fileTmp){
       body.append('imgPhat', this.fileTmp.fileRaw, this.fileTmp.fileName)
@@ -349,11 +330,10 @@ sendFileplaza(): void {
   
     this.uneterService.sendCreatePlaza(body)
     .subscribe(res => {console.log(res), console.log(body) ,this.formAgregarPlaza.reset(),this.obtenerUnete(),this.fileTmp = null, this.AlertMessage('¡Plaza guardada exitosamente!', 1500)})
-
-
-
   }
-  if (!btn.__clickHandlerAdded) { btn.addEventListener('click', clickHandler); btn.__clickHandlerAdded = true }
+}
+
+
 }
 
 
@@ -395,11 +375,15 @@ async obtenerPlazaId(id:any){
 
 
 async editarPlaza(){
-  let id = this.idPlaza
-    console.log(this.idPlaza)
-  const respuestaEditarPlaza = await this.uneterService.editarPlaza(id,this.formEditarPlaza.value)
-  console.log(respuestaEditarPlaza)
-  this.obtenerUnete()
+  try{
+    let id = this.idPlaza
+    await this.uneterService.editarPlaza(id,this.formEditarPlaza.value)
+    this.obtenerUnete()
+    this.AlertMessage("¡Datos actualizados exitosamente!", 1500)
+  } catch(error) {
+    console.log(error)
+    this.AlertMessage("Error :(", 1500)
+  }
 }
 
 async eliminarPlaza(id:any){
@@ -451,34 +435,20 @@ async eliminarId(id: number){
     this.obtenerUnete()
   } catch (error) {
     console.log(error)
+    this.AlertMessage('Error :(',1500)
 }
 }
 
 
-async AlertConfirm(event: MouseEvent) {
-  const node = event.target as HTMLElement | null
-  const parent = node?.parentNode?.parentNode?.parentNode?.children[3] as HTMLElement | undefined
-  parent?.classList.add('show')
-  const inner = parent?.childNodes[0]?.childNodes[0] as HTMLElement | undefined
-  const btns = parent?.childNodes[0]?.childNodes[2] as HTMLElement | undefined
-  inner?.classList.add('show')
-  inner!.innerHTML = "¿Desea eliminar la plaza?"
-  btns?.classList.add('show')
+Edit() {
+  let id = this.idPlaza
+  this.AlertOption("¿Desea guardar los cambios?")
+  const parent: HTMLElement | any = this.containerAlert
+  const btn: HTMLElement | any = parent?.childNodes[0]?.childNodes[0]?.childNodes[1]?.childNodes[0]
+
+  if (btn) { btn.onclick = () => { this.editarPlaza() } }
 }
 
-
-async Edit(event: MouseEvent) {
-      let id = this.idPlaza
-      this.AlertOption("¿Desea guardar los cambios?")
-      const parent: HTMLElement | any = this.containerAlert
-      const btn: HTMLElement | any = parent?.childNodes[0]?.childNodes[0]?.childNodes[1]?.childNodes[0]
-
-      const clickHandler = () => {
-        // A C T I O N
-      }
-
-      if (!btn.__clickHandlerAdded) { btn.addEventListener('click', clickHandler); btn.__clickHandlerAdded = true }
-}
 
 
 closeAlert(event: MouseEvent){
@@ -534,19 +504,21 @@ AlertClose(){
   btns?.classList.remove('show')
 }
 
-EliminarP(id:number) {
+EliminarP(id: number) {
   this.AlertOption("¿Desea eliminar el producto seleccionado?")
   const parent: HTMLElement | any = this.containerAlert
   const btn: HTMLElement | any = parent?.childNodes[0]?.childNodes[0]?.childNodes[1]?.childNodes[0]
-  console.log(btn)
 
-  const clickHandler = () => {
-
-    this.eliminarId(id)
+  if (btn) { 
+    btn.onclick = () => {
+          this.eliminarId(id)
+    }
   }
 
-  if (!btn.__clickHandlerAdded) { btn.addEventListener('click', clickHandler); btn.__clickHandlerAdded = true }
 }
+
+
+
 
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -554,19 +526,26 @@ EliminarP(id:number) {
 
 
 // P L A N T I L L A      D E      S Y S T E M     A L E R T 
-FuntionAlert(id:number) {
-  this.AlertOption("Message")
+SystemAlert(id: number) {
+  this.AlertOption("Message to Show")
   const parent: HTMLElement | any = this.containerAlert
   const btn: HTMLElement | any = parent?.childNodes[0]?.childNodes[0]?.childNodes[1]?.childNodes[0]
-  
-  const clickHandler = () => {
-    // A C T I O N
+
+  if (btn) { 
+    btn.onclick = () => {
+          // A C T I O N 
+    }
   }
-
-  if (!btn.__clickHandlerAdded) { btn.addEventListener('click', clickHandler); btn.__clickHandlerAdded = true }
 }
 
 
 
 }
+
+
+
+
+
+
+
 

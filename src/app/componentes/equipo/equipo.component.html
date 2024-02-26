@@ -176,7 +176,7 @@
 
 
 <div class="cont-btns">
-    <div class="btn-click btn-red" (click)="Edit($event)"><mat-icon>save</mat-icon> guardar</div>
+    <div class="btn-click btn-red" (click)="Edit()"><mat-icon>save</mat-icon> guardar</div>
   </div>
 </div>
 <!--  -->
@@ -225,7 +225,7 @@
     <div class="alert-model">
       <p class="message bold"></p>
       <div class="cont-btns-alert" id="btns">
-        <div class="btn-click btn-red"><mat-icon>done</mat-icon> confirmar</div>
+        <div class="btn-click btn-red" id="confirm-alert"><mat-icon>done</mat-icon> confirmar</div>
         <div class="btn-click btn-gray" (click)="AlertClose()"><mat-icon>close</mat-icon> cancelar</div>
       </div>
     </div>

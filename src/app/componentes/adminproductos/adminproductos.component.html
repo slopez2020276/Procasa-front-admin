@@ -49,8 +49,8 @@
               
               <div class="message"> <h1 class="innermsg"></h1></div>
               <div class="cont-btns-alert">
-                <button  class="confirm replace-button btn-click" (click)="closeAlert($event)" (click)="confirmedDeleteProduct($event)"><mat-icon>done</mat-icon></button>
-                <div class="replace-button btn-click cancel" (click)="closeAlert($event)"><mat-icon>close</mat-icon></div>
+                <button  class="confirm replace-button btn-click" (click)="confirmedDeleteProduct($event)"><mat-icon>done</mat-icon></button>
+                <div class="replace-button btn-click cancel"><mat-icon>close</mat-icon></div>
               </div>
             </div>
           </div>
@@ -260,7 +260,7 @@
     <div class="alert-model">
       <p class="message bold"></p>
       <div class="cont-btns-alert" id="btns">
-        <div class="btn-click btn-red"><mat-icon>done</mat-icon> confirmar</div>
+        <div class="btn-click btn-red" id="confirm-alert"><mat-icon>done</mat-icon> confirmar</div>
         <div class="btn-click btn-gray" (click)="AlertClose()"><mat-icon>close</mat-icon> cancelar</div>
       </div>
     </div>

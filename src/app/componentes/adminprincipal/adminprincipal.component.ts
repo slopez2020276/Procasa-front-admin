@@ -32,7 +32,7 @@ export class AdminprincipalComponent implements OnInit, AfterViewInit {
   formularioAgregarNoticias: FormGroup
   formularioEditarFondoColor: FormGroup
   colorBg:any
-
+  containerAlert: HTMLElement | any
   imgPrincipal: any
   imgfondo:any
 
@@ -161,6 +161,8 @@ this.formularioEditarFondoColor = new FormGroup({
 
 // AL INICIAR
   async ngOnInit()  {
+    this.containerAlert = document.getElementById('background-alert')
+
 
     const alertas = document.querySelectorAll('.container-alert')
 
@@ -255,7 +257,9 @@ preSaveMisionVision() {
     document.getElementsByClassName('container-alert')[4]?.classList.remove('show')
     },false)
   }
-  }else if((mision=="" && vision=="") || mision=="" || vision=="") { this.MessageSuccess("Los campos requeridos no pueden estar vacíos",4) }
+  }else if((mision=="" && vision=="") || mision=="" || vision=="") {
+    //
+  }
 }
 
 async guardarMision() {
@@ -264,8 +268,10 @@ async guardarMision() {
     let id = this.dataMisionÑ._id
     const respuestaEdit = await this.misionService.editarMisionValor(id, this.formularioMisionValor.value)
     console.log(respuestaEdit)
-
-    this.MessageSuccess('¡Datos guardados exitosamente!',4) } catch (error) { this.MessageSuccess('Error al guardar los datos',4) }
+  // 
+  } catch (error) {
+      // 
+    }
 
 }
 //Fin de los Metodos de Mision
@@ -355,7 +361,9 @@ async editarValores(){
       document.getElementsByClassName('container-alert')[5]?.classList.remove('show')
     },false)
   }
-  }else{ this.MessageSuccess("Los campos requeridos no pueden estar vacíos",5) }
+  }else{
+    // 
+  }
 }
 
 onClickValores() {
@@ -367,8 +375,10 @@ async guardarValores() {
   try {
     let id = this.dataValores._id
     const respuestaEdit = await this.ValoresService.editarValores(id, this.formularioValores.value)
-    this.MessageSuccess('¡Datos guardados exitosamente!',5)
-  } catch (error) { this.MessageSuccess('Error al guardar los datos',5) }
+    //
+  } catch (error) {
+    //
+  }
 }
 
 
@@ -446,7 +456,9 @@ preSaveHistoria() {
       document.getElementsByClassName('cont-btns-alert')[2]?.classList.remove('show')
     },false)
   }
-  }else{ this.MessageSuccess("Los campos requeridos no pueden estar vacíos",2) }
+  }else{
+    // 
+  }
 }
 
 onClickHistoria() {
@@ -458,8 +470,10 @@ onClickHistoria() {
 async guardarHistoria() {
   try {
     const respuestaEdit = await this.historiaService.editarHistoria(this.formularioEditHistoria.value, this._idhistoria)
-    this.MessageSuccess("¡Datos guardados exitosamente!", 2)
-  } catch (error) { this.MessageSuccess("Error al guardar la Historia", 2) }
+    // 
+  } catch (error) {
+    // 
+  }
 }
 
 async obtnerHistorias (){
@@ -520,11 +534,11 @@ ModalAddTimeLine() { document.getElementById('modal-time-line-add')?.classList.t
     document.getElementsByClassName('confirm')[3]?.addEventListener('click', async () => {
       const respuestaDelete = await this.lineaService.eliminarLineaTIempo(id)
       this.obtenerLinea()
-      document.getElementsByClassName('cont-btns-alert')[3]?.classList.remove('show'); this.MessageSuccess('Evento eliminado',3) }, false) }
+      document.getElementsByClassName('cont-btns-alert')[3]?.classList.remove('show');
+    // 
+    }
+  )}
 }
-
-
-
 
 getFileUpdateTiempo($event: any): void {
   //TODO esto captura el archivo!
@@ -635,7 +649,9 @@ saveNewTimeLine() {
       document.getElementsByClassName('container-alert')[7]?.classList.remove('show')
     },false)
   }
-  }else{ this.MessageSuccess("Los campos requeridos no pueden estar vacíos",7) }
+  }else{
+    // 
+  }
 }
 
 onClickNewTimeLine() {
@@ -666,8 +682,7 @@ onClickNewTimeLine() {
 
     .subscribe(res =>{
       console.log(res),console.log(body), this.obtenerLinea(),this.fileTmp = null
-      this.MessageSuccess('Datos guardados exitosamente',7)
-
+      //
     })
   }
 
@@ -757,10 +772,7 @@ onClickNewTimeLine() {
   
   
           document.getElementsByClassName('cont-btns-alert')[8]?.classList.remove('show')
-          this.MessageSuccess("Los campos requeridos no pueden estar vacíos",8)
-  
-  
-  
+          // 
         }
           }, false) }
           }
@@ -971,7 +983,7 @@ if(titulo!=="" && descripcion!==""){
 
       }else{
         document.getElementsByClassName('cont-btns-alert')[9]?.classList.remove('show')
-        this.MessageSuccess("Los campos requeridos no pueden estar vacíos",9)
+        // 
       }
         }, false) }
         }
@@ -1005,7 +1017,8 @@ async eliminarNoticia(id:any){
   document.getElementsByClassName('confirm')[6]?.addEventListener('click', async () => {
     const respuestaDelete = await this.noticiasService.EliminarNoticia(id)
     this.obtnerNoticias()
-    document.getElementsByClassName('cont-btns-alert')[6]?.classList.remove('show'); this.MessageSuccess('Noticia eliminada',6)
+    document.getElementsByClassName('cont-btns-alert')[6]?.classList.remove('show');
+    // 
 
   }, false) }
 
@@ -1083,8 +1096,7 @@ if(namefile!=="" && titulo!=="" && descripcion!==""){
         }
       }else{
         document.getElementsByClassName('cont-btns-alert')[11]?.classList.remove('show')
-        this.MessageSuccess("Los campos requeridos no pueden estar vacíos",11)
-
+        //
       }
         }, false) }
         }
@@ -1111,7 +1123,7 @@ updateNotice() {
     }
     this.lineaService.sendPost(body)
     .subscribe(res =>{console.log(res), this.obtenerLinea(),this.fileTmp = null})
-    this.MessageSuccess('Datos guardados exitosamente',6)
+    // 
   }
   
   //fin de los metodos de noticias
@@ -1190,17 +1202,32 @@ preSaveBackground(event: Event): void  {
 }, false)
 }
 
+
 sendFileBackground():void{
+
+  this.AlertOption("¿Desea guardar la nueva imagen de fondo?")
+  const parent: HTMLElement | any = this.containerAlert
+  const btn: HTMLElement | any = parent?.childNodes[0]?.childNodes[0]?.childNodes[1]?.childNodes[0]
+
+  if (btn) { btn.onclick = () => {
+
   const body = new FormData()
   if(this.fileBackgrud){
-    body.append('imgPathFondo', this.fileBackgrud.fileRaw, this.fileBackgrud.fileName);
-    this.historiaService.sendback(body,this._idhistoria)
-    .subscribe(res =>{ this.MessageSuccess('¡Guardado exitosamente!',0)
-    document.getElementById('container-alert-a')?.classList.remove('show')
-      console.log(res), this.obtenerHistoria() })
+    body.append('imgPathFondo', this.fileBackgrud.fileRaw, this.fileBackgrud.fileName)
+    try{
+      this.historiaService.sendback(body,this._idhistoria).subscribe(res =>{
+        this.AlertMessage("¡Nueva imagen de fondo con éxito!", 1500)
+        document.getElementById('container-alert-a')?.classList.remove('show')
+        console.log(res), this.obtenerHistoria() })
+      }catch(error) { this.AlertMessage("Error :(", 1500) }
   }else{
-    console.log('error porfavor selecione una imagen')
+    this.AlertMessage("Selecciona una imagen de fondo por favor", 1500)
   }
+
+}
+}
+
+
 }
 
 
@@ -1219,7 +1246,8 @@ sendColorbackGord(){
   const body = this.formularioEditarFondoColor.value
   console.log(body)
   this.historiaService.sendback(body,this._idhistoria)
-  .subscribe(res =>{ this.MessageSuccess('¡Guardado exitosamente!',1)
+  .subscribe(res =>{
+    // 
   document.getElementById('container-alert-a')?.classList.remove('show')
     console.log(res), this.obtenerHistoria() })
 }
@@ -1251,7 +1279,8 @@ sendFilePortada():void{
   if(this.imgPathPrincipal){
     body.append('imgPathPrincipal', this.imgPathPrincipal.fileRaw, this.imgPathPrincipal.fileName);
     this.historiaService.sendPost(body,this._idhistoria)
-    .subscribe(res =>{ this.MessageSuccess('¡Guardado exitosamente!',1)
+    .subscribe(res =>{
+      // 
     document.getElementById('container-alert-a')?.classList.remove('show')
       console.log(res), this.obtenerHistoria() })
   }else{
@@ -1333,7 +1362,9 @@ preSavePortada(event: Event): void  {
 
 testEmptyPortada(){
    let prefile: any | null = (document.getElementById('file-portada') as HTMLInputElement).value
-   if(prefile==null || prefile==undefined || prefile==""){ this.MessageSuccess("No hay archivo seleccionado", 1) }
+   if(prefile==null || prefile==undefined || prefile==""){ 
+    // 
+    }
 }
 
 
@@ -1374,21 +1405,6 @@ onClick() {
     }
   }
 
-  MessageSuccess(text: string, i: number){
-    const innermsg = document.getElementsByClassName('innermsg')[i]
-    if (innermsg) { innermsg.innerHTML = text
-      document.getElementsByClassName('container-alert')[i]?.classList.add('show')
-      document.getElementsByClassName('message')[i]?.classList.add('show')
-      document.getElementsByClassName('timesuccess')[i]?.classList.toggle('lesswidth')
-setTimeout(function(){
-  document.getElementsByClassName('message')[i]?.classList.remove('show')
-  document.getElementsByClassName('cont-btns-alert')[i]?.classList.remove('show')
-  document.getElementsByClassName('container-alert')[i]?.classList.remove('show')
-  document.getElementsByClassName('timesuccess')[i]?.classList.remove('lesswidth')
-},2000)
-}
-}
-
  
 
  Modal() { document.getElementById('modal-time-line')?.classList.toggle('modal') }
@@ -1404,6 +1420,58 @@ toggleImgColor(status:number, cont:string){
   document.getElementsByClassName('sl-'+cont)[0]?.classList.add('selected')
   document.getElementById('sub-cont-'+cont)?.classList.add('selected')
   this.statusBackground = status
+}
+
+
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// S Y S T E M A      D E     A L E R T A S
+AlertOption(message:string) {
+  const parent: HTMLElement | any = this.containerAlert
+  parent?.classList.add('show')
+  const alert: HTMLElement | any = parent?.childNodes[0]
+  alert?.classList.add('show')
+  const inner: HTMLElement | any = alert?.childNodes[0]?.childNodes[0]
+  inner!.innerText = message
+  const btns: HTMLElement | any = alert?.childNodes[0]?.childNodes[1]
+  btns?.classList.add('show')
+}
+
+AlertMessage(message:string, time:number) {
+  const parent: HTMLElement | any = this.containerAlert
+  parent?.classList.add('show')
+  const alert: HTMLElement | any = parent?.childNodes[0]
+  alert?.classList.add('show')
+  const inner: HTMLElement | any = alert?.childNodes[0]?.childNodes[0]
+  inner!.innerText = message
+  const btns: HTMLElement | any = alert?.childNodes[0]?.childNodes[1]
+  btns?.classList.remove('show')
+  setTimeout(() => { this.AlertClose() }, time)
+}
+
+AlertClose(){
+  const parent: HTMLElement | any = this.containerAlert
+  parent?.classList.remove('show')
+  const alert: HTMLElement | any = parent?.childNodes[0]
+  alert?.classList.remove('show')
+  const inner: HTMLElement | any = alert?.childNodes[0]?.childNodes[0]
+  inner!.innerText = ""
+  const btns: HTMLElement | any = alert?.childNodes[0]?.childNodes[1]
+  btns?.classList.remove('show')
+}
+
+// P L A N T I L L A      D E      S Y S T E M     A L E R T
+SystemAlert(id: number) {
+  this.AlertOption("Message to Show")
+  const parent: HTMLElement | any = this.containerAlert
+  const btn: HTMLElement | any = parent?.childNodes[0]?.childNodes[0]?.childNodes[1]?.childNodes[0]
+
+  if (btn) { 
+    btn.onclick = () => {
+          // A C T I O N 
+    }
+  }
 }
 
 
