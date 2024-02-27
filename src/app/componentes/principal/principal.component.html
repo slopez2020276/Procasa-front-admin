@@ -1,12 +1,5 @@
 
-@if (tipoBack == true ) {
-  <img title="imagen de muestra" [src]="imgFondo"  id="background-texture" >
-
-}@else{
-  <img title="imagen de muestra"  id="background-texture"[style.background-color]="colorn" >
-  <h1>hollllll</h1>
-}
-
+@if (tipoBack == true ) { <img title="imagen de muestra" [src]="imgFondo"  id="background-texture" > }@else{ <img title="imagen de muestra"  id="background-texture"[style.background-color]="colorn" > }
 
 <div id="cont-introduction">
   <div id="intro-1"></div>
@@ -16,7 +9,7 @@
 <app-navbar></app-navbar>
 
 
-<div id="container-portada-img"> <img [src]="imgPrincipal"   alt="section" id="container-principal-img" > </div>
+<div id="container-portada-img"> <img [src]="imgPrincipal" alt="section" id="container-principal-img" > </div>
 <section id="historia"> <app-historia/> </section>
 
 <section id="linea-tiempo"> <app-linea-tiempo></app-linea-tiempo> </section>

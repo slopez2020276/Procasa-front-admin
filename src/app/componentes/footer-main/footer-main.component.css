@@ -15,7 +15,7 @@
   transform: translateY(0);
   opacity: 1;
 }
-
+* {color: #FAFAFA;}
 
 #foot.tobottom {
   transition: .8s ease;

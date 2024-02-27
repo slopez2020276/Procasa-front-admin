@@ -13,11 +13,21 @@
 
 <h1 class="bold" id="title-admin">ADMINISTRACIÓN <div class="clip"></div> <p class="light">PÁGINA PRINCIPAL</p></h1>
 
+
+
 <div id="cont-btn-preview">
+  <div class="btn-scroll normal" (click)="toScrollAdmin(0)">Fondo</div>
+  <div class="btn-scroll normal" (click)="toScrollAdmin(1)">Portada</div>
+  <div class="btn-scroll normal" (click)="toScrollAdmin(2)">Previsualización</div>
+  <div class="btn-scroll normal" (click)="toScrollAdmin(3)">Historia</div>
+  <div class="btn-scroll normal" (click)="toScrollAdmin(4)">Línea de Tiempo</div>
+  <div class="btn-scroll normal" (click)="toScrollAdmin(5)">Misión y Visión</div>
+  <div class="btn-scroll normal" (click)="toScrollAdmin(6)">Valores</div>
+  <div class="btn-scroll normal" (click)="toScrollAdmin(7)">Noticias</div>
 </div>
 
 
-<div class="container" id="container-bg">
+<div class="container scroll-cont" id="container-bg">
 
   <h1 class="bold title-bg">FONDO DE LA PÁGINA</h1>
   <div id="cont-separador">
@@ -66,7 +76,7 @@
 
 
     <div class="cont-buttons">
-      <div class="btn-click btn-red" id="saveBgImg">guardar imagen de fondo</div>
+      <div class="btn-click btn-red" id="saveBgImg"><mat-icon>save</mat-icon> guardar</div>
     </div>
   </div>
 
@@ -75,7 +85,7 @@
   <input type="color" title="color de fondo" [(ngModel)]="colorBg" data-color="">
 
   <div class="cont-buttons">
-    <div class="btn-click btn-red" (click)="sendColorbackGord()">guardar color de fondo</div>
+    <div class="btn-click btn-red" (click)="sendColorbackGord()"><mat-icon>save</mat-icon> guardar</div>
   </div>
 </div>
 
@@ -88,7 +98,7 @@
 </div>
 
 <!-- ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- -->
-<div class="container" id="container-1">
+<div class="container scroll-cont" id="container-1">
   <h1 class="bold title-bg">PORTADA PRINCIPAL</h1>
   <div class="sub-container-items">
     <div id="cont-input-file">
@@ -132,7 +142,7 @@
   </div>
   <div class="foot-cont">
     <div class="cont-buttons">
-      <div (click)="testEmptyPortada()" class="normal btn-red btn-click" id="btn-save-portada" (click)="sendFilePortada()">guardar</div>
+      <div (click)="testEmptyPortada()" class="normal btn-red btn-click" id="btn-save-portada" (click)="sendFilePortada()"><mat-icon>save</mat-icon> guardar</div>
     </div>
   </div>
 
@@ -140,7 +150,7 @@
 
 
 
-<div id="container-preview" class="container">
+<div id="container-preview" class="container scroll-cont">
   <h1 class="bold title-bg">PREVISUALIZACIÓN FINAL</h1>
   <div id="sub-cont-preview-end">
     <img id="nav-end" src="../../../assets/img/navbar.png" alt="navbar" title="navbar preview">
@@ -152,33 +162,33 @@
   </div>
 </div>
 
-<!-- ------------------------------------------------------------------------------------------------------------------------------------------------------------------- -->
+<!-- ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ -->
 
-<div class="container" id="container-2">
+<div class="container scroll-cont" id="container-2">
   <h1 class="bold title-bg">HISTORIA</h1>
 
 
   <div id="buts-enable-hs">
-    <button id="habilitar-hs" (click)="EnableHistoria()">Editar</button>
-    <button id="deshabilitar-hs" (click)="DisableHistoria()">Cancelar</button>
+    <button class="btn-click btn-red normal" id="habilitar-hs" (click)="EnableHistoria()"><mat-icon>edit</mat-icon></button>
+    <button class="btn-click btn-red normal" id="deshabilitar-hs" (click)="DisableHistoria()"><mat-icon>close</mat-icon></button>
   </div>
 
 
   <form [formGroup]="formularioEditHistoria" (ngSubmit)="onSubmit()">
   <div class="sub-cont-2">
       <label for="enlace">Enlace del video:</label>
-      <input required="required" id="iframe-value" name="enlace" type="text" [(ngModel)]="EncalceVideo" formControlName="EncalceVideo" placeholder="enlace del video" value="">
+      <input required="required" id="iframe-value" class="normal" name="enlace" type="text" [(ngModel)]="EncalceVideo" formControlName="EncalceVideo" placeholder="enlace del video" value="">
   </div>
 
     <div class="sub-cont-2">
             <label for="historia">Desgloce de Historia:</label>
-            <textarea name="historia" id="textareaValidate" cols="40" rows="10" formControlName="DescripcionHistoria" [(ngModel)]="textoHistoria" title="descripción"></textarea>
+            <textarea name="historia" class="normal" id="textareaValidate" cols="40" rows="10" formControlName="DescripcionHistoria" [(ngModel)]="textoHistoria" title="descripción"></textarea>
     </div>
 
   <div class="foot-cont">
 
   <div class="cont-buttons">
-    <div class="btn-click normal btn-red" (click)="preSaveHistoria()" id="btn-alert-2">guardar</div>
+    <div class="btn-click normal btn-red" (click)="preSaveHistoria()" id="btn-alert-2"><mat-icon>save</mat-icon> guardar</div>
 
   </div>
 
@@ -195,13 +205,12 @@
         </div>
       </div>
     </div>
-</form>
+  </form>
 </div>
 
+<!-- ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ -->
 
-
-
-<div class="container" id="container-3">
+<div class="container scroll-cont" id="container-3">
   <h1 class="bold title-bg">LÍNEA DE TIEMPO</h1>
   <div id="sub-cont-3">
   @for (os of dataLinea; track os._id) {
@@ -210,93 +219,63 @@
       <p class="input-to-text bold">{{os.titleLineaTiempo}}</p>
       <p class="input-to-text">{{os.descriptionLineaTiempo}}</p>
       <p class="input-to-text">{{os.fechaFormateada}}</p>
-
-
-                  <button class="edit-timeline" type="button" (click)="editarModal(os._id)" (click)="Modal()">editar</button>
-                  <button class="edit-timeline del-bg" type="button" (click)="eliminarLineaTiempo(os._id)">eliminar</button>
+                  <div class="btn-click normal" (click)="editarModal(os._id)" (click)="Modal()"><mat-icon>edit</mat-icon></div>
+                  <div class="btn-click btn-red normal" (click)="eliminarLineaTiempo(os._id)"><mat-icon>delete</mat-icon></div>
                 </div>
               }
-
             </div>
-
-
-<button id="cont-3-see-all" class="bold red" (click)="ModalAddTimeLine()">Agregar</button>
-  <div class="foot-cont">
+            <div id="cont-3-see-all" class="normal btn-click btn-red" (click)="ModalAddTimeLine()"><mat-icon>add</mat-icon> agregar</div>
+            <div class="foot-cont">
     <div class="cont-buttons">
-
 
     </div>
   </div>
 
-  <div class="container-alert" #containerAlertElement>
-    <div class="alert-model">
-        <p class="inner-message bold"></p>
-
-        <div class="message"> <h1 class="innermsg"></h1></div>
-        <div class="cont-btns-alert">
-          <button class="confirm" #confirmElement>confirmar</button>
-          <div class="replace-button cancel">cancelar</div>
-        </div>
-      </div>
-    </div>
-
 </div>
 
 
 
-<div class="container" id="container-4">
+<!-- ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ -->
+<div class="container scroll-cont" id="container-4">
   <h1 class="bold title-bg">MISIÓN y VISIÓN</h1>
-
-<div id="buts-enable-mv">
-  <button id="habilitar-mv" (click)="EnableMisionVision()">Editar</button>
-  <button id="deshabilitar-mv" (click)="DisableMisionVision()">Cancelar</button>
+  
+  <div id="buts-enable-mv">
+    <button class="btn-click btn-red normal" id="habilitar-mv" (click)="EnableMisionVision()"><mat-icon>edit</mat-icon></button>
+    <button class="btn-click btn-red normal" id="deshabilitar-mv" (click)="DisableMisionVision()"><mat-icon>close</mat-icon></button>
 </div>
 
 <form [formGroup]="formularioMisionValor"  >
-<div id="cont-textareas">
-
+  <div id="cont-textareas">
+    
   <div class="cont-inter">
       <label class="bold" for="ttarea1">Misión</label>
-      <textarea [(ngModel)]="mision" formControlName="textMision" title="Misión" name="ttarea1" id="mision-txt" cols="35" rows="10"></textarea>
+      <textarea [(ngModel)]="mision" formControlName="textMision" title="Misión" class="normal" name="ttarea1" id="mision-txt" cols="35" rows="10"></textarea>
     </div>
 
     <div class="cont-inter">
       <label class="bold" for="ttarea2">Visión</label>
-      <textarea title="Visión" [(ngModel)]="vision" formControlName="textVIsion" name="ttarea2" id="vision-txt" cols="35" rows="10"></textarea>
+      <textarea title="Visión" [(ngModel)]="vision" formControlName="textVIsion" class="normal" name="ttarea2" id="vision-txt" cols="35" rows="10"></textarea>
     </div>
-
+    
   </div>
   <div class="foot-cont">
-
+    
     <div class="cont-buttons">
-      <!-- <div class="normal">guardar</div> -->
-      <div    class="replace-button normal red" id="cancel-c" (click)="preSaveMisionVision()">guardar</div>
+      <div class="btn-red btn-click normal" id="cancel-c" (click)="preSaveMisionVision()"><mat-icon>save</mat-icon> guardar</div>
     </div>
   </div>
-
-  <div class="container-alert" #containerAlertElement>
-    <div class="alert-model">
-        <p class="inner-message bold"></p>
-
-        <div class="message"> <h1 class="innermsg"></h1></div>
-        <div class="cont-btns-alert">
-          <button class="confirm"  (click)="guardarMision()">confirmar</button>
-          <div class="replace-button cancel">cancelar</div>
-        </div>
-      </div>
-    </div>
-
+  
 
 </form>
 </div>
 
+<!-- ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ -->
 
-
-<div class="container" id="container-5">
+<div class="container scroll-cont" id="container-5">
   <h1 class="bold title-bg">VALORES</h1>
   <div class="buts-enable">
-    <button id="vhabilitar" (click)="EnableValores()">Editar</button>
-    <button id="vdeshabilitar" (click)="DisableValores()">Cancelar</button>
+    <button class="btn-click btn-red normal" id="vhabilitar" (click)="EnableValores()"><mat-icon>edit</mat-icon></button>
+    <button class="btn-click btn-red normal" id="vdeshabilitar" (click)="DisableValores()"><mat-icon>close</mat-icon></button>
   </div>
 
 
@@ -306,64 +285,52 @@
     <div class="cont-inter-valores">
 
         <label class="bold" for="ttare1">Integridad</label>
-        <textarea [(ngModel)]="Integridadmodel" formControlName="Integridad" class="valores-txt" title="Integridad" name="ttare1" id="txt-integridad" cols="35" rows="10"></textarea>
+        <textarea [(ngModel)]="Integridadmodel" formControlName="Integridad" class="valores-txt normal" title="Integridad" name="ttare1" id="txt-integridad" cols="35" rows="10"></textarea>
 
       </div>
 
       <div class="cont-inter-valores">
         <label class="bold" for="ttare2">Pasión</label>
-        <textarea [(ngModel)]="PasionModel" formControlName="Pasion" class="valores-txt" title="pasion" name="ttare2" id="txt-pasion" cols="35" rows="10"></textarea>
+        <textarea [(ngModel)]="PasionModel" formControlName="Pasion" class="valores-txt normal" title="pasion" name="ttare2" id="txt-pasion" cols="35" rows="10"></textarea>
       </div>
 
     <div class="cont-inter-valores">
       <label class="bold" for="ttare3">Innovación continua</label>
-      <textarea class="valores-txt" [(ngModel)]="InnovacionModel"  formControlName="Innovacion" title="Innovación continua" name="ttare3" id="txt-innovacion" cols="35" rows="10"></textarea>
+      <textarea class="valores-txt normal" [(ngModel)]="InnovacionModel"  formControlName="Innovacion" title="Innovación continua" name="ttare3" id="txt-innovacion" cols="35" rows="10"></textarea>
     </div>
 
     <div class="cont-inter-valores">
       <label class="bold" for="ttare4">Orientación al servicio</label>
-      <textarea class="valores-txt" [(ngModel)]="OrientacionModel" formControlName="Orientacion" title="Orientación al servicio" name="ttare4" id="txt-orientacion" cols="35" rows="10"></textarea>
+      <textarea class="valores-txt normal" [(ngModel)]="OrientacionModel" formControlName="Orientacion" title="Orientación al servicio" name="ttare4" id="txt-orientacion" cols="35" rows="10"></textarea>
     </div>
     <div class="foot-cont">
       <div class="cont-buttons">
 
-        <div class="normal replace-button red" (click)="preSaveValores()">guardar</div>
+        <div class="normal btn-red btn-click" (click)="preSaveValores()"><mat-icon>save</mat-icon> guardar</div>
       </div>
     </div>
   </div>
 
-
-
-  <div class="container-alert" #containerAlertElementVal>
-    <div class="alert-model">
-        <p class="inner-message bold"></p>
-
-        <div class="message"> <h1 class="innermsg"></h1></div>
-        <div class="cont-btns-alert">
-          <button  class="confirm" #confirmElementVal> confirmar</button>
-          <div class="replace-button cancel">cancelar</div>
-        </div>
-      </div>
-    </div>
   </form>
 </div>
 
+<!-- ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ -->
 
-<div class="container" id="container-6">
+<div class="container scroll-cont" id="container-6">
   <h1 class="bold title-bg">NOTICIAS</h1>
 
 
-
+  
   <div id="cont-6-noticias">
-  @for (os of dataLineaRespuesta; track os._id) {
-
-
+    @for (os of dataLineaRespuesta; track os._id) {
+      
+      
     <div class="noticia">
       <img [src]="os.imgPhat"  alt="noticia">
     <h2>{{os.title}}</h2>
     <p>{{os.descripcion}}</p>
-          <button type="button" class="edit-notice" (click)="obtenerxidNoticias(os._id)" (click)="ModalEditNotice()">editar</button>
-          <button type="button" class="edit-notice del-bg" (click)="eliminarNoticia(os._id)" >eliminar</button>
+          <div class="btn-click normal" (click)="obtenerxidNoticias(os._id)" (click)="ModalEditNotice()"><mat-icon>edit</mat-icon></div>
+          <div class="btn-red btn-click normal" (click)="eliminarNoticia(os._id)" ><mat-icon>delete</mat-icon></div>
         </div>
       }
   </div>
@@ -372,24 +339,9 @@
 
     <div class="cont-buttons">
       <div id="show-more" (click)="ShowMore()">mostrar más</div>
-      <button class="normal red" (click)="NewModalNotice()">agregar</button>
+      <button class="normal btn-red btn-click" (click)="NewModalNotice()"><mat-icon>add</mat-icon> agregar</button>
     </div>
   </div>
-
-
-
-
-  <div class="container-alert">
-    <div class="alert-model">
-        <p class="inner-message bold"></p>
-
-        <div class="message"> <h1 class="innermsg"></h1></div>
-        <div class="cont-btns-alert">
-          <button class="confirm">confirmar</button>
-          <div class="replace-button cancel">cancelar</div>
-        </div>
-      </div>
-    </div>
 
 </div>
 
@@ -693,6 +645,8 @@
     <h1 id="title-welcome">¡Bienvenido al Administrador de <b class="bold">Procasa</b>!</h1>
   </div>
 </div>
+
+<div id="toScrollTop" (click)="toScrollTop()"><img src="../../../assets/img/flecha.png" alt=""></div>
 
 
 <!-------- A L E R T ---------------------------------------------------------------------------------------------------------------------------------------------------->

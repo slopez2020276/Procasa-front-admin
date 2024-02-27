@@ -21,7 +21,5 @@ export class FlechaComponent {
 }
 
 
-toHome(){
-    document.getElementById("tophtml")?.scrollIntoView({behavior: "smooth"})
-  }
+toHome(){ document.getElementById("tophtml")?.scrollIntoView({behavior: "smooth"}) }
 }

@@ -155,18 +155,20 @@ this.formularioEditarFondoColor = new FormGroup({
   }
   ngAfterViewInit(): void {
     this.confirmElement.nativeElement.addEventListener('click', this.onClick.bind(this))
-    this.confirmElementVal.nativeElement.addEventListener('click', this.onClickValores.bind(this))
     this.confirmElementTL.nativeElement.addEventListener('click', this.onClickNewTimeLine.bind(this))
     this.confirmNewNoticia.nativeElement.addEventListener('click', this.saveNoticia.bind(this))
   }
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+toScrollAdmin(elem:number){ document.getElementsByClassName("scroll-cont")[elem]?.scrollIntoView({behavior: "smooth"}) }
+toScrollTop(){ document.getElementById("space-esp")?.scrollIntoView({behavior: "smooth"}) }
 
 // AL INICIAR
   async ngOnInit()  {
+
+
+
     this.containerAlert = document.getElementById('background-alert')
     this.fileBg = document.querySelector('#file-bg')
-
-    const alertas = document.querySelectorAll('.container-alert')
 
       const inputfileBefore: any = (document.getElementById('file-portada') as HTMLInputElement | null)?.value
       const inputfileBefbg: any = (document.getElementById('file-bg') as HTMLInputElement | null)?.value
@@ -228,6 +230,10 @@ DisableMisionVision(){
   document.getElementById('deshabilitar-mv')?.classList.toggle('hide')
 }
 
+
+
+
+
 preSaveMisionVision() {
   const misionTextArea: HTMLTextAreaElement | any = document.getElementById('mision-txt')
   const visionTextArea: HTMLTextAreaElement | any = document.getElementById('vision-txt')
@@ -239,46 +245,33 @@ preSaveMisionVision() {
   if (visionTextArea instanceof HTMLTextAreaElement) { vision = visionTextArea.value }
 
   if(mision!=="" && vision!==""){
-
-  const innerMessage = document.getElementsByClassName('innermsg')[4]
-  if (innerMessage) { innerMessage.innerHTML = "¿Desea guardar los cambios?"
-
-
-  document.getElementsByClassName('container-alert')[4]?.classList.add('show')
-  document.getElementsByClassName('message')[4]?.classList.add('show')
-  document.getElementsByClassName('cont-btns-alert')[4]?.classList.add('show')
-
-  document.getElementsByClassName('cancel')[4]?.addEventListener('click', function(){
-    document.getElementsByClassName('cont-btns-alert')[4]?.classList.remove('show')
-    document.getElementsByClassName('container-alert')[4]?.classList.remove('show')
-    document.getElementsByClassName('message')[4]?.classList.remove('show')
-  },false)
-  document.getElementsByClassName('confirm')[4]?.addEventListener('click', function(){
-
-    document.getElementsByClassName('cont-btns-alert')[4]?.classList.remove('show')
-    document.getElementsByClassName('container-alert')[4]?.classList.remove('show')
-    },false)
-  }
+    
+    this.AlertOption("¿Desea guardar loa cambios de Misión y Visión?")
+    const parent: HTMLElement | any = this.containerAlert
+    const btn: HTMLElement | any = parent?.childNodes[0]?.childNodes[0]?.childNodes[1]?.childNodes[0]
+  
+    if (btn) {
+      btn.onclick = () => {
+        this.guardarMision()
+    }
+    }
+    
   }else if((mision=="" && vision=="") || mision=="" || vision=="") {
-    //
+    this.AlertMessage("Todos los campos son requeridos", 1500)
   }
 }
 
 async guardarMision() {
-  this.containerAlertElement.nativeElement.classList.remove('show')
   try {
     let id = this.dataMisionÑ._id
     const respuestaEdit = await this.misionService.editarMisionValor(id, this.formularioMisionValor.value)
     console.log(respuestaEdit)
-  // 
+  this.AlertMessage("¡Datos actualizados!", 1500)
   } catch (error) {
-      // 
+      this.AlertMessage("Error :(", 1500)
     }
 
 }
-//Fin de los Metodos de Mision
-
-//Todos los metodos de Valores 
 
 
 
@@ -344,42 +337,22 @@ async editarValores(){
   if (orientacionTextArea instanceof HTMLTextAreaElement) { orientacion = orientacionTextArea.value }
 
   if(integridad!=="" && pasion!=="" && innovacion!=="" && orientacion!==""){
-  const innerMessage = document.getElementsByClassName('innermsg')[5]
-  if (innerMessage) { innerMessage.innerHTML = "¿Desea guardar los cambios?"
+    this.AlertOption("¿Desea guardar los nuevos Valores?")
+  const parent: HTMLElement | any = this.containerAlert
+  const btn: HTMLElement | any = parent?.childNodes[0]?.childNodes[0]?.childNodes[1]?.childNodes[0]
 
-
-  document.getElementsByClassName('message')[5]?.classList.add('show')
-  document.getElementsByClassName('container-alert')[5]?.classList.add('show')
-  document.getElementsByClassName('cont-btns-alert')[5]?.classList.add('show')
-
-  document.getElementsByClassName('cancel')[5]?.addEventListener('click', function(){
-    document.getElementsByClassName('cont-btns-alert')[5]?.classList.remove('show')
-    document.getElementsByClassName('container-alert')[5]?.classList.remove('show')
-    document.getElementsByClassName('message')[5]?.classList.remove('show')
-  },false)
-  document.getElementsByClassName('confirm')[5]?.addEventListener('click', () => {
-
-      document.getElementsByClassName('cont-btns-alert')[5]?.classList.remove('show')
-      document.getElementsByClassName('container-alert')[5]?.classList.remove('show')
-    },false)
-  }
-  }else{
-    // 
-  }
+  if (btn) { btn.onclick = () => { this.guardarValores() }}
+  
+  }else{ this.AlertMessage("Todos los campos son requeridos", 1500) }
 }
-
-onClickValores() {
-  document.getElementsByClassName('cont-btns-alert')[5]?.classList.remove('show')
-  this.guardarValores()
- this.containerAlertElementVal.nativeElement.classList.remove('show') }
 
 async guardarValores() {
   try {
     let id = this.dataValores._id
     const respuestaEdit = await this.ValoresService.editarValores(id, this.formularioValores.value)
-    //
+    this.AlertMessage("¡Datos actualizados!", 1500)
   } catch (error) {
-    //
+    this.AlertMessage("Error :(", 1500)
   }
 }
 
@@ -496,27 +469,19 @@ ModalAddTimeLine() { document.getElementById('modal-time-line-add')?.classList.t
   }
 
   async eliminarLineaTiempo(id:any){
-
-    const innerMessage = document.getElementsByClassName('innermsg')[3]
-    if (innerMessage) { innerMessage.innerHTML = "¿Desea eliminar el evento seleccionado?"
-
-    document.getElementsByClassName('container-alert')[3]?.classList.add('show')
-    document.getElementsByClassName('message')[3]?.classList.add('show')
-    document.getElementsByClassName('cont-btns-alert')[3]?.classList.add('show')
-
-    document.getElementsByClassName('cancel')[3]?.addEventListener('click', function(){
-      document.getElementsByClassName('container-alert')[3]?.classList.remove('show')
-      document.getElementsByClassName('message')[3]?.classList.remove('show')
-      document.getElementsByClassName('cont-btns-alert')[3]?.classList.remove('show')
-    },false)
-
-    document.getElementsByClassName('confirm')[3]?.addEventListener('click', async () => {
-      const respuestaDelete = await this.lineaService.eliminarLineaTIempo(id)
-      this.obtenerLinea()
-      document.getElementsByClassName('cont-btns-alert')[3]?.classList.remove('show');
-    // 
+    this.AlertOption("¿Borrar Línea de tiempo?")
+    const parent: HTMLElement | any = this.containerAlert
+    const btn: HTMLElement | any = parent?.childNodes[0]?.childNodes[0]?.childNodes[1]?.childNodes[0]
+  
+    if (btn) { 
+      btn.onclick = async () => {
+        try{
+          // const respuestaDelete = await this.lineaService.eliminarLineaTIempo(id)
+          // this.obtenerLinea()
+          // this.AlertMessage("Línea de tiempo eliminada con éxito", 1500)
+        } catch(error) {this.AlertMessage("Error :(", 1500) }
+      }
     }
-  )}
 }
 
 getFileUpdateTiempo($event: any): void {
@@ -855,6 +820,7 @@ async ObtenerAllnoticas(){
 }
 
 
+
 getFileUpdateNoticia($event: any): void {
   //TODO esto captura el archivo!
   const [ file ] = $event.target.files;
@@ -978,30 +944,29 @@ saveNoticia() {
 async guardarNoticia() { const respuestaEdit = await this.noticiasService.crearNoticia(this.formularioAgregarNoticias.value) }
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-async eliminarNoticia(id:any){
+async eliminarNoticia(id: any) {
+  this.AlertOption("¿Desea eliminar la noticia seleccionada?")
 
-  const innerMessage = document.getElementsByClassName('innermsg')[6]
-  if (innerMessage) { innerMessage.innerHTML = "¿Desea eliminar la noticia seleccionada?"
+  const parent: HTMLElement | any = this.containerAlert
+  const btn: HTMLElement | any = parent?.childNodes[0]?.childNodes[0]?.childNodes[1]?.childNodes[0]
 
-  document.getElementsByClassName('container-alert')[6]?.classList.add('show')
-  document.getElementsByClassName('message')[6]?.classList.add('show')
-  document.getElementsByClassName('cont-btns-alert')[6]?.classList.add('show')
-
-  document.getElementsByClassName('cancel')[6]?.addEventListener('click', function(){
-    document.getElementsByClassName('container-alert')[6]?.classList.remove('show')
-    document.getElementsByClassName('message')[6]?.classList.remove('show')
-    document.getElementsByClassName('cont-btns-alert')[6]?.classList.remove('show')
-  },false)
-
-  document.getElementsByClassName('confirm')[6]?.addEventListener('click', async () => {
-    const respuestaDelete = await this.noticiasService.EliminarNoticia(id)
-    this.obtnerNoticias()
-    document.getElementsByClassName('cont-btns-alert')[6]?.classList.remove('show');
-    // 
-
-  }, false) }
-
+  if (btn) {
+    btn.onclick = async () => {
+      try {
+        await this.noticiasService.EliminarNoticia(id)
+        this.obtenerNoticias()
+        this.AlertMessage("¡Noticia eliminada con éxito!", 1500)
+      } catch (error) {
+        this.AlertMessage("Error :(", 1500)
+      }
+    }
+  }
 }
+
+private async obtenerNoticias() {
+  // Implementa la lógica para obtener noticias
+}
+
 
 updateNoticia(event: Event) {
 
@@ -1213,27 +1178,28 @@ getFileBack($event: any): void {
   }
 }
 
-sendColorbackGord(){
-    this.AlertOption("¿Desea cambiar de color de Fondo?")
-    const parent: HTMLElement | any = this.containerAlert
-    const btn: HTMLElement | any = parent?.childNodes[0]?.childNodes[0]?.childNodes[1]?.childNodes[0]
-  
-    if (btn) { btn.onclick = () => {
-  try{
-  this.formularioEditarFondoColor.value.colorFondo = this.colorBg 
-  const body = this.formularioEditarFondoColor.value
-  console.log(body)
-  this.historiaService.sendback(body,this._idhistoria)
-  .subscribe(res =>{
-    this.AlertMessage("¡Fondo actualizado exitosamente!", 1500)
-    console.log(res), this.obtenerHistoria() 
-  })
-} catch(error) {
-  this.AlertMessage("Error :(", 1500)
-}
+sendColorbackGord() {
+  this.AlertOption("¿Desea cambiar el color de fondo?")
+  const parent: HTMLElement | any = this.containerAlert
+  const btn: HTMLElement | any = parent?.childNodes[0]?.childNodes[0]?.childNodes[1]?.childNodes[0]
 
-      }}
-
+  if (btn) {
+      btn.onclick = () => {
+          try {
+              this.formularioEditarFondoColor.value.colorFondo = this.colorBg
+              const body = this.formularioEditarFondoColor.value
+              console.log(body)
+              this.historiaService.sendback(body, this._idhistoria)
+                  .subscribe(res => {
+                    console.log(res)
+                    this.obtenerHistoria()
+                    this.AlertMessage("¡Fondo actualizado exitosamente!", 1500)
+                  })
+          } catch (error) {
+              this.AlertMessage("Error :(", 1500)
+          }
+      }
+  }
 }
 
 

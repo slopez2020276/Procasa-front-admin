@@ -10,7 +10,10 @@ footer {
     overflow: visible;
     transition: .5s ease;
     z-index: 500;
+    color: #FAFAFA;
   }
+
+  * {color: #FAFAFA;}
 
   div.footer-sub {
     height: 100%;

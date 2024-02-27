@@ -84,11 +84,9 @@ div#container-portada-img {
 
 
 img#container-principal-img {
-    width: auto;
+    width: 100%;
     height: auto;
-    max-width: 110%;
-    min-height: 100%;
-    max-height: 110%;
+    max-height: 100%;
     position: absolute;
     top: 0;
     z-index: 10;

@@ -85,6 +85,8 @@ p.desc-lt {
   font-size: 12pt;
 }
 
+div.cont-2-column-item {color: #FAFAFA;}
+
 div.cont-2-column-item img {
   width: auto;
   max-width: 100%;
