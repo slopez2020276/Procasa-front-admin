@@ -41,7 +41,7 @@
       <div class="product">
 
         @for (os of dataProductos; track os._id  ) {
-          <img [ngSrc]="'http://localhost:3002/' + os.imgPath" [width]="500" [height]="500" class="img-product">
+          <img [ngSrc]=" os.imgPath" [width]="500" [height]="500" class="img-product">
           <h2>{{os.nombreProducto}}</h2>
               <div class="cont-details">
                 <h1 class="bold">{{os.nombreProducto}}</h1>
