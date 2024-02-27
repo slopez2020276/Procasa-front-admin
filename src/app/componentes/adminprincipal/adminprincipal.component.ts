@@ -15,7 +15,7 @@ interface HtmlInputEvent extends Event { target: HTMLInputElement }
   styleUrl: './adminprincipal.component.css'
 })
 
-export class AdminprincipalComponent implements OnInit, AfterViewInit {
+export class AdminprincipalComponent implements OnInit {
 
   statusBackground
   anchoimg:any
@@ -46,20 +46,6 @@ historiaService = inject(HistoriaService)
 lineaService = inject(LineaTiempoService)
 misionService = inject(MisionService)
 noticiasService = inject(NoticasService)
-
-@ViewChild('confirmElement') confirmElement!: ElementRef
-@ViewChild('containerAlertElement') containerAlertElement!: ElementRef
-@ViewChild('confirmElementVal') confirmElementVal!: ElementRef
-@ViewChild('containerAlertElementVal') containerAlertElementVal!: ElementRef
-@ViewChild('confirmElementHis') confirmElementHis!: ElementRef
-@ViewChild('containerAlertElementHis') containerAlertElementHis!: ElementRef
-@ViewChild('confirmElementTL') confirmElementTL!: ElementRef
-@ViewChild('containerAlertElementTL') containerAlertElementTL!: ElementRef
-@ViewChild('containerAlertElementTLEdited') containerAlertElementTLEdited!: ElementRef
-@ViewChild('containerAlertNewNoticia') containerAlertNewNoticia!: ElementRef
-@ViewChild('confirmNewNoticia') confirmNewNoticia!: ElementRef
-@ViewChild('containeralertUpdateNotice') containeralertUpdateNotice!: ElementRef
-@ViewChild('confirmUpdateNotice') confirmUpdateNotice!: ElementRef
 
 mision:any
 vision:any
@@ -153,9 +139,7 @@ this.formularioEditarFondoColor = new FormGroup({
 
 
   }
-  ngAfterViewInit(): void {
-    this.confirmElement.nativeElement.addEventListener('click', this.onClick.bind(this))
-  }
+
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 toScrollAdmin(elem:number){ document.getElementsByClassName("scroll-cont")[elem]?.scrollIntoView({behavior: "smooth"}) }
 toScrollTop(){ document.getElementById("space-esp")?.scrollIntoView({behavior: "smooth"}) }
@@ -466,24 +450,28 @@ ModalAddTimeLine() { document.getElementById('modal-time-line-add')?.classList.t
 
   }
 
-  async eliminarLineaTiempo(id:any){
-    this.AlertOption("¿Borrar Línea de tiempo?")
-    const parent: HTMLElement | any = this.containerAlert
-    const btn: HTMLElement | any = parent?.childNodes[0]?.childNodes[0]?.childNodes[1]?.childNodes[0]
+  async eliminarLineaTiempo(id: any) {
+    try {
+      await this.AlertOption("¿Borrar Línea de tiempo?")
+      const parent: HTMLElement | any = this.containerAlert
+      const btn: HTMLElement | any = parent?.childNodes?.[0]?.childNodes?.[0]?.childNodes?.[1]?.childNodes?.[0]
   
-    if (btn) { 
-      btn.onclick = async () => {
-        try{
-          const respuestaDelete = await this.lineaService.eliminarLineaTIempo(id)
-          if(respuestaDelete){
-
+      if (btn) {
+        btn.onclick = async () => {
+          try {
+            const respuestaDelete = await this.lineaService.eliminarLineaTIempo(id)
             this.obtenerLinea()
             this.AlertMessage("Línea de tiempo eliminada con éxito", 1500)
-          }else{this.AlertMessage("Error al eliminar", 1500)}
-        } catch(error) {this.AlertMessage("Error :(", 1500) }
+          } catch (error) {
+            this.AlertMessage("Error :(", 1500)
+          }
+        };
       }
+    } catch (error) {
+      console.error("Error en AlertOption:", error)
     }
-}
+  }
+  
 
 getFileUpdateTiempo($event: any): void {
   //TODO esto captura el archivo!
@@ -588,8 +576,7 @@ saveNewTimeLine() {
   }else{ this.AlertMessage("Todos los campos son requeridos", 1500) }
 }
 
-sendFileTimeLine():void{
-
+sendFileTimeLine():void {
     const body = new FormData()
 
     if(this.fileTmp){
@@ -605,7 +592,6 @@ sendFileTimeLine():void{
       body.append('mostrarPor',this.formularioAgregarLineaTiempo.value.mostrarPor)
     }
 
-    console.log(this.formularioAgregarLineaTiempo.value.fecha)
     this.lineaService.sendPost(body)
 
     .subscribe(res =>{
@@ -614,10 +600,13 @@ sendFileTimeLine():void{
     })
   }
 
-  toUpdateLineaTiempo(event: Event) {
 
 
 
+
+
+
+toUpdateLineaTiempo(event: Event) {
     const fileInput = event.target as HTMLInputElement
     const archivo = fileInput.files?.[0]
   
@@ -654,61 +643,20 @@ sendFileTimeLine():void{
           document.getElementById('file-update-lt')?.setAttribute('data-content', fileName)
           document.getElementById('img-update-tl')?.removeAttribute('src')
           document.getElementById('img-update-tl')?.setAttribute('src', img.src)
-  
-          const saveButtonTL = document.getElementById('update-time-line')
-          if (saveButtonTL) { saveButtonTL.addEventListener('click', () => {
-  
-            const tituloInput: HTMLInputElement | null = document.getElementById('titulo-update-lt') as HTMLInputElement | null
-            const descripcionInput: HTMLInputElement | null = document.getElementById('desc-update-lt') as HTMLInputElement | null
-  
-  
-            let titulo: string = ''
-            let descripcion: string = ''
-  
-            if (tituloInput instanceof HTMLInputElement) { titulo = tituloInput.value }
-            if (descripcionInput instanceof HTMLInputElement) { descripcion = descripcionInput.value }
-  
-            // Mostrando valores de los inputs
-            console.log(titulo)
-            console.log(descripcion)
-  
-  if(titulo!=="" && descripcion!==""){
-    const innerMessage = document.getElementsByClassName('innermsg')[8]
-    if (innerMessage) { innerMessage.innerHTML = "¿Desea guardar los cambios?"
-  
-  
-            document.getElementsByClassName('container-alert')[8]?.classList.add('show')
-            document.getElementsByClassName('message')[8]?.classList.add('show')
-            document.getElementsByClassName('cont-btns-alert')[8]?.classList.add('show')
-  
-              document.getElementsByClassName('cancel')[8]?.addEventListener('click', function(){
-              document.getElementsByClassName('container-alert')[8]?.classList.remove('show')
-              document.getElementsByClassName('message')[8]?.classList.remove('show')
-              document.getElementsByClassName('cont-btns-alert')[8]?.classList.remove('show')
-            },false)
-            document.getElementsByClassName('confirm')[8]?.addEventListener('click', () =>{
-              document.getElementsByClassName('container-alert')[8]?.classList.remove('show')
-  //************************************************************************ */
-  
-  
-  
-  //************************************************************************ */
-            },false)
-          }
-  
-        }else{
-  
-  
-          document.getElementsByClassName('cont-btns-alert')[8]?.classList.remove('show')
-          // 
-        }
-          }, false) }
           }
         }
         lector.readAsDataURL(archivo)
       }
   }
   
+
+
+
+
+
+
+
+
 
   async editarModal(id:any) {
     const respuestaid = await this.lineaService.obtenerLineaxID(id)
@@ -774,9 +722,9 @@ getFileNoticia($event: any): void {
   this.fileTmpNoticia = {
     fileRaw:file,
     fileName:file.name
+
   }
 }
-
 sendFileNoticia():void{
 
   const body = new FormData()
@@ -838,8 +786,10 @@ sendFileUpdateNoticia():void{
 }
 ShowMore(){ this.ObtenerAllnoticas() }
 
-saveNewNoticia(event: Event): void  {
 
+
+
+saveNewNoticia(event: Event): void  {
   const fileInput = event.target as HTMLInputElement
   const archivo = fileInput.files?.[0]
 
@@ -876,44 +826,36 @@ saveNewNoticia(event: Event): void  {
         document.getElementById('img-pre-noticia')?.removeAttribute('src')
         document.getElementById('img-pre-noticia')?.setAttribute('src', img.src)
 
-
-          const tituloInput: HTMLInputElement | null = document.getElementById('titulo-noticia') as HTMLInputElement | null
-          const descripcionInput: HTMLTextAreaElement | any = document.getElementById('desc-noticia')
-
-          let titulo: string = ''
-          let descripcion: string = ''
-
-          if (tituloInput instanceof HTMLInputElement) { titulo = tituloInput.value }
-          if (descripcionInput instanceof HTMLTextAreaElement) { descripcion = descripcionInput.value }
-
-if(titulo!=="" && descripcion!==""){
-  this.AlertOption("¿Desea agragar la Noticias?")
-  const parent: HTMLElement | any = this.containerAlert
-  const btn: HTMLElement | any = parent?.childNodes[0]?.childNodes[0]?.childNodes[1]?.childNodes[0]
-
-  if (btn) {
-        btn.onclick = () => {
-        this.sendFileNoticia()
-        this.guardarNoticia()
-}}
-      }else{ this.AlertMessage("Todos los campos son requeridos", 1500) }
         }
       }
       lector.readAsDataURL(archivo)
     }
 }
 
-async guardarNoticia() { const respuestaEdit = await this.noticiasService.crearNoticia(this.formularioAgregarNoticias.value) }
+async guardarNoticia() {
+  this.AlertOption("¿Desea agregar la Noticia?")
+  const parent: HTMLElement | any = this.containerAlert
+  const btn: HTMLElement | any = parent?.childNodes[0]?.childNodes[0]?.childNodes[1]?.childNodes[0]
+
+  if (btn) { 
+    btn.onclick = async () => {
+      try {
+        await this.sendFileNoticia()
+        this.AlertMessage("¡Noticia guardada exitosamente!", 1500)
+      } catch (error) { this.AlertMessage("Error al guardar", 1500) }
+    }
+  }
+}
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-async eliminarNoticia(id: any) {
+eliminarNoticia(id: any) {  
   this.AlertOption("¿Desea eliminar la noticia seleccionada?")
 
   const parent: HTMLElement | any = this.containerAlert
   const btn: HTMLElement | any = parent?.childNodes[0]?.childNodes[0]?.childNodes[1]?.childNodes[0]
 
-  if (btn) {
-    btn.onclick = async () => {
+  if (btn) { btn.onclick = async () => {
+    console.log("ONE CLICK")
       try {
         await this.noticiasService.EliminarNoticia(id)
         this.obtnerNoticias()
@@ -1006,10 +948,6 @@ if(namefile!=="" && titulo!=="" && descripcion!==""){
       lector.readAsDataURL(archivo)
     }
 }
-
-updateNotice() {
-  this.sendFileUpdateNotice()
-  this.containeralertUpdateNotice.nativeElement.classList.remove('show') }
 
   sendFileUpdateNotice():void{
 
@@ -1338,8 +1276,6 @@ onClick() {
  
 
  Modal() { document.getElementById('modal-time-line')?.classList.toggle('modal') }
-
-  onClickEditedTimeLineEdited() { this.sendFileTimeLine(); this.containerAlertElementTLEdited.nativeElement.classList.remove('show') }
 
 toggleImgColor(status:number, cont:string){
   document.getElementById('sub-cont-img')?.classList.remove('selected')

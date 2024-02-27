@@ -215,7 +215,7 @@
   <div id="sub-cont-3">
   @for (os of dataLinea; track os._id) {
     <div class="cont-3-timeline">
-      <img class="img-linetiempo" [ngSrc]="'http://localhost:3002/' + os.ImgPathLineaTiempo" [width]="1000" [height]="1000" alt="item 1" title="item 1">
+      <img class="img-linetiempo" [src]="os.ImgPathLineaTiempo" [width]="1000" [height]="1000" alt="item 1" title="item 1">
       <p class="input-to-text bold">{{os.titleLineaTiempo}}</p>
       <p class="input-to-text">{{os.descriptionLineaTiempo}}</p>
       <p class="input-to-text">{{os.fechaFormateada}}</p>
@@ -413,9 +413,9 @@
 
 
 <div id="modal-time-line">
-
+  <h1 class="title-modal">Editar Línea de Tiempo</h1>
   <div id="cont-close-button">
-    <button id="close-modal-3"  (click)="Modal()" >cerrar</button>
+    <button class="btn-click normal" id="close-modal-3"  (click)="Modal()" ><mat-icon>close</mat-icon></button>
   </div>
 
   <form [formGroup]="formularioEditlineaTiempo" (ngSubmit)="editarTime()">
@@ -449,7 +449,7 @@
     </select>
   </div>
 
-    <div class="replace-button normal" id="update-time-line">guardar</div>
+    <div class="btn-click btn-red normal" id="update-time-line"><mat-icon>save</mat-icon> guardar</div>
 
   </form>
 </div>
@@ -489,7 +489,10 @@
   </select>
 </div>
 
-<div class="btn-red btn-click normal" id="presave-noticia"><mat-icon>save</mat-icon> guardar</div>
+
+
+<div class="btn-red btn-click normal" id="presave-noticia" (click)="guardarNoticia()"><mat-icon>save</mat-icon> guardar</div>
+
 
 </form>
 
