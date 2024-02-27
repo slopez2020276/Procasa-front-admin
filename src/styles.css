@@ -215,6 +215,7 @@ div#sub-cont-details-img {
   height: 140px;
 }
 
+div#sub-cont-details-img * {border: 1px solid black;}
 
 div#sub-cont-details-img div ul {
   width: 100%;
@@ -270,6 +271,7 @@ div.sub-img-btn {
   align-items: center;
   align-content: center;
   flex-wrap: nowrap;
+  background: orangered;
 }
 
 div.sub-img-btn mat-icon {

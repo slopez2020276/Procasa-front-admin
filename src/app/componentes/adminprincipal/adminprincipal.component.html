@@ -370,24 +370,27 @@
     <button id="close-modal-3-add" (click)="ModalAddTimeLine()" ><mat-icon>close</mat-icon></button>
   </div>
 
-  <form [formGroup]="formularioAgregarLineaTiempo"  >
-    <div class="preview-img-model">
-  <label for="file">Imagen</label>
-  <input type="file" id="new-file-input" #newFileInput (change)="preSaveTimeLine($event)" (change)="getFile($event)" name="file" data-content="seleccionar archivo" title="imagen">
-  <div class="details-img">
-    <ul>
-      <li>ancho: <p class="innerdetails bold"></p></li>
-      <li>alto:<p class="innerdetails bold"></p></li>
-      <li>Realcion:<p class="innerdetails bold"></p></li>
-      <li>tamaño:<p class="innerdetails bold"></p></li>
-    </ul>
-    <img src="" alt="" id="img-pre-tl">
-  </div>
+  <form [formGroup]="formularioAgregarLineaTiempo">
+
+    <div id="sub-cont-details-img">
+      <div class="sub-details">
+          <div class="sub-img-btn">
+            <input type="file" (change)="preSaveTimeLine($event)" (change)="getFile($event)" title="seleccionar archivo" accept=".jpg, .png, .jpeg, .avi, .webp" data-content="seleccionar archivo">
+            <mat-icon>delete</mat-icon>
+          </div>
+        <ul>
+          <li>ancho: <span class="bold danger-red" id="innerwidth-add"></span> </li>
+          <li>alto:  <span class="bold danger-red" id="innerheight-add"></span> </li>
+          <li>peso:  <span class="bold danger-red" id="innersize-add"></span></li>
+        </ul>
+      </div>
+      <div class="cont-details-img"><img alt="" src=""></div>
 </div>
+
 
 <div class="subcont-modal">
   <label for="title">Título</label>
-  <input type="text" #newTituloTl id="new-titulo-tl" formControlName="titleLineaTiempo" name="title" title="título">
+  <input type="text" id="new-titulo-tl" formControlName="titleLineaTiempo" name="title" title="título">
   <label for="description">Descripción</label>
   <input type="text" id="new-desc-tl" formControlName="descriptionLineaTiempo" title="description">
   <label for="fecha-new-lt">fecha</label>
