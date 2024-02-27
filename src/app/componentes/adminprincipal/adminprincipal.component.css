@@ -567,7 +567,7 @@ div#modal-time-line.modal, div#modal-time-line-add.modal, div#modal-edit-notice.
   top: 13vh;
   cursor: default;
   opacity: 1;
-  z-index: 999;
+  z-index: 49;
 }
 
 div.subcont-modal {
@@ -924,7 +924,7 @@ position: relative;
 
 
 div#modal-edit-notice.show, div#modal-new-notice.show {
-  z-index: 300;
+  z-index: 49;
   transform: scale(1);
   opacity: 1;
   transition: .1s;

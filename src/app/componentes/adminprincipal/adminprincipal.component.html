@@ -224,7 +224,7 @@
                 </div>
               }
             </div>
-            <div id="cont-3-see-all" class="normal btn-click btn-red" (click)="ModalAddTimeLine()"><mat-icon>add</mat-icon> agregar</div>
+            <div id="cont-3-see-all" class="normal btn-click btn-red" (click)="ModalAddTimeLine()"><mat-icon>launch</mat-icon> agregar</div>
             <div class="foot-cont">
     <div class="cont-buttons">
 
@@ -361,27 +361,13 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+<!--///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////-->
+<!-- M O D A L E S -->
 
 <div id="modal-time-line-add">
-
+<h1 class="title-modal">Agregar Línea de Tiempo</h1>
   <div id="cont-close-button-add">
-    <button id="close-modal-3-add" (click)="ModalAddTimeLine()" >cerrar</button>
+    <button id="close-modal-3-add" (click)="ModalAddTimeLine()" ><mat-icon>close</mat-icon></button>
   </div>
 
   <form [formGroup]="formularioAgregarLineaTiempo"  >
@@ -415,19 +401,8 @@
 
 </div>
 
-    <div class="replace-button normal" id="save-new-tili">guardar</div>
+    <div class="btn-click btn-red normal" id="save-new-tili"><mat-icon>save</mat-icon> guardar</div>
 
-    <div class="container-alert" #containerAlertElementTL>
-      <div class="alert-model">
-          <p class="inner-message bold"></p>
-
-          <div class="message"> <h1 class="innermsg"></h1></div>
-          <div class="cont-btns-alert">
-            <button class="confirm" #confirmElementTL>confirmar</button>
-            <div class="replace-button cancel">cancelar</div>
-          </div>
-        </div>
-      </div>
   </form>
 </div>
 
@@ -476,18 +451,6 @@
 
     <div class="replace-button normal" id="update-time-line">guardar</div>
 
-    <div class="container-alert" #containerAlertElementTLEdited>
-      <div class="alert-model">
-          <p class="inner-message bold"></p>
-
-          <div class="message"> <h1 class="innermsg"></h1></div>
-          <div class="cont-btns-alert">
-            <button class="confirm" #confirmElementTLEdited (click)="sendFileUpdateTiempo()">confirmar</button>
-            <div class="replace-button cancel">cancelar</div>
-          </div>
-        </div>
-      </div>
-
   </form>
 </div>
 
@@ -526,35 +489,7 @@
   </select>
 </div>
 
-
-
-<div class="replace-button normal" id="presave-noticia">guardar</div>
-
-<div class="container-alert">
-<div class="alert-model">
-<p class="inner-message bold"></p>
-
-<div class="message"> <h1 class="innermsg"></h1></div>
-<div class="cont-btns-alert">
-  <button class="confirm" (click)="sendFileNoticia()">confirmar</button>
-  <div class="replace-button cancel">cancelar</div>
-</div>
-</div>
-</div>
-
-
-<div class="container-alert" #containerAlertNewNoticia>
-  <div class="alert-model">
-      <p class="inner-message bold"></p>
-
-      <div class="message"> <h1 class="innermsg"></h1></div>
-      <div class="cont-btns-alert">
-        <button class="confirm" #confirmNewNoticia>confirmar</button>
-        <div class="replace-button cancel">cancelar</div>
-      </div>
-    </div>
-</div>
-
+<div class="btn-red btn-click normal" id="presave-noticia"><mat-icon>save</mat-icon> guardar</div>
 
 </form>
 
@@ -598,17 +533,7 @@
 
 <div class="replace-button normal" id="update-noticia">guardar</div>
 
-<div class="container-alert" #containeralertUpdateNotice>
-  <div class="alert-model">
-      <p class="inner-message bold"></p>
-
-      <div class="message"> <h1 class="innermsg"></h1></div>
-      <div class="cont-btns-alert">
-        <button class="confirm" (click)="sendFileUpdateNoticia()">confirmar</button>
-        <div class="replace-button cancel">cancelar</div>
-      </div>
-    </div>
-</div> </form> </div>
+</form> </div>
 
 
 

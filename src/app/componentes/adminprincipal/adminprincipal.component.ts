@@ -155,8 +155,6 @@ this.formularioEditarFondoColor = new FormGroup({
   }
   ngAfterViewInit(): void {
     this.confirmElement.nativeElement.addEventListener('click', this.onClick.bind(this))
-    this.confirmElementTL.nativeElement.addEventListener('click', this.onClickNewTimeLine.bind(this))
-    this.confirmNewNoticia.nativeElement.addEventListener('click', this.saveNoticia.bind(this))
   }
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 toScrollAdmin(elem:number){ document.getElementsByClassName("scroll-cont")[elem]?.scrollIntoView({behavior: "smooth"}) }
@@ -476,9 +474,12 @@ ModalAddTimeLine() { document.getElementById('modal-time-line-add')?.classList.t
     if (btn) { 
       btn.onclick = async () => {
         try{
-          // const respuestaDelete = await this.lineaService.eliminarLineaTIempo(id)
-          // this.obtenerLinea()
-          // this.AlertMessage("Línea de tiempo eliminada con éxito", 1500)
+          const respuestaDelete = await this.lineaService.eliminarLineaTIempo(id)
+          if(respuestaDelete){
+
+            this.obtenerLinea()
+            this.AlertMessage("Línea de tiempo eliminada con éxito", 1500)
+          }else{this.AlertMessage("Error al eliminar", 1500)}
         } catch(error) {this.AlertMessage("Error :(", 1500) }
       }
     }
@@ -515,6 +516,9 @@ sendFileUpdateTiempo():void{
 }
 
   
+
+
+
 
 preSaveTimeLine(event: Event): void  {
 
@@ -558,8 +562,6 @@ if (saveButtonTL) {
   }
 }
 
-
-
 saveNewTimeLine() {
 
   const fileInput: HTMLInputElement | null = document.getElementById('new-file-input') as HTMLInputElement | null
@@ -576,35 +578,17 @@ saveNewTimeLine() {
   if (descripcionInput instanceof HTMLInputElement) { descripcion = descripcionInput.value }
 
   if(file!=="" && titulo!=="" && descripcion!==""){
-  const innerMessage = document.getElementsByClassName('innermsg')[7]
-  if (innerMessage) { innerMessage.innerHTML = "¿Desea guardar los cambios?"
 
-  document.getElementsByClassName('container-alert')[7]?.classList.add('show')
-  document.getElementsByClassName('message')[7]?.classList.add('show')
-  document.getElementsByClassName('cont-btns-alert')[7]?.classList.add('show')
-
-    document.getElementsByClassName('cancel')[7]?.addEventListener('click', function(){
-    document.getElementsByClassName('container-alert')[7]?.classList.remove('show')
-    document.getElementsByClassName('message')[7]?.classList.remove('show')
-    document.getElementsByClassName('cont-btns-alert')[7]?.classList.remove('show')
-  },false)
-  document.getElementsByClassName('confirm')[7]?.addEventListener('click', function(){
-
-      document.getElementsByClassName('container-alert')[7]?.classList.remove('show')
-    },false)
-  }
-  }else{
-    // 
-  }
+    this.AlertOption("¿Desea guardar los datos de Línea de Tiempo?")
+    const parent: HTMLElement | any = this.containerAlert
+    const btn: HTMLElement | any = parent?.childNodes[0]?.childNodes[0]?.childNodes[1]?.childNodes[0]
+    if (btn) { btn.onclick = () => {
+      this.sendFileTimeLine()
+      }}
+  }else{ this.AlertMessage("Todos los campos son requeridos", 1500) }
 }
 
-onClickNewTimeLine() {
-
-  this.sendFile()
-  this.containerAlertElementTL.nativeElement.classList.remove('show')
-}
-
-  sendFile():void{
+sendFileTimeLine():void{
 
     const body = new FormData()
 
@@ -626,7 +610,7 @@ onClickNewTimeLine() {
 
     .subscribe(res =>{
       console.log(res),console.log(body), this.obtenerLinea(),this.fileTmp = null
-      //
+      this.AlertMessage("¡Datos guardados exitosamente!", 1500)
     })
   }
 
@@ -892,10 +876,6 @@ saveNewNoticia(event: Event): void  {
         document.getElementById('img-pre-noticia')?.removeAttribute('src')
         document.getElementById('img-pre-noticia')?.setAttribute('src', img.src)
 
-        const saveButtonTL = document.getElementById('presave-noticia')
-        if (saveButtonTL) { saveButtonTL.addEventListener('click', () => {
-          // this.saveNoticia()
-
 
           const tituloInput: HTMLInputElement | null = document.getElementById('titulo-noticia') as HTMLInputElement | null
           const descripcionInput: HTMLTextAreaElement | any = document.getElementById('desc-noticia')
@@ -907,38 +887,20 @@ saveNewNoticia(event: Event): void  {
           if (descripcionInput instanceof HTMLTextAreaElement) { descripcion = descripcionInput.value }
 
 if(titulo!=="" && descripcion!==""){
-  const innerMessage = document.getElementsByClassName('innermsg')[9]
-  if (innerMessage) { innerMessage.innerHTML = "¿Desea guardar los cambios?"
+  this.AlertOption("¿Desea agragar la Noticias?")
+  const parent: HTMLElement | any = this.containerAlert
+  const btn: HTMLElement | any = parent?.childNodes[0]?.childNodes[0]?.childNodes[1]?.childNodes[0]
 
-
-          document.getElementsByClassName('container-alert')[9]?.classList.add('show')
-          document.getElementsByClassName('message')[9]?.classList.add('show')
-          document.getElementsByClassName('cont-btns-alert')[9]?.classList.add('show')
-
-            document.getElementsByClassName('cancel')[9]?.addEventListener('click', function(){
-            document.getElementsByClassName('container-alert')[9]?.classList.remove('show')
-            document.getElementsByClassName('message')[9]?.classList.remove('show')
-            document.getElementsByClassName('cont-btns-alert')[9]?.classList.remove('show')
-          },false)
-          document.getElementsByClassName('confirm')[9]?.addEventListener('click', function(){
-            document.getElementsByClassName('container-alert')[9]?.classList.remove('show')
-
-          },false)
-        }
-
-      }else{
-        document.getElementsByClassName('cont-btns-alert')[9]?.classList.remove('show')
-        // 
-      }
-        }, false) }
+  if (btn) {
+        btn.onclick = () => {
+        this.sendFileNoticia()
+        this.guardarNoticia()
+}}
+      }else{ this.AlertMessage("Todos los campos son requeridos", 1500) }
         }
       }
       lector.readAsDataURL(archivo)
     }
-}
-saveNoticia() {
-  this.sendFileNoticia()
-  this.containerAlertNewNoticia.nativeElement.classList.remove('show')
 }
 
 async guardarNoticia() { const respuestaEdit = await this.noticiasService.crearNoticia(this.formularioAgregarNoticias.value) }
@@ -954,17 +916,13 @@ async eliminarNoticia(id: any) {
     btn.onclick = async () => {
       try {
         await this.noticiasService.EliminarNoticia(id)
-        this.obtenerNoticias()
         this.AlertMessage("¡Noticia eliminada con éxito!", 1500)
+        this.obtenerNoticias()
       } catch (error) {
         this.AlertMessage("Error :(", 1500)
       }
     }
   }
-}
-
-private async obtenerNoticias() {
-  // Implementa la lógica para obtener noticias
 }
 
 
@@ -1381,7 +1339,7 @@ onClick() {
 
  Modal() { document.getElementById('modal-time-line')?.classList.toggle('modal') }
 
-  onClickEditedTimeLineEdited() { this.sendFile(); this.containerAlertElementTLEdited.nativeElement.classList.remove('show') }
+  onClickEditedTimeLineEdited() { this.sendFileTimeLine(); this.containerAlertElementTLEdited.nativeElement.classList.remove('show') }
 
 toggleImgColor(status:number, cont:string){
   document.getElementById('sub-cont-img')?.classList.remove('selected')
