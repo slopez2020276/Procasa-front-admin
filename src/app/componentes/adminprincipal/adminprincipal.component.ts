@@ -576,6 +576,9 @@ saveNewTimeLine() {
   }else{ this.AlertMessage("Todos los campos son requeridos", 1500) }
 }
 
+
+
+
 sendFileTimeLine():void {
     const body = new FormData()
 
@@ -592,16 +595,11 @@ sendFileTimeLine():void {
       body.append('mostrarPor',this.formularioAgregarLineaTiempo.value.mostrarPor)
     }
 
-    this.lineaService.sendPost(body)
-
-    .subscribe(res =>{
+    this.lineaService.sendPost(body).subscribe(res =>{
       console.log(res),console.log(body), this.obtenerLinea(),this.fileTmp = null
       this.AlertMessage("¡Datos guardados exitosamente!", 1500)
     })
   }
-
-
-
 
 
 
@@ -627,7 +625,6 @@ toUpdateLineaTiempo(event: Event) {
           const objectURL = URL.createObjectURL(archivo)
           img.src = objectURL
           this.anchoimg = imagen.width, this.altoimg = imagen.height
-          let namefile = archivo.name
   
       document.getElementById('width-update-lt')?.classList.remove('limit')
           document.getElementById('height-update-lt')?.classList.remove('limit')
@@ -651,6 +648,19 @@ toUpdateLineaTiempo(event: Event) {
   
 
 
+saveUpdateTimeLine(){
+  this.AlertOption("¿Desea actualizar los datos?")
+  const parent: HTMLElement | any = this.containerAlert
+  const btn: HTMLElement | any = parent?.childNodes[0]?.childNodes[0]?.childNodes[1]?.childNodes[0]
+
+  if (btn) { btn.onclick = () => {
+    try{
+ this.sendFileTimeLine()
+ this.AlertMessage("¡Datos actualizados exitosamente!", 1500)
+  } catch(error){ this.AlertMessage("Error al actualizar", 1500) }
+  } }
+}
+
 
 
 
@@ -669,13 +679,16 @@ toUpdateLineaTiempo(event: Event) {
 
 
 
-  //Fin de los metodos de linea de tiempo
 
 
 
 
 
-//Metodos de Noticias
+
+
+
+
+
 
 
 
@@ -754,7 +767,6 @@ async ObtenerAllnoticas(){
 
 
 getFileUpdateNoticia($event: any): void {
-  //TODO esto captura el archivo!
   const [ file ] = $event.target.files;
   this.fileUpdateNoticia = {
     fileRaw:file,
@@ -842,6 +854,7 @@ async guardarNoticia() {
       try {
         await this.sendFileNoticia()
         this.AlertMessage("¡Noticia guardada exitosamente!", 1500)
+        this.obtnerNoticias()
       } catch (error) { this.AlertMessage("Error al guardar", 1500) }
     }
   }
@@ -866,6 +879,10 @@ eliminarNoticia(id: any) {
     }
   }
 }
+
+
+
+
 
 
 updateNoticia(event: Event) {
@@ -907,10 +924,6 @@ updateNoticia(event: Event) {
         document.getElementById('img-pre-noticia-edit')?.removeAttribute('src')
         document.getElementById('img-pre-noticia-edit')?.setAttribute('src', img.src)
 
-        const saveButtonTL = document.getElementById('update-noticia')
-        if (saveButtonTL) { saveButtonTL.addEventListener('click', () => {
-console.log("TEST 01")
-
           const tituloInput: HTMLInputElement | null = document.getElementById('title-update-noticia') as HTMLInputElement | null
           const descripcionInput: HTMLTextAreaElement | any = document.getElementById('desc-update-noticia')
 
@@ -920,41 +933,41 @@ console.log("TEST 01")
           if (tituloInput instanceof HTMLInputElement) { titulo = tituloInput.value }
           if (descripcionInput instanceof HTMLTextAreaElement) { descripcion = descripcionInput.value }
 
-if(namefile!=="" && titulo!=="" && descripcion!==""){
-  const innerMessage = document.getElementsByClassName('innermsg')[11]
-  if (innerMessage) { innerMessage.innerHTML = "¿Desea guardar los cambios?"
+const btnSaveUpdate:HTMLElement | any = document.getElementById('update-noticia')
+if(btnSaveUpdate){
+  btnSaveUpdate.onclick = () => {
 
 
-          document.getElementsByClassName('container-alert')[11]?.classList.add('show')
-          document.getElementsByClassName('message')[11]?.classList.add('show')
-          document.getElementsByClassName('cont-btns-alert')[11]?.classList.add('show')
-
-            document.getElementsByClassName('cancel')[11]?.addEventListener('click', function(){
-            document.getElementsByClassName('container-alert')[11]?.classList.remove('show')
-            document.getElementsByClassName('message')[11]?.classList.remove('show')
-            document.getElementsByClassName('cont-btns-alert')[11]?.classList.remove('show')
-          },false)
-          document.getElementsByClassName('confirm')[11]?.addEventListener('click', () =>{
-            document.getElementsByClassName('container-alert')[11]?.classList.remove('show')
-          },false)
-        }
-      }else{
-        document.getElementsByClassName('cont-btns-alert')[11]?.classList.remove('show')
-        //
-      }
-        }, false) }
+    this.AlertOption("¿Actualizar los datos de Noticia?")
+    const parent: HTMLElement | any = this.containerAlert
+    const btn: HTMLElement | any = parent?.childNodes[0]?.childNodes[0]?.childNodes[1]?.childNodes[0]
+  
+    if (btn) { btn.onclick = () => {
+        try{
+          this.sendFileUpdateNoticia()
+          this.obtnerNoticias()
+          this.AlertMessage("¡Datos actualizados!", 1500)
+        } catch(error){ this.AlertMessage("Error al actualizar", 1500) }
+  }}
+  }
+}
         }
       }
       lector.readAsDataURL(archivo)
     }
 }
 
+
+
+
+
+
   sendFileUpdateNotice():void{
 
     const body = new FormData()
 
     if(this.fileTmp){
-      body.append('ImgPathLineaTiempo', this.fileTmp.fileRaw, this.fileTmp.fileName);
+      body.append('ImgPathLineaTiempo', this.fileTmp.fileRaw, this.fileTmp.fileName)
       body.append('titleLineaTiempo', this.formularioAgregarLineaTiempo.value.titleLineaTiempo)
       body.append('descriptionLineaTiempo',this.formularioAgregarLineaTiempo.value.descriptionLineaTiempo)
     }else{
