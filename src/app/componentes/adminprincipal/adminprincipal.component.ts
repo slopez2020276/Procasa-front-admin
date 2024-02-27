@@ -916,8 +916,8 @@ async eliminarNoticia(id: any) {
     btn.onclick = async () => {
       try {
         await this.noticiasService.EliminarNoticia(id)
+        this.obtnerNoticias()
         this.AlertMessage("¡Noticia eliminada con éxito!", 1500)
-        this.obtenerNoticias()
       } catch (error) {
         this.AlertMessage("Error :(", 1500)
       }
