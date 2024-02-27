@@ -23,6 +23,7 @@ export class AdminprincipalComponent implements OnInit, AfterViewInit {
   desgloce: any|undefined
   formulario: FormGroup
 
+
   formularioEditHistoria: FormGroup
   formularioEditlineaTiempo: FormGroup
   formularioMisionValor: FormGroup
@@ -438,42 +439,19 @@ preSaveHistoria() {
   if (preEnlace instanceof HTMLTextAreaElement) { enlace = preEnlace.value }
   if (descTextArea instanceof HTMLTextAreaElement) { desc = descTextArea.value }
 
-  if(enlace!=="" && desc!==""){
-  const innerMessage = document.getElementsByClassName('innermsg')[2]
-  if (innerMessage) { innerMessage.innerHTML = "¿Desea guardar los cambios?"
-
-  document.getElementsByClassName('container-alert')[2]?.classList.add('show')
-  document.getElementsByClassName('message')[2]?.classList.add('show')
-  document.getElementsByClassName('cont-btns-alert')[2]?.classList.add('show')
-
-  document.getElementsByClassName('cancel')[2]?.addEventListener('click', function(){
-    document.getElementsByClassName('container-alert')[2]?.classList.remove('show')
-    document.getElementsByClassName('message')[2]?.classList.remove('show')
-    document.getElementsByClassName('cont-btns-alert')[2]?.classList.remove('show')
-  },false)
-  document.getElementsByClassName('confirm')[2]?.addEventListener('click', function(){
-
-      document.getElementsByClassName('container-alert')[2]?.classList.remove('show')
-      document.getElementsByClassName('cont-btns-alert')[2]?.classList.remove('show')
-    },false)
-  }
-  }else{
-    // 
-  }
+  if(enlace!=="" && desc!==""){ this.guardarHistoria() }
+  else{ this.AlertMessage("Todos los campos son requeridos", 1500) }
 }
-
-onClickHistoria() {
-  this.guardarHistoria()
-  this.containerAlertElementHis.nativeElement.classList.remove('show')
-}
-
 
 async guardarHistoria() {
-  try {
-    const respuestaEdit = await this.historiaService.editarHistoria(this.formularioEditHistoria.value, this._idhistoria)
-    // 
-  } catch (error) {
-    // 
+  this.AlertOption("¿Desea guardar los datos de Historia?");
+  const parent: HTMLElement | any = this.containerAlert;
+  const btn: HTMLElement | any = parent?.childNodes[0]?.childNodes[0]?.childNodes[1]?.childNodes[0];
+
+  if (btn) { btn.onclick = async () => {
+          try { await this.historiaService.editarHistoria(this.formularioEditHistoria.value, this._idhistoria); this.AlertMessage("¡Datos guardados exitosamente!", 1500) } 
+          catch (error) { this.AlertMessage("Error :(", 1500) }
+      }
   }
 }
 
@@ -1236,16 +1214,26 @@ getFileBack($event: any): void {
 }
 
 sendColorbackGord(){
-
- 
+    this.AlertOption("¿Desea cambiar de color de Fondo?")
+    const parent: HTMLElement | any = this.containerAlert
+    const btn: HTMLElement | any = parent?.childNodes[0]?.childNodes[0]?.childNodes[1]?.childNodes[0]
+  
+    if (btn) { btn.onclick = () => {
+  try{
   this.formularioEditarFondoColor.value.colorFondo = this.colorBg 
   const body = this.formularioEditarFondoColor.value
   console.log(body)
   this.historiaService.sendback(body,this._idhistoria)
   .subscribe(res =>{
-    // 
-  document.getElementById('container-alert-a')?.classList.remove('show')
-    console.log(res), this.obtenerHistoria() })
+    this.AlertMessage("¡Fondo actualizado exitosamente!", 1500)
+    console.log(res), this.obtenerHistoria() 
+  })
+} catch(error) {
+  this.AlertMessage("Error :(", 1500)
+}
+
+      }}
+
 }
 
 
@@ -1270,19 +1258,41 @@ getFilePortada($event: any): void {
   }
 }
 
-sendFilePortada():void{
-  const body = new FormData()
-  if(this.imgPathPrincipal){
-    body.append('imgPathPortada', this.imgPathPrincipal.fileRaw, this.imgPathPrincipal.fileName);
-    this.historiaService.sendPost(body,this._idhistoria)
-    .subscribe(res =>{
-      // 
-    document.getElementById('container-alert-a')?.classList.remove('show')
-      console.log(res), this.obtenerHistoria() })
-  }else{
-    console.log('error porfavor selecione una imagen')
+
+
+
+
+
+
+
+
+sendFilePortada(): void {
+  this.AlertOption("¿Desea guardar la nueva imagen de Portada?")
+  const parent: HTMLElement | any = this.containerAlert
+  const btn: HTMLElement | any = parent?.childNodes[0]?.childNodes[0]?.childNodes[1]?.childNodes[0]
+
+  if (btn) {
+    btn.onclick = () => {
+      const body = new FormData()
+      if (this.imgPathPrincipal) {
+        try {
+          body.append('imgPathPortada', this.imgPathPrincipal.fileRaw, this.imgPathPrincipal.fileName)
+          this.historiaService.sendPost(body, this._idhistoria)
+            .subscribe(res => {
+              this.AlertMessage("¡Fondo actualizado exitosamente!", 1500)
+              console.log(res)
+              this.obtenerHistoria()
+            })
+        } catch (error) {
+          this.AlertMessage("Error :(", 1500)
+        }
+      } else {
+        this.AlertMessage("No hay archivo seleccionado", 1500)
+      }
+    }
   }
 }
+
 
 preSavePortada(event: Event): void  {
 
