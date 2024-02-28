@@ -48,7 +48,7 @@ constructor (){
     nombreTienda: new FormControl(),
     descripcion: new FormControl(),
     enlaceMaps: new FormControl(),
-    enlaeMaps: new FormControl(),
+    enlaceWaze: new FormControl(),
   })
   this.formularioEditUbicacion  = new FormGroup({
     tipoTienda: new FormControl(),
@@ -58,7 +58,7 @@ constructor (){
     nombreTienda: new FormControl(),
     descripcion: new FormControl(),
     enlaceMaps: new FormControl(),
-    enlaeMaps: new FormControl(),
+    enlaceWaze: new FormControl(),
   })
 }
 
@@ -195,20 +195,26 @@ console.log(body)
     body.append('imgPath', this.fileTmp.fileRaw, this.fileTmp.fileName);
     body.append('tipoTienda', this.fornularioAgregarUbicacion.value.tipoTienda)
     body.append('nombreTienda',this.fornularioAgregarUbicacion.value.nombreTienda)
-    body.append('codenadasLng',this.fornularioAgregarUbicacion.value.codenadasLng)
-    body.append('codenadaslat',this.fornularioAgregarUbicacion.value.codenadaslat)
     body.append('descripcion',this.fornularioAgregarUbicacion.value.descripcion)
+    body.append('direccion',this.fornularioAgregarUbicacion.value.direccion)
+    body.append('telefono',this.fornularioAgregarUbicacion.value.telefono)
+    body.append('horario',this.fornularioAgregarUbicacion.value.horario)
+    body.append('enlaceMaps',this.fornularioAgregarUbicacion.value.enlaceMaps)
+    body.append('enlaceWaze',this.fornularioAgregarUbicacion.value.enlaeMaps)
 
   }else{
     body.append('tipoTienda', this.fornularioAgregarUbicacion.value.tipoTienda)
     body.append('nombreTienda',this.fornularioAgregarUbicacion.value.nombreTienda)
-    body.append('codenadasLng',this.fornularioAgregarUbicacion.value.codenadasLng)
-    body.append('codenadaslat',this.fornularioAgregarUbicacion.value.codenadaslat)
     body.append('descripcion',this.fornularioAgregarUbicacion.value.descripcion)
+    body.append('direccion',this.fornularioAgregarUbicacion.value.direccion)
+    body.append('telefono',this.fornularioAgregarUbicacion.value.telefono)
+    body.append('horario',this.fornularioAgregarUbicacion.value.horario)
+    body.append('enlaceMaps',this.fornularioAgregarUbicacion.value.enlaceMaps)
+    body.append('enlaceWaze',this.fornularioAgregarUbicacion.value.enlaeMaps)
   }
 
   this.ubicacionService.CrearUbicacion(body)
-  .subscribe(res =>{console.log(res), this.obtenerUbicacion(),this.fileTmp = null})
+  .subscribe(res =>{console.log(res), this.obtenerUbicacion()})
 
 }
 
@@ -231,23 +237,29 @@ sendFileEdit():void{
 
   if(this.fileTmpEdit){
     body.append('imgPath', this.fileTmpEdit.fileRaw, this.fileTmpEdit.fileName);
-    body.append('tipoTienda', this.formularioEditUbicacion.value.tipoTienda)
-    body.append('nombreTienda',this.formularioEditUbicacion.value.nombreTienda)
-    body.append('codenadasLng',this.formularioEditUbicacion.value.codenadasLng)
-    body.append('codenadaslat',this.formularioEditUbicacion.value.codenadaslat)
-    body.append('descripcion',this.formularioEditUbicacion.value.descripcion)
+    body.append('tipoTienda', this.fornularioAgregarUbicacion.value.tipoTienda)
+    body.append('nombreTienda',this.fornularioAgregarUbicacion.value.nombreTienda)
+    body.append('descripcion',this.fornularioAgregarUbicacion.value.descripcion)
+    body.append('direccion',this.fornularioAgregarUbicacion.value.direccion)
+    body.append('telefono',this.fornularioAgregarUbicacion.value.telefono)
+    body.append('horario',this.fornularioAgregarUbicacion.value.horario)
+    body.append('enlaceMaps',this.fornularioAgregarUbicacion.value.enlaceMaps)
+    body.append('enlaceWaze',this.fornularioAgregarUbicacion.value.enlaeMaps)
 
   }else{
-    body.append('tipoTienda', this.formularioEditUbicacion.value.tipoTienda)
-    body.append('nombreTienda',this.formularioEditUbicacion.value.nombreTienda)
-    body.append('codenadasLng',this.formularioEditUbicacion.value.codenadasLng)
-    body.append('codenadaslat',this.formularioEditUbicacion.value.codenadaslat)
-    body.append('descripcion',this.formularioEditUbicacion.value.descripcion)
+    body.append('tipoTienda', this.fornularioAgregarUbicacion.value.tipoTienda)
+    body.append('nombreTienda',this.fornularioAgregarUbicacion.value.nombreTienda)
+    body.append('descripcion',this.fornularioAgregarUbicacion.value.descripcion)
+    body.append('direccion',this.fornularioAgregarUbicacion.value.direccion)
+    body.append('telefono',this.fornularioAgregarUbicacion.value.telefono)
+    body.append('horario',this.fornularioAgregarUbicacion.value.horario)
+    body.append('enlaceMaps',this.fornularioAgregarUbicacion.value.enlaceMaps)
+    body.append('enlaceWaze',this.fornularioAgregarUbicacion.value.enlaeMaps)
   }
 
   console.log(this.formularioEditUbicacion.value.fecha)
   this.ubicacionService.sendEdit(body,this.idUbicacion)
-  .subscribe(res =>{console.log(res), this.obtenerUbicacion(),this.fileTmpEdit = null})
+  .subscribe(res =>{console.log(res), this.obtenerUbicacion()})
 }
 
 
@@ -256,8 +268,6 @@ async ObtenerUbixId(id){
   this.idUbicacion = Ubicacion.ubi._id
   this.tipoTienda = Ubicacion.ubi.tipoTienda
   this.nombreTienda = Ubicacion.ubi.nombreTienda
-  this.codenadasLng = Ubicacion.ubi.codenadasLng
-  this.codenadaslat = Ubicacion.ubi.codenadaslat
   this.descripcion = Ubicacion.ubi.descripcion
   this.imgPath =Ubicacion.ubi.imgPath
 }

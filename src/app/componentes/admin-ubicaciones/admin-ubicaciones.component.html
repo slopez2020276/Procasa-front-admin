@@ -54,7 +54,7 @@
     </div>
   </div>
   
-  <button class="btn-click btn-red normal" (click)="saveLocation($event)"><mat-icon>save</mat-icon> guardar</button>
+  <button class="btn-click btn-red normal"  (click)="saveLocation($event)"><mat-icon>save</mat-icon> guardar</button>
 </form>
 
 </div>
@@ -111,7 +111,7 @@
   <div id="sub-cont-details-img">
     <div class="sub-details">
         <div class="sub-img-btn">
-          <input type="file" (change)="InputChange($event)" (change)="getFile($event)" title="seleccionar archivo" accept=".jpg, .png, .jpeg, .avi, .webp" data-content="seleccionar archivo">
+          <input type="file" (change)="InputChange($event)" (change)="getFileEdit($event)" title="seleccionar archivo" accept=".jpg, .png, .jpeg, .avi, .webp" data-content="seleccionar archivo">
           <mat-icon>delete</mat-icon>
         </div>
       <ul>
@@ -139,14 +139,7 @@
         <option value="meathouse">Meat House</option>
       </select>
     </div>
-    <div class="item">
-      <label>Coordenada LAT</label>
-      <input [(ngModel)]="codenadaslat" formControlName="codenadaslat" id="lat" title="input" type="text" class="bold" placeholder="">
-    </div>
-    <div class="item">
-      <label>Coordenada LOG</label>
-      <input [(ngModel)]="codenadasLng" formControlName="codenadasLng" id="log" title="input" type="text" class="bold" placeholder="">
-    </div>
+    
     <div class="item">
       <label>Descripcion de la tienda</label>
       <input [(ngModel)]="descripcion" formControlName="descripcion" id="log" title="input" type="text" class="bold" placeholder="">

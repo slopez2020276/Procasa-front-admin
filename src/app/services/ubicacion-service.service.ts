@@ -1,12 +1,13 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
+import { ClearStencil } from '@maptiler/sdk';
 import { Observable, firstValueFrom } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UbicacionServiceService {
-  private baseUrlw = 'https://enchanting-kilt-pike.cyclic.app/api';
+  private baseUrlw = 'http://localhost:3002/api';
   private httClient = inject(HttpClient)
   
 
@@ -29,6 +30,7 @@ export class UbicacionServiceService {
   }
 
   CrearUbicacion(body:FormData):Observable<any>{
+    console.log(body)
     return this.httpClient.post(`${this.baseUrlw}/crearUbicacion`, body, this.createHeaders())
   }
   
