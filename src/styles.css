@@ -36,7 +36,11 @@ div.container {
   z-index: 0;
 }
 
-
+.close-modal {
+  position: absolute;
+  right: .5rem;
+  top: .5rem;
+}
 
 .btn-click {
   transform: scale(1);
@@ -215,8 +219,6 @@ div#sub-cont-details-img {
   height: 140px;
 }
 
-div#sub-cont-details-img * {border: 1px solid black;}
-
 div#sub-cont-details-img div ul {
   width: 100%;
   list-style: none;
@@ -271,7 +273,6 @@ div.sub-img-btn {
   align-items: center;
   align-content: center;
   flex-wrap: nowrap;
-  background: orangered;
 }
 
 div.sub-img-btn mat-icon {
@@ -286,6 +287,9 @@ div.sub-img-btn mat-icon {
   cursor: pointer;
   opacity: 1;
   transform: scale(1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 div.sub-img-btn mat-icon:hover {opacity: .8;}

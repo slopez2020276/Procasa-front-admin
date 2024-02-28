@@ -1,9 +1,9 @@
 div#modal-add-location, div#modal-edit-location {
   position: fixed;
-  width: 800px;
+  width: 600px;
   height: auto;
   background: #EEEEEE;
-  left: calc(50% - 400px);
+  left: calc(50% - 300px);
   border-radius: 4px;
   box-shadow: 0 5px 10px rgba(0,0,0,.4);
   display: flex;
@@ -11,12 +11,24 @@ div#modal-add-location, div#modal-edit-location {
   align-items: start;
   flex-wrap: wrap;
   padding: 1rem;
-  top: 20vh;
+  top: 10vh;
   transition: .4s ease;
   opacity: 0;
   transform: scale(.8);
   z-index: -200;
+  display: none;
 }
+
+div#modal-add-location form {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  align-content: start;
+  flex-wrap: wrap;
+}
+
+
 
 span.danger-red {color: #252525;}
 span.danger-red.limit {color: #AA182C;}
@@ -43,49 +55,27 @@ input[type=file]::before {
 
 input[type=file]:active { transform: scale(.9); }
 
-
 div.cont {
-  width: 40%;
+  width: 100%;
   position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
+  align-content: center;
   flex-wrap: wrap;
-  margin: 2rem 0;
+  margin-top: .5rem;
 }
 
 div#modal-add-location.toggle, div#modal-edit-location.toggle {
   transform: scale(1);
-  top: 20vh;
+  top: 10vh;
   opacity: 1;
-  z-index: 100;
-}
-
-div#modal-add-location h1, div#modal-edit-location h1 {
-  font-size: 19pt;
-  padding-top: 1rem;
-  width: 100%;
-  text-align: center;
-}
-
-button#close-modal, button#close-modal-edit {
-  padding: .5rem 1rem;
-  float: right;
-  position: absolute;
-  right: .5rem;
-  top: .5rem;
-  background: #DEDEDE;
-  border-radius: 4px;
-  cursor: pointer;
-  transform: scale(1);
-}
-
-button#close-modal:active, button#close-modal-edit:active {
-  transform: scale(.8);
+  z-index: 49;
+  display: flex;
 }
 
 div.item {
-  width: 100%;
+  width: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -104,40 +94,6 @@ div.item input, select {
 div.item label {
   width: 90%;
   margin-bottom: .5rem;
-}
-
-button#save-modal, button#save-modal-edit {
-  background: #AA182C;
-  color: #FFF;
-  padding: 1rem 5rem;
-  border-radius: 10rem;
-  cursor: pointer;
-}
-
-div.details-img {
-  width: 90%;
-  margin-top: 1rem;
-}
-
-
-div.details-img ul {
-  list-style-type: none;
-}
-
-div.details-img ul li {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: nowrap;
-}
-
-div.details-img img {
-  max-width: 100%;
-  width: auto;
-  height: auto;
-  max-height: 150px;
-  margin-top: 1rem;
-  border-radius: 4px;
 }
 
 
@@ -219,6 +175,7 @@ div#bar-search button {
 div#container-3 {
   width: 100vw;
   height: auto;
+  min-height: 100vh;
 }
 
 thead {
@@ -260,13 +217,6 @@ table tr td button {
 }
 
 
-table tr td button:nth-child(2) {
-  background: #f5b8c0;
-  border-radius: 4px;
-  color: #FFF;
-}
-
-
 
 
 td.actions-center {
@@ -284,76 +234,6 @@ tr:hover {
 
 
 /*------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
-
-div.container-alert {
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  transition: .5s;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: rgba(255,255,255,1);
-  text-align: center;
-  z-index: -10;
-  opacity: 0;
-}
-div.container-alert.show { z-index: 100; opacity: 1; }
-
-div.alert-model {
-  width: 400px;
-  height: auto;
-  padding: 2rem;
-  border-radius: 4px;
-  position: absolute;
-  z-index: 901;
-  background: transparent;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  flex-wrap: wrap;
-}
-
-div.alert-model p {
-  font-size: 14pt;
-  color: #757575;
-  width: 100%;
-  display: block;
-}
-
-
-div.cont-btns-alert {
-  width: 100%;
-  position: relative;
-  justify-content: space-around;
-  align-items: center;
-  flex-wrap: nowrap;
-  display: none;
-}
-
-div.cont-btns-alert.show { display: flex; z-index: 700;}
-
-div.cont-btns-alert button,
-div.replace-button {
-  text-decoration: none;
-  background: #EAEAEA;
-  border-radius: 4px;
-  padding: .5rem 2rem;
-  transition: .1s;
-  transform: scale(1);
-  box-shadow: 0px 3px 0px rgba(0,0,0,.3);
-  cursor: pointer;
-  margin-top: 2rem;
-  margin-left: 2rem;
-  margin-right: 2rem;
-}
-div.replace-button:active, div.cont-btns-alert button:active {
-  transform: scale(.95);
-  box-shadow: 0px 0px 0px rgba(0,0,0,.3);
-}
-
 
 div.message {
   position: relative;
