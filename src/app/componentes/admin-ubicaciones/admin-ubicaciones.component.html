@@ -15,9 +15,9 @@
             <mat-icon>delete</mat-icon>
           </div>
         <ul>
-          <li>ancho: <span class="bold danger-red" id="innerwidth-add"></span> </li>
-          <li>alto:  <span class="bold danger-red" id="innerheight-add"></span> </li>
-          <li>peso:  <span class="bold danger-red" id="innersize-add"></span></li>
+          <li>ancho: <span class="bold danger-red"></span> </li>
+          <li>alto:  <span class="bold danger-red"></span> </li>
+          <li>peso:  <span class="bold danger-red"></span></li>
         </ul>
       </div>
       <div class="cont-details-img"><img alt="" src=""></div>
@@ -47,7 +47,7 @@
       <input formControlName="enlaceMaps" id="maps" title="input" type="text" class="normal" placeholder="enlace Maps">
     </div>
     <div class="item">
-      <input formControlName="enlaceWaze" id="waze" title="input" type="text" class="normal" placeholder="enlace Waze">
+      <input formControlName="enlaceWaze" id="waze" title="enlace Waze" type="text" class="normal" placeholder="enlace Waze">
     </div>
     <div class="item">
       <input formControlName="descripcion" id="descripcion" title="input" type="text" class="normal" placeholder="descripción">
@@ -73,33 +73,23 @@
 </div>
 
 <div id="container-3">
-  <table>
-    <thead>
-      <tr>
-        <td class="bold tb-number">#</td>
-        <td class="bold tb-name">Nombre</td>
-        <td class="bold tb-address">Tipo Tienda</td>
-        <td class="bold tb-telephone">Coordenadas LAT</td>
-        <td class="bold tb-extension">Coodenadas LOG</td>
-        <td class="bold tb-actions">Acciones</td>
-      </tr>
-    </thead>
-    <tbody>
-        @for (os  of dataUbicacion | MostrarPorUbiPipe: nombreTiendaFiltro ; track os._id ) {
-        <tr>
-          <td class="tb-number"></td>
-          <td class="tb-name">{{os.nombreTienda}}</td>
-          <td class="tb-address">{{os.tipoTienda}}</td>
-          <td class="tb-telephone">{{os.codenadaslat}}</td>
-          <td class="tb-extension">{{os.codenadasLng}}</td>
-          <td class="tb-actions actions-center">
-            <button class="btn-click" (click)="ObtenerUbixId(os._id)" (click)="editLocation()"><mat-icon>edit</mat-icon></button>
-            <button class="btn-click btn-red"><mat-icon>delete</mat-icon></button>
-          </td>
-        </tr>
-        }
-  </tbody>
-  </table>
+
+<div class="cont-ubicacion">
+@for (os  of dataUbicacion | MostrarPorUbiPipe: nombreTiendaFiltro ; track os._id ) {
+  <div class="ubicacion">
+    <div class="dato-ubicacion imgpath"><img src="{{os.imgPath}}" alt=""></div>
+      <div class="dato-ubicacion"><p class="normal">Nombre: </p><p>{{os.nombreTienda}}</p></div>
+      <div class="dato-ubicacion"><p class="normal">Tienda: <p>{{os.tipoTienda}}</p></div>
+      <div class="dato-ubicacion"><p class="normal">Teléfono<p>{{os.telefono}}</p></div>
+      <div class="dato-ubicacion"><p class="normal">Horario: <p>{{os.horario}}</p></div>
+      <div class="dato-ubicacion"><p class="normal">Google Maps: <p><a href="{{os.enlaceMaps}}">enlace</a></p></div>
+      <div class="dato-ubicacion"><p class="normal">Waze: <p><a href="{{os.enlaceWaze}}">enlace</a></p></div>
+      <div class="dato-ubicacion"><p class="normal">Descripción: <p>{{os.descripcion}}</p></div>
+      <button class="btn-click" (click)="ObtenerUbixId(os._id)" (click)="editLocation()"><mat-icon>edit</mat-icon></button>
+      <button class="btn-click btn-red"><mat-icon>delete</mat-icon></button>
+</div>
+  }
+</div>
 </div>
 
 
@@ -130,7 +120,7 @@
 
     <div class="item">
       <label>Nombre</label>
-      <input [(ngModel)]="nombreTienda" formControlName="nombreTienda" id="name" title="input" type="text" class="bold" placeholder="">
+      <input [(ngModel)]="nombreTienda" formControlName="nombreTienda" id="name" title="input" type="text" class="normal" placeholder="">
     </div>
     <div class="item">
       <label for="tipoTienda">Tipo</label>
@@ -138,16 +128,37 @@
         <option value="procasa">Procasa</option>
         <option value="meathouse">Meat House</option>
       </select>
+    </div>    
+    <div class="item">
+      <label>Teléfono</label>
+      <input type="text" [(ngModel)]="telefono" formControlName="telefono">
     </div>
-    
+
+    <div class="item">
+      <label>Horario</label>
+      <input type="text" [(ngModel)]="horario" formControlName="horario">
+    </div>
+
+    <div class="item">
+      <label>Maps</label>
+      <input type="text" [(ngModel)]="maps" formControlName="enlaceMaps">
+    </div>
+
+    <div class="item">
+      <label>Waze</label>
+      <input type="text" [(ngModel)]="waze" formControlName="enlaceWaze">
+    </div>
     <div class="item">
       <label>Descripcion de la tienda</label>
-      <input [(ngModel)]="descripcion" formControlName="descripcion" id="log" title="input" type="text" class="bold" placeholder="">
+      <input [(ngModel)]="descripcion" formControlName="descripcion" title="descripción" type="text" class="normal" placeholder="">
     </div>
+
+
+
   </form>
   </div>
 
-  <button (click)="sendFileEdit()" id="save-modal-edit" >GUARDAR</button>
+  <button class="btn-click btn-red normal" (click)="sendFileEdit()" id="save-modal-edit" ><mat-icon>save</mat-icon> guardar</button>
 
 
 </div>
