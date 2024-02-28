@@ -339,7 +339,7 @@
 
     <div class="cont-buttons">
       <div id="show-more" (click)="ShowMore()">mostrar más</div>
-      <button class="normal btn-red btn-click" (click)="NewModalNotice()"><mat-icon>add</mat-icon> agregar</button>
+      <button class="normal btn-red btn-click" (click)="NewModalNotice()"><mat-icon>launch</mat-icon> agregar</button>
     </div>
   </div>
 
@@ -367,7 +367,7 @@
 <div id="modal-time-line-add">
 <h1 class="title-modal">Agregar Línea de Tiempo</h1>
   <div id="cont-close-button-add">
-    <button id="close-modal-3-add" (click)="ModalAddTimeLine()" ><mat-icon>close</mat-icon></button>
+    <button class="btn-click close-modal" (click)="ModalAddTimeLine()" ><mat-icon>close</mat-icon></button>
   </div>
 
   <form [formGroup]="formularioAgregarLineaTiempo">
@@ -375,7 +375,7 @@
     <div id="sub-cont-details-img">
       <div class="sub-details">
           <div class="sub-img-btn">
-            <input type="file" (change)="preSaveTimeLine($event)" (change)="getFile($event)" title="seleccionar archivo" accept=".jpg, .png, .jpeg, .avi, .webp" data-content="seleccionar archivo">
+            <input type="file" (change)="InputChange($event)" (change)="getFile($event)" title="seleccionar archivo" accept=".jpg, .png, .jpeg, .avi, .webp" data-content="seleccionar archivo">
             <mat-icon>delete</mat-icon>
           </div>
         <ul>
@@ -404,7 +404,7 @@
 
 </div>
 
-    <div class="btn-click btn-red normal" id="save-new-tili"><mat-icon>save</mat-icon> guardar</div>
+    <div (click)="saveNewTimeLine()" class="btn-click btn-red normal" id="save-new-tili"><mat-icon>save</mat-icon> guardar</div>
 
   </form>
 </div>
@@ -422,21 +422,32 @@
   </div>
 
   <form [formGroup]="formularioEditlineaTiempo" (ngSubmit)="editarTime()">
-    <div class="preview-img-model">
-    <label for="file">Imagen</label>
-    <input type="file" id="file-update-lt"  (change)="toUpdateLineaTiempo($event)" (change)="getFileUpdateTiempo($event)" name="file" data-content="seleccionar archivo" title="imagen">
-    <div class="details-img">
-      <ul>
-        <li>ancho <span class="innerdetails bold" id="width-update-lt"></span></li>
-        <li>alto <span class="innerdetails bold" id="height-update-lt"></span></li>
-        <li>tamaño <span class="innerdetails bold" id="size-update-lt"></span></li>
-      </ul>
-    </div>
-  <div class="preview-img-model">
-    <img src="" alt="" id="img-update-tl">
-  </div>
+    
 
+<div id="sub-cont-details-img">
+  <div class="sub-details">
+    <div class="sub-img-btn">
+        <input type="file" id="file-update-lt"  (change)="InputChange($event)" (change)="getFileUpdateTiempo($event)" name="file" data-content="seleccionar archivo" title="imagen">
+        <mat-icon>delete</mat-icon>
+      </div>
+    <ul>
+      <li>ancho: <span class="bold danger-red"></span> </li>
+      <li>alto:  <span class="bold danger-red"></span> </li>
+      <li>peso:  <span class="bold danger-red"></span></li>
+    </ul>
+  </div>
+  <div class="cont-details-img"><img alt="" src=""></div>
 </div>
+
+
+
+
+
+
+
+
+
+
   <div class="subcont-modal">
     <label for="title">Título</label>
     <input   type="text" id="titulo-update-lt" formControlName="titleLineaTiempo" [(ngModel)]="tituloModal" name="title" title="título" required>
@@ -465,19 +476,19 @@
   <div id="cont-btn-close-new"> <button id="close-modal-notice-new" (click)="NewModalNotice()">cerrar</button> </div>
 
 <form [formGroup]="formularioAgregarNoticias">
-  <div class="preview-img-model">
-<label for="file-notice">imagen</label>
-<input id="file-noticia" (change)="getFileNoticia($event)" (change)="saveNewNoticia($event)" title="imagen de noticia" type="file" name="file-notice" data-content="seleccionar archivo">
-
-<div class="details-img">
-  <ul>
-    <li>ancho <span class="innerdetails bold" id="width-new-n"></span></li>
-    <li>alto <span class="innerdetails bold" id="height-new-n"></span></li>
-    <li>tamaño <span class="innerdetails bold" id="size-new-n"></span></li>
-  </ul>
-  <img src="" alt="" id="img-pre-noticia">
-</div>
-
+  <div id="sub-cont-details-img">
+    <div class="sub-details">
+        <div class="sub-img-btn">
+          <input id="file-noticia" (change)="getFileNoticia($event)" (change)="InputChange($event)" title="imagen de noticia" type="file" name="file-notice" data-content="seleccionar archivo">
+          <mat-icon>delete</mat-icon>
+        </div>
+      <ul>
+        <li>ancho: <span class="bold danger-red"></span> </li>
+        <li>alto:  <span class="bold danger-red"></span> </li>
+        <li>peso:  <span class="bold danger-red"></span></li>
+      </ul>
+    </div>
+    <div class="cont-details-img"><img alt="" src=""></div>
 </div>
 
 <div class="subcont-modal">
@@ -505,7 +516,7 @@
 
 
 
-
+<!-- ¡¡¡ CORREGIR EL ENVÍO !!!! -->
 <!-- M O D A L   E D I T A R   N O T I C I A S  -->
 <div id="modal-edit-notice">
         <div id="cont-btn-close"> <button id="close-modal-notice" (click)="ModalEditNotice()">cerrar</button> </div>

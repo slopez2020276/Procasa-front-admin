@@ -97,20 +97,22 @@
 
   <div class="cont-blocks">
 
-    <div id="sub-cont-details-img">
+<div id="sub-cont-details-img">
       <div class="sub-details">
           <div class="sub-img-btn">
-            <input type="file" (change)="FileEdit($event)" (change)="getFile($event)" title="seleccionar archivo" accept=".jpg, .png, .jpeg, .avi, .webp" data-content="seleccionar archivo">
+            <input type="file" (change)="InputChange($event)" (change)="getFile($event)" title="seleccionar archivo" accept=".jpg, .png, .jpeg, .avi, .webp" data-content="seleccionar archivo">
             <mat-icon>delete</mat-icon>
           </div>
         <ul>
-          <li>ancho: <span class="bold danger-red" id="innerwidth-add"></span> </li>
-          <li>alto:  <span class="bold danger-red" id="innerheight-add"></span> </li>
-          <li>peso:  <span class="bold danger-red" id="innersize-add"></span></li>
+          <li>ancho: <span class="bold danger-red"></span> </li>
+          <li>alto:  <span class="bold danger-red"></span> </li>
+          <li>peso:  <span class="bold danger-red"></span></li>
         </ul>
       </div>
       <div class="cont-details-img"><img alt="" src=""></div>
 </div>
+
+
 
       
       <div class="cont-datos">
@@ -146,13 +148,13 @@
     <div id="sub-cont-details-img">
       <div class="sub-details">
           <div class="sub-img-btn">
-            <input type="file" (change)="FileEdit($event)" (change)="getFile($event)" title="seleccionar archivo" accept=".jpg, .png, .jpeg, .avi, .webp" data-content="seleccionar archivo">
+            <input type="file" (change)="InputChange($event)" (change)="getFile($event)" title="seleccionar archivo" accept=".jpg, .png, .jpeg, .avi, .webp" data-content="seleccionar archivo">
             <mat-icon>delete</mat-icon>
           </div>
         <ul>
-          <li>ancho: <span class="bold danger-red" id="innerwidth-add"></span> </li>
-          <li>alto:  <span class="bold danger-red" id="innerheight-add"></span> </li>
-          <li>peso:  <span class="bold danger-red" id="innersize-add"></span></li>
+          <li>ancho: <span class="bold danger-red"></span> </li>
+          <li>alto:  <span class="bold danger-red"></span> </li>
+          <li>peso:  <span class="bold danger-red"></span></li>
         </ul>
       </div>
       <div class="cont-details-img"><img alt="" src=""></div>

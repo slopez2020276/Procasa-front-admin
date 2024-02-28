@@ -492,7 +492,7 @@ div#modal-time-line, div#modal-time-line-add, div#modal-edit-notice, div#modal-n
   align-items: start;
   flex-wrap: wrap;
   padding: 2rem;
-  top: 200vh;
+  top: 0vh;
   transition: .4s ease;
   opacity: 0;
   transform: scale(.8);
@@ -928,7 +928,7 @@ div#modal-edit-notice.show, div#modal-new-notice.show {
   transform: scale(1);
   opacity: 1;
   transition: .1s;
-  top: calc(50vh - 250px);
+  top: 10vh;
 }
 
 div#modal-edit-notice form, div#modal-new-notice form {

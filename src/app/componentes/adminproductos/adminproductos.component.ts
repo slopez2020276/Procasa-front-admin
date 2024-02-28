@@ -29,9 +29,13 @@ export class AdminproductosComponent implements OnInit {
   inputEmptyEdit:string = "Seleccionar archivo"
   addProduct: FormControl | any
   Alert: Boolean | any
-  containerAlert: HTMLElement | any
   inputEmptyB
   srcPreviewEdit
+
+  containerAlert: HTMLElement | any
+  widthLimit
+  heightLimit
+  sizeLimit
  
 
 
@@ -82,83 +86,18 @@ sendFile():void{
 
 
 
-  FileEdit(event: Event): void {
-    const fileInput = event.target as HTMLInputElement
-    const parent: HTMLElement | any = fileInput?.parentElement?.parentElement?.parentElement
-    const clean: HTMLElement | undefined = parent?.children[0]?.children[0]?.children[1]
-    
-    const archivo = fileInput.files?.[0]
-    if (archivo) {
 
-      const lector = new FileReader()
-
-      lector.onload = (eventoLectura:any) => {
-        console.log(eventoLectura)
-        const imagen = new Image()
-        imagen.src = eventoLectura.target.result
-          this.srcPreviewEdit = imagen.src
-        imagen.onload = () => {
-          const fileSize: number = archivo.size
-          const size: number = fileSize / 1024
-          let medida: string
-          let sizemedida: any
-          if (size < 1024) {
-            medida = " KB"
-            sizemedida = size.toFixed(2).toString() + medida
-          } else {
-            medida = " MB"
-            sizemedida = (size / 1024).toFixed(2).toString() + medida
-          }
-          const fileName: string = archivo.name
-          const img = new Image()
-          const objectURL = URL.createObjectURL(archivo)
-          img.src = objectURL
-          this.inputEmptyB = fileName
-
-
-          if (parent) {
-            console.log(parent)
-            
-            parent.children[0].children[1].children[0].children[0].innerHTML = imagen.width + " px"
-            parent.children[0].children[1].children[1].children[0].innerHTML = imagen.height + " px"
-            parent.children[0].children[1].children[2].children[0].innerHTML = sizemedida
-            const attr: HTMLElement | undefined = parent.children[0].children[0].children[0]
-            const img: HTMLElement | undefined = parent.children[1].children[0]
-            attr?.setAttribute('data-content', fileName)
-            attr?.setAttribute('src', fileName)
-            img?.setAttribute('src', imagen.src)
-            
-            clean?.addEventListener('click',() => {
-              parent.children[0].children[1].children[0].children[0].innerHTML = ''
-              parent.children[0].children[1].children[1].children[0].innerHTML = ''
-              parent.children[0].children[1].children[2].children[0].innerHTML = ''
-              attr?.setAttribute('data-content', 'seleccionar archivo')
-              attr?.setAttribute('src', '')
-              img?.setAttribute('src', '')
-            }, false)
-            
-        } 
-        }
-      }
-      lector.readAsDataURL(archivo)
-    }
-  }
-
-
-
-
-
-
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-FileAdd(event: Event, idfile:string): void  {
-
+InputChange(event: Event) {
+  this.widthLimit = 1200
+  this.heightLimit = 1080
+  this.sizeLimit = 2048
   const fileInput = event.target as HTMLInputElement
+  const parent: HTMLElement | any = fileInput?.parentElement?.parentElement?.parentElement
+  const clean: HTMLElement | any = parent?.children[0]?.children[0]?.children[1]
   const archivo = fileInput.files?.[0]
 
   if (archivo) { const lector = new FileReader()
-
-    lector.onload = (eventoLectura:any) => {
+      lector.onload = (eventoLectura:any) => {
       const imagen = new Image()
       imagen.src = eventoLectura.target.result as string
 
@@ -172,29 +111,42 @@ FileAdd(event: Event, idfile:string): void  {
         let img = new Image()
         const objectURL = URL.createObjectURL(archivo)
         img.src = objectURL
-
-const saveButtonTL = document.getElementById('save-new-tili')
-if (saveButtonTL) {
-  saveButtonTL.addEventListener('click', () => {
-
-}, false) }
-
-document.getElementsByClassName('innerdetails')[0]!.innerHTML = imagen.width + " px"
-document.getElementsByClassName('innerdetails')[1]!.innerHTML = imagen.height + " px"
-document.getElementsByClassName('innerdetails')[3]!.innerHTML = sizemedida
-        // document.getElementById('new-file-input')?.setAttribute('data-content', fileName)
-        this.inputEmpty = fileName
-        document.getElementById(idfile)?.setAttribute('src', img.src)
+        
+        if (parent) {
+          const widthInner: HTMLElement | any = parent.children[0].children[1].children[0].children[0]; widthInner.innerHTML = imagen.width + " px"
+          const heightInner: HTMLElement | any = parent.children[0].children[1].children[1].children[0]; heightInner.innerHTML = imagen.height + " px"
+          const sizeInner: HTMLElement | any = parent.children[0].children[1].children[2].children[0]; sizeInner.innerHTML = sizemedida
+          const attr: HTMLElement | undefined = parent.children[0].children[0].children[0]
+          const img: HTMLElement | undefined = parent.children[1].children[0]
+                      widthInner.classList.remove('limit')
+                      heightInner.classList.remove('limit')
+                      sizeInner.classList.remove('limit')
+                      if(imagen.width > this.widthLimit){ widthInner.classList.add('limit') }
+                      if(imagen.height > this.heightLimit){ heightInner.classList.add('limit') }
+                      if((size/1024) > this.sizeLimit){ sizeInner.classList.add('limit') }
+                      attr?.setAttribute('data-content', fileName)
+                      attr?.setAttribute('src', fileName)
+                      img?.setAttribute('src', imagen.src)
+                      
+      clean.onclick = () => {
+                widthInner.classList.remove('limit')
+                heightInner.classList.remove('limit')
+                sizeInner.classList.remove('limit')
+            parent.children[0].children[1].children[0].children[0].innerHTML = ''
+            parent.children[0].children[1].children[1].children[0].innerHTML = ''
+            parent.children[0].children[1].children[2].children[0].innerHTML = ''
+            attr?.setAttribute('data-content', 'seleccionar archivo')
+            attr?.setAttribute('src', '')
+            img?.setAttribute('src', '')
+          }
+      }
       }
     }
     lector.readAsDataURL(archivo)
   }
 }
 
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-
-
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 generarSub() { const newSubIndex = this.subsArray.length + 1; this.subsArray.push(newSubIndex) }
 eliminarUltimoSub() { if (this.subsArray.length > 0) { this.subsArray.pop() } }

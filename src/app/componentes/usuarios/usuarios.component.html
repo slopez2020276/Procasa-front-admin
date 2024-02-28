@@ -8,9 +8,8 @@
     <div id="bar-search">
       <label for="search" >Buscar</label>
       <input class="bold" [(ngModel)]="AliasFiltro"  class="bold" type="text" name="search" placeholder="" title="buscar">
-      <button type="button">...<i class="fas fa-magnifying-glass"></i></button>
     </div>
-    <button id="add-location" (click)="modalAddUser()">+ Agregar usuario</button>
+    <button class="btn-click btn-red normal" (click)="modalAddUser()"><mat-icon>add</mat-icon> Agregar usuario</button>
 </div>
 
 <div id="container-1" class="container">
@@ -26,25 +25,41 @@
 
 <div id="cont-modal-add">
   <div id="modal-add-user">
-    <div id="close-modal-add" (click)="modalAddUser()">cerrar</div>
-        <h1>Agregar Usuario</h1>
+    <div class="btn-click normal close-modal" (click)="modalAddUser()"><mat-icon>close</mat-icon></div>
+        <h1 class="title-modal">Agregar Usuario</h1>
         <form [formGroup]="formularioAgregarUser" >
           <div class="cont-input-user">  <label class="bold" for="alias">alias</label> <input formControlName = "nombre" class="bold" name="alias" type="text" title="alias del usuario"> </div>
           <div class="cont-input-user"> <label class="bold" for="correo">correo</label> <input class="bold" name="correo" formControlName="email" type="mail" title="correo del usuario"> </div>
           <div class="cont-input-user"> <label class="bold" for="contraseña">contraseña</label> <input class="bold" formControlName="password" name="contraseña" type="text" title="contraseña del usuario"> </div>
-          <div class="replace-button" id="save-user" (click)="registrarUsuario()"  >guardar</div>
+          <div class="btn-click btn-red normal" (click)="registrarUsuario()"><mat-icon>add</mat-icon> guardar</div>
         </form>
   </div>
 </div>
 
 <div id="cont-modal-edit">
   <div id="modal-edit-user">
-    <div id="close-modal-edit" (click)="modalEditUser()">cerrar</div>
-        <h1>Editar Usuario</h1>
+    <div class="btn-click normal close-modal" (click)="modalEditUser()"><mat-icon>close</mat-icon></div>
+        <h1 class="title-modal">Editar Usuario</h1>
         <form [formGroup]="formularioEditarUser">
           <div class="cont-input-user"> <label class="bold"  for="aliasEdit">Alias</label> <input [(ngModel)]="Alias" class="bold" formControlName="nombre" name="aliasEdit" type="text" title="editar alias"> </div>
           <div class="cont-input-user"> <label class="bold" for="correoEdit">Correo</label> <input class="bold" [(ngModel)]="email"  formControlName="email" name="correoEdit" type="text" title="editar correo"> </div>
-          <div class="replace-button" id="edit-user" (click)="editarUusario()" >guardar</div>
+          <div class="btn-click btn-red normal" (click)="editarUusario()"><mat-icon>add</mat-icon> guardar</div>
         </form>
   </div>
 </div>
+
+
+
+<!-------- A L E R T ---------------------------------------------------------------------------------------------------------------------------------------------------->
+<div id="background-alert">
+  <div class="container-alert" id="container-alert">
+    <div class="alert-model">
+      <p class="message bold"></p>
+      <div class="cont-btns-alert" id="btns">
+        <div class="btn-click btn-red" id="confirm-alert"><mat-icon>done</mat-icon> confirmar</div>
+        <div class="btn-click btn-gray" (click)="AlertClose()"><mat-icon>close</mat-icon> cancelar</div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- -->

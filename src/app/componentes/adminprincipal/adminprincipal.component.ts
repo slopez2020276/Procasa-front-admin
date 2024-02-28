@@ -33,7 +33,12 @@ export class AdminprincipalComponent implements OnInit {
   formularioAgregarNoticias: FormGroup
   formularioEditarFondoColor: FormGroup
   colorBg:any
+
   containerAlert: HTMLElement | any
+  widthLimit
+  heightLimit
+  sizeLimit
+  
   imgPrincipal: any
   imgfondo:any
   fileBg
@@ -508,61 +513,6 @@ sendFileUpdateTiempo():void{
 
 
 
-preSaveTimeLine(event: Event): void  {
-  const fileInput = event.target as HTMLInputElement
-  const parent: HTMLElement | any = fileInput?.parentElement?.parentElement?.parentElement
-  const clean: HTMLElement | undefined = parent?.children[0]?.children[0]?.children[1]
-
-
-
-  const archivo = fileInput.files?.[0]
-
-  if (archivo) { const lector = new FileReader()
-
-    lector.onload = (eventoLectura:any) => {
-      const imagen = new Image()
-      imagen.src = eventoLectura.target.result as string
-
-      imagen.onload = () => {
-        const fileSize: number = archivo.size
-        const size: any = fileSize.toFixed(2)
-        let medida: string
-        let sizemedida: any
-        if((size/1024/1024) < 1.0) {medida = " KB"; sizemedida = (size/1024).toFixed(2).toString() + medida }else{ medida = " MB"; sizemedida = (size/1024/1024).toFixed(2).toString() + medida }
-        const fileName: string = archivo.name
-        let img = new Image()
-        const objectURL = URL.createObjectURL(archivo)
-        img.src = objectURL
-        this.anchoimg = imagen.width, this.altoimg = imagen.height
-
-        if (parent) {
-          
-          parent.children[0].children[1].children[0].children[0].innerHTML = imagen.width + " px"
-          parent.children[0].children[1].children[1].children[0].innerHTML = imagen.height + " px"
-          parent.children[0].children[1].children[2].children[0].innerHTML = sizemedida
-          const attr: HTMLElement | undefined = parent.children[0].children[0].children[0]
-          const img: HTMLElement | undefined = parent.children[1].children[0]
-          attr?.setAttribute('data-content', fileName)
-          attr?.setAttribute('src', fileName)
-          img?.setAttribute('src', imagen.src)
-          
-          clean?.addEventListener('click',() => {
-            parent.children[0].children[1].children[0].children[0].innerHTML = ''
-            parent.children[0].children[1].children[1].children[0].innerHTML = ''
-            parent.children[0].children[1].children[2].children[0].innerHTML = ''
-            attr?.setAttribute('data-content', 'seleccionar archivo')
-            attr?.setAttribute('src', '')
-            img?.setAttribute('src', '')
-          }, false)
-          
-      }
-
-      }
-    }
-    lector.readAsDataURL(archivo)
-  }
-}
-
 saveNewTimeLine() {
 
   const fileInput: HTMLInputElement | null = document.getElementById('new-file-input') as HTMLInputElement | null
@@ -613,52 +563,6 @@ sendFileTimeLine():void {
       this.AlertMessage("¡Datos guardados exitosamente!", 1500)
     })
   }
-
-
-
-
-toUpdateLineaTiempo(event: Event) {
-    const fileInput = event.target as HTMLInputElement
-    const archivo = fileInput.files?.[0]
-  
-    if (archivo) { const lector = new FileReader()
-  
-      lector.onload = (eventoLectura:any) => {
-        const imagen = new Image()
-        imagen.src = eventoLectura.target.result as string
-  
-        imagen.onload = () => {
-          const fileSize: number = archivo.size
-          const size: any = fileSize.toFixed(2)
-          let medida: string
-          let sizemedida: any
-          if((size/1024/1024) < 1.0) {medida = " KB"; sizemedida = (size/1024).toFixed(2).toString() + medida }else{ medida = " MB"; sizemedida = (size/1024/1024).toFixed(2).toString() + medida }
-          const fileName: string = archivo.name
-          let img = new Image()
-          const objectURL = URL.createObjectURL(archivo)
-          img.src = objectURL
-          this.anchoimg = imagen.width, this.altoimg = imagen.height
-  
-      document.getElementById('width-update-lt')?.classList.remove('limit')
-          document.getElementById('height-update-lt')?.classList.remove('limit')
-          document.getElementById('size-update-lt')?.classList.remove('limit')
-  
-          if(this.anchoimg > 2000){  document.getElementById('width-update-lt')?.classList.add('limit') }
-          if(this.altoimg > 1500){ document.getElementById('height-update-lt')?.classList.add('limit') }
-          if((size/1024) > 2048 ){  document.getElementById('size-update-lt')?.classList.add('limit') }
-  
-          document.getElementById('size-update-lt')!.innerHTML = sizemedida
-          document.getElementById('width-update-lt')!.innerHTML = this.anchoimg + " px"
-          document.getElementById('height-update-lt')!.innerHTML = this.altoimg + " px"
-          document.getElementById('file-update-lt')?.setAttribute('data-content', fileName)
-          document.getElementById('img-update-tl')?.removeAttribute('src')
-          document.getElementById('img-update-tl')?.setAttribute('src', img.src)
-          }
-        }
-        lector.readAsDataURL(archivo)
-      }
-  }
-  
 
 
 saveUpdateTimeLine(){
@@ -810,53 +714,14 @@ sendFileUpdateNoticia():void{
   this.noticiasService.sendEdit(body,id)
   .subscribe(res =>{console.log(res), this.obtnerNoticias(),this.fileUpdateNoticia = null})
 }
+
+
+
+
 ShowMore(){ this.ObtenerAllnoticas() }
 
 
 
-
-saveNewNoticia(event: Event): void  {
-  const fileInput = event.target as HTMLInputElement
-  const archivo = fileInput.files?.[0]
-
-  if (archivo) { const lector = new FileReader()
-
-    lector.onload = (eventoLectura:any) => {
-      const imagen = new Image()
-      imagen.src = eventoLectura.target.result as string
-
-      imagen.onload = () => {
-        const fileSize: number = archivo.size
-        const size: any = fileSize.toFixed(2)
-        let medida: string
-        let sizemedida: any
-        if((size/1024/1024) < 1.0) {medida = " KB"; sizemedida = (size/1024).toFixed(2).toString() + medida }else{ medida = " MB"; sizemedida = (size/1024/1024).toFixed(2).toString() + medida }
-        const fileName: string = archivo.name
-        let img = new Image()
-        const objectURL = URL.createObjectURL(archivo)
-        img.src = objectURL
-        this.anchoimg = imagen.width, this.altoimg = imagen.height
-
-    document.getElementById('width-new-n')?.classList.remove('limit')
-        document.getElementById('height-new-n')?.classList.remove('limit')
-        document.getElementById('size-new-n')?.classList.remove('limit')
-
-        if(this.anchoimg > 2000){  document.getElementById('width-new-n')?.classList.add('limit') }
-        if(this.altoimg > 1500){ document.getElementById('height-new-n')?.classList.add('limit') }
-        if((size/1024) > 2048 ){  document.getElementById('size-new-n')?.classList.add('limit') }
-
-        document.getElementById('size-new-n')!.innerHTML = sizemedida
-        document.getElementById('width-new-n')!.innerHTML = this.anchoimg + " px"
-        document.getElementById('height-new-n')!.innerHTML = this.altoimg + " px"
-        document.getElementById('file-noticia')?.setAttribute('data-content', fileName)
-        document.getElementById('img-pre-noticia')?.removeAttribute('src')
-        document.getElementById('img-pre-noticia')?.setAttribute('src', img.src)
-
-        }
-      }
-      lector.readAsDataURL(archivo)
-    }
-}
 
 async guardarNoticia() {
   this.AlertOption("¿Desea agregar la Noticia?")
@@ -1362,6 +1227,67 @@ SystemAlert(id: number) {
   }
 }
 
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////7
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////7
 
+
+InputChange(event: Event) {
+  this.widthLimit = 1200
+  this.heightLimit = 1080
+  this.sizeLimit = 2048
+  const fileInput = event.target as HTMLInputElement
+  const parent: HTMLElement | any = fileInput?.parentElement?.parentElement?.parentElement
+  const clean: HTMLElement | any = parent?.children[0]?.children[0]?.children[1]
+  const archivo = fileInput.files?.[0]
+
+  if (archivo) { const lector = new FileReader()
+      lector.onload = (eventoLectura:any) => {
+      const imagen = new Image()
+      imagen.src = eventoLectura.target.result as string
+
+      imagen.onload = () => {
+        const fileSize: number = archivo.size
+        const size: any = fileSize.toFixed(2)
+        let medida: string
+        let sizemedida: any
+        if((size/1024/1024) < 1.0) {medida = " KB"; sizemedida = (size/1024).toFixed(2).toString() + medida }else{ medida = " MB"; sizemedida = (size/1024/1024).toFixed(2).toString() + medida }
+        const fileName: string = archivo.name
+        let img = new Image()
+        const objectURL = URL.createObjectURL(archivo)
+        img.src = objectURL
+        
+        if (parent) {
+          const widthInner: HTMLElement | any = parent.children[0].children[1].children[0].children[0]; widthInner.innerHTML = imagen.width + " px"
+          const heightInner: HTMLElement | any = parent.children[0].children[1].children[1].children[0]; heightInner.innerHTML = imagen.height + " px"
+          const sizeInner: HTMLElement | any = parent.children[0].children[1].children[2].children[0]; sizeInner.innerHTML = sizemedida
+          const attr: HTMLElement | undefined = parent.children[0].children[0].children[0]
+          const img: HTMLElement | undefined = parent.children[1].children[0]
+                      widthInner.classList.remove('limit')
+                      heightInner.classList.remove('limit')
+                      sizeInner.classList.remove('limit')
+                      if(imagen.width > this.widthLimit){ widthInner.classList.add('limit') }
+                      if(imagen.height > this.heightLimit){ heightInner.classList.add('limit') }
+                      if((size/1024) > this.sizeLimit){ sizeInner.classList.add('limit') }
+                      attr?.setAttribute('data-content', fileName)
+                      attr?.setAttribute('src', fileName)
+                      img?.setAttribute('src', imagen.src)
+                      
+      clean.onclick = () => {
+                widthInner.classList.remove('limit')
+                heightInner.classList.remove('limit')
+                sizeInner.classList.remove('limit')
+            parent.children[0].children[1].children[0].children[0].innerHTML = ''
+            parent.children[0].children[1].children[1].children[0].innerHTML = ''
+            parent.children[0].children[1].children[2].children[0].innerHTML = ''
+            attr?.setAttribute('data-content', 'seleccionar archivo')
+            attr?.setAttribute('src', '')
+            img?.setAttribute('src', '')
+          }
+      }
+      }
+    }
+    lector.readAsDataURL(archivo)
+  }
+}
 
 }
