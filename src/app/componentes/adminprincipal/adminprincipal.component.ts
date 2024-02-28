@@ -995,13 +995,10 @@ if(btnSaveUpdate){
   
 
   ChangeFileBackground(event: Event): void {
-    const fileInput = event.target as HTMLInputElement
-    const archivo = fileInput.files?.[0]
+    const fileInput = event.target as HTMLInputElement | any
+    const archivo:any = fileInput.files?.[0]
 
-    // const element = this.fileBg
-    // const parent = element?.parentElement?.parentElement as HTMLElement
-  
-    if (archivo) {
+    if (archivo && fileInput) {
       const lector = new FileReader()
       lector.onload = (eventoLectura: any) => {
         const imagen = new Image()
@@ -1043,8 +1040,6 @@ if(btnSaveUpdate){
             dangerRedElements[2]?.classList.add('limit')
           }
   
-          // console.log(parent?.children[2]?.children[0])
-          
 
           document.getElementById('innersize-bg')!.innerHTML = sizemedida
           document.getElementById('innerwidth-bg')!.innerHTML = this.anchoimg + " px"
