@@ -142,7 +142,6 @@ constructor(){
 
 
           if (parent) {
-            console.log(parent)
             
             parent.children[0].children[1].children[0].children[0].innerHTML = imagen.width + " px"
             parent.children[0].children[1].children[1].children[0].innerHTML = imagen.height + " px"

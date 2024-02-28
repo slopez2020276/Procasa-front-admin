@@ -3,94 +3,73 @@
 <div id="container-1"></div>
 
 <div id="modal-add-location">
-  <button id="close-modal" (click)="AddLocation()">cerrar</button>
-  <h1>Agregar Ubicación</h1>
-
+  <h1 class="title-modal">Agregar Ubicación</h1>
+  <button class="btn-click normal close-modal" (click)="AddLocation()"><mat-icon>close</mat-icon></button>
+  <form [formGroup]="fornularioAgregarUbicacion">
   <div class="cont">
-    <div class="item">
-      <label>imagen</label>
-    <input id="fileimg" (change)="InputChange($event)" (change)="getFile($event)" title="input" type="file" class="bold" placeholder="" data-content="seleccionar archivo">
 
-    <div class="details-img">
-      <ul>
-        <a href="https://maps.app.goo.gl/PqYhPqktskGv5N6XA">new</a>
-        <li>ancho <span class="bold danger-red" id="">-</span></li>
-        <li>alto <span class="bold danger-red" id="">-</span></li>
-        <li>tamaño <span class="bold danger-red" id="">-</span></li>
-      </ul>
-      <img src="" alt="" id="prefileimg">
-    </div>
-
-  </div>
+<div id="sub-cont-details-img">
+      <div class="sub-details">
+          <div class="sub-img-btn">
+            <input id="imgSave" type="file" (change)="InputChange($event)" (change)="getFile($event)" title="seleccionar archivo" accept=".jpg, .png, .jpeg, .avi, .webp" data-content="seleccionar archivo">
+            <mat-icon>delete</mat-icon>
+          </div>
+        <ul>
+          <li>ancho: <span class="bold danger-red" id="innerwidth-add"></span> </li>
+          <li>alto:  <span class="bold danger-red" id="innerheight-add"></span> </li>
+          <li>peso:  <span class="bold danger-red" id="innersize-add"></span></li>
+        </ul>
+      </div>
+      <div class="cont-details-img"><img alt="" src=""></div>
 </div>
 
-<div class="cont">
-  <form [formGroup]="fornularioAgregarUbicacion">
+</div>
 
+
+<div class="cont">
     <div class="item">
-      <label>Nombre</label>
-      <input formControlName="nombreTienda" id="name" title="input" type="text" class="bold" placeholder="">
+      <input formControlName="nombreTienda" id="name" title="input" type="text" class="normal" placeholder="nombre">
     </div>
     <div class="item">
-      <label for="tipoTienda">Tipo</label>
-      <select formControlName="tipoTienda" name="tipoTienda" id="">
+      <select formControlName="tipoTienda" name="tipoTienda" class="normal" id="sucursal">
         <option value="procasa">Procasa</option>
         <option value="meathouse">Meat House</option>
         <option value="eco">Econocarnes</option>
       </select>
     </div>
     <div class="item">
-      <label>telefono</label>
-      <input formControlName="telefono" id="lat" title="input" type="text" class="bold" placeholder="">
+      <input formControlName="telefono" id="telefono" title="input" type="text" class="normal" placeholder="teléfono">
     </div>
     <div class="item">
-      <label>horario</label>
-      <input formControlName="horario" id="lat" title="input" type="text" class="bold" placeholder="">
+      <input formControlName="horario" id="horario" title="input" type="text" class="normal" placeholder="horario">
     </div>
     <div class="item">
-      <label>enlace Maps</label>
-      <input formControlName="enlaceMaps" id="lat" title="input" type="text" class="bold" placeholder="">
+      <input formControlName="enlaceMaps" id="maps" title="input" type="text" class="normal" placeholder="enlace Maps">
     </div>
     <div class="item">
-      <label>enlace Waze</label>
-      <input formControlName="enlaceWaze" id="lat" title="input" type="text" class="bold" placeholder="">
+      <input formControlName="enlaceWaze" id="waze" title="input" type="text" class="normal" placeholder="enlace Waze">
     </div>
     <div class="item">
-      <label>Descripcion de la tienda</label>
-      <input formControlName="descripcion" id="log" title="input" type="text" class="bold" placeholder="">
+      <input formControlName="descripcion" id="descripcion" title="input" type="text" class="normal" placeholder="descripción">
     </div>
-  </form>
   </div>
+  
+  <button class="btn-click btn-red normal" (click)="saveLocation($event)"><mat-icon>save</mat-icon> guardar</button>
+</form>
 
-  <button (click)="sendFile()" id="save-modal" >GUARDAR</button>
-
-
-  <div class="container-alert">
-    <div class="alert-model">
-        <p class="inner-message bold"></p>
-
-        <div class="message"> <h1 class="innermsg"></h1></div>
-        <div class="cont-btns-alert">
-          <button>confirmar</button>
-          <div class="replace-button cancel">cancelar</div>
-        </div>
-      </div>
-  </div>
 </div>
 
 
 
 <div id="container-2">
   <h1>Ubicaciones</h1>
-    <h2></h2>
-
     <div id="bar-search">
       <label for="search">Buscar</label>
       <input  [(ngModel)]="nombreTiendaFiltro"  class="bold" type="text" name="search" placeholder="" title="buscar">
 
     </div>
 
-    <button id="add-location" (click)="AddLocation()">+ Agregar ubicación</button>
+    <button class="btn-click btn-red normal" (click)="AddLocation()"><mat-icon>add</mat-icon> Agregar ubicación</button>
 </div>
 
 <div id="container-3">
@@ -113,7 +92,10 @@
           <td class="tb-address">{{os.tipoTienda}}</td>
           <td class="tb-telephone">{{os.codenadaslat}}</td>
           <td class="tb-extension">{{os.codenadasLng}}</td>
-          <td class="tb-actions actions-center"><button class="tb-edit" (click)="ObtenerUbixId(os._id)" (click)="editLocation()">editar</button> <button class="tb-delete">borrar</button></td>
+          <td class="tb-actions actions-center">
+            <button class="btn-click" (click)="ObtenerUbixId(os._id)" (click)="editLocation()"><mat-icon>edit</mat-icon></button>
+            <button class="btn-click btn-red"><mat-icon>delete</mat-icon></button>
+          </td>
         </tr>
         }
   </tbody>
@@ -123,25 +105,25 @@
 
 
 <div id="modal-edit-location">
-  <button id="close-modal-edit" (click)="editLocation()">cerrar</button>
+  <button class="btn-click close-modal" (click)="editLocation()"><mat-icon>close</mat-icon></button>
   <h1>Editar Ubicación</h1>
 
-<div class="cont">
-  <div class="item">
-    <label>imagen</label>
-    <input id="fileimg" (change)="InputChange($event)" (change)="getFileEdit($event)" title="input" type="file" class="bold" placeholder="" data-content="seleccionar archivo">
-
-    <div class="details-img">
+  <div id="sub-cont-details-img">
+    <div class="sub-details">
+        <div class="sub-img-btn">
+          <input type="file" (change)="InputChange($event)" (change)="getFile($event)" title="seleccionar archivo" accept=".jpg, .png, .jpeg, .avi, .webp" data-content="seleccionar archivo">
+          <mat-icon>delete</mat-icon>
+        </div>
       <ul>
-        <li>ancho <span class="bold danger-red" id="">-</span></li>
-        <li>alto <span class="bold danger-red" id="">-</span></li>
-        <li>tamaño <span class="bold danger-red" id="">-</span></li>
+        <li>ancho: <span class="bold danger-red" id="innerwidth-add"></span> </li>
+        <li>alto:  <span class="bold danger-red" id="innerheight-add"></span> </li>
+        <li>peso:  <span class="bold danger-red" id="innersize-add"></span></li>
       </ul>
-      <img src="" alt="" id="prefileimg">
     </div>
-
-  </div>
+    <div class="cont-details-img"><img alt="" src=""></div>
 </div>
+
+
 
 <div class="cont">
   <form [formGroup]="formularioEditUbicacion">
@@ -175,15 +157,20 @@
   <button (click)="sendFileEdit()" id="save-modal-edit" >GUARDAR</button>
 
 
-  <div class="container-alert">
-    <div class="alert-model">
-        <p class="inner-message bold"></p>
+</div>
 
-        <div class="message"> <h1 class="innermsg"></h1></div>
-        <div class="cont-btns-alert">
-          <button (click)="sendFileEdit()">confirmar</button>
-          <div class="replace-button cancel">cancelar</div>
-        </div>
+
+
+<!-------- A L E R T ---------------------------------------------------------------------------------------------------------------------------------------------------->
+<div id="background-alert">
+  <div class="container-alert" id="container-alert">
+    <div class="alert-model">
+      <p class="message bold"></p>
+      <div class="cont-btns-alert" id="btns">
+        <div class="btn-click btn-red" id="confirm-alert"><mat-icon>done</mat-icon> confirmar</div>
+        <div class="btn-click btn-gray" (click)="AlertClose()"><mat-icon>close</mat-icon> cancelar</div>
       </div>
+    </div>
   </div>
 </div>
+<!-- ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- -->

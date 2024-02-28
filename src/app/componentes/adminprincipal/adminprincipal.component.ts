@@ -509,8 +509,12 @@ sendFileUpdateTiempo():void{
 
 
 preSaveTimeLine(event: Event): void  {
-
   const fileInput = event.target as HTMLInputElement
+  const parent: HTMLElement | any = fileInput?.parentElement?.parentElement?.parentElement
+  const clean: HTMLElement | undefined = parent?.children[0]?.children[0]?.children[1]
+
+
+
   const archivo = fileInput.files?.[0]
 
   if (archivo) { const lector = new FileReader()
@@ -531,19 +535,28 @@ preSaveTimeLine(event: Event): void  {
         img.src = objectURL
         this.anchoimg = imagen.width, this.altoimg = imagen.height
 
-const saveButtonTL = document.getElementById('save-new-tili')
-if (saveButtonTL) {
-  saveButtonTL.addEventListener('click', () => {
+        if (parent) {
+          
+          parent.children[0].children[1].children[0].children[0].innerHTML = imagen.width + " px"
+          parent.children[0].children[1].children[1].children[0].innerHTML = imagen.height + " px"
+          parent.children[0].children[1].children[2].children[0].innerHTML = sizemedida
+          const attr: HTMLElement | undefined = parent.children[0].children[0].children[0]
+          const img: HTMLElement | undefined = parent.children[1].children[0]
+          attr?.setAttribute('data-content', fileName)
+          attr?.setAttribute('src', fileName)
+          img?.setAttribute('src', imagen.src)
+          
+          clean?.addEventListener('click',() => {
+            parent.children[0].children[1].children[0].children[0].innerHTML = ''
+            parent.children[0].children[1].children[1].children[0].innerHTML = ''
+            parent.children[0].children[1].children[2].children[0].innerHTML = ''
+            attr?.setAttribute('data-content', 'seleccionar archivo')
+            attr?.setAttribute('src', '')
+            img?.setAttribute('src', '')
+          }, false)
+          
+      }
 
-    this.saveNewTimeLine()
-
-}, false) }
-
-        document.getElementsByClassName('innerdetails')[2]!.innerHTML = sizemedida
-        document.getElementsByClassName('innerdetails')[0]!.innerHTML = this.anchoimg + " px"
-        document.getElementsByClassName('innerdetails')[1]!.innerHTML = this.altoimg + " px"
-        document.getElementById('new-file-input')?.setAttribute('data-content', fileName)
-        document.getElementById('img-pre-tl')?.setAttribute('src', img.src)
       }
     }
     lector.readAsDataURL(archivo)
@@ -655,7 +668,8 @@ saveUpdateTimeLine(){
 
   if (btn) { btn.onclick = () => {
     try{
- this.sendFileTimeLine()
+//  this.sendFileTimeLine()
+ this.sendFileUpdateTiempo()
  this.AlertMessage("¡Datos actualizados exitosamente!", 1500)
   } catch(error){ this.AlertMessage("Error al actualizar", 1500) }
   } }

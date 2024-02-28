@@ -9,7 +9,7 @@
     <label for="search">Buscar</label>
     <input class="bold" type="text" name="search" placeholder="" title="buscar producto">
   </div>
-  <button id="add-product" (click)="ModalProduct('add')"><mat-icon>add</mat-icon> Agregar</button>
+  <button class="btn-click btn-red normal" (click)="ModalProduct('add')"><mat-icon>add</mat-icon> Agregar producto</button>
 </div>
 
   
@@ -42,19 +42,6 @@
           <div class="del-product btn-click btn-red"> <mat-icon>delete</mat-icon></div>
           <div class="btn-click btn-gold" (click)="openAddCategory($event)"><mat-icon>list</mat-icon></div>
             </div>
-          
-          <div class="container-alert">
-            <div class="alert-model">
-              <p class="inner-message normal"></p>
-              
-              <div class="message"> <h1 class="innermsg"></h1></div>
-              <div class="cont-btns-alert">
-                <button  class="confirm replace-button btn-click" (click)="confirmedDeleteProduct($event)"><mat-icon>done</mat-icon></button>
-                <div class="replace-button btn-click cancel"><mat-icon>close</mat-icon></div>
-              </div>
-            </div>
-          </div>
-          
             
           <div class="cont-add-cat cont-add-cat-new">
             <h1 class="title-modal">Agregar Categoría</h1>

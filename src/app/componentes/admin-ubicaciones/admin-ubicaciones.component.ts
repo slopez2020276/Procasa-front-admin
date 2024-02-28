@@ -32,6 +32,12 @@ codenadaslat:any
 tipoTienda:any
 imgPath:any
 
+containerAlert: HTMLElement | any
+widthLimit
+heightLimit
+sizeLimit
+
+
 
 constructor (){
   this.fornularioAgregarUbicacion = new FormGroup({
@@ -57,6 +63,7 @@ constructor (){
 }
 
 ngOnInit(): void {
+  this.containerAlert = document.getElementById('background-alert')
   this.obtenerUbicacion()
 }
 
@@ -66,8 +73,17 @@ async obtenerUbicacion(){
   this.dataUbicacion = ubicacion.ubi
 }
 
+
+
+
+
 InputChange(event: Event) {
+  this.widthLimit = 1200
+  this.heightLimit = 1080
+  this.sizeLimit = 2048
   const fileInput = event.target as HTMLInputElement
+  const parent: HTMLElement | any = fileInput?.parentElement?.parentElement?.parentElement
+  const clean: HTMLElement | any = parent?.children[0]?.children[0]?.children[1]
   const archivo = fileInput.files?.[0]
 
   if (archivo) { const lector = new FileReader()
@@ -85,134 +101,95 @@ InputChange(event: Event) {
         let img = new Image()
         const objectURL = URL.createObjectURL(archivo)
         img.src = objectURL
+        
+        if (parent) {
+          const widthInner: HTMLElement | any = parent.children[0].children[1].children[0].children[0]; widthInner.innerHTML = imagen.width + " px"
+          const heightInner: HTMLElement | any = parent.children[0].children[1].children[1].children[0]; heightInner.innerHTML = imagen.height + " px"
+          const sizeInner: HTMLElement | any = parent.children[0].children[1].children[2].children[0]; sizeInner.innerHTML = sizemedida
+          const attr: HTMLElement | undefined = parent.children[0].children[0].children[0]
+          const img: HTMLElement | undefined = parent.children[1].children[0]
+                      widthInner.classList.remove('limit')
+                      heightInner.classList.remove('limit')
+                      sizeInner.classList.remove('limit')
+                      if(imagen.width > this.widthLimit){ widthInner.classList.add('limit') }
+                      if(imagen.height > this.heightLimit){ heightInner.classList.add('limit') }
+                      if((size/1024) > this.sizeLimit){ sizeInner.classList.add('limit') }
+                      attr?.setAttribute('data-content', fileName)
+                      attr?.setAttribute('src', fileName)
+                      img?.setAttribute('src', imagen.src)
 
-        document.getElementsByClassName('danger-red')[0]?.classList.remove('limit')
-        document.getElementsByClassName('danger-red')[1]?.classList.remove('limit')
-        document.getElementsByClassName('danger-red')[2]?.classList.remove('limit')
-
-        if(imagen.width > 2000){  document.getElementsByClassName('danger-red')[0].classList.add('limit') }
-        if(imagen.height > 1500){ document.getElementsByClassName('danger-red')[1].classList.add('limit') }
-        if((size/1024) > 2048 ){  document.getElementsByClassName('danger-red')[2].classList.add('limit') }
-
-        document.getElementsByClassName('danger-red')[2]!.innerHTML = sizemedida
-        document.getElementsByClassName('danger-red')[0]!.innerHTML = imagen.width + " px"
-        document.getElementsByClassName('danger-red')[1]!.innerHTML = imagen.height + " px"
-        document.getElementById('fileimg')?.setAttribute('data-content', fileName)
-        document.getElementById('prefileimg')?.removeAttribute('src')
-        // document.getElementById('fileimg')?.removeAttribute('src')
-        document.getElementById('prefileimg')?.setAttribute('src', img.src)
-        // document.getElementById('pre-bg')?.setAttribute('src', img.src)
-        // document.getElementById('endpreview-bg')?.setAttribute('src', img.src)
+      clean.onclick = () => {
+                widthInner.classList.remove('limit')
+                heightInner.classList.remove('limit')
+                sizeInner.classList.remove('limit')
+            parent.children[0].children[1].children[0].children[0].innerHTML = ''
+            parent.children[0].children[1].children[1].children[0].innerHTML = ''
+            parent.children[0].children[1].children[2].children[0].innerHTML = ''
+            attr?.setAttribute('data-content', 'seleccionar archivo')
+            attr?.setAttribute('src', '')
+            img?.setAttribute('src', '')
+          }
+      }
       }
     }
     lector.readAsDataURL(archivo)
   }
+}
 
-document.getElementById('save-modal')?.addEventListener('click', () => {
-  const nombreinput: HTMLInputElement | null = document.getElementById('name') as HTMLInputElement
-  const tipoinput: HTMLInputElement | null = document.getElementById('type') as HTMLInputElement
-  const latinput: HTMLInputElement | null = document.getElementById('lat') as HTMLInputElement
-  const loginput: HTMLInputElement | null = document.getElementById('log') as HTMLInputElement
-  let nombre: string = ''
-  let tipo: string = ''
-  let lat: string = ''
-  let log: string = ''
 
-  if (nombreinput instanceof HTMLInputElement) { nombre = nombreinput.value }
-  if (tipoinput instanceof HTMLInputElement) { tipo = tipoinput.value }
-  if (latinput instanceof HTMLInputElement) { lat = latinput.value }
-  if (loginput instanceof HTMLInputElement) { log = loginput.value }
+saveLocation(event: MouseEvent){
+  const inImg: HTMLInputElement | any = document.getElementById('imgSave')
+  let img: string = inImg.value
+  const inNombre: HTMLInputElement | any = document.getElementById('name')
+  let nombre: string = inNombre.value
+  const inSucursal: HTMLSelectElement | any = document.getElementById('sucursal')
+  let sucursal: string = inSucursal.value
+  const inTelefono: HTMLInputElement | any = document.getElementById('telefono')
+  let telefono: string = inTelefono.value
+  const inHorario: HTMLInputElement | any = document.getElementById('horario')
+  let horario: string = inHorario.value
+  const inMaps: HTMLInputElement | any = document.getElementById('maps')
+  let maps: string = inMaps.value
+  const inWaze: HTMLInputElement | any = document.getElementById('waze')
+  let waze: string = inWaze.value
+  const inDesc: HTMLInputElement | any = document.getElementById('descripcion')
+  let descripcion: string = inDesc.value
 
-    // if(nombre!=="" && tipo!=="" && lat!=="" && log!=="" && archivo?.name!==""){
+if(img!=="" && nombre!=="" && sucursal!=="" && telefono!=="" && horario!=="" && maps!=="" && waze!=="" && descripcion!==""){
+  this.AlertOption("¿Desea guardar la nueva Ubicación?")
+    const parent: HTMLElement | any = this.containerAlert
+    const btn: HTMLElement | any = parent?.childNodes[0]?.childNodes[0]?.childNodes[1]?.childNodes[0]
 
-  const innerMessage = document.getElementsByClassName('innermsg')[0]
-  if (innerMessage) { innerMessage.innerHTML = "¿Desea guardar los datos?"
-
-  document.getElementsByClassName('container-alert')[0]?.classList.add('show')
-  document.getElementsByClassName('message')[0]?.classList.add('show')
-  document.getElementsByClassName('cont-btns-alert')[0]?.classList.add('show')
-
-  document.getElementsByClassName('cancel')[0]?.addEventListener('click', function(){
-    document.getElementsByClassName('container-alert')[0]?.classList.remove('show')
-    document.getElementsByClassName('message')[0]?.classList.remove('show')
-    document.getElementsByClassName('cont-btns-alert')[0]?.classList.remove('show')
-  },false)
-  document.getElementsByClassName('confirm')[0]?.addEventListener('click', async () => {
-
-    const body = new FormData()
-
-    if(this.fileTmp){
-      body.append('imgPath', this.fileTmp.fileRaw, this.fileTmp.fileName);
-      body.append('tipoTienda', this.fornularioAgregarUbicacion.value.tipoTienda)
-      body.append('nombreTienda',this.fornularioAgregarUbicacion.value.nombreTienda)
-      body.append('codenadasLng',this.fornularioAgregarUbicacion.value.codenadasLng)
-      body.append('codenadaslat',this.fornularioAgregarUbicacion.value.codenadaslat)
-      body.append('descripcion',this.fornularioAgregarUbicacion.value.descripcion)
-
-    }else{
-      body.append('tipoTienda', this.fornularioAgregarUbicacion.value.tipoTienda)
-      body.append('nombreTienda',this.fornularioAgregarUbicacion.value.nombreTienda)
-      body.append('codenadasLng',this.fornularioAgregarUbicacion.value.codenadasLng)
-      body.append('codenadaslat',this.fornularioAgregarUbicacion.value.codenadaslat)
-      body.append('descripcion',this.fornularioAgregarUbicacion.value.descripcion)
+  if (btn) { btn.onclick = () => {
+      try {
+        this.sendFile()
+        this.AlertMessage("¡Ubicación guardada exitosamente!", 1500)
+      } catch (error) { this.AlertMessage("Error al guardar", 1500) } 
     }
-
-    console.log(this.fornularioAgregarUbicacion.value.fecha)
-    this.ubicacionService.CrearUbicacion(body)
-    .subscribe(res =>{console.log(res), this.obtenerUbicacion(),this.fileTmp = null})
-    this.MessageSuccess('Datos guardados exitosamente',6)
-
-      document.getElementsByClassName('container-alert')[0]?.classList.remove('show')
-      document.getElementsByClassName('danger-red')[2]!.innerHTML = "-"
-      document.getElementsByClassName('danger-red')[0]!.innerHTML = "-"
-      document.getElementsByClassName('danger-red')[1]!.innerHTML = "-"
-
-const nombreEmpty: HTMLInputElement | null = document.getElementById('name') as HTMLInputElement; if (nombreEmpty) { nombreEmpty.value = '' }
-const typeEmpty: HTMLInputElement | null = document.getElementById('name') as HTMLInputElement; if (typeEmpty) { typeEmpty.value = '' }
-const latEmpty: HTMLInputElement | null = document.getElementById('name') as HTMLInputElement; if (latEmpty) { latEmpty.value = '' }
-const logEmpty: HTMLInputElement | null = document.getElementById('name') as HTMLInputElement; if (logEmpty) { logEmpty.value = '' }
-
-
-      document.getElementById('fileimg')?.setAttribute('data-content', 'seleccionar archivo')
-      document.getElementById('prefileimg')?.removeAttribute('src')
-
-
-  },false)
   }
-// }else{this.MessageSuccess("Los campos requeridos no pueden estar vacíos",0)}
-
-}, false)
+}else{ this.AlertMessage("Todos los campos son requeridos", 1500) }
 
 }
+
+
+
 
 AddLocation(){ document.getElementById('modal-add-location')?.classList.toggle('toggle') }
 
-MessageSuccess(text: string, i: number){
-  const innermsg = document.getElementsByClassName('innermsg')[i]
-  if (innermsg) { innermsg.innerHTML = text
-    document.getElementsByClassName('container-alert')[i]?.classList.add('show')
-    document.getElementsByClassName('message')[i]?.classList.add('show')
-    document.getElementsByClassName('timesuccess')[i]?.classList.toggle('lesswidth')
-    setTimeout(() => {
-      document.getElementsByClassName('container-alert')[i]?.classList.remove('show')
-      document.getElementsByClassName('message')[i]?.classList.remove('show')
-      document.getElementsByClassName('timesuccess')[i]?.classList.remove('lesswidth')
-  },1500)
-}
-}
-
 getFile($event: any): void {
-  //TODO esto captura el archivo!
-  const [ file ] = $event.target.files;
+  const [ file ] = $event.target.files
   this.fileTmp = {
     fileRaw:file,
     fileName:file.name
   }
 }
 
+
+
 sendFile():void{
 
   const body = new FormData()
+console.log(body)
 
   if(this.fileTmp){
     body.append('imgPath', this.fileTmp.fileRaw, this.fileTmp.fileName);
@@ -230,11 +207,14 @@ sendFile():void{
     body.append('descripcion',this.fornularioAgregarUbicacion.value.descripcion)
   }
 
-  console.log(this.fornularioAgregarUbicacion.value.fecha)
   this.ubicacionService.CrearUbicacion(body)
   .subscribe(res =>{console.log(res), this.obtenerUbicacion(),this.fileTmp = null})
-  this.MessageSuccess('Datos guardados exitosamente',6)
+
 }
+
+
+
+
 
 getFileEdit($event: any): void {
   //TODO esto captura el archivo!
@@ -268,7 +248,6 @@ sendFileEdit():void{
   console.log(this.formularioEditUbicacion.value.fecha)
   this.ubicacionService.sendEdit(body,this.idUbicacion)
   .subscribe(res =>{console.log(res), this.obtenerUbicacion(),this.fileTmpEdit = null})
-  this.MessageSuccess('Datos guardados exitosamente',6)
 }
 
 
@@ -281,18 +260,75 @@ async ObtenerUbixId(id){
   this.codenadaslat = Ubicacion.ubi.codenadaslat
   this.descripcion = Ubicacion.ubi.descripcion
   this.imgPath =Ubicacion.ubi.imgPath
-
-  console.log(Ubicacion)
-  console.log(this.descripcion)
-
-
 }
 
-editLocation(){
+editLocation(){ document.getElementById('modal-edit-location')?.classList.toggle('toggle') }
 
 
 
-  document.getElementById('modal-edit-location')?.classList.toggle('toggle') }
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// S Y S T E M A      D E     A L E R T A S
+AlertOption(message:string) {
+  const parent: HTMLElement | any = this.containerAlert
+  parent?.classList.add('show')
+  const alert: HTMLElement | any = parent?.childNodes[0]
+  alert?.classList.add('show')
+  const inner: HTMLElement | any = alert?.childNodes[0]?.childNodes[0]
+  inner!.innerText = message
+  const btns: HTMLElement | any = alert?.childNodes[0]?.childNodes[1]
+  btns?.classList.add('show')
+}
+
+AlertMessage(message:string, time:number) {
+  const parent: HTMLElement | any = this.containerAlert
+  parent?.classList.add('show')
+  const alert: HTMLElement | any = parent?.childNodes[0]
+  alert?.classList.add('show')
+  const inner: HTMLElement | any = alert?.childNodes[0]?.childNodes[0]
+  inner!.innerText = message
+  const btns: HTMLElement | any = alert?.childNodes[0]?.childNodes[1]
+  btns?.classList.remove('show')
+  setTimeout(() => { this.AlertClose() }, time)
+}
+
+AlertClose(){
+  const parent: HTMLElement | any = this.containerAlert
+  parent?.classList.remove('show')
+  const alert: HTMLElement | any = parent?.childNodes[0]
+  alert?.classList.remove('show')
+  const inner: HTMLElement | any = alert?.childNodes[0]?.childNodes[0]
+  inner!.innerText = ""
+  const btns: HTMLElement | any = alert?.childNodes[0]?.childNodes[1]
+  btns?.classList.remove('show')
+}
+
+// P L A N T I L L A      D E      S Y S T E M     A L E R T 
+SystemAlert(id: number) {
+  this.AlertOption("Message to Show")
+  const parent: HTMLElement | any = this.containerAlert
+  const btn: HTMLElement | any = parent?.childNodes[0]?.childNodes[0]?.childNodes[1]?.childNodes[0]
+
+  if (btn) { 
+    btn.onclick = () => {
+          // A C T I O N 
+    }
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 }
