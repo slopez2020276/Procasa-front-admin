@@ -15,6 +15,20 @@ body {
 .normal {font-family: realeway_normal;}
 
 
+img#background-texture {
+  width: auto;
+  min-width: 100vw;
+  height: 120vh;
+  min-height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 0;
+  opacity: 1;
+}
+
+
+
 h1.container-h1 {
   width: 100%;
   padding: 2rem;

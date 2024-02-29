@@ -1,18 +1,19 @@
+<img [src]="imgFondo" id="background-texture">
 <app-navbar></app-navbar>
 
 <div id="container-main">
   <h1 class="container-h1 bold" id="h1-promesa">NUESTRA PROMESA</h1>
-<div id="container-promesa">
-  <div class="cont-promesa">
+  <div id="container-promesa">
+    <div class="cont-promesa">
     <div class="subcont-promesa"> <img src="../../assets/img/promesa1.jpg" alt="" title="promesa"> </div>
     <div class="subcont-promesa letter-red bold">BLAST FREEZING MINIMIZES CRYSTALIZATION</div>
   </div>
-
+  
   <div class="cont-promesa">
     <div class="subcont-promesa"> <img src="../../assets/img/promesa2.jpg" alt="" title="promesa"> </div>
     <div class="subcont-promesa letter-red bold">SEALS IN VITAMINS AND MINERALS</div>
   </div>
-
+  
   <div class="cont-promesa">
     <div class="subcont-promesa"> <img src="../../assets/img/promesa3.jpg" alt="" title="promesa"> </div>
     <div class="subcont-promesa letter-red bold">USE ONLY WHAT YOU NEED FOR LESS WASTE</div>
@@ -20,7 +21,7 @@
 </div>
 
 
-  <h1 class="container-h1 bold" id="h1-marcas">NUESTRAS MARCAS</h1>
+<h1 class="container-h1 bold" id="h1-marcas">NUESTRAS MARCAS</h1>
 <div id="container-marcas">
   <div id="carrousel-marcas">
     <div class="marca-item"><img src="../../assets/img/marca1.jpg" alt=""></div>
@@ -38,9 +39,9 @@
   <h1 class="container-h1 bold" id="h1-catalogo">CATÁLOGO</h1>
   <div id="cont-products">
 
+    @for (os of dataProductos; track os._id  ) {
       <div class="product">
 
-        @for (os of dataProductos; track os._id  ) {
           <img [ngSrc]=" os.imgPath" [width]="500" [height]="500" class="img-product">
           <h2>{{os.nombreProducto}}</h2>
               <div class="cont-details">
@@ -60,11 +61,11 @@
                   </div>
                   
                 </div>
-          }
-      
+              </div>
+                }
+                
 
        
-      </div>
 
 
 

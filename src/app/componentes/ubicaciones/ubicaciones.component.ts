@@ -23,6 +23,11 @@ export class UbicacionesComponent {
   dataUbicaciones
   filtro
   filtroIMG
+
+  colorn
+  tipoBack 
+
+
   async onSubmit(){ }
 
  async ngOnInit() {

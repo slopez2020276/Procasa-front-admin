@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { HistoriaService } from '../../services/historia.service';
 
 @Component({
@@ -6,7 +6,7 @@ import { HistoriaService } from '../../services/historia.service';
   templateUrl: './quiero-comprar.component.html',
   styleUrl: './quiero-comprar.component.css'
 })
-export class QuieroComprarComponent {
+export class QuieroComprarComponent implements OnInit {
 
   
 constructor(){ }

@@ -13,7 +13,6 @@ div#container-main {
   padding-bottom: 200px;
   position: relative;
   margin-top: 65px;
-  background: #252525;
   display: flex;
   justify-content: center;
   align-items: start;
@@ -30,7 +29,6 @@ div#cont-products {
   align-content: center;
   flex-wrap: wrap;
   margin-top: 1rem;
-  border: 1px solid #FFF;
 
 }
 

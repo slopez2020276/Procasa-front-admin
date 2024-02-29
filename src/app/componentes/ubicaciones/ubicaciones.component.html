@@ -1,5 +1,6 @@
-<img title="imagen de muestra"  [src]="'http://localhost:3002/' + imgFondo"  id="background-texture">
+<img [src]="imgFondo" id="background-texture">
 
+<!-- @if (tipoBack == true ) { <img title="imagen de muestra" [src]="imgFondo"  id="background-texture" > }@else{ <img title="imagen de muestra"  id="background-texture" [style.background-color]="colorn" > } -->
 <app-navbar></app-navbar>
 
 <div id="container-main">
@@ -20,8 +21,8 @@
     <div id="cont-all-sucursales">
       <div id="cont-slide">
 
-        <div class="cont-sucursal">
         @for (os of dataUbicaciones | MostrarPorUbiPipe: filtro | mostrarimgsUbicacion:filtroIMG  ; track os._id) {
+          <div class="cont-sucursal">
             <div class="sucursal">
               <div class="sub-img"><img  [src]="'http://localhost:3002/' + os.imgPath"  alt=""></div>
               <div class="sub-info">
@@ -38,8 +39,8 @@
       </div>
 
 
+    </div>
     }
-  </div>
 
 
 
