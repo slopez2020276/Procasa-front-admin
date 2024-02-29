@@ -23,7 +23,7 @@
   <div class="sub-producto">
           <img src="../../../assets/img/carne de res.png" alt="producto" title="producto">
         </div>
-        <h1>{{os.nombreProducto}}</h1>
+        <h1 class="name-product bold">{{os.nombreProducto}}</h1>
         <div class="sub-producto">
           <div class="sub-details">
             <ul class="category">
@@ -38,9 +38,9 @@
           </div>
 
         <div class="actions">
-          <div class="edit-product btn-click btn-gold" (click)="ModalProduct('edit')"><mat-icon>edit</mat-icon></div>
-          <div class="del-product btn-click btn-red"> <mat-icon>delete</mat-icon></div>
-          <div class="btn-click btn-gold" (click)="openAddCategory($event)"><mat-icon>list</mat-icon></div>
+          <div class="edit-product btn-click btn-red" (click)="ModalProduct('edit')"><mat-icon>edit</mat-icon></div>
+          <div class="btn-click btn-red" (click)="DeleteProduct()"> <mat-icon>delete</mat-icon></div>
+          <div class="btn-click btn-red" (click)="openAddCategory($event)"><mat-icon>list</mat-icon></div>
             </div>
             
           <div class="cont-add-cat cont-add-cat-new">
@@ -71,7 +71,7 @@
         <input type="text" placeholder="nueva sub categoría">
       </div>
     </div>
-    
+
     <div class="cont-btn-save">
       <div class="save-added-categories btn-click btn-red" (click)="SaveNewSubCategory()" (click)="CloseAddSubCategory($event)"><mat-icon>save</mat-icon></div>
     </div>
@@ -113,20 +113,14 @@
 </div>
 
 
-
-
-
-
-      
       <div class="cont-datos">
         <input  type="text" formControlName="nombreProducto" placeholder="Producto" class="normal" name="name-producto" title="nombre del producto">
       
-
   <input type="text" class="normal cat-generated" placeholder="categoría">
 </div>
 
 <div class="cont-btn-save">
-  <div class="btn-click btn-red normal" (click)="SaveNewProduct()"><mat-icon>save</mat-icon> guardar</div>
+  <div class="btn-click btn-red normal" (click)="SaveNewProduct($event)"><mat-icon>save</mat-icon> guardar</div>
 </div>
 
 </div>
@@ -134,8 +128,6 @@
 
 
 </div>
-
-
 
 
 
@@ -171,7 +163,7 @@
 </div>
 
 <div class="cont-btn-save">
-  <div class="add-save normal" (click)="saveEditedProduct($event)"><mat-icon>save</mat-icon></div>
+  <div class="btn-click btn-red normal" (click)="saveEditedProduct($event)"><mat-icon>save</mat-icon> guardar</div>
 </div>
 
 </div>
@@ -188,14 +180,14 @@
   <!-- <div class="cont-input-btn" *ngFor="let div of categoryArray; let i = index"> -->
 
   <div class="cont-input-btn">
-    <div class="btn-sub btn-click btn-red">eliminar</div>
-    <div class="btn-sub btn-click btn-red" (click)="openEditItems($event)">editar</div>
+    <div class="btn-sub btn-click btn-red"><mat-icon>delete</mat-icon></div>
+    <div class="btn-sub btn-click btn-red" (click)="openEditItems($event)"><mat-icon>edit</mat-icon></div>
     <div class="btn-sub btn-click btn-red"><mat-icon>save</mat-icon></div>
       <input type="text" placeholder="nueva categoría">
   </div>
 
 <div class="cont-btn-save">
-  <div class="save-added-categories btn-click btn-red" (click)="SaveNewCategory()" (click)="CloseAddCategory($event)"><mat-icon>save</mat-icon></div>
+  <div class="save-added-categories btn-click btn-red" (click)="SaveNewCategory()" (click)="CloseAddCategory($event)"><mat-icon>save</mat-icon> guardar</div>
 </div>
 </div>
 
@@ -238,7 +230,7 @@
 
 
 <div class="cont-btn-save">
-  <div class="save-added-categories btn-click btn-red" (click)="SaveNewSubCategory()" (click)="CloseAddSubCategory($event)"><mat-icon>save</mat-icon></div>
+  <div class="save-added-categories btn-click btn-red" (click)="SaveNewSubCategory()" (click)="CloseAddSubCategory($event)"><mat-icon>save</mat-icon> guardar</div>
 </div>
 
 </div>

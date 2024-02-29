@@ -70,11 +70,7 @@ sendFile():void{
     body.append('imgPath', this.fileTmp.fileRaw, this.fileTmp.fileName);
     body.append('nombreProducto', this.formularioAgregarProducto.value.nombreProducto)
    console.log(this.formularioAgregarProducto.value.nombreProducto)
-
-  }else{
-    body.append('nombreProducto', this.formularioAgregarProducto.value.nombreProducto)
-
-  }
+  }else{ body.append('nombreProducto', this.formularioAgregarProducto.value.nombreProducto) }
 
   console.log(this.formularioAgregarProducto.value.nombreProducto)
   this.productosServices.CrearUbicacion(body)
@@ -249,7 +245,17 @@ openAddCategory(event: MouseEvent){
 
 
 saveEditedProduct(event: MouseEvent){
+  this.AlertOption("¿Desea guardar los cambios?")
+  const parent: HTMLElement | any = this.containerAlert
+  const btn: HTMLElement | any = parent?.childNodes[0]?.childNodes[0]?.childNodes[1]?.childNodes[0]
+
+  if (btn) { 
+    btn.onclick = () => {
+          // A C T I O N 
+    }
+  }
 }
+
 
 
 
@@ -260,50 +266,28 @@ openEditItems(event: MouseEvent) {
   item?.classList.add('show')
 }
 
-// EVENTOS DE ELIMINACIÓN CONFIRMADA ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////777
 
-confirmedDeleteProduct(event: MouseEvent) {
-  const node = event.target as HTMLElement | null
-  const parent = node?.parentNode?.parentNode?.parentNode?.parentNode as HTMLElement | undefined
-  const message = parent?.childNodes[7] as HTMLElement | undefined
-        message?.classList.add('show')
-        const inner = message?.childNodes[0] as HTMLElement | undefined
-        inner!.innerHTML = "¡Noticia eliminada con éxito!"
-        
-        setTimeout(() => {
-          inner!.innerHTML = ""
-          message?.classList.remove('show')
-    }, 1500)
-}
-
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-
-
-async DeleteProduct() {
+DeleteProduct() {
   this.AlertOption("¿Desea eliminar el producto seleccionado?")
   const parent: HTMLElement | any = this.containerAlert
   const btn: HTMLElement | any = parent?.childNodes[0]?.childNodes[0]?.childNodes[1]?.childNodes[0]
-  const btnClickPromise = new Promise<void>((resolve) => {
-    const clickHandler = () => { resolve()
-      
-      // B A C K E N D !! -----------------------------
-      this.AlertMessage("¡Eliminado exitosamente!",1500)
 
-
-      btn.removeEventListener('click', clickHandler) }; btn?.addEventListener('click', clickHandler)
-    })
-  await btnClickPromise
+  if (btn) { btn.onclick = () => {
+// A C T I O N    F O R   D E L E T E
+    }
+  }
 }
 
-SaveNewProduct(){
+
+
+SaveNewProduct(event: MouseEvent){
   this.AlertOption("¿Desea guardar el nuevo Producto?")
   const parent: HTMLElement | any = this.containerAlert
   const btn: HTMLElement | any = parent?.childNodes[0]?.childNodes[0]?.childNodes[1]?.childNodes[0]
 
-  if (btn) { 
-    btn.onclick = () => {
-          // A C T I O N 
+  if (btn) { btn.onclick = () => {
+          this.sendFile()
+          this.AlertMessage("¡Producto agregado exitosamente!", 1500)
     }
   }
 }
@@ -351,7 +335,7 @@ AlertClose(){
 }
 
 // P L A N T I L L A      D E      S Y S T E M     A L E R T 
-SystemAlert(id: number) {
+SystemAlert() {
   this.AlertOption("Message to Show")
   const parent: HTMLElement | any = this.containerAlert
   const btn: HTMLElement | any = parent?.childNodes[0]?.childNodes[0]?.childNodes[1]?.childNodes[0]

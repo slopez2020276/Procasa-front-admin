@@ -31,29 +31,6 @@ div#container-2 h1 {
 }
 
 
-button#add-product {
-  background: #AA182C;
-  color: #FFF;
-  text-align: center;
-  border-radius: 2rem;
-  font-size: 9pt;
-  position: relative;
-  cursor: pointer;
-  transform: scale(1);
-  transition: .2s;
-  opacity: 1;
-  padding: .5rem 1rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: nowrap;
-}
-
-button#add-product:active {
-  transform: scale(.9);
-  opacity: .8;
-}
-
 div#bar-search {
   position: relative;
   width: 40%;
@@ -142,6 +119,10 @@ div.producto img {
   height: auto;
 }
 
+h1.name-product {
+  font-size: 16pt;
+}
+
 h1.h1-title-pro {
   width: 100%;
   text-align: center;
@@ -185,14 +166,14 @@ div#modal-add-product, div#modal-edit-product {
   overflow-y: scroll;
   overflow-x: hidden;
   position: fixed;
-  width: 500px;
+  width: 600px;
   height: auto;
   max-height: 80vh;
   background: #FAFAFA;
   box-shadow: 2px 2px 4px rgba(0,0,0,.2);
   top: 10vh;
   border-radius: 4px;
-  left: calc(50% - 400px);
+  left: calc(50% - 300px);
   transform: scale(.8) translateY(20vh);
   z-index: -10;
   opacity: 0;
@@ -326,6 +307,7 @@ div.cont-btn-save {
   align-items: center;
   flex-wrap: wrap;
   position: relative;
+  margin-top: 1rem;
 }
 
 div.cont-datos label.head-elem {

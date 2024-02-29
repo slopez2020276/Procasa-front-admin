@@ -233,6 +233,22 @@ getFileEdit($event: any): void {
   }
 }
 
+
+saveEdited(){
+  this.AlertOption("¿Desea guardar los cambios?")
+  const parent: HTMLElement | any = this.containerAlert
+  const btn: HTMLElement | any = parent?.childNodes[0]?.childNodes[0]?.childNodes[1]?.childNodes[0]
+
+  if (btn) { 
+    btn.onclick = () => {
+      this.sendFileEdit()
+      this.AlertMessage("¡Datos actualizados exitosamente!", 1500)
+    }
+  }
+}
+
+
+
 sendFileEdit():void{
 
   const body = new FormData()
@@ -262,6 +278,21 @@ sendFileEdit():void{
   this.ubicacionService.sendEdit(body,this.idUbicacion)
   .subscribe(res =>{console.log(res), this.obtenerUbicacion()})
 }
+
+
+
+deleteProduct(){
+  this.AlertOption("¿Desea borrar el Producto?")
+  const parent: HTMLElement | any = this.containerAlert
+  const btn: HTMLElement | any = parent?.childNodes[0]?.childNodes[0]?.childNodes[1]?.childNodes[0]
+
+  if (btn) { btn.onclick = () => {
+          // A C T I O N    F O E    D E L E T E
+    }
+  }
+}
+
+
 
 
 
