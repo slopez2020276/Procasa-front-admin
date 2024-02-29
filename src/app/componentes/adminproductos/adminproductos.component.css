@@ -14,7 +14,7 @@ div#container-2, div#container-4 {
   width: 100vw;
   height: 60px;
   background: #EEEEEE;
-  box-shadow: 0px 1px 10px rgba(0,0,0,.2);
+  box-shadow: 0px 1px 10px rgba(0,0,0,.1);
   z-index: 100;
   display: flex;
   justify-content: space-between;
@@ -85,7 +85,7 @@ div.producto {
   border-radius: 4px;
   background: #FFF;
   padding: 1rem 1rem .5rem;
-  box-shadow: 2px 2px 4px rgba(0,0,0,.2);
+  box-shadow: 2px 2px 4px rgba(0,0,0,.1);
   margin: 1rem 1rem;
 }
 
@@ -148,7 +148,7 @@ div.replace-button {
   width: 30%;
   text-align: center;
   padding: .5rem 1rem;
-  box-shadow: 2px 2px 0px rgba(0,0,0,.2);
+  box-shadow: 2px 2px 0px rgba(0,0,0,.1);
   border-radius: 4px;
   font-size: 11pt;
   cursor: pointer;
@@ -170,7 +170,7 @@ div#modal-add-product, div#modal-edit-product {
   height: auto;
   max-height: 80vh;
   background: #FAFAFA;
-  box-shadow: 2px 2px 4px rgba(0,0,0,.2);
+  box-shadow: 2px 2px 4px rgba(0,0,0,.1);
   top: 10vh;
   border-radius: 4px;
   left: calc(50% - 300px);
@@ -208,7 +208,7 @@ div#close-modal-edit {
   border-radius: 4px;
   padding: .5rem 1rem;
   background: #EFEFEF;
-  box-shadow: 2px 2px 0px rgba(0,0,0,.2);
+  box-shadow: 2px 2px 0px rgba(0,0,0,.1);
   transform: scale(1);
   opacity: 1;
   cursor: pointer;
@@ -319,7 +319,7 @@ div.cont-datos input.head-elem {
   padding: .5rem 1rem;
   border-radius: 4px;
   width: 57.5%;
-  box-shadow: 1px 1px 0px rgba(0,0,0,.2);
+  box-shadow: 1px 1px 0px rgba(0,0,0,.1);
 }
 
 .padding {margin-top: 4px;}
@@ -360,7 +360,7 @@ button.btn-generate, button.btn-delete {
   position: relative;
   padding: .5rem 1rem;
   background: #FAFAFA;
-  box-shadow: 1px 1px 0px rgba(0,0,0,.2);
+  box-shadow: 1px 1px 0px rgba(0,0,0,.1);
   border-radius: 4px;
   transition: transform .1s;
   transform: scale(1);

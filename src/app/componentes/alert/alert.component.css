@@ -10,7 +10,7 @@ div#container-alert {
   display: flex;
   justify-content: center;
   align-items: start;
-  background: rgba(0,0,0,.2);
+  background: rgba(0,0,0,.1);
   text-align: center;
 }
 
@@ -25,7 +25,7 @@ div.alert-model {
   padding: 2rem;
   margin-top: 6vh;
   border-radius: 4px;
-  box-shadow: 1px 3px 5px rgba(0,0,0,.4);
+  box-shadow: 1px 3px 5px rgba(0,0,0,.1);
   position: absolute;
   z-index: 901;
   background: #FAFAFA;

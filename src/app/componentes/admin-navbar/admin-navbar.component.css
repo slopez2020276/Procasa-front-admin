@@ -109,7 +109,7 @@ button#close-session {
   font-size: 10pt;
   cursor: pointer;
   transition: .2s;
-  box-shadow: 0px 2px 0px rgba(0,0,0,.2);
+  box-shadow: 0px 2px 0px rgba(0,0,0,.1);
   transform: scale(1);
 }
 

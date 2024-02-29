@@ -5,7 +5,7 @@ div#container-2, div#container-4 {
   width: 100vw;
   height: 60px;
   background: #EEEEEE;
-  box-shadow: 0px 1px 10px rgba(0,0,0,.2);
+  box-shadow: 0px 1px 10px rgba(0,0,0,.1);
   z-index: 100;
   display: flex;
   justify-content: space-between;
@@ -132,7 +132,7 @@ div.user span.edit {
   background: #AA182C;
   color: #FFF;
   cursor: pointer;
-  box-shadow: 0px 2px 2px rgba(0,0,0,.2);
+  box-shadow: 0px 2px 2px rgba(0,0,0,.1);
   transform: scale(1);
   opacity: 1;
   transition: .1s;
@@ -189,7 +189,7 @@ div#modal-add-user, div#modal-edit-user {
   background: #EAEAEA;
   border-radius: 4px;
   position: relative;
-  box-shadow: 0px 4px 4px rgba(0,0,0,.2);
+  box-shadow: 0px 4px 4px rgba(0,0,0,.1);
 }
 
 div#close-modal-add, div#close-modal-edit {
@@ -198,7 +198,7 @@ div#close-modal-add, div#close-modal-edit {
   right: 1rem;
   top: .5rem;
   background: #F4F4F4;
-  box-shadow: 0px 2px 2px rgba(0,0,0,.2);
+  box-shadow: 0px 2px 2px rgba(0,0,0,.1);
   border-radius: 4px;
   cursor: pointer;
   transition: .1s;

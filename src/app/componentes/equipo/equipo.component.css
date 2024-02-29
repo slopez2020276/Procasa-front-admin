@@ -14,7 +14,7 @@ div#container-2 {
     width: 100vw;
     height: 60px;
     background: #EEEEEE;
-    box-shadow: 0px 1px 10px rgba(0,0,0,.2);
+    box-shadow: 0px 1px 10px rgba(0,0,0,.1);
     z-index: 100;
     display: flex;
     justify-content: space-between;
@@ -112,7 +112,7 @@ div.cont {
     border-radius: 4px;
     margin: 1rem 1rem;
     position: relative;
-    box-shadow: 2px 2px 2px rgba(0,0,0,.2);
+    box-shadow: 2px 2px 2px rgba(0,0,0,.1);
     padding: .5rem;
 }
 
@@ -162,7 +162,7 @@ div.modal {
   top: 10vh;
   left: calc(50% - 300px);
   border-radius: 4px;
-  box-shadow: 2px 2px 2px rgba(0,0,0,.2);
+  box-shadow: 2px 2px 2px rgba(0,0,0,.1);
   background: #FAFAFA;
   display: flex;
   justify-content: center;
@@ -190,7 +190,7 @@ div#close-add, div#close-edit {
   top: .5rem;
   border-radius: 4px;
   padding: .5rem 1rem;
-  box-shadow: 1px 1px 1px rgba(0,0,0,.2);
+  box-shadow: 1px 1px 1px rgba(0,0,0,.1);
   transition: transform .1s;
   transform: scale(1);
   background: #F4F4F4;
@@ -231,7 +231,7 @@ div.sub {
 input[type=text], input[type=date], textarea{
   width: 80%;
   position: relative;
-  box-shadow: 1px 1px 1px rgba(0,0,0,.2);
+  box-shadow: 1px 1px 1px rgba(0,0,0,.1);
   margin-top: .5rem;
   border-radius: 4px;
   padding: .5rem 1rem;
@@ -268,7 +268,7 @@ span#add-fn {
   transform: scale(1);
   cursor: pointer;
   position: relative;
-  box-shadow: 1px 1px 0px rgba(0,0,0,.2);
+  box-shadow: 1px 1px 0px rgba(0,0,0,.1);
 }
 span#add-fn:active {transform: scale(.9);}
 
@@ -287,7 +287,7 @@ div.btn-save {
   padding: .5rem 1rem;
   background: #AA182C;
   color: #FAFAFA;
-  box-shadow: 1px 1px 1px rgba(0,0,0,.2);
+  box-shadow: 1px 1px 1px rgba(0,0,0,.1);
   transition: transform .1s;
   transform: scale(1);
   border-radius: 4px;

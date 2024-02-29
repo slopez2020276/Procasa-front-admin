@@ -68,7 +68,7 @@
   cursor: pointer;
   font-size: 14pt;
   transform: scale(1);
-  box-shadow: 0px 5px 10px rgba(0,0,0,.5);
+  box-shadow: 0px 5px 10px rgba(0,0,0,.1);
   }
   div.item-location:hover {padding-left: 1.5rem; background: #AA182C; color: #FFF;}
   div.item-location:active {transform: scale(.95); }
