@@ -218,8 +218,11 @@ obtenerProductos(){
   this.productosServices.obtenerProductos().subscribe(
     (res:any) => {
       this.dataProductos = res.productosEncontrados
+      console.log(this.dataProductos)
+
     }
   )
+  console.log(this.dataProductos)
 }
 
 
