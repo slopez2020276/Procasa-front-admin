@@ -483,6 +483,7 @@ div#modal-time-line, div#modal-time-line-add, div#modal-edit-notice, div#modal-n
   position: fixed;
   width: 800px;
   height: auto;
+  max-height: 80vh;
   background: #ededee;
   left: calc(50% - 400px);
   border-radius: 4px;
@@ -497,6 +498,8 @@ div#modal-time-line, div#modal-time-line-add, div#modal-edit-notice, div#modal-n
   opacity: 0;
   transform: scale(.8);
   z-index: -200;
+  overflow-x: hidden;
+  overflow-y: scroll;
 }
 
 
@@ -1246,18 +1249,16 @@ select {
     margin-left: 10%;
   }
 
-  form { justify-content: center;}
+form { justify-content: center;}
 
-  div#container-2 form {
+div#container-2 form {
     justify-content: center;
     display: flex;
     align-items: center;
     flex-wrap: wrap;
   }
 
-  form label, form input, form textarea {width: 90%; display: block;}
-
-
+form label, form input, form textarea {width: 90%; display: block;}
 
   div.sub-cont-2 {
     width: 90%;
@@ -1274,12 +1275,6 @@ div.cont-inter, div.cont-inter-valores { width: 100%; }
 
 div.clip { display: none; }
 
-
-
-
-
-
-
 div.container {
   width: 100vw;
   max-width: 100vw;
@@ -1287,8 +1282,14 @@ div.container {
 }
 
 
+div.cont-inp { width: 90%; }
 
 }
+
+
+
+
+
 
 div#background-color {
   width: 100%;

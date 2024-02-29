@@ -485,7 +485,6 @@ ModalAddTimeLine() {
   
 
 getFileUpdateTiempo($event: any): void {
-  //TODO esto captura el archivo!
   const [ file ] = $event.target.files;
   this.fileUpdateLineaTiempo = {
     fileRaw:file,
