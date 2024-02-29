@@ -287,7 +287,7 @@ deleteProduct(id:any){
   const btn: HTMLElement | any = parent?.childNodes[0]?.childNodes[0]?.childNodes[1]?.childNodes[0]
 
   if (btn) { btn.onclick = () => {
-      this.eliminarUbicacion(id)
+    const res = this.eliminarUbicacion(id) 
   }
   }
 }
@@ -296,6 +296,7 @@ deleteProduct(id:any){
 async eliminarUbicacion(id:any){
   const respuesta = await this.ubicacionService.eliminarUbicacion(id)
   console.log(respuesta)
+  this.AlertMessage("¡Producto Eliminado!", 1500)
   this.obtenerUbicacion()
 }
 
