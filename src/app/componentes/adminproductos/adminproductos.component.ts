@@ -173,6 +173,9 @@ deleteItem() { if (this.addItemsArray.length > 0) { this.addItemsArray.pop() } }
 
 
 
+
+
+
 SaveNewCategory(){
   console.log("SAVE CATEGORY")
 }
@@ -215,7 +218,6 @@ obtenerProductos(){
   this.productosServices.obtenerProductos().subscribe(
     (res:any) => {
       this.dataProductos = res.productosEncontrados
-      console.log(this.dataProductos[0].categorias[1].items)
     }
   )
 }
@@ -227,8 +229,10 @@ obtenerProductos(){
 
 
 
-eliminarProducto(){
-
+async eliminarProducto(id:any){
+  const productoDelete = await this.productosServices.eliminarProductos(id)
+  console.log(productoDelete)
+  this.obtenerProductos()
 }
 
 
@@ -259,7 +263,7 @@ saveEditedProduct(event: MouseEvent){
 
 
 
-openEditItems(event: MouseEvent) {
+openEditItems(event: MouseEvent ) {
   const node = event.target as HTMLElement | null
   const parent = node?.parentNode?.parentNode?.parentNode as HTMLElement | undefined
   const item = parent?.childNodes[3] as HTMLElement | undefined  
@@ -267,13 +271,18 @@ openEditItems(event: MouseEvent) {
 }
 
 
-DeleteProduct() {
+DeleteProduct(id:any) {
   this.AlertOption("¿Desea eliminar el producto seleccionado?")
   const parent: HTMLElement | any = this.containerAlert
   const btn: HTMLElement | any = parent?.childNodes[0]?.childNodes[0]?.childNodes[1]?.childNodes[0]
 
   if (btn) { btn.onclick = () => {
 // A C T I O N    F O R   D E L E T E
+
+    this.eliminarProducto(id)
+
+
+
     }
   }
 }

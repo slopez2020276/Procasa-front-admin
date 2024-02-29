@@ -47,6 +47,14 @@ export class UbicacionServiceService {
   sendEdit (body:FormData,id:any):Observable<any>{
     return this.httpClient.put(`${this.baseUrlw}/editarUbicacion/${id}`, body)
   }
+
+
+eliminarUbicacion(id:any){
+  return firstValueFrom(this.httpClient.delete(`${this.baseUrlw}/eliminarUbicacion/${id}`, this.createHeaders()))
+
+}
+
+
   createHeaders(){
     return   {
      headers: new HttpHeaders ({

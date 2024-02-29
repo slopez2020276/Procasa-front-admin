@@ -21,13 +21,14 @@
   <div class="producto">      
       
   <div class="sub-producto">
-          <img src="../../../assets/img/carne de res.png" alt="producto" title="producto">
+          <img [src]="os.imgPath" alt="producto" title="producto">
         </div>
         <h1 class="name-product bold">{{os.nombreProducto}}</h1>
         <div class="sub-producto">
           <div class="sub-details">
             <ul class="category">
               <li class="normal">CATEGORÍA</li>
+              @for (categoria of os.catego; track $index) {}
                 <ul>
                   <li>Sub Categoría</li>
                   <li>Sub Categoría</li>
@@ -39,7 +40,7 @@
 
         <div class="actions">
           <div class="edit-product btn-click btn-red" (click)="ModalProduct('edit')"><mat-icon>edit</mat-icon></div>
-          <div class="btn-click btn-red" (click)="DeleteProduct()"> <mat-icon>delete</mat-icon></div>
+          <div class="btn-click btn-red" (click)="DeleteProduct(os._id)"  >  <mat-icon>delete</mat-icon></div>
           <div class="btn-click btn-red" (click)="openAddCategory($event)"><mat-icon>list</mat-icon></div>
             </div>
             
@@ -54,11 +55,11 @@
         
         
         <div class="cont-btn-save">
+
           <div class="save-added-categories btn-click btn-red" (click)="SaveNewCategory()" (click)="CloseAddCategory($event)"><mat-icon>save</mat-icon></div>
         </div>
       </div>
-    </div>  
-  
+        
   <div class="cont-subcategories subcategories">
     <h1 class="title-modal">Agregar Sub-Categoría</h1>
     <div class="btn-click close-cont-subcate" (click)="CloseAddSubCategory($event)"><mat-icon>close</mat-icon></div>
@@ -77,7 +78,8 @@
     </div>
     
   </div>
-
+    </div>  
+  
 </div>
 
 }

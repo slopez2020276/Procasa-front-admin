@@ -281,19 +281,23 @@ sendFileEdit():void{
 
 
 
-deleteProduct(){
+deleteProduct(id:any){
   this.AlertOption("¿Desea borrar el Producto?")
   const parent: HTMLElement | any = this.containerAlert
   const btn: HTMLElement | any = parent?.childNodes[0]?.childNodes[0]?.childNodes[1]?.childNodes[0]
 
   if (btn) { btn.onclick = () => {
-          // A C T I O N    F O E    D E L E T E
-    }
+      this.eliminarUbicacion(id)
+  }
   }
 }
 
 
-
+async eliminarUbicacion(id:any){
+  const respuesta = await this.ubicacionService.eliminarUbicacion(id)
+  console.log(respuesta)
+  this.obtenerUbicacion()
+}
 
 
 async ObtenerUbixId(id){

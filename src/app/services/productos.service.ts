@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, first, firstValueFrom } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -28,4 +28,12 @@ export class ProductosService {
      })
    }
  }
+
+eliminarProductos(id:any){
+return firstValueFrom(this.httpClient.delete(`${this.baseUrl}/eliminarProducto/${id}`, this.createHeaders()))
+
+
+}
+
+
 }
