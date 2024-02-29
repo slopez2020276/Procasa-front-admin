@@ -71,6 +71,7 @@ div#bar-search button {
 div#container-1 {
   width: 100vw;
   height: auto;
+  min-height: 100vh;
   padding: 10rem 0;
   margin-top: 120px;
   position: relative;
@@ -84,7 +85,7 @@ div#cont-users {
   height: auto;
   padding: 2rem;
   border-radius: 4px;
-  background: #E4E4E4;
+  background: #ededee;
 }
 
 div.user-head {
@@ -147,7 +148,6 @@ div.user span.edit:active {
 
 div#cont-modal-add, div#cont-modal-edit {
   width: 100vw;
-  /* height: calc(82vh - 120px); */
   height: auto;
   position: fixed;
   left: 0;
@@ -166,7 +166,6 @@ div.cont-input-user {
   justify-content: space-between;
   align-items: center;
   padding: 1rem 0;
-  margin-left: 20%;
 }
 
 div.cont-input-user input {
@@ -180,17 +179,28 @@ div.cont-input-user label {font-size: 11pt;}
 div#cont-modal-add.open-add, div#cont-modal-edit.open-add {
   transform: scale(1);
   opacity: 1;
-  z-index: 100;
+  z-index: 49;
 }
 
 div#modal-add-user, div#modal-edit-user {
   width: 500px;
-  height: 540px;
+  height: auto;
   background: #EAEAEA;
   border-radius: 4px;
   position: relative;
   box-shadow: 0px 4px 4px rgba(0,0,0,.1);
 }
+
+div#modal-add-user form, div#modal-edit-user form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  flex-wrap: wrap;
+  padding-bottom: 2rem;
+}
+
+div.x-margin { margin: 1rem 6rem; }
 
 div#close-modal-add, div#close-modal-edit {
   padding: .5rem 1rem;
@@ -216,8 +226,6 @@ div#modal-add-user h1, div#modal-edit-user h1 {
   text-align: center;
   font-size: 19pt;
   padding: 2rem 0;
-  margin-bottom: 2rem;
-  margin-top: 2rem;
 }
 
 div#save-user, div#edit-user {

@@ -441,13 +441,6 @@
 
 
 
-
-
-
-
-
-
-
   <div class="subcont-modal">
     <label for="title">Título</label>
     <input   type="text" id="titulo-update-lt" formControlName="titleLineaTiempo" [(ngModel)]="tituloModal" name="title" title="título" required>
@@ -468,18 +461,71 @@
   </form>
 </div>
 
+
+
 <!-------------------------------------------------------------------------------------------------------------------------------------->
-
-
 <!-- M O D A L   N U E V O   N O T I C I A S  -->
+
 <div id="modal-new-notice">
-  <div id="cont-btn-close-new"> <button id="close-modal-notice-new" (click)="NewModalNotice()">cerrar</button> </div>
+  <h1 class="title-modal">Agregar Noticia</h1>
+  <button class="btn-click close-modal" (click)="NewModalNotice()"><mat-icon>close</mat-icon></button>
 
 <form [formGroup]="formularioAgregarNoticias">
   <div id="sub-cont-details-img">
     <div class="sub-details">
         <div class="sub-img-btn">
           <input id="file-noticia" (change)="getFileNoticia($event)" (change)="InputChange($event)" title="imagen de noticia" type="file" name="file-notice" data-content="seleccionar archivo">
+          <mat-icon>delete</mat-icon>
+        </div>
+      <ul>
+        <li>ancho: <span class="bold danger-red"></span></li>
+        <li>alto:  <span class="bold danger-red"></span></li>
+        <li>peso:  <span class="bold danger-red"></span></li>
+      </ul>
+    </div>
+    <div class="cont-details-img"><img alt="" src=""></div>
+</div>
+
+<div class="subcont-modal">
+<div class="cont-inp">
+  <label for="title-notice">Título</label>
+  <input id="titulo-noticia" formControlName="title" type="text" name="title-notice" title="Título de noticia">
+</div>
+
+<div class="cont-inp">
+  <label for="description-notice">Descripción</label>
+  <textarea id="desc-noticia" formControlName="descripcion" title="descripción de noticia" name="description-notice"></textarea>
+</div>
+
+<div class="cont-inp">
+  <label for="select-add">Tipo De Noticia</label>
+  <select formControlName="tipo" name="select-add" id="select-add-noticia">
+    <option value="principal">Pricipal</option>
+    <option value="secundarios">Secundario</option>
+  </select>
+</div>
+
+</div>
+<div class="btn-red btn-click normal" id="presave-noticia" (click)="guardarNoticia()"><mat-icon>save</mat-icon> guardar</div>
+</form>
+</div>
+
+
+
+
+
+<!-- ¡¡¡ CORREGIR EL ENVÍO !!!! -->
+<!-- M O D A L   E D I T A R   N O T I C I A S  -->
+<div id="modal-edit-notice">
+  <h1 class="title-modal">Editar Noticia</h1>
+        <button class="btn-click close-modal" (click)="ModalEditNotice()"><mat-icon>close</mat-icon></button>
+
+<form [formGroup]="formularioEditarNoticias"  >
+
+  <div id="sub-cont-details-img">
+    <div class="sub-details">
+        <div class="sub-img-btn">
+          <input type="file" (change)="InputChange($event)" (change)="getFile($event)" title="seleccionar archivo" accept=".jpg, .png, .jpeg, .avi, .webp" data-content="seleccionar archivo">
           <mat-icon>delete</mat-icon>
         </div>
       <ul>
@@ -491,64 +537,24 @@
     <div class="cont-details-img"><img alt="" src=""></div>
 </div>
 
-<div class="subcont-modal">
-  <label for="title-notice">Título</label>
-  <input id="titulo-noticia" formControlName="title" type="text" name="title-notice" title="Título de noticia">
-  <label for="description-notice">Descripción</label>
-  <textarea id="desc-noticia" formControlName="descripcion" title="descripción de noticia" name="description-notice" cols="26" rows="5"></textarea>
-  <label for="select-add">Tipo De Noticia</label>
-  <select formControlName="tipo" name="select-add" id="select-add-noticia">
-    <option value="principal">Pricipal</option>
-    <option value="secundarios">Secundario</option>
-  </select>
-</div>
-
-
-
-<div class="btn-red btn-click normal" id="presave-noticia" (click)="guardarNoticia()"><mat-icon>save</mat-icon> guardar</div>
-
-
-</form>
-
-</div>
-
-
-
-
-
-<!-- ¡¡¡ CORREGIR EL ENVÍO !!!! -->
-<!-- M O D A L   E D I T A R   N O T I C I A S  -->
-<div id="modal-edit-notice">
-        <div id="cont-btn-close"> <button id="close-modal-notice" (click)="ModalEditNotice()">cerrar</button> </div>
-
-<form [formGroup]="formularioEditarNoticias"  >
-
-  <div class="preview-img-model">
-<label for="file-notice">imagen</label>
-<input (change)="updateNoticia($event)" (change)="getFileUpdateNoticia($event)"  id="file-edit-noticia" title="imagen de noticia" type="file" name="file-notice" data-content="seleccionar archivo">
-<div class="details-img">
-  <ul>
-    <li>ancho <span class="innerdetails bold" id="width-edit-n"></span></li>
-    <li>alto <span class="innerdetails bold" id="height-edit-n"></span></li>
-    <li>tamaño <span class="innerdetails bold" id="size-edit-n"></span></li>
-  </ul>
-  <img src="" alt="" id="img-pre-noticia-edit">
-</div>
-
-</div>
-
 
 <div class="subcont-modal">
-<label for="title-notice">Título</label>              <input type="text" [(ngModel)]="tituloNoticia" formControlName="title" name="title-notice" title="Título de noticia" id="title-update-noticia">
-<label for="description-notice">Descripción</label>   <textarea title="descripción de noticia" [(ngModel)]="descripcionNoticia" formControlName="descripcion" name="description-notice" id="desc-update-noticia" cols="26" rows="5"></textarea>
-<label for="select-edit">prioridad</label>
-  <select name="select-edit" id="select-edit-noticia">
-    <option value="0">no prioritario</option>
-    <option value="1">prioritario</option>
-  </select>
+  <div class="cont-inp">
+    <label for="title-notice">Título</label>              <input type="text" [(ngModel)]="tituloNoticia" formControlName="title" name="title-notice" title="Título de noticia" id="title-update-noticia">
+  </div>
+  <div class="cont-inp">
+    <label for="description-notice">Descripción</label>   <textarea title="descripción de noticia" [(ngModel)]="descripcionNoticia" formControlName="descripcion" name="description-notice" id="desc-update-noticia" cols="26" rows="5"></textarea>
+  </div>
+  <div class="cont-inp">
+    <label for="select-edit">prioridad</label>
+    <select name="select-edit" id="select-edit-noticia">
+      <option value="0">no prioritario</option>
+      <option value="1">prioritario</option>
+    </select>
+  </div>
 </div>
 
-<div class="normal btn-click btn-red" id="update-noticia"><mat-icon>save</mat-icon> SAVE</div>
+<div class="normal btn-click btn-red" (click)="updateNoticia()"><mat-icon>save</mat-icon> guardar</div>
 
 </form> </div>
 

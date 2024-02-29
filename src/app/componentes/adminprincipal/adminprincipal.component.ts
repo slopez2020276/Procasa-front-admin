@@ -444,10 +444,16 @@ async editarTime(){
  this.Modal()
 
 }
-ModalTimeLine() {document.getElementById('modal-time-line')?.classList.toggle('modal') }
+ModalTimeLine() {
+  document.getElementById('modal-time-line')?.classList.toggle('modal')
+  this.cleanForms()
+}
 
 
-ModalAddTimeLine() { document.getElementById('modal-time-line-add')?.classList.toggle('modal') }
+ModalAddTimeLine() { 
+  document.getElementById('modal-time-line-add')?.classList.toggle('modal')
+  this.cleanForms()
+}
 
   async agregarEventoLineaTiempo(){
     this.obtenerLinea()
@@ -508,7 +514,7 @@ sendFileUpdateTiempo():void{
   .subscribe(res =>{console.log(res), this.obtenerLinea(),this.fileUpdateLineaTiempo = null})
 }
 
-  
+
 
 
 
@@ -535,6 +541,7 @@ saveNewTimeLine() {
     const btn: HTMLElement | any = parent?.childNodes[0]?.childNodes[0]?.childNodes[1]?.childNodes[0]
     if (btn) { btn.onclick = () => {
       this.sendFileTimeLine()
+      this.cleanForms()
       }}
   }else{ this.AlertMessage("Todos los campos son requeridos", 1500) }
 }
@@ -572,9 +579,9 @@ saveUpdateTimeLine(){
 
   if (btn) { btn.onclick = () => {
     try{
-//  this.sendFileTimeLine()
  this.sendFileUpdateTiempo()
  this.AlertMessage("¡Datos actualizados exitosamente!", 1500)
+
   } catch(error){ this.AlertMessage("Error al actualizar", 1500) }
   } }
 }
@@ -618,8 +625,8 @@ async obtnerNoticias (){
 
 
 
-ModalEditNotice() { document.getElementById('modal-edit-notice')?.classList.toggle('show') }
-NewModalNotice() { document.getElementById('modal-new-notice')?.classList.toggle('show') }
+ModalEditNotice() { document.getElementById('modal-edit-notice')?.classList.toggle('show'); this.cleanForms() }
+NewModalNotice() { document.getElementById('modal-new-notice')?.classList.toggle('show'); this.cleanForms() }
 
 
 async obtenerxidNoticias(id:any){
@@ -764,63 +771,11 @@ eliminarNoticia(id: any) {
 
 
 
-updateNoticia(event: Event) {
-
-  const fileInput = event.target as HTMLInputElement
-  const archivo = fileInput.files?.[0]
-
-  if (archivo) { const lector = new FileReader()
-
-    lector.onload = (eventoLectura:any) => {
-      const imagen = new Image()
-      imagen.src = eventoLectura.target.result as string
-
-      imagen.onload = () => {
-        const fileSize: number = archivo.size
-        const size: any = fileSize.toFixed(2)
-        let medida: string
-        let sizemedida: any
-        if((size/1024/1024) < 1.0) {medida = " KB"; sizemedida = (size/1024).toFixed(2).toString() + medida }else{ medida = " MB"; sizemedida = (size/1024/1024).toFixed(2).toString() + medida }
-        const fileName: string = archivo.name
-        let img = new Image()
-        const objectURL = URL.createObjectURL(archivo)
-        img.src = objectURL
-        this.anchoimg = imagen.width, this.altoimg = imagen.height
-        let namefile = archivo.name
-
-    document.getElementById('width-edit-n')?.classList.remove('limit')
-        document.getElementById('height-edit-n')?.classList.remove('limit')
-        document.getElementById('size-edit-n')?.classList.remove('limit')
-
-        if(this.anchoimg > 2000){  document.getElementById('width-edit-n')?.classList.add('limit') }
-        if(this.altoimg > 1500){ document.getElementById('height-edit-n')?.classList.add('limit') }
-        if((size/1024) > 2048 ){  document.getElementById('size-edit-n')?.classList.add('limit') }
-
-        document.getElementById('size-edit-n')!.innerHTML = sizemedida
-        document.getElementById('width-edit-n')!.innerHTML = this.anchoimg + " px"
-        document.getElementById('height-edit-n')!.innerHTML = this.altoimg + " px"
-        document.getElementById('img-pre-noticia-edit')?.setAttribute('data-content', fileName)
-        document.getElementById('img-pre-noticia-edit')?.removeAttribute('src')
-        document.getElementById('img-pre-noticia-edit')?.setAttribute('src', img.src)
-
-          const tituloInput: HTMLInputElement | null = document.getElementById('title-update-noticia') as HTMLInputElement | null
-          const descripcionInput: HTMLTextAreaElement | any = document.getElementById('desc-update-noticia')
-
-          let titulo: string = ''
-          let descripcion: string = ''
-
-          if (tituloInput instanceof HTMLInputElement) { titulo = tituloInput.value }
-          if (descripcionInput instanceof HTMLTextAreaElement) { descripcion = descripcionInput.value }
-
-const btnSaveUpdate:HTMLElement | any = document.getElementById('update-noticia')
-if(btnSaveUpdate){
-  btnSaveUpdate.onclick = () => {
-
-
+updateNoticia() {
     this.AlertOption("¿Actualizar los datos de Noticia?")
     const parent: HTMLElement | any = this.containerAlert
     const btn: HTMLElement | any = parent?.childNodes[0]?.childNodes[0]?.childNodes[1]?.childNodes[0]
-  
+
     if (btn) { btn.onclick = () => {
         try{
           this.sendFileUpdateNoticia()
@@ -828,13 +783,9 @@ if(btnSaveUpdate){
           this.AlertMessage("¡Datos actualizados!", 1500)
         } catch(error){ this.AlertMessage("Error al actualizar", 1500) }
   }}
-  }
+
 }
-        }
-      }
-      lector.readAsDataURL(archivo)
-    }
-}
+
 
 
 
@@ -1288,6 +1239,19 @@ InputChange(event: Event) {
     }
     lector.readAsDataURL(archivo)
   }
+}
+
+
+
+cleanForms(){
+  this.formularioEditHistoria.reset()
+  this.formularioEditlineaTiempo.reset()
+  this.formularioMisionValor.reset()
+  this.formularioAgregarLineaTiempo.reset()
+  this.formularioValores.reset()
+  this.formularioEditarNoticias.reset()
+  this.formularioAgregarNoticias.reset()
+  this.formularioEditarFondoColor.reset()
 }
 
 }

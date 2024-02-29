@@ -73,17 +73,29 @@ this.dataUsers= res.usuario
 }
 
 async registrarUsuario(){
-  const res = await this.userService.registrarUser(this.formularioAgregarUser.value)
-  console.log(res)
-  this.ObtenerUsers()
-  this.formularioAgregarUser.reset()
-}
+  this.AlertOption("¿Desea guardar el usuario?")
+  const parent: HTMLElement | any = this.containerAlert
+  const btn: HTMLElement | any = parent?.childNodes[0]?.childNodes[0]?.childNodes[1]?.childNodes[0]
+
+  if (btn) { btn.onclick = async () => {
+        const res = await this.userService.registrarUser(this.formularioAgregarUser.value)
+        this.ObtenerUsers()
+        this.AlertMessage("¡Usuario creado exitosamente!", 1500)
+        this.formularioAgregarUser.reset()
+      }}
+    }
 
 async editarUusario(){
+  this.AlertOption("¿Desea actualizar el usuario?")
+  const parent: HTMLElement | any = this.containerAlert
+  const btn: HTMLElement | any = parent?.childNodes[0]?.childNodes[0]?.childNodes[1]?.childNodes[0]
 
-  const respuesta = await this.userService.editarUser(this.formularioEditarUser.value,this.id)
-  console.log(respuesta)
-  this.ObtenerUsers()
+  if (btn) { btn.onclick = async () => {
+        const respuesta = await this.userService.editarUser(this.formularioEditarUser.value,this.id)
+        this.AlertMessage("¡Usuario actualizado!", 1500)
+        this.ObtenerUsers()
+        this.formularioEditarUser.reset()
+}}
 }
 
 

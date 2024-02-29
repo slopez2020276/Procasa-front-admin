@@ -51,7 +51,7 @@ div#cont-title h1 {
   padding: 1rem;
   cursor: pointer;
   background: #252525;
-  color: #E4E4E4;
+  color: #ededee;
   border-radius: 4px;
 }
 div#cont-title h1:hover {background: #454545;}

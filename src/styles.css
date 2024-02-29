@@ -27,7 +27,7 @@ img#background-texture {
   opacity: 1;
 }
 
-
+.e4 {background: #ededee;}
 
 h1.container-h1 {
   width: 100%;
@@ -43,6 +43,7 @@ h1.container-h1 {
     color: #252525;
     font-size: 12pt;
 }
+
 div.container {
   position: relative;
   width: 100%;

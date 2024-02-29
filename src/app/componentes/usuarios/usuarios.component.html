@@ -25,25 +25,25 @@
 
 <div id="cont-modal-add">
   <div id="modal-add-user">
+    <h1 class="title-modal">Agregar Usuario</h1>
     <div class="btn-click normal close-modal" (click)="modalAddUser()"><mat-icon>close</mat-icon></div>
-        <h1 class="title-modal">Agregar Usuario</h1>
         <form [formGroup]="formularioAgregarUser" >
-          <div class="cont-input-user">  <label class="bold" for="alias">alias</label> <input formControlName = "nombre" class="bold" name="alias" type="text" title="alias del usuario"> </div>
-          <div class="cont-input-user"> <label class="bold" for="correo">correo</label> <input class="bold" name="correo" formControlName="email" type="mail" title="correo del usuario"> </div>
-          <div class="cont-input-user"> <label class="bold" for="contraseña">contraseña</label> <input class="bold" formControlName="password" name="contraseña" type="text" title="contraseña del usuario"> </div>
-          <div class="btn-click btn-red normal" (click)="registrarUsuario()"><mat-icon>add</mat-icon> guardar</div>
+          <div class="cont-input-user">  <label class="bold" for="alias">alias</label> <input formControlName = "nombre" class="normal" name="alias" type="text" title="alias del usuario"> </div>
+          <div class="cont-input-user"> <label class="bold" for="correo">correo</label> <input class="normal" name="correo" formControlName="email" type="mail" title="correo del usuario"> </div>
+          <div class="cont-input-user"> <label class="bold" for="contraseña">contraseña</label> <input class="normal" formControlName="password" name="contraseña" type="text" title="contraseña del usuario"> </div>
+          <div class="btn-click btn-red normal x-margin" (click)="registrarUsuario()"><mat-icon>add</mat-icon> guardar</div>
         </form>
-  </div>
+      </div>
 </div>
 
 <div id="cont-modal-edit">
   <div id="modal-edit-user">
+    <h1 class="title-modal">Editar Usuario</h1>
     <div class="btn-click normal close-modal" (click)="modalEditUser()"><mat-icon>close</mat-icon></div>
-        <h1 class="title-modal">Editar Usuario</h1>
         <form [formGroup]="formularioEditarUser">
           <div class="cont-input-user"> <label class="bold"  for="aliasEdit">Alias</label> <input [(ngModel)]="Alias" class="bold" formControlName="nombre" name="aliasEdit" type="text" title="editar alias"> </div>
           <div class="cont-input-user"> <label class="bold" for="correoEdit">Correo</label> <input class="bold" [(ngModel)]="email"  formControlName="email" name="correoEdit" type="text" title="editar correo"> </div>
-          <div class="btn-click btn-red normal" (click)="editarUusario()"><mat-icon>add</mat-icon> guardar</div>
+          <div class="btn-click btn-red normal x-margin" (click)="editarUusario()"><mat-icon>add</mat-icon> guardar</div>
         </form>
   </div>
 </div>
