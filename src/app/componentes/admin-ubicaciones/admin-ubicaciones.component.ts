@@ -216,7 +216,9 @@ console.log(body)
   }
 
   this.ubicacionService.CrearUbicacion(body)
-  .subscribe(res =>{console.log(res), this.obtenerUbicacion()})
+  .subscribe(res =>{
+    this.formularioEditUbicacion.reset()
+    console.log(res), this.obtenerUbicacion()})
 
 }
 
@@ -276,6 +278,7 @@ sendFileEdit():void{
   console.log(this.formularioEditUbicacion.value.fecha)
   this.ubicacionService.sendEdit(body,this.idUbicacion)
   .subscribe(res =>{
+    this.formularioEditUbicacion.reset()
     this.AlertMessage("¡Datos actualizados exitosamente!", 1500)
     console.log(res), this.obtenerUbicacion()
   })

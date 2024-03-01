@@ -260,11 +260,7 @@ openAddCategory(event: MouseEvent){
   
   const node = event.target as HTMLElement | null
   const parent = node?.parentNode?.parentNode as HTMLElement | undefined
-  const modal = parent?.childNodes[5] as HTMLAnchorElement | undefined
-  
-  console.log(parent)
-  console.log(parent?.children[0])
-  console.log(parent?.children[1])
+  const modal = parent?.childNodes[4] as HTMLAnchorElement | undefined
 
   modal?.classList.add('show')
 }

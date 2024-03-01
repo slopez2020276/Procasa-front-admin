@@ -43,7 +43,7 @@
           <div class="btn-click btn-red" (click)="DeleteProduct(os._id)"  >  <mat-icon>delete</mat-icon></div>
           <div class="btn-click btn-red" (click)="openAddCategory($event)"><mat-icon>list</mat-icon></div>
         </div>
-            
+
           <div class="cont-add-cat cont-add-cat-new">
             <h1 class="title-modal">Agregar Categoría</h1>
             <div class="btn-click btn-close-addcat" (click)="CloseAddCategory($event)"><mat-icon>close</mat-icon></div>
@@ -58,11 +58,11 @@
           <div class="save-added-categories btn-click btn-red" (click)="SaveNewCategory()" (click)="CloseAddCategory($event)"><mat-icon>save</mat-icon></div>
         </div>  
       </div>
-        
+
   <div class="cont-subcategories subcategories">
     <h1 class="title-modal">Agregar Sub-Categoría</h1>
     <div class="btn-click close-cont-subcate" (click)="CloseAddSubCategory($event)"><mat-icon>close</mat-icon></div>
-    
+
     <div class="cont-categories">
       <button (click)="generarnewSubCate()" class="btn-generate normal">Nueva Sub</button>
       <button (click)="EliminarUltimaSub()" class="btn-delete normal">Eliminar Sub</button>
