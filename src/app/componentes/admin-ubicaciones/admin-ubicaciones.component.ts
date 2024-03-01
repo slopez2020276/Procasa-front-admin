@@ -242,7 +242,6 @@ saveEdited(){
   if (btn) { 
     btn.onclick = () => {
       this.sendFileEdit()
-      this.AlertMessage("¡Datos actualizados exitosamente!", 1500)
     }
   }
 }
@@ -276,7 +275,10 @@ sendFileEdit():void{
 
   console.log(this.formularioEditUbicacion.value.fecha)
   this.ubicacionService.sendEdit(body,this.idUbicacion)
-  .subscribe(res =>{console.log(res), this.obtenerUbicacion()})
+  .subscribe(res =>{
+    this.AlertMessage("¡Datos actualizados exitosamente!", 1500)
+    console.log(res), this.obtenerUbicacion()
+  })
 }
 
 

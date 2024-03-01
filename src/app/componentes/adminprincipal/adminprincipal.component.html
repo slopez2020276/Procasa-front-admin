@@ -389,18 +389,29 @@
 
 
 <div class="subcont-modal">
+<div class="cont-inp">
   <label for="title">Título</label>
   <input type="text" id="new-titulo-tl" formControlName="titleLineaTiempo" name="title" title="título">
+</div>
+
+<div class="cont-inp">
   <label for="description">Descripción</label>
   <input type="text" id="new-desc-tl" formControlName="descriptionLineaTiempo" title="description">
+</div>
+
+<div class="cont-inp">
   <label for="fecha-new-lt">fecha</label>
   <input type="date" formControlName="fecha" >
+</div>
+
+<div class="cont-inp">
   <label for="mostrarnew">Mostrar por</label>
   <select name="mostrarpornew" id="mostrarnew" formControlName="mostrarPor">
     <option value="anio">año</option>
     <option value="anioyMes">año - mes</option>
     <option value="anioMesDia">año - mes - día</option>
   </select>
+</div>
 
 </div>
 
@@ -441,19 +452,31 @@
 
 
 
-  <div class="subcont-modal">
-    <label for="title">Título</label>
-    <input   type="text" id="titulo-update-lt" formControlName="titleLineaTiempo" [(ngModel)]="tituloModal" name="title" title="título" required>
-    <label for="description">Descripción</label>
-    <input type="text" formControlName="descriptionLineaTiempo" id="desc-update-lt" [(ngModel)]="descripcionModal"  title="description">
-    <label for="fecha-edit-lt">fecha</label>
+<div class="subcont-modal">
+<div class="cont-inp">
+  <label for="title">Título</label>
+  <input   type="text" id="titulo-update-lt" formControlName="titleLineaTiempo" [(ngModel)]="tituloModal" name="title" title="título" required>
+</div>
+
+<div class="cont-inp">
+  <label for="description">Descripción</label>
+  <input type="text" formControlName="descriptionLineaTiempo" id="desc-update-lt" [(ngModel)]="descripcionModal"  title="description">
+</div>
+
+<div class="cont-inp">
+  <label for="fecha-edit-lt">fecha</label>
   <input formControlName = "fecha" [(ngModel)]="fechaModal"  type="date" id="fechaupdatelt" name="fecha-edit-lt" title="fecha de línea de tiempo">
+</div>
+
+
+<div class="cont-inp">
   <label for="mostrarpor" >Mostrar por</label>
     <select formControlName="mostrarPor" name="mostrarpor" id="mostrarporedit" [(ngModel)]="mostrarPorModal">
       <option value="anio">año</option>
       <option value="aniomes">año - mes</option>
       <option value="mesdia">mes - día</option>
     </select>
+</div>
   </div>
 
     <div class="btn-click btn-red normal" id="update-time-line" (click)="saveUpdateTimeLine()"><mat-icon>save</mat-icon> guardar</div>
@@ -525,7 +548,7 @@
   <div id="sub-cont-details-img">
     <div class="sub-details">
         <div class="sub-img-btn">
-          <input type="file" (change)="InputChange($event)" (change)="getFile($event)" title="seleccionar archivo" accept=".jpg, .png, .jpeg, .avi, .webp" data-content="seleccionar archivo">
+          <input type="file" (change)="InputChange($event)" (change)="getFileUpdateNoticia($event)" title="seleccionar archivo" accept=".jpg, .png, .jpeg, .avi, .webp" data-content="seleccionar archivo">
           <mat-icon>delete</mat-icon>
         </div>
       <ul>

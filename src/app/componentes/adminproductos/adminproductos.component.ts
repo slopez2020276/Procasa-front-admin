@@ -31,6 +31,7 @@ export class AdminproductosComponent implements OnInit {
   Alert: Boolean | any
   inputEmptyB
   srcPreviewEdit
+  inputControl
 
   containerAlert: HTMLElement | any
   widthLimit
@@ -42,6 +43,7 @@ export class AdminproductosComponent implements OnInit {
 constructor(){
     this.formularioAgregarProducto = new FormGroup({
       nombreProducto : new FormControl(),
+      inputControl : new FormControl(),
     })
 }
 
@@ -62,19 +64,27 @@ getFile($event: any): void {
   }
 }
 
-sendFile():void{
 
+
+
+
+
+sendFile():void{
   const body = new FormData()
 
-  if(this.fileTmp){
-    body.append('imgPath', this.fileTmp.fileRaw, this.fileTmp.fileName);
-    body.append('nombreProducto', this.formularioAgregarProducto.value.nombreProducto)
-   console.log(this.formularioAgregarProducto.value.nombreProducto)
-  }else{ body.append('nombreProducto', this.formularioAgregarProducto.value.nombreProducto) }
+  if(this.fileTmp && this.formularioAgregarProducto.value.nombreProducto){
 
-  console.log(this.formularioAgregarProducto.value.nombreProducto)
-  this.productosServices.CrearUbicacion(body)
-  .subscribe(res =>{console.log(res), this.obtenerProductos(),this.fileTmp = null})
+    body.append('imgPath', this.fileTmp.fileRaw, this.fileTmp.fileName)
+    body.append('nombreProducto', this.formularioAgregarProducto.value.nombreProducto)
+    
+    this.productosServices.CrearUbicacion(body)
+    .subscribe(res =>{
+          this.AlertMessage("¡Producto agregado exitosamente!", 1500)
+      console.log(res), this.obtenerProductos(),this.fileTmp = null})
+      this.formularioAgregarProducto.reset()
+  }else{
+    this.AlertMessage("Todos los campos son requeridos", 1500)
+  }
 }
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -234,8 +244,11 @@ obtenerProductos(){
 
 async eliminarProducto(id:any){
   const productoDelete = await this.productosServices.eliminarProductos(id)
+if(productoDelete){
+  this.AlertMessage("¡Producto eliminado!", 1500)
   console.log(productoDelete)
   this.obtenerProductos()
+}else{ this.AlertMessage("Error al eliminar", 1500) }
 }
 
 
@@ -243,10 +256,16 @@ async eliminarProducto(id:any){
 
 
 openAddCategory(event: MouseEvent){
+
+  
   const node = event.target as HTMLElement | null
   const parent = node?.parentNode?.parentNode as HTMLElement | undefined
   const modal = parent?.childNodes[5] as HTMLAnchorElement | undefined
-    
+  
+  console.log(parent)
+  console.log(parent?.children[0])
+  console.log(parent?.children[1])
+
   modal?.classList.add('show')
 }
 
@@ -257,9 +276,7 @@ saveEditedProduct(event: MouseEvent){
   const btn: HTMLElement | any = parent?.childNodes[0]?.childNodes[0]?.childNodes[1]?.childNodes[0]
 
   if (btn) { 
-    btn.onclick = () => {
-          // A C T I O N 
-    }
+    btn.onclick = () => { this.sendFile() }
   }
 }
 
@@ -280,7 +297,6 @@ DeleteProduct(id:any) {
   const btn: HTMLElement | any = parent?.childNodes[0]?.childNodes[0]?.childNodes[1]?.childNodes[0]
 
   if (btn) { btn.onclick = () => {
-// A C T I O N    F O R   D E L E T E
 
     this.eliminarProducto(id)
 
@@ -299,7 +315,7 @@ SaveNewProduct(event: MouseEvent){
 
   if (btn) { btn.onclick = () => {
           this.sendFile()
-          this.AlertMessage("¡Producto agregado exitosamente!", 1500)
+          // this.AlertMessage("¡Producto agregado exitosamente!", 1500)
     }
   }
 }
@@ -358,11 +374,6 @@ SystemAlert() {
     }
   }
 }
-
-
-
-
-
 
 
 

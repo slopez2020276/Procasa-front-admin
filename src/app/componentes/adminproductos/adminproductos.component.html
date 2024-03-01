@@ -18,11 +18,11 @@
 
 
   @for (os of dataProductos; track os._id) {
-  <div class="producto">      
+  <div class="producto">
       
   <div class="sub-producto">
           <img [src]="os.imgPath" alt="producto" title="producto">
-        </div>
+  </div>
         <h1 class="name-product bold">{{os.nombreProducto}}</h1>
         <div class="sub-producto">
           <div class="sub-details">
@@ -42,7 +42,7 @@
           <div class="edit-product btn-click btn-red" (click)="ModalProduct('edit')"><mat-icon>edit</mat-icon></div>
           <div class="btn-click btn-red" (click)="DeleteProduct(os._id)"  >  <mat-icon>delete</mat-icon></div>
           <div class="btn-click btn-red" (click)="openAddCategory($event)"><mat-icon>list</mat-icon></div>
-            </div>
+        </div>
             
           <div class="cont-add-cat cont-add-cat-new">
             <h1 class="title-modal">Agregar Categoría</h1>
@@ -55,9 +55,8 @@
         
         
         <div class="cont-btn-save">
-
           <div class="save-added-categories btn-click btn-red" (click)="SaveNewCategory()" (click)="CloseAddCategory($event)"><mat-icon>save</mat-icon></div>
-        </div>
+        </div>  
       </div>
         
   <div class="cont-subcategories subcategories">
@@ -93,16 +92,16 @@
 
 <!-------- MODAL AGREGAR PRODUCTO ------------------------------------------------------------------------------------------------------------------------------------>
 <div id="modal-add-product">
+  <div class="btn-click close-modal" (click)="ModalProduct('add')"><mat-icon>close</mat-icon></div>
   <h1 class="title-modal">Agregar Producto</h1>
-  <div id="close-modal-add" (click)="ModalProduct('add')">cerrar</div>
+  
 <form action="" [formGroup]="formularioAgregarProducto">
-
   <div class="cont-blocks">
 
     <div id="sub-cont-details-img">
       <div class="sub-details">
           <div class="sub-img-btn">
-            <input type="file" (change)="InputChange($event)" (change)="getFile($event)" title="seleccionar archivo" accept=".jpg, .png, .jpeg, .avi, .webp" data-content="seleccionar archivo">
+            <input formControlName="inputControl" type="file" (change)="InputChange($event)" (change)="getFile($event)" title="seleccionar archivo" accept=".jpg, .png, .jpeg, .avi, .webp" data-content="seleccionar archivo">
             <mat-icon>delete</mat-icon>
           </div>
         <ul>
@@ -135,11 +134,10 @@
 
 <!-------- MODAL EDITAR PRODUCTO ------------------------------------------------------------------------------------------------------------------------------------>
 <div id="modal-edit-product">
-  <div id="close-modal-edit" (click)="ModalProduct('edit')"><mat-icon>close</mat-icon></div>
-
   <h1 class="title-modal">Editar Producto</h1>
   <div id="close-modal-add" (click)="ModalProduct('edit')"><mat-icon>close</mat-icon></div>
 
+<!-- <form formControlName="nombreProducto"></form> -->
   <div class="cont-blocks">
 
     <div id="sub-cont-details-img">
@@ -177,10 +175,6 @@
   <div class="btn-click btn-close-addcat" (click)="CloseAddCategory($event)"><mat-icon>close</mat-icon></div>
 
 <div class="cont-categories">
-  <!-- <button (click)="generarCate()" class="btn-generate normal">Nueva categoría</button> -->
-  <!-- <button (click)="EliminarUltimaCate()" class="btn-delete normal">Eliminar categoría</button> -->
-  <!-- <div class="cont-input-btn" *ngFor="let div of categoryArray; let i = index"> -->
-
   <div class="cont-input-btn">
     <div class="btn-sub btn-click btn-red"><mat-icon>delete</mat-icon></div>
     <div class="btn-sub btn-click btn-red" (click)="openEditItems($event)"><mat-icon>edit</mat-icon></div>

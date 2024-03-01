@@ -597,6 +597,7 @@ div.subcont-modal {
   padding-bottom: 1rem;
 }
 
+
 div#cont-close-button, div#cont-close-button-add {
   display: flex;
   justify-content: end;
@@ -1226,6 +1227,15 @@ select {
 
 @media screen and (max-width:700px) {
 
+
+div.sub-container-items { justify-content: center; }
+  
+  div.sub-items {
+    width: 100%;
+    justify-content: center;
+}
+
+
   div#container-welcome h1 {
     width: 80%;
     text-align: center;
@@ -1314,6 +1324,7 @@ div#cont-btn-preview {
 }
 
 div.btn-scroll {
+  margin: .5rem .5rem 0 .5rem;
   background: #252525;
   color: #FAFAFA;
   border-radius: 4px;

@@ -698,14 +698,15 @@ getFileUpdateNoticia($event: any): void {
   }
 }
 
+// ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 sendFileUpdateNoticia():void{
 
   let id = this.dataNoticiasxID._id
-  const body = new FormData();
+  const body = new FormData()
 
   if(this.fileUpdateNoticia){
-    body.append('imgPhat', this.fileUpdateNoticia.fileRaw, this.fileUpdateNoticia.fileName);
+    body.append('imgPhat', this.fileUpdateNoticia.fileRaw, this.fileUpdateNoticia.fileName)
     body.append('title', this.formularioEditarNoticias.value.title)
     body.append('descripcion',this.formularioEditarNoticias.value.descripcion)
     console.log('con imagen')
@@ -718,16 +719,41 @@ sendFileUpdateNoticia():void{
   }
 
   this.noticiasService.sendEdit(body,id)
-  .subscribe(res =>{console.log(res), this.obtnerNoticias(),this.fileUpdateNoticia = null})
+  .subscribe(res =>{
+    if(res){ this.AlertMessage("¡Noticia actualizada!",1500)
+        console.log(res), this.obtnerNoticias(),this.fileUpdateNoticia = null
+        this.formularioEditarNoticias.reset()
+    }else{ this.AlertMessage("Error al actualizar",1500) }
+  })
 }
+
+
+updateNoticia() {
+  this.AlertOption("¿Actualizar los datos de Noticia?")
+  const parent: HTMLElement | any = this.containerAlert
+  const btn: HTMLElement | any = parent?.childNodes[0]?.childNodes[0]?.childNodes[1]?.childNodes[0]
+
+  if (btn) { btn.onclick = () => {
+      try{
+        this.sendFileUpdateNoticia()
+        this.obtnerNoticias()
+      } catch(error){ this.AlertMessage("Error al actualizar", 1500) }
+}}
+
+}
+
+
+// ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
 
 
 
 
 ShowMore(){ this.ObtenerAllnoticas() }
-
-
-
 
 async guardarNoticia() {
   this.AlertOption("¿Desea agregar la Noticia?")
@@ -763,26 +789,6 @@ eliminarNoticia(id: any) {
       }
     }
   }
-}
-
-
-
-
-
-
-updateNoticia() {
-    this.AlertOption("¿Actualizar los datos de Noticia?")
-    const parent: HTMLElement | any = this.containerAlert
-    const btn: HTMLElement | any = parent?.childNodes[0]?.childNodes[0]?.childNodes[1]?.childNodes[0]
-
-    if (btn) { btn.onclick = () => {
-        try{
-          this.sendFileUpdateNoticia()
-          this.obtnerNoticias()
-          this.AlertMessage("¡Datos actualizados!", 1500)
-        } catch(error){ this.AlertMessage("Error al actualizar", 1500) }
-  }}
-
 }
 
 

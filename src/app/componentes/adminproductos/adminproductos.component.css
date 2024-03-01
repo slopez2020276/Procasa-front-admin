@@ -187,11 +187,14 @@ div#modal-add-product, div#modal-edit-product {
   padding-bottom: 1rem;
 }
 
-/* div#modal-add-product {
-  transform: scale(1) translateY(0);
-  opacity: 1;
-  z-index: 10;
-} */
+div#modal-add-product form, div#modal-edit-product form {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  align-content: start;
+  flex-wrap: wrap;
+}
 
 div#modal-add-product.show,
 div#modal-edit-product.show {

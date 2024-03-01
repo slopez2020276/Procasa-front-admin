@@ -55,6 +55,7 @@ div.container {
   position: absolute;
   right: .5rem;
   top: .5rem;
+  z-index: 51;
 }
 
 span.danger-red.limit {color: #AA182C;}
