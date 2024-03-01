@@ -565,8 +565,11 @@ sendFileTimeLine():void {
     }
 
     this.lineaService.sendPost(body).subscribe(res =>{
-      console.log(res),console.log(body), this.obtenerLinea(),this.fileTmp = null
+      console.log(res)
+      console.log(body)
+      this.fileTmp = null
       this.AlertMessage("¡Datos guardados exitosamente!", 1500)
+      this.obtenerLinea()
     })
   }
 
