@@ -19,7 +19,7 @@
   @for (os of dataUnete; track os._id  ) {
 
     <div class="cont">
-      <img src="../../../assets/img/pilotos.jpg" alt="">
+      <img [src]="os.imgPath" alt="">
 
       <h2 class="bold">{{os.titulo}}</h2>
       <div class="datos">
