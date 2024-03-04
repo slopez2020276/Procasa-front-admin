@@ -45,6 +45,7 @@ export class EquipoComponent {
 
 
   private fileTmp:any;
+  private fileTmpFileEdit:any;
   $element: MouseEvent | any
 
 
@@ -107,6 +108,14 @@ constructor(){
     }
   }
 
+  getFileEdit($event: any): void {
+    //TODO esto captura el archivo!
+    const [ file ] = $event.target.files;
+    this.fileTmpFileEdit = {
+      fileRaw:file,
+      fileName:file.name
+    }
+  }
 
 
   InputChange(event: Event) {
@@ -213,7 +222,7 @@ agregarPlaza():void{
   const body = new FormData()
 
   if(this.fileTmp){
-    body.append('imgPhat', this.fileTmp.fileRaw, this.fileTmp.fileName)
+    body.append('imagePath', this.fileTmp.fileRaw, this.fileTmp.fileName)
     body.append('titulo', this.fomrumarioAgregarPlaza.value.titulo)
     body.append('ubicacion', this.fomrumarioAgregarPlaza.value.ubicacion)
     body.append('departamento',this.fomrumarioAgregarPlaza.value.departamento)
@@ -240,6 +249,38 @@ agregarPlaza():void{
 
 }
 
+EditPlaza():void{
+
+  const body = new FormData()
+
+  if(this.fileTmp){
+    body.append('imagePath', this.fileTmp.fileRaw, this.fileTmp.fileName)
+    body.append('titulo', this.fomrumarioAgregarPlaza.value.titulo)
+    body.append('ubicacion', this.fomrumarioAgregarPlaza.value.ubicacion)
+    body.append('departamento',this.fomrumarioAgregarPlaza.value.departamento)
+    body.append('empresa',this.fomrumarioAgregarPlaza.value.empresa)
+    body.append('educacion',this.fomrumarioAgregarPlaza.value.educacion)
+    body.append('experecia',this.fomrumarioAgregarPlaza.value.experiencia)
+    body.append('fecha',this.fomrumarioAgregarPlaza.value.fecha)
+
+
+  }else{
+    body.append('titulo', this.fomrumarioAgregarPlaza.value.titulo)
+    body.append('ubicacion', this.fomrumarioAgregarPlaza.value.ubicacion)
+    body.append('departamento',this.fomrumarioAgregarPlaza.value.departamento)
+    body.append('empresa',this.fomrumarioAgregarPlaza.value.empresa)
+    body.append('educacion',this.fomrumarioAgregarPlaza.value.educacion)
+    body.append('experecia',this.fomrumarioAgregarPlaza.value.experiencia)
+    body.append('fecha',this.fomrumarioAgregarPlaza.value.fecha)
+
+  }
+  this.uneterService.sendEditPlaza(this.idPlaza,body)
+
+
+  .subscribe(res =>{console.log(res),  console.log(body), this.obtenerUnete(),this.fileTmp = null})
+
+}
+
 
 
 /**
@@ -258,7 +299,7 @@ sendFileplaza(): void {
   if (btn) { btn.onclick = () => {
     const body = new FormData()
     if(this.fileTmp){
-      body.append('imgPhat', this.fileTmp.fileRaw, this.fileTmp.fileName)
+      body.append('imgPath', this.fileTmp.fileRaw, this.fileTmp.fileName)
       body.append('titulo', this.formAgregarPlaza.value.titulo)
       body.append('ubicacion', this.formAgregarPlaza.value.ubicacion)
       body.append('departamento',this.formAgregarPlaza.value.departamento)
@@ -286,6 +327,44 @@ sendFileplaza(): void {
 
 
 }
+
+sendFileEditplaza(id:any): void {
+  this.AlertOption("¿Desea guardar la nueva plaza?")
+  const parent: HTMLElement | any = this.containerAlert
+  const btn: HTMLElement | any = parent?.childNodes[0]?.childNodes[0]?.childNodes[1]?.childNodes[0]
+  
+  if (btn) { btn.onclick = () => {
+    const body = new FormData()
+    if(this.fileTmpFileEdit){
+      body.append('imgPath', this.fileTmpFileEdit.fileRaw, this.fileTmpFileEdit.fileName)
+      body.append('titulo', this.formAgregarPlaza.value.titulo)
+      body.append('ubicacion', this.formAgregarPlaza.value.ubicacion)
+      body.append('departamento',this.formAgregarPlaza.value.departamento)
+      body.append('empresa',this.formAgregarPlaza.value.empresa)
+      body.append('educacion',this.formAgregarPlaza.value.educacion)
+      body.append('experecia',this.formAgregarPlaza.value.experiencia)
+      body.append('fecha',this.formAgregarPlaza.value.fecha)
+      console.log('con imagen')
+  
+    }else{
+      console.log('sin img')
+      body.append('titulo', this.formAgregarPlaza.value.titulo)
+      body.append('ubicacion', this.formAgregarPlaza.value.ubicacion)
+      body.append('departamento',this.formAgregarPlaza.value.departamento)
+      body.append('empresa',this.formAgregarPlaza.value.empresa)
+      body.append('educacion',this.formAgregarPlaza.value.educacion)
+      body.append('experecia',this.formAgregarPlaza.value.experiencia)
+      body.append('fecha',this.formAgregarPlaza.value.fecha)
+  }
+  
+    this.uneterService.sendEditPlaza(id ,body)
+    .subscribe(res => {console.log(res), console.log(body) ,this.obtenerUnete(), this.AlertMessage('¡Plaza guardada exitosamente!', 1500)})
+  }
+}
+
+
+}
+
 
 
 async crearPlaza(){

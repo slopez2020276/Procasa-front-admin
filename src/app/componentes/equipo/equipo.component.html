@@ -41,7 +41,7 @@
 
       <div class="cont-buttons">
         <div class="actions btn-click btn-red" (click)="ModalFunctions($index)"><mat-icon>add</mat-icon></div>
-          <div class="actions btn-click btn-red" (click)="ModalProduct('edit')" (click)="obtenerPlazaId(os._id)" ><mat-icon>edit</mat-icon></div>
+          <div class="actions btn-click btn-red" (click)="ModalProduct('edit')" (click)="obtenerPlazaId(os._id)"  ><mat-icon>edit</mat-icon></div>
           <div class="actions btn-click btn-red" (click)="EliminarP(os._id)"><mat-icon>delete</mat-icon></div>
       </div>
 
@@ -137,7 +137,7 @@
 <div id="sub-cont-details-img">
       <div class="sub-details">
           <div class="sub-img-btn">
-            <input type="file" (change)="InputChange($event)" (change)="getFile($event)" title="seleccionar archivo" accept=".jpg, .png, .jpeg, .avi, .webp" data-content="seleccionar archivo">
+            <input type="file" (change)="getFileEdit($event)"  (change)="InputChange($event)" title="seleccionar archivo" accept=".jpg, .png, .jpeg, .avi, .webp" data-content="seleccionar archivo">
             <mat-icon>delete</mat-icon>
           </div>
         <ul>
@@ -170,7 +170,7 @@
 
 
 <div class="cont-btns">
-    <div class="btn-click btn-red" (click)="Edit()"><mat-icon>save</mat-icon> guardar</div>
+    <div class="btn-click btn-red" (click)="Edit()" (click)="EditPlaza()" ><mat-icon>save</mat-icon> guardar</div>
   </div>
 </div>
 <!--  -->

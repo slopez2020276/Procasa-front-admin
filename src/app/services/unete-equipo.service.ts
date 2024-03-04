@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
 import { Observable, first, firstValueFrom } from 'rxjs';
 
@@ -17,7 +17,7 @@ export class UneteEquipoService {
 
    otenerUneteEquipo(){
     return firstValueFrom(
-      this.httClient.get<any>(`${this.baseUrl}/obtenerEmpleo`)
+      this.httClient.get<any>(`${this.baseUrl}/obtenerEmpleo`,this.createHeaders())
     )
    }
 
@@ -37,6 +37,13 @@ export class UneteEquipoService {
     sendCreatePlaza(body:FormData):Observable<any>{
       return this.httClient.post(`${this.baseUrl}/crearEmpleo`, body)
     }
+
+    
+    sendEditPlaza(id:any,body:FormData):Observable<any>{
+      console.log(id)
+      return this.httClient.put(`${this.baseUrl}/editarPlaza/${id}`, body)
+    }
+
 
     agregarFunciones(id:any, formValue:any){
       return firstValueFrom(
@@ -75,4 +82,12 @@ export class UneteEquipoService {
         this.httClient.put<any>(`${this.baseUrl}/editarPlazaV2/${id}/${indice}`, formValue)
       )
     }
+
+    createHeaders(){
+      return   {
+       headers: new HttpHeaders ({
+         'Authorization': localStorage.getItem('token')!
+       })
+     }
+   }
 }

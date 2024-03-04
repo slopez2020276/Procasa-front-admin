@@ -23,7 +23,7 @@
         @for (os of dataUbicaciones | MostrarPorUbiPipe: filtro | mostrarimgsUbicacion:filtroIMG  ; track os._id) {
           <div class="cont-sucursal">
             <div class="sucursal">
-              <div class="sub-img"><img  [src]="'http://localhost:3002/' + os.imgPath"  alt=""></div>
+              <div class="sub-img"><img  [src]=" os.imgPath"  alt=""></div>
               <div class="sub-info">
                 <h1 class="bold">{{os.nombreTienda}}</h1>
                   <p>{{os.direccion}}</p>
