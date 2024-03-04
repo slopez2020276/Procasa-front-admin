@@ -222,9 +222,6 @@ div.cont-btns-alert div {
   border-radius: 4px;
 }
 
-
-
-
 /* SYSTEM LOAD & VIEW  IMG ====================================================*/
 
 div#sub-cont-details-img {
@@ -347,7 +344,6 @@ input[type=file]:active { transform: scale(.93); box-shadow: 0px 0px 0px rgba(0,
   }
 }
 
-
 @media screen and (max-width: 500px) {
   div#sub-cont-details-img {
     justify-content: center;
@@ -369,6 +365,33 @@ input[type=file]:active { transform: scale(.93); box-shadow: 0px 0px 0px rgba(0,
     width: 100%;
     height: 100%;
   }
+  
+
+div#background-alert {
+  align-items: center;
+  align-content: center;
+}
+
+div#container-alert { width: 90%; }
+  
+div.cont-btns-alert { width: 100%; width: 80%; flex-wrap: wrap;}
+
+div.cont-btns-alert.show { display: flex; z-index: 700;}
+
+div.cont-btns-alert div {
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+div.cont-btns-alert div mat-icon { margin: 0 1rem; }
 
 
+}
+
+
+@media screen and (max-width: 600px) {
+  div#sub-cont-details-img {
+    width: 80%;
+    height: auto;
+  }
 }
