@@ -67,6 +67,7 @@ div.cont-2-column-item {
   transform: scale(1);
   margin: 1rem;
   z-index: 100;
+  color: #FAFAFA;
 }
 
 div.cont-2-column-item:hover {

@@ -25,8 +25,8 @@
     </div>
 
     <div id="formulariomain">
-      <form [formGroup]="formularioAgregarSub" (ngSubmit)="agregarnuevaSub()" >
-      <button type="button" id="close-form-modal" (click)="CloseForm()">X</button>
+      <form [formGroup]="formularioAgregarSub" (ngSubmit)="agregarnuevaSub()">
+      <button type="button" id="close-form-modal" class="bold" (click)="CloseForm()">X</button>
         <h1>SUSCRÍBETE PARA RECIBIR NOTICIAS DE NUESTROS PRODUCTOS</h1>
         <label for="correo">INGRESA TU CORREO</label>
         <input type="mail" formControlName="correo" name="correo" placeholder="">

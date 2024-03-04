@@ -14,7 +14,9 @@
   z-index: 700;
   transform: translateY(0);
   opacity: 1;
+  flex-wrap: wrap;
 }
+
 * {color: #FAFAFA;}
 
 #foot.tobottom {
@@ -29,6 +31,7 @@ div.footer-sub {
   height: 100%;
   color: #FFF;
   text-align: center;
+  margin-top: 0;
 }
 
 div#f-sub-1 {
@@ -184,6 +187,7 @@ div#formulariomain label {
   padding-left: 10%;
   margin-top: 1rem;
   font-size: 12pt;
+  color: #252525;
 }
 
 div#formulariomain input {
@@ -193,6 +197,8 @@ div#formulariomain input {
   font-size: 10pt;
   font-weight: bold;
   border: 1px solid #DDD;
+  color: #252525;
+  border-radius: 4px;
 }
 
 form button[type=submit] {
@@ -242,6 +248,7 @@ button#close-form-modal {
   font-size: 10pt;
   transition: .2s ease;
   transform: scale(1);
+  color: #252525;
 }
 
 button#close-form-modal:active {
@@ -257,35 +264,39 @@ button#close-form-modal:active {
 
 
 
-@media only screen and (max-width: 720px) {
+@media screen and (max-width: 860px) {
 
   body { background-size: auto 100%; }
 
+  #foot { height: auto; }
 
-  div#f-sub-space { display: none; }
-
-
-  div#menu {
-          left: 1rem;
+  div.footer-sub {
+    height: 100%;
+    width: 100%;
+    min-width: 80%;
   }
 
-  div#container-0 img {
-      left: 10rem;
+
+div.footer-sub { margin-top: 1rem; padding: .5rem 0; }
+
+
+div#f-sub-space { display: none; }
+
+div#menu { left: 1rem; }
+
+div#container-0 img { left: 10rem; }
+
+div.navbar-items {
+  position: absolute;
+  left: -200px;
+  top: 0;
   }
 
-  div.navbar-items {
-      position: absolute;
-      left: -200px;
-      top: 0;
-  }
-
-  div#f-sub-3 p a {
-    text-align: center;
-  }
+  div#f-sub-3 p a { text-align: center; }
 
   div#f-sub-1 img {
-    width: auto;
-    height: 70px;
+  width: auto;
+  height: 70px;
   }
 
   }

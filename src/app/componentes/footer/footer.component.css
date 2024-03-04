@@ -174,8 +174,9 @@ footer {
       padding-left: 10%;
       margin-top: 1rem;
       font-size: 12pt;
-  }
-
+      color: #252525;
+    }
+    
   div#formulario input {
       width: 80%;
       margin-left: 10%;
@@ -183,7 +184,9 @@ footer {
       font-size: 10pt;
       font-weight: bold;
       border: 1px solid #DDD;
-  }
+      color: #252525;
+      border-radius: 4px;
+    }
 
   form button[type=submit] {
       padding: .5rem 2rem;
@@ -234,6 +237,7 @@ button#close-form-modal {
   font-size: 10pt;
   transition: .2s ease;
   transform: scale(1);
+  color: #252525;
 }
 
 button#close-form-modal:active {
@@ -250,7 +254,7 @@ button#close-form-modal:active {
 
 
 
-  @media only screen and (max-width: 767px) {
+  @media screen and (max-width: 767px) {
 
     body { background-size: auto 100%; }
 

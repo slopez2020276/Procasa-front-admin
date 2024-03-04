@@ -61,27 +61,28 @@ div#intro-2 {
 
 
 
-div#container-portada-img {
+/* div#container-portada-img {
   width: 100vw;
-  height: 100vh;
+  height: auto;
+  min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: start;
   overflow: hidden;
   position: relative;
-}
-
+  border: 1px solid yellowgreen;
+} */
 
 img#container-principal-img {
-    width: 100%;
+    width: 100vw;
+    min-width: 100vw;
     height: auto;
-    max-height: 100%;
-    position: absolute;
-    top: 0;
+    position: relative;
     z-index: 10;
     transform: scale(1);
     animation: introduction 1.8s ease-in-out;
-  }
+    margin-top: 63px;
+}
 
 @keyframes introduction {
   0% { transform: scale(1.4); }
