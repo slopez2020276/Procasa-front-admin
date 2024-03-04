@@ -6,7 +6,6 @@
     <!-- <button id="add-location" (click)="AddLocation()">+ Agregar ubicación</button> -->
 
     <div id="bar-search">
-      <label for="search" >Buscar</label>
       <input class="bold" [(ngModel)]="AliasFiltro"  class="bold" type="text" name="search" placeholder="" title="buscar">
     </div>
     <button class="btn-click btn-red normal" (click)="modalAddUser()"><mat-icon>add</mat-icon> Agregar usuario</button>
@@ -16,8 +15,7 @@
     <div id="cont-users">
       <div class="user-head"><span class="bold">ALIAS</span><span class="bold">CORREO</span><span class="bold edit-head">ACCIONES</span></div>
     @for (os of dataUsers | mostrarAlias: AliasFiltro ; track os._id) {
-      <div class="user"> <span class="bold">{{os.nombre}}</span> <span class="bold">{{os.email}}</span><span class="edit" (click)="modalEditUser()"  (click)="ObtenerxID(os._id)">editar</span></div>
-
+      <div class="user"> <span class="bold">{{os.nombre}}</span> <span class="bold">{{os.email}}</span><span class="edit" (click)="modalEditUser()"  (click)="ObtenerxID(os._id)"><mat-icon>edit</mat-icon></span></div>
     }
     </div>
 </div>

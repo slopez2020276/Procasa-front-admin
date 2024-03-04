@@ -127,6 +127,7 @@ div#container-2, div#container-4 {
   padding: 0 2rem;
 }
 
+
 div#container-2 h1 {
   color: #AA182C;
   font-size: 18pt;
@@ -135,12 +136,12 @@ div#container-2 h1 {
 }
 
 
-div#container-2 button#add-product {
+div#container-2 button {
   background: #AA182C;
   color: #FFF;
   text-align: center;
-  padding: 1rem 2rem;
-  border-radius: 2rem;
+  padding: .5rem 1rem;
+  border-radius: 4px;
   font-size: 9pt;
   position: relative;
   cursor: pointer;
@@ -149,7 +150,7 @@ div#container-2 button#add-product {
   opacity: 1;
 }
 
-div#container-2 button#add-product:active {
+div#container-2 button:active {
   transform: scale(.9);
   opacity: .8;
 }
@@ -161,22 +162,12 @@ div#bar-search {
   align-items: center;
 }
 
-div#bar-search label {
-  width: 10%;
-  font-size: 12pt;
-}
-
 div#bar-search input {
   width: 80%;
   padding: .5rem 2rem;
   border-radius: 10rem;
   font-size: 14pt;
   border: 1px solid #DDD;
-}
-
-div#bar-search button {
-  width: 10%;
-  background: transparent;
 }
 
 div#container-3 {
@@ -289,3 +280,32 @@ div.message h1 {
   color: #757575;
   background: transparent;
 }
+
+/* -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
+
+@media screen and (max-width: 600px) {
+
+  div#container-2 { padding: 0 .5rem; }
+  div#container-2 h1 {
+    font-size: 14pt;
+    width: auto;
+  }
+
+  div#bar-search input {
+    width: 90%;
+    padding: .5rem 1rem;
+    font-size: 12pt;
+  }
+}
+
+@media screen and (max-width: 440px) {
+  div#container-2 h1 { display: none; }
+}
+
+
+
+
+
+
+
+

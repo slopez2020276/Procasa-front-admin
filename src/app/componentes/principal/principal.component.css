@@ -60,19 +60,6 @@ div#intro-2 {
 }
 
 
-
-/* div#container-portada-img {
-  width: 100vw;
-  height: auto;
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: start;
-  overflow: hidden;
-  position: relative;
-  border: 1px solid yellowgreen;
-} */
-
 img#container-principal-img {
     width: 100vw;
     min-width: 100vw;

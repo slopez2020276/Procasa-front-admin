@@ -26,7 +26,7 @@ div#container-2, div#container-4 {
 div#container-2 h1 {
   color: #AA182C;
   font-size: 18pt;
-  width:200px;
+  width:auto;
   display: inline-block;
 }
 
@@ -37,11 +37,6 @@ div#bar-search {
   display: flex;
   justify-content: space-around;
   align-items: center;
-}
-
-div#bar-search label {
-  width: 10%;
-  font-size: 12pt;
 }
 
 div#bar-search input {
@@ -655,5 +650,28 @@ div.save-items {
   margin: 1rem 0 4rem 0;
 }
 
+
+
+/* ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
+
+
+@media screen and (max-width: 600px) {
+
+  div#container-2 { padding: 0 .5rem; }
+  div#container-2 h1 {
+    font-size: 14pt;
+    width: auto;
+  }
+
+  div#bar-search input {
+    width: 90%;
+    padding: .5rem 1rem;
+    font-size: 12pt;
+  }
+}
+
+@media screen and (max-width: 440px) {
+  div#container-2 h1 { display: none; }
+}
 
 
