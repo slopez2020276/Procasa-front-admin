@@ -120,7 +120,7 @@ div#list, div#list-products {
     position: relative;
     width: 100%;
     height: auto;
-    top: 7%;
+    top: 0%;
     left: 0;
     transition: .4s;
     z-index: 100;
@@ -130,6 +130,7 @@ div#list, div#list-products {
     padding-bottom: 1rem;
     font-weight: bold;
     color: #252525;
+    background: transparent;
 }
 
 /* div#list {display: none;} */
