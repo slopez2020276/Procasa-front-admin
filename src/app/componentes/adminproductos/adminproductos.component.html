@@ -56,7 +56,10 @@
           
             <div class="cont-categories">
               <div class="cont-input-btn">
-          <input type="text" placeholder="nueva categoría">
+                <form action="">
+
+                  <input type="text" placeholder="nueva categoría">
+                </form>
         </div>
         
         
@@ -143,13 +146,14 @@
   <h1 class="title-modal">Editar Producto</h1>
   <div id="close-modal-add" (click)="ModalProduct('edit')"><mat-icon>close</mat-icon></div>
 
-<!-- <form formControlName="nombreProducto"></form> -->
+<form [formGroup]="formularioEditarProducto">
+
   <div class="cont-blocks">
 
     <div id="sub-cont-details-img">
       <div class="sub-details">
           <div class="sub-img-btn">
-            <input type="file" (change)="InputChange($event)" (change)="getFile($event)" title="seleccionar archivo" accept=".jpg, .png, .jpeg, .avi, .webp" data-content="seleccionar archivo">
+            <input type="file" (change)="InputChange($event)" (change)="getFileEditProducto($event)" title="seleccionar archivo" accept=".jpg, .png, .jpeg, .avi, .webp" data-content="seleccionar archivo">
             <mat-icon>delete</mat-icon>
           </div>
         <ul>
@@ -163,7 +167,7 @@
 
 
 <div class="cont-datos">
-  <input [(ngModel)]="nombreProducto" type="text" placeholder="{{nombreProducto}}" class="normal" name="name-producto" title="nombre del producto">
+  <input [(ngModel)]="nombreProducto" formControlName="nombreProducto" type="text" placeholder="{{nombreProducto}}" class="normal" name="name-producto" title="nombre del producto">
 
 <button class="btn-click btn-red" (click)="OpenAddCategory($event)">editar categorías</button>
 </div>
@@ -173,7 +177,7 @@
 </div>
 
 </div>
-
+</form> 
 
 
 <div class="cont-add-cat">

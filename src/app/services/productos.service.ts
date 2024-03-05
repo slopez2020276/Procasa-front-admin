@@ -10,7 +10,7 @@ export class ProductosService {
   private httpClient = inject(HttpClient)
   private baseUrl :string;
   constructor() { 
-    this.baseUrl = 'http://localhost:3002/api/'
+    this.baseUrl = 'http://localhost:3002/api'
   }
 
   obtenerProductos(){
@@ -27,8 +27,8 @@ export class ProductosService {
 
 
 
- EditarProducto(body:FormData):Observable<any>{
-  return this.httpClient.put<any>(`${this.baseUrl}/EditarProducto`,body, this.createHeaders() )
+ EditarProducto(body:FormData,id:any):Observable<any>{
+  return this.httpClient.put<any>(`${this.baseUrl}/EditarProducto/${id}`,body, this.createHeaders() )
  }
 
 

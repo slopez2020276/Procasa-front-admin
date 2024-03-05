@@ -44,6 +44,7 @@ export class AdminproductosComponent implements OnInit {
 
 
   nombreProducto: string = ""
+  IdProducto: string = ""
  
 
 
@@ -91,19 +92,20 @@ getFileEditProducto($event: any): void {
 sendFileEdit():void{
   const body = new FormData()
 
-  if(this.fileTmp && this.formularioAgregarProducto.value.nombreProducto){
+
+  if(this.fileTmpEdit) {
 
     body.append('imgPath', this.fileTmpEdit.fileRaw, this.fileTmpEdit.fileName)
     body.append('nombreProducto', this.formularioEditarProducto.value.nombreProducto)
-    
-    this.productosServices.EditarProducto(body)
+  }else{
+    body.append('nombreProducto', this.formularioEditarProducto.value.nombreProducto)
+  }
+    this.productosServices.EditarProducto(body,this.IdProducto)
     .subscribe(res =>{
           this.AlertMessage("¡Producto agregado exitosamente!", 1500)
-      console.log(res), this.obtenerProductos(),this.fileTmp = null})
+      console.log(res), this.obtenerProductos(),this.fileTmpEdit = null})
       this.formularioAgregarProducto.reset()
-  }else{
-    this.AlertMessage("Todos los campos son requeridos", 1500)
-  }
+ 
 }
 
 sendFile():void{
@@ -303,7 +305,13 @@ saveEditedProduct(event: MouseEvent){
   const btn: HTMLElement | any = parent?.childNodes[0]?.childNodes[0]?.childNodes[1]?.childNodes[0]
 
   if (btn) { 
-    btn.onclick = () => { this.sendFile() }
+    btn.onclick = () => {
+      
+      this.sendFileEdit()
+      
+      
+      
+      }
   }
 }
 
@@ -351,6 +359,7 @@ async getProductToSearch(id:any){
   const product = await  this.productosServices.obtenerProducto(id)
   console.log(product)
   this.nombreProducto = product.productoFinded.nombreProducto
+  this.IdProducto = product.productoFinded._id
 }
 
 
