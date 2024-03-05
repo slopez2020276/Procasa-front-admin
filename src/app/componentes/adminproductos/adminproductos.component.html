@@ -6,6 +6,7 @@
   <h1>Productos</h1>
 
   <div id="bar-search">
+    <label for="search">Buscar</label>
     <input class="bold" type="text" name="search" placeholder="" title="buscar producto">
   </div>
   <button class="btn-click btn-red normal" (click)="ModalProduct('add')"><mat-icon>add</mat-icon> Agregar producto</button>
@@ -26,19 +27,25 @@
         <div class="sub-producto">
           <div class="sub-details">
             <ul class="category">
-              <li class="normal">CATEGORÍA</li>
-              @for (categoria of os.catego; track $index) {}
+              @for (categoria of os.categorias; track $index) {
+                <li class="normal">{{categoria.Nombre}}</li>
+
                 <ul>
-                  <li>Sub Categoría</li>
-                  <li>Sub Categoría</li>
-                  <li>Sub Categoría</li>
+                  @for (items of categoria.items; track $index) {
+                    <li>{{items}} </li>
+
+
+                  }
+                  
                 </ul>
+
+              }
               </ul>
             </div>
           </div>
 
         <div class="actions">
-          <div class="edit-product btn-click btn-red" (click)="ModalProduct('edit')"><mat-icon>edit</mat-icon></div>
+          <div class="edit-product btn-click btn-red" (click)="getProductToSearch(os._id)" (click)="ModalProduct('edit')"><mat-icon>edit</mat-icon></div>
           <div class="btn-click btn-red" (click)="DeleteProduct(os._id)"  >  <mat-icon>delete</mat-icon></div>
           <div class="btn-click btn-red" (click)="openAddCategory($event)"><mat-icon>list</mat-icon></div>
         </div>
@@ -156,7 +163,7 @@
 
 
 <div class="cont-datos">
-  <input type="text" placeholder="Producto" class="normal" name="name-producto" title="nombre del producto">
+  <input [(ngModel)]="nombreProducto" type="text" placeholder="{{nombreProducto}}" class="normal" name="name-producto" title="nombre del producto">
 
 <button class="btn-click btn-red" (click)="OpenAddCategory($event)">editar categorías</button>
 </div>

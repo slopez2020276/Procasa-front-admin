@@ -12,7 +12,9 @@ export class AdminproductosComponent implements OnInit {
   productosServices= inject(ProductosService)
 
   formularioAgregarProducto : FormGroup
+  formularioEditarProducto : FormGroup
   private fileTmp: any
+  private fileTmpEdit: any
 
   ProductToSearch: any
   dataProductos: any
@@ -37,6 +39,11 @@ export class AdminproductosComponent implements OnInit {
   widthLimit
   heightLimit
   sizeLimit
+
+
+
+
+  nombreProducto: string = ""
  
 
 
@@ -44,6 +51,9 @@ constructor(){
     this.formularioAgregarProducto = new FormGroup({
       nombreProducto : new FormControl(),
       inputControl : new FormControl(),
+    })
+    this.formularioEditarProducto = new FormGroup({
+      nombreProducto : new FormControl(),
     })
 }
 
@@ -67,7 +77,34 @@ getFile($event: any): void {
 
 
 
+getFileEditProducto($event: any): void {
+  //TODO esto captura el archivo!
+  const [ file ] = $event.target.files;
+  this.fileTmpEdit = {
+    fileRaw:file,
+    fileName:file.name
+  }
+}
 
+
+
+sendFileEdit():void{
+  const body = new FormData()
+
+  if(this.fileTmp && this.formularioAgregarProducto.value.nombreProducto){
+
+    body.append('imgPath', this.fileTmpEdit.fileRaw, this.fileTmpEdit.fileName)
+    body.append('nombreProducto', this.formularioEditarProducto.value.nombreProducto)
+    
+    this.productosServices.EditarProducto(body)
+    .subscribe(res =>{
+          this.AlertMessage("¡Producto agregado exitosamente!", 1500)
+      console.log(res), this.obtenerProductos(),this.fileTmp = null})
+      this.formularioAgregarProducto.reset()
+  }else{
+    this.AlertMessage("Todos los campos son requeridos", 1500)
+  }
+}
 
 sendFile():void{
   const body = new FormData()
@@ -77,7 +114,7 @@ sendFile():void{
     body.append('imgPath', this.fileTmp.fileRaw, this.fileTmp.fileName)
     body.append('nombreProducto', this.formularioAgregarProducto.value.nombreProducto)
     
-    this.productosServices.CrearUbicacion(body)
+    this.productosServices.CrearProducto(body)
     .subscribe(res =>{
           this.AlertMessage("¡Producto agregado exitosamente!", 1500)
       console.log(res), this.obtenerProductos(),this.fileTmp = null})
@@ -312,6 +349,12 @@ SaveNewProduct(event: MouseEvent){
           // this.AlertMessage("¡Producto agregado exitosamente!", 1500)
     }
   }
+}
+
+async getProductToSearch(id:any){
+  const product = await  this.productosServices.obtenerProducto(id)
+  console.log(product)
+  this.nombreProducto = product.productoFinded.nombreProducto
 }
 
 
