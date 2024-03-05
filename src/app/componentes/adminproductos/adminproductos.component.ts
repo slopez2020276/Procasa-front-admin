@@ -82,8 +82,6 @@ sendFile():void{
           this.AlertMessage("¡Producto agregado exitosamente!", 1500)
       console.log(res), this.obtenerProductos(),this.fileTmp = null})
       this.formularioAgregarProducto.reset()
-  }else{
-    this.AlertMessage("Todos los campos son requeridos", 1500)
   }
 }
 
