@@ -6,17 +6,15 @@ import { Component } from '@angular/core';
   styleUrl: './admin-navbar.component.css'
 })
 export class AdminNavbarComponent {
-  MenuShow(){
-    document.getElementById('container-menu')?.classList.toggle('openmenu');
 
+MenuShow(){
+    document.getElementById('container-menu')?.classList.toggle('openmenu')
 
-    const bars = document.getElementsByClassName('bar');
+    const bars = document.getElementsByClassName('bar')
 
     for(let e = 0; e<bars.length; e++){
-      bars[e].classList.toggle('fx');
-      setTimeout(function(){
-          bars[e].classList.toggle('fx');
-        }, 300);
+      bars[e].classList.toggle('fx')
+      setTimeout(function(){ bars[e].classList.toggle('fx') }, 300);
     }
   }
 
@@ -27,6 +25,5 @@ let response = confirm('¿Desea cerrar sesión?')
     location.href ="http://localhost:4200/admin"
   }
 }
-
 
 }

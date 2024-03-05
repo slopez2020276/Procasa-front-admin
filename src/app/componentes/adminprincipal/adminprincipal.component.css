@@ -147,6 +147,7 @@ div.sub-items {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  align-content: center;
   flex-wrap: wrap;
   position: relative;
 }
@@ -423,14 +424,14 @@ img#navbar-pre-bg,img#footer-pre-bg
 }
 
 img#preview-bg {
-  width: 100%;
+  width: auto;
   max-width: 100%;
   height: auto;
   max-height: 180px;
   transition: .1s;
   opacity: 1;
   cursor: pointer;
-  position: absolute;
+  position: relative;
   top: 0;
 }
 
@@ -1302,8 +1303,8 @@ div#toScrollTop {
   position: fixed;
   cursor: pointer;
   /* bottom: -400px; */
-  bottom: 100px;
-  right: 50px;
+  bottom: 5vh;
+  right: 5vw;
   z-index: 48;
   transform: scale(1);
   transition: .2s ease;
@@ -1316,6 +1317,11 @@ div#toScrollTop img {
 
 
 @media screen and (max-width: 600px) {
+  svg {
+    width: 150px;
+    height: 150px;
+    z-index: 999;
+  }
 
   div.container {overflow-y: scroll; overflow-x: hidden;}
 
