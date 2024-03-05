@@ -461,6 +461,7 @@ div.cont-add-cat, div.cont-subcategories {
   flex-wrap: wrap;
   display: none;
   z-index: 1;
+  padding: 1rem 0 0 4rem;
 }
 
 div.cont-subcategories {
@@ -477,6 +478,15 @@ div.cont-add-cat-new {
   position: absolute;
   top: 0;
   left: 0;
+}
+
+div.cont-add-cat-new h1 {margin-top: 1rem;}
+
+div.cont-add-cat-new form { 
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 div.cont-subcategories {z-index: 1;}

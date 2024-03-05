@@ -45,9 +45,9 @@
           </div>
 
         <div class="actions">
+          <div class="btn-click btn-red" (click)="openAddCategory($event)"><mat-icon>add</mat-icon></div>
           <div class="edit-product btn-click btn-red" (click)="getProductToSearch(os._id)" (click)="ModalProduct('edit')"><mat-icon>edit</mat-icon></div>
           <div class="btn-click btn-red" (click)="DeleteProduct(os._id)"  >  <mat-icon>delete</mat-icon></div>
-          <div class="btn-click btn-red" (click)="openAddCategory($event)"><mat-icon>list</mat-icon></div>
         </div>
 
           <div class="cont-add-cat cont-add-cat-new">
@@ -56,10 +56,7 @@
           
             <div class="cont-categories">
               <div class="cont-input-btn">
-                <form action="">
-
-                  <input type="text" placeholder="nueva categoría">
-                </form>
+                <form action=""><input type="text" placeholder="nueva categoría"> </form>
         </div>
         
         
@@ -198,6 +195,7 @@
 </div>
 
 <div class="add-items">
+  <h1 class="close-modal title-modal">Agregar sub-cateorías</h1>
   <div class="btn-click close-item" (click)="CloseAddCategory($event)"><mat-icon>close</mat-icon></div>
 
   <div class="cont-middle">
@@ -212,7 +210,7 @@
     <input type="text" placeholder="...">
   </div>
 
-  <div class="btn-click btn-red save-items"><mat-icon>save</mat-icon></div>
+  <div class="btn-click btn-red save-items"><mat-icon>save</mat-icon> guardar</div>
 </div>
   </div>
 
@@ -238,8 +236,9 @@
 <div class="cont-btn-save">
   <div class="save-added-categories btn-click btn-red" (click)="SaveNewSubCategory()" (click)="CloseAddSubCategory($event)"><mat-icon>save</mat-icon> guardar</div>
 </div>
-
 </div>
+
+
 
 </div>
 

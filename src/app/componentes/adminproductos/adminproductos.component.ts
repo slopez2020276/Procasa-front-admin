@@ -239,7 +239,9 @@ SaveNewSubCategory(){
 
 OpenAddCategory(event: MouseEvent){
   const node = event.target as HTMLElement | null
-  const parent = node?.parentNode?.parentNode?.parentNode?.parentNode?.childNodes[4]?.childNodes[4] as HTMLElement | undefined
+  const parent = node?.parentNode?.parentNode?.parentNode?.parentNode?.childNodes[3] as HTMLElement | undefined
+  console.log(parent)
+  
   parent?.classList.add('show')
 }
 

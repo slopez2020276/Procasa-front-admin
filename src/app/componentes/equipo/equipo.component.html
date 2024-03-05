@@ -71,7 +71,7 @@
 <form [formGroup]="formAgregarPlaza" >
 
   <div class="modal" id="add">
-    <div id="close-edit" (click)="ModalProduct('add')"><mat-icon>close</mat-icon></div>
+    <div class="btn-click close-modal" (click)="ModalProduct('add')"><mat-icon>close</mat-icon></div>
     <h1 class="title-modal">Agregar plaza</h1>
     <div class="sub-cont">
 
@@ -120,7 +120,7 @@
 <!-- ------------------------------------------------------------------------------------------------------------------------------------------------------------ -->
 
 <div class="modal" id="edit">
-  <div id="close-edit" (click)="ModalProduct('edit')"><mat-icon>close</mat-icon></div>
+  <div class="btn-click close-modal" (click)="ModalProduct('edit')"><mat-icon>close</mat-icon></div>
   <h1 class="title-modal">Editar plaza</h1>
 
 <div class="sub-cont">
@@ -177,14 +177,13 @@
 
 
 <div id="modal-edit-fns">
-  <div id="btn-click" (click)="ModalEditFunctions()"><mat-icon>close</mat-icon></div>
+  <h1 class="close-modal title-modal">Editar funciones</h1>
+  <div class="btn-click close-modal" (click)="ModalEditFunctions()"><mat-icon>close</mat-icon></div>
 
 <div id="cont-input-edit">
-
   @for (ositems of funciones; track $index) {
   <div class="actions-input-del">
     <div class="btn-click btn-red" (click)="DeleteFunction()" (click)="eliminarFuncion($index)"><mat-icon>delete</mat-icon></div>
-    
     <div class="btn-click btn-red" (click)="editarFuncion($index)"><mat-icon>edit</mat-icon></div>
     <form [formGroup]="formEditarFuncion">
       <input  formControlName="funciones" (click)="obtenerIndiceFunciones($index)"  type="text" placeholder="{{ositems}}">
@@ -192,7 +191,7 @@
     </div>
   }
 
-  <div id="save-edit-fn" class="btn-click" (click)="ModalEditFunctions()"><mat-icon>save</mat-icon></div>
+  <div id="save-edit-fn" class="btn-click" (click)="ModalEditFunctions()"><mat-icon>save</mat-icon> guardar</div>
 </div>
 </div>
 
