@@ -10,7 +10,7 @@ export class ProductosService {
   private httpClient = inject(HttpClient)
   private baseUrl :string;
   constructor() { 
-    this.baseUrl = 'http://localhost:3002/api'
+    this.baseUrl = 'https://enchanting-kilt-pike.cyclic.app/api'
   }
 
   obtenerProductos(){

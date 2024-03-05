@@ -13,6 +13,10 @@ export class AdminproductosComponent implements OnInit {
 
   formularioAgregarProducto : FormGroup
   formularioEditarProducto : FormGroup
+  formularioCategoria : FormGroup
+
+
+
   private fileTmp: any
   private fileTmpEdit: any
 
@@ -55,6 +59,9 @@ constructor(){
     })
     this.formularioEditarProducto = new FormGroup({
       nombreProducto : new FormControl(),
+    })
+    this.formularioCategoria = new FormGroup({
+      nombreCategoria: new FormControl(),
     })
 }
 
