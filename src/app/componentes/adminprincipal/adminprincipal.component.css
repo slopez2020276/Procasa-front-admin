@@ -1302,8 +1302,8 @@ div#toScrollTop {
   position: fixed;
   cursor: pointer;
   /* bottom: -400px; */
-  bottom: 100px;
-  right: 50px;
+  bottom: 5vh;
+  right: 5vw;
   z-index: 48;
   transform: scale(1);
   transition: .2s ease;
@@ -1316,6 +1316,11 @@ div#toScrollTop img {
 
 
 @media screen and (max-width: 600px) {
+  svg {
+    width: 150px;
+    height: 150px;
+    z-index: 999;
+  }
 
   div.container {overflow-y: scroll; overflow-x: hidden;}
 
