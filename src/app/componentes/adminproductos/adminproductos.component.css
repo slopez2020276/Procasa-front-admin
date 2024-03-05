@@ -31,6 +31,8 @@ div#container-2 h1 {
 }
 
 
+
+
 div#bar-search {
   position: relative;
   width: 40%;
@@ -660,6 +662,15 @@ div.save-items {
   margin: 1rem 0 4rem 0;
 }
 
+
+div.item-btns {
+  display: flex;
+  justify-content: space-evenly;
+  align-content: center;
+  align-items: center;
+  flex-wrap: nowrap;
+  width: 100%;
+}
 
 
 /* ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */

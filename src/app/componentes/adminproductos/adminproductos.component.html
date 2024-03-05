@@ -98,7 +98,8 @@
       <button (click)="EliminarUltimaSub()" class="btn-delete normal">Eliminar Sub</button>
       
       <div class="cont-input-btn " *ngFor="let div of categorySubArray; let i = index">
-        <input type="text" placeholder="nueva sub categoría">
+
+          <input type="text" placeholder="nueva sub categoría">
       </div>
     </div>
 
@@ -228,10 +229,16 @@
 
   <div class="sub-cont-btns">
     <div class="btn-click btn-red" (click)="addItem()">agregar</div>
-    <div class="btn-click btn-red" (click)="deleteItem()">eliminar</div>
+    <!-- <div class="btn-click btn-red" (click)="deleteItem()">eliminar</div> -->
   </div>
   <div class="cont-input-item" *ngFor="let div of addItemsArray; let i = index">
-    <input type="text" placeholder="...">
+
+    
+    <div class="item-btns">
+      <div class="btn-click btn-red"><mat-icon>delete</mat-icon></div>
+      <div class="btn-click btn-red"><mat-icon>edit</mat-icon></div>
+      <input type="text" placeholder="...">
+    </div>
   </div>
 
   <div class="btn-click btn-red save-items"><mat-icon>save</mat-icon> guardar</div>
