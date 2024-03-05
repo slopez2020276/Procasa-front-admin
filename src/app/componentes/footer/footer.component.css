@@ -289,9 +289,7 @@ div#f-sub-1, div#f-sub-2 {
     div#f-sub-space { display: none; }
 
 
-    div#menu {
-            left: 1rem;
-    }
+    div#menu { left: 1rem; }
 
     div#container-0 img {
         left: 10rem;

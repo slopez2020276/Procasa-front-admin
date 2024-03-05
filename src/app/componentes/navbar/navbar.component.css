@@ -10,7 +10,7 @@ div#navbar {
     display: flex;
     justify-content: right;
     color: #FFF;
-    z-index: 700;
+    z-index: 800;
     background: transparent;
     background: rgba(255,255,255,.9);
     position: fixed;
@@ -123,9 +123,8 @@ div#list, div#list-products {
     top: 7%;
     left: 0;
     transition: .4s;
-    z-index: -10;
-    opacity: 0;
-    display: none;
+    z-index: 100;
+    opacity: 1;
     background: rgba(255,255,255,.8);
     /* background: transparent; */
     padding-bottom: 1rem;
@@ -133,13 +132,7 @@ div#list, div#list-products {
     color: #252525;
 }
 
-div#container-list:hover div#list,
-div#container-list-pro:hover div#list-products
-{
-    opacity: 1;
-    z-index: 100;
-    display: block;
-}
+/* div#list {display: none;} */
 
 div.list-a {
     position: relative;
@@ -150,10 +143,19 @@ div.list-a {
     cursor: pointer;
     padding-left: 2rem;
     margin-top: 10px;
+    display: none;
 }
 
 div.list-a:hover {
   padding-left: 2.5rem;
+}
+
+div#container-list:hover div#list div.list-a,
+div#container-list-pro:hover div#list-products div.list-a {
+  background: transparent;
+    opacity: 1;
+    z-index: 100;
+    display: block;
 }
 
 /*||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
