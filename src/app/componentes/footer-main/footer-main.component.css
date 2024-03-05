@@ -26,7 +26,6 @@
   opacity: 0;
 }
 
-
 div.footer-sub {
   height: 100%;
   color: #FFF;
@@ -270,15 +269,13 @@ button#close-form-modal:active {
 
   #foot { height: auto; }
 
-  div.footer-sub {
+  div#f-sub-1, div#f-sub-2 {
     height: 100%;
     width: 100%;
     min-width: 80%;
   }
 
-
 div.footer-sub { margin-top: 1rem; padding: .5rem 0; }
-
 
 div#f-sub-space { display: none; }
 
@@ -291,12 +288,17 @@ div.navbar-items {
   left: -200px;
   top: 0;
   }
-
+  
   div#f-sub-3 p a { text-align: center; }
 
   div#f-sub-1 img {
   width: auto;
   height: 70px;
-  }
+}
 
-  }
+
+div#f-sub-3, div#f-sub-4 { width: 45%; max-width: 45%; height: 100px; margin: .5rem 0;}
+div#f-sub-3 p { width: 100%; }
+div.footer-sp h1 { width: 90%; }
+div#f-sub-4 h1 { width: 90%; }
+}

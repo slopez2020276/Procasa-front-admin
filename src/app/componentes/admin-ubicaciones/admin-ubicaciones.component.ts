@@ -140,6 +140,7 @@ InputChange(event: Event) {
 }
 
 
+
 saveLocation(event: MouseEvent){
   const inImg: HTMLInputElement | any = document.getElementById('imgSave')
   let img: string = inImg.value

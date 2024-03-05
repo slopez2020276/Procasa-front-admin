@@ -254,7 +254,7 @@ button#close-form-modal:active {
 
 
 
-  @media screen and (max-width: 767px) {
+  @media screen and (max-width: 860px) {
 
     body { background-size: auto 100%; }
 
@@ -265,15 +265,20 @@ button#close-form-modal:active {
         padding-bottom: 0;
         position: relative;
       }
-
+/* 
       div.footer-sub {
         min-width: 60%;
         height: auto;
         margin-top: 1rem;
         text-align: center;
-    }
+    } */
 
-
+div#f-sub-1, div#f-sub-2 {
+    min-width: 80%;
+    height: auto;
+    margin-top: 1rem;
+    text-align: center;
+}
 
     footer.fdown {
       position: relative;
@@ -306,5 +311,12 @@ button#close-form-modal:active {
       width: auto;
       height: 70px;
     }
+
+    div#f-sub-3, div#f-sub-4 { width: 45%; max-width: 45%; height: 100px; margin: .5rem 0;}
+    div#f-sub-3 p { width: 100%; }
+    div.footer-sp h1 { width: 90%; }
+  
+    div#f-sub-4 h1 { width: 90%; }
+  
 
     }
