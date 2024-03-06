@@ -167,11 +167,11 @@
 <div class="cont-datos">
   <input [(ngModel)]="nombreProducto" formControlName="nombreProducto" type="text" placeholder="{{nombreProducto}}" class="normal" name="name-producto" title="nombre del producto">
 
-<button class="btn-click btn-red"  (click)="obtenerCategoriasxId()" (click)="OpenAddCategory($event)">editar categorías</button>
+<button class="btn-click btn-dark"  (click)="obtenerCategoriasxId()" (click)="OpenAddCategory($event)">editar categorías</button>
 </div>
 
 <div class="cont-btn-save">
-  <div class="btn-click btn-red normal" (click)="saveEditedProduct($event)"><mat-icon>save</mat-icon> guardar</div>
+  <div class="btn-click btn-dark normal" (click)="saveEditedProduct($event)"><mat-icon>save</mat-icon> guardar</div>
 </div>
 
 </div>
@@ -241,6 +241,7 @@
 <div class="cont-subcategories">
   <h1 class="title-modal">Agregar Sub-Categoría</h1>
   <div class="btn-click close-cont-subcate" (click)="CloseAddSubCategory($event)"><mat-icon>close</mat-icon></div>
+  <div class="btn-click btn-dark" (click)="openAddItem($event)"><mat-icon>add</mat-icon> agregar items</div>
 
 <div class="cont-categories">
     <!-- <button (click)="generarSubCate()" class="btn-generate normal">Nueva Sub</button>
@@ -250,13 +251,12 @@
     <div class="cont-input-btn">
         <div class="btn-click btn-red"><mat-icon>delete</mat-icon></div>
         <div class="btn-click btn-red"><mat-icon>edit</mat-icon></div>
-        <div class="btn-click btn-red" (click)="openAddItem($event)"><mat-icon>add</mat-icon></div>
       <input type="text" placeholder="nueva sub categoría">
     </div>
 </div>
 
 <div class="cont-btn-save">
-  <div class="save-added-categories btn-click btn-red" (click)="SaveNewSubCategory()" (click)="CloseAddSubCategory($event)"><mat-icon>save</mat-icon> guardar</div>
+  <div class="save-added-categories btn-click btn-dark" (click)="SaveNewSubCategory()" (click)="CloseAddSubCategory($event)"><mat-icon>save</mat-icon> guardar</div>
 </div>
 </div>
 
@@ -268,10 +268,12 @@
   <div class="close-modal btn-click" (click)="closeThisModal($event)"><mat-icon>close</mat-icon></div>
 
 <div class="cont-input-btn">
-  <div class="btn-click btn-red"><mat-icon>save</mat-icon></div>
   <input type="text" placeholder="nuevo ítem" class="normal">
 </div>
 
+
+
+<div class="cont-input-btn"> <div class="btn-click btn-dark"><mat-icon>save</mat-icon> guardar</div></div>
 
 
 

@@ -229,7 +229,7 @@ deleteItem() { if (this.addItemsArray.length > 0) { this.addItemsArray.pop() } }
 
 openAddItem(event: Event) {
   const node = event.target as HTMLElement | null
-  const parent = node?.parentNode?.parentNode?.parentNode?.parentNode?.childNodes[5] as HTMLElement | undefined
+  const parent = node?.parentNode?.parentNode?.childNodes[5] as HTMLElement | undefined
 
   parent?.classList.add('show')
 }
