@@ -260,6 +260,20 @@ node!.style.display = "none"
 edit!.style.display = "flex"
 }
 
+toggleEditother(event: Event) {
+const node = event.target as HTMLElement | null
+const edit = node?.parentElement?.children[3] as HTMLElement | undefined
+node!.style.display = "none"
+edit!.style.display = "flex"
+}
+
+toggleSaveother(event: Event) {
+const node = event.target as HTMLElement | null
+const edit = node?.parentElement?.children[2] as HTMLElement | undefined
+node!.style.display = "none"
+edit!.style.display = "flex"
+}
+
 enableInput(event: Event){
   const node = event.target as HTMLElement | null
   const edit = node?.parentElement?.parentElement?.children[0]?.children[3] as HTMLElement | undefined

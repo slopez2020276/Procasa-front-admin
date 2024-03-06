@@ -137,6 +137,10 @@ div.togg {display: none;}
 div.togg.toggle { display: flex; }
 div.togg:nth-child(even) { display: flex; }
 
+div.tog {display: none;}
+div.tog.toggle { display: flex; }
+div.tog:nth-child(odd) { display: flex; }
+
 div.actions {
   width: 100%;
   height: auto;
