@@ -427,6 +427,21 @@ async getProductToSearch(id:any){
   
   }
 
+  async eliminarCategoria(idCategoria:any){
+    const res = await this.productosServices.eliminarCategoria(this.IdProducto,idCategoria)
+    console.log(res)
+    this.obtenerProductos()
+    this.obtenerCategoriasxId()
+  }
+
+  async eliminarItem(idItem:any){
+    const res = await this.productosServices.eliminarItem(this.IdProducto,this.idCategoria,idItem)
+    console.log(res)
+    this.obtenerProductos()
+    this.obtenerCategoriasxId()
+     this.ObteerItemsxCategoria(this.idCategoria)
+  }
+
 
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

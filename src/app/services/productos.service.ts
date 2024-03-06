@@ -66,4 +66,13 @@ return firstValueFrom(this.httpClient.delete(`${this.baseUrl}/eliminarProducto/$
 }
 
 
+eliminarCategoria(idProducto:any,idCategoria:any){
+  return firstValueFrom(this.httpClient.delete(`${this.baseUrl}/eliminarCategoria/${idProducto}/${idCategoria}`, this.createHeaders()))
+}
+
+eliminarItem(idProducto:any,idCategoria:any,idItem:any){
+  return firstValueFrom(this.httpClient.delete(`${this.baseUrl}/eliminarItem/${idProducto}/${idCategoria}/${idItem}`, this.createHeaders()))
+
+}
+
 }

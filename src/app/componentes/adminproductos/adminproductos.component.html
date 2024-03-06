@@ -187,7 +187,7 @@
   @for (categoria of dataCategorias; track $index) {
     <div class="cont-categories">
       <div class="cont-input-btn">
-        <div class="btn-sub btn-click btn-red"><mat-icon>delete</mat-icon></div>
+        <div class="btn-sub btn-click btn-red" (click)="eliminarCategoria(categoria._id)"><mat-icon>delete</mat-icon></div>
         <div class="btn-sub btn-click btn-red" (click)="ObteerItemsxCategoria(categoria._id)" (click)="openEditItems($event)"><mat-icon>edit</mat-icon></div>
         <div class="btn-sub btn-click btn-red"><mat-icon>save</mat-icon></div>
           <input type="text" placeholder="{{categoria.Nombre}}">
@@ -222,7 +222,7 @@
 
   <div class="sub-cont-btns">
     <div class="btn-click btn-red" (click)="addItem()">agregar</div>
-    <div class="btn-click btn-red" (click)="deleteItem()">eliminar</div>
+    <div class="btn-click btn-red"  (click)="deleteItem()">eliminar</div>
   </div>
   <div class="cont-input-item" *ngFor="let div of addItemsArray; let i = index">
     <input type="text" placeholder="...">
@@ -250,7 +250,7 @@
 
       @for (item of dataItems; track $index) {
     <div class="cont-input-btn">
-        <div class="btn-click btn-red"><mat-icon>delete</mat-icon></div>
+        <div class="btn-click btn-red" (click)="eliminarCategoria(item)"><mat-icon>delete</mat-icon></div>
         <div class="btn-click btn-red"><mat-icon>edit</mat-icon></div>
 
         <input type="text" placeholder="{{item}}">
