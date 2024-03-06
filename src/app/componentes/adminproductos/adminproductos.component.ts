@@ -230,35 +230,43 @@ deleteItem() { if (this.addItemsArray.length > 0) { this.addItemsArray.pop() } }
 openAddItem(event: Event) {
   const node = event.target as HTMLElement | null
   const parent = node?.parentNode?.parentNode?.childNodes[5] as HTMLElement | undefined
-
+  
   parent?.classList.add('show')
 }
 
 closeThisModal(event: Event){
   const node = event.target as HTMLElement | null
   const parent = node?.parentNode as HTMLElement | undefined
-  console.log(parent)
 
   parent?.classList.remove('show')
 }
 
 
-
-SaveNewCategory(){
-  console.log("SAVE CATEGORY")
+toggleEdit(event: Event) {
+const node = event.target as HTMLElement | null
+const edit = node?.parentElement?.children[2] as HTMLElement | undefined
+node!.style.display = "none"
+edit!.style.display = "flex"
 }
 
-SaveNewSubCategory(){
-  console.log("SAVE SUB CATEGORY")
-
+toggleSave(event: Event) {
+const node = event.target as HTMLElement | null
+const edit = node?.parentElement?.children[1] as HTMLElement | undefined
+node!.style.display = "none"
+edit!.style.display = "flex"
 }
+
+
+
+SaveNewCategory(){ console.log("SAVE CATEGORY") }
+
+SaveNewSubCategory(){ console.log("SAVE SUB CATEGORY") }
 
 
 
 OpenAddCategory(event: MouseEvent){
   const node = event.target as HTMLElement | null
   const parent = node?.parentNode?.parentNode?.parentNode?.parentNode?.childNodes[3] as HTMLElement | undefined
-  console.log(parent)
   
   parent?.classList.add('show')
 }

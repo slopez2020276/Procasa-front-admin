@@ -88,7 +88,7 @@ div.producto {
 
 div.sub-producto {
   height: 100%;
-  width: 40%;
+  width: 80%;
   position: relative;
   display: flex;
   justify-content: center;
@@ -117,6 +117,7 @@ div.producto img {
 }
 
 h1.name-product {
+  width: 80%;
   font-size: 16pt;
 }
 
@@ -129,7 +130,12 @@ h1.h1-title-pro {
 
 div.producto ul {
   font-size: 11pt;
+  width: 100%;
 }
+
+div.togg {display: none;}
+div.togg.toggle { display: flex; }
+div.togg:nth-child(even) { display: flex; }
 
 div.actions {
   width: 100%;

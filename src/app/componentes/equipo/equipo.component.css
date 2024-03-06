@@ -568,6 +568,14 @@ div#save-fn:active {transform: scale(.9);}
 /* ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
 
 
+@media screen and (max-width: 630px) {
+  div.modal {
+    width: 100vw;
+    max-height: 80vh;
+    left: calc(50% - 50%);
+  }
+}
+
 @media screen and (max-width: 600px) {
 
   div#container-2 { padding: 0 .5rem; }

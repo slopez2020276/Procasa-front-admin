@@ -28,17 +28,8 @@
           <div class="sub-details">
             <ul class="category">
               @for (categoria of os.categorias; track $index) {
-                <li class="normal">{{categoria.Nombre}}</li>
-
-                <ul>
-                  @for (items of categoria.items; track $index) {
-                    <li>{{items}} </li>
-
-
-                  }
-                  
-                </ul>
-
+                <li class="bold">{{categoria.Nombre}}</li>
+                <ul> @for (items of categoria.items; track $index) { <li>{{items}} </li> } </ul>
               }
               </ul>
             </div>
@@ -167,7 +158,7 @@
 <div class="cont-datos">
   <input [(ngModel)]="nombreProducto" formControlName="nombreProducto" type="text" placeholder="{{nombreProducto}}" class="normal" name="name-producto" title="nombre del producto">
 
-<button class="btn-click btn-dark"  (click)="obtenerCategoriasxId()" (click)="OpenAddCategory($event)">editar categorías</button>
+<button class="btn-click btn-dark"  (click)="obtenerCategoriasxId()" (click)="OpenAddCategory($event)"><mat-icon>edit</mat-icon> editar categorías</button>
 </div>
 
 <div class="cont-btn-save">
@@ -244,13 +235,10 @@
   <div class="btn-click btn-dark" (click)="openAddItem($event)"><mat-icon>add</mat-icon> agregar items</div>
 
 <div class="cont-categories">
-    <!-- <button (click)="generarSubCate()" class="btn-generate normal">Nueva Sub</button>
-    <button (click)="EliminarUltimaSubCate()" class="btn-delete normal">Eliminar Sub</button> -->
-    <!-- <div class="cont-input-btn" *ngFor="let div of subCategoryArray; let i = index"> -->
-
     <div class="cont-input-btn">
         <div class="btn-click btn-red"><mat-icon>delete</mat-icon></div>
-        <div class="btn-click btn-red"><mat-icon>edit</mat-icon></div>
+        <div class="btn-click btn-red togg" (click)="toggleEdit($event)"><mat-icon>edit</mat-icon></div>
+        <div class="btn-click btn-red togg" (click)="toggleSave($event)"><mat-icon>save</mat-icon></div>
       <input type="text" placeholder="nueva sub categoría">
     </div>
 </div>
