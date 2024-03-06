@@ -54,6 +54,11 @@ ObteerItemsxCategoria(idProducto:any,idCategoria:any  ){
 }
 
 
+CrearItem(idProducto:any,idCategoria:any,body:any){
+  return firstValueFrom(this.httpClient.post<any>(`${this.baseUrl}/agregarItemsACategoria/${idProducto}/${idCategoria}`,body, this.createHeaders() ))
+}
+
+
 eliminarProductos(id:any){
 return firstValueFrom(this.httpClient.delete(`${this.baseUrl}/eliminarProducto/${id}`, this.createHeaders()))
 

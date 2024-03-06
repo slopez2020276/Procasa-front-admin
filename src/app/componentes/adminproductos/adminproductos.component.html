@@ -188,7 +188,7 @@
     <div class="cont-categories">
       <div class="cont-input-btn">
         <div class="btn-sub btn-click btn-red"><mat-icon>delete</mat-icon></div>
-        <div class="btn-sub btn-click btn-red" (click)="openEditItems($event)"><mat-icon>edit</mat-icon></div>
+        <div class="btn-sub btn-click btn-red" (click)="ObteerItemsxCategoria(categoria._id)" (click)="openEditItems($event)"><mat-icon>edit</mat-icon></div>
         <div class="btn-sub btn-click btn-red"><mat-icon>save</mat-icon></div>
           <input type="text" placeholder="{{categoria.Nombre}}">
       </div>
@@ -248,11 +248,14 @@
     <button (click)="EliminarUltimaSubCate()" class="btn-delete normal">Eliminar Sub</button> -->
     <!-- <div class="cont-input-btn" *ngFor="let div of subCategoryArray; let i = index"> -->
 
+      @for (item of dataItems; track $index) {
     <div class="cont-input-btn">
         <div class="btn-click btn-red"><mat-icon>delete</mat-icon></div>
         <div class="btn-click btn-red"><mat-icon>edit</mat-icon></div>
-      <input type="text" placeholder="nueva sub categoría">
-    </div>
+
+        <input type="text" placeholder="{{item}}">
+      </div>
+    }
 </div>
 
 <div class="cont-btn-save">
@@ -268,12 +271,15 @@
   <div class="close-modal btn-click" (click)="closeThisModal($event)"><mat-icon>close</mat-icon></div>
 
 <div class="cont-input-btn">
-  <input type="text" placeholder="nuevo ítem" class="normal">
+  <form [formGroup]="forumlarioSubCategoria">
+
+    <input formControlName="items" type="text" placeholder="nuevo ítem" class="normal">
+  </form>
 </div>
 
 
 
-<div class="cont-input-btn"> <div class="btn-click btn-dark"><mat-icon>save</mat-icon> guardar</div></div>
+<div class="cont-input-btn"> <div class="btn-click btn-dark" (click)="agregarItem()"><mat-icon>save</mat-icon> guardar</div></div>
 
 
 

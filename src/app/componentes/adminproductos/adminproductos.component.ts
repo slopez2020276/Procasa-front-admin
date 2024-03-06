@@ -14,7 +14,7 @@ export class AdminproductosComponent implements OnInit {
   formularioAgregarProducto : FormGroup
   formularioEditarProducto : FormGroup
   formularioCategoria : FormGroup
-
+  forumlarioSubCategoria : FormGroup
 
 
   private fileTmp: any
@@ -23,7 +23,8 @@ export class AdminproductosComponent implements OnInit {
   ProductToSearch: any
   dataProductos: any
   dataCategorias: any
-  dataItems
+  dataItems: any
+  idCategoria: any
   subCount: number = 0
   subsArray: number[] = []
   subsArrayB: number[] = []
@@ -64,6 +65,9 @@ constructor(){
     })
     this.formularioCategoria = new FormGroup({
       nombreCategoria: new FormControl(),
+    })
+    this.forumlarioSubCategoria = new FormGroup({
+      items: new FormControl(),
     })
 }
 
@@ -405,9 +409,22 @@ async getProductToSearch(id:any){
   }
 
 
-  async ObteerItemsxCategoria(idProducto:any,idCategoria:any  ){
-    const res = await this.productosServices.ObteerItemsxCategoria(idProducto,idCategoria)
+  async ObteerItemsxCategoria(idCategoria:any  ){
+    const res = await this.productosServices.ObteerItemsxCategoria(this.IdProducto,idCategoria)
     this.dataItems = res.items
+    this.idCategoria = idCategoria
+    console.log(res)
+  }
+
+
+  async agregarItem(){
+    const res = await this.productosServices.CrearItem(this.IdProducto,this.idCategoria,this.forumlarioSubCategoria.value)
+    console.log(res)
+    this.obtenerProductos()
+    this.obtenerCategoriasxId()
+     this.ObteerItemsxCategoria(this.idCategoria)
+    this.forumlarioSubCategoria.reset()
+  
   }
 
 
