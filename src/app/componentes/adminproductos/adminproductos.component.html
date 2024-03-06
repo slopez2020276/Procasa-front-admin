@@ -58,35 +58,12 @@
               <div class="cont-input-btn">
                 <form [formGroup]="formularioCategoria"><input formControlName="nombreCategoria" type="text" placeholder="nueva categoría"> </form>
         </div>
-        
-        
+
         <div class="cont-btn-save">
-
-
-
-<!-- cDBCksdjbcjsdcdsjncjldsnclsdncndslkcdnscklsndlkcndskcndlskncdslknc lsknc dlkcn lksdn clkd nclkd nckln clkn dcksd ncs -->
-
-
-
 
           <div class="save-added-categories btn-click btn-red" (click)="agregarCateoria()" (click)="SaveNewCategory()" (click)="CloseAddCategory($event)"><mat-icon>save</mat-icon></div>
         
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        </div>  
+        </div>
       </div>
 
   <div class="cont-subcategories subcategories">
@@ -202,6 +179,8 @@
 </form> 
 
 
+
+
 <div class="cont-add-cat">
   <h1 class="title-modal">Agregar Categoría aaaaaaaaaaa</h1>
   <div class="btn-click btn-close-addcat" (click)="CloseAddCategory($event)"><mat-icon>close</mat-icon></div>
@@ -214,13 +193,12 @@
         <div class="btn-sub btn-click btn-red"><mat-icon>save</mat-icon></div>
           <input type="text" placeholder="{{categoria.Nombre}}">
       </div>
-    
-    
+
     </div>
   }
 
   <div class="cont-btn-save">
-    <div class="save-added-categories btn-click btn-red" (click)="SaveNewCategory()" (click)="CloseAddCategory($event)"><mat-icon>save</mat-icon> guardar</div>
+    <!-- <div class="save-added-categories btn-click btn-red" (click)="SaveNewCategory()" (click)="CloseAddCategory($event)"><mat-icon>save</mat-icon> guardar</div> -->
   </div>
 <div class="cont-categories">
   <div class="cont-input-btn">
@@ -231,7 +209,7 @@
   </div>
 
 <div class="cont-btn-save">
-  <div class="save-added-categories btn-click btn-red" (click)="SaveNewCategory()" (click)="CloseAddCategory($event)"><mat-icon>save</mat-icon> guardar</div>
+  <!-- <div class="save-added-categories btn-click btn-red" (click)="SaveNewCategory()" (click)="CloseAddCategory($event)"><mat-icon>save</mat-icon> guardar</div> -->
 </div>
 </div>
 
@@ -265,20 +243,24 @@
 </div>
 
 
+
+
 <div class="cont-subcategories">
   <h1 class="title-modal">Agregar Sub-Categoría</h1>
   <div class="btn-click close-cont-subcate" (click)="CloseAddSubCategory($event)"><mat-icon>close</mat-icon></div>
 
-
 <div class="cont-categories">
-    <button (click)="generarSubCate()" class="btn-generate normal">Nueva Sub</button>
-    <button (click)="EliminarUltimaSubCate()" class="btn-delete normal">Eliminar Sub</button>
+    <!-- <button (click)="generarSubCate()" class="btn-generate normal">Nueva Sub</button>
+    <button (click)="EliminarUltimaSubCate()" class="btn-delete normal">Eliminar Sub</button> -->
+    <!-- <div class="cont-input-btn" *ngFor="let div of subCategoryArray; let i = index"> -->
 
-    <div class="cont-input-btn" *ngFor="let div of subCategoryArray; let i = index">
+    <div class="cont-input-btn">
+        <div class="btn-click btn-red"><mat-icon>delete</mat-icon></div>
+        <div class="btn-click btn-red"><mat-icon>edit</mat-icon></div>
+        <div class="btn-click btn-red" (click)="openAddItem($event)"><mat-icon>add</mat-icon></div>
       <input type="text" placeholder="nueva sub categoría">
     </div>
 </div>
-
 
 <div class="cont-btn-save">
   <div class="save-added-categories btn-click btn-red" (click)="SaveNewSubCategory()" (click)="CloseAddSubCategory($event)"><mat-icon>save</mat-icon> guardar</div>
@@ -286,6 +268,21 @@
 </div>
 
 
+
+
+<div class="cont-add-items">
+  <h1 class="title-modal">Agregar Items</h1>
+  <div class="close-modal btn-click" (click)="closeThisModal($event)"><mat-icon>close</mat-icon></div>
+
+<div class="cont-input-btn">
+  <div class="btn-click btn-red"><mat-icon>save</mat-icon></div>
+  <input type="text" placeholder="nuevo ítem" class="normal">
+</div>
+
+
+
+
+</div>
 
 </div>
 

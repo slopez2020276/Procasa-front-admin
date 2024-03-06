@@ -226,6 +226,22 @@ deleteItem() { if (this.addItemsArray.length > 0) { this.addItemsArray.pop() } }
 
 
 
+openAddItem(event: Event) {
+  const node = event.target as HTMLElement | null
+  const parent = node?.parentNode?.parentNode?.parentNode?.parentNode?.childNodes[5] as HTMLElement | undefined
+
+  parent?.classList.add('show')
+}
+
+closeThisModal(event: Event){
+  const node = event.target as HTMLElement | null
+  const parent = node?.parentNode as HTMLElement | undefined
+  console.log(parent)
+
+  parent?.classList.remove('show')
+}
+
+
 
 SaveNewCategory(){
   console.log("SAVE CATEGORY")
@@ -331,7 +347,7 @@ saveEditedProduct(event: MouseEvent){
 openEditItems(event: MouseEvent ) {
   const node = event.target as HTMLElement | null
   const parent = node?.parentNode?.parentNode?.parentNode?.parentNode as HTMLElement | undefined
-  const item = parent?.children[4] as HTMLElement | undefined  
+  const item = parent?.children[4] as HTMLElement | undefined
   
   item?.classList.add('show')
 }
