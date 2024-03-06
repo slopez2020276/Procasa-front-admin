@@ -330,8 +330,9 @@ saveEditedProduct(event: MouseEvent){
 
 openEditItems(event: MouseEvent ) {
   const node = event.target as HTMLElement | null
-  const parent = node?.parentNode?.parentNode?.parentNode as HTMLElement | undefined
-  const item = parent?.childNodes[3] as HTMLElement | undefined  
+  const parent = node?.parentNode?.parentNode?.parentNode?.parentNode as HTMLElement | undefined
+  const item = parent?.children[4] as HTMLElement | undefined  
+  
   item?.classList.add('show')
 }
 
