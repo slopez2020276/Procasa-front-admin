@@ -10,7 +10,7 @@ export class ProductosService {
   private httpClient = inject(HttpClient)
   private baseUrl :string;
   constructor() { 
-    this.baseUrl = 'https://enchanting-kilt-pike.cyclic.app/api'
+    this.baseUrl = 'http://localhost:3002/api'
   }
 
   obtenerProductos(){
@@ -38,6 +38,15 @@ export class ProductosService {
      'Authorization': localStorage.getItem('token')!
    })
  }
+
+ }
+
+ 
+ CrearCategoria(id:any,body:any){
+  return firstValueFrom(this.httpClient.post<any>(`${this.baseUrl}/agregarCategoria/${id}`,body, this.createHeaders() ))
+}
+ObtenerCategorasxId(id:any){
+  return firstValueFrom(this.httpClient.get<any>(`${this.baseUrl}/obtenerCategoriasxProducto/${id}`))
 }
 
 

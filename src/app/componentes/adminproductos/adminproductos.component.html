@@ -45,7 +45,7 @@
           </div>
 
         <div class="actions">
-          <div class="btn-click btn-red" (click)="openAddCategory($event)"><mat-icon>add</mat-icon></div>
+          <div class="btn-click btn-red" (click)="openAddCategory($event)" (click)="getProductToSearch(os._id)" ><mat-icon> add</mat-icon></div>
           <div class="edit-product btn-click btn-red" (click)="getProductToSearch(os._id)" (click)="ModalProduct('edit')"><mat-icon>edit</mat-icon></div>
           <div class="btn-click btn-red" (click)="DeleteProduct(os._id)"  >  <mat-icon>delete</mat-icon></div>
         </div>
@@ -56,7 +56,7 @@
           
             <div class="cont-categories">
               <div class="cont-input-btn">
-                <form action=""><input type="text" placeholder="nueva categoría"> </form>
+                <form [formGroup]="formularioCategoria"><input formControlName="nombreCategoria" type="text" placeholder="nueva categoría"> </form>
         </div>
         
         
@@ -69,7 +69,7 @@
 
 
 
-          <div class="save-added-categories btn-click btn-red" (click)="SaveNewCategory()" (click)="CloseAddCategory($event)"><mat-icon>save</mat-icon></div>
+          <div class="save-added-categories btn-click btn-red" (click)="agregarCateoria()" (click)="SaveNewCategory()" (click)="CloseAddCategory($event)"><mat-icon>save</mat-icon></div>
         
         
         
@@ -191,7 +191,7 @@
 <div class="cont-datos">
   <input [(ngModel)]="nombreProducto" formControlName="nombreProducto" type="text" placeholder="{{nombreProducto}}" class="normal" name="name-producto" title="nombre del producto">
 
-<button class="btn-click btn-red" (click)="OpenAddCategory($event)">editar categorías</button>
+<button class="btn-click btn-red"  (click)="obtenerCategoriasxId()" (click)="OpenAddCategory($event)">editar categorías</button>
 </div>
 
 <div class="cont-btn-save">
@@ -203,9 +203,25 @@
 
 
 <div class="cont-add-cat">
-  <h1 class="title-modal">Agregar Categoría</h1>
+  <h1 class="title-modal">Agregar Categoría aaaaaaaaaaa</h1>
   <div class="btn-click btn-close-addcat" (click)="CloseAddCategory($event)"><mat-icon>close</mat-icon></div>
 
+  @for (categoria of dataCategorias; track $index) {
+    <div class="cont-categories">
+      <div class="cont-input-btn">
+        <div class="btn-sub btn-click btn-red"><mat-icon>delete</mat-icon></div>
+        <div class="btn-sub btn-click btn-red" (click)="openEditItems($event)"><mat-icon>edit</mat-icon></div>
+        <div class="btn-sub btn-click btn-red"><mat-icon>save</mat-icon></div>
+          <input type="text" placeholder="{{categoria.Nombre}}">
+      </div>
+    
+    
+    </div>
+  }
+
+  <div class="cont-btn-save">
+    <div class="save-added-categories btn-click btn-red" (click)="SaveNewCategory()" (click)="CloseAddCategory($event)"><mat-icon>save</mat-icon> guardar</div>
+  </div>
 <div class="cont-categories">
   <div class="cont-input-btn">
     <div class="btn-sub btn-click btn-red"><mat-icon>delete</mat-icon></div>

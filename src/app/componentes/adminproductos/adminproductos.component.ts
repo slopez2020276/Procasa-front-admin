@@ -22,6 +22,7 @@ export class AdminproductosComponent implements OnInit {
 
   ProductToSearch: any
   dataProductos: any
+  dataCategorias: any
   subCount: number = 0
   subsArray: number[] = []
   subsArrayB: number[] = []
@@ -370,6 +371,20 @@ async getProductToSearch(id:any){
   this.nombreProducto = product.productoFinded.nombreProducto
   this.IdProducto = product.productoFinded._id
 }
+  async agregarCateoria(){
+    const res = await this.productosServices.CrearCategoria(this.IdProducto,this.formularioCategoria.value)
+    console.log(res)
+    this.obtenerProductos()
+    this.formularioCategoria.reset()
+  
+  }
+
+  async obtenerCategoriasxId(){
+    const res = await this.productosServices.ObtenerCategorasxId(this.IdProducto)
+    this.dataCategorias = res.categorias
+    console.log(res)
+  
+  }
 
 
 
