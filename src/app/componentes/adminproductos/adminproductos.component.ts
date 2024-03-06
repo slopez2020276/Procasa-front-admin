@@ -23,6 +23,7 @@ export class AdminproductosComponent implements OnInit {
   ProductToSearch: any
   dataProductos: any
   dataCategorias: any
+  dataItems
   subCount: number = 0
   subsArray: number[] = []
   subsArrayB: number[] = []
@@ -404,7 +405,10 @@ async getProductToSearch(id:any){
   }
 
 
-
+  async ObteerItemsxCategoria(idProducto:any,idCategoria:any  ){
+    const res = await this.productosServices.ObteerItemsxCategoria(idProducto,idCategoria)
+    this.dataItems = res.items
+  }
 
 
 
