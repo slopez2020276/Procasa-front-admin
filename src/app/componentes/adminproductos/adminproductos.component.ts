@@ -15,6 +15,8 @@ export class AdminproductosComponent implements OnInit {
   formularioEditarProducto : FormGroup
   formularioCategoria : FormGroup
   forumlarioSubCategoria : FormGroup
+  formularioEditarCategoria : FormGroup
+  formularioEditarSubCategoria : FormGroup
 
 
   private fileTmp: any
@@ -25,6 +27,7 @@ export class AdminproductosComponent implements OnInit {
   dataCategorias: any
   dataItems: any
   idCategoria: any
+  NombreItemExistente: any
   subCount: number = 0
   subsArray: number[] = []
   subsArrayB: number[] = []
@@ -68,6 +71,12 @@ constructor(){
     })
     this.forumlarioSubCategoria = new FormGroup({
       items: new FormControl(),
+    })
+    this.formularioEditarCategoria = new FormGroup({
+      nuevoNombreCategoria: new FormControl(),
+    })
+    this.formularioEditarSubCategoria = new FormGroup({
+      nuevoNombreItem: new FormControl(),
     })
 }
 
@@ -443,6 +452,11 @@ async getProductToSearch(id:any){
     console.log(res)
   }
 
+  async setIdCategoria(idCategoria:any){
+    this.idCategoria = idCategoria
+
+  }
+
 
   async agregarItem(){
     const res = await this.productosServices.CrearItem(this.IdProducto,this.idCategoria,this.forumlarioSubCategoria.value)
@@ -467,6 +481,30 @@ async getProductToSearch(id:any){
     this.obtenerProductos()
     this.obtenerCategoriasxId()
      this.ObteerItemsxCategoria(this.idCategoria)
+  }
+  async editarCategoria(idCategoria:any){
+
+    const res = await this.productosServices.editarCategoria(this.IdProducto,idCategoria,this.formularioEditarCategoria.value)
+    console.log(res)
+    this.obtenerProductos()
+    this.obtenerCategoriasxId()
+    this.formularioEditarCategoria.reset()
+  
+  }
+
+  selectNombre(nombre:any){
+    this.NombreItemExistente = nombre
+    console.log(this.NombreItemExistente)
+  } 
+
+  async editarItem(){
+    const res = await this.productosServices.editarItem(this.IdProducto,this.idCategoria,this.NombreItemExistente ,this.formularioEditarSubCategoria.value)
+    console.log(res)
+    this.obtenerProductos()
+    this.obtenerCategoriasxId()
+     this.ObteerItemsxCategoria(this.idCategoria)
+    this.formularioEditarSubCategoria.reset()
+  
   }
 
 

@@ -74,5 +74,11 @@ eliminarItem(idProducto:any,idCategoria:any,idItem:any){
   return firstValueFrom(this.httpClient.delete(`${this.baseUrl}/eliminarItem/${idProducto}/${idCategoria}/${idItem}`, this.createHeaders()))
 
 }
+editarCategoria(idProducto:any,idCategoria:any,body:any){
+  return firstValueFrom(this.httpClient.put(`${this.baseUrl}/editarCategoria/${idProducto}/${idCategoria}`,body, this.createHeaders()))
+}
 
+editarItem(idProducto:any,idCategoria:any,Item:any,body:any){
+  return firstValueFrom(this.httpClient.put(`${this.baseUrl}/editarItemsACategoria/${idProducto}/${idCategoria}/${Item}`,body, this.createHeaders()))
+}
 }
