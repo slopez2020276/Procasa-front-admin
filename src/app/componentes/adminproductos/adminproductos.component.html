@@ -162,9 +162,9 @@
     <div class="cont-categories">
       <div class="cont-input-btn">
         <div class="btn-sub btn-click btn-red" (click)="eliminarCategoria(categoria._id)"><mat-icon>delete</mat-icon></div>
-        <div class="btn-sub btn-click btn-red" (click)="ObteerItemsxCategoria(categoria._id)"><mat-icon>search</mat-icon></div>
-        <div class="btn-sub btn-click btn-red" (click)="openEditItems($event)"><mat-icon>edit</mat-icon></div>
-          <input type="text" placeholder="{{categoria.Nombre}}">
+        <div class="btn-sub btn-click btn-red" (click)="ObteerItemsxCategoria(categoria._id)" (click)="openEditItems($event)"><mat-icon>search</mat-icon></div>
+        <div class="btn-sub btn-click btn-red" (click)="enableInput($event)"><mat-icon>edit</mat-icon></div>
+          <input type="text" id="" disabled="disabled" placeholder="{{categoria.Nombre}}">
       </div>
 
     </div>

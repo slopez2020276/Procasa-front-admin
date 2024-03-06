@@ -260,7 +260,12 @@ node!.style.display = "none"
 edit!.style.display = "flex"
 }
 
+enableInput(event: Event){
+  const node = event.target as HTMLElement | null
+  const edit = node?.parentElement?.parentElement?.children[0]?.children[3] as HTMLElement | undefined
 
+  edit?.removeAttribute('disabled')
+}
 
 SaveNewCategory(){ console.log("SAVE CATEGORY") }
 
