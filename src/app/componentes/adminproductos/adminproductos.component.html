@@ -178,8 +178,8 @@
   @for (categoria of dataCategorias; track $index) {
     <div class="cont-categories">
       <div class="cont-input-btn">
-        <div class="btn-sub btn-click btn-red"><mat-icon>delete</mat-icon></div>
-        <div class="btn-sub btn-click btn-red" (click)="openEditItems($event)"><mat-icon>edit</mat-icon></div>
+        <div class="btn-sub btn-click btn-red" (click)="eliminarCategoria(categoria._id)"><mat-icon>delete</mat-icon></div>
+        <div class="btn-sub btn-click btn-red" (click)="ObteerItemsxCategoria(categoria._id)" (click)="openEditItems($event)"><mat-icon>edit</mat-icon></div>
         <div class="btn-sub btn-click btn-red"><mat-icon>save</mat-icon></div>
           <input type="text" placeholder="{{categoria.Nombre}}">
       </div>
@@ -213,7 +213,7 @@
 
   <div class="sub-cont-btns">
     <div class="btn-click btn-red" (click)="addItem()">agregar</div>
-    <div class="btn-click btn-red" (click)="deleteItem()">eliminar</div>
+    <div class="btn-click btn-red"  (click)="deleteItem()">eliminar</div>
   </div>
   <div class="cont-input-item" *ngFor="let div of addItemsArray; let i = index">
     <input type="text" placeholder="...">
@@ -236,11 +236,13 @@
 
 <div class="cont-categories">
     <div class="cont-input-btn">
-        <div class="btn-click btn-red"><mat-icon>delete</mat-icon></div>
+        <div class="btn-click btn-red" (click)="eliminarCategoria(item)"><mat-icon>delete</mat-icon></div>
         <div class="btn-click btn-red togg" (click)="toggleEdit($event)"><mat-icon>edit</mat-icon></div>
         <div class="btn-click btn-red togg" (click)="toggleSave($event)"><mat-icon>save</mat-icon></div>
-      <input type="text" placeholder="nueva sub categoría">
-    </div>
+
+        <input type="text" placeholder="{{item}}">
+      </div>
+    }
 </div>
 
 <div class="cont-btn-save">
@@ -256,12 +258,15 @@
   <div class="close-modal btn-click" (click)="closeThisModal($event)"><mat-icon>close</mat-icon></div>
 
 <div class="cont-input-btn">
-  <input type="text" placeholder="nuevo ítem" class="normal">
+  <form [formGroup]="forumlarioSubCategoria">
+
+    <input formControlName="items" type="text" placeholder="nuevo ítem" class="normal">
+  </form>
 </div>
 
 
 
-<div class="cont-input-btn"> <div class="btn-click btn-dark"><mat-icon>save</mat-icon> guardar</div></div>
+<div class="cont-input-btn"> <div class="btn-click btn-dark" (click)="agregarItem()"><mat-icon>save</mat-icon> guardar</div></div>
 
 
 
