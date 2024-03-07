@@ -1,17 +1,12 @@
 <app-admin-navbar></app-admin-navbar>
 
-<div id="container-2">
+<div class="container-head">
   <h1>Usuarios</h1>
-    <h2></h2>
-    <!-- <button id="add-location" (click)="AddLocation()">+ Agregar ubicación</button> -->
-
-    <div id="bar-search">
-      <input class="bold" [(ngModel)]="AliasFiltro"  class="bold" type="text" name="search" placeholder="" title="buscar">
-    </div>
-    <button class="btn-click btn-red normal" (click)="modalAddUser()"><mat-icon>add</mat-icon> Agregar usuario</button>
+      <input class="bold" [(ngModel)]="AliasFiltro" type="text" name="search" placeholder="buscar usuario">
+    <button class="btn-click btn-white normal" (click)="modalAddUser()"><mat-icon>add</mat-icon> Agregar</button>
 </div>
 
-<div id="container-1" class="container">
+<div class="admin-main">
     <div id="cont-users">
       <div class="user-head"><span class="bold">ALIAS</span><span class="bold">CORREO</span><span class="bold edit-head">ACCIONES</span></div>
     @for (os of dataUsers | mostrarAlias: AliasFiltro ; track os._id) {
@@ -21,29 +16,50 @@
 </div>
 
 
-<div id="cont-modal-add">
-  <div id="modal-add-user">
-    <h1 class="title-modal">Agregar Usuario</h1>
-    <div class="btn-click normal close-modal" (click)="modalAddUser()"><mat-icon>close</mat-icon></div>
-        <form [formGroup]="formularioAgregarUser" >
-          <div class="cont-input-user">  <label class="bold" for="alias">alias</label> <input formControlName = "nombre" class="normal" name="alias" type="text" title="alias del usuario"> </div>
-          <div class="cont-input-user"> <label class="bold" for="correo">correo</label> <input class="normal" name="correo" formControlName="email" type="mail" title="correo del usuario"> </div>
-          <div class="cont-input-user"> <label class="bold" for="contraseña">contraseña</label> <input class="normal" formControlName="password" name="contraseña" type="text" title="contraseña del usuario"> </div>
-          <div class="btn-click btn-red normal x-margin" (click)="registrarUsuario()"><mat-icon>add</mat-icon> guardar</div>
-        </form>
-      </div>
-</div>
+<div id="modal-add-user" class="global-modal">
+  <h1 class="title-modal">Agregar Usuario</h1>
+  <div class="btn-click normal close-modal" (click)="modalAddUser()"><mat-icon>close</mat-icon></div>
+  
+  <form [formGroup]="formularioAgregarUser">
+<div class="cont">
+          <div class="item max-w">
+              <label class="normal">alias de usuario</label>
+              <input formControlName="nombre" class="normal" type="text">
+          </div>
 
-<div id="cont-modal-edit">
-  <div id="modal-edit-user">
-    <h1 class="title-modal">Editar Usuario</h1>
-    <div class="btn-click normal close-modal" (click)="modalEditUser()"><mat-icon>close</mat-icon></div>
+          <div class="item max-w">
+            <label class="normal">correo</label>
+            <input class="normal" name="correo" formControlName="email" type="mail">
+          </div>
+
+          <div class="item max-w">
+            <label class="normal">contraseña</label>
+            <input class="normal" formControlName="password" type="text">
+          </div>
+        </div>
+</form>
+          <div class="action-center"><div class="btn-click btn-red normal" (click)="registrarUsuario()"><mat-icon>add</mat-icon> guardar</div></div>
+        </div>
+
+
+
+<div id="modal-edit-user" class="global-modal">
+  <h1 class="title-modal">Editar Usuario</h1>
+  <div class="btn-click close-modal" (click)="modalEditUser()"><mat-icon>close</mat-icon></div>
+  
         <form [formGroup]="formularioEditarUser">
-          <div class="cont-input-user"> <label class="bold"  for="aliasEdit">Alias</label> <input [(ngModel)]="Alias" class="bold" formControlName="nombre" name="aliasEdit" type="text" title="editar alias"> </div>
-          <div class="cont-input-user"> <label class="bold" for="correoEdit">Correo</label> <input class="bold" [(ngModel)]="email"  formControlName="email" name="correoEdit" type="text" title="editar correo"> </div>
-          <div class="btn-click btn-red normal x-margin" (click)="editarUusario()"><mat-icon>add</mat-icon> guardar</div>
+          <div class="cont">
+            <div class="item">  
+              <label class="normal">alias</label>
+              <input [(ngModel)]="Alias" class="normal" formControlName="nombre" type="text">
+            </div>
+            <div class="item">
+              <label class="normal">correo</label>
+              <input class="normal" [(ngModel)]="email"  formControlName="email" type="text">
+            </div>
+          </div>
         </form>
-  </div>
+        <div class="action-center"><div class="btn-click btn-red normal x-margin" (click)="editarUusario()"><mat-icon>add</mat-icon> guardar</div></div>
 </div>
 
 

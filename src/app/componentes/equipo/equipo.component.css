@@ -81,19 +81,6 @@ div#container-2 {
 
 /*-------------------------------------------------------------------------------------------------*/
 
-div#container-main {
-    position: relative;
-    width: 100vw;
-    height: auto;
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: start;
-    align-content: start;
-    flex-wrap: wrap;
-    margin-top: 60px;
-}
-
 div#container {
     position: relative;
     width: auto;
@@ -106,8 +93,8 @@ div#container {
     flex-wrap: wrap;
 }
 
-div.cont {
-    width: 400px;
+div.conta {
+    width: 300px;
     border-radius: 4px;
     margin: 1rem 1rem;
     position: relative;
@@ -118,9 +105,10 @@ div.cont {
     align-items: start;
     overflow: hidden;
     flex-wrap: wrap;
+    background: var(--white);
 }
 
-div.cont img {
+div.conta img {
     width: auto;
     max-width: 90%;
     min-width: 70%;
@@ -128,7 +116,7 @@ div.cont img {
     border-radius: 4px;
 }
 
-div.cont h2 {
+div.conta h2 {
   width: 100%;
   text-align: center;
     font-size: 16pt;
@@ -220,15 +208,6 @@ div.sub {
   margin-top: 0rem;
 }
 
-input[type=text], input[type=date], textarea{
-  width: 80%;
-  position: relative;
-  box-shadow: 1px 1px 1px rgba(0,0,0,.1);
-  margin-top: .5rem;
-  border-radius: 4px;
-  padding: .5rem 1rem;
-  font-size: 11pt;
-}
 
 
 div.fn-principales {

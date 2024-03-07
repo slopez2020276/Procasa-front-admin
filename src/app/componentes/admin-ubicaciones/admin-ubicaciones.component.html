@@ -2,7 +2,7 @@
 
 <div id="container-1"></div>
 
-<div id="modal-add-location">
+<div class="global-modal" id="modal-add-ubicaciones">
   <h1 class="title-modal">Agregar Ubicación</h1>
   <button class="btn-click normal close-modal" (click)="AddLocation()"><mat-icon>close</mat-icon></button>
   <form [formGroup]="fornularioAgregarUbicacion">
@@ -11,13 +11,13 @@
 <div id="sub-cont-details-img">
       <div class="sub-details">
           <div class="sub-img-btn">
-            <input id="imgSave" type="file" (change)="InputChange($event)" (change)="getFile($event)" title="seleccionar archivo" accept=".jpg, .png, .jpeg, .avi, .webp" data-content="seleccionar archivo">
+            <input class="normal btn-dark" id="imgSave" type="file" (change)="InputChange($event)" (change)="getFile($event)" title="seleccionar archivo" accept=".jpg, .png, .jpeg, .avi, .webp" data-content="seleccionar archivo">
             <mat-icon>delete</mat-icon>
           </div>
         <ul>
-          <li>ancho: <span class="bold danger-red"></span> </li>
-          <li>alto:  <span class="bold danger-red"></span> </li>
-          <li>peso:  <span class="bold danger-red"></span></li>
+          <li>ancho: <span class="normal danger-red"></span></li>
+          <li>alto:  <span class="normal danger-red"></span></li>
+          <li>peso:  <span class="normal danger-red"></span></li>
         </ul>
       </div>
       <div class="cont-details-img"><img alt="" src=""></div>
@@ -26,11 +26,13 @@
 </div>
 
 
-<div class="cont">
+<div class="cont start">
     <div class="item">
-      <input formControlName="nombreTienda" id="name" title="input" type="text" class="normal" placeholder="nombre">
+      <label class="normal">nombre</label>
+      <input formControlName="nombreTienda" id="name" title="input" type="text" class="normal">
     </div>
     <div class="item">
+      <label class="normal">sucursal</label>
       <select formControlName="tipoTienda" name="tipoTienda" class="normal" id="sucursal">
         <option value="procasa">Procasa</option>
         <option value="meathouse">Meat House</option>
@@ -38,42 +40,43 @@
       </select>
     </div>
     <div class="item">
-      <input formControlName="telefono" id="telefono" title="input" type="text" class="normal" placeholder="teléfono">
+        <label class="normal">teléfono</label>
+        <input formControlName="telefono" id="telefono" title="input" type="text" class="normal">
     </div>
     <div class="item">
-      <input formControlName="horario" id="horario" title="input" type="text" class="normal" placeholder="horario">
+        <label class="normal">horario de atención</label>
+        <input formControlName="horario" id="horario" title="input" type="text" class="normal">
+      </div>
+      <div class="item">
+      <label class="normal">enlace Google Maps</label>
+      <input formControlName="enlaceMaps" id="maps" title="input" type="text" class="normal">
     </div>
     <div class="item">
-      <input formControlName="enlaceMaps" id="maps" title="input" type="text" class="normal" placeholder="enlace Maps">
+      <label class="normal">enlace Waze</label>
+      <input formControlName="enlaceWaze" id="waze" title="enlace Waze" type="text" class="normal">
     </div>
     <div class="item">
-      <input formControlName="enlaceWaze" id="waze" title="enlace Waze" type="text" class="normal" placeholder="enlace Waze">
-    </div>
-    <div class="item">
-      <input formControlName="descripcion" id="descripcion" title="input" type="text" class="normal" placeholder="descripción">
+      <label class="normal">descripción</label>
+      <input formControlName="descripcion" id="descripcion" title="input" type="text" class="normal">
     </div>
   </div>
 
-  <button class="btn-click btn-red normal"  (click)="saveLocation($event)"><mat-icon>save</mat-icon> guardar</button>
+  <div class="action-center"><button class="btn-click btn-red normal"  (click)="saveLocation($event)"><mat-icon>save</mat-icon> guardar</button></div>
 </form>
 
 </div>
 
 
 
-<div id="container-2">
+<div class="container-head">
   <h1>Ubicaciones</h1>
-    <div id="bar-search">
-      <input [(ngModel)]="nombreTiendaFiltro"  class="bold" type="text" name="search" placeholder="" title="buscar">
-
-    </div>
-
-    <button class="btn-click btn-red normal" (click)="AddLocation()"><mat-icon>add</mat-icon> Agregar ubicación</button>
+    <input [(ngModel)]="nombreTiendaFiltro"  class="bold" type="text" name="search" placeholder="buscar ubicación" title="buscar">
+    <button class="btn-click btn-white normal" (click)="AddLocation()"><mat-icon>add</mat-icon> Agregar</button>
 </div>
 
 
 
-<div id="container-3">
+<div class="admin-main">
 
 <div class="cont-ubicacion">
 @for (os  of dataUbicacion | MostrarPorUbiPipe: nombreTiendaFiltro ; track os._id ) {
@@ -95,10 +98,11 @@
 
 
 
-<div id="modal-edit-location">
+<div id="modal-edit-ubicacion" class="global-modal">
   <h1 class="title-modal">Editar Ubicación</h1>
   <button class="btn-click close-modal" (click)="editLocation()"><mat-icon>close</mat-icon></button>
 
+  <div class="cont">
   <div id="sub-cont-details-img">
     <div class="sub-details">
         <div class="sub-img-btn">
@@ -106,60 +110,58 @@
           <mat-icon>delete</mat-icon>
         </div>
       <ul>
-        <li>ancho: <span class="bold danger-red" id="innerwidth-add"></span> </li>
-        <li>alto:  <span class="bold danger-red" id="innerheight-add"></span> </li>
-        <li>peso:  <span class="bold danger-red" id="innersize-add"></span></li>
+        <li>ancho: <span class="normal danger-red"></span></li>
+        <li>alto:  <span class="normal danger-red"></span></li>
+        <li>peso:  <span class="normal danger-red"></span></li>
       </ul>
     </div>
     <div class="cont-details-img"><img alt="" src=""></div>
 </div>
+</div>
 
 
 
-<div class="cont">
+<div class="cont start">
   <form [formGroup]="formularioEditUbicacion">
 
     <div class="item">
-      <label>Nombre</label>
-      <input [(ngModel)]="nombreTienda" formControlName="nombreTienda" id="name" title="input" type="text" class="normal" placeholder="">
+      <label class="normal">Nombre</label>
+      <input [(ngModel)]="nombreTienda" formControlName="nombreTienda" id="name" title="input" type="text" class="normal">
     </div>
     <div class="item">
       <label for="tipoTienda">Tipo</label>
-      <select formControlName="tipoTienda" name="tipoTienda" id="">
+      <select formControlName="tipoTienda" name="tipoTienda" class="normal">
         <option value="procasa">Procasa</option>
         <option value="meathouse">Meat House</option>
       </select>
     </div>    
     <div class="item">
-      <label>Teléfono</label>
-      <input type="text" [(ngModel)]="telefono" formControlName="telefono">
+      <label class="normal">Teléfono</label>
+      <input type="text" [(ngModel)]="telefono" formControlName="telefono" class="normal">
     </div>
 
     <div class="item">
-      <label>Horario</label>
-      <input type="text" [(ngModel)]="horario" formControlName="horario">
+      <label class="normal">Horario</label>
+      <input type="text" [(ngModel)]="horario" formControlName="horario" class="normal">
     </div>
 
     <div class="item">
-      <label>Maps</label>
-      <input type="text" [(ngModel)]="maps" formControlName="enlaceMaps">
+      <label class="normal">Maps</label>
+      <input type="text" [(ngModel)]="maps" formControlName="enlaceMaps" class="normal">
     </div>
 
     <div class="item">
-      <label>Waze</label>
-      <input type="text" [(ngModel)]="waze" formControlName="enlaceWaze">
+      <label class="normal">Waze</label>
+      <input type="text" [(ngModel)]="waze" formControlName="enlaceWaze" class="normal">
     </div>
     <div class="item">
-      <label>Descripcion de la tienda</label>
-      <input [(ngModel)]="descripcion" formControlName="descripcion" title="descripción" type="text" class="normal" placeholder="">
+      <label class="normal">Descripcion de la tienda</label>
+      <input [(ngModel)]="descripcion" formControlName="descripcion" title="descripción" type="text" class="normal">
     </div>
-
-
 
   </form>
   </div>
-
-  <button class="btn-click btn-red normal" (click)="saveEdited()" id="save-modal-edit" ><mat-icon>save</mat-icon> guardar</button>
+<div class="action-center"><button class="btn-click btn-red normal" (click)="saveEdited()" id="save-modal-edit" ><mat-icon>save</mat-icon> guardar</button></div>
 
 
 </div>

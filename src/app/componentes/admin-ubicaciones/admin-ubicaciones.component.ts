@@ -114,6 +114,8 @@ InputChange(event: Event) {
                       widthInner.classList.remove('limit')
                       heightInner.classList.remove('limit')
                       sizeInner.classList.remove('limit')
+                      console.log(widthInner)
+                      
                       if(imagen.width > this.widthLimit){ widthInner.classList.add('limit') }
                       if(imagen.height > this.heightLimit){ heightInner.classList.add('limit') }
                       if((size/1024) > this.sizeLimit){ sizeInner.classList.add('limit') }
@@ -178,7 +180,7 @@ if(img!=="" && nombre!=="" && sucursal!=="" && telefono!=="" && horario!=="" && 
 
 
 
-AddLocation(){ document.getElementById('modal-add-location')?.classList.toggle('toggle') }
+AddLocation(){ document.getElementById('modal-add-ubicaciones')?.classList.toggle('toggle') }
 
 getFile($event: any): void {
   const [ file ] = $event.target.files
@@ -321,7 +323,7 @@ async ObtenerUbixId(id){
   this.imgPath =Ubicacion.ubi.imgPath
 }
 
-editLocation(){ document.getElementById('modal-edit-location')?.classList.toggle('toggle') }
+editLocation(){ document.getElementById('modal-edit-ubicacion')?.classList.toggle('toggle') }
 
 
 

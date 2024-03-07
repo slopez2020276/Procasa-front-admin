@@ -37,13 +37,8 @@ constructor(){
     })
 }
 
-modalAddUser() { document.getElementById('cont-modal-add')?.classList.toggle('open-add') }
-modalEditUser() {
-
-
-   document.getElementById('cont-modal-edit')?.classList.toggle('open-add') 
-
-  }
+modalAddUser() { document.getElementById('modal-add-user')?.classList.toggle('toggle') }
+modalEditUser() { document.getElementById('modal-edit-user')?.classList.toggle('toggle') }
 
 async ObtenerxID(id){
 

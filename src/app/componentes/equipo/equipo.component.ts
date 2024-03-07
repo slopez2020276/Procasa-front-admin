@@ -94,7 +94,7 @@ constructor(){
   }
 
   ModalProduct(type:string){
-    document.getElementById(type)?.classList.toggle('show')
+    document.getElementById(type)?.classList.toggle('toggle')
     document.getElementById('cont-modal-inputs')?.classList.remove('show')
    }
 

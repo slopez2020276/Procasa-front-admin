@@ -20,19 +20,6 @@ div#container-menu.openmenu { left: 0; }
 
 div#container-menu:hover > * { opacity: 1; }
 
-div#container-menu a.light {
-  text-decoration: none;
-  color: #FFF;
-  transition: .2s ease;
-  padding: 1rem;
-  text-align: left;
-  width: 100%;
-}
-
-div#container-menu a.light:hover {
-  padding-left: 2rem;
-}
-
 
 div#cont-menu-bar {
   width: 50px;
@@ -86,8 +73,25 @@ div#list-menu {
   flex-wrap: wrap;
   position: relative;
   margin-top: 4rem;
-  padding-left: 2rem;
 }
+
+div#list-menu a {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  align-content: center;
+  text-decoration: none;
+  color: #FFF;
+  transition: .2s ease;
+  padding: 1rem;
+  text-align: left;
+  width: 100%;
+  background: rgba(255,255,255,0);
+  padding-left: 3rem;
+}
+div#list-menu a:hover { padding-left: 4rem; background: rgba(255,255,255,.1); }
+
+div#list-menu a mat-icon { margin-right: .5rem; }
 
 div#cont-btn {
   width: 100%;

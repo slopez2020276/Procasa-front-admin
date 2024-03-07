@@ -1,23 +1,18 @@
 <app-admin-navbar></app-admin-navbar>
 
-<div id="container-2">
+<div class="container-head">
     <h1>Plazas</h1>
-
-    <div id="bar-search">
-      <input class="bold" type="text" name="search" placeholder="" title="buscar producto">
-    </div>
-    <button class="btn-click btn-red normal" (click)="ModalProduct('add')"><mat-icon>add</mat-icon> Agregar Plaza</button>
+      <input class="bold" type="text" name="search" placeholder="buscar plaza" style="width: 40%; max-width: 225px;">
+    <button class="btn-click btn-white normal" (click)="ModalProduct('modal-add-plaza')"><mat-icon>add</mat-icon> Agregar</button>
   </div>
 
 
-<div id="container-main">
+<div class="admin-main">
 
 <div id="container">
-
-
   @for (os of dataUnete; track os._id  ) {
 
-    <div class="cont">
+    <div class="conta">
       <img [src]="os.imgPath" alt="">
 
       <h2 class="bold">{{os.titulo}}</h2>
@@ -41,7 +36,7 @@
 
       <div class="cont-buttons">
         <div class="actions btn-click btn-red" (click)="ModalFunctions($index)"><mat-icon>add</mat-icon></div>
-          <div class="actions btn-click btn-red" (click)="ModalProduct('edit')" (click)="obtenerPlazaId(os._id)"  ><mat-icon>edit</mat-icon></div>
+          <div class="actions btn-click btn-red" (click)="ModalProduct('modal-edit-plaza')" (click)="obtenerPlazaId(os._id)"  ><mat-icon>edit</mat-icon></div>
           <div class="actions btn-click btn-red" (click)="EliminarP(os._id)"><mat-icon>delete</mat-icon></div>
       </div>
 
@@ -70,12 +65,11 @@
 
 <form [formGroup]="formAgregarPlaza" >
 
-  <div class="modal" id="add">
-    <div class="btn-click close-modal" (click)="ModalProduct('add')"><mat-icon>close</mat-icon></div>
+  <div class="global-modal" id="modal-add-plaza">
     <h1 class="title-modal">Agregar plaza</h1>
-    <div class="sub-cont">
+    <div class="btn-click close-modal" (click)="ModalProduct('modal-add-plaza')"><mat-icon>close</mat-icon></div>
 
-
+<div class="cont">
 <div id="sub-cont-details-img">
         <div class="sub-details">
             <div class="sub-img-btn">
@@ -83,57 +77,66 @@
               <mat-icon>delete</mat-icon>
             </div>
           <ul>
-            <li>ancho: <span class="bold danger-red"></span> </li>
-            <li>alto:  <span class="bold danger-red"></span> </li>
-            <li>peso:  <span class="bold danger-red"></span></li>
+            <li>ancho: <span class="normal danger-red"></span> </li>
+            <li>alto:  <span class="normal danger-red"></span> </li>
+            <li>peso:  <span class="normal danger-red"></span></li>
           </ul>
         </div>
         <div class="cont-details-img"><img alt="" src=""></div>
   </div>
-
-
 </div>
-<div class="sub-cont">
-  <div class="sub">
-    <input type="text"  formControlName="titulo" class="normal" placeholder="Nombre plaza/vacante">
-    <input type="text" formControlName="departamento" class="normal" placeholder="Departamento">
-    <input type="text" formControlName="empresa" class="normal" placeholder="Empresa">
+
+
+<div class="cont start">
+  <div class="item">
+    <label class="normal">plaza / vacante</label>
+    <input type="text"  formControlName="titulo" class="normal">
   </div>
 
+  <div class="item">
+    <label class="normal">departamento</label>
+    <input type="text" formControlName="departamento" class="normal">
+  </div>
 
-  <div class="sub">
-    <input type="text" formControlName="ubicacion" class="normal" placeholder="Ubicacion">
-    <input type="text" formControlName="educacion" class="normal" placeholder="Educación requerida">
-    <input type="text" formControlName="formulario" class="normal" placeholder="Enlace del Formulario">
+  <div class="item">
+    <label class="normal">empresa</label>
+    <input type="text" formControlName="empresa" class="normal">
+  </div>
 
-    <textarea name="" id=""  formControlName="experiencia"  class="normal" placeholder="Experiencia laboral"></textarea>
+  <div class="item">
+    <label class="normal">ubicación</label>
+    <input type="text" formControlName="ubicacion" class="normal">
+  </div>
+
+  <div class="item">
+    <label class="normal">educación requerida</label>
+    <input type="text" formControlName="educacion" class="normal">
+  </div>
+
+  <div class="item">
+    <label class="normal">enlace formulario</label>
+    <input type="text" formControlName="formulario" class="normal">
+  </div>
+
+  <div class="item">
+    <label class="normal">Experiencia laboral</label>
+    <textarea formControlName="experiencia"  class="normal"></textarea>
   </div>
 </div>
 
-<div class="cont-btns">
-  <div class="btn-click btn-red" (click)="sendFileplaza()"><mat-icon>save</mat-icon> guardar</div>
-</div>
+<div class="action-center"><div class="btn-click btn-red" (click)="sendFileplaza()"><mat-icon>save</mat-icon> guardar</div></div>
 
 </div>
 </form>
 
 <!-- ------------------------------------------------------------------------------------------------------------------------------------------------------------ -->
 
-<div class="modal" id="edit">
-  <div class="btn-click close-modal" (click)="ModalProduct('edit')"><mat-icon>close</mat-icon></div>
+<div class="global-modal" id="modal-edit-plaza">
+  <div class="btn-click close-modal" (click)="ModalProduct('modal-edit-plaza')"><mat-icon>close</mat-icon></div>
   <h1 class="title-modal">Editar plaza</h1>
 
-<div class="sub-cont">
-
-
-  <div class="sub-cont">
-  </div>
-
-
-
-  <form [formGroup]="formEditarPlaza">
-  <div class="sub-cont">
-
+<form [formGroup]="formEditarPlaza">
+<div class="cont">
 <div id="sub-cont-details-img">
       <div class="sub-details">
           <div class="sub-img-btn">
@@ -141,43 +144,58 @@
             <mat-icon>delete</mat-icon>
           </div>
         <ul>
-          <li>ancho: <span class="bold danger-red" id="innerwidth-add"></span> </li>
-          <li>alto:  <span class="bold danger-red" id="innerheight-add"></span> </li>
-          <li>peso:  <span class="bold danger-red" id="innersize-add"></span></li>
+          <li>ancho: <span class="normal danger-red"></span> </li>
+          <li>alto:  <span class="normal danger-red"></span> </li>
+          <li>peso:  <span class="normal danger-red"></span></li>
         </ul>
       </div>
       <div class="cont-details-img"><img alt="" src=""></div>
 </div>
+</div>
 
 
-    <div class="sub">
-        <input type="text" [(ngModel)]="NombrePlaza" formControlName="titulo"  placeholder="Nombre plaza/vacante">
-        <input type="text" [(ngModel)]="DepartamentoPlaza"  formControlName="departamento"  placeholder="Departamento">
-        <input type="text"  [(ngModel)]="EmpresaPlaza"   formControlName="empresa" placeholder="Empresa">
+    <div class="cont">
+      <div class="item">
+        <label class="normal">plaza / vacante</label>
+        <input type="text" [(ngModel)]="NombrePlaza" formControlName="titulo" class="normal">
       </div>
 
-      <div class="sub">
-        <div id="open-modal-edit-fn" class="btn-click" (click)="ModalEditFunctions()" (click)="obtenerFunciones()" >editar funciones</div>
+      <div class="item">
+        <label class="normal">departamento</label>
+        <input type="text" [(ngModel)]="DepartamentoPlaza" class="normal">
+      </div>
 
-        <input type="text"  [(ngModel)]="UbicacionPlaza" formControlName="ubicacion"  placeholder="Ubicacion">
+      <div class="item">
+        <label class="normal">empresa</label>
+        <input type="text"  [(ngModel)]="EmpresaPlaza"   formControlName="empresa" class="normal">
+      </div>
 
-        <input type="text"  [(ngModel)]="EducacionPlaza" formControlName="educacion" placeholder="Educación requerida">
-        <textarea name="" id=""  [(ngModel)]="ExperienciaPlaza" formControlName="experiencia"  placeholder="Experiencia laboral"></textarea>
+      <div class="item">
+        <label class="normal">ubicación</label>
+        <input type="text"  [(ngModel)]="UbicacionPlaza" formControlName="ubicacion" class="normal">
+      </div>
+
+      <div class="item">
+        <label class="normal">educación requerida</label>
+        <input type="text"  [(ngModel)]="EducacionPlaza" formControlName="educacion" class="normal">
+      </div>
+
+      <div class="item">
+        <label class="normal">experiencia laboral</label>
+        <textarea name="" id=""  [(ngModel)]="ExperienciaPlaza" formControlName="experiencia" class="normal"></textarea>
+      </div>
+      <div id="open-modal-edit-fn" class="btn-click" (click)="ModalEditFunctions()" (click)="obtenerFunciones()" >editar funciones</div>
 
       </div>
-    </div>
   </form>
 
 
-<div class="cont-btns">
-    <div class="btn-click btn-red" (click)="Edit()" (click)="EditPlaza()" ><mat-icon>save</mat-icon> guardar</div>
-  </div>
-</div>
+<div class="action-center"><div class="btn-click btn-red" (click)="Edit()" (click)="EditPlaza()" ><mat-icon>save</mat-icon> guardar</div></div>
 <!--  -->
 
 
 <div id="modal-edit-fns">
-  <h1 class="close-modal title-modal">Editar funciones</h1>
+  <h1 class="title-modal">Editar funciones</h1>
   <div class="btn-click close-modal" (click)="ModalEditFunctions()"><mat-icon>close</mat-icon></div>
 
 <div id="cont-input-edit">

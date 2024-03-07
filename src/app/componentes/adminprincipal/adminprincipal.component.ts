@@ -451,14 +451,13 @@ ModalTimeLine() {
 
 
 ModalAddTimeLine() { 
-  document.getElementById('modal-time-line-add')?.classList.toggle('modal')
+  document.getElementById('modal-time-line-add')?.classList.toggle('toggle')
   this.cleanForms()
 }
 
   async agregarEventoLineaTiempo(){
     this.obtenerLinea()
     console.log(this.formularioAgregarLineaTiempo.value.image)
-
   }
 
   async eliminarLineaTiempo(id: any) {
@@ -627,8 +626,8 @@ async obtnerNoticias (){
 
 
 
-ModalEditNotice() { document.getElementById('modal-edit-notice')?.classList.toggle('show'); this.cleanForms() }
-NewModalNotice() { document.getElementById('modal-new-notice')?.classList.toggle('show'); this.cleanForms() }
+ModalEditNotice() { document.getElementById('modal-edit-notice')?.classList.toggle('toggle'); this.cleanForms() }
+NewModalNotice() { document.getElementById('modal-new-notice')?.classList.toggle('toggle'); this.cleanForms() }
 
 
 async obtenerxidNoticias(id:any){
@@ -1121,7 +1120,7 @@ onClick() {
 
  
 
- Modal() { document.getElementById('modal-time-line')?.classList.toggle('modal') }
+ Modal() { document.getElementById('modal-time-line')?.classList.toggle('toggle') }
 
 toggleImgColor(status:number, cont:string){
   document.getElementById('sub-cont-img')?.classList.remove('selected')

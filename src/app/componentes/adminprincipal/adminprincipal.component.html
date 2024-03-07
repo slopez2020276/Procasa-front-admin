@@ -13,8 +13,6 @@
 
 <h1 class="bold" id="title-admin">ADMINISTRACIÓN <div class="clip"></div> <p class="light">PÁGINA PRINCIPAL</p></h1>
 
-
-
 <div id="cont-btn-preview">
   <div class="btn-scroll normal" (click)="toScrollAdmin(0)">Fondo</div>
   <div class="btn-scroll normal" (click)="toScrollAdmin(1)">Portada</div>
@@ -32,8 +30,8 @@
   <h1 class="bold title-bg">FONDO DE LA PÁGINA</h1>
   <div id="cont-separador">
     <div id="separador">
-      <div class="normal sl-img" (click)="toggleImgColor(0, 'img')">imagen</div>
-      <div class="normal sl-color" (click)="toggleImgColor(1, 'color')">color</div>
+      <div class="normal sl-img btn-click" (click)="toggleImgColor(0, 'img')">IMAGEN</div>
+      <div class="normal sl-color btn-click" (click)="toggleImgColor(1, 'color')">COLOR</div>
     </div>
   </div>
 
@@ -65,34 +63,24 @@
 
         <h4>detalles del archivo</h4>
         <ul>
-          <li>ancho: <span class="bold danger-red" id="innerwidth-bg"></span> </li>
-          <li>alto:  <span class="bold danger-red" id="innerheight-bg"></span> </li>
-          <li>peso:  <span class="bold danger-red" id="innersize-bg"></span></li>
+          <li>ancho: <span class="normal danger-red" id="innerwidth-bg"></span> </li>
+          <li>alto:  <span class="normal danger-red" id="innerheight-bg"></span> </li>
+          <li>peso:  <span class="normal danger-red" id="innersize-bg"></span></li>
         </ul>
       </div>
-
     </div>
-
-
-    <div class="cont-buttons">
-      <div class="btn-click btn-red" id="saveBgImg"><mat-icon>save</mat-icon> guardar</div>
-    </div>
+    
+    <div class="action-center"><div class="btn-click btn-red normal" id="saveBgImg"><mat-icon>save</mat-icon> guardar</div></div>
   </div>
 
 <div id="sub-cont-color">
   <p class="normal">Seleccionar color de fondo</p>
   <input type="color" title="color de fondo" [(ngModel)]="colorBg" data-color="">
 
-  <div class="cont-buttons">
+  <div class="action-center">
     <div class="btn-click btn-red" (click)="sendColorbackGord()"><mat-icon>save</mat-icon> guardar</div>
   </div>
 </div>
-
-
-  <div class="foot-cont">
-    <div class="cont-buttons">
-    </div>
-  </div>
 
 </div>
 
@@ -131,19 +119,18 @@
 
         <h4>detalles del archivo</h4>
         <ul>
-          <li>ancho: <span class="bold danger-red" id="innerwidth"></span> </li>
-          <li>alto:  <span class="bold danger-red" id="innerheight"></span> </li>
-          <li>peso:  <span class="bold danger-red" id="innersize"></span></li>
+          <li>ancho: <span class="normal danger-red" id="innerwidth"></span> </li>
+          <li>alto:  <span class="normal danger-red" id="innerheight"></span> </li>
+          <li>peso:  <span class="normal danger-red" id="innersize"></span></li>
         </ul>
       </div>
 
     </div>
   </div>
-  <div class="foot-cont">
-    <div class="cont-buttons">
+
+    <div class="action-center">
       <div (click)="testEmptyPortada()" class="normal btn-red btn-click" id="btn-save-portada" (click)="sendFilePortada()"><mat-icon>save</mat-icon> guardar</div>
     </div>
-  </div>
 
 </div>
 
@@ -184,15 +171,8 @@
             <textarea name="historia" class="normal" id="textareaValidate" cols="40" rows="10" formControlName="DescripcionHistoria" [(ngModel)]="textoHistoria" title="descripción"></textarea>
     </div>
 
-  <div class="foot-cont">
+  <div class="action-center"><div class="btn-click normal btn-red" (click)="preSaveHistoria()" id="btn-alert-2"><mat-icon>save</mat-icon> guardar</div></div>
 
-  <div class="cont-buttons">
-    <div class="btn-click normal btn-red" (click)="preSaveHistoria()" id="btn-alert-2"><mat-icon>save</mat-icon> guardar</div>
-
-  </div>
-
-
-</div>
   <div class="container-alert" #containerAlertElementHis>
     <div class="alert-model">
         <p class="inner-message bold"></p>
@@ -224,12 +204,6 @@
               }
             </div>
             <div id="cont-3-see-all" class="normal btn-click btn-red" (click)="ModalAddTimeLine()"><mat-icon>launch</mat-icon> agregar</div>
-            <div class="foot-cont">
-    <div class="cont-buttons">
-
-    </div>
-  </div>
-
 </div>
 
 
@@ -257,12 +231,7 @@
     </div>
     
   </div>
-  <div class="foot-cont">
-    
-    <div class="cont-buttons">
-      <div class="btn-red btn-click normal" id="cancel-c" (click)="preSaveMisionVision()"><mat-icon>save</mat-icon> guardar</div>
-    </div>
-  </div>
+  <div class="action-center"><div class="btn-red btn-click normal" id="cancel-c" (click)="preSaveMisionVision()"><mat-icon>save</mat-icon> guardar</div></div>
   
 
 </form>
@@ -302,12 +271,10 @@
       <label class="bold" for="ttare4">Orientación al servicio</label>
       <textarea class="valores-txt normal" [(ngModel)]="OrientacionModel" formControlName="Orientacion" title="Orientación al servicio" name="ttare4" id="txt-orientacion" cols="35" rows="10"></textarea>
     </div>
-    <div class="foot-cont">
-      <div class="cont-buttons">
 
+      <div class="action-center">
         <div class="normal btn-red btn-click" (click)="preSaveValores()"><mat-icon>save</mat-icon> guardar</div>
       </div>
-    </div>
   </div>
 
   </form>
@@ -334,13 +301,8 @@
       }
   </div>
 
-  <div class="foot-cont">
-
-    <div class="cont-buttons">
-      <div id="show-more" (click)="ShowMore()">mostrar más</div>
-      <button class="normal btn-red btn-click" (click)="NewModalNotice()"><mat-icon>launch</mat-icon> agregar</button>
-    </div>
-  </div>
+    <div class="action-center"><div class="normal btn-click btn-dark" id="show-more" (click)="ShowMore()">mostrar más</div></div>
+    <div class="action-center"><button class="normal btn-red btn-click" (click)="NewModalNotice()"><mat-icon>launch</mat-icon> agregar</button></div>
 
 </div>
 
@@ -363,14 +325,12 @@
 <!--///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////-->
 <!-- M O D A L E S -->
 
-<div id="modal-time-line-add" class="container-modal">
+<div id="modal-time-line-add" class="global-modal">
 <h1 class="title-modal">Agregar Línea de Tiempo</h1>
-  <div id="cont-close-button-add">
     <button class="btn-click close-modal" (click)="ModalAddTimeLine()" ><mat-icon>close</mat-icon></button>
-  </div>
 
-  <form [formGroup]="formularioAgregarLineaTiempo">
-
+<form [formGroup]="formularioAgregarLineaTiempo">
+<div class="cont">
     <div id="sub-cont-details-img">
       <div class="sub-details">
           <div class="sub-img-btn">
@@ -378,32 +338,33 @@
             <mat-icon>delete</mat-icon>
           </div>
         <ul>
-          <li>ancho: <span class="bold danger-red" id="innerwidth-add"></span> </li>
-          <li>alto:  <span class="bold danger-red" id="innerheight-add"></span> </li>
-          <li>peso:  <span class="bold danger-red" id="innersize-add"></span></li>
+          <li>ancho: <span class="normal danger-red"></span> </li>
+          <li>alto:  <span class="normal danger-red"></span> </li>
+          <li>peso:  <span class="normal danger-red"></span></li>
         </ul>
       </div>
       <div class="cont-details-img"><img alt="" src=""></div>
 </div>
+</div>
 
 
-<div class="subcont-modal">
-<div class="cont-inp">
+<div class="cont">
+<div class="item">
   <label for="title">Título</label>
   <input type="text" id="new-titulo-tl" formControlName="titleLineaTiempo" name="title" title="título">
 </div>
 
-<div class="cont-inp">
+<div class="item">
   <label for="description">Descripción</label>
   <input type="text" id="new-desc-tl" formControlName="descriptionLineaTiempo" title="description">
 </div>
 
-<div class="cont-inp">
+<div class="item">
   <label for="fecha-new-lt">fecha</label>
   <input type="date" formControlName="fecha" >
 </div>
 
-<div class="cont-inp">
+<div class="item">
   <label for="mostrarnew">Mostrar por</label>
   <select name="mostrarpornew" id="mostrarnew" formControlName="mostrarPor">
     <option value="anio">año</option>
@@ -413,8 +374,7 @@
 </div>
 
 </div>
-
-    <div (click)="saveNewTimeLine()" class="btn-click btn-red normal" id="save-new-tili"><mat-icon>save</mat-icon> guardar</div>
+<div class="action-center"><div (click)="saveNewTimeLine()" class="btn-click btn-red normal" id="save-new-tili"><mat-icon>save</mat-icon> guardar</div></div>
 
   </form>
 </div>
@@ -425,62 +385,56 @@
 
 
 
-<div id="modal-time-line" class="container-modal">
+<div id="modal-time-line" class="global-modal">
   <h1 class="title-modal">Editar Línea de Tiempo</h1>
-  <div id="cont-close-button">
-    <button class="btn-click normal" id="close-modal-3"  (click)="Modal()" ><mat-icon>close</mat-icon></button>
-  </div>
+    <button class="btn-click close-modal" (click)="Modal()" ><mat-icon>close</mat-icon></button>
 
-  <form [formGroup]="formularioEditlineaTiempo" (ngSubmit)="editarTime()">
-    
-
-<div id="sub-cont-details-img">
-  <div class="sub-details">
+<form [formGroup]="formularioEditlineaTiempo" (ngSubmit)="editarTime()">
+<div class="cont">
+      <div id="sub-cont-details-img">
+        <div class="sub-details">
     <div class="sub-img-btn">
-        <input type="file" id="file-update-lt"  (change)="InputChange($event)" (change)="getFileUpdateTiempo($event)" name="file" data-content="seleccionar archivo" title="imagen">
+        <input type="file" id="file-update-lt" (change)="InputChange($event)" (change)="getFileUpdateTiempo($event)" name="file" data-content="seleccionar archivo" title="imagen">
         <mat-icon>delete</mat-icon>
       </div>
     <ul>
-      <li>ancho: <span class="bold danger-red"></span> </li>
-      <li>alto:  <span class="bold danger-red"></span> </li>
-      <li>peso:  <span class="bold danger-red"></span></li>
+      <li>ancho: <span class="normal danger-red"></span></li>
+      <li>alto:  <span class="normal danger-red"></span></li>
+      <li>peso:  <span class="normal danger-red"></span></li>
     </ul>
   </div>
   <div class="cont-details-img"><img alt="" src=""></div>
 </div>
-
-
-
-<div class="subcont-modal">
-<div class="cont-inp">
-  <label for="title">Título</label>
-  <input   type="text" id="titulo-update-lt" formControlName="titleLineaTiempo" [(ngModel)]="tituloModal" name="title" title="título" required>
 </div>
 
-<div class="cont-inp">
-  <label for="description">Descripción</label>
-  <input type="text" formControlName="descriptionLineaTiempo" id="desc-update-lt" [(ngModel)]="descripcionModal"  title="description">
+<div class="cont">
+<div class="item">
+  <label class="normal">título</label>
+  <input class="normal" type="text" formControlName="titleLineaTiempo" [(ngModel)]="tituloModal">
 </div>
 
-<div class="cont-inp">
-  <label for="fecha-edit-lt">fecha</label>
-  <input formControlName = "fecha" [(ngModel)]="fechaModal" [value]="fechaModal"  type="date" id="fechaupdatelt" name="fecha-edit-lt" title="fecha de línea de tiempo">
+<div class="item">
+  <label class="normal">descripción</label>
+  <input class="normal" type="text" formControlName="descriptionLineaTiempo" [(ngModel)]="descripcionModal">
+</div>
+
+<div class="item">
+  <label class="normal">fecha</label>
+  <input class="normal" formControlName="fecha" [(ngModel)]="fechaModal" [value]="fechaModal" type="date">
 </div>
 
 
-<div class="cont-inp">
-  <label for="mostrarpor" >Mostrar por</label>
-    <select formControlName="mostrarPor" name="mostrarpor" id="mostrarporedit" [(ngModel)]="mostrarPorModal">
+<div class="item">
+  <label class="normal">mostrar por</label>
+    <select class="normal" formControlName="mostrarPor" [(ngModel)]="mostrarPorModal">
       <option value="anio">año</option>
       <option value="aniomes">año - mes</option>
       <option value="mesdia">mes - día</option>
     </select>
 </div>
   </div>
-
-    <div class="btn-click btn-red normal" id="update-time-line" (click)="saveUpdateTimeLine()"><mat-icon>save</mat-icon> guardar</div>
-
-  </form>
+</form>
+<div class="action-center"><div class="btn-click btn-red normal" (click)="saveUpdateTimeLine()"><mat-icon>save</mat-icon> guardar</div></div>
 </div>
 
 
@@ -488,11 +442,12 @@
 <!-------------------------------------------------------------------------------------------------------------------------------------->
 <!-- M O D A L   N U E V O   N O T I C I A S  -->
 
-<div id="modal-new-notice" class="container-modal">
+<div id="modal-new-notice" class="global-modal">
   <h1 class="title-modal">Agregar Noticia</h1>
   <button class="btn-click close-modal" (click)="NewModalNotice()"><mat-icon>close</mat-icon></button>
 
 <form [formGroup]="formularioAgregarNoticias">
+  <div class="cont">
   <div id="sub-cont-details-img">
     <div class="sub-details">
         <div class="sub-img-btn">
@@ -500,46 +455,48 @@
           <mat-icon>delete</mat-icon>
         </div>
       <ul>
-        <li>ancho: <span class="bold danger-red"></span></li>
-        <li>alto:  <span class="bold danger-red"></span></li>
-        <li>peso:  <span class="bold danger-red"></span></li>
+        <li>ancho: <span class="normal danger-red"></span></li>
+        <li>alto:  <span class="normal danger-red"></span></li>
+        <li>peso:  <span class="normal danger-red"></span></li>
       </ul>
     </div>
     <div class="cont-details-img"><img alt="" src=""></div>
 </div>
 
-<div class="subcont-modal">
-<div class="cont-inp">
-  <label for="title-notice">Título</label>
-  <input id="titulo-noticia" formControlName="title" type="text" name="title-notice" title="Título de noticia">
+<div class="cont start">
+<div class="item">
+  <label class="normal">título</label>
+  <input class="normal" id="titulo-noticia" formControlName="title" type="text">
 </div>
 
-<div class="cont-inp">
-  <label for="description-notice">Descripción</label>
-  <textarea id="desc-noticia" formControlName="descripcion" title="descripción de noticia" name="description-notice"></textarea>
+<div class="item">
+  <label class="normal">descripción</label>
+  <textarea class="normal" id="desc-noticia" formControlName="descripcion"></textarea>
 </div>
 
-<div class="cont-inp">
-  <label for="select-add">Tipo De Noticia</label>
-  <select formControlName="tipo" name="select-add" id="select-add-noticia">
+<div class="item">
+  <label class="normal">tipo de noticia</label>
+  <select class="normal" formControlName="tipo" id="select-add-noticia">
     <option value="principal">Pricipal</option>
     <option value="secundarios">Secundario</option>
   </select>
 </div>
 
 </div>
-<div class="btn-red btn-click normal" id="presave-noticia" (click)="guardarNoticia()"><mat-icon>save</mat-icon> guardar</div>
+</div>
 </form>
+
+<div class="action-center"><div class="btn-red btn-click normal" (click)="guardarNoticia()"><mat-icon>save</mat-icon> guardar</div></div>
 </div>
 
 
 <!-- M O D A L   E D I T A R   N O T I C I A S  -->
-<div id="modal-edit-notice" class="container-modal">
+<div id="modal-edit-notice" class="global-modal">
   <h1 class="title-modal">Editar Noticia</h1>
         <button class="btn-click close-modal" (click)="ModalEditNotice()"><mat-icon>close</mat-icon></button>
 
 <form [formGroup]="formularioEditarNoticias"  >
-
+<div class="cont">
   <div id="sub-cont-details-img">
     <div class="sub-details">
         <div class="sub-img-btn">
@@ -547,34 +504,40 @@
           <mat-icon>delete</mat-icon>
         </div>
       <ul>
-        <li>ancho: <span class="bold danger-red"></span> </li>
-        <li>alto:  <span class="bold danger-red"></span> </li>
-        <li>peso:  <span class="bold danger-red"></span></li>
+        <li>ancho: <span class="normal danger-red"></span> </li>
+        <li>alto:  <span class="normal danger-red"></span> </li>
+        <li>peso:  <span class="normal danger-red"></span></li>
       </ul>
     </div>
     <div class="cont-details-img"><img alt="" src=""></div>
 </div>
+</div>
 
 
-<div class="subcont-modal">
-  <div class="cont-inp">
-    <label for="title-notice">Título</label>              <input type="text" [(ngModel)]="tituloNoticia" formControlName="title" name="title-notice" title="Título de noticia" id="title-update-noticia">
+<div class="cont start">
+  <div class="item">
+    <label class="normal">título</label>
+    <input class="normal" type="text" [(ngModel)]="tituloNoticia" formControlName="title">
   </div>
-  <div class="cont-inp">
-    <label for="description-notice">Descripción</label>   <textarea title="descripción de noticia" [(ngModel)]="descripcionNoticia" formControlName="descripcion" name="description-notice" id="desc-update-noticia" cols="26" rows="5"></textarea>
+
+  <div class="item">
+    <label class="normal">descripción</label>
+    <textarea class="normal" [(ngModel)]="descripcionNoticia" formControlName="descripcion"></textarea>
   </div>
-  <div class="cont-inp">
-    <label for="select-edit">prioridad</label>
-    <select name="select-edit" id="select-edit-noticia">
+
+  <div class="item">
+    <label class="normal">prioridad</label>
+    <select>
       <option value="0">no prioritario</option>
       <option value="1">prioritario</option>
     </select>
   </div>
 </div>
 
-<div class="normal btn-click btn-red" (click)="updateNoticia()"><mat-icon>save</mat-icon> guardar</div>
+<div class="action-center"><div class="normal btn-click btn-red" (click)="updateNoticia()"><mat-icon>save</mat-icon> guardar</div></div>
 
-</form> </div>
+</form>
+</div>
 
 
 

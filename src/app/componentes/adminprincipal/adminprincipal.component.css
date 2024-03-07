@@ -10,8 +10,7 @@ body {
   justify-content: center;
   align-items: start;
   padding-bottom: 20rem;
-  background: #ecf1f7;
-  /* background: linear-gradient(0deg, #252525, #454545); */
+  background: var(--second);
   flex-wrap: wrap;
   position: relative;
   overflow-x: hidden;
@@ -284,47 +283,6 @@ div#cont-caracteristics-bg div.cont-carac ul li
 }
 
 
-
-
-div.foot-cont {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 2rem;
-}
-
-div.cont-buttons {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
-  width: 100%;
-  margin-top: 1rem;
-}
-
-
-
-div.cont-buttons button {
-  padding: .5rem 3rem;
-  border-radius: 4px;
-  transform: scale(1);
-  cursor: pointer;
-  font-size: 10pt;
-  border-radius: 4px;
-  background: #AA182C;
-  color: #FFF;
-  box-shadow: 0px 2px 0px rgba(0,0,0,.1);
-}
-
-div.cont-buttons button:active {
-  transform: scale(0.95);
-  box-shadow: 0px 0px 0px rgba(0,0,0,.1);
-}
-
-
-
-
 button#init-preview {
   position: relative;
   display: block;
@@ -480,30 +438,6 @@ iframe#iframe-preview {
   position: relative;
 }
 
-
-div#modal-time-line, div#modal-time-line-add, div#modal-edit-notice, div#modal-new-notice {
-  position: fixed;
-  width: 800px;
-  height: auto;
-  max-height: 80vh;
-  left: calc(50% - 400px);
-  border-radius: 4px;
-  box-shadow: 0 2px 5px rgba(0,0,0,.1);
-  display: flex;
-  justify-content: center;
-  align-items: start;
-  flex-wrap: wrap;
-  padding: 2rem;
-  top: 0vh;
-  transition: .4s ease;
-  opacity: 0;
-  transform: scale(.8);
-  z-index: -200;
-  overflow-x: hidden;
-  overflow-y: scroll;
-}
-
-
 div#container-preview {
   height: auto;
   justify-content: center;
@@ -556,94 +490,6 @@ img#nav-end, img#foo-end {
   height: 9%;
   position: relative;
 }
-
-
-
-div#modal-time-line form, div#modal-time-line-add form, div#modal-edit-notice form {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
-}
-
-div#modal-time-line.modal, div#modal-time-line-add.modal, div#modal-edit-notice.modal {
-  transform: scale(1);
-  top: 13vh;
-  cursor: default;
-  opacity: 1;
-  z-index: 49;
-}
-
-div.cont-inp {
-  width: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  align-content: center;
-  flex-wrap: wrap;
-}
-
-div.cont-inp label {width: 80%;}
-div.cont-inp input {width: 100%;}
-div.cont-inp textarea {width: 80%;}
-div.cont-inp select {width: 80%;}
-
-div.subcont-modal {
-  width: 100%;
-  min-width: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-  padding-bottom: 1rem;
-}
-
-
-div#cont-close-button, div#cont-close-button-add {
-  display: flex;
-  justify-content: end;
-  align-items: center;
-  width: 100%;
-}
-
-button#close-modal-3, button#close-modal-3-add {
-  position: absolute;
-  right: 1rem;
-  top: .5rem;
-  display: block;
-  background: #DADADA;
-  padding: .5rem 1rem;
-  border-radius: 4px;
-  cursor: pointer;
-  transform: scale(1);
-  transition: .1s;
-}
-button#close-modal-3:active, button#close-modal-3-add:active {
-  transform: scale(.95);
-}
-
-
-div#modal-time-line form input, div#modal-time-line form label,
-div#modal-time-line-add form input, div#modal-time-line-add form label {
-  display: block;
-  position: relative;
-  width: 60%;
-  margin-top: 2rem;
-}
-
-div#modal-time-line-add form input, div#modal-time-line form input {
-  margin-top: .5rem;
-}
-
-
-div#modal-time-line button[type=submit], div#modal-time-line-add button[type=submit] {
-  padding: .5rem 4rem;
-  background: #DADADA;
-  border-radius: 4px;
-  margin-top: 2rem;
-}
-
-
 
 
 button.edit-timeline {
@@ -844,7 +690,7 @@ div.noticia img {
 
 h1#title-admin {
   font-size: 20pt;
-  color: #AAA;
+  color: var(--white);
   display: inline-block;
   position: relative;
   display: flex;
@@ -854,15 +700,14 @@ h1#title-admin {
 
 h1#title-admin p {
   font-size: 20pt;
-  color: #666;
+  color: var(--white);
 }
 
-/* h1#title-admin::before { */
 div.clip {
   content: ' ';
   width: 25px;
   height: 25px;
-  background: #AAA;
+  background: var(--third);
   float: left;
   left: 0;
   margin-left: 1rem;
@@ -881,45 +726,6 @@ width: 100vw;
 height: 50vh;
 position: relative;
 }
-
-
-div#modal-edit-notice.show, div#modal-new-notice.show {
-  z-index: 49;
-  transform: scale(1);
-  opacity: 1;
-  transition: .1s;
-  top: 10vh;
-}
-
-div#modal-edit-notice form, div#modal-new-notice form {
-  width: 80%;
-  display: flex;
-  justify-content: center;
-  align-items: start;
-  flex-wrap: wrap;
-}
-
-div#modal-edit-notice form label, div#modal-new-notice form label {
-  margin-top: 1rem;
-  width: 80%;
-  display: block;
-  position: relative;
-}
-
-div#modal-edit-notice form input, div#modal-new-notice form input {
-  margin-top: .5rem;
-  width: 80%;
-  display: block;
-  position: relative;
-}
-
-div#cont-btn-close, div#cont-btn-close-new {
-  width: 100%;
-  display: flex;
-  justify-content: end;
-}
-
-
 
 div#sub-cont-color {
   width: 90%;
@@ -982,23 +788,6 @@ div#container-7
 button.del-bg {
   background: #AA182C;
   color: #FFF;
-}
-
-div#show-more {
-  position: relative;
-  width: 100%;
-  text-align: center;
-  padding: 1rem 0;
-  background: #EAEAEA;
-  border-radius: 4px;
-  margin-bottom: 1rem;
-  cursor: pointer;
-  transform: scale(1);
-  transition: .1s;
-}
-
-div#show-more:active {
-  transform: scale(.95);
 }
 
 .ng-touched.ng-invalid:is(input, textarea),
@@ -1081,11 +870,6 @@ select {
 
 
 @media screen and (max-width:900px) {
-  div#modal-time-line, div#modal-time-line-add, div#modal-edit-notice, div#modal-new-notice {
-    width: 90%;
-    left: 5%;
-    justify-content: center;
-  }
 
   div#sub-cont-3 { justify-content: center; }
   div.cont-3-timeline {
@@ -1093,9 +877,6 @@ select {
     margin-left: .5rem;
     margin-right: .5rem;
   }
-
-
-  div#modal-time-line.modal, div#modal-time-line-add.modal, div#modal-edit-notice.modal { top: 10vh; }
 
 }
 
@@ -1116,22 +897,7 @@ div.sub-container-items { justify-content: center; }
     font-size: 20pt;
   }
 
-  div#modal-time-line, div#modal-time-line-add, div#modal-edit-notice, div#modal-new-notice {
-    width: 90%;
-    left: 5%;
-    justify-content: center;
-    flex-wrap: wrap;
-  }
-
   div.preview-img-model { width: 100%; }
-
-  h1#title-admin {
-    font-size: 20pt;
-    display: inline-block;
-    position: relative;
-    width: 60%;
-    margin-left: 10%;
-  }
 
 form { justify-content: center;}
 
@@ -1166,13 +932,7 @@ div.container {
 }
 
 
-div.cont-inp { width: 90%; }
-
 }
-
-
-
-
 
 
 div#background-color {
@@ -1185,7 +945,7 @@ div#background-color {
 }
 
 div#saveBgImg { display: none; }
-div#saveBgImg.show { display: block; }
+div#saveBgImg.show { display: flex; }
 
 div#cont-btn-preview {
   width: 80%;
@@ -1199,8 +959,8 @@ div#cont-btn-preview {
 
 div.btn-scroll {
   margin: .5rem .5rem 0 .5rem;
-  background: #252525;
-  color: #FAFAFA;
+  background: var(--third);
+  color: var(--white);
   border-radius: 4px;
   padding: .5rem 1rem;
   cursor: pointer;
