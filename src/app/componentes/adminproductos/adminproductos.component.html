@@ -2,21 +2,18 @@
 
 
 
-<div id="container-2">
+<div class="container-head">
   <h1>Productos</h1>
-
-  <div id="bar-search">
-    <label for="search">Buscar</label>
-    <input class="bold" type="text" name="search" placeholder="" title="buscar producto">
-  </div>
-  <button class="btn-click btn-red normal" (click)="ModalProduct('add')"><mat-icon>add</mat-icon> Agregar producto</button>
+  <span>
+    <input class="bold" type="text" placeholder="buscar producto">
+    <button class="btn-click btn-white normal" (click)="ModalProduct('add')"><mat-icon>add</mat-icon> agregar</button>
+  </span>
 </div>
 
   
 
-<div id="container-productos">
-
-
+<div class="admin-main">
+  <div class="shadow-main"></div>
   @for (os of dataProductos; track os._id) {
   <div class="producto">
 
@@ -116,7 +113,7 @@
 <!-------- MODAL EDITAR PRODUCTO ------------------------------------------------------------------------------------------------------------------------------------>
 <div id="modal-edit-product">
   <h1 class="title-modal">Editar Producto</h1>
-  <div id="close-modal-add" (click)="ModalProduct('edit')"><mat-icon>close</mat-icon></div>
+  <div class="btn-click close-modal" (click)="ModalProduct('edit')"><mat-icon>close</mat-icon></div>
 
 <form [formGroup]="formularioEditarProducto">
 
@@ -156,7 +153,7 @@
 
 <div class="cont-add-cat">
   <h1 class="title-modal">Editar Categoria ...</h1>
-  <div class="btn-click btn-close-addcat" (click)="CloseAddCategory($event)"><mat-icon>close</mat-icon></div>
+  <div class="btn-click btn-white btn-close-addcat" (click)="CloseAddCategory($event)"><mat-icon>close</mat-icon></div>
 
   @for (categoria of dataCategorias; track $index) {
     <div class="cont-categories">
@@ -180,7 +177,7 @@
 
 <div class="add-items">
   <h1 class="close-modal title-modal">Agregar sub-cateorías</h1>
-  <div class="btn-click close-item" (click)="CloseAddCategory($event)"><mat-icon>close</mat-icon></div>
+  <div class="btn-click close-item btn-white" (click)="CloseAddCategory($event)"><mat-icon>close</mat-icon></div>
 
   <div class="cont-middle">
 
@@ -204,7 +201,7 @@
 
 <div class="cont-subcategories">
   <h1 class="title-modal">Agregar Sub-Categoría</h1>
-  <div class="btn-click close-cont-subcate" (click)="CloseAddSubCategory($event)"><mat-icon>close</mat-icon></div>
+  <div class="btn-click close-cont-subcate btn-white" (click)="CloseAddSubCategory($event)"><mat-icon>close</mat-icon></div>
   <div class="btn-click btn-dark" (click)="openAddItem($event)"><mat-icon>add</mat-icon> agregar items</div>
 
 @for (item of dataItems; track $index) {
@@ -234,7 +231,7 @@
 
 <div class="cont-add-items">
   <h1 class="title-modal">Agregar Items</h1>
-  <div class="close-modal btn-click" (click)="closeThisModal($event)"><mat-icon>close</mat-icon></div>
+  <div class="close-modal btn-click btn-white" (click)="closeThisModal($event)"><mat-icon>close</mat-icon></div>
 
 <div class="cont-input-btn">
   <form [formGroup]="forumlarioSubCategoria">

@@ -4,7 +4,6 @@
 
 * {box-sizing: border-box; outline: none; padding: 0; margin: 0; border: none; font-family: realeway_light; font-size: 11pt;}
 
-/* * { border: 1px dotted skyblue; } */
 :root {
   --first: #252525;
   --second: #454545;
@@ -32,7 +31,8 @@ div.container-head {
   left: 0;
   width: 100vw;
   height: 60px;
-  box-shadow: 0px 1px 10px rgba(0,0,0,.1);
+  box-shadow: 0px 1px 10px rgba(0,0,0,.2);
+  border-bottom: 1px solid #656565;
   z-index: 100;
   display: flex;
   justify-content: space-between;
@@ -50,6 +50,15 @@ div.container-head h1 {
   text-transform: uppercase;
 }
 
+div.container-head span {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  flex-wrap: nowrap;
+}
+
+div.container-head span * { margin: 0 4px; }
 
 div.container-head button { font-size: 9pt; }
 
@@ -61,6 +70,7 @@ div.container-head input {
 }
 
 div.admin-main {
+  position: relative;
   width: 100vw;
   height: auto;
   min-height: 100vh;
@@ -72,11 +82,25 @@ div.admin-main {
   padding: 2rem 0 20rem 0;
   background: var(--second);
   margin-top: 60px;
+  overflow: hidden;
+  z-index: 0;
 }
 
-
-
-
+div.shadow-main {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, .1);
+  background: #454545;
+  border-radius: 8px;
+  top: 0;
+  left: -50%;
+  transform: rotateZ(45deg);
+  box-shadow: 0px 0px 30px rgba(0, 0, 0, .4);
+  z-index: 0;
+  border-top: 4px solid #6e75e0;
+  border-right: 4px solid #33c6db;
+}
 
 div.global-modal {
   position: fixed;
@@ -86,7 +110,7 @@ div.global-modal {
   background: var(--white);
   left: calc(50% - 266px);
   border-radius: 4px;
-  box-shadow: 0 5px 10px rgba(0,0,0,.5);
+  box-shadow: 0 3px 20px rgba(0,0,0,.4);
   justify-content: center;
   align-items: start;
   align-content: start;
@@ -100,6 +124,8 @@ div.global-modal {
   display: none;
   transform: scale(.8);
   animation: show .2s ease-out;
+  border-bottom: 4px solid #33c6db;
+  border-top: 4px solid #6e75e0;
 }
 
 div.global-modal.toggle {
@@ -108,6 +134,8 @@ div.global-modal.toggle {
   transform: scale(1);
   opacity: 1;
 }
+
+
 
 @keyframes show {
    0% {transform: scale(.8); z-index: 49; opacity: 1;}
@@ -277,6 +305,7 @@ div.container {
   color: var(--first);
   text-transform: uppercase;
   background: transparent;
+  border-radius: 4px;
 }
 
 
@@ -284,7 +313,7 @@ div.container {
   position: absolute;
   right: .5rem;
   top: .5rem;
-  z-index: 51;
+  z-index: 1;
   background: var(--second);
   color: var(--white);
   padding: .3rem .5rem;
@@ -562,11 +591,14 @@ div.cont-btns-alert div mat-icon { margin: 0 1rem; }
 
 
 @media screen and (max-width: 650px) { div.container-head h1 { font-size: 12pt;  width: auto; } }
-
-@media screen and (max-width: 580px) {div.container-head h1 { display: none; }}
-@media screen and (max-width: 450px) {
-div.container-head input { width: 40%; padding: .5rem 1rem; font-size: 11pt;}
+@media screen and (max-width: 600px) { 
+  div.container-head h1 { display: none; }
+  div.container-head { justify-content: space-evenly; }
 }
+
+@media screen and (max-width: 500px) { div.container-head { justify-content: end; } }
+
+@media screen and (max-width: 450px) { div.container-head input { width: 40%; padding: .5rem 1rem; font-size: 11pt;} }
 
 
 @media screen and (max-width: 550px) {
@@ -621,6 +653,10 @@ div.container-head input { width: 40%; padding: .5rem 1rem; font-size: 11pt;}
 
 @media screen and (max-width: 300px) {
   div.item input, div.item select { width: 90%; }
-  
   div.item label { width: 90%; }
+}
+
+@media screen and (max-width: 330px) {
+  div.container-head button mat-icon { display: none; }
+  
 }
