@@ -98,8 +98,8 @@ div.shadow-main {
   transform: rotateZ(45deg);
   box-shadow: 0px 0px 30px rgba(0, 0, 0, .4);
   z-index: 0;
-  border-top: 4px solid #6e75e0;
-  border-right: 4px solid #33c6db;
+  border-top: 4px solid transparent;
+  border-right: 4px solid transparent;
 }
 
 div.global-modal {
@@ -124,8 +124,8 @@ div.global-modal {
   display: none;
   transform: scale(.8);
   animation: show .2s ease-out;
-  border-bottom: 4px solid #33c6db;
-  border-top: 4px solid #6e75e0;
+  border-bottom: 4px solid transparent;
+  border-top: 4px solid transparent;
 }
 
 div.global-modal.toggle {

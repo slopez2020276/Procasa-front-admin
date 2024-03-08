@@ -17,10 +17,10 @@ div#sharp-back {
     opacity: 1;
     transform: rotate(-30deg);
     animation: load 1.2s ease-in-out;
-    border-right: 4px solid #6e75e0;
-    border-left: 4px solid #6e75e0;
-    border-top: 4px solid #33c6db;
-    border-bottom: 4px solid #33c6db;
+    border-right: 4px solid transparent;
+    border-left: 4px solid transparent;
+    border-top: 4px solid transparent;
+    border-bottom: 4px solid transparent;
 }
 
 @keyframes load {
