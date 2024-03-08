@@ -10,7 +10,7 @@ export class LineaTiempoService {
   private baseUrl: string;
 
   constructor() {
-    this.baseUrl = 'https://enchanting-kilt-pike.cyclic.app/api'
+    this.baseUrl = 'http://localhost:3002/api'
   }
 
 
