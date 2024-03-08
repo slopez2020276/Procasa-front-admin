@@ -158,14 +158,9 @@ div#modal-add-product, div#modal-edit-product {
   overflow-y: scroll;
   overflow-x: hidden;
   position: fixed;
-  width: 600px;
-  height: auto;
-  max-height: 80vh;
   background: #FAFAFA;
   box-shadow: 2px 2px 4px rgba(0,0,0,.2);
-  top: 10vh;
   border-radius: 4px;
-  left: calc(50% - 300px);
   transform: scale(.8) translateY(20vh);
   z-index: -10;
   opacity: 0;
