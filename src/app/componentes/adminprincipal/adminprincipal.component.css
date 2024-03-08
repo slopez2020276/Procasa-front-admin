@@ -690,7 +690,7 @@ div.noticia img {
 
 div#title-admin {
   font-size: 20pt;
-  color: var(--white);
+  color: var(--first);
   display: inline-block;
   position: relative;
   display: flex;
@@ -703,14 +703,14 @@ div#title-admin {
 
 div#title-admin p {
   font-size: 20pt;
-  color: var(--white);
+  color: var(--first);
 }
 
 div.clip {
   content: ' ';
   width: 25px;
   height: 25px;
-  background: var(--third);
+  background: var(--second);
   float: left;
   left: 0;
   margin-left: 1rem;
