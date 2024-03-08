@@ -69,6 +69,8 @@ div.container-head input {
   font-size: 12pt;
 }
 
+textarea {border: 1px solid #AAA;}
+
 div.admin-main {
   position: relative;
   width: 100vw;
