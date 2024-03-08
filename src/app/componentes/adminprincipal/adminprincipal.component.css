@@ -10,7 +10,7 @@ body {
   justify-content: center;
   align-items: start;
   padding-bottom: 20rem;
-  background: var(--second);
+  background: #FAFAFA;
   flex-wrap: wrap;
   position: relative;
   overflow-x: hidden;

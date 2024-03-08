@@ -80,7 +80,7 @@ div.admin-main {
   align-content: start;
   flex-wrap: wrap;
   padding: 2rem 0 20rem 0;
-  background: var(--second);
+  background: #F4F4F4;
   margin-top: 60px;
   overflow: hidden;
   z-index: 0;
