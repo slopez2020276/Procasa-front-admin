@@ -110,7 +110,7 @@ div.global-modal {
   background: var(--white);
   left: calc(50% - 266px);
   border-radius: 4px;
-  box-shadow: 0 3px 20px rgba(0,0,0,.4);
+  box-shadow: 0 0 20px rgba(0,0,0,.4);
   justify-content: center;
   align-items: start;
   align-content: start;
