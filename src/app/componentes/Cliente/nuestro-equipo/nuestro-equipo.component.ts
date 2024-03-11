@@ -16,6 +16,8 @@ export class NuestroEquipoComponent implements OnInit {
 data
 imgPrincipal
 imgFondo
+tipoBack
+colorn
 HistoriaService = inject(HistoriaService)
 
 toScrollPlaza(i:any){ document.getElementsByClassName('cont-area')[i]?.scrollIntoView({behavior:"smooth"}) }
@@ -25,7 +27,22 @@ async ngOnInit() {
   this.data = response.historia
   this.imgPrincipal = this.data[0].imgPathPrincipal
   this.imgFondo = this.data[0].imgPathFondo
+  this.colorn = this.data[0].colorFondo
+  this.evaluarTipoBack()
+
+
+
   this.getDataUneteEquipo()
+  this.evaluarTipoBack()
+
+}
+
+evaluarTipoBack(){
+  if(this.data[0].backgroundTipo == true){
+    this.tipoBack = true
+  }else if(this.data[0].backgroundTipo == false){
+    this.tipoBack = false
+  }
 }
 
 async getDataUneteEquipo(){
