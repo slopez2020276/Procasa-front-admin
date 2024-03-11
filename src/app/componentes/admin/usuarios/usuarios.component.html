@@ -2,17 +2,21 @@
 
 <div class="container-head">
   <h1>Usuarios</h1>
-      <input class="bold" [(ngModel)]="AliasFiltro" type="text" name="search" placeholder="buscar usuario">
+  <span>
+    <input class="bold" [(ngModel)]="AliasFiltro" type="text" name="search" placeholder="buscar usuario">
     <button class="btn-click btn-white normal" (click)="modalAddUser()"><mat-icon>add</mat-icon> Agregar</button>
+  </span>
 </div>
 
 <div class="admin-main">
-    <div id="cont-users">
-      <div class="user-head"><span class="bold">ALIAS</span><span class="bold">CORREO</span><span class="bold edit-head">ACCIONES</span></div>
+  <div class="shadow-main"></div>
+  
+  <div id="cont-users">
+    <div class="user-head"><span class="bold">ALIAS</span><span class="bold">CORREO</span><span class="bold edit-head">ACCIONES</span></div>
     @for (os of dataUsers | mostrarAlias: AliasFiltro ; track os._id) {
-      <div class="user"> <span class="bold">{{os.nombre}}</span> <span class="bold">{{os.email}}</span><span class="edit" (click)="modalEditUser()"  (click)="ObtenerxID(os._id)"><mat-icon>edit</mat-icon></span></div>
+      <div class="user"> <span class="normal">{{os.nombre}}</span> <span class="normal">{{os.email}}</span><span class="edit" (click)="modalEditUser()"  (click)="ObtenerxID(os._id)"><mat-icon>edit</mat-icon></span></div>
     }
-    </div>
+  </div>
 </div>
 
 

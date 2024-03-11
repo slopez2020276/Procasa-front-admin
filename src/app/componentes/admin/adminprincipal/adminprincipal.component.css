@@ -10,7 +10,7 @@ body {
   justify-content: center;
   align-items: start;
   padding-bottom: 20rem;
-  background: var(--second);
+  background: #F4F4F4;
   flex-wrap: wrap;
   position: relative;
   overflow-x: hidden;
@@ -688,26 +688,29 @@ div.noticia img {
   border-radius: 4px;
 }
 
-h1#title-admin {
+div#title-admin {
   font-size: 20pt;
-  color: var(--white);
+  color: var(--first);
   display: inline-block;
   position: relative;
   display: flex;
-  justify-content: start;
+  justify-content: center;
   align-items: center;
+  flex-wrap: nowrap;
+  width: 100%;
+  text-align: center;
 }
 
-h1#title-admin p {
+div#title-admin p {
   font-size: 20pt;
-  color: var(--white);
+  color: var(--first);
 }
 
 div.clip {
   content: ' ';
   width: 25px;
   height: 25px;
-  background: var(--third);
+  background: var(--second);
   float: left;
   left: 0;
   margin-left: 1rem;
@@ -871,6 +874,12 @@ select {
 
 @media screen and (max-width:900px) {
 
+div#title-admin { font-size: 18pt; }
+  
+div#title-admin p { font-size: 18pt; }
+  
+div.clip { width: 20px; height: 20px; }
+
   div#sub-cont-3 { justify-content: center; }
   div.cont-3-timeline {
     width: 250px;
@@ -880,8 +889,11 @@ select {
 
 }
 
-@media screen and (max-width:700px) {
 
+
+
+
+@media screen and (max-width:700px) {
 
 div.sub-container-items { justify-content: center; }
   
@@ -889,7 +901,6 @@ div.sub-container-items { justify-content: center; }
     width: 100%;
     justify-content: center;
 }
-
 
   div#container-welcome h1 {
     width: 80%;
@@ -923,14 +934,16 @@ form label, form input, form textarea {width: 90%; display: block;}
 div#cont-textareas, div#cont-textareas-valores { width: 90%; justify-content: center; }
 div.cont-inter, div.cont-inter-valores { width: 100%; }
 
-div.clip { display: none; }
+div#title-admin { font-size: 16pt; }
+div#title-admin p { font-size: 16pt; }
+div.clip { width: 15px; height: 15px; }
+
 
 div.container {
   width: 100vw;
   max-width: 100vw;
   margin-top: 3rem;
 }
-
 
 }
 
@@ -990,22 +1003,37 @@ div#toScrollTop img {
   height: auto;
 }
 
+@media screen and (max-width: 850px) {
+  div.btn-scroll { width: 170px; text-align: center; }
+}
+
+
 
 @media screen and (max-width: 600px) {
-  svg {
-    width: 150px;
-    height: 150px;
-    z-index: 999;
-  }
+svg {
+  width: 150px;
+  height: 150px;
+  z-index: 999;
+}
 
-  div.container {overflow-y: scroll; overflow-x: hidden;}
+div.container {overflow-y: scroll; overflow-x: hidden;}
 
 div#cont-btn-preview { width: 90%; }
 div.btn-scroll { width: 45%; text-align: center; }
+
+
+div#title-admin { font-size: 16pt; width: 200px; flex-wrap: wrap;}
+div#title-admin p { font-size: 14pt; }
+div.clip { display: none; }
+
 }
 
 @media screen and (max-width: 400px) {
-div#cont-btn-preview { width: 90%; }
-div.btn-scroll { width: 80%; }
+  div#cont-btn-preview { width: 90%; }
+  div.btn-scroll { width: 80%; }
+}
+@media screen and (max-width: 350px) {
+  div#title-admin { font-size: 12pt;}
+  div#title-admin p { font-size: 10pt; }
 }
 

@@ -70,14 +70,16 @@
 
 <div class="container-head">
   <h1>Ubicaciones</h1>
+  <span>
     <input [(ngModel)]="nombreTiendaFiltro"  class="bold" type="text" name="search" placeholder="buscar ubicación" title="buscar">
     <button class="btn-click btn-white normal" (click)="AddLocation()"><mat-icon>add</mat-icon> Agregar</button>
+  </span>
 </div>
 
 
 
 <div class="admin-main">
-
+  <div class="shadow-main"></div>
 <div class="cont-ubicacion">
 @for (os  of dataUbicacion | MostrarPorUbiPipe: nombreTiendaFiltro ; track os._id ) {
   <div class="ubicacion">
