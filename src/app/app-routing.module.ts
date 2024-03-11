@@ -1,31 +1,27 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { PrincipalComponent } from './componentes/principal/principal.component';
-import { UbicacionesComponent } from './componentes/ubicaciones/ubicaciones.component';
-import { QuieroComprarComponent } from './componentes/quiero-comprar/quiero-comprar.component';
-import { AdminloginComponent } from './componentes/adminlogin/adminlogin.component';
-import { AdminUbicacionesComponent } from './componentes/admin-ubicaciones/admin-ubicaciones.component';
-import { AdminprincipalComponent } from './componentes/adminprincipal/adminprincipal.component';
-import { PromocionesComponent } from './componentes/promociones/promociones.component';
-import { AlertComponent } from './componentes/alert/alert.component';
-import { SuscripcionesComponent } from './componentes/suscripciones/suscripciones.component';
-import { YoutubeComponent } from './componentes/youtube/youtube.component';
-import { UsuariosComponent } from './componentes/usuarios/usuarios.component';
-import { PruebaMapsComponent } from './componetes/prueba-maps/prueba-maps.component';
-import { PruebaMaps2Component } from './componetes/prueba-maps2/prueba-maps2.component';
-import { NoticiasComponent } from './componentes/noticias/noticias.component';
-import { NuestrosClientesComponent } from './nuestros-clientes/nuestros-clientes.component';
-import { ProductosComponent } from './productos/productos.component';
-import { NuestroEquipoComponent } from './nuestro-equipo/nuestro-equipo.component';
-import { AdminproductosComponent } from './componentes/adminproductos/adminproductos.component';
-import { EquipoComponent } from './componentes/equipo/equipo.component';
+import { PrincipalComponent } from './componentes/Cliente/principal/principal.component';
+import { UbicacionesComponent } from './componentes/Cliente/ubicaciones/ubicaciones.component';
+import { QuieroComprarComponent } from './componentes/Cliente/quiero-comprar/quiero-comprar.component';
+import { AdminloginComponent } from './componentes/admin/adminlogin/adminlogin.component';
+import { AdminUbicacionesComponent } from './componentes/admin/admin-ubicaciones/admin-ubicaciones.component';
+import { AdminprincipalComponent } from './componentes/admin/adminprincipal/adminprincipal.component';
+import { PromocionesComponent } from './componentes/admin/promociones/promociones.component';
+import { AlertComponent } from './componentes/Complements/alert/alert.component';
+import { SuscripcionesComponent } from './componentes/Cliente/suscripciones/suscripciones.component';
+import { YoutubeComponent } from './componentes/Complements/youtube/youtube.component';
+import { UsuariosComponent } from './componentes/admin/usuarios/usuarios.component';
+import { NoticiasComponent } from './componentes/Cliente/noticias/noticias.component';
+import { NuestrosClientesComponent } from './componentes/Cliente/nuestros-clientes/nuestros-clientes.component';
+import { ProductosComponent } from './componentes/Cliente/productos/productos.component';
+import { NuestroEquipoComponent } from './componentes/Cliente/nuestro-equipo/nuestro-equipo.component';
+import { AdminproductosComponent } from './componentes/admin/adminproductos/adminproductos.component';
+import { EquipoComponent } from './componentes/admin/equipo/equipo.component';
 
 const routes: Routes = [
   {path:'',redirectTo:'Inicio', pathMatch:'full'},
   {path:'Inicio',title:'inicio',component:PrincipalComponent},
   {path:'ubicaciones',title:'Ubicaciones',component:UbicacionesComponent},
-  {path:'pruebaMaps',title:'Maps Prueba',component:PruebaMapsComponent},
-  {path:'pruebaMaps2',title:'Maps Prueba',component:PruebaMaps2Component},
   {path:'quiero-comprar',title:'Quiero Comprar',component:QuieroComprarComponent},
   {path:'admin',title:'Administrador', component: AdminloginComponent},
   {path:'admin/Ubicaciones',title:'Administrador-Ubicaciones', component:AdminUbicacionesComponent},
