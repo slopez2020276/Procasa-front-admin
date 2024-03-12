@@ -5,7 +5,8 @@
 * {box-sizing: border-box; outline: none; padding: 0; margin: 0; border: none; font-family: realeway_light; font-size: 11pt;}
 
 :root {
-  --first: #252525;
+  --first: #0000FF;
+  --negro: #252525;
   --second: #454545;
   --third: #858585;
   --white: #FAFAFA;
@@ -39,7 +40,7 @@ div.container-head {
   align-items: center;
   flex-wrap: nowrap;
   padding: 0 2rem;
-  background: var(--first);
+  background: var(--negro);
 }
 
 div.container-head h1 {
@@ -193,7 +194,7 @@ div.item input, div.item select, div.item textarea {
   padding: .5rem 1rem;
   border-radius: 4px;
   background: var(--white);
-  color: var(--first);
+  color: var(--negro);
   border: 1px solid var(--third);
   font-size: 11pt;
 }
@@ -244,11 +245,13 @@ h1.container-h1 {
   margin-top: 30vh;
 }
 
-* { transition: .2s ease;
+/* * { transition: .2s ease;
     scrollbar-width: thin;
-    color: var(--first);
+    color: var(--negro);
     font-size: 12pt;
-}
+} */
+
+
 
 div.container {
   position: relative;
@@ -267,7 +270,7 @@ div.container {
   padding: .5rem 1rem;
   cursor: pointer;
   background: #F4F4F4;
-  color: var(--first);
+  color: var(--negro);
   transition: .1s;
 
   display: flex;
@@ -296,8 +299,8 @@ div.container {
 
 
 .btn-red {background: #AA182C; color: var(--white);}
-.btn-dark {background: var(--first); color: var(--white);}
-.btn-white {background: #F4F4F4; color: var(--first);}
+.btn-dark {background: var(--negro); color: var(--white);}
+.btn-white {background: #F4F4F4; color: var(--negro);}
 
 .title-modal {
   width: 100%;
@@ -305,7 +308,7 @@ div.container {
   text-align: center;
   font-size: 14pt;
   z-index: 0;
-  color: var(--first);
+  color: var(--negro);
   text-transform: uppercase;
   background: transparent;
   border-radius: 4px;
@@ -331,7 +334,7 @@ span.icon {
 }
 
 .white { color: var(--white); }
-.black {color: var(--first);}
+.black {color: var(--negro);}
 
 
 html, body { height: 100%; }
@@ -408,7 +411,7 @@ div.alert-model {
   width: 80%;
   position: relative;
   text-align: center;
-  color: var(--first);
+  color: var(--negro);
   background: transparent;
 }
 
@@ -462,12 +465,12 @@ div#sub-cont-details-img div ul li {
   justify-content: space-between;
   align-items: center;
   flex-wrap: nowrap;
-  color: var(--first);
+  color: var(--negro);
   font-size: 11pt;
 }
 
 div#sub-cont-details-img div ul li span {
-  color: var(--first);
+  color: var(--negro);
   font-size: 11pt;
 }
 
@@ -512,7 +515,7 @@ div.sub-img-btn {
   align-items: center;
   align-content: center;
   flex-wrap: nowrap;
-  background: var(--first);
+  background: var(--negro);
   border-radius: 4px;
   padding: .3rem;
 }
@@ -663,3 +666,4 @@ div.cont-btns-alert div mat-icon { margin: 0 1rem; }
   div.container-head button mat-icon { display: none; }
   
 }
+

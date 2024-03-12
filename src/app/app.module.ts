@@ -43,7 +43,7 @@ import { EquipoComponent } from './componentes/admin/equipo/equipo.component';
 import { BackgroundComponent } from './componentes/Complements/background/background.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { MatIconModule } from '@angular/material/icon';
-import { NgxUiLoaderModule } from 'ngx-ui-loader';
+import { NgxUiLoaderModule,NgxUiLoaderConfig } from 'ngx-ui-loader';
 @NgModule({
   declarations: [
     AppComponent,
@@ -89,6 +89,10 @@ import { NgxUiLoaderModule } from 'ngx-ui-loader';
     NgOptimizedImage,
     MatIconModule,
     NgxUiLoaderModule.forRoot({
+      fgsColor: '#a9182c',
+      fgsType: 'three-strings',
+      text: 'Cargando, por favor espere...',
+      fgsSize: 100,
     })
   
     
