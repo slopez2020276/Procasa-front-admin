@@ -12,7 +12,9 @@ export class QuieroComprarComponent implements OnInit {
 constructor(){ }
 data
 imgPrincipal
-imgFondo
+  imgFondo
+   colorn
+   tipoBack 
 HistoriaService = inject(HistoriaService)
 
 async onSubmit(){ }
@@ -21,7 +23,17 @@ async ngOnInit() {
   const response = await this.HistoriaService.obtenerHistoria()
   this.data = response.historia
   this.imgPrincipal = this.data[0].imgPathPrincipal
-  this.imgFondo = this.data[0].imgPathFondo
+    this.imgFondo = this.data[0].imgPathFondo
+    this.colorn = this.data[0].colorFondo
+    this.evaluarTipoBack()
+}
+
+evaluarTipoBack(){
+  if(this.data[0].backgroundTipo == true){
+    this.tipoBack = true
+  }else if(this.data[0].backgroundTipo == false){
+    this.tipoBack = false
+  }
 }
 
 }

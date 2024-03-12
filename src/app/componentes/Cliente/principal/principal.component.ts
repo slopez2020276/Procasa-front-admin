@@ -25,8 +25,8 @@ constructor(){ }
      this.data = response.historia
      this.imgPrincipal = this.data[0].imgPathPrincipal
      this.imgFondo = this.data[0].imgPathFondo
-     this.evaluarTipoBack()
      this.colorn = this.data[0].colorFondo
+     this.evaluarTipoBack()
      console.log(this.data)
      console.log(this.colorn)
    }

@@ -3,9 +3,12 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, NgModel } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+
 import { PrincipalComponent } from './componentes/Cliente/principal/principal.component';
 import { HistoriaComponent } from './componentes/Cliente/historia/historia.component';
 import { NoticiasComponent } from './componentes/Cliente/noticias/noticias.component';
+import { InterceptorService } from './interceptor.service';
+
 import { LineaTiempoComponent } from './componentes/Cliente/linea-tiempo/linea-tiempo.component';
 import { FooterComponent } from './componentes/Complements/footer/footer.component';
 import { NavbarComponent } from './componentes/Complements/navbar/navbar.component';
@@ -19,7 +22,7 @@ import { MenuComponent } from './componentes/Complements/menu/menu.component';
 import { AdminNavbarComponent } from './componentes/admin/admin-navbar/admin-navbar.component';
 import { PromocionesComponent } from './componentes/admin/promociones/promociones.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FlechaComponent } from './componentes/Complements/flecha/flecha.component';
 import { FooterMainComponent } from './componentes/Complements/footer-main/footer-main.component';
 import { AlertComponent } from './componentes/Complements/alert/alert.component';
@@ -40,6 +43,7 @@ import { EquipoComponent } from './componentes/admin/equipo/equipo.component';
 import { BackgroundComponent } from './componentes/Complements/background/background.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { MatIconModule } from '@angular/material/icon';
+import { NgxUiLoaderModule,NgxUiLoaderConfig } from 'ngx-ui-loader';
 @NgModule({
   declarations: [
     AppComponent,
@@ -84,8 +88,16 @@ import { MatIconModule } from '@angular/material/icon';
     FormsModule,
     NgOptimizedImage,
     MatIconModule,
+    NgxUiLoaderModule.forRoot({
+      fgsColor: '#a9182c',
+      fgsType: 'three-strings',
+      text: 'Cargando, por favor espere...',
+      fgsSize: 100,
+    })
+  
+    
   ],
-  providers: [NgModel, provideAnimationsAsync('noop')],
+  providers: [NgModel,{provide: HTTP_INTERCEPTORS,useClass: InterceptorService,multi: true,},provideAnimationsAsync('noop')],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

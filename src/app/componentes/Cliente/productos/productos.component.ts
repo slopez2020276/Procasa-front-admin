@@ -13,6 +13,8 @@ export class ProductosComponent implements OnInit {
   data
   imgPrincipal
   imgFondo
+   colorn
+   tipoBack 
   dataProductos
   productorService = inject(ProductosService)
   HistoriaService = inject(HistoriaService)
@@ -23,6 +25,8 @@ export class ProductosComponent implements OnInit {
     this.data = response.historia
     this.imgPrincipal = this.data[0].imgPathPrincipal
     this.imgFondo = this.data[0].imgPathFondo
+    this.colorn = this.data[0].colorFondo
+    this.evaluarTipoBack()
   }
   
   ObtenerProductos(){
@@ -34,6 +38,14 @@ export class ProductosComponent implements OnInit {
     )
   }
 
+
+  evaluarTipoBack(){
+    if(this.data[0].backgroundTipo == true){
+      this.tipoBack = true
+    }else if(this.data[0].backgroundTipo == false){
+      this.tipoBack = false
+    }
+  }
  
 
 

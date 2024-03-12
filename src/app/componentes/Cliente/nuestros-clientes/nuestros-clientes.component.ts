@@ -11,7 +11,8 @@ export class NuestrosClientesComponent implements OnInit {
   data
   imgPrincipal
   imgFondo
-  dataProductos
+   colorn
+   tipoBack 
   productorService = inject(ProductosService)
   HistoriaService = inject(HistoriaService)
   
@@ -21,5 +22,15 @@ export class NuestrosClientesComponent implements OnInit {
     this.data = response.historia
     this.imgPrincipal = this.data[0].imgPathPrincipal
     this.imgFondo = this.data[0].imgPathFondo
+    this.colorn = this.data[0].colorFondo
+    this.evaluarTipoBack()
+  }
+
+  evaluarTipoBack(){
+    if(this.data[0].backgroundTipo == true){
+      this.tipoBack = true
+    }else if(this.data[0].backgroundTipo == false){
+      this.tipoBack = false
+    }
   }
 }

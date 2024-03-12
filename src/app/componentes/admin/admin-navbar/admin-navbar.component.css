@@ -2,7 +2,7 @@ div#container-menu {
   width: 270px;
   position: fixed;
   height: 100vh;
-  background: var(--first);
+  background: var(--negro);
   top: 0;
   left: -270px;
   transition: .4s ease-in-out;
@@ -36,7 +36,7 @@ div#cont-menu-bar {
   cursor: pointer;
   transform: scale(1);
   transition: .2s;
-  background: var(--first);
+  background: var(--negro);
   padding: 4px;
   border-radius: 4px;
 }

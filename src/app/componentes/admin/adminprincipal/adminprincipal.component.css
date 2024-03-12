@@ -690,7 +690,7 @@ div.noticia img {
 
 div#title-admin {
   font-size: 20pt;
-  color: var(--first);
+  color: var(--negro);
   display: inline-block;
   position: relative;
   display: flex;
@@ -703,7 +703,7 @@ div#title-admin {
 
 div#title-admin p {
   font-size: 20pt;
-  color: var(--first);
+  color: var(--negro);
 }
 
 div.clip {
@@ -1036,4 +1036,3 @@ div.clip { display: none; }
   div#title-admin { font-size: 12pt;}
   div#title-admin p { font-size: 10pt; }
 }
-

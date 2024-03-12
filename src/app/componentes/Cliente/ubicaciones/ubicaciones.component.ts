@@ -40,9 +40,20 @@ export class UbicacionesComponent {
     this.data = response.historia
     this.imgPrincipal = this.data[0].imgPathPrincipal
     this.imgFondo = this.data[0].imgPathFondo
+    this.colorn = this.data[0].colorFondo
+    this.evaluarTipoBack()
+
+
     this.ObtenerUbicaciones()
   }
 
+  evaluarTipoBack(){
+    if(this.data[0].backgroundTipo == true){
+      this.tipoBack = true
+    }else if(this.data[0].backgroundTipo == false){
+      this.tipoBack = false
+    }
+  }
 
   async ObtenerUbicaciones(){
     const respuesta = await this.UbicacionService.ObtenerUbicaionesAdmin()
