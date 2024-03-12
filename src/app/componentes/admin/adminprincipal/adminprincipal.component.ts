@@ -38,7 +38,7 @@ export class AdminprincipalComponent implements OnInit {
   widthLimit
   heightLimit
   sizeLimit
-  
+
   imgPrincipal: any
   imgfondo:any
   fileBg
@@ -152,8 +152,6 @@ toScrollTop(){ document.getElementById("space-esp")?.scrollIntoView({behavior: "
 // AL INICIAR
   async ngOnInit()  {
 
-
-
     this.containerAlert = document.getElementById('background-alert')
     this.fileBg = document.querySelector('#file-bg')
 
@@ -240,6 +238,7 @@ preSaveMisionVision() {
     if (btn) {
       btn.onclick = () => {
         this.guardarMision()
+        this.cleanForms()
     }
     }
     
@@ -328,7 +327,7 @@ async editarValores(){
   const parent: HTMLElement | any = this.containerAlert
   const btn: HTMLElement | any = parent?.childNodes[0]?.childNodes[0]?.childNodes[1]?.childNodes[0]
 
-  if (btn) { btn.onclick = () => { this.guardarValores() }}
+  if (btn) { btn.onclick = () => { this.guardarValores(); this.cleanForms() }}
   
   }else{ this.AlertMessage("Todos los campos son requeridos", 1500) }
 }
@@ -409,7 +408,7 @@ async guardarHistoria() {
   const btn: HTMLElement | any = parent?.childNodes[0]?.childNodes[0]?.childNodes[1]?.childNodes[0];
 
   if (btn) { btn.onclick = async () => {
-          try { await this.historiaService.editarHistoria(this.formularioEditHistoria.value, this._idhistoria); this.AlertMessage("¡Datos guardados exitosamente!", 1500) } 
+          try { await this.historiaService.editarHistoria(this.formularioEditHistoria.value, this._idhistoria); this.AlertMessage("¡Datos guardados exitosamente!", 1500); this.cleanForms() } 
           catch (error) { this.AlertMessage("Error :(", 1500) }
       }
   }
@@ -446,13 +445,11 @@ async editarTime(){
 }
 ModalTimeLine() {
   document.getElementById('modal-time-line')?.classList.toggle('modal')
-  this.cleanForms()
 }
 
 
 ModalAddTimeLine() { 
   document.getElementById('modal-time-line-add')?.classList.toggle('toggle')
-  this.cleanForms()
 }
 
   async agregarEventoLineaTiempo(){
@@ -472,6 +469,7 @@ ModalAddTimeLine() {
             const respuestaDelete = await this.lineaService.eliminarLineaTIempo(id)
             this.obtenerLinea()
             this.AlertMessage("Línea de tiempo eliminada con éxito", 1500)
+            this.cleanForms()
           } catch (error) {
             this.AlertMessage("Error :(", 1500)
           }
@@ -582,7 +580,7 @@ saveUpdateTimeLine(){
     try{
  this.sendFileUpdateTiempo()
  this.AlertMessage("¡Datos actualizados exitosamente!", 1500)
-
+ this.cleanForms()
   } catch(error){ this.AlertMessage("Error al actualizar", 1500) }
   } }
 }
@@ -626,8 +624,8 @@ async obtnerNoticias (){
 
 
 
-ModalEditNotice() { document.getElementById('modal-edit-notice')?.classList.toggle('toggle'); this.cleanForms() }
-NewModalNotice() { document.getElementById('modal-new-notice')?.classList.toggle('toggle'); this.cleanForms() }
+ModalEditNotice() { document.getElementById('modal-edit-notice')?.classList.toggle('toggle'); }
+NewModalNotice() { document.getElementById('modal-new-notice')?.classList.toggle('toggle'); }
 
 
 async obtenerxidNoticias(id:any){
@@ -739,6 +737,7 @@ updateNoticia() {
       try{
         this.sendFileUpdateNoticia()
         this.obtnerNoticias()
+        this.cleanForms()
       } catch(error){ this.AlertMessage("Error al actualizar", 1500) }
 }}
 
@@ -768,6 +767,7 @@ async guardarNoticia() {
         await this.sendFileNoticia()
         this.AlertMessage("¡Noticia guardada exitosamente!", 1500)
         this.obtnerNoticias()
+        this.cleanForms()
       } catch (error) { this.AlertMessage("Error al guardar", 1500) }
     }
   }
@@ -786,6 +786,7 @@ eliminarNoticia(id: any) {
         await this.noticiasService.EliminarNoticia(id)
         this.obtnerNoticias()
         this.AlertMessage("¡Noticia eliminada con éxito!", 1500)
+        this.cleanForms()
       } catch (error) {
         this.AlertMessage("Error :(", 1500)
       }
@@ -888,8 +889,7 @@ eliminarNoticia(id: any) {
     const parent: HTMLElement | any = this.containerAlert
     const btn: HTMLElement | any = parent?.childNodes[0]?.childNodes[0]?.childNodes[1]?.childNodes[0]
   
-    if (btn) {
-      btn.onclick = () => {
+    if (btn) { btn.onclick = () => {
         const body = new FormData()
         if (this.fileBackgrud) {
           body.append('imgPathFondo', this.fileBackgrud.fileRaw, this.fileBackgrud.fileName)
@@ -898,6 +898,7 @@ eliminarNoticia(id: any) {
               this.AlertMessage("¡Nueva imagen de fondo con éxito!", 1500)
               console.log(res)
               this.obtenerHistoria()
+              this.cleanForms()
             })
           } catch (error) {
             this.AlertMessage("Error :(", 1500)
@@ -935,6 +936,7 @@ sendColorbackGord() {
                     console.log(res)
                     this.obtenerHistoria()
                     this.AlertMessage("¡Fondo actualizado exitosamente!", 1500)
+                    this.cleanForms()
                   })
           } catch (error) {
               this.AlertMessage("Error :(", 1500)
@@ -989,6 +991,7 @@ sendFilePortada(): void {
               this.AlertMessage("¡Fondo actualizado exitosamente!", 1500)
               console.log(res)
               this.obtenerHistoria()
+              this.cleanForms()
             })
         } catch (error) {
           this.AlertMessage("Error :(", 1500)
@@ -1158,6 +1161,7 @@ AlertMessage(message:string, time:number) {
   inner!.innerText = message
   const btns: HTMLElement | any = alert?.childNodes[0]?.childNodes[1]
   btns?.classList.remove('show')
+
   setTimeout(() => { this.AlertClose() }, time)
 }
 
@@ -1213,7 +1217,7 @@ InputChange(event: Event) {
         let img = new Image()
         const objectURL = URL.createObjectURL(archivo)
         img.src = objectURL
-        
+
         if (parent) {
           const widthInner: HTMLElement | any = parent.children[0].children[1].children[0].children[0]; widthInner.innerHTML = imagen.width + " px"
           const heightInner: HTMLElement | any = parent.children[0].children[1].children[1].children[0]; heightInner.innerHTML = imagen.height + " px"
@@ -1259,6 +1263,37 @@ cleanForms(){
   this.formularioEditarNoticias.reset()
   this.formularioAgregarNoticias.reset()
   this.formularioEditarFondoColor.reset()
+  this.clearInputs()
 }
+
+
+clearInputs() {
+  const fileInputs:HTMLElement | any = document.getElementsByClassName('to-clean')
+
+  for (let i = 0; i < fileInputs.length; i++) {
+    const fileInput = fileInputs[i]
+    const parent: HTMLElement | any = fileInput?.parentElement?.parentElement?.parentElement
+
+    if (parent) {
+      const widthInner: HTMLElement | any = parent.children[0].children[1].children[0].children[0]
+      const heightInner: HTMLElement | any = parent.children[0].children[1].children[1].children[0]
+      const sizeInner: HTMLElement | any = parent.children[0].children[1].children[2].children[0]
+      const attr: HTMLElement | undefined = parent.children[0].children[0].children[0]
+      const img: HTMLElement | undefined = parent.children[1].children[0]
+
+      widthInner.classList.remove('limit')
+      heightInner.classList.remove('limit')
+      sizeInner.classList.remove('limit')
+      parent.children[0].children[1].children[0].children[0].innerHTML = ''
+      parent.children[0].children[1].children[1].children[0].innerHTML = ''
+      parent.children[0].children[1].children[2].children[0].innerHTML = ''
+      attr?.setAttribute('data-content', 'seleccionar archivo')
+      attr?.setAttribute('src', '')
+      img?.setAttribute('src', '')
+    }
+  }
+}
+
+
 
 }
