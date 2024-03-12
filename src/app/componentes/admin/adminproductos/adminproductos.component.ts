@@ -563,4 +563,65 @@ SystemAlert() {
 
 
 
+
+
+
+
+
+
+
+
+cleanForms(){
+  this.formularioAgregarProducto.reset()
+  this.formularioEditarProducto.reset()
+  this.formularioCategoria.reset()
+  this.forumlarioSubCategoria.reset()
+  this.formularioEditarCategoria.reset()
+  this.formularioEditarSubCategoria.reset()
+  this.clearInputs()
+}
+
+
+clearInputs() {
+  const fileInputs:HTMLElement | any = document.getElementsByClassName('to-clean')
+
+  for (let i = 0; i < fileInputs.length; i++) {
+    const fileInput = fileInputs[i]
+    const parent: HTMLElement | any = fileInput?.parentElement?.parentElement?.parentElement
+
+
+    if (parent) {
+      const widthInner: HTMLElement | any = parent.children[0].children[1].children[0].children[0]
+      const heightInner: HTMLElement | any = parent.children[0].children[1].children[1].children[0]
+      const sizeInner: HTMLElement | any = parent.children[0].children[1].children[2].children[0]
+      const attr: HTMLElement | undefined = parent.children[0].children[0].children[0]
+      const img: HTMLElement | undefined = parent.children[1].children[0]
+
+      widthInner.classList.remove('limit')
+      heightInner.classList.remove('limit')
+      sizeInner.classList.remove('limit')
+      parent.children[0].children[1].children[0].children[0].innerHTML = ''
+      parent.children[0].children[1].children[1].children[0].innerHTML = ''
+      parent.children[0].children[1].children[2].children[0].innerHTML = ''
+      attr?.setAttribute('data-content', 'seleccionar archivo')
+      attr?.setAttribute('src', '')
+      img?.setAttribute('src', '')
+    }
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
