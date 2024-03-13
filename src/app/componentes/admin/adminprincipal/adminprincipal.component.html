@@ -52,7 +52,7 @@
 
         <h4>requisitos recomendados</h4>
         <ul>
-          <li> Ancho: <span class="bold">1920 px</span> </li>
+          <li> Ancho: <span class="bold">1920 px</span></li>
           <li> Alto:  <span class="bold">1080 px</span></li>
           <li> Peso: <span class="bold">2 MB</span></li>
         </ul>
@@ -62,8 +62,8 @@
 
         <h4>detalles del archivo</h4>
         <ul>
-          <li>ancho: <span class="normal danger-red" id="innerwidth-bg"></span> </li>
-          <li>alto:  <span class="normal danger-red" id="innerheight-bg"></span> </li>
+          <li>ancho: <span class="normal danger-red" id="innerwidth-bg"></span></li>
+          <li>alto:  <span class="normal danger-red" id="innerheight-bg"></span></li>
           <li>peso:  <span class="normal danger-red" id="innersize-bg"></span></li>
         </ul>
       </div>
@@ -108,7 +108,7 @@
 
         <h4>requisitos recomendados</h4>
         <ul>
-          <li> Ancho: <span class="bold">1250 px</span> </li>
+          <li> Ancho: <span class="bold">1250 px</span></li>
           <li> Alto:  <span class="bold">875 px</span></li>
           <li> Peso: <span class="bold">2 MB</span></li>
         </ul>
@@ -118,8 +118,8 @@
 
         <h4>detalles del archivo</h4>
         <ul>
-          <li>ancho: <span class="normal danger-red" id="innerwidth"></span> </li>
-          <li>alto:  <span class="normal danger-red" id="innerheight"></span> </li>
+          <li>ancho: <span class="normal danger-red" id="innerwidth"></span></li>
+          <li>alto:  <span class="normal danger-red" id="innerheight"></span></li>
           <li>peso:  <span class="normal danger-red" id="innersize"></span></li>
         </ul>
       </div>
@@ -326,19 +326,19 @@
 
 <div id="modal-time-line-add" class="global-modal">
 <h1 class="title-modal">Agregar Línea de Tiempo</h1>
-    <button class="btn-click close-modal" (click)="ModalAddTimeLine()" ><mat-icon>close</mat-icon></button>
+    <button class="btn-click close-modal" (click)="ModalAddTimeLine()" (click)="cleanForms()"><mat-icon>close</mat-icon></button>
 
 <form [formGroup]="formularioAgregarLineaTiempo">
 <div class="cont">
     <div id="sub-cont-details-img">
       <div class="sub-details">
           <div class="sub-img-btn">
-            <input type="file" (change)="InputChange($event)" (change)="getFile($event)" title="seleccionar archivo" accept=".jpg, .png, .jpeg, .avi, .webp" data-content="seleccionar archivo">
+            <input class="to-clean" type="file" (change)="InputChange($event)" (change)="getFile($event)" title="seleccionar archivo" accept=".jpg, .png, .jpeg, .avi, .webp" data-content="seleccionar archivo">
             <mat-icon>delete</mat-icon>
           </div>
         <ul>
-          <li>ancho: <span class="normal danger-red"></span> </li>
-          <li>alto:  <span class="normal danger-red"></span> </li>
+          <li>ancho: <span class="normal danger-red"></span></li>
+          <li>alto:  <span class="normal danger-red"></span></li>
           <li>peso:  <span class="normal danger-red"></span></li>
         </ul>
       </div>
@@ -386,14 +386,14 @@
 
 <div id="modal-time-line" class="global-modal">
   <h1 class="title-modal">Editar Línea de Tiempo</h1>
-    <button class="btn-click close-modal" (click)="Modal()" ><mat-icon>close</mat-icon></button>
+    <button class="btn-click close-modal" (click)="Modal()" (click)="cleanForms()"><mat-icon>close</mat-icon></button>
 
 <form [formGroup]="formularioEditlineaTiempo" (ngSubmit)="editarTime()">
 <div class="cont">
       <div id="sub-cont-details-img">
         <div class="sub-details">
     <div class="sub-img-btn">
-        <input type="file" id="file-update-lt" (change)="InputChange($event)" (change)="getFileUpdateTiempo($event)" name="file" data-content="seleccionar archivo" title="imagen">
+        <input class="to-clean" type="file" id="file-update-lt" (change)="InputChange($event)" (change)="getFileUpdateTiempo($event)" name="file" data-content="seleccionar archivo" title="imagen">
         <mat-icon>delete</mat-icon>
       </div>
     <ul>
@@ -443,14 +443,14 @@
 
 <div id="modal-new-notice" class="global-modal">
   <h1 class="title-modal">Agregar Noticia</h1>
-  <button class="btn-click close-modal" (click)="NewModalNotice()"><mat-icon>close</mat-icon></button>
+  <button class="btn-click close-modal" (click)="NewModalNotice()" (click)="cleanForms()"><mat-icon>close</mat-icon></button>
 
 <form [formGroup]="formularioAgregarNoticias">
   <div class="cont">
   <div id="sub-cont-details-img">
     <div class="sub-details">
         <div class="sub-img-btn">
-          <input id="file-noticia" (change)="getFileNoticia($event)" (change)="InputChange($event)" title="imagen de noticia" type="file" name="file-notice" data-content="seleccionar archivo">
+          <input class="to-clean" id="file-noticia" (change)="getFileNoticia($event)" (change)="InputChange($event)" title="imagen de noticia" type="file" name="file-notice" data-content="seleccionar archivo">
           <mat-icon>delete</mat-icon>
         </div>
       <ul>
@@ -492,19 +492,19 @@
 <!-- M O D A L   E D I T A R   N O T I C I A S  -->
 <div id="modal-edit-notice" class="global-modal">
   <h1 class="title-modal">Editar Noticia</h1>
-        <button class="btn-click close-modal" (click)="ModalEditNotice()"><mat-icon>close</mat-icon></button>
+        <button class="btn-click close-modal" (click)="ModalEditNotice()" (click)="cleanForms()"><mat-icon>close</mat-icon></button>
 
 <form [formGroup]="formularioEditarNoticias"  >
 <div class="cont">
   <div id="sub-cont-details-img">
     <div class="sub-details">
         <div class="sub-img-btn">
-          <input type="file" (change)="InputChange($event)" (change)="getFileUpdateNoticia($event)" title="seleccionar archivo" accept=".jpg, .png, .jpeg, .avi, .webp" data-content="seleccionar archivo">
+          <input class="to-clean" type="file" (change)="InputChange($event)" (change)="getFileUpdateNoticia($event)" title="seleccionar archivo" accept=".jpg, .png, .jpeg, .avi, .webp" data-content="seleccionar archivo">
           <mat-icon>delete</mat-icon>
         </div>
       <ul>
-        <li>ancho: <span class="normal danger-red"></span> </li>
-        <li>alto:  <span class="normal danger-red"></span> </li>
+        <li>ancho: <span class="normal danger-red"></span></li>
+        <li>alto:  <span class="normal danger-red"></span></li>
         <li>peso:  <span class="normal danger-red"></span></li>
       </ul>
     </div>

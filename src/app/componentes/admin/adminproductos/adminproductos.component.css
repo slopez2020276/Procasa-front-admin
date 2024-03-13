@@ -155,8 +155,6 @@ div.replace-button:active { opacity: .8; transform: scale(.9); box-shadow: 0px 0
 
 div#modal-add-product, div#modal-edit-product {
   font-size: 11pt;
-  overflow-y: scroll;
-  overflow-x: hidden;
   position: fixed;
   background: #FAFAFA;
   box-shadow: 2px 2px 4px rgba(0,0,0,.2);

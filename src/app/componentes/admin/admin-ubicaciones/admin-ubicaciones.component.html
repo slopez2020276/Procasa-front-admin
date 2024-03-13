@@ -4,15 +4,15 @@
 
 <div class="global-modal" id="modal-add-ubicaciones">
   <h1 class="title-modal">Agregar Ubicación</h1>
-  <button class="btn-click normal close-modal" (click)="AddLocation()"><mat-icon>close</mat-icon></button>
+  <button class="btn-click normal close-modal" (click)="AddLocation()" (click)="cleanForms()"><mat-icon>close</mat-icon></button>
   <form [formGroup]="fornularioAgregarUbicacion">
   <div class="cont">
 
 <div id="sub-cont-details-img">
       <div class="sub-details">
           <div class="sub-img-btn">
-            <input class="normal btn-dark" id="imgSave" type="file" (change)="InputChange($event)" (change)="getFile($event)" title="seleccionar archivo" accept=".jpg, .png, .jpeg, .avi, .webp" data-content="seleccionar archivo">
-            <mat-icon>delete</mat-icon>
+            <input class="normal btn-dark to-clean" id="imgSave" type="file" (change)="InputChange($event)" (change)="getFile($event)" title="seleccionar archivo" accept=".jpg, .png, .jpeg, .avi, .webp" data-content="seleccionar archivo">
+            <mat-icon (click)="clearInputs()">delete</mat-icon>
           </div>
         <ul>
           <li>ancho: <span class="normal danger-red"></span></li>
@@ -102,14 +102,14 @@
 
 <div id="modal-edit-ubicacion" class="global-modal">
   <h1 class="title-modal">Editar Ubicación</h1>
-  <button class="btn-click close-modal" (click)="editLocation()"><mat-icon>close</mat-icon></button>
+  <button class="btn-click close-modal" (click)="editLocation()" (click)="cleanForms()"><mat-icon>close</mat-icon></button>
 
   <div class="cont">
   <div id="sub-cont-details-img">
     <div class="sub-details">
         <div class="sub-img-btn">
-          <input type="file" (change)="InputChange($event)" (change)="getFileEdit($event)" title="seleccionar archivo" accept=".jpg, .png, .jpeg, .avi, .webp" data-content="seleccionar archivo">
-          <mat-icon>delete</mat-icon>
+          <input class="to-clean" type="file" (change)="InputChange($event)" (change)="getFileEdit($event)" title="seleccionar archivo" accept=".jpg, .png, .jpeg, .avi, .webp" data-content="seleccionar archivo">
+          <mat-icon (click)="clearInputs()">delete</mat-icon>
         </div>
       <ul>
         <li>ancho: <span class="normal danger-red"></span></li>

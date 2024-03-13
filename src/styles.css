@@ -130,6 +130,8 @@ div.global-modal {
   animation: show .2s ease-out;
   border-bottom: 4px solid transparent;
   border-top: 4px solid transparent;
+  overflow-y: scroll;
+  overflow-x: hidden;
 }
 
 div.global-modal.toggle {
