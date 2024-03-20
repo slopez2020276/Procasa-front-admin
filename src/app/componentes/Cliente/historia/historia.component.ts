@@ -31,11 +31,9 @@ export class HistoriaComponent implements OnInit {
     async ngOnInit()  {
       const response = await this.historiaService.obtenerHistoria();
     
-      if (response && response.historia && response.historia.length > 0) {
-        this.data = response.historia[0];
+        this.data = response.historias[0];
         this.enlace = this.data.EncalceVideo;
-        this.descricion = response.historia[0].DescripcionHistoria;
-      }
+        this.descricion = this.data.DescripcionHistoria;
     
       const respuesta = await this.historiaServicevideo.obtenerHistoria();
     

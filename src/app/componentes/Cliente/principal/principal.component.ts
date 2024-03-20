@@ -22,11 +22,12 @@ constructor(){ }
 
   async ngOnInit() {
      const response = await this.HistoriaService.obtenerHistoria()
-     this.data = response.historia
+     this.data = response.historias
      this.imgPrincipal = this.data[0].imgPathPrincipal
      this.imgFondo = this.data[0].imgPathFondo
      this.colorn = this.data[0].colorFondo
      this.evaluarTipoBack()
+     console.log(this.imgPrincipal)
      console.log(this.data)
      console.log(this.colorn)
    }
