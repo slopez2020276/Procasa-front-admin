@@ -191,14 +191,14 @@
 <div class="container scroll-cont" id="container-3">
   <h1 class="bold title-bg">LÍNEA DE TIEMPO</h1>
   <div id="sub-cont-3">
-  @for (os of dataLinea; track os._id) {
+  @for (os of dataLinea; track os.id) {
     <div class="cont-3-timeline">
       <img class="img-linetiempo" [src]="os.ImgPathLineaTiempo" [width]="100" [height]="100" alt="item 1" title="item 1">
       <p class="input-to-text bold">{{os.titleLineaTiempo}}</p>
       <p class="input-to-text">{{os.descriptionLineaTiempo}}</p>
       <p class="input-to-text">{{os.fechaFormateada}}</p>
-                  <div class="btn-click normal" (click)="editarModal(os._id)" (click)="Modal()"><mat-icon>edit</mat-icon></div>
-                  <div class="btn-click btn-red normal" (click)="eliminarLineaTiempo(os._id)"><mat-icon>delete</mat-icon></div>
+                  <div class="btn-click normal" (click)="editarModal(os.id)" (click)="Modal()"><mat-icon>edit</mat-icon></div>
+                  <div class="btn-click btn-red normal" (click)="eliminarLineaTiempo(os.id)"><mat-icon>delete</mat-icon></div>
                 </div>
               }
             </div>
@@ -287,15 +287,15 @@
 
   
   <div id="cont-6-noticias">
-    @for (os of dataLineaRespuesta; track os._id) {
+    @for (os of dataLineaRespuesta; track os.id) {
       
       
     <div class="noticia">
       <img [src]="os.imgPhat"  alt="noticia">
     <h2>{{os.title}}</h2>
     <p>{{os.descripcion}}</p>
-          <div class="btn-click normal" (click)="obtenerxidNoticias(os._id)" (click)="ModalEditNotice()"><mat-icon>edit</mat-icon></div>
-          <div class="btn-red btn-click normal" (click)="eliminarNoticia(os._id)" ><mat-icon>delete</mat-icon></div>
+          <div class="btn-click normal" (click)="obtenerxidNoticias(os.id)" (click)="ModalEditNotice()"><mat-icon>edit</mat-icon></div>
+          <div class="btn-red btn-click normal" (click)="eliminarNoticia(os.id)" ><mat-icon>delete</mat-icon></div>
         </div>
       }
   </div>

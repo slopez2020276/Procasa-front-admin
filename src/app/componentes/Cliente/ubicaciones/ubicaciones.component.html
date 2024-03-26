@@ -20,7 +20,7 @@
     <div id="cont-all-sucursales">
       <div id="cont-slide">
 
-        @for (os of dataUbicaciones | MostrarPorUbiPipe: filtro | mostrarimgsUbicacion:filtroIMG  ; track os._id) {
+        @for (os of dataUbicaciones | MostrarPorUbiPipe: filtro | mostrarimgsUbicacion:filtroIMG  ; track os.id) {
           <div class="cont-sucursal">
             <div class="sucursal">
               <div class="sub-img"><img  [src]=" os.imgPath"  alt=""></div>

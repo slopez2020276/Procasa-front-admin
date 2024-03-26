@@ -81,7 +81,7 @@
 <div class="admin-main">
   <div class="shadow-main"></div>
 <div class="cont-ubicacion">
-@for (os  of dataUbicacion | MostrarPorUbiPipe: nombreTiendaFiltro ; track os._id ) {
+@for (os  of dataUbicacion | MostrarPorUbiPipe: nombreTiendaFiltro ; track os.id ) {
   <div class="ubicacion">
     <div class="dato-ubicacion imgpath"><img src="{{os.imgPath}}" alt=""></div>
       <div class="dato-ubicacion"><p class="normal">Nombre: </p><p>{{os.nombreTienda}}</p></div>
@@ -91,8 +91,8 @@
       <div class="dato-ubicacion"><p class="normal">Google Maps: <p><a href="{{os.enlaceMaps}}">enlace</a></p></div>
       <div class="dato-ubicacion"><p class="normal">Waze: <p><a href="{{os.enlaceWaze}}">enlace</a></p></div>
       <div class="dato-ubicacion"><p class="normal">Descripción: <p>{{os.descripcion}}</p></div>
-      <button class="btn-click" (click)="ObtenerUbixId(os._id)" (click)="editLocation()"><mat-icon>edit</mat-icon></button>
-      <button class="btn-click btn-red" (click)="deleteProduct(os._id)"><mat-icon>delete</mat-icon></button>
+      <button class="btn-click" (click)="ObtenerUbixId(os.id)" (click)="editLocation()"><mat-icon>edit</mat-icon></button>
+      <button class="btn-click btn-red" (click)="deleteProduct(os.id)"><mat-icon>delete</mat-icon></button>
 </div>
   }
 </div>

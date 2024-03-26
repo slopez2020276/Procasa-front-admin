@@ -62,7 +62,7 @@ PasionModel:any
 InnovacionModel:any
 OrientacionModel:any
 
-_idhistoria: any
+idhistoria: any
 textoHistoria:any
 EncalceVideo: any
 
@@ -249,7 +249,7 @@ preSaveMisionVision() {
 
 async guardarMision() {
   try {
-    let id = this.dataMisionÑ._id
+    let id = this.dataMisionÑ.id
     const respuestaEdit = await this.misionService.editarMisionValor(id, this.formularioMisionValor.value)
     console.log(respuestaEdit)
   this.AlertMessage("¡Datos actualizados!", 1500)
@@ -301,7 +301,7 @@ async obtnerValores(){
 }
 
 async editarValores(){
-  let id =  this.dataValores._id
+  let id =  this.dataValores.id
   const respuestaEdit = await this.ValoresService.editarValores(id,this.formularioValores.value)
   console.log(respuestaEdit)
  }
@@ -334,7 +334,7 @@ async editarValores(){
 
 async guardarValores() {
   try {
-    let id = this.dataValores._id
+    let id = this.dataValores.id
     const respuestaEdit = await this.ValoresService.editarValores(id, this.formularioValores.value)
     this.AlertMessage("¡Datos actualizados!", 1500)
   } catch (error) {
@@ -351,16 +351,16 @@ async obtenerHistoria(){
   this.data = responsivehistoria.historia[0]
   this.textoHistoria = responsivehistoria.historia[0].DescripcionHistoria
   this.EncalceVideo = responsivehistoria.historia[0].EncalceVideo
-  this._idhistoria = responsivehistoria.historia[0]._id
+  this.idhistoria = responsivehistoria.historia[0].id
   this.imgPrincipal =  responsivehistoria.historia[0].imgPathPrincipal
   this.imgfondo = responsivehistoria.historia[0].imgPathFondo
-   console.log(this._idhistoria)
+   console.log(this.idhistoria)
 
   document.getElementById('iframe-value')?.setAttribute('disabled', 'true')
   document.getElementById('textareaValidate')?.setAttribute('disabled', 'true')
 }
 async editarHistoriaA(){
-  let id =  this.dataLieneaxId._id
+  let id =  this.dataLieneaxId.id
  const guardarRes = await this.lineaService.editarLineaforID(id,this.formularioEditlineaTiempo.value)
  this.obtenerLinea()
  this.Modal()
@@ -408,7 +408,7 @@ async guardarHistoria() {
   const btn: HTMLElement | any = parent?.childNodes[0]?.childNodes[0]?.childNodes[1]?.childNodes[0];
 
   if (btn) { btn.onclick = async () => {
-          try { await this.historiaService.editarHistoria(this.formularioEditHistoria.value, this._idhistoria); this.AlertMessage("¡Datos guardados exitosamente!", 1500); this.cleanForms() } 
+          try { await this.historiaService.editarHistoria(this.formularioEditHistoria.value, this.idhistoria); this.AlertMessage("¡Datos guardados exitosamente!", 1500); this.cleanForms() } 
           catch (error) { this.AlertMessage("Error :(", 1500) }
       }
   }
@@ -437,7 +437,7 @@ async buscarporID(id:any){
 }
 
 async editarTime(){
-  let id =  this.dataLieneaxId._id
+  let id =  this.dataLieneaxId.id
  const guardarRes = await this.lineaService.editarLineaforID(id,this.formularioEditHistoria.value)
  this.obtenerHistoria()
  this.Modal()
@@ -491,7 +491,7 @@ getFileUpdateTiempo($event: any): void {
 
 sendFileUpdateTiempo():void{
 
-  let id = this.dataLieneaxId._id
+  let id = this.dataLieneaxId.id
   const body = new FormData()
   if(this.fileUpdateLineaTiempo){
     body.append('ImgPathLineaTiempo', this.fileUpdateLineaTiempo.fileRaw, this.fileUpdateLineaTiempo.fileName)
@@ -640,7 +640,7 @@ async obtenerxidNoticias(id:any){
 
 
 async editarNoticiasxid(){
-  let id = this.dataNoticiasxID._id
+  let id = this.dataNoticiasxID.id
   const respuestaeditNoticias = await this.noticiasService.editarnoticas(id,this.formularioEditarNoticias.value)
   console.log(respuestaeditNoticias)
   this.obtnerNoticias()
@@ -702,7 +702,7 @@ getFileUpdateNoticia($event: any): void {
 
 sendFileUpdateNoticia():void{
 
-  let id = this.dataNoticiasxID._id
+  let id = this.dataNoticiasxID.id
   const body = new FormData()
 
   if(this.fileUpdateNoticia){
@@ -894,7 +894,7 @@ eliminarNoticia(id: any) {
         if (this.fileBackgrud) {
           body.append('imgPathFondo', this.fileBackgrud.fileRaw, this.fileBackgrud.fileName)
           try {
-            this.historiaService.sendback(body, this._idhistoria).subscribe(res => {
+            this.historiaService.sendback(body, this.idhistoria).subscribe(res => {
               this.AlertMessage("¡Nueva imagen de fondo con éxito!", 1500)
               console.log(res)
               this.obtenerHistoria()
@@ -931,7 +931,7 @@ sendColorbackGord() {
               this.formularioEditarFondoColor.value.colorFondo = this.colorBg
               const body = this.formularioEditarFondoColor.value
               console.log(body)
-              this.historiaService.sendback(body, this._idhistoria)
+              this.historiaService.sendback(body, this.idhistoria)
                   .subscribe(res => {
                     console.log(res)
                     this.obtenerHistoria()
@@ -986,7 +986,7 @@ sendFilePortada(): void {
       if (this.imgPathPrincipal) {
         try {
           body.append('imgPathPortada', this.imgPathPrincipal.fileRaw, this.imgPathPrincipal.fileName)
-          this.historiaService.sendPost(body, this._idhistoria)
+          this.historiaService.sendPost(body, this.idhistoria)
             .subscribe(res => {
               this.AlertMessage("¡Fondo actualizado exitosamente!", 1500)
               console.log(res)

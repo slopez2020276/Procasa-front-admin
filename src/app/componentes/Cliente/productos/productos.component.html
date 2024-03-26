@@ -39,7 +39,7 @@
   <h1 class="container-h1 bold" id="h1-catalogo">CATÁLOGO</h1>
   <div id="cont-products">
 
-    @for (os of dataProductos; track os._id  ) {
+    @for (os of dataProductos; track os.id  ) {
       <div class="product">
 
           <img [ngSrc]=" os.imgPath" [width]="500" [height]="500" class="img-product">

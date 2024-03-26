@@ -427,7 +427,7 @@ async getProductToSearch(id:any){
   const product = await  this.productosServices.obtenerProducto(id)
   console.log(product)
   this.nombreProducto = product.productoFinded.nombreProducto
-  this.IdProducto = product.productoFinded._id
+  this.IdProducto = product.productoFinded.id
 }
   async agregarCateoria(){
     const res = await this.productosServices.CrearCategoria(this.IdProducto,this.formularioCategoria.value)

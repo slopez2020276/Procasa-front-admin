@@ -316,7 +316,7 @@ async ObtenerUbixId(id){
   this.maps = Ubicacion.ubi.enlaceMaps
   this.waze = Ubicacion.ubi.enlaceWaze
   this.telefono = Ubicacion.ubi.telefono
-  this.idUbicacion = Ubicacion.ubi._id
+  this.idUbicacion = Ubicacion.ubi.id
   this.tipoTienda = Ubicacion.ubi.tipoTienda
   this.nombreTienda = Ubicacion.ubi.nombreTienda
   this.descripcion = Ubicacion.ubi.descripcion
