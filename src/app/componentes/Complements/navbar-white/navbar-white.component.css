@@ -1,21 +1,18 @@
 div#navbar {
-    top: 2rem;
-    left: 2.5vw;
+    top: 0;
+    left: 0;
     z-index: 110;
-    width: 95vw;
+    width: 100vw;
     height: 65px;
     color: #252525;
     display: flex;
     justify-content: right;
     color: #FFF;
     z-index: 800;
-    background: transparent;
+    background: rgb(255,255,255,.9);
     position: fixed;
     transition: .4s ease-in-out;
 }
-
-div#navbar.scroll {background: rgba(255,255,255,.9); top: 0; height: 70px; left: 0; width: 100vw;}
-div#navbar.scroll div.navbar-items a {font-size: 12pt;}
 
 
   div#cont-menu-list {

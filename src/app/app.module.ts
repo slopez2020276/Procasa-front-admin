@@ -44,6 +44,7 @@ import { BackgroundComponent } from './componentes/Complements/background/backgr
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { MatIconModule } from '@angular/material/icon';
 import { NgxUiLoaderModule,NgxUiLoaderConfig } from 'ngx-ui-loader';
+import { NavbarWhiteComponent } from './componentes/Complements/navbar-white/navbar-white.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -79,6 +80,7 @@ import { NgxUiLoaderModule,NgxUiLoaderConfig } from 'ngx-ui-loader';
     AdminproductosComponent,
     EquipoComponent,
     BackgroundComponent,
+    NavbarWhiteComponent,
   ],
   imports: [
     BrowserModule,

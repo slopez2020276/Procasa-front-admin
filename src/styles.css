@@ -2,7 +2,8 @@
 @font-face { font-family: 'realeway_normal'; src: url('./assets/font/static/Raleway-Medium.ttf'); }
 @font-face { font-family: 'realeway_bold'; src: url('./assets/font/static/Raleway-Bold.ttf'); }
 
-* {box-sizing: border-box; outline: none; padding: 0; margin: 0; border: none; font-family: realeway_light; font-size: 11pt;}
+* {box-sizing: border-box; outline: none; padding: 0; margin: 0; border: none; font-family: realeway_light; font-size: 11pt;
+}
 
 :root {
   --first: #0000FF;
@@ -12,6 +13,11 @@
   --white: #FAFAFA;
   --main: #AA182C;
   --limit: #AA182C;
+
+/* FONT SIZE WEB SITE */
+  --fs-title: 60pt;
+  --fs-sub: 19pt;
+  --fs-text: 14pt;
 }
 
 
@@ -50,6 +56,14 @@ div.container-head h1 {
   display: inline-block;
   text-transform: uppercase;
 }
+
+h1.container-h1 {
+  width: 100vw;
+  text-align: center;
+  font-size: var(--fs-title);
+  color: #FFF;
+}
+
 
 div.container-head span {
   display: flex;
@@ -237,22 +251,6 @@ img#background-texture {
 }
 
 .e4 {background: #ededee;}
-
-h1.container-h1 {
-  width: 100%;
-  padding: 2rem;
-  text-align: center;
-  font-size: 40pt;
-  color: #FFF;
-  margin-top: 30vh;
-}
-
-/* * { transition: .2s ease;
-    scrollbar-width: thin;
-    color: var(--negro);
-    font-size: 12pt;
-} */
-
 
 
 div.container {

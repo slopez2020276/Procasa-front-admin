@@ -5,7 +5,7 @@ h1.container-h1 {
 
 * {color: #FAFAFA;}
 
-div#container-noticias {
+/* div#container-noticias {
     width: 100%;
     color: #FFF;
     display: flex;
@@ -13,22 +13,75 @@ div#container-noticias {
     align-items: center;
     flex-wrap: wrap;
     padding-bottom: 10rem;
-    background: transparent;
-}
+    background: red;
+} */
 
 div#noticias {
-  max-width: 1202px;
-  width: auto;
+  width: 100vw;
   height: auto;
   display: flex;
-  justify-content: center;
+  justify-content: start;
   align-items: center;
   flex-wrap: wrap;
   overflow: hidden;
+  border: 2px solid yellowgreen;
 }
+
+div#btns-arrow {
+  position: relative;
+  width: 96%;
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  align-content: center;
+  flex-wrap: nowrap;
+}
+
+div#btns-arrow mat-icon {
+  background: #AAA;
+  position: relative;
+  padding: .5rem;
+  height: auto;
+  width: auto;
+  border-radius: 5rem;
+  margin: .5rem 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  flex-wrap: nowrap;
+  font-size: 20pt;
+  color: #FFF;
+  cursor: pointer;
+  transition: .2s;
+  transform: scale(1);
+}
+
+div#carrousel-noticias {
+  position: relative;
+  width: auto;
+  border: 2px solid orangered;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  align-content: center;
+  flex-wrap: nowrap;
+  left: 0;
+  transition: left .6s ease-out;
+}
+
+
+div#btns-arrow mat-icon:active { transform: scale(0.9); }
+
+div#btns-arrow mat-icon:hover {
+  background: #FFF;
+  color: #252525;
+}
+
 
 div.noticia {
     width: 400px;
+    min-width: 400px;
     position: relative;
     text-align: right;
     height: auto;
@@ -36,8 +89,7 @@ div.noticia {
     justify-content: center;
     align-items: start;
     flex-wrap: wrap;
-    margin-bottom: 0;
-    margin-top: 0;
+    margin: 0 10px;
   }
 
 div.cont-fill {

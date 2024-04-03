@@ -9,18 +9,30 @@
 <app-navbar></app-navbar>
 
 <img [src]="imgPrincipal" alt="section" id="container-principal-img">
-<section id="historia"> <app-historia/> </section>
 
-<section id="linea-tiempo"> <app-linea-tiempo></app-linea-tiempo> </section>
 
-<section id="valores">
+<section id="historia" class="container-principal">
+  <h1 class="container-h1 bold">HISTORIA</h1>
+  <app-historia/>
+</section>
+
+
+<section id="linea-tiempo" class="container-principal">
+  <h1 class="container-h1 bold">LÍNEA DEL TIEMPO</h1>
+  <app-linea-tiempo/>
+</section>
+
+<section id="valores" class="container-principal">
   <app-mision-valor/>
 </section>
 
-<section id="news"><app-noticias></app-noticias> </section>
+<section id="news" class="container-principal">
+  <h1 class="container-h1 bold">NOTICIAS</h1>
+  <app-noticias/>
+</section>
 
 
 
-<app-footer-main></app-footer-main>
+<!-- <app-footer-main></app-footer-main> -->
 <app-footer></app-footer>
 <app-flecha></app-flecha>

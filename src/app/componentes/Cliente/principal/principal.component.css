@@ -1,11 +1,20 @@
 
 
+section.container-principal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: space-evenly;
+  flex-wrap: wrap;
+  opacity: .99;
+  height: auto;
+  min-height: 90vh;
+  border: 2px dotted white;
+}
+
 
 
 section#noticias { opacity: 1; }
-section#valores {
- background: transparent;
-}
 
 div#cont-introduction {
   width: 100vw;
@@ -68,8 +77,10 @@ img#container-principal-img {
     z-index: 10;
     transform: scale(1);
     animation: introduction 1.8s ease-in-out;
-    margin-top: 63px;
+    margin-top: 0px;
 }
+
+
 
 @keyframes introduction {
   0% { transform: scale(1.4); }
