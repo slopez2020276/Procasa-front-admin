@@ -15,37 +15,31 @@ export class NoticiasComponent implements OnInit {
   message: string = '';
   NoticiasService = inject(NoticasService);
   descricion: string = '';
-  carrousel:HTMLElement | any;
+  carrousel:HTMLElement | any
+  count:any = 0
+  
+
 
   async ngOnInit() {
-    const response = await this.NoticiasService.obtenerNoticas();
-    this.data = response.noticias;
-    console.log(this.data);
-    this.carrousel = document.querySelector('div#carrousel-noticias');
+    const response = await this.NoticiasService.obtenerNoticas()
+    this.data = response.noticias 
   }
 
+arrowRight() {
+  this.count -= 60
+  console.log(this.count)
+  this.carrousel = document.querySelector('div#carrousel-noticias')
+  this.carrousel.style.left = this.count+"vw"
+}
 
-arrowRight() {  }
-arrowLeft() {  }
-
-
-
-// const carousel: HTMLElement | null = document.querySelector('.carousel');
-// const buttonLeft: HTMLElement | null = document.querySelector('.left');
-// const buttonRight: HTMLElement | null = document.querySelector('.right');
-
-
-// if (carousel && buttonLeft && buttonRight) {
-//     function moveLeft() { if (carousel) { carousel.style.left = '-100vw' } }
-//     function moveRight() {
-//         if (carousel) { carousel.style.left = '0vw' }
-//       }
-//     buttonLeft.addEventListener('click', moveLeft);
-//     buttonRight.addEventListener('click', moveRight);
-// } else {
-//     console.error('No se encontraron todos los elementos necesarios.');
-// }
-
+arrowLeft() {
+  this.count += 60
+  if(this.count >= 0){ this.count = 0
+    console.log(this.count)
+    this.carrousel = document.querySelector('div#carrousel-noticias')
+    this.carrousel.style.left = this.count+"vw"
+  }
+}
 
 
 }
