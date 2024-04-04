@@ -17,6 +17,7 @@ import { ProductosComponent } from './componentes/Cliente/productos/productos.co
 import { NuestroEquipoComponent } from './componentes/Cliente/nuestro-equipo/nuestro-equipo.component';
 import { AdminproductosComponent } from './componentes/admin/adminproductos/adminproductos.component';
 import { EquipoComponent } from './componentes/admin/equipo/equipo.component';
+import { NoticiaUnicaComponent } from './componentes/Cliente/noticia-unica/noticia-unica.component';
 
 const routes: Routes = [
   {path:'',redirectTo:'Inicio', pathMatch:'full'},
@@ -37,6 +38,7 @@ const routes: Routes = [
   {path:'unete-nuestro-equipo', component:NuestroEquipoComponent},
   {path:'admin/Productos', component:AdminproductosComponent},
   {path:'admin/Equipo', component:EquipoComponent},
+  {path:'noticia', component:NoticiaUnicaComponent},
 ]
 
 @NgModule({

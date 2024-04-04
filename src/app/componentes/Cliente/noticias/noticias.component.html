@@ -8,22 +8,14 @@
 <div id="carrousel-noticias">
   @for (os of data; track os.id) {
             <div class="noticia">
-              <div class="cont-img">
-                <img   [src]="os.imgPhat" alt="">
+              <div class="cont-img"><img [src]="os.imgPhat" alt=""></div>
+              <div class="cont-datos-noticia">
+                <h1 class="bold">{{os.title}}</h1>
+                <div class="descubre bold" routerLink="/noticia">DESCUBRE</div>
+                <div class="fecha-noticia bold">{{os.diferenciaEnTexto}}</div>
               </div>
-              <div class="cont-fill"></div>
-                <div class="cont-text">
-                  <h6 class="title-not">{{os.title}}</h6>
-                  <h6 class="timeof">hace {{os.diferenciaEnTexto}}</h6>
-                      <div class="arrow">V</div>
-                        <div class="cont-info">
-                          {{os.descripcion}}
-                        </div>
-                    <div class="see-more-notice">ver noticia completa</div>
-                </div>
             </div>
         }
-      </div>
+</div>
 
-
-    </div>
+</div>

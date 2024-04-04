@@ -10,7 +10,7 @@ img#background-texture {
   opacity: 1;
 }
 
-div#space { width: 100vw; height: 0; }
+div#space { width: 100vw; height: 20vh; }
 
 
 div#section-2 {
@@ -21,7 +21,8 @@ div#section-2 {
     flex-wrap: wrap;
     position: relative;
     color: #FFF;
-    height: 90vh;
+    height: auto;
+    min-height: 90vh;
     margin-top: 65px;
     padding-top: 3rem;
     padding-bottom: 5rem;
@@ -38,6 +39,7 @@ a {text-decoration: none;}
     align-items: center;
     transition: .2s;
     transform: scale(1);
+    position: relative;
 }
 
 .column:hover {transform: scale(1.05);}
@@ -47,7 +49,7 @@ a {text-decoration: none;}
     font-size: 30pt;
 }
 
-.column img {
+.column img.logo-img {
     width: auto;
     /* max-width: 200px; */
     height: 250px;
@@ -67,7 +69,6 @@ a {text-decoration: none;}
     border-radius: 40px;
 }
 
-.white-button,
 .red-button {
     width: 60%;
     margin: auto;
@@ -76,22 +77,48 @@ a {text-decoration: none;}
     border: none;
     cursor: pointer;
     font-size: 18px;
-}
-
-.white-button {
-    width: 60%;
-    margin: auto;
-    margin-top: 10px;
-    padding: 20px;
-    border: none;
-    cursor: pointer;
-    font-size: 18px;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    flex-wrap: nowrap;
 }
 
 .red-button {
     background-color: #ab182d;
     color: white;
 }
+
+div#img1 h6 {
+    font-size: var(--fs-sub);
+    width: 60%;
+    text-align: center;
+    margin-left: 20%;
+}
+
+div#img1 a {
+    width: 60%;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    flex-wrap: nowrap;
+    background: #FAFAFA;
+    border-radius: 40px;
+    padding: .5rem 1rem .5rem 1rem;
+    margin-top: 1rem;
+    margin-left: 20%;
+    font-size: var(--fs-sub);
+    color: #252525;
+}
+
+div#img1 a img {
+    width: 50px;
+    height: auto;
+    position: relative;
+}
+
 
 @media (max-width: 550px) {
   .column { width: 400px; }

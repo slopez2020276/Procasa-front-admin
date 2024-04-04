@@ -45,6 +45,7 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 import { MatIconModule } from '@angular/material/icon';
 import { NgxUiLoaderModule,NgxUiLoaderConfig } from 'ngx-ui-loader';
 import { NavbarWhiteComponent } from './componentes/Complements/navbar-white/navbar-white.component';
+import { NoticiaUnicaComponent } from './componentes/Cliente/noticia-unica/noticia-unica.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -81,6 +82,7 @@ import { NavbarWhiteComponent } from './componentes/Complements/navbar-white/nav
     EquipoComponent,
     BackgroundComponent,
     NavbarWhiteComponent,
+    NoticiaUnicaComponent,
   ],
   imports: [
     BrowserModule,

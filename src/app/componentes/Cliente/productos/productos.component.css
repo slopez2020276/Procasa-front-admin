@@ -196,12 +196,45 @@ div.marca-item img {
 }
 
 
+div#cont-whatsapp {
+  position: fixed;
+  right: 2rem;
+  bottom: 2rem;
+  background: #fafafa;
+  color: #252525;
+  z-index: 700;
+  border-radius: 4px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  align-content: center;
+  flex-wrap: nowrap;
+  padding: .5rem;
+}
 
+div#cont-whatsapp a {
+  text-decoration: none;
+  color: #252525;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  flex-wrap: nowrap;
+}
+
+div#cont-whatsapp a img {
+  width: 50px;
+  height: auto;
+}
+
+div#cont-whatsapp a h2 {
+  font-size: var(--fs-text);
+  width: 140px;
+  text-align: center;
+}
 
 
 @media screen and (max-width: 400px) {
-
-
 h1.container-h1 {
   width: 90%;
   font-size: 20pt;
