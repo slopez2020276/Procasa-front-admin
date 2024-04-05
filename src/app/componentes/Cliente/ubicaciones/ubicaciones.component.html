@@ -1,17 +1,38 @@
-@if (tipoBack == true ) { <img title="imagen de muestra" [src]="imgFondo"  id="background-texture" > }@else{ <img title="imagen de muestra"  id="background-texture"[style.background-color]="colorn" > }
+@if (tipoBack == true ) {
+  <img title="imagen de muestra" [src]="imgFondo" id="background-texture">
+}@else{
+  <img title="imagen de muestra" id="background-texture" [style.background-color]="colorn">
+}
 
-<!-- @if (tipoBack == true ) { <img title="imagen de muestra" [src]="imgFondo"  id="background-texture" > }@else{ <img title="imagen de muestra"  id="background-texture" [style.background-color]="colorn" > } -->
 <app-navbar-white/>
 
 <div id="container-main">
-  <div id="container-ubicaciones">
-    <div id="cont-search">
-      <input type="text" [(ngModel)]="filtro" class="bold" placeholder="Buscar sucursal" title="buscar sucursal">
+  <div id="cont-search"><input type="text" [(ngModel)]="filtro" class="bold" placeholder="Buscar sucursal" title="buscar sucursal"></div>
+
+<div id="container-ubicaciones">
+    <div id="cont-logos-head">
+      <div class="logo-head"><div class="cont-check" (click)="checkLogo(0)"><div class="checked"></div></div><img src="../../../../assets/img/Logo MH blanco.png"></div>
+      <div class="logo-head"><div class="cont-check" (click)="checkLogo(1)"><div class="checked"></div></div><img src="../../../../assets/img/Logo MH blanco.png"></div>
+      <div class="logo-head"><div class="cont-check" (click)="checkLogo(2)"><div class="checked"></div></div><img src="../../../../assets/img/Logo MH blanco.png"></div>
+      <div class="logo-head"><div class="cont-check" (click)="checkLogo(3)"><div class="checked"></div></div><img src="../../../../assets/img/Logo MH blanco.png"></div>
+      <div class="logo-head"><div class="cont-check" (click)="checkLogo(4)"><div class="checked"></div></div><img src="../../../../assets/img/Logo MH blanco.png"></div>
     </div>
 
-
-
-  </div>
+    <div id="cont-data-ubicaciones">
+          <div class="cont-ubicacion">
+            <img src="../../../../assets/img/PROCASA-01.png" alt="">
+          </div>
+          <div class="cont-ubicacion">
+            <div class="datos-ubi">
+                <div class="dato-u"><p class="bold">Dirección:</p><p>Boulevard Liberación 5-30 Zona 13, Lomas de PamplonaGuatemala</p></div>
+                <div class="dato-u"><p class="bold">Teléfono:</p><p>2310-6000 Ext. 250</p></div>
+                <div class="dato-u"><p class="bold">WhatsApp:</p><p> 3010-7620</p></div>
+                <div class="dato-u"><p class="bold">Horario:</p><p>Lunes a viernes 8:00 am - 5:00 pm, Sábados 8:00 am - 1:00 pm</p></div>
+            </div>
+          </div>
+          <div class="cont-ubicacion"></div>
+    </div>
+</div>
 </div>
 
 <app-footer></app-footer>

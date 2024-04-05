@@ -1,22 +1,19 @@
 
     <div id="cont-column">
-      <div id="line-center">2000</div>
+      <div id="line-center"></div>
         <div id="cont-2-column">
 
           @for (os of data; track os.id) {
-       
-            @for(evento of os.eventos; track  evento._id){
+            <div class="block-time-line">
               
-              <div class="cont-2-column-item">
-                      <div class="bar-connect bold">{{os.anio}}</div>
-                      <img [ngSrc]="evento.ImgPathLineaTiempo" [width]="500" [height]="500">
-                      <!-- <h2 class="bold" style="color: #FAFAFA; font-size: 16pt;"></h2> -->
-                      <p>{{evento.descriptionLineaTiempo}}</p>
-                  </div>
-
-
-                }
-
+          @for(evento of os.eventos; track  evento._id){
+            <div class="cont-bar-connect"><div class="bar-connect bold">{{os.anio}}</div></div>
+                          <div class="cont-2-column-item">
+                                <img [ngSrc]="evento.ImgPathLineaTiempo" [width]="500" [height]="500">
+                                <p>{{evento.descriptionLineaTiempo}}</p>
+                          </div>
+                        }
+                      </div>
           }
         </div>
 </div>
