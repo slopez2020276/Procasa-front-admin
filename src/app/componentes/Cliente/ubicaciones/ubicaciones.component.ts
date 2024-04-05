@@ -23,9 +23,8 @@ export class UbicacionesComponent {
   dataUbicaciones
   filtro
   filtroIMG
-
   colorn
-  tipoBack 
+  tipoBack
 
 
   async onSubmit(){ }

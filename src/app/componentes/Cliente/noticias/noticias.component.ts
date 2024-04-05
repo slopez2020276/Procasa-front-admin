@@ -17,7 +17,7 @@ export class NoticiasComponent implements OnInit {
   descricion: string = '';
   carrousel:HTMLElement | any
   count:any = 0
-  
+
 
 
   async ngOnInit() {
@@ -34,11 +34,9 @@ arrowRight() {
 
 arrowLeft() {
   this.count += 60
-  if(this.count >= 0){ this.count = 0
-    console.log(this.count)
-    this.carrousel = document.querySelector('div#carrousel-noticias')
-    this.carrousel.style.left = this.count+"vw"
-  }
+  if(this.count >= 0){ this.count = 0;  console.log(this.count) }
+  this.carrousel = document.querySelector('div#carrousel-noticias')
+  this.carrousel.style.left = this.count+"vw"
 }
 
 

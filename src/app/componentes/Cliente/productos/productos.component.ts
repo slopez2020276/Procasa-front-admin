@@ -13,12 +13,12 @@ export class ProductosComponent implements OnInit {
   data
   imgPrincipal
   imgFondo
-   colorn
-   tipoBack 
+  colorn
+  tipoBack
   dataProductos
   productorService = inject(ProductosService)
   HistoriaService = inject(HistoriaService)
-  
+
   async ngOnInit(): Promise<void> {
     this.ObtenerProductos()
     const response = await this.HistoriaService.obtenerHistoria()

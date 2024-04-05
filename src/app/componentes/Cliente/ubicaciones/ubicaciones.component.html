@@ -9,79 +9,7 @@
       <input type="text" [(ngModel)]="filtro" class="bold" placeholder="Buscar sucursal" title="buscar sucursal">
     </div>
 
-    <div id="cont-title">
-      <h1  (click)="showfilterImg('procasa')" class="title-sucs"> <img src="../../../assets/img/Logo Procasa orginal Blanco.png" alt="logo procasa"> </h1>
-      <h1  (click)="showfilterImg('meat')" class="title-sucs"> <img src="../../../assets/img/Logo MH original blanco.png" alt="logo procasa"></h1>
-      <h1  (click)="showfilterImg('eco')" class="title-sucs"> <img src="../../../assets/img/Logo Procasa orginal Blanco.png" alt="logo procasa"></h1>
-    </div>
 
-
-
-    <div id="cont-all-sucursales">
-      <div id="cont-slide">
-
-        @for (os of dataUbicaciones | MostrarPorUbiPipe: filtro | mostrarimgsUbicacion:filtroIMG  ; track os.id) {
-          <div class="cont-sucursal">
-            <div class="sucursal">
-              <div class="sub-img"><img  [src]=" os.imgPath"  alt=""></div>
-              <div class="sub-info">
-                <h1 class="bold">{{os.nombreTienda}}</h1>
-                  <p>{{os.direccion}}</p>
-                  <p>{{os.telefono}}</p>
-                  <p>{{os.descripcion}}</p>
-                  <p>{{os.horario}}</p>
-                  <div class="locations">
-                    <span class="location"><a href="{{os.enlaceWaze}}"><img src="../../../assets/img/waze.png" alt=""></a></span>
-                    <span class="location"><a href="{{os.enlaceMaps}}"><img src="../../../assets/img/maps.png" alt=""></a></span>
-                  </div>
-              </div>
-      </div>
-
-
-    </div>
-    }
-
-
-
-
-<!-- -------------------------------------------------------------------------------------------- -->
-            <div class="cont-sucursal">
-              <div class="sucursal">
-                <div class="sub-img"><img src="../../../assets/img/textura-defult.png" alt=""></div>
-                <div class="sub-info">
-                  <h1 class="bold">SUCURSALES MEAT HOUSE</h1>
-                    <p>dirección completa</p>
-                    <p>+502 0000-0000</p>
-                    <p>procasa gmail.com</p>
-                    <p>Lunes a viernes 1:00 am - 8:00 am</p>
-                    <div class="locations">
-                      <span class="location"><a href="#"><img src="../../../assets/img/waze.png" alt=""></a></span>
-                      <span class="location"><a href="#"><img src="../../../assets/img/maps.png" alt=""></a></span>
-                    </div>
-                </div>
-        </div>
-            </div>
-<!-- ------------------------------------------------------------------------------------------ -->
-            <div class="cont-sucursal">
-              <div class="sucursal">
-                <div class="sub-img"><img src="../../../assets/img/textura-defult.png" alt=""></div>
-                <div class="sub-info">
-                  <h1 class="bold">SUCURSALES OTRO</h1>
-                    <p>dirección completa</p>
-                    <p>+502 0000-0000</p>
-                    <p>procasa gmail.com</p>
-                    <p>Lunes a viernes 1:00 am - 8:00 am</p>
-                    <div class="locations">
-                      <span class="location"><a href="#"><img src="../../../assets/img/waze.png" alt=""></a></span>
-                      <span class="location"><a href="#"><img src="../../../assets/img/maps.png" alt=""></a></span>
-                    </div>
-                </div>
-        </div>
-        </div>
-<!-- ------------------------------------------------------------------------------------------ -->
-
-      </div>
-    </div>
 
   </div>
 </div>
