@@ -425,7 +425,7 @@ async obtnerHistorias (){
 
 async obtenerLinea(){
   const repuestaLinea = await this.lineaService.obtenerLineaTiempo()
-  this.dataLinea = repuestaLinea[1].lineas
+  this.dataLinea = repuestaLinea.registros
   console.log(this.dataLinea)
 }
 
