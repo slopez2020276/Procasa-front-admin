@@ -1003,11 +1003,44 @@ div#toScrollTop img {
   height: auto;
 }
 
-@media screen and (max-width: 850px) {
-  div.btn-scroll { width: 170px; text-align: center; }
+
+.year-title {
+  width: 100%;
+  padding: 4px 0 4px 1rem;
+  font-size: 19pt;
+  margin-top: 4rem;
+  background: var(--second);
+  border-radius: 4px;
+  color: #FFF;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  align-content: center;
+  flex-wrap: nowrap;
+}
+
+.year-title div {
+  margin-right: 2rem;
 }
 
 
+/* div#modal-add-event-year {
+  width: 300px;
+  background: #FAFAFA;
+} */
+
+div#modal-add-event-year.toggle {
+  display: flex;
+  z-index: 49;
+  transform: scale(1);
+  opacity: 1;
+}
+
+
+
+@media screen and (max-width: 850px) {
+  div.btn-scroll { width: 170px; text-align: center; }
+}
 
 @media screen and (max-width: 600px) {
 svg {

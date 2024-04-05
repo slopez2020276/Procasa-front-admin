@@ -1296,4 +1296,10 @@ clearInputs() {
 
 
 
+addYearEvent(){
+  const formEvent: HTMLElement | any = document.getElementById('modal-time-line-add')
+    formEvent?.classList.toggle('toggle')
+}
+
+
 }
