@@ -3,60 +3,30 @@
 <app-navbar-white/>
 
 <div id="container-main">
-  <h1 class="container-h1 bold">OPORTUNIDAD DE EMPLEO</h1>
+  <h1 class="container-h1 bold">TRABAJA CON NOSOTROS</h1>
 
-<div id="container-1">
-
-  @for (os of dataUnete; track os.id) {
-    <h2 (click)="toScrollPlaza($index)">{{os.titulo}}</h2>
-}
-
-
-  <div id="foot-area">
-    <p>Puedes enviar tu CV al correo: <b>contrataciones procasa.com.gt</b></p>
-    <button id="aplicate" class="bold">APLICA AQUÍ</button>
+<div class="container-search">
+  <div class="cont-search">
+    <input type="text" class="bold">
+    <mat-icon>search</mat-icon>
   </div>
 </div>
 
+<div class="container-plazas">
 
-<div id="container-2">
-
-  @for (os of dataUnete; track os.id) {
-    <div class="cont-area">
-      <img src="../../assets/img/pilotos.jpg" alt="imagen de área" class="area">
-        <h1 class="title-area bold">{{os.titulo}}</h1>
-
-        <ul class="especificaciones">
-          <li><b class="bold">Ubicación: </b>{{os.ubicacion}}</li>
-          <li><b class="bold">Departamento: </b> {{os.departamento}}</li>
-          <li><b class="bold">Empresa: </b>{{os.empresa}}</li>
-          <li><b class="bold">Fecha de Publicación: </b>{{os.fecha}}</li>
-          <li><b class="bold">Funciones Principales: </b>
-            <ul>
-              @for (ositems of os.funciones; track $index) {
-                <li  (click)="obtenerItemd($index)" >  {{ositems}}</li>
-
-              }
-            </ul>
-          </li>
-          <li><b class="bold">Educación: </b>{{os.educacion}}</li>
-          <li><b class="bold">Experiencia Laboral: </b>{{os.experecia}}</li>
-        </ul>
-
-        <div class="cont-to-aplicate">
-             <a href="{{os.enlaceFormualario}}"><button class="to-open-form bold"  >APLICA AQUÍ</button></a>
-            <p>"Calidad de servicio no es lo que tu da. es lo que el cliente recibe" <br> - Peter Drucker -</p>
-        </div>
-        <br>
+  <div class="cont-plaza">
+    <div class="cont-img"><img src="../../../../assets/img/hamburguesa.jpg"></div>
+    
+    <div class="foo-data">
+      <h1 class="bold">Plaza <p>día mes año</p></h1>
+      <h2 class="bold"><mat-icon>room</mat-icon> Ubicación</h2>
     </div>
-    <br>
-}
-
-<br>
-
+  </div>
 
 
 </div>
+
+
 </div>
 <app-footer></app-footer>
 <app-flecha></app-flecha>

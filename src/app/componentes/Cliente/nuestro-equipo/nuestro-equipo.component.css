@@ -19,173 +19,120 @@ div#container-main {
   flex-wrap: wrap;
 }
 
-div#container-1 {
+div.container-search {
   position: relative;
-  width: 90%;
+  width: 100%;
   display: flex;
-  justify-content: center;
+  justify-content: end;
   align-items: center;
+  align-content: center;
+}
+
+div.cont-search {
+  position: relative;
+  width: auto;
+  margin-right: 10vw;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  align-content: center;
+  flex-wrap: nowrap;
+}
+
+div.cont-search input {
+  position: relative;
+  padding: .5rem 2rem;
+  border-radius: 100px;
+  font-size: var(--fs-sub);
+  color: #FFF;
+  background: rgba(255,255,255,.5);
+}
+
+div.cont-search mat-icon {
+  position: absolute;
+  top: auto;
+  right: 10px;
+  z-index: 10;
+  color: #FFF;
+  font-size: var(--fs-sub);
+}
+
+div.container-plazas {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  align-content: center;
   flex-wrap: wrap;
+  position: relative;
+  width: 90vw;
+  height: auto;
+}
+
+div.cont-plaza {
+  position: relative;
+  width: 300px;
+  height: 300px;
+  overflow: hidden;
   margin-top: 2rem;
 }
 
-div#container-1 h2 {
-  max-width: 300px;
-  width: 90%;
-  text-align: center;
-  margin: 2rem 1rem;
-  padding: 1rem;
-  color: #FFF;
-  font-size: 20pt;
-  border-radius: 4px;
-  border: 1px solid #454545;
-  cursor: pointer;
-  background: transparent;
-}
-
-div#container-1 h2:hover { border: 1px solid #A4A4A4; }
-div#container-1 h2:active { background: #A4A4A4; }
-
-div#foot-area {
-  margin-top: 6rem;
-  width: 80%;
+div.cont-img {
   position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-wrap: wrap;
+  align-content: center;
 }
 
-div#foot-area p {
-  width: 80%;
-  font-size: 16pt;
-  color: #F4F4F4;
+div.cont-img img {
+  width: auto;
+  height: 100%;
+  top: auto;
+  left: auto;
+  position: absolute;
 }
 
-button#aplicate {
-  margin-top: 1rem;
-  padding: 1rem 3rem;
-  background: #AA182C;
-  color: #F4F4F4;
-  border-radius: 4px;
-  font-size: 14pt;
-  opacity: 1;
-  cursor: pointer;
-  transform: scale(1);
-  transition: transform .1s;
-}
-
-button#aplicate:hover { opacity: .8; }
-button#aplicate:active { opacity: .8; transform: scale(0.9);}
 
 
-div#container-2 {
-  width: 80%;
-  max-width: 1024px;
-  margin-top: 10rem;
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: start;
-  background: #f4f4f4;
-  border-radius: 4px;
-  flex-wrap: wrap;
-}
 
-div.cont-area {
+div.foo-data {
+  position: absolute;
+  bottom: 0;
+  left: 0;
   width: 100%;
-  position: relative;
+  height: auto;
+  z-index: 10;
+  background: #FFF;
   display: flex;
-  justify-content: center;
-  align-items: start;
-  flex-wrap: wrap;
-  height: 1;
-  padding-bottom: 6rem;
-}
-
-div.cont-to-aplicate {
-  width: 100%;
-  position: relative;
-  display: flex;
-  justify-content: center;
+  justify-content: space-between;
+  align-content: center;
   align-items: center;
-  flex-wrap: wrap;
-  margin-top: 1rem;
+  flex-wrap: nowrap;
+  padding: 4px;
 }
 
-div.cont-to-aplicate p {
-  width: 100%;
-  position: relative;
-  text-align: center;
-  margin-top: 1rem;
+div.foo-data h1 {
+  font-size: var(--fs-text);
+  height: 100%;
 }
 
-button.to-open-form {
-  padding: .5rem 2rem;
-  background: #AA182C;
-  color: #F4F4F4;
-  border-radius: 4px;
-  font-size: 12pt;
-  opacity: 1;
-  cursor: pointer;
-  transform: scale(1);
-  transition: transform .1s;
+div.foo-data h1 p {
+  font-size: 8pt;
 }
 
-button.to-open-form:hover { opacity: .8; }
-button.to-open-form:active { opacity: .8; transform: scale(0.9);}
-
-img.area {
-  width: 100%;
-  position: relative;
-  border-radius: 4px 4px 0 0 ;
+div.foo-data h2 {
+  font-size: var(--fs-text);
+  height: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  align-content: center;
+  flex-wrap: nowrap;
 }
 
-h1.title-area {
-  width: 90%;
-  font-size: 30pt;
-  color: #252525;
-  text-align: left;
-  margin-top: 1rem;
-}
-
-ul.especificaciones {
-  width: 90%;
-  list-style: none;
-  font-size: 12pt;
-  margin-top: 1rem;
-}
-
-ul.especificaciones li ul li {
-  margin-left: 2rem;
-}
-
-
-
-
-
-
-
-
-
-
-
-@media screen and (max-width: 400px) {
-  h1.container-h1 {
-    width: 90%;
-    font-size: 20pt;
-    margin-top: 3vh;
-  }
-}
-
-@media screen and (max-width: 767px) { div#container-2 { width: 100%; } }
-
-
-
-@media screen and (max-width: 479px) {
-
-div.cont-to-aplicate { width: 80%; }
-h1.title-area { width: 80%; font-size: 22pt; }
-ul.especificaciones { width: 80%; }
-
+div.foo-data h2 mat-icon {
+  color: var(--main);
 }
