@@ -259,26 +259,26 @@ sendFileEdit():void{
 
   if(this.fileTmpEdit){
     body.append('imgPath', this.fileTmpEdit.fileRaw, this.fileTmpEdit.fileName)
-    body.append('tipoTienda', this.fornularioAgregarUbicacion.value.tipoTienda)
-    body.append('nombreTienda',this.fornularioAgregarUbicacion.value.nombreTienda)
-    body.append('descripcion',this.fornularioAgregarUbicacion.value.descripcion)
-    body.append('direccion',this.fornularioAgregarUbicacion.value.direccion)
-    body.append('telefono',this.fornularioAgregarUbicacion.value.telefono)
-    body.append('horario',this.fornularioAgregarUbicacion.value.horario)
-    body.append('enlaceMaps',this.fornularioAgregarUbicacion.value.enlaceMaps)
-    body.append('enlaceWaze',this.fornularioAgregarUbicacion.value.enlaceWaze)
+    body.append('tipoTienda', this.formularioEditUbicacion.value.tipoTienda)
+    body.append('nombreTienda',this.formularioEditUbicacion.value.nombreTienda)
+    body.append('descripcion',this.formularioEditUbicacion.value.descripcion)
+    body.append('direccion',this.formularioEditUbicacion.value.direccion)
+    body.append('telefono',this.formularioEditUbicacion.value.telefono)
+    body.append('horario',this.formularioEditUbicacion.value.horario)
+    body.append('enlaceMaps',this.formularioEditUbicacion.value.enlaceMaps)
+    body.append('enlaceWaze',this.formularioEditUbicacion.value.enlaceWaze)
   }else{
-    body.append('tipoTienda', this.fornularioAgregarUbicacion.value.tipoTienda)
-    body.append('nombreTienda',this.fornularioAgregarUbicacion.value.nombreTienda)
-    body.append('descripcion',this.fornularioAgregarUbicacion.value.descripcion)
-    body.append('direccion',this.fornularioAgregarUbicacion.value.direccion)
-    body.append('telefono',this.fornularioAgregarUbicacion.value.telefono)
-    body.append('horario',this.fornularioAgregarUbicacion.value.horario)
-    body.append('enlaceMaps',this.fornularioAgregarUbicacion.value.enlaceMaps)
-    body.append('enlaceWaze',this.fornularioAgregarUbicacion.value.enlaceWaze)
+    body.append('tipoTienda', this.formularioEditUbicacion.value.tipoTienda)
+    body.append('nombreTienda',this.formularioEditUbicacion.value.nombreTienda)
+    body.append('descripcion',this.formularioEditUbicacion.value.descripcion)
+    body.append('direccion',this.formularioEditUbicacion.value.direccion)
+    body.append('telefono',this.formularioEditUbicacion.value.telefono)
+    body.append('horario',this.formularioEditUbicacion.value.horario)
+    body.append('enlaceMaps',this.formularioEditUbicacion.value.enlaceMaps)
+    body.append('enlaceWaze',this.formularioEditUbicacion.value.enlaceWaze)
   }
 
-  console.log(this.formularioEditUbicacion.value.fecha)
+  console.log(this.formularioEditUbicacion.value)
   this.ubicacionService.sendEdit(body,this.idUbicacion)
   .subscribe(res =>{
     this.formularioEditUbicacion.reset()
@@ -316,7 +316,7 @@ async ObtenerUbixId(id){
   this.maps = Ubicacion.ubi.enlaceMaps
   this.waze = Ubicacion.ubi.enlaceWaze
   this.telefono = Ubicacion.ubi.telefono
-  this.idUbicacion = Ubicacion.ubi.id
+  this.idUbicacion = Ubicacion.ubi._id
   this.tipoTienda = Ubicacion.ubi.tipoTienda
   this.nombreTienda = Ubicacion.ubi.nombreTienda
   this.descripcion = Ubicacion.ubi.descripcion

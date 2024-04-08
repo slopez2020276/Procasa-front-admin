@@ -38,8 +38,8 @@
 
       <div class="cont-buttons">
         <div class="actions btn-click btn-red" (click)="ModalFunctions($index)"><mat-icon>add</mat-icon></div>
-          <div class="actions btn-click btn-red" (click)="ModalProduct('modal-edit-plaza')" (click)="obtenerPlazaId(os.id)"  ><mat-icon>edit</mat-icon></div>
-          <div class="actions btn-click btn-red" (click)="EliminarP(os.id)"><mat-icon>delete</mat-icon></div>
+          <div class="actions btn-click btn-red" (click)="ModalProduct('modal-edit-plaza')" (click)="obtenerPlazaId(os._id)"  ><mat-icon>edit</mat-icon></div>
+          <div class="actions btn-click btn-red" (click)="EliminarP(os._id)"><mat-icon>delete</mat-icon></div>
       </div>
 
 
@@ -50,7 +50,7 @@
   <div class="cont-in-fns">
     <textarea formControlName="funcion" name="" class="normal" id="fn-to-add" placeholder="función nueva"></textarea>
 
-    <div id="save-fns" (click)="ModalFunctions($index)" (click)="agregarfuncion(os.id)" ><mat-icon>save</mat-icon> guardar</div>
+    <div id="save-fns" (click)="ModalFunctions($index)" (click)="agregarfuncion(os._id)" ><mat-icon>save</mat-icon> guardar</div>
   </div>
 
 </form>
