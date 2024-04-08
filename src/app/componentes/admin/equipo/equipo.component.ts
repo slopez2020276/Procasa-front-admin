@@ -395,7 +395,7 @@ async obtenerPlazaId(id:any){
   this.ExperienciaPlaza = respuestaid.plaza.experecia
   this.FechaPlaza = respuestaid.plaza.fecha
   this.fecha = respuestaid.plaza.fecha
-  this.idPlaza = respuestaid.plaza._id
+  this.idPlaza = respuestaid.plaza.id
   this.data = respuestaid.plaza
   this.funciones = respuestaid.plaza.funciones
   console.log(this.NombrePlaza)
