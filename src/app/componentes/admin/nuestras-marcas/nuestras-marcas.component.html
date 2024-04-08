@@ -7,15 +7,16 @@
       <button class="btn-click btn-white normal" (click)="ModalAddFunctions()"><mat-icon>add</mat-icon> Agregar</button>
     </span>
   </div>
-
-<div class="container-main">
-    <div class="cont-marca">
-            <div class="cont-img-marca"><img src="../../../../assets/img/Exel.png"></div>
-            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Itaque sint aperiam fugit exercitationem ea! Illum accusantium obcaecati architecto dignissimos officiis tempore modi aliquid? Laudantium pariatur, iste eos magnam vitae tempora.</p>
-            <div class="btn-click btn-red normal" (click)="ModalEditFunctions()"><mat-icon>edit</mat-icon></div>
-            <div class="btn-click btn-red normal" (click)="DeleteMarca()"><mat-icon>delete</mat-icon></div>
-    </div>
-</div>
+  <div class="container-main">
+    @for (os of dataMarcas; track os._id) {
+            <div class="cont-marca">
+                <div class="cont-img-marca"><img src="{{os.imgPath}}"></div>
+                <p>{{os.textMarca}}</p>
+                <div class="btn-click btn-red normal" (click)="obtenermarcaId(os._id)" (click)="ModalEditFunctions()"><mat-icon>edit</mat-icon></div>
+                <div class="btn-click btn-red normal" (click)="eliminarMarca(os._id)" ><mat-icon>delete</mat-icon></div>
+            </div>
+          }
+          </div>
 
 
 
@@ -27,7 +28,7 @@
         <div id="sub-cont-details-img">
                 <div class="sub-details">
                     <div class="sub-img-btn">
-                      <input class="to-clean" type="file" (change)="InputChange($event)" (change)="getFile($event)" title="seleccionar archivo" accept=".jpg, .png, .jpeg, .avi, .webp" data-content="seleccionar archivo">
+                      <input class="to-clean" type="file" (change)="getFileEditReal($event)" (change)="getFileReal($event)"  (change)="InputChange($event)" (change)="getFile($event)" title="seleccionar archivo" accept=".jpg, .png, .jpeg, .avi, .webp" data-content="seleccionar archivo">
                       <mat-icon (click)="clearInputs()">delete</mat-icon>
                     </div>
                   <ul>
@@ -39,10 +40,11 @@
                 <div class="cont-details-img"><img alt="" src=""></div>
           </div>
         </div>
+<form [formGroup]="formularioEditarMarca">
+  <textarea   formControlName="textMarca" class="normal" cols="10" rows="5" placeholder="{{textMarca}}"></textarea>
+</form>
 
-    <textarea class="normal" cols="10" rows="5" placeholder="descripción de marca"></textarea>
-
-    <div id="save-edit-marca" class="btn-click" (click)="ModalEditFunctions()"><mat-icon>save</mat-icon> guardar</div>
+    <div id="save-edit-marca" class="btn-click" (click)="sendFileEditReal()" (click)="ModalEditFunctions()"><mat-icon>save</mat-icon> guardaraaa</div>
   </div>
 
 
@@ -67,10 +69,11 @@
                 <div class="cont-details-img"><img alt="" src=""></div>
           </div>
         </div>
-
-    <textarea class="normal" cols="10" rows="5" placeholder="descripción de marca"></textarea>
+<form [formGroup]="formularioAgregarMarca">
+  <textarea  formControlName="textMarca" class="normal" cols="10" rows="5" placeholder="descripción de marca"></textarea>
+</form>
     
-    <div id="save-edit-marca" class="btn-click" (click)="ModalEditFunctions()"><mat-icon>save</mat-icon> guardar</div>
+    <div id="save-edit-marca" class="btn-click" (click)="sendFile()" (click)="ModalEditFunctions()"><mat-icon>save</mat-icon> guardar</div>
   </div>
 
 

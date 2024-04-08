@@ -1,19 +1,42 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
+import { MarcasService } from '../../../services/marcas.service';
+import { FormControl, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-nuestras-marcas',
   templateUrl: './nuestras-marcas.component.html',
   styleUrl: './nuestras-marcas.component.css'
 })
-export class NuestrasMarcasComponent {
+export class NuestrasMarcasComponent implements OnInit {
   containerAlert: HTMLElement | any
   widthLimit
   heightLimit
   sizeLimit
   private fileTmp:any;
   private fileTmpFileEdit:any;
+
+  private fileTmpReal:any
+  private fileTmpEditReal: any
+
+  formularioAgregarMarca: FormGroup
+  formularioEditarMarca: FormGroup
   $element: MouseEvent | any
 
+  MarcasServices = inject(MarcasService)
+  dataMarcas:any
+
+  marcaid
+  textMarca
+
+  constructor() { 
+    this.formularioAgregarMarca = new FormGroup({
+      textMarca: new FormControl(),
+     
+    })
+    this.formularioEditarMarca = new FormGroup({
+      textMarca: new FormControl(),
+    })
+  }
 
   ModalProduct(type:string){
     document.getElementById(type)?.classList.toggle('toggle')
@@ -26,6 +49,84 @@ ModalEditFunctions() { document.getElementById('modal-edit-marca')?.classList.to
 ModalAddFunctions() { document.getElementById('modal-add-marca')?.classList.toggle('toggle') }
 
 
+
+
+getFileReal($event: any): void {
+  const [ file ] = $event.target.files
+  this.fileTmp = {
+    fileRaw:file,
+    fileName:file.name
+  }
+}
+
+getFileEditReal($event: any): void {
+  const [ file ] = $event.target.files
+  this.fileTmpEditReal = {
+    fileRaw:file,
+    fileName:file.name
+  }
+}
+
+
+sendFile():void{
+
+  const body = new FormData()
+console.log(body)
+
+  if(this.fileTmp){
+    body.append('imgPath', this.fileTmp.fileRaw, this.fileTmp.fileName)
+    body.append('textMarca', this.formularioAgregarMarca.value.textMarca)
+  }else{
+    body.append('textMarca', this.formularioAgregarMarca.value.textMarca)
+
+  }
+
+  this.MarcasServices.CrearMarca(body)
+  .subscribe(res =>{
+    this.formularioAgregarMarca.reset()
+    console.log(res), this.obtenerMarcas()})
+
+}
+
+
+sendFileEditReal():void{
+
+  const body = new FormData()
+console.log(body)
+
+  if(this.fileTmpEditReal){
+    body.append('imgPath', this.fileTmpEditReal.fileRaw, this.fileTmpEditReal.fileName)
+    body.append('textMarca', this.formularioEditarMarca.value.textMarca)
+  }else{
+    body.append('textMarca', this.formularioEditarMarca.value.textMarca)
+
+  }
+
+  this.MarcasServices.editarMarca(this.marcaid,body)
+  .subscribe(res =>{
+    this.formularioEditarMarca.reset()
+    console.log(res), this.obtenerMarcas()})
+
+}
+
+async obtenermarcaId(id:any){
+  const respuesta = await this.MarcasServices.ObtenerMarcaId(id)
+  console.log(respuesta)
+  this.marcaid = respuesta._id
+  this.textMarca = respuesta.textMarca
+}
+
+
+async ngOnInit(){
+
+  this.obtenerMarcas()
+}
+
+async obtenerMarcas(){
+  const respuesta = await this.MarcasServices.obtenerMarcas()
+  this.dataMarcas = respuesta.marcas
+  console.log(this.dataMarcas)
+}
 
 
 getFile($event: any): void {
@@ -44,6 +145,12 @@ getFileEdit($event: any): void {
     fileRaw:file,
     fileName:file.name
   }
+}
+
+async eliminarMarca(id:any){
+  const respuesta = await this.MarcasServices.eliminarMarca(id)
+  console.log(respuesta)
+  this.obtenerMarcas()
 }
 
 
@@ -88,11 +195,9 @@ DeleteMarca(){
   const parent: HTMLElement | any = this.containerAlert
   const btn: HTMLElement | any = parent?.childNodes[0]?.childNodes[0]?.childNodes[1]?.childNodes[0]
   
-  if (btn) { 
-    btn.onclick = () => {
-          // A C T I O N 
-    }
-  }
+  if (btn) { btn.onclick = () => {
+    this.AlertMessage("...", 1500)
+  }}
 }
 
 
@@ -220,6 +325,7 @@ SystemAlert(id: number) {
     }
   }
 }
+
 
 
 
