@@ -29,7 +29,6 @@ div#cont-products {
   align-content: center;
   flex-wrap: wrap;
   margin-top: 1rem;
-
 }
 
 div.product {
@@ -39,8 +38,22 @@ div.product {
   margin: 2rem 1rem;
 }
 
-div.product img {
+div.cont-img-product {
+ position: relative;
+ width: 200px;
+ height: 200px;
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ align-content: center;
+ overflow: hidden;
+}
+
+div.cont-img-product img {
   width: 100%;
+  position: absolute;
+  top: auto;
+  left: auto;
   height: auto;
 }
 
@@ -48,6 +61,7 @@ div.product h2 {
   width: 100%;
   text-align: center;
   color: #F4F4F4;
+  font-size: var(--fs-sub);
 }
 
 div.cont-details {

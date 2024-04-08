@@ -20,7 +20,6 @@ div#container-ubicaciones {
   height: 80vh;
   position: relative;
   padding: 1rem;
-  background: rgba(0,0,0,.4);
 }
 
 div#cont-search {
@@ -72,7 +71,11 @@ div.cont-check {
   border-radius: 4px;
   cursor: pointer;
   position: relative;
+  transform: scale(1);
+  transition: .1s;
 }
+
+div.cont-check:active { transform: scale(1.2); }
 
 div.checked {
   position: relative;
@@ -96,18 +99,19 @@ div.logo-head img {
 
 div#cont-data-ubicaciones {
   position: relative;
-  width: 90%;
+  width: 100%;
   display: flex;
   justify-content: center;
   align-content: center;
   align-items: center;
   flex-wrap: wrap;
-  margin-left: 5%;
+  margin-top: 5vh;
 }
 
 div.cont-ubicacion {
-  width: 33.33%;
-  height: 400px;
+  width: 330px;
+  height: auto;
+  border: 1px dotted gray;
   position: relative;
   display: flex;
   justify-content: center;
@@ -127,8 +131,8 @@ div.datos-ubi {
   height: auto;
   display: flex;
   justify-content: start;
-  align-items: start;
-  align-content: start;
+  align-items: center;
+  align-content: center;
   flex-wrap: wrap;
 }
 
@@ -143,10 +147,27 @@ div.dato-u {
   margin-top: .5rem;
 }
 
-/* div.dato-u * { border: 1px solid red; } */
 
 div.dato-u p:first-child {
-  width: 30%;
+  width: 85px;
+  min-width: 85px;
 }
 
+div.cont-ubicacion:nth-child(3) {
+  align-items: start;
+  align-content: start;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
 
+h1.select-ubicacion {
+  position: relative;
+  color: #FFF;
+  background: var(--main);
+  width: 90%;
+  padding: .6rem 1rem;
+  margin: 4px 0;
+  border-radius: 4px;
+  font-size: var(--fs-sub);
+  cursor: pointer;
+}

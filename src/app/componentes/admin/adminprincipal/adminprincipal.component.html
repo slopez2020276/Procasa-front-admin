@@ -199,15 +199,15 @@
 
     @for (os of dataLinea; track os.id) {
 
-    <h1 class="year-title bold" style="color: #FFF;"><div class="btn-click btn-red normal" (click)="addYearEvent()"><mat-icon>add</mat-icon> agregar evento</div> {{os.anio}}</h1>
+    <h1 class="year-title bold" style="color: #FFF;"><div class="btn-click btn-red normal" (click)="sentIdAni(os._id)" (click)="addYearEvent()"><mat-icon>add</mat-icon> agregar evento</div> {{os.anio}}</h1>
     @for (item of os.eventos; track $index) {
       <div class="cont-3-timeline">
         <img class="img-linetiempo" [src]="item.ImgPathLineaTiempo" [width]="100" [height]="100" alt="item 1" title="item 1">
         <p class="input-to-text bold">{{item.titleLineaTiempo}}</p>
         <p class="input-to-text">{{item.descriptionLineaTiempo}}</p>
         <p class="input-to-text">{{item.fechaFormateada}}</p>
-                    <div class="btn-click normal" (click)="editarModal(item.id)" (click)="Modal()"><mat-icon>edit</mat-icon></div>
-                    <div class="btn-click btn-red normal" (click)="eliminarLineaTiempo(item.id)"><mat-icon>delete</mat-icon></div>
+                    <div class="btn-click normal" (click)="sentIdAni(os._id)" (click)="editarModal(item._id)" (click)="Modal()"><mat-icon>edit</mat-icon></div>
+                    <div class="btn-click btn-red normal" (click)="sentIdAni(os._id)"  (click)="eliminarLineaTiempo(item._id)"><mat-icon>delete</mat-icon></div>
                   </div> 
     }
 }
@@ -219,7 +219,7 @@
 
 <div id="modal-add-event-year" class="global-modal">
   <h1 class="title-modal">Agregar Evento</h1>
-  <button class="btn-click close-modal" (click)="addYearEvent()" (click)="cleanForms()"><mat-icon>close</mat-icon></button>
+  <button class="btn-click close-modal"  (click)="addYearEvent()" (click)="cleanForms()"><mat-icon>close</mat-icon></button>
 
   
 
@@ -314,7 +314,7 @@
       <img [src]="os.imgPhat"  alt="noticia">
     <h2>{{os.title}}</h2>
     <p>{{os.descripcion}}</p>
-          <div class="btn-click normal" (click)="obtenerxidNoticias(os.id)" (click)="ModalEditNotice()"><mat-icon>edit</mat-icon></div>
+          <div class="btn-click normal" (click)="obtenerxidNoticias(os._id)" (click)="ModalEditNotice()"><mat-icon>edit</mat-icon></div>
           <div class="btn-red btn-click normal" (click)="eliminarNoticia(os.id)" ><mat-icon>delete</mat-icon></div>
         </div>
       }
@@ -347,7 +347,7 @@
 <div id="modal-time-line-add" class="global-modal">
 <h1 class="title-modal">Agregar Línea de Tiempo</h1>
     <!-- <button class="btn-click close-modal" (click)="ModalAddTimeLine()" (click)="cleanForms()"><mat-icon>close</mat-icon></button> -->
-    <button class="btn-click close-modal" (click)="addYearEvent()" (click)="cleanForms()"><mat-icon>close</mat-icon></button>
+    <button class="btn-click close-modal"  (click)="addYearEvent()" (click)="cleanForms()"><mat-icon>close</mat-icon></button>
 
 <form [formGroup]="formularioAgregarLineaTiempo">
 <div class="cont">

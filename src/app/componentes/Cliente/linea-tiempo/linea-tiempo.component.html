@@ -6,7 +6,7 @@
           @for (os of data; track os.id) {
             <div class="block-time-line">
               
-          @for(evento of os.eventos; track  evento._id){
+              @for(evento of os.eventos; track  evento._id){
             <div class="cont-bar-connect"><div class="bar-connect bold">{{os.anio}}</div></div>
                           <div class="cont-2-column-item">
                                 <img [ngSrc]="evento.ImgPathLineaTiempo" [width]="500" [height]="500">

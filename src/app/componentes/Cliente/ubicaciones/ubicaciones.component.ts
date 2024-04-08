@@ -14,7 +14,7 @@ export class UbicacionesComponent {
 
   UbicacionService = inject(UbicacionServiceService)
 
-  constructor(){ }
+  constructor(){  }
   data
   imgPrincipal
   imgFondo
@@ -30,6 +30,9 @@ export class UbicacionesComponent {
   async onSubmit(){ }
 
  async ngOnInit() {
+
+  this.checkLogo(0)
+
    document.getElementById('cont-slide')?.classList.add('a')
    const response = await this.HistoriaService.obtenerHistoria()
    document.getElementsByClassName('title-sucs')[0]?.classList.add('select')
@@ -65,20 +68,17 @@ console.log(respuesta, this.dataUbicaciones)
   showfilterImg(tipoTienda:string){
     this.filtroIMG = tipoTienda
     console.log(this.filtroIMG)
-
-  }
- 
-
-checkLogo(item: number) {
-  const btns:HTMLElement | any = document.getElementsByClassName('cont-check')
-  if(btns){
-    for(let i=0; i<=btns.length; i++){
-      btns[i]?.classList.remove('enabled')
-      btns[item]?.classList.add('enabled')
-    }
-  }
 }
 
+
+checkLogo(item: number) {
+    const btns: HTMLElement[] | any = Array.from(document.getElementsByClassName('cont-check'))
+    btns.forEach((btn: HTMLElement, index: number) => {
+      btn.classList.remove('enabled')
+      if (index === item) { btn.classList.add('enabled') }
+    })
+  }
+  
 
 
 }

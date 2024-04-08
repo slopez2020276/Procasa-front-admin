@@ -1,7 +1,7 @@
 footer {
     position: relative;
     width: 100vw;
-    height: 100px;
+    height: 140px;
     background: #000;
     display: flex;
     justify-content: space-around;
@@ -11,6 +11,7 @@ footer {
     transition: .5s ease;
     z-index: 500;
     color: #FAFAFA;
+    padding-top: 10px;
   }
 
   * {color: #FAFAFA;}
