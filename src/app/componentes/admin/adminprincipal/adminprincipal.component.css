@@ -4,8 +4,6 @@ html {
 }
 
 
-
-
 body {
   width: 100vw;
   height: 100vh;
@@ -542,7 +540,6 @@ img#pre-portada, img#pre-bg {
 
 
 input,textarea {
-  /* border: 1px solid #CCC; */
   padding: .5rem 1rem;
   border-radius: 4px;
 }

@@ -47,6 +47,7 @@ import { NgxUiLoaderModule,NgxUiLoaderConfig } from 'ngx-ui-loader';
 import { NavbarWhiteComponent } from './componentes/Complements/navbar-white/navbar-white.component';
 import { NoticiaUnicaComponent } from './componentes/Cliente/noticia-unica/noticia-unica.component';
 import { GeneralesComponent } from './componentes/admin/generales/generales.component';
+import { NuestrasMarcasComponent } from './componentes/admin/nuestras-marcas/nuestras-marcas.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -85,6 +86,7 @@ import { GeneralesComponent } from './componentes/admin/generales/generales.comp
     NavbarWhiteComponent,
     NoticiaUnicaComponent,
     GeneralesComponent,
+    NuestrasMarcasComponent,
   ],
   imports: [
     BrowserModule,

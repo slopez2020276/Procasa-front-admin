@@ -24,6 +24,7 @@
   --fs-text: 12pt;
 }
 
+textarea {resize: none;}
 
 body {
     overflow-x: hidden;

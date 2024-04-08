@@ -33,6 +33,7 @@ maps:any
 waze:any
 telefono:any
 imgPath:any
+whatsapp:any
 
 
 containerAlert: HTMLElement | any
@@ -47,6 +48,7 @@ constructor (){
     tipoTienda: new FormControl(),
     direccion: new FormControl(),
     telefono: new FormControl(),
+    whatsapp: new FormControl(),
     horario: new FormControl(),
     nombreTienda: new FormControl(),
     descripcion: new FormControl(),
@@ -57,6 +59,7 @@ constructor (){
     tipoTienda: new FormControl(),
     direccion: new FormControl(),
     telefono: new FormControl(),
+    whatsapp: new FormControl(),
     horario: new FormControl(),
     nombreTienda: new FormControl(),
     descripcion: new FormControl(),
@@ -204,6 +207,7 @@ console.log(body)
     body.append('descripcion',this.fornularioAgregarUbicacion.value.descripcion)
     body.append('direccion',this.fornularioAgregarUbicacion.value.direccion)
     body.append('telefono',this.fornularioAgregarUbicacion.value.telefono)
+    body.append('whatsapp',this.fornularioAgregarUbicacion.value.whatsapp)
     body.append('horario',this.fornularioAgregarUbicacion.value.horario)
     body.append('enlaceMaps',this.fornularioAgregarUbicacion.value.enlaceMaps)
     body.append('enlaceWaze',this.fornularioAgregarUbicacion.value.enlaceWaze)
@@ -213,6 +217,7 @@ console.log(body)
     body.append('descripcion',this.fornularioAgregarUbicacion.value.descripcion)
     body.append('direccion',this.fornularioAgregarUbicacion.value.direccion)
     body.append('telefono',this.fornularioAgregarUbicacion.value.telefono)
+    body.append('whatsapp',this.fornularioAgregarUbicacion.value.whatsapp)
     body.append('horario',this.fornularioAgregarUbicacion.value.horario)
     body.append('enlaceMaps',this.fornularioAgregarUbicacion.value.enlaceMaps)
     body.append('enlaceWaze',this.fornularioAgregarUbicacion.value.enlaceWaze)
@@ -264,6 +269,7 @@ sendFileEdit():void{
     body.append('descripcion',this.fornularioAgregarUbicacion.value.descripcion)
     body.append('direccion',this.fornularioAgregarUbicacion.value.direccion)
     body.append('telefono',this.fornularioAgregarUbicacion.value.telefono)
+    body.append('whatsapp',this.fornularioAgregarUbicacion.value.whatsapp)
     body.append('horario',this.fornularioAgregarUbicacion.value.horario)
     body.append('enlaceMaps',this.fornularioAgregarUbicacion.value.enlaceMaps)
     body.append('enlaceWaze',this.fornularioAgregarUbicacion.value.enlaceWaze)
@@ -273,6 +279,7 @@ sendFileEdit():void{
     body.append('descripcion',this.fornularioAgregarUbicacion.value.descripcion)
     body.append('direccion',this.fornularioAgregarUbicacion.value.direccion)
     body.append('telefono',this.fornularioAgregarUbicacion.value.telefono)
+    body.append('whatsapp',this.fornularioAgregarUbicacion.value.whatsapp)
     body.append('horario',this.fornularioAgregarUbicacion.value.horario)
     body.append('enlaceMaps',this.fornularioAgregarUbicacion.value.enlaceMaps)
     body.append('enlaceWaze',this.fornularioAgregarUbicacion.value.enlaceWaze)
