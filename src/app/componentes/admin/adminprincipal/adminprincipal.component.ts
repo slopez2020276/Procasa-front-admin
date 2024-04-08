@@ -32,6 +32,9 @@ export class AdminprincipalComponent implements OnInit {
   formularioEditarNoticias: FormGroup
   formularioAgregarNoticias: FormGroup
   formularioEditarFondoColor: FormGroup
+  formularioCrearAnio: FormGroup
+
+
   colorBg:any
 
   containerAlert: HTMLElement | any
@@ -51,6 +54,8 @@ historiaService = inject(HistoriaService)
 lineaService = inject(LineaTiempoService)
 misionService = inject(MisionService)
 noticiasService = inject(NoticasService)
+
+idAnio:any
 
 mision:any
 vision:any
@@ -137,9 +142,13 @@ constructor(){
      descripcion: new FormControl((''),[Validators.required]),
      tipo: new FormControl((''),[Validators.required]),
      })
-this.formularioEditarFondoColor = new FormGroup({
+    this.formularioEditarFondoColor = new FormGroup({
   colorFondo: new FormControl((''),[Validators.required]),
-})
+     })
+    this.formularioCrearAnio = new FormGroup({
+  anio: new FormControl((''),[Validators.required]),
+
+    })
 
 
 
@@ -249,7 +258,7 @@ preSaveMisionVision() {
 
 async guardarMision() {
   try {
-    let id = this.dataMisionÑ.id
+    let id = this.dataMisionÑ._id
     const respuestaEdit = await this.misionService.editarMisionValor(id, this.formularioMisionValor.value)
     console.log(respuestaEdit)
   this.AlertMessage("¡Datos actualizados!", 1500)
@@ -301,7 +310,7 @@ async obtnerValores(){
 }
 
 async editarValores(){
-  let id =  this.dataValores.id
+  let id =  this.dataValores._id
   const respuestaEdit = await this.ValoresService.editarValores(id,this.formularioValores.value)
   console.log(respuestaEdit)
  }
@@ -334,7 +343,7 @@ async editarValores(){
 
 async guardarValores() {
   try {
-    let id = this.dataValores.id
+    let id = this.dataValores._id
     const respuestaEdit = await this.ValoresService.editarValores(id, this.formularioValores.value)
     this.AlertMessage("¡Datos actualizados!", 1500)
   } catch (error) {
@@ -351,7 +360,7 @@ async obtenerHistoria(){
   this.data = responsivehistoria.historia[0]
   this.textoHistoria = responsivehistoria.historia[0].DescripcionHistoria
   this.EncalceVideo = responsivehistoria.historia[0].EncalceVideo
-  this.idhistoria = responsivehistoria.historia[0].id
+  this.idhistoria = responsivehistoria.historia[0]._id
   this.imgPrincipal =  responsivehistoria.historia[0].imgPathPrincipal
   this.imgfondo = responsivehistoria.historia[0].imgPathFondo
    console.log(this.idhistoria)
@@ -360,7 +369,7 @@ async obtenerHistoria(){
   document.getElementById('textareaValidate')?.setAttribute('disabled', 'true')
 }
 async editarHistoriaA(){
-  let id =  this.dataLieneaxId.id
+  let id =  this.dataLieneaxId._id
  const guardarRes = await this.lineaService.editarLineaforID(id,this.formularioEditlineaTiempo.value)
  this.obtenerLinea()
  this.Modal()
@@ -431,17 +440,23 @@ async obtenerLinea(){
 
 
 async buscarporID(id:any){
-  const respuestaID = await this.lineaService.obtenerLineaxID(id)
+  const respuestaID = await this.lineaService.obtenerLineaxID(this.idAnio,id)
   this.dataLieneaxId = respuestaID.lineaFiend
   console.log(this.dataLieneaxId)
 }
 
 async editarTime(){
-  let id =  this.dataLieneaxId.id
+  let id =  this.dataLieneaxId._id
  const guardarRes = await this.lineaService.editarLineaforID(id,this.formularioEditHistoria.value)
  this.obtenerHistoria()
  this.Modal()
 
+}
+
+
+sentIdAni(id:any){
+  this.idAnio = id
+  console.log(this.idAnio)
 }
 ModalTimeLine() {
   document.getElementById('modal-time-line')?.classList.toggle('modal')
@@ -466,7 +481,7 @@ ModalAddTimeLine() {
       if (btn) {
         btn.onclick = async () => {
           try {
-            const respuestaDelete = await this.lineaService.eliminarLineaTIempo(id)
+            const respuestaDelete = await this.lineaService.eliminarLineaTIempo(this.idAnio,id)
             this.obtenerLinea()
             this.AlertMessage("Línea de tiempo eliminada con éxito", 1500)
             this.cleanForms()
@@ -491,7 +506,7 @@ getFileUpdateTiempo($event: any): void {
 
 sendFileUpdateTiempo():void{
 
-  let id = this.dataLieneaxId.id
+  let id = this.dataLieneaxId._id
   const body = new FormData()
   if(this.fileUpdateLineaTiempo){
     body.append('ImgPathLineaTiempo', this.fileUpdateLineaTiempo.fileRaw, this.fileUpdateLineaTiempo.fileName)
@@ -506,7 +521,7 @@ sendFileUpdateTiempo():void{
     body.append('fecha',this.formularioAgregarLineaTiempo.value.fecha)
     body.append('mostrarPor',this.formularioAgregarLineaTiempo.value.mostrarPor)
   }
-  this.lineaService.sendEdit(body,id)
+  this.lineaService.sendEdit(body,this.idAnio,id)
   .subscribe(res =>{console.log(res), this.obtenerLinea(),this.fileUpdateLineaTiempo = null})
 }
 
@@ -561,7 +576,7 @@ sendFileTimeLine():void {
       body.append('mostrarPor',this.formularioAgregarLineaTiempo.value.mostrarPor)
     }
 
-    this.lineaService.sendPost(body).subscribe(res =>{
+    this.lineaService.sendPost(this.idAnio,body).subscribe(res =>{
       console.log(res)
       console.log(body)
       this.fileTmp = null
@@ -593,8 +608,8 @@ saveUpdateTimeLine(){
 
 
   async editarModal(id:any) {
-    const respuestaid = await this.lineaService.obtenerLineaxID(id)
-    this.dataLieneaxId = respuestaid.lineaFiend
+    const respuestaid = await this.lineaService.obtenerLineaxID(this.idAnio,id)
+    this.dataLieneaxId = respuestaid.linea
     this.tituloModal = this.dataLieneaxId.titleLineaTiempo
     this.descripcionModal = this.dataLieneaxId.descriptionLineaTiempo
     this.fechaModal = this.dataLieneaxId.fecha
@@ -640,7 +655,7 @@ async obtenerxidNoticias(id:any){
 
 
 async editarNoticiasxid(){
-  let id = this.dataNoticiasxID.id
+  let id = this.dataNoticiasxID._id
   const respuestaeditNoticias = await this.noticiasService.editarnoticas(id,this.formularioEditarNoticias.value)
   console.log(respuestaeditNoticias)
   this.obtnerNoticias()
@@ -702,7 +717,7 @@ getFileUpdateNoticia($event: any): void {
 
 sendFileUpdateNoticia():void{
 
-  let id = this.dataNoticiasxID.id
+  let id = this.dataNoticiasxID._id
   const body = new FormData()
 
   if(this.fileUpdateNoticia){
@@ -812,7 +827,7 @@ eliminarNoticia(id: any) {
       body.append('titleLineaTiempo', this.formularioAgregarLineaTiempo.value.titleLineaTiempo)
       body.append('descriptionLineaTiempo',this.formularioAgregarLineaTiempo.value.descriptionLineaTiempo)
     }
-    this.lineaService.sendPost(body)
+    this.lineaService.sendPost(this.idAnio,body)
     .subscribe(res =>{console.log(res), this.obtenerLinea(),this.fileTmp = null})
     // 
 }
