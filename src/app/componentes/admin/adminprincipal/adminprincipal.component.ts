@@ -6,6 +6,7 @@ import { MisionService } from '../../../services/mision.service';
 import { NoticasService } from '../../../services/noticas.service';
 import { ValoresService } from '../../../services/valores.service';
 import { AfterViewInit } from '@angular/core';
+import { range } from 'rxjs';
 
 interface HtmlInputEvent extends Event { target: HTMLInputElement }
 
@@ -16,6 +17,7 @@ interface HtmlInputEvent extends Event { target: HTMLInputElement }
 })
 
 export class AdminprincipalComponent implements OnInit {
+
 
   statusBackground
   anchoimg:any
@@ -151,6 +153,8 @@ toScrollTop(){ document.getElementById("space-esp")?.scrollIntoView({behavior: "
 
 // AL INICIAR
   async ngOnInit()  {
+
+    this.inputRangeState()
 
     this.containerAlert = document.getElementById('background-alert')
     this.fileBg = document.querySelector('#file-bg')
@@ -1300,6 +1304,19 @@ addYearEvent(){
   const formEvent: HTMLElement | any = document.getElementById('modal-time-line-add')
     formEvent?.classList.toggle('toggle')
 }
+
+
+
+inputRangeState() {
+
+
+
+}
+
+
+
+
+
 
 
 }

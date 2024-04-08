@@ -46,6 +46,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { NgxUiLoaderModule,NgxUiLoaderConfig } from 'ngx-ui-loader';
 import { NavbarWhiteComponent } from './componentes/Complements/navbar-white/navbar-white.component';
 import { NoticiaUnicaComponent } from './componentes/Cliente/noticia-unica/noticia-unica.component';
+import { GeneralesComponent } from './componentes/admin/generales/generales.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -83,6 +84,7 @@ import { NoticiaUnicaComponent } from './componentes/Cliente/noticia-unica/notic
     BackgroundComponent,
     NavbarWhiteComponent,
     NoticiaUnicaComponent,
+    GeneralesComponent,
   ],
   imports: [
     BrowserModule,
