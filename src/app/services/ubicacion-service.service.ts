@@ -55,6 +55,25 @@ eliminarUbicacion(id:any){
 }
 
 
+obtenerProcas(){
+  return firstValueFrom(this.httpClient.get<any>(`${this.baseUrlw}/obtenerUbicacionesProcasa`))
+
+}
+obtenerprocasacdd(){
+  return firstValueFrom(this.httpClient.get<any>(`${this.baseUrlw}/obtenerProcasacdd`))
+}
+
+obtenermeatousegrab(){
+  return firstValueFrom(this.httpClient.get<any>(`${this.baseUrlw}/obtnerMeathouseGrabandgo`))
+}
+
+obtenermeatHouseCarnicera(){
+  return firstValueFrom(this.httpClient.get<any>(`${this.baseUrlw}/obtenerMeathouseCarniceria`))
+}
+obtenerEconocarnes(){
+  return firstValueFrom(this.httpClient.get<any>(`${this.baseUrlw}/obtenerEconocarnes`))
+}
+
   createHeaders(){
     return   {
      headers: new HttpHeaders ({

@@ -285,7 +285,7 @@ sendFileEdit():void{
     body.append('enlaceWaze',this.fornularioAgregarUbicacion.value.enlaceWaze)
   }
 
-  console.log(this.formularioEditUbicacion.value.fecha)
+  console.log(this.formularioEditUbicacion.value)
   this.ubicacionService.sendEdit(body,this.idUbicacion)
   .subscribe(res =>{
     this.formularioEditUbicacion.reset()
@@ -323,7 +323,7 @@ async ObtenerUbixId(id){
   this.maps = Ubicacion.ubi.enlaceMaps
   this.waze = Ubicacion.ubi.enlaceWaze
   this.telefono = Ubicacion.ubi.telefono
-  this.idUbicacion = Ubicacion.ubi.id
+  this.idUbicacion = Ubicacion.ubi._id
   this.tipoTienda = Ubicacion.ubi.tipoTienda
   this.nombreTienda = Ubicacion.ubi.nombreTienda
   this.descripcion = Ubicacion.ubi.descripcion

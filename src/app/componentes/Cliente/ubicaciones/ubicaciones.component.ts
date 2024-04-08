@@ -25,7 +25,7 @@ export class UbicacionesComponent {
   filtroIMG
   colorn
   tipoBack
-
+  mostrarlista = true
 
   async onSubmit(){ }
 
@@ -36,7 +36,6 @@ export class UbicacionesComponent {
    document.getElementById('cont-slide')?.classList.add('a')
    const response = await this.HistoriaService.obtenerHistoria()
    document.getElementsByClassName('title-sucs')[0]?.classList.add('select')
-   const elements = document.getElementsByClassName('title-sucs') as HTMLCollectionOf<HTMLElement>; elements[0].style.background = '#656565'
 
 
     this.data = response.historia
@@ -58,10 +57,10 @@ export class UbicacionesComponent {
   }
 
   async ObtenerUbicaciones(){
-    const respuesta = await this.UbicacionService.ObtenerUbicaionesAdmin()
+    const respuesta = await this.UbicacionService.obtenerProcas()
 
-    this.dataUbicaciones = respuesta.ubi
-console.log(respuesta, this.dataUbicaciones)
+    this.dataUbicaciones = respuesta.ubicaciones
+    console.log(respuesta, this.dataUbicaciones)
   }
 
 
@@ -69,6 +68,39 @@ console.log(respuesta, this.dataUbicaciones)
     this.filtroIMG = tipoTienda
     console.log(this.filtroIMG)
 }
+
+
+
+async obtenerProcas(){
+
+
+  const respuesta = await this.UbicacionService.obtenerProcas()
+  this.dataUbicaciones = respuesta.ubicaciones
+  console.log('procasa')
+  console.log(respuesta)
+}
+async obtenerprocasacdd(){
+  const respuesta = await this.UbicacionService.obtenerprocasacdd()
+  this.dataUbicaciones = respuesta.ubicaciones
+  console.log('cdd')
+
+}
+async obtenermeatousegrab(){
+  const respuesta = await this.UbicacionService.obtenermeatousegrab()
+  this.dataUbicaciones = respuesta.ubicaciones
+  console.log('grab')
+}
+async obtenermeatHouseCarnicera(){
+  const respuesta = await this.UbicacionService.obtenermeatHouseCarnicera()
+  this.dataUbicaciones = respuesta.ubicaciones
+  console.log('carni')
+}
+async obtenerEconocarnes(){
+  const respuesta = await this.UbicacionService.obtenerEconocarnes()
+  this.dataUbicaciones = respuesta.ubicaciones
+  console.log('eco')
+}
+
 
 
 checkLogo(item: number) {

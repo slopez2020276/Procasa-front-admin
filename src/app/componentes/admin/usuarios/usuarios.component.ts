@@ -49,7 +49,7 @@ async ObtenerxID(id){
 
   this.Alias = respuesta.User.nombre
   this.email  = respuesta.User.email
-  this.id = respuesta.User.id
+  this.id = respuesta.User._id
 
 
 
