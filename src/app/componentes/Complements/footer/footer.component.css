@@ -5,7 +5,7 @@ footer {
     background: #000;
     display: flex;
     justify-content: space-around;
-    align-items: center;
+    align-items: start;
     flex-wrap: nowrap;
     overflow: visible;
     transition: .5s ease;
@@ -15,13 +15,14 @@ footer {
   }
 
   * {color: #FAFAFA;}
+/* 
+  footer * {border: 1px solid white;} */
 
   div.footer-sub {
     height: 100%;
     color: #FFF;
     text-align: center;
-    padding-top: 2rem;
-  }
+}
 
   div#f-sub-1 {
     width: 150px;
@@ -46,9 +47,8 @@ footer {
   }
 
   div#f-sub-2 h1 {
-    font-size: 10pt;
+    font-size: 12pt;
     width: 100%;
-    margin-top: 1rem;
   }
 
   div#f-sub-3, div#f-sub-4 {
@@ -56,17 +56,18 @@ footer {
     display: flex;
     justify-content: center;
     align-items: start;
+    align-content: start;
     flex-wrap: wrap;
-    padding-top: 4px;
   }
 
   div#f-sub-3 p {
     width: 60%;
   }
+
   div#f-sub-3 p a {
     font-weight: lighter;
     text-align: left;
-    font-size: 10pt;
+    font-size: 12pt;
     width: 100%;
   }
 
@@ -78,7 +79,7 @@ footer {
   }
 
   div.footer-sp h1 {
-    font-size: 11pt;
+    font-size: 12pt;
     width: 60%;
     border-bottom: 1px solid #FFF;
   }
@@ -92,28 +93,14 @@ footer {
 
   div#f-sub-4 p {
     width: 100%;
-    font-size: 10pt;
+    font-size: 12pt;
   }
 
   div#f-sub-4 h1 {
     border-bottom: 1px solid #FFF;
-    font-size: 11pt;
+    font-size: 12pt;
     width: 60%;
   }
-
-  div#f-sub-4 a {
-    text-decoration: none;
-    color: #FFF;
-    border: 1px solid #FFF;
-    font-size: 9pt;
-    display: block;
-    margin-top: 0px;
-    margin-bottom: 5px;
-    padding: .5rem;
-    background: transparent;
-    transition: .2s;
-  }
-  div#f-sub-4 a:hover { background: #FCFCF7; }
 
   div#f-sub-space {
     width: calc(100% - 900px);
@@ -121,6 +108,10 @@ footer {
     position: relative;
   }
 
+
+  div#f-sub-2, div#f-sub-3, div#f-sub-4 {
+    padding-top: 20px;
+  }
 
 
   div#transparence {
@@ -256,6 +247,7 @@ div.cont-icons-logs {
   align-items: center;
   align-content: center;
   flex-wrap: nowrap;
+  margin-top: 1rem;
 }
 
 div.icon-log {
@@ -273,7 +265,6 @@ div.icon-log svg, div.icon-log img {
   width: 100%;
   height: auto;
   max-height: 100%;
-  margin-top: 1rem;
 }
 
 
