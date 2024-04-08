@@ -12,7 +12,7 @@ export class UneteEquipoService {
   private httClient = inject(HttpClient)
 
   constructor() {
-    this.baseUrl = 'http://localhost:3002/api'
+    this.baseUrl = 'https://enchanting-kilt-pike.cyclic.app/api'
    }
 
    otenerUneteEquipo(){

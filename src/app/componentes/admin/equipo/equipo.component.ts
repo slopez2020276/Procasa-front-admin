@@ -253,25 +253,25 @@ EditPlaza():void{
 
   const body = new FormData()
 
-  if(this.fileTmp){
-    body.append('imagePath', this.fileTmp.fileRaw, this.fileTmp.fileName)
-    body.append('titulo', this.fomrumarioAgregarPlaza.value.titulo)
-    body.append('ubicacion', this.fomrumarioAgregarPlaza.value.ubicacion)
-    body.append('departamento',this.fomrumarioAgregarPlaza.value.departamento)
-    body.append('empresa',this.fomrumarioAgregarPlaza.value.empresa)
-    body.append('educacion',this.fomrumarioAgregarPlaza.value.educacion)
-    body.append('experecia',this.fomrumarioAgregarPlaza.value.experiencia)
-    body.append('fecha',this.fomrumarioAgregarPlaza.value.fecha)
+  if(this.fileTmpFileEdit){
+    body.append('imagePath', this.fileTmpFileEdit.fileRaw, this.fileTmpFileEdit.fileName)
+    body.append('titulo', this.formEditarPlaza.value.titulo)
+    body.append('ubicacion', this.formEditarPlaza.value.ubicacion)
+    body.append('departamento',this.formEditarPlaza.value.departamento)
+    body.append('empresa',this.formEditarPlaza.value.empresa)
+    body.append('educacion',this.formEditarPlaza.value.educacion)
+    body.append('experecia',this.formEditarPlaza.value.experiencia)
+    body.append('fecha',this.formEditarPlaza.value.fecha)
 
 
   }else{
-    body.append('titulo', this.fomrumarioAgregarPlaza.value.titulo)
-    body.append('ubicacion', this.fomrumarioAgregarPlaza.value.ubicacion)
-    body.append('departamento',this.fomrumarioAgregarPlaza.value.departamento)
-    body.append('empresa',this.fomrumarioAgregarPlaza.value.empresa)
-    body.append('educacion',this.fomrumarioAgregarPlaza.value.educacion)
-    body.append('experecia',this.fomrumarioAgregarPlaza.value.experiencia)
-    body.append('fecha',this.fomrumarioAgregarPlaza.value.fecha)
+    body.append('titulo', this.formEditarPlaza.value.titulo)
+    body.append('ubicacion', this.formEditarPlaza.value.ubicacion)
+    body.append('departamento',this.formEditarPlaza.value.departamento)
+    body.append('empresa',this.formEditarPlaza.value.empresa)
+    body.append('educacion',this.formEditarPlaza.value.educacion)
+    body.append('experecia',this.formEditarPlaza.value.experiencia)
+    body.append('fecha',this.formEditarPlaza.value.fecha)
 
   }
   this.uneterService.sendEditPlaza(this.idPlaza,body)
@@ -395,7 +395,7 @@ async obtenerPlazaId(id:any){
   this.ExperienciaPlaza = respuestaid.plaza.experecia
   this.FechaPlaza = respuestaid.plaza.fecha
   this.fecha = respuestaid.plaza.fecha
-  this.idPlaza = respuestaid.plaza.id
+  this.idPlaza = respuestaid.plaza._id
   this.data = respuestaid.plaza
   this.funciones = respuestaid.plaza.funciones
   console.log(this.NombrePlaza)

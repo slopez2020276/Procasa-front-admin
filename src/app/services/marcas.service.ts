@@ -14,7 +14,7 @@ export class MarcasService {
 
 
   constructor() { 
-    this.baseUrl = 'http://localhost:3002/api'
+    this.baseUrl = 'https://enchanting-kilt-pike.cyclic.app/api'
   }
 
   obtenerMarcas(){
