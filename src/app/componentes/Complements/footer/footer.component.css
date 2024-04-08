@@ -40,6 +40,7 @@ footer {
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-wrap: wrap;
   }
 
   div#f-sub-2 h1 {
@@ -249,9 +250,20 @@ button#close-form-modal:active {
 
 div.cont-icons-logs {
   position: relative;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  align-content: center;
+  flex-wrap: nowrap;
+  border: 1px solid springgreen;
 }
 
-
+div.icon-log {
+  position: relative;
+  width: 20px;
+  height: 20px;
+  border: 1px solid blue;
+}
 
 
 

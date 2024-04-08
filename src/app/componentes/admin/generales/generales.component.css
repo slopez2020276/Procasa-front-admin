@@ -8,6 +8,7 @@ div.container-main {
     align-items: start;
     align-content: start;
     flex-wrap: wrap;
+    padding-bottom: 40vh;
 }
 
 div.settings-font {
