@@ -111,7 +111,6 @@ div#cont-data-ubicaciones {
 div.cont-ubicacion {
   width: 330px;
   height: auto;
-  border: 1px dotted gray;
   position: relative;
   display: flex;
   justify-content: center;
@@ -147,9 +146,10 @@ div.dato-u {
   margin-top: .5rem;
 }
 
+div.dato-u p {font-size: var(--fs-sub); }
 
 div.dato-u p:first-child {
-  width: 85px;
+  width: 120px;
   min-width: 85px;
 }
 
@@ -163,11 +163,31 @@ div.cont-ubicacion:nth-child(3) {
 h1.select-ubicacion {
   position: relative;
   color: #FFF;
-  background: var(--main);
+  background: #FAFAFA;
+  color: #252525;
   width: 90%;
-  padding: .6rem 1rem;
+  padding: 1rem 2rem;
   margin: 4px 0;
   border-radius: 4px;
   font-size: var(--fs-sub);
   cursor: pointer;
+}
+
+h1.select-ubicacion:hover { background: var(--main); color: #FFF; }
+
+div.cont-ma-wa {
+  position: relative;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  align-content: center;
+  flex-wrap: nowrap;
+  width: 100%;
+  margin-top: 1rem;
+}
+
+div.cont-ma-wa img {
+  position: relative;
+  width: 40px;
+  height: auto;
 }

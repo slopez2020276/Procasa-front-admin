@@ -20,6 +20,7 @@ footer {
     height: 100%;
     color: #FFF;
     text-align: center;
+    padding-top: 2rem;
   }
 
   div#f-sub-1 {
@@ -39,13 +40,15 @@ footer {
     width: 200px;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-content: start;
+    align-items: start;
     flex-wrap: wrap;
   }
 
   div#f-sub-2 h1 {
     font-size: 10pt;
     width: 100%;
+    margin-top: 1rem;
   }
 
   div#f-sub-3, div#f-sub-4 {
@@ -246,8 +249,6 @@ button#close-form-modal:active {
   transform: scale(.95);
 }
 
-
-
 div.cont-icons-logs {
   position: relative;
   display: flex;
@@ -255,14 +256,24 @@ div.cont-icons-logs {
   align-items: center;
   align-content: center;
   flex-wrap: nowrap;
-  border: 1px solid springgreen;
 }
 
 div.icon-log {
   position: relative;
-  width: 20px;
-  height: 20px;
-  border: 1px solid blue;
+  width: 25px;
+  height: 25px;
+  margin: 0 4px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+}
+
+div.icon-log svg, div.icon-log img {
+  width: 100%;
+  height: auto;
+  max-height: 100%;
+  margin-top: 1rem;
 }
 
 
@@ -294,7 +305,6 @@ div.icon-log {
 div#f-sub-1, div#f-sub-2 {
     min-width: 80%;
     height: auto;
-    margin-top: 1rem;
     text-align: center;
 }
 
