@@ -7,21 +7,6 @@ import { Component } from '@angular/core';
 })
 export class GeneralesComponent {
   containerAlert
-  rangeValue1: number = 100;
-  rangeValue2: number = 100;
-  rangeValue3: number = 100;
-  rangeValue4: number = 100;
-  rangeValue5: number = 100;
-  rangeValue6: number = 100;
-  rangeValue7: number = 100;
-  
-  onRangeChange1(event: any) { this.rangeValue1 = event.target.value }
-  onRangeChange2(event: any) { this.rangeValue1 = event.target.value }
-  onRangeChange3(event: any) { this.rangeValue1 = event.target.value }
-  onRangeChange4(event: any) { this.rangeValue1 = event.target.value }
-  onRangeChange5(event: any) { this.rangeValue1 = event.target.value }
-  onRangeChange6(event: any) { this.rangeValue1 = event.target.value }
-  onRangeChange7(event: any) { this.rangeValue1 = event.target.value }
 
 ngOnInit(): void {
   this.containerAlert = document.getElementById('background-alert')

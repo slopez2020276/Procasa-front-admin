@@ -290,7 +290,7 @@ sendFileEdit():void{
 
 
 deleteProduct(id:any){
-  this.AlertOption("¿Desea borrar el Producto?")
+  this.AlertOption("¿Desea borrar la Ubicación?")
   const parent: HTMLElement | any = this.containerAlert
   const btn: HTMLElement | any = parent?.childNodes[0]?.childNodes[0]?.childNodes[1]?.childNodes[0]
 
@@ -304,7 +304,7 @@ deleteProduct(id:any){
 async eliminarUbicacion(id:any){
   const respuesta = await this.ubicacionService.eliminarUbicacion(id)
   console.log(respuesta)
-  this.AlertMessage("¡Producto Eliminado!", 1500)
+  this.AlertMessage("¡Ubicación eliminada con éxito!", 1500)
   this.obtenerUbicacion()
 }
 

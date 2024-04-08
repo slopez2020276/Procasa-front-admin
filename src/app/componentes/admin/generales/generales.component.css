@@ -25,10 +25,11 @@ div.settings-font {
     flex-wrap: wrap;
 }
 
-div.settings-font h2 {
+div.settings-font h2, div.settings-img h2 {
     width: 100%;
     text-align: left;
     font-size: 20pt;
+    margin-bottom: 1rem;
 }
 
 div.setting {
@@ -80,11 +81,24 @@ div.cont-resize-input {
     flex-wrap: wrap;
 }
 
-div.settings-img h2 {
-    width: 100%;
-    text-align: left;
-    font-size: 20pt;
+
+div.cont-resize-input {
+    padding: .5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    flex-wrap: wrap;
 }
+
+div.cont-resize-input * {font-size: 14pt;}
+div.cont-resize-input p { 
+    width: 150px;
+    text-align: left;
+}
+
+div.cont-resize-input select { margin: 0 2rem }
+
 
 
 

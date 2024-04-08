@@ -13,7 +13,7 @@
 
 <div class="container-main">
     <div class="settings-font">
-        <h2 class="bold">Ajustes de fuente</h2>
+        <h2 class="bold">Tamaño de fuentes</h2>
         <div class="setting"><h3 class="bold">Títulos</h3><input class="normal" type="number" placeholder="pt"><div class="btn-click btn-red normal"><mat-icon>save</mat-icon></div></div>
         <div class="setting"><h3 class="bold">Sub-Títulos 1</h3><input class="normal" type="number" placeholder="pt"><div class="btn-click btn-red normal"><mat-icon>save</mat-icon></div></div>
         <div class="setting"><h3 class="bold">Sub-Títulos 2</h3><input class="normal" type="number" placeholder="pt"><div class="btn-click btn-red normal"><mat-icon>save</mat-icon></div></div>
@@ -21,15 +21,28 @@
       </div>
       
       <div class="settings-img">
-        <h2 class="bold">Ajustes de imágenes</h2>
+        <h2 class="bold">Resolución de imágenes</h2>
 
-        <div class="cont-resize-input"><input class="input-range" type="range" step="5" value="{{ rangeValue1 }}" min="80" max="120" (input)="onRangeChange1($event)" /><p class="normal">{{ rangeValue1 }}%</p></div>
-        <div class="cont-resize-input"><input class="input-range" type="range" step="5" value="{{ rangeValue2 }}" min="80" max="120" (input)="onRangeChange2($event)" /><p class="normal">{{ rangeValue2 }}%</p></div>
-        <div class="cont-resize-input"><input class="input-range" type="range" step="5" value="{{ rangeValue3 }}" min="80" max="120" (input)="onRangeChange3($event)" /><p class="normal">{{ rangeValue3 }}%</p></div>
-        <div class="cont-resize-input"><input class="input-range" type="range" step="5" value="{{ rangeValue4 }}" min="80" max="120" (input)="onRangeChange4($event)" /><p class="normal">{{ rangeValue4 }}%</p></div>
-        <div class="cont-resize-input"><input class="input-range" type="range" step="5" value="{{ rangeValue5 }}" min="80" max="120" (input)="onRangeChange5($event)" /><p class="normal">{{ rangeValue5 }}%</p></div>
-        <div class="cont-resize-input"><input class="input-range" type="range" step="5" value="{{ rangeValue6 }}" min="80" max="120" (input)="onRangeChange6($event)" /><p class="normal">{{ rangeValue6 }}%</p></div>
-        <div class="cont-resize-input"><input class="input-range" type="range" step="5" value="{{ rangeValue7 }}" min="80" max="120" (input)="onRangeChange7($event)" /><p class="normal">{{ rangeValue7 }}%</p></div>
+        <div class="cont-resize-input">
+          <p class="bold">Historia</p>
+          <select class="normal"><option value="80">80%</option><option value="85">85%</option><option value="90">90%</option><option value="95">95%</option><option value="100">100%</option><option value="105">105%</option><option value="110">110%</option><option value="115">115%</option><option value="120">120%</option></select>
+          <div class="btn-click btn-red normal"><mat-icon>save</mat-icon></div>
+        </div>
+
+        <div class="cont-resize-input">
+          <p class="bold">Línea del Tiempo</p>
+          <select class="normal"><option value="80">80%</option><option value="85">85%</option><option value="90">90%</option><option value="95">95%</option><option value="100">100%</option><option value="105">105%</option><option value="110">110%</option><option value="115">115%</option><option value="120">120%</option></select>
+          <div class="btn-click btn-red normal"><mat-icon>save</mat-icon></div>
+        </div>
+
+        <div class="cont-resize-input">
+          <p class="bold">Noticias</p>
+          <select class="normal"><option value="80">80%</option><option value="85">85%</option><option value="90">90%</option><option value="95">95%</option><option value="100">100%</option><option value="105">105%</option><option value="110">110%</option><option value="115">115%</option><option value="120">120%</option></select>
+          <div class="btn-click btn-red normal"><mat-icon>save</mat-icon></div>
+        </div>
+
+
+        
     </div>
 </div>
 
