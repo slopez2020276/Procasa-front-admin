@@ -1,6 +1,7 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { MisionService } from '../../../services/mision.service';
 import { NoticasService } from '../../../services/noticas.service';
+import { SharedDataService } from '../../../shared-data.service';
 
 @Component({
   selector: 'app-noticias',
@@ -18,11 +19,15 @@ export class NoticiasComponent implements OnInit {
   carrousel:HTMLElement | any
   count:any = 0
 
-
+constructor(private sharedDataService: SharedDataService){}
 
   async ngOnInit() {
     const response = await this.NoticiasService.obtenerNoticas()
     this.data = response.noticias 
+  }
+
+  enviarId(id: any): void {
+    this.sharedDataService.setSharedId(id);
   }
 
 arrowRight() {
