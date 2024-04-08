@@ -20,28 +20,28 @@
 
     <div id="cont-data-ubicaciones">
           <div class="cont-ubicacion">
-            <img src="../../../../assets/img/PROCASA-01.png">
+            <img [src]="imgPath">
           </div>
           <div class="cont-ubicacion">
             <div class="datos-ubi">
-                <div class="dato-u"><p class="bold">Dirección:</p><p>Boulevard Liberación 5-30 Zona 13, Lomas de Pamplona Guatemala</p></div>
-                <div class="dato-u"><p class="bold">Teléfono:</p><p>2310-6000 Ext. 250</p></div>
-                <div class="dato-u"><p class="bold">WhatsApp:</p><p> 3010-7620</p></div>
-                <div class="dato-u"><p class="bold">Horario:</p><p>Lunes a viernes 8:00 am - 5:00 pm, Sábados 8:00 am - 1:00 pm</p></div>
+   
+
+                <div class="dato-u"><p class="bold">Dirección:</p><p>{{direccion}}</p></div>
+                <div class="dato-u"><p class="bold">Teléfono:</p><p>{{telefono}}</p></div>
+                <div class="dato-u"><p class="bold">WhatsApp:</p><p> {{whatsapp}}</p></div>
+                <div class="dato-u"><p class="bold">Horario:</p><p>{{horario}}</p></div>
+            
+
+             
             </div>
           </div>
           <div class="cont-ubicacion">
-            @if (mostrarlista) {
+            
 
               @for (item of dataUbicaciones; track $index) {
-                <h1 class="select-ubicacion">{{item.nombreTienda}}</h1>
+                <h1 class="select-ubicacion" (click)="selecStore(item._id)" > {{item.nombreTienda}}</h1>
   
               }
-
-            }@else{
-
-            }
-           
           </div>
     </div>
 </div>

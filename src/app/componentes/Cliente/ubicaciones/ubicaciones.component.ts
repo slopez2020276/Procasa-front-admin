@@ -26,6 +26,17 @@ export class UbicacionesComponent {
   colorn
   tipoBack
   mostrarlista = true
+  dataId
+
+  direccion
+  telefono
+  nombreTienda
+  descripcion
+  enlaceMaps
+  enlaceWaze
+  horario
+  imgPath
+  whatsapp
 
   async onSubmit(){ }
 
@@ -56,10 +67,39 @@ export class UbicacionesComponent {
     }
   }
 
+
+
+  async selecStore(id:any){
+    const respuestaId = await this.UbicacionService.ObtenerUbicaionesxid(id)
+    this.direccion = respuestaId.ubi.direccion
+    this.telefono = respuestaId.ubi.telefono
+    this.nombreTienda = respuestaId.ubi.nombreTienda
+    this.descripcion = respuestaId.ubi.descripcion
+    this.enlaceMaps = respuestaId.ubi.enlaceMaps
+    this.enlaceWaze = respuestaId.ubi.enlaceWaze
+    this.horario = respuestaId.ubi.horario
+    this.imgPath = respuestaId.ubi.imgPath
+    this.whatsapp = respuestaId.ubi.whatsapp
+  }
+
+  
+
+
+
   async ObtenerUbicaciones(){
     const respuesta = await this.UbicacionService.obtenerProcas()
 
     this.dataUbicaciones = respuesta.ubicaciones
+
+    this.direccion = respuesta.ubicaciones[0].direccion
+    this.telefono = respuesta.ubicaciones[0].telefono
+    this.nombreTienda = respuesta.ubicaciones[0].nombreTienda
+    this.descripcion = respuesta.ubicaciones[0].descripcion
+    this.enlaceMaps = respuesta.ubicaciones[0].enlaceMaps
+    this.enlaceWaze = respuesta.ubicaciones[0].enlaceWaze
+    this.horario = respuesta.ubicaciones[0].horario
+    this.imgPath = respuesta.ubicaciones[0].imgPath
+    this.whatsapp = respuesta.ubicaciones[0].whatsapp
     console.log(respuesta, this.dataUbicaciones)
   }
 
@@ -78,26 +118,72 @@ async obtenerProcas(){
   this.dataUbicaciones = respuesta.ubicaciones
   console.log('procasa')
   console.log(respuesta)
+
+  this.direccion = respuesta.ubicaciones[0].direccion
+    this.telefono = respuesta.ubicaciones[0].telefono
+    this.nombreTienda = respuesta.ubicaciones[0].nombreTienda
+    this.descripcion = respuesta.ubicaciones[0].descripcion
+    this.enlaceMaps = respuesta.ubicaciones[0].enlaceMaps
+    this.enlaceWaze = respuesta.ubicaciones[0].enlaceWaze
+    this.horario = respuesta.ubicaciones[0].horario
+    this.imgPath = respuesta.ubicaciones[0].imgPath
+    this.whatsapp = respuesta.ubicaciones[0].whatsapp
 }
 async obtenerprocasacdd(){
   const respuesta = await this.UbicacionService.obtenerprocasacdd()
   this.dataUbicaciones = respuesta.ubicaciones
+  this.direccion = respuesta.ubicaciones[0].direccion
+  this.telefono = respuesta.ubicaciones[0].telefono
+  this.nombreTienda = respuesta.ubicaciones[0].nombreTienda
+  this.descripcion = respuesta.ubicaciones[0].descripcion
+  this.enlaceMaps = respuesta.ubicaciones[0].enlaceMaps
+  this.enlaceWaze = respuesta.ubicaciones[0].enlaceWaze
+  this.horario = respuesta.ubicaciones[0].horario
+  this.imgPath = respuesta.ubicaciones[0].imgPath
+  this.whatsapp = respuesta.ubicaciones[0].whatsapp
   console.log('cdd')
 
 }
 async obtenermeatousegrab(){
   const respuesta = await this.UbicacionService.obtenermeatousegrab()
   this.dataUbicaciones = respuesta.ubicaciones
+  this.direccion = respuesta.ubicaciones[0].direccion
+  this.telefono = respuesta.ubicaciones[0].telefono
+  this.nombreTienda = respuesta.ubicaciones[0].nombreTienda
+  this.descripcion = respuesta.ubicaciones[0].descripcion
+  this.enlaceMaps = respuesta.ubicaciones[0].enlaceMaps
+  this.enlaceWaze = respuesta.ubicaciones[0].enlaceWaze
+  this.horario = respuesta.ubicaciones[0].horario
+  this.imgPath = respuesta.ubicaciones[0].imgPath
+  this.whatsapp = respuesta.ubicaciones[0].whatsapp
   console.log('grab')
 }
 async obtenermeatHouseCarnicera(){
   const respuesta = await this.UbicacionService.obtenermeatHouseCarnicera()
   this.dataUbicaciones = respuesta.ubicaciones
+  this.direccion = respuesta.ubicaciones[0].direccion
+  this.telefono = respuesta.ubicaciones[0].telefono
+  this.nombreTienda = respuesta.ubicaciones[0].nombreTienda
+  this.descripcion = respuesta.ubicaciones[0].descripcion
+  this.enlaceMaps = respuesta.ubicaciones[0].enlaceMaps
+  this.enlaceWaze = respuesta.ubicaciones[0].enlaceWaze
+  this.horario = respuesta.ubicaciones[0].horario
+  this.imgPath = respuesta.ubicaciones[0].imgPath
+  this.whatsapp = respuesta.ubicaciones[0].whatsapp
   console.log('carni')
 }
 async obtenerEconocarnes(){
   const respuesta = await this.UbicacionService.obtenerEconocarnes()
   this.dataUbicaciones = respuesta.ubicaciones
+  this.direccion = respuesta.ubicaciones[0].direccion
+  this.telefono = respuesta.ubicaciones[0].telefono
+  this.nombreTienda = respuesta.ubicaciones[0].nombreTienda
+  this.descripcion = respuesta.ubicaciones[0].descripcion
+  this.enlaceMaps = respuesta.ubicaciones[0].enlaceMaps
+  this.enlaceWaze = respuesta.ubicaciones[0].enlaceWaze
+  this.horario = respuesta.ubicaciones[0].horario
+  this.imgPath = respuesta.ubicaciones[0].imgPath
+  this.whatsapp = respuesta.ubicaciones[0].whatsapp
   console.log('eco')
 }
 
