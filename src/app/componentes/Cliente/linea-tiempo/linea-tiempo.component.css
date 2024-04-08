@@ -1,6 +1,6 @@
 * {position: relative;}
 
-
+* {border: 1px dotted white;}
 div#container-2 {
   width: 100%;
   height: auto;
@@ -19,6 +19,7 @@ div#cont-column {
   align-items: stretch;
   flex-wrap: nowrap;
   position: relative;
+  border: 2px solid red;
 }
 
 div#cont-2-column {
@@ -29,11 +30,12 @@ div#cont-2-column {
   flex-wrap: wrap;
   color: #FFF;
   height: 100%;
+  border: 1px solid greenyellow;
 }
 
 div#line-center {
 width: 3px;
-height: 100%;
+height: 90%;
 background: #F4F4F4;
 position: absolute;
 border-radius: 100px;
@@ -52,12 +54,12 @@ div.block-time-line {
   align-items: center;
   align-content: center;
   flex-wrap: wrap;
-  padding-bottom: 150px;
+  padding-bottom: 50px;
 }
 
 div.cont-2-column-item {
   width: 340px;
-  height: 370px;
+  height: 310px;
   text-align: left;
   margin-bottom: 1rem;
   transition: .2s ease;
