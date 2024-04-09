@@ -1285,11 +1285,11 @@ InputChange(event: Event) {
 
 
 cleanForms(){
-  this.formularioEditHistoria.reset()
+  // this.formularioEditHistoria.reset()
   this.formularioEditlineaTiempo.reset()
-  this.formularioMisionValor.reset()
+  // this.formularioMisionValor.reset()
   this.formularioAgregarLineaTiempo.reset()
-  this.formularioValores.reset()
+  // this.formularioValores.reset()
   this.formularioEditarNoticias.reset()
   this.formularioAgregarNoticias.reset()
   this.formularioEditarFondoColor.reset()
@@ -1335,10 +1335,24 @@ addYearEvent(){
 
 inputRangeState() {
 
-
-
 }
 
+
+deleteYear(){
+    this.AlertOption("¿Desea eliminar el Año?")
+    const parent: HTMLElement | any = this.containerAlert
+    const btn: HTMLElement | any = parent?.childNodes[0]?.childNodes[0]?.childNodes[1]?.childNodes[0]
+  
+    if (btn) { btn.onclick = () => {
+
+        
+            alert("Nooooo  me borrrassteee.... :'(")
+
+
+
+      }
+    }
+}
 
 
 
