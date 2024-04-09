@@ -122,7 +122,7 @@ constructor(){
     })
    this.formularioAgregarLineaTiempo = new FormGroup({
     titleLineaTiempo: new FormControl((''),[Validators.required]),
-    descriptionLineaTiempo: new FormControl((''),[Validators.required]),
+    descriptionLineaTiempo: new FormControl(),
     fecha: new FormControl((''),[Validators.required]),
     image: new FormControl((''),[Validators.required]),
     mostrarPor: new FormControl((''),[Validators.required]),
@@ -560,7 +560,7 @@ saveNewTimeLine() {
   if (tituloInput instanceof HTMLInputElement) { titulo = tituloInput.value }
   if (descripcionInput instanceof HTMLInputElement) { descripcion = descripcionInput.value }
 
-  if(file!=="" && titulo!=="" && descripcion!==""){
+  if( descripcion!==""){
 
     this.AlertOption("¿Desea guardar los datos de Línea de Tiempo?")
     const parent: HTMLElement | any = this.containerAlert

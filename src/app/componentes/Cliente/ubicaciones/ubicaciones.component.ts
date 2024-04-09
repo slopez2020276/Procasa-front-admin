@@ -13,6 +13,7 @@ import { UneteEquipoService } from '../../../services/unete-equipo.service';
 export class UbicacionesComponent {
 
   UbicacionService = inject(UbicacionServiceService)
+  ecostate = true;
 
   constructor(){  }
   data
@@ -66,6 +67,17 @@ export class UbicacionesComponent {
       this.tipoBack = false
     }
   }
+
+  mostrarwts(){
+    this.ecostate = true
+    console.log('mostrar')
+  }
+  
+  ocultarwts(){
+    this.ecostate = false
+    console.log('oculto')
+  }
+  
 
 
 

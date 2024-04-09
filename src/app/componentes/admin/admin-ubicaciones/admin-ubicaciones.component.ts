@@ -34,7 +34,9 @@ waze:any
 telefono:any
 imgPath:any
 whatsapp:any
+direccion:any
 
+ecostate
 
 containerAlert: HTMLElement | any
 widthLimit
@@ -66,6 +68,14 @@ constructor (){
     enlaceMaps: new FormControl(),
     enlaceWaze: new FormControl(),
   })
+}
+
+mostrarwts(mostrar:any){
+  this.ecostate = true
+}
+
+ocultarwts(mostrar:any){
+  this.ecostate = false
 }
 
 ngOnInit(): void {
@@ -153,8 +163,6 @@ saveLocation(event: MouseEvent){
   let nombre: string = inNombre.value
   const inSucursal: HTMLSelectElement | any = document.getElementById('sucursal')
   let sucursal: string = inSucursal.value
-  const inTelefono: HTMLInputElement | any = document.getElementById('telefono')
-  let telefono: string = inTelefono.value
   const inHorario: HTMLInputElement | any = document.getElementById('horario')
   let horario: string = inHorario.value
   const inMaps: HTMLInputElement | any = document.getElementById('maps')
@@ -164,7 +172,7 @@ saveLocation(event: MouseEvent){
   const inDesc: HTMLInputElement | any = document.getElementById('descripcion')
   let descripcion: string = inDesc.value
 
-if(img!=="" && nombre!=="" && sucursal!=="" && telefono!=="" && horario!=="" && maps!=="" && waze!=="" && descripcion!==""){
+if(img!=="" && nombre!=="" && sucursal!=="" && horario!=="" && maps!=="" && waze!=="" ){
   this.AlertOption("¿Desea guardar la nueva Ubicación?")
     const parent: HTMLElement | any = this.containerAlert
     const btn: HTMLElement | any = parent?.childNodes[0]?.childNodes[0]?.childNodes[1]?.childNodes[0]
@@ -328,6 +336,7 @@ async ObtenerUbixId(id){
   this.nombreTienda = Ubicacion.ubi.nombreTienda
   this.descripcion = Ubicacion.ubi.descripcion
   this.imgPath =Ubicacion.ubi.imgPath
+  this.direccion = Ubicacion.ubi.direccion
 }
 
 editLocation(){ document.getElementById('modal-edit-ubicacion')?.classList.toggle('toggle') }
