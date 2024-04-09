@@ -126,6 +126,7 @@ div.cont-ubicacion:nth-child(1) img {
   width: 90%;
   height: auto;
   position: relative;
+  border-radius: 4px;
 }
 
 div.datos-ubi {
