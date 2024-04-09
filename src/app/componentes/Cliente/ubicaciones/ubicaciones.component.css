@@ -106,7 +106,7 @@ div.logo-head p {
   margin-left: 50px;
 }
 
-div.logo-head:last-child img { margin-left: 1rem; width: 80%; height: auto; }
+div.logo-head:last-child img { margin-left: 1rem; width: 100px; height: auto; }
 
 div#cont-data-ubicaciones {
   position: relative;
