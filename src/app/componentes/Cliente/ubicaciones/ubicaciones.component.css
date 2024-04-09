@@ -61,6 +61,7 @@ div.logo-head {
   justify-content: space-between;
   align-content: center;
   align-items: center;
+  flex-wrap: wrap;
 }
 
 div.cont-check {
@@ -92,9 +93,17 @@ div.checked {
 div.cont-check.enabled div.checked { display: block; }
 
 div.logo-head img {
-  height: 90%;
-  width: auto;
+  height: auto;
+  width: 100px;
   position: relative;
+}
+
+div.logo-head p {
+  width: 100px;
+  color: #FFF;
+  text-align: center;
+  font-size: 10pt;
+  margin-left: 50px;
 }
 
 div.logo-head:last-child img { margin-left: 1rem; width: 80%; height: auto; }
@@ -216,5 +225,6 @@ div.cont-ma-wa img {
     justify-content: space-between;
     align-content: center;
     align-items: center;
+    margin-bottom: 2rem;
   }
 }
