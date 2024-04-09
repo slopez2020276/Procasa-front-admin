@@ -195,3 +195,21 @@ div.cont-ma-wa img {
   height: auto;
 }
 
+
+@media screen and (max-width: 950px) {
+  div#cont-logos-head {
+    justify-content: center;
+    flex-wrap: wrap;
+}
+  
+  div.logo-head {
+    width: 150px;
+    height: 100px;
+    position: relative;
+    margin: 0 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+    align-items: center;
+  }
+}
