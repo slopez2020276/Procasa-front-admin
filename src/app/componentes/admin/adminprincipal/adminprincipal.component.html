@@ -191,8 +191,11 @@
 <div class="container scroll-cont" id="container-3">
   <h1 class="bold title-bg">LÍNEA DE TIEMPO</h1>
   <div class="cont-add-year">
-    <input class="normal" type="number" min="0" placeholder="agregar año">
-    <div class="normal btn-click btn-red"><mat-icon>save</mat-icon> agregar</div>
+    <form [formGroup]="formularioCrearAnio" >
+
+      <input  formControlName="anio" class="normal" type="number" min="0" placeholder="agregar año">
+    </form>
+    <div class="normal btn-click btn-red" (click)="CrearAnio()"><mat-icon>save</mat-icon> agregaaar</div>
   </div>
   <div id="sub-cont-3">
 
@@ -315,7 +318,7 @@
     <h2>{{os.title}}</h2>
     <p>{{os.descripcion}}</p>
           <div class="btn-click normal" (click)="obtenerxidNoticias(os._id)" (click)="ModalEditNotice()"><mat-icon>edit</mat-icon></div>
-          <div class="btn-red btn-click normal" (click)="eliminarNoticia(os.id)" ><mat-icon>delete</mat-icon></div>
+          <div class="btn-red btn-click normal" (click)="eliminarNoticia(os._id)" ><mat-icon>delete</mat-icon></div>
         </div>
       }
   </div>
