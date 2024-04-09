@@ -4,7 +4,7 @@ div.container-main {
     height: auto;
     min-height: 100vh;
     display: flex;
-    justify-content: start;
+    justify-content: space-evenly;
     align-items: start;
     flex-wrap: wrap;
     margin-top: 60px;
@@ -21,6 +21,15 @@ div.global-modal textarea {
 }
 
 div#save-edit-marca { margin: 0 4rem; }
+
+div.global-modal form {
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+}
 
 div.cont-marca {
     box-shadow: 0px 3px 3px rgba(0,0,0,.1);

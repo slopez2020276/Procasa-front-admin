@@ -3,7 +3,6 @@
 div#container-main {
   width: 100vw;
   height: auto;
-  /* min-height: 100vh; */
   position: relative;
   display: flex;
   justify-content: start;
@@ -11,7 +10,6 @@ div#container-main {
   flex-wrap: wrap;
   margin-top: 65px;
   padding-bottom: 30vh;
-  background: #252525;
 }
 
 

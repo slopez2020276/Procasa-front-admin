@@ -11,10 +11,11 @@
             </div>
             
             <div *ngFor="let evento of os.eventos; let i = index" class="cont-2-column-item" [ngClass]="{'impar': i % 2 !== 0}">
+              <div class="cont-img-tl">
                 <img [src]="evento.ImgPathLineaTiempo" [width]="500" [height]="500">
+              </div>  
                 <p>{{evento.descriptionLineaTiempo}}</p>
             </div>
-            
                       </div>
           }
         </div>
