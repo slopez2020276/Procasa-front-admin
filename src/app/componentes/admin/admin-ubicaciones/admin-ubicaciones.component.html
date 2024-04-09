@@ -32,6 +32,10 @@
       <input formControlName="nombreTienda" id="name" title="input" type="text" class="normal">
     </div>
     <div class="item">
+      <label class="normal">Direción</label>
+      <input formControlName="direccion" id="name" title="input" type="text" class="normal">
+    </div>
+    <div class="item">
       <label class="normal">sucursal</label>
       <select formControlName="tipoTienda" name="tipoTienda" class="normal" id="sucursal">
         <option value="procasa">Procasa</option>
@@ -92,11 +96,17 @@
   <div class="ubicacion">
     <div class="dato-ubicacion imgpath"><img src="{{os.imgPath}}" alt=""></div>
       <div class="dato-ubicacion"><p class="normal">Nombre: </p><p>{{os.nombreTienda}}</p></div>
+      <div class="dato-ubicacion"><p class="normal">Direción: <p>{{os.direccion}}</p></div>
       <div class="dato-ubicacion"><p class="normal">Tienda: <p>{{os.tipoTienda}}</p></div>
-      <div class="dato-ubicacion"><p class="normal">Teléfono<p>{{os.telefono}}</p></div>
+      @if(ecostate){
+        <div class="dato-ubicacion"><p class="normal">Teléfono<p>{{os.telefono}}</p></div>
+      }
       <div class="dato-ubicacion"><p class="normal">Horario: <p>{{os.horario}}</p></div>
-      <div class="dato-ubicacion"><p class="normal">Google Maps: <p><a href="{{os.enlaceMaps}}" target="_blank">enlace</a></p></div>
-      <div class="dato-ubicacion"><p class="normal">Waze: <p><a href="{{os.enlaceWaze}}" target="_blank">enlace</a></p></div>
+      @if(ecostate){
+        <div class="dato-ubicacion"><p class="normal">whatsapp: <p>{{os.whatsapp}}</p></div>
+      }
+      <div class="dato-ubicacion"><p class="normal">Google Maps: <p><a href="{{os.enlaceMaps}}">enlace</a></p></div>
+      <div class="dato-ubicacion"><p class="normal">Waze: <p><a href="{{os.enlaceWaze}}">enlace</a></p></div>
       <div class="dato-ubicacion"><p class="normal">Descripción: <p>{{os.descripcion}}</p></div>
       <button class="btn-click" (click)="ObtenerUbixId(os._id)" (click)="editLocation()"><mat-icon>edit</mat-icon></button>
       <button class="btn-click btn-red" (click)="deleteProduct(os._id)"><mat-icon>delete</mat-icon></button>
@@ -136,6 +146,10 @@
     <div class="item">
       <label class="normal">Nombre</label>
       <input [(ngModel)]="nombreTienda" formControlName="nombreTienda" id="name" title="input" type="text" class="normal">
+    </div>
+    <div class="item">
+      <label class="normal">Dirección</label>
+      <input [(ngModel)]="direccion" formControlName="direccion" id="name" title="input" type="text" class="normal">
     </div>
     <div class="item">
       <label for="tipoTienda">Tipo</label>
