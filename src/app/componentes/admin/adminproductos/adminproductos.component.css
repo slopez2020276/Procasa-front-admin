@@ -126,6 +126,13 @@ div.producto ul {
   width: 100%;
 }
 
+div.producto ul li.bold {
+  list-style: none;
+  margin-top: 1.5rem;
+  margin-bottom: 4px;
+  font-size: 12pt;
+}
+
 div.togg {display: none;}
 div.togg.toggle { display: flex; }
 div.togg:nth-child(even) { display: flex; }
