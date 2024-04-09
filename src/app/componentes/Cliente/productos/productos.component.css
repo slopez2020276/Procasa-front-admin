@@ -68,7 +68,8 @@ div.product h2 {
 div.cont-details {
   width: 300px;
   max-width: 350px;
-  height: 300px;
+  height: auto;
+  max-height: 300px;
   overflow-x: hidden;
   overflow-y: scroll;
   top: 50%;
@@ -81,6 +82,7 @@ div.cont-details {
   z-index: -1;
   padding: 1rem;
   padding-top: 4rem;
+  padding-bottom: 4rem;
 }
 
 div.product:hover div.cont-details {
@@ -112,7 +114,7 @@ div.cont-ul {
 div.cont-ul ul {
   position: relative;
   width: 80%;
-  margin-top: 1rem;
+  margin-top: 2rem;
 }
 
 div.cont-ul ul:nth-child(1) {margin-top: 0;}

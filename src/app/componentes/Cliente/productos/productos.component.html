@@ -58,14 +58,14 @@
               <div class="cont-details">
                 <h1 class="bold">{{os.nombreProducto}}</h1>
                   <div class="cont-ul">
-                    <ul>
-                      @for (categoria of os.categorias; track $index) {
+                    @for (categoria of os.categorias; track $index) {
+                        <ul>
                         <li class="bold">{{categoria.Nombre}}</li>
                         @for (items of categoria.items; track $index) {
                           <li>{{items}}</li>
                         }
+                      </ul>
                       }
-                    </ul>
                   </div>
                 </div>
               </div>
