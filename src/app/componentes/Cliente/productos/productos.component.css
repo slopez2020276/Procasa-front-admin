@@ -119,6 +119,15 @@ div.cont-ul ul {
 
 div.cont-ul ul:nth-child(1) {margin-top: 0;}
 
+
+div.cont-ul ul li.bold {
+  list-style: none;
+  margin-top: 1.5rem;
+  margin-bottom: 4px;
+  font-size: 12pt;
+}
+
+
 div#container-promesa {
   width: 100%;
   height: auto;
