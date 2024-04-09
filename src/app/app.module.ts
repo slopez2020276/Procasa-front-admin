@@ -97,13 +97,12 @@ import { NuestrasMarcasComponent } from './componentes/admin/nuestras-marcas/nue
     NgOptimizedImage,
     MatIconModule,
     NgxUiLoaderModule.forRoot({
-      fgsColor: '#a9182c',
+      fgsColor: '#AA182C',
       fgsType: 'three-strings',
       text: 'Cargando, por favor espere...',
       fgsSize: 100,
     })
-  
-    
+
   ],
   providers: [NgModel,{provide: HTTP_INTERCEPTORS,useClass: InterceptorService,multi: true,},provideAnimationsAsync('noop')],
   bootstrap: [AppComponent]
