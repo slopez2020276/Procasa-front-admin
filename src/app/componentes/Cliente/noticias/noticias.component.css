@@ -1,17 +1,6 @@
 
 * {color: #FAFAFA;}
 
-/* div#container-noticias {
-    width: 100%;
-    color: #FFF;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-    padding-bottom: 10rem;
-    background: red;
-} */
-
 div#noticias {
   width: 100vw;
   height: auto;
@@ -169,3 +158,18 @@ div.fecha-noticia {
 }
 
 
+@media screen and (max-width: 850px ) {
+  
+div.noticia {
+  width: 270px;
+  position: relative;
+  text-align: right;
+  height: 294px;
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  flex-wrap: wrap;
+  margin: 0 10px;
+}
+
+}

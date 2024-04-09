@@ -95,8 +95,8 @@
       <div class="dato-ubicacion"><p class="normal">Tienda: <p>{{os.tipoTienda}}</p></div>
       <div class="dato-ubicacion"><p class="normal">Teléfono<p>{{os.telefono}}</p></div>
       <div class="dato-ubicacion"><p class="normal">Horario: <p>{{os.horario}}</p></div>
-      <div class="dato-ubicacion"><p class="normal">Google Maps: <p><a href="{{os.enlaceMaps}}">enlace</a></p></div>
-      <div class="dato-ubicacion"><p class="normal">Waze: <p><a href="{{os.enlaceWaze}}">enlace</a></p></div>
+      <div class="dato-ubicacion"><p class="normal">Google Maps: <p><a href="{{os.enlaceMaps}}" target="_blank">enlace</a></p></div>
+      <div class="dato-ubicacion"><p class="normal">Waze: <p><a href="{{os.enlaceWaze}}" target="_blank">enlace</a></p></div>
       <div class="dato-ubicacion"><p class="normal">Descripción: <p>{{os.descripcion}}</p></div>
       <button class="btn-click" (click)="ObtenerUbixId(os._id)" (click)="editLocation()"><mat-icon>edit</mat-icon></button>
       <button class="btn-click btn-red" (click)="deleteProduct(os._id)"><mat-icon>delete</mat-icon></button>

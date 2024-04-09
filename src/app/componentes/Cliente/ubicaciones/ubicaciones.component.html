@@ -30,18 +30,12 @@
                 <div class="dato-u"><p class="bold">WhatsApp:</p><p> {{whatsapp}}</p></div>
                 <div class="dato-u"><p class="bold">Horario:</p><p>{{horario}}</p></div>
                   <div class="cont-ma-wa">
-                    <a href="{{enlaceMaps}}"><img src="../../../../assets/img/maps.png"></a>
-                    <a href="{{enlaceWaze}}"><img src="../../../../assets/img/waze.png"></a>
+                    <a href="{{enlaceMaps}}" target="_blank"><img src="../../../../assets/img/maps.png"></a>
+                    <a href="{{enlaceWaze}}" target="_blank"><img src="../../../../assets/img/waze.png"></a>
                   </div>
             </div>
           </div>
-          <div class="cont-ubicacion">
-
-              @for (item of dataUbicaciones; track $index) {
-                <h1 class="select-ubicacion" (click)="selecStore(item._id)" > {{item.nombreTienda}}</h1>
-  
-              }
-          </div>
+          <div class="cont-ubicacion">@for (item of dataUbicaciones; track $index) { <h1 class="select-ubicacion" (click)="selecStore(item._id)" > {{item.nombreTienda}}</h1> }</div>
     </div>
 </div>
 </div>

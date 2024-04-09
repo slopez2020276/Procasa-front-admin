@@ -122,6 +122,9 @@ div#cont-data-ubicaciones {
 div.cont-ubicacion {
   width: 380px;
   height: auto;
+  max-height: 350px;
+  overflow-x: hidden;
+  overflow-y: scroll;
   position: relative;
   display: flex;
   justify-content: center;
@@ -129,6 +132,7 @@ div.cont-ubicacion {
   align-content: center;
   flex-wrap: wrap;
   margin-top: 5vh;
+  padding-bottom: 2rem;
 }
 
 div.cont-ubicacion:nth-child(1) img {

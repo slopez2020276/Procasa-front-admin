@@ -33,8 +33,9 @@ div#navbar.scroll div.navbar-items a {font-size: 12pt;}
 
 
 div#cont-menu {
-  width: 60px;
-  height: 45px;
+  width: 50px;
+  height: 35px;
+  margin-top: .5rem;
   position: relative;
   display: none;
   justify-content: center;
@@ -227,7 +228,7 @@ div.navbar-items a {color: #FFF;}
 }
 
 div#navbar-cont-items {
-  width: 300px;
+  width: 250px;
   height: auto;
   display: block;
   margin-top: 10px;
@@ -269,6 +270,7 @@ div#cont-menu {
     width: 130px;
     margin: 0 .5rem;
   }
+  div#navbar {top: 1rem;}
 }
 
 @media screen and (max-width:1040px) {
