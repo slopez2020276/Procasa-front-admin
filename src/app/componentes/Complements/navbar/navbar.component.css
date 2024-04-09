@@ -14,6 +14,8 @@ div#navbar {
     transition: .4s ease-in-out;
 }
 
+div#navbar * {transition: .2s;}
+
 div#navbar.scroll {background: rgba(255,255,255,.9); top: 0; height: 70px; left: 0; width: 100vw;}
 div#navbar.scroll div.navbar-items a {font-size: 12pt;}
 
@@ -180,31 +182,9 @@ div#container-list:hover a, div#container-list-pro:hover a { color: #FFF; }
 /*=================================================================================================================================================================================*/
 
 
+@media screen and (max-width:950px) {
 
 
-@media screen and (max-width:930px) and (min-width: 876px) {
-
-  div#navbar-cont-items {
-    width: auto;
-    height: 100%;
-    display: block;
-    margin-top: 0;
-    margin-right: 10px;
-  }
-
-  div.navbar-items {
-    text-align: center;
-    width: 100px;
-    height: 100%;
-    border-radius: 4px;
-    margin-top: 2px;
-    background: rgb(255,255,255,0);
-  }
-
-}
-
-
-@media screen and (max-width:875px) {
 div#cont-menu-list {
   width: 100%;
   display: block;
@@ -221,6 +201,25 @@ div#cont-menu-list.activate {
   animation: menu .4s ease-out;
 }
 
+
+div.navbar-items {
+  min-width: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  flex-wrap: wrap;
+  margin: 0 1rem;
+  border-radius: 4px 4px 0 0;
+  height: 60%;
+  background: var(--main);
+  padding: 1rem 0;
+  color: #FFF;
+  margin-top: 10px;
+}
+
+div.navbar-items a {color: #FFF;}
+
 @keyframes menu {
   0% {transform: translateY(-500px); opacity: 0;}
   70% {transform: translateY(30px); opacity: .3;}
@@ -235,19 +234,21 @@ div#navbar-cont-items {
   margin-right: 10px;
 }
 
-div#list {
+div#list, div#list-products {
   position: relative;
-  min-width: 300px;
+  width: 100%;
   height: auto;
   top: 0;
   left: 0;
-  transition: .4s;
+  transition: .6s ease-out;
   z-index: 0;
   opacity: 1;
   display: block;
-  /* background: #AA182C; */
   background: transparent;
   color: #252525;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 
 div#cont-menu {
@@ -261,3 +262,17 @@ div#cont-menu {
 
 
 }
+
+
+@media screen and (max-width:1210px) {
+  div.navbar-items {
+    width: 130px;
+    margin: 0 .5rem;
+  }
+}
+
+@media screen and (max-width:1040px) {
+  div.navbar-items { margin: 0 0; }
+}
+
+

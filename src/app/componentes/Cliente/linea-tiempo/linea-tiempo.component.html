@@ -6,13 +6,15 @@
           @for (os of data; track os.id) {
             <div class="block-time-line">
 
-              @for(evento of os.eventos; track  evento._id){
-            <div class="cont-bar-connect"><div class="bar-connect bold">{{os.anio}}</div></div>
-                          <div class="cont-2-column-item">
-                                <img [ngSrc]="evento.ImgPathLineaTiempo" [width]="500" [height]="500">
-                                <p>{{evento.descriptionLineaTiempo}}</p>
-                          </div>
-                        }
+              <div *ngFor="let evento of os.eventos; let i = index" class="cont-bar-connect">
+                <div class="bar-connect bold">{{os.anio}}</div>
+            </div>
+            
+            <div *ngFor="let evento of os.eventos; let i = index" class="cont-2-column-item" [ngClass]="{'impar': i % 2 !== 0}">
+                <img [src]="evento.ImgPathLineaTiempo" [width]="500" [height]="500">
+                <p>{{evento.descriptionLineaTiempo}}</p>
+            </div>
+            
                       </div>
           }
         </div>

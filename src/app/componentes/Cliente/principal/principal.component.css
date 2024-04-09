@@ -68,14 +68,12 @@ div#intro-2 {
 }
 
 
-img#container-principal-img {
-    width: 100vw;
-    height: 100vh;
-    position: relative;
-    z-index: 10;
-    transform: scale(1);
-    animation: introduction 1.8s ease-in-out;
-    margin-top: 0px;
+img#img-principal {
+  position: relative;
+  width: 100%;
+  height: auto;
+  top: auto;
+  left: auto;
 }
 
 

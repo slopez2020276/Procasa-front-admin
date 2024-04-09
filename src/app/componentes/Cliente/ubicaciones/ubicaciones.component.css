@@ -10,6 +10,7 @@ div#container-main {
   align-items: start;
   flex-wrap: wrap;
   margin-top: 65px;
+  padding-bottom: 30vh;
   background: #252525;
 }
 
@@ -109,7 +110,7 @@ div#cont-data-ubicaciones {
 }
 
 div.cont-ubicacion {
-  width: 330px;
+  width: 380px;
   height: auto;
   position: relative;
   display: flex;
@@ -117,6 +118,7 @@ div.cont-ubicacion {
   align-items: center;
   align-content: center;
   flex-wrap: wrap;
+  margin-top: 5vh;
 }
 
 div.cont-ubicacion:nth-child(1) img {
