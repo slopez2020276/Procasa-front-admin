@@ -1004,10 +1004,9 @@ div#toScrollTop img {
 }
 
 
-.year-title {
-  width: 100%;
+div.year-title {
+  width: 90%;
   padding: 4px 0 4px 1rem;
-  font-size: 19pt;
   margin-top: 4rem;
   background: var(--second);
   border-radius: 4px;
@@ -1017,12 +1016,21 @@ div#toScrollTop img {
   align-items: center;
   align-content: center;
   flex-wrap: nowrap;
+  margin-left: 5%;
 }
 
-.year-title div {
-  margin-right: 2rem;
+div.year-title div {
+  margin: 0 4px;
 }
 
+div.year-title h1 {
+  color: #FFF;
+  font-size: 25pt;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+}
 
 /* div#modal-add-event-year {
   width: 300px;

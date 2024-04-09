@@ -1345,16 +1345,14 @@ deleteYear(){
   
     if (btn) { btn.onclick = () => {
 
-        
-            alert("Nooooo  me borrrassteee.... :'(")
+// ACCIÓN DE BORRAR AÑO--------------------------
+    
 
+} } }
 
-
-      }
-    }
+editYear(){
+  
 }
-
-
 
 
 

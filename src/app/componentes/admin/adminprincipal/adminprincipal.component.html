@@ -202,10 +202,12 @@
 
     @for (os of dataLinea; track os.id) {
 
-    <h1 class="year-title bold" style="color: #FFF;">
-      <div class="btn-click btn-red" (click)="deleteYear()"><mat-icon>delete</mat-icon></div>
-      <div class="btn-click btn-red normal" (click)="sentIdAni(os._id)" (click)="addYearEvent()"><mat-icon>add</mat-icon> agregar evento</div> {{os.anio}}
-      </h1>
+    <div class="year-title bold" style="color: #FFF;">
+      <h1 class="bold">{{os.anio}}</h1>
+      <div class="btn-click btn-gray" (click)="deleteYear()"><mat-icon>delete</mat-icon></div>
+      <div class="btn-click btn-gray" (click)="editYear()"><mat-icon>edit</mat-icon></div>
+      <div class="btn-click btn-gray normal" (click)="sentIdAni(os._id)" (click)="addYearEvent()"><mat-icon>add</mat-icon></div>
+    </div>
     @for (item of os.eventos; track $index) {
       <div class="cont-3-timeline">
         <img class="img-linetiempo" [src]="item.ImgPathLineaTiempo" [width]="100" [height]="100" alt="item 1" title="item 1">
@@ -214,7 +216,7 @@
         <p class="input-to-text">{{item.fechaFormateada}}</p>
                     <div class="btn-click normal" (click)="sentIdAni(os._id)" (click)="editarModal(item._id)" (click)="Modal()"><mat-icon>edit</mat-icon></div>
                     <div class="btn-click btn-red normal" (click)="sentIdAni(os._id)"  (click)="eliminarLineaTiempo(item._id)"><mat-icon>delete</mat-icon></div>
-                  </div> 
+      </div> 
     }
 }
             </div>
