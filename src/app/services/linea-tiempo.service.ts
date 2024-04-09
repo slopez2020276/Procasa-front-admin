@@ -64,7 +64,7 @@ sendEdit(body:FormData,idanio:any,id:any):Observable<any>{
 
 crearAnio(fromValue:any){
   return firstValueFrom(
-    this.httpClient.post<any>(`${this.baseUrl}/crearAnio`,fromValue,this.createHeaders())
+    this.httpClient.post<any>(`${this.baseUrl}/CrearAnio`,fromValue,this.createHeaders())
   )
 
 }

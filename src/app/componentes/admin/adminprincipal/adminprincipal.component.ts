@@ -7,6 +7,7 @@ import { NoticasService } from '../../../services/noticas.service';
 import { ValoresService } from '../../../services/valores.service';
 import { AfterViewInit } from '@angular/core';
 import { range } from 'rxjs';
+import { MarcasService } from '../../../services/marcas.service';
 
 interface HtmlInputEvent extends Event { target: HTMLInputElement }
 
@@ -35,8 +36,7 @@ export class AdminprincipalComponent implements OnInit {
   formularioAgregarNoticias: FormGroup
   formularioEditarFondoColor: FormGroup
   formularioCrearAnio: FormGroup
-
-
+  
   colorBg:any
 
   containerAlert: HTMLElement | any
@@ -56,6 +56,7 @@ historiaService = inject(HistoriaService)
 lineaService = inject(LineaTiempoService)
 misionService = inject(MisionService)
 noticiasService = inject(NoticasService)
+MarcasServie = inject(MarcasService)
 
 idAnio:any
 
@@ -461,6 +462,16 @@ async editarTime(){
 sentIdAni(id:any){
   this.idAnio = id
   console.log(this.idAnio)
+}
+
+
+async CrearAnio(){
+  const res = await this.lineaService.crearAnio(this.formularioCrearAnio.value)
+  console.log(res)
+  this.lineaService.crearAnio(this.idAnio,)
+  this.formularioCrearAnio.reset()
+  this.obtenerLinea()
+
 }
 ModalTimeLine() {
   document.getElementById('modal-time-line')?.classList.toggle('modal')
