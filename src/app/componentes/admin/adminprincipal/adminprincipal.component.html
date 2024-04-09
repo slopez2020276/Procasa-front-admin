@@ -204,9 +204,9 @@
 
     <div class="year-title bold" style="color: #FFF;">
       <h1 class="bold">{{os.anio}}</h1>
-      <div class="btn-click btn-gray" (click)="deleteYear()"><mat-icon>delete</mat-icon></div>
-      <div class="btn-click btn-gray" (click)="editYear()"><mat-icon>edit</mat-icon></div>
       <div class="btn-click btn-gray normal" (click)="sentIdAni(os._id)" (click)="addYearEvent()"><mat-icon>add</mat-icon></div>
+      <div class="btn-click btn-gray" (click)="editYear()"><mat-icon>edit</mat-icon></div>
+      <div class="btn-click btn-gray" (click)="deleteYear()"><mat-icon>delete</mat-icon></div>
     </div>
     @for (item of os.eventos; track $index) {
       <div class="cont-3-timeline">
@@ -312,12 +312,9 @@
 <div class="container scroll-cont" id="container-6">
   <h1 class="bold title-bg">NOTICIAS</h1>
 
-
-  
   <div id="cont-6-noticias">
     @for (os of dataLineaRespuesta; track os.id) {
-      
-      
+            
     <div class="noticia">
       <img [src]="os.imgPhat"  alt="noticia">
     <h2>{{os.title}}</h2>
@@ -337,7 +334,6 @@
   <div id="close-modal-6"></div>
   <h1 class="bold">NOTICIAS</h1>
 </div>
-
 
 
 
@@ -560,6 +556,22 @@
 
 </form>
 </div>
+
+
+
+
+
+<div class="global-modal" id="modal-edit-year">
+    <h1 class="title-modal">Editar Año</h1>
+    <button class="btn-click close-modal" (click)="editYear()" (click)="cleanForms()"><mat-icon>close</mat-icon></button>
+
+<div class="cont-input-btn">
+  <input type="number" placeholder="año">
+  <div class="btn-click btn-red" (click)="saveEditedYear()"><mat-icon>save</mat-icon> guardar</div>
+</div>
+</div>
+
+
 
 
 

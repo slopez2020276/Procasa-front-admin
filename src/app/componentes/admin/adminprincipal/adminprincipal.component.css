@@ -675,6 +675,12 @@ div.noticia h2 {
 
 div.noticia p {
   font-size: 12pt;
+  height: auto;
+  max-height: 150px;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  padding-bottom: 2rem;
+  margin-bottom: 1rem;
 }
 
 div.noticia h2, div.noticia p {
@@ -1031,6 +1037,21 @@ div.year-title h1 {
   align-items: center;
   align-content: center;
 }
+
+div.cont-input-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  flex-wrap: wrap;
+  width: 100%;
+  position: relative;
+  padding: 2rem 0;
+  margin-top: 2rem;
+}
+
+div.cont-input-btn input { width: 60%; display: block; margin-bottom: 2rem;}
+div.cont-input-btn div { margin: 0 4rem; }
 
 /* div#modal-add-event-year {
   width: 300px;

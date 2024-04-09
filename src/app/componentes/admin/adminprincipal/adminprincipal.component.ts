@@ -1346,14 +1346,29 @@ deleteYear(){
     if (btn) { btn.onclick = () => {
 
 // ACCIÓN DE BORRAR AÑO--------------------------
+    this.AlertMessage('Año borrado exitosamente', 1500)
     
-
-} } }
-
-editYear(){
+  } } }
   
-}
+  editYear(){
+    const modalYear: HTMLElement | any = document.getElementById('modal-edit-year')
+    modalYear?.classList.toggle('toggle')
+  }
+  
+  
+  saveEditedYear(){
+  this.AlertOption("¿Desea guardar cambios?")
+  const parent: HTMLElement | any = this.containerAlert
+  const btn: HTMLElement | any = parent?.childNodes[0]?.childNodes[0]?.childNodes[1]?.childNodes[0]
 
+  if (btn) { btn.onclick = () => {
+    
+    // ACCIÓN DE GUARDAR AÑO EDITADO --------------------------
+    this.AlertMessage('Año actualizado exitosamente', 1500)
+  
+
+} }
+}
 
 
 
