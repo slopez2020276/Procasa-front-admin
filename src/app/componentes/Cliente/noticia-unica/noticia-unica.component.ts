@@ -25,6 +25,8 @@ constructor(private sharedDataService: SharedDataService){
   this.sharedId = this.sharedDataService.getSharedId();
 }
 
+backPage(): void { window.history.back() }
+
   async ngOnInit() {
     const response = await this.HistoriaService.obtenerHistoria()
     this.data = response.historia

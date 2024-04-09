@@ -199,16 +199,15 @@ div#container-marcas {
 }
 
 div#carrousel-marcas {
-  width: 90%;
+  width: 95%;
   position: relative;
   height: auto;
   display: flex;
-  justify-content: center;
+  justify-content: start;
   align-items: center;
   flex-wrap: nowrap;
   overflow-x: auto;
   overflow-y: hidden;
-  padding-bottom: 100px;
 }
 
 
@@ -234,6 +233,8 @@ div.marca-item img {
   position: relative;
 }
 
+div.marca-item:last-child { margin-right: 25vw; }
+
 div.info-product {
   width: 100%;
   background: #AAA;
@@ -244,7 +245,10 @@ div.info-product {
   left: 0;
   padding: .5rem;
   height: auto;
-  overflow: visible;
+  max-height: 150px;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  padding-bottom: 2rem;
   display: none;
 }
 
