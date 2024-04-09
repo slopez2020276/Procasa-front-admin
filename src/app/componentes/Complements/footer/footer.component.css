@@ -337,3 +337,15 @@ div#f-sub-1, div#f-sub-2 {
   
 
     }
+
+
+
+@media screen and (max-width: 430px) {
+  
+  div#f-sub-3, div#f-sub-4 {
+    width: 90%;
+    min-width: 90%;
+    border: 1px solid red;
+  }
+
+}
