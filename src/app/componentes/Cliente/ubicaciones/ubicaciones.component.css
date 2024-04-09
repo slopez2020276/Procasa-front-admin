@@ -58,14 +58,16 @@ div.logo-head {
   position: relative;
   margin: 0 1rem;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
   align-content: center;
   align-items: center;
 }
 
 div.cont-check {
   width: 26px;
+  min-width: 26px;
   height: 26px;
+  min-height: 26px;
   border: 2px solid #FFF;
   border-radius: 4px;
   cursor: pointer;
@@ -90,11 +92,12 @@ div.checked {
 div.cont-check.enabled div.checked { display: block; }
 
 div.logo-head img {
-  height: 100%;
+  height: 90%;
   width: auto;
   position: relative;
 }
 
+div.logo-head:last-child img { margin-left: 1rem; width: 80%; height: auto; }
 
 div#cont-data-ubicaciones {
   position: relative;
@@ -191,3 +194,4 @@ div.cont-ma-wa img {
   width: 40px;
   height: auto;
 }
+
