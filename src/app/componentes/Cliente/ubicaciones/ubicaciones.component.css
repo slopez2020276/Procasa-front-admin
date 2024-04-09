@@ -138,6 +138,7 @@ div.datos-ubi {
   flex-wrap: wrap;
 }
 
+
 div.dato-u {
   width: 100%;
   color: #FFF;
@@ -145,7 +146,7 @@ div.dato-u {
   justify-content: start;
   align-items: start;
   align-content: start;
-  flex-wrap: nowrap;
+  flex-wrap: wrap;
   margin-top: .5rem;
 }
 
@@ -153,8 +154,11 @@ div.dato-u p {font-size: var(--fs-sub); }
 
 div.dato-u p:first-child {
   width: 120px;
+  min-width: 120px;
+  max-width: 120px;
   min-width: 85px;
 }
+
 
 div.cont-ubicacion:nth-child(3) {
   align-items: start;
