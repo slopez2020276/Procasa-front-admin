@@ -29,6 +29,7 @@ div#cont-products {
   align-content: center;
   flex-wrap: wrap;
   margin-top: 1rem;
+  margin-bottom: 20vh;
 }
 
 div.product {
@@ -67,7 +68,9 @@ div.product h2 {
 div.cont-details {
   width: 300px;
   max-width: 350px;
-  height: auto;
+  height: 300px;
+  overflow-x: hidden;
+  overflow-y: scroll;
   top: 50%;
   left: 10%;
   position: absolute;
