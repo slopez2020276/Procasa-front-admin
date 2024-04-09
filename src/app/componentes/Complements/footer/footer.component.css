@@ -334,9 +334,8 @@ div#f-sub-1, div#f-sub-2 {
     div.footer-sp h1 { width: 90%; }
   
     div#f-sub-4 h1 { width: 90%; }
-  
 
-    }
+}
 
 
 
@@ -345,7 +344,9 @@ div#f-sub-1, div#f-sub-2 {
   div#f-sub-3, div#f-sub-4 {
     width: 90%;
     min-width: 90%;
-    border: 1px solid red;
+    height: auto;
   }
+
+  div#f-sub-4 {margin-bottom: 2rem;}
 
 }

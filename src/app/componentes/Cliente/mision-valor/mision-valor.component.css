@@ -108,6 +108,7 @@ div#sub-valores div:hover h6 { font-size: 20pt; }
 div#sub-valores div img {
     position: relative;
     display: block;
+    z-index: 0;
 }
 
 div#sub-valores h6 {
@@ -168,17 +169,16 @@ div#sub-valores h6 {
   }
 
   div#sub-valores p {
-    width: 300px;
-    background: navy;
+    width: 260px;
     padding: 0 1rem;
     text-align: center;
     opacity: 0;
     transition: .5s ease;
     top: 0;
-    left: 0;
-    /* background: transparent; */
+    left: auto;
     position: absolute;
-    display: none;
+    background: rgba(255,255,255,1);
+    z-index: 49;
   }
 
 }
