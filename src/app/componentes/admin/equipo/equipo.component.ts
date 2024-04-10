@@ -36,6 +36,7 @@ export class EquipoComponent {
   fecha:any
   idPlaza:any
   funciones:any
+  estado:any
 
   formAgregarFuncion: FormGroup
   fomrumarioAgregarPlaza : FormGroup
@@ -232,7 +233,7 @@ agregarPlaza():void{
     body.append('departamento',this.fomrumarioAgregarPlaza.value.departamento)
     body.append('empresa',this.fomrumarioAgregarPlaza.value.empresa)
     body.append('educacion',this.fomrumarioAgregarPlaza.value.educacion)
-    body.append('experecia',this.fomrumarioAgregarPlaza.value.experiencia)
+    body.append('experiencia',this.fomrumarioAgregarPlaza.value.experiencia)
     body.append('fecha',this.fomrumarioAgregarPlaza.value.fecha)
 
 
@@ -242,7 +243,7 @@ agregarPlaza():void{
     body.append('departamento',this.fomrumarioAgregarPlaza.value.departamento)
     body.append('empresa',this.fomrumarioAgregarPlaza.value.empresa)
     body.append('educacion',this.fomrumarioAgregarPlaza.value.educacion)
-    body.append('experecia',this.fomrumarioAgregarPlaza.value.experiencia)
+    body.append('experiencia',this.fomrumarioAgregarPlaza.value.experiencia)
     body.append('fecha',this.fomrumarioAgregarPlaza.value.fecha)
 
   }
@@ -264,8 +265,9 @@ EditPlaza():void{
     body.append('departamento',this.formEditarPlaza.value.departamento)
     body.append('empresa',this.formEditarPlaza.value.empresa)
     body.append('educacion',this.formEditarPlaza.value.educacion)
-    body.append('experecia',this.formEditarPlaza.value.experiencia)
+    body.append('experiencia',this.formEditarPlaza.value.experiencia)
     body.append('fecha',this.formEditarPlaza.value.fecha)
+    body.append('estado',this.formEditarPlaza.value.estado)
 
 
   }else{
@@ -274,8 +276,9 @@ EditPlaza():void{
     body.append('departamento',this.formEditarPlaza.value.departamento)
     body.append('empresa',this.formEditarPlaza.value.empresa)
     body.append('educacion',this.formEditarPlaza.value.educacion)
-    body.append('experecia',this.formEditarPlaza.value.experiencia)
+    body.append('experiencia',this.formEditarPlaza.value.experiencia)
     body.append('fecha',this.formEditarPlaza.value.fecha)
+    body.append('estado',this.formEditarPlaza.value.estado)
 
   }
   this.uneterService.sendEditPlaza(this.idPlaza,body)
@@ -309,8 +312,9 @@ sendFileplaza(): void {
       body.append('departamento',this.formAgregarPlaza.value.departamento)
       body.append('empresa',this.formAgregarPlaza.value.empresa)
       body.append('educacion',this.formAgregarPlaza.value.educacion)
-      body.append('experecia',this.formAgregarPlaza.value.experiencia)
+      body.append('experiencia',this.formAgregarPlaza.value.experiencia)
       body.append('fecha',this.formAgregarPlaza.value.fecha)
+      body.append('estado',this.formAgregarPlaza.value.estado)
       console.log('con imagen')
   
     }else{
@@ -320,8 +324,10 @@ sendFileplaza(): void {
       body.append('departamento',this.formAgregarPlaza.value.departamento)
       body.append('empresa',this.formAgregarPlaza.value.empresa)
       body.append('educacion',this.formAgregarPlaza.value.educacion)
-      body.append('experecia',this.formAgregarPlaza.value.experiencia)
+      body.append('experiencia',this.formAgregarPlaza.value.experiencia)
       body.append('fecha',this.formAgregarPlaza.value.fecha)
+      body.append('estado',this.formAgregarPlaza.value.estado)
+
   }
   
     this.uneterService.sendCreatePlaza(body)
@@ -346,8 +352,10 @@ sendFileEditplaza(id:any): void {
       body.append('departamento',this.formAgregarPlaza.value.departamento)
       body.append('empresa',this.formAgregarPlaza.value.empresa)
       body.append('educacion',this.formAgregarPlaza.value.educacion)
-      body.append('experecia',this.formAgregarPlaza.value.experiencia)
+      body.append('experiencia',this.formAgregarPlaza.value.experiencia)
       body.append('fecha',this.formAgregarPlaza.value.fecha)
+      body.append('estado',this.formAgregarPlaza.value.estado)
+
       console.log('con imagen')
   
     }else{
@@ -357,8 +365,10 @@ sendFileEditplaza(id:any): void {
       body.append('departamento',this.formAgregarPlaza.value.departamento)
       body.append('empresa',this.formAgregarPlaza.value.empresa)
       body.append('educacion',this.formAgregarPlaza.value.educacion)
-      body.append('experecia',this.formAgregarPlaza.value.experiencia)
+      body.append('experiencia',this.formAgregarPlaza.value.experiencia)
       body.append('fecha',this.formAgregarPlaza.value.fecha)
+      body.append('estado',this.formAgregarPlaza.value.estado)
+
   }
   
     this.uneterService.sendEditPlaza(id ,body)
@@ -396,12 +406,13 @@ async obtenerPlazaId(id:any){
   this.DepartamentoPlaza = respuestaid.plaza.departamento
   this.EmpresaPlaza = respuestaid.plaza.empresa
   this.EducacionPlaza = respuestaid.plaza.educacion
-  this.ExperienciaPlaza = respuestaid.plaza.experecia
+  this.ExperienciaPlaza = respuestaid.plaza.experiencia
   this.FechaPlaza = respuestaid.plaza.fecha
   this.fecha = respuestaid.plaza.fecha
   this.idPlaza = respuestaid.plaza._id
   this.data = respuestaid.plaza
   this.funciones = respuestaid.plaza.funciones
+  this.estado = respuestaid.plaza.estado
   console.log(this.NombrePlaza)
   this.obtenerFunciones()
 }

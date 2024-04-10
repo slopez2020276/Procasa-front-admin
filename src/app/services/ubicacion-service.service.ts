@@ -6,7 +6,7 @@ import { Observable, firstValueFrom } from 'rxjs';
   providedIn: 'root'
 })
 export class UbicacionServiceService {
-  private baseUrlw = 'https://clever-rugby-shirt-bear.cyclic.app/api';
+  private baseUrlw = 'https://enchanting-kilt-pike.cyclic.app/api';
   private httClient = inject(HttpClient)
   
 

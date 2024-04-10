@@ -12,7 +12,7 @@ export class MisionService {
   private baseUrl: string;
 
   constructor() { 
-    this.baseUrl = 'https://clever-rugby-shirt-bear.cyclic.app/api'
+    this.baseUrl = 'https://enchanting-kilt-pike.cyclic.app/api'
   }
 
   obtenerMsion(){
