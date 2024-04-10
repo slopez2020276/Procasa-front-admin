@@ -59,21 +59,22 @@ div.cont-search mat-icon {
 
 div.container-plazas {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: start;
   align-items: center;
   align-content: center;
   flex-wrap: wrap;
   position: relative;
-  width: 90vw;
+  width: 960px;
   height: auto;
+  margin-top: 2rem;
 }
 
 div.cont-plaza {
   position: relative;
-  width: 300px;
-  height: 300px;
+  width: 220px;
+  height: 220px;
   overflow: hidden;
-  margin-top: 2rem;
+  margin: 10px 10px;
 }
 
 div.cont-img {
@@ -136,3 +137,28 @@ div.foo-data h2 {
 div.foo-data h2 mat-icon {
   color: var(--main);
 }
+
+
+
+div#container-data-texto {
+  width: 100%;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  flex-wrap: nowrap;
+  margin-top: 4rem;
+}
+
+div#container-data-texto * { color: #FFF; }
+
+div#container-data-texto p, div#container-data-texto p b {  font-size: 16pt; }
+
+div#container-data-texto p {
+  width: auto;
+  max-width: 700px;
+}
+
+
+

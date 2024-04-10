@@ -120,6 +120,15 @@
     <label class="normal">Experiencia laboral</label>
     <textarea formControlName="experiencia"  class="normal"></textarea>
   </div>
+
+  <div class="item">
+    <label class="normal">Estado</label>
+    <select formControlName="estado">
+      <option value="true">activo</option>
+      <option value="false">inactivo</option>
+    </select>
+  </div>
+
 </div>
 
 <div class="action-center"><div class="btn-click btn-red" (click)="sendFileplaza()"><mat-icon>save</mat-icon> guardar</div></div>
@@ -175,13 +184,22 @@
 
       <div class="item">
         <label class="normal">educación requerida</label>
-        <input type="text"  [(ngModel)]="EducacionPlaza" formControlName="educacion" class="normal">
+        <input type="text" [(ngModel)]="EducacionPlaza" formControlName="educacion" class="normal">
       </div>
 
       <div class="item">
         <label class="normal">experiencia laboral</label>
-        <textarea name="" id=""  [(ngModel)]="ExperienciaPlaza" formControlName="experiencia" class="normal"></textarea>
+        <textarea [(ngModel)]="ExperienciaPlaza" formControlName="experiencia" class="normal"></textarea>
       </div>
+
+      <div class="item">
+        <label class="normal">Estado</label>
+        <select [(ngModel)]="EstadoPlaza" formControlName="estado">
+          <option value="true">activo</option>
+          <option value="false">inactivo</option>
+        </select>
+      </div>
+
       <div id="open-modal-edit-fn" class="btn-click" (click)="ModalEditFunctions()" (click)="obtenerFunciones()" >editar funciones</div>
 
       </div>

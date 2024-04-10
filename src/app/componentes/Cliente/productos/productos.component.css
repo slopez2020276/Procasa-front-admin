@@ -1,10 +1,4 @@
 
-h1.container-h1 {
-  width: 100%;
-  position: relative;
-  margin-top: 0;
-  padding-top: 100px;
-}
 
 div#container-main {
   width: 100vw;
@@ -21,10 +15,10 @@ div#container-main {
 }
 
 div#cont-products {
-  width: 80%;
+  width: 80vw;
   height: auto;
   display: flex;
-  justify-content: start;
+  justify-content: center;
   align-items: center;
   align-content: center;
   flex-wrap: wrap;
@@ -66,14 +60,13 @@ div.product h2 {
 }
 
 div.cont-details {
-  width: 300px;
-  max-width: 350px;
+  width: 280px;
   height: auto;
   max-height: 300px;
   overflow-x: hidden;
   overflow-y: scroll;
   top: 50%;
-  left: 10%;
+  left: -40px;
   position: absolute;
   background: #F4F4F4;
   border-radius: 4px;
@@ -142,49 +135,20 @@ div#container-promesa {
 
 
 div.cont-promesa {
-  width: 250px;
-  height: 350px;
+  width: 200px;
+  height: auto;
   padding-top: 1rem;
   position: relative;
-  display: flex;
-  justify-content: space-evenly;
-  align-items: start;
-  align-content: start;
-  flex-wrap: wrap;
-  color: #FFF;
-  padding: 0 4px;
 }
 
-div.cont-promesa h1 {
-  font-size: 19pt;
-  text-align: center;
-}
-
-
-div.subcont-promesa {
+div.cont-promesa img {
   width: 100%;
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: start;
-  font-size: 25pt;
-  text-align: center;
-}
-
-div.subcont-promesa img {
-  width: 150px;
   height: auto;
-  max-width: 100%;
-  max-height: 100%;
+  border-left: 1px solid #FFF;
 }
 
+div.cont-promesa:nth-child(1) img {border-left: 1px solid transparent;}
 
-div.cont-promesa:nth-child(2) { border-left: 1px solid whitesmoke; }
-div.cont-promesa:nth-child(3) { border-left: 1px solid whitesmoke; }
-div.cont-promesa:nth-child(4) { border-left: 1px solid whitesmoke; }
-div.cont-promesa:nth-child(5) { border-left: 1px solid whitesmoke; }
-
-div.letter-small { font-size: 14pt; }
 
 div#container-marcas {
   width: 100%;
@@ -302,11 +266,6 @@ div#cont-whatsapp a h2 {
 
 
 @media screen and (max-width: 400px) {
-h1.container-h1 {
-  width: 90%;
-  font-size: 20pt;
-  margin-top: 3vh;
-}
 
 div#cont-products {
   width: 90%;
@@ -343,3 +302,33 @@ div.cont-details { width: 80%; left: 10%; top: 20%;}
   }
 
 }
+
+
+
+
+@media screen and (max-width: 1000px) {
+  div.cont-promesa { width: 180px; }
+}
+
+@media screen and (max-width: 900px) {
+  div#container-promesa { width: 550px; justify-content: start;}
+  div.cont-promesa { width: 180px; }
+  div.cont-promesa:nth-child(1) img {border-left: 1px solid #FFF;}
+  div.cont-promesa:nth-child(3) img {border-right: 1px solid #FFF;}
+  div.cont-promesa:nth-child(5) img {border-right: 1px solid #FFF;}
+}
+
+
+
+@media screen and (max-width: 550px) {
+  div#container-promesa { width: 550px; justify-content: space-evenly;}
+  div.cont-promesa { width: 180px; }
+  
+  div.cont-promesa img {border: 1px solid transparent;}
+  div.cont-promesa:nth-child(1) img {border-left: 1px solid transparent;}
+  div.cont-promesa:nth-child(3) img {border-right: 1px solid transparent;}
+  div.cont-promesa:nth-child(5) img {border-right: 1px solid transparent;}
+}
+
+
+@media screen and (max-width: 380px) { div.cont-promesa { width: 300px; } }

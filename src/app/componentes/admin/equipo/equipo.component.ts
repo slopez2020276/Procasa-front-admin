@@ -29,6 +29,7 @@ export class EquipoComponent {
   UbicacionPlaza:any
   DepartamentoPlaza:any
   EmpresaPlaza:any
+  EstadoPlaza:any
   EducacionPlaza:any
   ExperienciaPlaza:any
   FechaPlaza:any
@@ -62,6 +63,7 @@ constructor(){
     experiencia : new FormControl(),
     titulo : new FormControl(),
     formulario : new FormControl(),
+    estado : new FormControl(),
   })
   this.fomrumarioAgregarPlaza = new FormGroup({
     ubicacion : new FormControl(),
@@ -71,6 +73,7 @@ constructor(){
     educacion : new FormControl(),
     experiencia : new FormControl(),
     titulo : new FormControl(),
+    estado : new FormControl(),
   })
 
   this.formEditarPlaza = new FormGroup({
@@ -81,6 +84,7 @@ constructor(){
     educacion : new FormControl(),
     experiencia : new FormControl(),
     titulo : new FormControl(),
+    estado : new FormControl(),
   })
 
 

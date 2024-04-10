@@ -158,8 +158,7 @@ div.fecha-noticia {
 }
 
 
-@media screen and (max-width: 850px ) {
-  
+@media screen and (max-width: 850px ) {  
 div.noticia {
   width: 270px;
   position: relative;
@@ -172,4 +171,15 @@ div.noticia {
   margin: 0 10px;
 }
 
+div.cont-datos-noticia h1 { font-size: 20pt; }
+
 }
+
+@media screen and (max-width: 650px ) {
+div.noticia {
+  width: 229px;
+  height: 249px;
+}
+  
+}
+

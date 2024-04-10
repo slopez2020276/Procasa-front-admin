@@ -9,6 +9,8 @@ section.container-principal {
   height: auto;
   min-height: 90vh;
   /* border: 2px dotted springgreen; */
+  overflow-x: hidden;
+  overflow-y: scroll;
 }
 
 section#noticias { opacity: 1; }

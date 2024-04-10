@@ -48,13 +48,13 @@ div#sub-section-1 p {
 
 
 div.sub-mv h1 {
-    background-color: #AA182C;
+  font-size: 30pt;
+    background: #AA182C;
     border-radius: 10px;
     display: block;
     height: 40px;
     width: auto;
     position: relative;
-    font-size: 30pt;
     display: flex;
     padding: 1rem 4rem;
     justify-content: center;
@@ -67,6 +67,7 @@ div#sub-valores div img {
     height: auto;
     display: block;
 }
+
 
 
 
@@ -143,13 +144,6 @@ div#sub-valores div:hover img { width: 80px; }
 
 @media (max-width: 680px) {
 
-   div#sub-valores div img {
-    width: 80px;
-    height: auto;
-    min-height: 80px;
-    display: block;
-}
-
 div#sub-valores h6 {
   font-size: 14pt;
 }
@@ -162,16 +156,29 @@ div#sub-valores h6 {
   }
 
   div#sub-valores p {
-    width: 260px;
-    padding: 0 1rem;
+    width: 220px;
     text-align: left;
-    opacity: 0;
-    transition: .5s ease;
-    top: 0;
-    left: auto;
-    position: absolute;
-    background: rgba(255,255,255,1);
-    z-index: 49;
+    position: relative;
+    padding: 1rem;
+    height: auto;
+    max-height: 120px;
+    overflow-x: hidden;
+    overflow-y: scroll;
   }
+}
 
+
+@media screen and (max-width: 480px ) {
+  div#sub-valores div { width: 90%; }
+}
+
+
+@media screen and (max-width:570px ) {
+  div#sub-valores div p {height: 0px; transition: .4s;}
+  div#sub-valores div:hover p {height: auto; max-height: 150px;}
+
+  div#sub-section-1 div.sub-mv img { width: 110px; }
+  div.sub-mv h1 { font-size: 20pt; }
+  div#sub-valores div img { width: 180px; }
+  div#sub-valores div:hover img { width: 130px; }
 }
