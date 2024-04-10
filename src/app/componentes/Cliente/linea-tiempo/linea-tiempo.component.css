@@ -70,7 +70,7 @@ div.cont-2-column-item {
   position: relative;
 }
 
-div.cont-2-column-item:nth-child(even) { opacity: .2; }
+div.cont-2-column-item:nth-child(even) { margin-top: 100px; top: 100px; }
 
 
 div.cont-2-column-item h2 {
@@ -117,6 +117,10 @@ div.cont-year {
   width: 100%;
   display: flex;
   justify-content: center;
+  position: absolute;
+  top: 0;
+  left: auto;
+  z-index: 49;
 }
 
 div.year-text {

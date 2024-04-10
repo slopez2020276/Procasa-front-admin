@@ -4,9 +4,9 @@
         <div id="cont-2-column">
 
           @for (os of data; track os.id) {
-            <div class="cont-year"><div class="year-text bold">{{os.anio}}</div></div>
-                <!-- <div *ngFor="let evento of os.eventos; let i = index"></div> -->
-                <div *ngFor="let evento of os.eventos; let i = index" class="cont-2-column-item" [ngClass]="{'impar': i % 2 !== 0}">
+            <!-- <div *ngFor="let evento of os.eventos; let i = index"></div> -->
+            <div *ngFor="let evento of os.eventos; let i = index" class="cont-2-column-item" [ngClass]="{'impar': i % 2 !== 0}">
+              <div class="cont-year"><div class="year-text bold">{{os.anio}}</div></div>
                   <div class="cont-img-tl"><img [src]="evento.ImgPathLineaTiempo" [width]="1" [height]="1"></div>
                   <p>{{evento.descriptionLineaTiempo}}</p>
                 </div>
