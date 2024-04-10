@@ -388,8 +388,6 @@ div#open-modal-edit-fn {
   box-shadow: 1px 1px 1px rgba(0, 0, 0, .2);
 }
 
-
-
 div#modal-edit-fns {
   width: 100%;
   height: 100%;
@@ -403,6 +401,8 @@ div#modal-edit-fns {
   align-items: start;
   flex-wrap: wrap;
 }
+
+
 div#modal-edit-fns.show { display: flex; }
 
 div#cont-input-edit {

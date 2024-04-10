@@ -1,6 +1,7 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { ProductosService } from '../../../services/productos.service';
 import { HistoriaService } from '../../../services/historia.service';
+import { MarcasService } from '../../../services/marcas.service';
 
 @Component({
   selector: 'app-productos',
@@ -13,12 +14,14 @@ export class ProductosComponent implements OnInit {
   data
   imgPrincipal
   imgFondo
-   colorn
-   tipoBack 
+  colorn
+  tipoBack
   dataProductos
   productorService = inject(ProductosService)
+  MarcasServices = inject(MarcasService)
   HistoriaService = inject(HistoriaService)
-  
+  dataMarcas
+
   async ngOnInit(): Promise<void> {
     this.ObtenerProductos()
     const response = await this.HistoriaService.obtenerHistoria()
@@ -27,6 +30,7 @@ export class ProductosComponent implements OnInit {
     this.imgFondo = this.data[0].imgPathFondo
     this.colorn = this.data[0].colorFondo
     this.evaluarTipoBack()
+    this.obtnerMarcas()
   }
   
   ObtenerProductos(){
@@ -38,6 +42,12 @@ export class ProductosComponent implements OnInit {
     )
   }
 
+
+  async obtnerMarcas(){
+    const response = await this.MarcasServices.obtenerMarcas()
+    this.dataMarcas = response.marcas
+    console.log(this.dataMarcas)
+  }
 
   evaluarTipoBack(){
     if(this.data[0].backgroundTipo == true){

@@ -44,6 +44,10 @@ import { BackgroundComponent } from './componentes/Complements/background/backgr
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { MatIconModule } from '@angular/material/icon';
 import { NgxUiLoaderModule,NgxUiLoaderConfig } from 'ngx-ui-loader';
+import { NavbarWhiteComponent } from './componentes/Complements/navbar-white/navbar-white.component';
+import { NoticiaUnicaComponent } from './componentes/Cliente/noticia-unica/noticia-unica.component';
+import { GeneralesComponent } from './componentes/admin/generales/generales.component';
+import { NuestrasMarcasComponent } from './componentes/admin/nuestras-marcas/nuestras-marcas.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -79,6 +83,10 @@ import { NgxUiLoaderModule,NgxUiLoaderConfig } from 'ngx-ui-loader';
     AdminproductosComponent,
     EquipoComponent,
     BackgroundComponent,
+    NavbarWhiteComponent,
+    NoticiaUnicaComponent,
+    GeneralesComponent,
+    NuestrasMarcasComponent,
   ],
   imports: [
     BrowserModule,
@@ -89,13 +97,12 @@ import { NgxUiLoaderModule,NgxUiLoaderConfig } from 'ngx-ui-loader';
     NgOptimizedImage,
     MatIconModule,
     NgxUiLoaderModule.forRoot({
-      fgsColor: '#a9182c',
+      fgsColor: '#AA182C',
       fgsType: 'three-strings',
       text: 'Cargando, por favor espere...',
       fgsSize: 100,
     })
-  
-    
+
   ],
   providers: [NgModel,{provide: HTTP_INTERCEPTORS,useClass: InterceptorService,multi: true,},provideAnimationsAsync('noop')],
   bootstrap: [AppComponent]

@@ -9,13 +9,9 @@ section.container-principal {
   height: auto;
   min-height: 90vh;
   /* border: 2px dotted springgreen; */
-  overflow-x: hidden;
 }
 
 section#noticias { opacity: 1; }
-section#valores {
- background: transparent;
-}
 
 div#cont-introduction {
   width: 100vw;
@@ -30,6 +26,8 @@ div#cont-introduction {
   opacity: 0;
   transition: .2s ease;
 }
+
+section#linea-tiempo { padding-bottom: 200px; }
 
 div#intro-1 {
   width: 100%;
@@ -76,8 +74,9 @@ img#img-principal {
   height: auto;
   top: auto;
   left: auto;
-  transition: .4s;
 }
+
+
 
 @keyframes introduction {
   0% { transform: scale(1.4); }
@@ -92,6 +91,7 @@ section#news {
   height: auto;
   opacity: 1;
   z-index: 10;
+  margin-bottom: 200px;
 }
 
 

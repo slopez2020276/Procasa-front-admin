@@ -4,6 +4,11 @@
 
 * {box-sizing: border-box; outline: none; padding: 0; margin: 0; border: none; font-family: realeway_light; font-size: 11pt;}
 
+*::-webkit-scrollbar { -webkit-appearance: none; }
+*::-webkit-scrollbar:vertical { width: 0px; }
+*::-webkit-scrollbar:horizontal { width: 0px; }
+
+
 :root {
   --first: #0000FF;
   --negro: #252525;
@@ -12,8 +17,14 @@
   --white: #FAFAFA;
   --main: #AA182C;
   --limit: #AA182C;
+
+/* FONT SIZE WEB SITE */
+  --fs-title: 50pt;
+  --fs-sub: 16pt;
+  --fs-text: 12pt;
 }
 
+textarea {resize: none;}
 
 body {
     overflow-x: hidden;
@@ -32,10 +43,6 @@ h1.container-h1 {
   color: #FFF;
   margin-top: 15vh;
   margin-bottom: 50px;
-}
-
-@media screen and (max-width:800px ) {
-  h1.container-h1 { margin-top: 15vh;  margin-bottom: 20px; }
 }
 
 
@@ -63,6 +70,9 @@ div.container-head h1 {
   display: inline-block;
   text-transform: uppercase;
 }
+
+
+
 
 div.container-head span {
   display: flex;
@@ -240,32 +250,15 @@ div.item label::first-letter {text-transform: uppercase;}
 img#background-texture {
   width: auto;
   min-width: 100vw;
-  height: 120vh;
-  min-height: 100vh;
+  height: 100vh;
   position: fixed;
   top: 0;
-  left: 0;
+  left: calc(50% - 50%);
   z-index: 0;
   opacity: 1;
 }
 
 .e4 {background: #ededee;}
-
-h1.container-h1 {
-  width: 100%;
-  padding: 2rem;
-  text-align: center;
-  font-size: 40pt;
-  color: #FFF;
-  margin-top: 30vh;
-}
-
-/* * { transition: .2s ease;
-    scrollbar-width: thin;
-    color: var(--negro);
-    font-size: 12pt;
-} */
-
 
 
 div.container {
@@ -584,13 +577,6 @@ input[type=file]:active { transform: scale(.93); box-shadow: 0px 0px 0px rgba(0,
 
 /* ================================================================================================================================ */
 
-@media screen and (max-width: 766px) {
-  h1.container-h1 {
-    font-size: 30pt;
-    margin-top: 20vh;
-  }
-}
-
 
 @media screen and (max-width: 500px) {
 
@@ -693,4 +679,6 @@ div.cont-btns-alert div mat-icon { margin: 0 1rem; }
   div.container-head button mat-icon { display: none; }
   
 }
+
+
 

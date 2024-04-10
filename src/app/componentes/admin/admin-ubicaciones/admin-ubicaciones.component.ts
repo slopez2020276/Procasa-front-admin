@@ -33,7 +33,10 @@ maps:any
 waze:any
 telefono:any
 imgPath:any
+whatsapp:any
+direccion:any
 
+ecostate
 
 containerAlert: HTMLElement | any
 widthLimit
@@ -47,6 +50,7 @@ constructor (){
     tipoTienda: new FormControl(),
     direccion: new FormControl(),
     telefono: new FormControl(),
+    whatsapp: new FormControl(),
     horario: new FormControl(),
     nombreTienda: new FormControl(),
     descripcion: new FormControl(),
@@ -57,12 +61,21 @@ constructor (){
     tipoTienda: new FormControl(),
     direccion: new FormControl(),
     telefono: new FormControl(),
+    whatsapp: new FormControl(),
     horario: new FormControl(),
     nombreTienda: new FormControl(),
     descripcion: new FormControl(),
     enlaceMaps: new FormControl(),
     enlaceWaze: new FormControl(),
   })
+}
+
+mostrarwts(mostrar:any){
+  this.ecostate = true
+}
+
+ocultarwts(mostrar:any){
+  this.ecostate = false
 }
 
 ngOnInit(): void {
@@ -150,8 +163,6 @@ saveLocation(event: MouseEvent){
   let nombre: string = inNombre.value
   const inSucursal: HTMLSelectElement | any = document.getElementById('sucursal')
   let sucursal: string = inSucursal.value
-  const inTelefono: HTMLInputElement | any = document.getElementById('telefono')
-  let telefono: string = inTelefono.value
   const inHorario: HTMLInputElement | any = document.getElementById('horario')
   let horario: string = inHorario.value
   const inMaps: HTMLInputElement | any = document.getElementById('maps')
@@ -161,7 +172,7 @@ saveLocation(event: MouseEvent){
   const inDesc: HTMLInputElement | any = document.getElementById('descripcion')
   let descripcion: string = inDesc.value
 
-if(img!=="" && nombre!=="" && sucursal!=="" && telefono!=="" && horario!=="" && maps!=="" && waze!=="" && descripcion!==""){
+if(img!=="" && nombre!=="" && sucursal!=="" && horario!=="" && maps!=="" && waze!=="" ){
   this.AlertOption("¿Desea guardar la nueva Ubicación?")
     const parent: HTMLElement | any = this.containerAlert
     const btn: HTMLElement | any = parent?.childNodes[0]?.childNodes[0]?.childNodes[1]?.childNodes[0]
@@ -204,6 +215,7 @@ console.log(body)
     body.append('descripcion',this.fornularioAgregarUbicacion.value.descripcion)
     body.append('direccion',this.fornularioAgregarUbicacion.value.direccion)
     body.append('telefono',this.fornularioAgregarUbicacion.value.telefono)
+    body.append('whatsapp',this.fornularioAgregarUbicacion.value.whatsapp)
     body.append('horario',this.fornularioAgregarUbicacion.value.horario)
     body.append('enlaceMaps',this.fornularioAgregarUbicacion.value.enlaceMaps)
     body.append('enlaceWaze',this.fornularioAgregarUbicacion.value.enlaceWaze)
@@ -213,6 +225,7 @@ console.log(body)
     body.append('descripcion',this.fornularioAgregarUbicacion.value.descripcion)
     body.append('direccion',this.fornularioAgregarUbicacion.value.direccion)
     body.append('telefono',this.fornularioAgregarUbicacion.value.telefono)
+    body.append('whatsapp',this.fornularioAgregarUbicacion.value.whatsapp)
     body.append('horario',this.fornularioAgregarUbicacion.value.horario)
     body.append('enlaceMaps',this.fornularioAgregarUbicacion.value.enlaceMaps)
     body.append('enlaceWaze',this.fornularioAgregarUbicacion.value.enlaceWaze)
@@ -259,26 +272,28 @@ sendFileEdit():void{
 
   if(this.fileTmpEdit){
     body.append('imgPath', this.fileTmpEdit.fileRaw, this.fileTmpEdit.fileName)
-    body.append('tipoTienda', this.fornularioAgregarUbicacion.value.tipoTienda)
-    body.append('nombreTienda',this.fornularioAgregarUbicacion.value.nombreTienda)
-    body.append('descripcion',this.fornularioAgregarUbicacion.value.descripcion)
-    body.append('direccion',this.fornularioAgregarUbicacion.value.direccion)
-    body.append('telefono',this.fornularioAgregarUbicacion.value.telefono)
-    body.append('horario',this.fornularioAgregarUbicacion.value.horario)
-    body.append('enlaceMaps',this.fornularioAgregarUbicacion.value.enlaceMaps)
-    body.append('enlaceWaze',this.fornularioAgregarUbicacion.value.enlaceWaze)
+    body.append('tipoTienda', this.formularioEditUbicacion.value.tipoTienda)
+    body.append('nombreTienda',this.formularioEditUbicacion.value.nombreTienda)
+    body.append('descripcion',this.formularioEditUbicacion.value.descripcion)
+    body.append('direccion',this.formularioEditUbicacion.value.direccion)
+    body.append('telefono',this.formularioEditUbicacion.value.telefono)
+    body.append('whatsapp',this.formularioEditUbicacion.value.whatsapp)
+    body.append('horario',this.formularioEditUbicacion.value.horario)
+    body.append('enlaceMaps',this.formularioEditUbicacion.value.enlaceMaps)
+    body.append('enlaceWaze',this.formularioEditUbicacion.value.enlaceWaze)
   }else{
-    body.append('tipoTienda', this.fornularioAgregarUbicacion.value.tipoTienda)
-    body.append('nombreTienda',this.fornularioAgregarUbicacion.value.nombreTienda)
-    body.append('descripcion',this.fornularioAgregarUbicacion.value.descripcion)
-    body.append('direccion',this.fornularioAgregarUbicacion.value.direccion)
-    body.append('telefono',this.fornularioAgregarUbicacion.value.telefono)
-    body.append('horario',this.fornularioAgregarUbicacion.value.horario)
-    body.append('enlaceMaps',this.fornularioAgregarUbicacion.value.enlaceMaps)
-    body.append('enlaceWaze',this.fornularioAgregarUbicacion.value.enlaceWaze)
+    body.append('tipoTienda', this.formularioEditUbicacion.value.tipoTienda)
+    body.append('nombreTienda',this.formularioEditUbicacion.value.nombreTienda)
+    body.append('descripcion',this.formularioEditUbicacion.value.descripcion)
+    body.append('direccion',this.formularioEditUbicacion.value.direccion)
+    body.append('telefono',this.formularioEditUbicacion.value.telefono)
+    body.append('whatsapp',this.formularioEditUbicacion.value.whatsapp)
+    body.append('horario',this.formularioEditUbicacion.value.horario)
+    body.append('enlaceMaps',this.formularioEditUbicacion.value.enlaceMaps)
+    body.append('enlaceWaze',this.formularioEditUbicacion.value.enlaceWaze)
   }
 
-  console.log(this.formularioEditUbicacion.value.fecha)
+  console.log(this.formularioEditUbicacion.value)
   this.ubicacionService.sendEdit(body,this.idUbicacion)
   .subscribe(res =>{
     this.formularioEditUbicacion.reset()
@@ -290,7 +305,7 @@ sendFileEdit():void{
 
 
 deleteProduct(id:any){
-  this.AlertOption("¿Desea borrar el Producto?")
+  this.AlertOption("¿Desea borrar la Ubicación?")
   const parent: HTMLElement | any = this.containerAlert
   const btn: HTMLElement | any = parent?.childNodes[0]?.childNodes[0]?.childNodes[1]?.childNodes[0]
 
@@ -304,7 +319,7 @@ deleteProduct(id:any){
 async eliminarUbicacion(id:any){
   const respuesta = await this.ubicacionService.eliminarUbicacion(id)
   console.log(respuesta)
-  this.AlertMessage("¡Producto Eliminado!", 1500)
+  this.AlertMessage("¡Ubicación eliminada con éxito!", 1500)
   this.obtenerUbicacion()
 }
 
@@ -316,11 +331,12 @@ async ObtenerUbixId(id){
   this.maps = Ubicacion.ubi.enlaceMaps
   this.waze = Ubicacion.ubi.enlaceWaze
   this.telefono = Ubicacion.ubi.telefono
-  this.idUbicacion = Ubicacion.ubi.id
+  this.idUbicacion = Ubicacion.ubi._id
   this.tipoTienda = Ubicacion.ubi.tipoTienda
   this.nombreTienda = Ubicacion.ubi.nombreTienda
   this.descripcion = Ubicacion.ubi.descripcion
   this.imgPath =Ubicacion.ubi.imgPath
+  this.direccion = Ubicacion.ubi.direccion
 }
 
 editLocation(){ document.getElementById('modal-edit-ubicacion')?.classList.toggle('toggle') }

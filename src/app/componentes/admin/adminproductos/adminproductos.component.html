@@ -33,9 +33,9 @@
           </div>
 
         <div class="actions">
-          <div class="btn-click btn-red" (click)="openAddCategory($event)" (click)="getProductToSearch(os.id)" ><mat-icon> add</mat-icon></div>
-          <div class="edit-product btn-click btn-red" (click)="getProductToSearch(os.id)" (click)="ModalProduct('edit')"><mat-icon>edit</mat-icon></div>
-          <div class="btn-click btn-red" (click)="DeleteProduct(os.id)"  >  <mat-icon>delete</mat-icon></div>
+          <div class="btn-click btn-red" (click)="openAddCategory($event)" (click)="getProductToSearch(os._id)" ><mat-icon> add</mat-icon></div>
+          <div class="edit-product btn-click btn-red" (click)="getProductToSearch(os._id)" (click)="ModalProduct('edit')"><mat-icon>edit</mat-icon></div>
+          <div class="btn-click btn-red" (click)="DeleteProduct(os._id)"  >  <mat-icon>delete</mat-icon></div>
         </div>
 
           <div class="cont-add-cat cont-add-cat-new">
@@ -158,10 +158,10 @@
   @for (categoria of dataCategorias; track $index) {
     <div class="cont-categories">
       <div class="cont-input-btn">
-        <div class="btn-sub btn-click btn-red" (click)="eliminarCategoria(categoria.id)"><mat-icon>delete</mat-icon></div>
-        <div class="btn-sub btn-click btn-red" (click)="ObteerItemsxCategoria(categoria.id)" (click)="openEditItems($event)"><mat-icon>search</mat-icon></div>
-        <div class="btn-sub btn-click btn-red tog" (click)="setIdCategoria(categoria.id)" (click)="toggleEditother($event)" (click)="enableInput($event)"><mat-icon>edit</mat-icon></div>
-        <div class="btn-sub btn-click btn-red tog"  (click)="editarCategoria(categoria.id)" (click)="toggleSaveother($event)"><mat-icon>save</mat-icon></div>
+        <div class="btn-sub btn-click btn-red" (click)="eliminarCategoria(categoria._id)"><mat-icon>delete</mat-icon></div>
+        <div class="btn-sub btn-click btn-red" (click)="ObteerItemsxCategoria(categoria._id)" (click)="openEditItems($event)"><mat-icon>search</mat-icon></div>
+        <div class="btn-sub btn-click btn-red tog" (click)="setIdCategoria(categoria._id)" (click)="toggleEditother($event)" (click)="enableInput($event)"><mat-icon>edit</mat-icon></div>
+        <div class="btn-sub btn-click btn-red tog"  (click)="editarCategoria(categoria._id)" (click)="toggleSaveother($event)"><mat-icon>save</mat-icon></div>
         <form [formGroup]="formularioEditarCategoria">
           <input formControlName="nuevoNombreCategoria" type="text" placeholder="{{categoria.Nombre}}">
         </form>

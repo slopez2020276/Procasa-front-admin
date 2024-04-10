@@ -1,0 +1,63 @@
+
+<app-admin-navbar></app-admin-navbar>
+
+<div class="container-head">
+    <h1>Ajustes Generales</h1>
+    <span>
+      <!-- <input class="bold" type="text" name="search" placeholder="buscar plaza"> -->
+      <!-- <button class="btn-click btn-white normal" (click)="ModalProduct('modal-add-plaza')"><mat-icon>add</mat-icon> Agregar</button> -->
+    </span>
+  </div>
+
+
+
+<div class="container-main">
+    <div class="settings-font">
+        <h2 class="bold">Tamaño de fuentes</h2>
+        <div class="setting"><h3 class="bold">Títulos</h3><input class="normal" type="number" placeholder="pt"><div class="btn-click btn-red normal"><mat-icon>save</mat-icon></div></div>
+        <div class="setting"><h3 class="bold">Sub-Títulos 1</h3><input class="normal" type="number" placeholder="pt"><div class="btn-click btn-red normal"><mat-icon>save</mat-icon></div></div>
+        <div class="setting"><h3 class="bold">Sub-Títulos 2</h3><input class="normal" type="number" placeholder="pt"><div class="btn-click btn-red normal"><mat-icon>save</mat-icon></div></div>
+        <div class="setting"><h3 class="bold">Texto</h3><input class="normal" type="number" placeholder="pt"><div class="btn-click btn-red normal"><mat-icon>save</mat-icon></div></div>
+      </div>
+      
+      <div class="settings-img">
+        <h2 class="bold">Resolución de imágenes</h2>
+
+        <div class="cont-resize-input">
+          <p class="bold">Historia</p>
+          <select class="normal"><option value="80">80%</option><option value="85">85%</option><option value="90">90%</option><option value="95">95%</option><option value="100">100%</option><option value="105">105%</option><option value="110">110%</option><option value="115">115%</option><option value="120">120%</option></select>
+          <div class="btn-click btn-red normal"><mat-icon>save</mat-icon></div>
+        </div>
+
+        <div class="cont-resize-input">
+          <p class="bold">Línea del Tiempo</p>
+          <select class="normal"><option value="80">80%</option><option value="85">85%</option><option value="90">90%</option><option value="95">95%</option><option value="100">100%</option><option value="105">105%</option><option value="110">110%</option><option value="115">115%</option><option value="120">120%</option></select>
+          <div class="btn-click btn-red normal"><mat-icon>save</mat-icon></div>
+        </div>
+
+        <div class="cont-resize-input">
+          <p class="bold">Noticias</p>
+          <select class="normal"><option value="80">80%</option><option value="85">85%</option><option value="90">90%</option><option value="95">95%</option><option value="100">100%</option><option value="105">105%</option><option value="110">110%</option><option value="115">115%</option><option value="120">120%</option></select>
+          <div class="btn-click btn-red normal"><mat-icon>save</mat-icon></div>
+        </div>
+
+
+        
+    </div>
+</div>
+
+
+
+<!-------- A L E R T ---------------------------------------------------------------------------------------------------------------------------------------------------->
+<div id="background-alert">
+  <div class="container-alert" id="container-alert">
+    <div class="alert-model">
+      <p class="message bold"></p>
+      <div class="cont-btns-alert" id="btns">
+        <div class="btn-click btn-red" id="confirm-alert"><mat-icon>done</mat-icon> confirmar</div>
+        <div class="btn-click btn-gray" (click)="AlertClose()"><mat-icon>close</mat-icon> cancelar</div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- -->

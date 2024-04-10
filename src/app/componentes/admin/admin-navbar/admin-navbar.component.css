@@ -15,12 +15,11 @@ div#container-menu {
   border-right: 4px solid #656565;
 }
 
-div#container-menu > * { opacity: 1; transition: opacity .8s ease-in-out;}
+div#container-menu > * { opacity: 1; transition: opacity .8s ease-in-out; }
 
 div#container-menu.openmenu { left: 0; }
 
 div#container-menu:hover > * { opacity: 1; }
-
 
 div#cont-menu-bar {
   width: 40px;
@@ -59,13 +58,13 @@ div#cont-menu-bar:active {
 
 div#list-menu {
   width: 100%;
-  height: 200px;
+  height: auto;
   display: flex;
   justify-content: center;
   align-items: start;
   flex-wrap: wrap;
   position: relative;
-  margin-top: 4rem;
+  margin-top: 2rem;
 }
 
 div#list-menu a {
@@ -91,9 +90,8 @@ div#cont-btn {
   display: flex;
   justify-content: center;
   align-items: center;
-  position: absolute;
-  bottom: 6rem;
-  left: 0;
+  position: relative;
+  margin-top: 1rem;
 }
 
 button#close-session {

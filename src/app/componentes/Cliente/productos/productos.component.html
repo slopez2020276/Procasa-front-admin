@@ -1,40 +1,57 @@
 @if (tipoBack == true ) { <img title="imagen de muestra" [src]="imgFondo"  id="background-texture" > }@else{ <img title="imagen de muestra"  id="background-texture"[style.background-color]="colorn" > }
-<app-navbar></app-navbar>
+<app-navbar-white/>
 
 <div id="container-main">
-  <h1 class="container-h1 bold" id="h1-promesa">¿POR QUÉ PROCASA?</h1>
+  <h1 class="container-h1 bold" id="h1-promesa">NUESTRA PROMESA</h1>
 
   <div id="container-promesa">
-    <div class="cont-promesa">
-    <div class="subcont-promesa"> <img src="../../assets/img/promesa1.jpg" alt="" title="promesa"> </div>
-    <div class="subcont-promesa letter-red bold">BLAST FREEZING MINIMIZES CRYSTALIZATION</div>
-  </div>
-  
+    
   <div class="cont-promesa">
-    <div class="subcont-promesa"> <img src="../../assets/img/promesa2.jpg" alt="" title="promesa"> </div>
-    <div class="subcont-promesa letter-red bold">SEALS IN VITAMINS AND MINERALS</div>
+    <div class="subcont-promesa">Certificación SQF</div>
+      <div class="subcont-promesa"> <img src="../../../../assets/img/sqf.png" title="promesa"> </div>
+      <div class="subcont-promesa">en nuestra planta</div>
   </div>
-  
+    
   <div class="cont-promesa">
-    <div class="subcont-promesa"> <img src="../../assets/img/promesa3.jpg" alt="" title="promesa"> </div>
-    <div class="subcont-promesa letter-red bold">USE ONLY WHAT YOU NEED FOR LESS WASTE</div>
+      <div class="subcont-promesa"> <img src="../../../../assets/img/logo 50 años.png" title="promesa"> </div>
+      <div class="subcont-promesa">50 años de experiencia</div>
   </div>
+    
+  <div class="cont-promesa">
+      <div class="subcont-promesa"> <img src="../../../../assets/img/corte artesanal.png" title="promesa"> </div>
+      <div class="subcont-promesa">Producto cortado artesanalmente por expertos.</div>
+  </div>
+    
+  <div class="cont-promesa">
+      <div class="subcont-promesa"> <img src="../../../../assets/img/tecnica de congelación.png" title="promesa"> </div>
+      <h1 class="bold">Técnica de Congelación</h1>
+      <div class="subcont-promesa letter-small">Asegura que todas las vitaminas, nutrientes, jugosidad, ternura y sabor se mantengan</div>
+  </div>
+
+  <div class="cont-promesa">
+      <div class="subcont-promesa"> <img src="../../../../assets/img/congeladores mas frescos.png" title="promesa"> </div>
+      <h1 class="bold">Congelado es más fresco</h1>
+      <div class="subcont-promesa letter-small">Monitoreamos y controlamos el proceso en cada paso. Mantenemos los alimentos a temperaturas óptimas durante toda la cadena de suministro</div>
+  </div>
+
 </div>
+
+
+<!-- ========================================================================================================================================================================================================================== -->
 
 
 <h1 class="container-h1 bold" id="h1-marcas">NUESTRAS MARCAS</h1>
 <div id="container-marcas">
   <div id="carrousel-marcas">
-    <div class="marca-item"><img src="../../assets/img/marca1.jpg" alt=""></div>
-    <div class="marca-item"><img src="../../assets/img/marca2.jpg" alt=""></div>
-    <div class="marca-item"><img src="../../assets/img/marca3.jpg" alt=""></div>
-    <div class="marca-item"><img src="../../assets/img/marca4.jpg" alt=""></div>
-    <div class="marca-item"><img src="../../assets/img/marca1.jpg" alt=""></div>
-    <div class="marca-item"><img src="../../assets/img/marca2.jpg" alt=""></div>
-    <div class="marca-item"><img src="../../assets/img/marca3.jpg" alt=""></div>
-    <div class="marca-item"><img src="../../assets/img/marca4.jpg" alt=""></div>
-  </div>
+    @for (os of dataMarcas ; track $index){
+
+      <div class="marca-item"><img src={{os.imgPath}}><div class="info-product"><p class="normal">{{os.textMarca}}</p></div></div>
+    }
+    </div>
 </div>
+
+
+<!-- ========================================================================================================================================================================================================================== -->
 
 
   <h1 class="container-h1 bold" id="h1-catalogo">CATÁLOGO</h1>
@@ -42,37 +59,32 @@
 
     @for (os of dataProductos; track os.id  ) {
       <div class="product">
-
-          <img [ngSrc]=" os.imgPath" [width]="500" [height]="500" class="img-product">
+              <div class="cont-img-product"><img [ngSrc]="os.imgPath" [width]="1" [height]="1" class="img-product"></div>
           <h2>{{os.nombreProducto}}</h2>
               <div class="cont-details">
                 <h1 class="bold">{{os.nombreProducto}}</h1>
                   <div class="cont-ul">
-                    <ul>
-                      @for (categoria of os.categorias; track $index) {
+                    @for (categoria of os.categorias; track $index) {
+                        <ul>
                         <li class="bold">{{categoria.Nombre}}</li>
                         @for (items of categoria.items; track $index) {
                           <li>{{items}}</li>
                         }
-                      
+                      </ul>
                       }
-                      
-                    </ul>
-                  
                   </div>
-                  
                 </div>
               </div>
                 }
-                
-
-       
-
-
-
   </div>
 </div>
 
-<div id="cont-whatsapp"></div>
+<div id="cont-whatsapp">
+  <a href="https://api.whatsapp.com/send/?phone=50230107381&text&type=phone_number&app_absent=0" target="_blank">
+    <img src="../../../../assets/img/whatsapp.png">
+    <h2 class="bold">COMPRA POR WHATSAPP</h2>
+  </a>
+</div>
+
 
 <app-footer></app-footer>
