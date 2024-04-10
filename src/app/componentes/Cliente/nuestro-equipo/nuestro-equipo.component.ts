@@ -18,6 +18,7 @@ imgPrincipal
 imgFondo
 tipoBack
 colorn
+correo:any = "contrataciones@procasa.com.gt"
 HistoriaService = inject(HistoriaService)
 
 toScrollPlaza(i:any){ document.getElementsByClassName('cont-area')[i]?.scrollIntoView({behavior:"smooth"}) }

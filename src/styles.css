@@ -25,6 +25,19 @@ body {
 .light {font-family: realeway_light;}
 .normal {font-family: realeway_normal;}
 
+h1.container-h1 {
+  width: 100vw;
+  text-align: center;
+  font-size: var(--fs-title);
+  color: #FFF;
+  margin-top: 15vh;
+  margin-bottom: 50px;
+}
+
+@media screen and (max-width:800px ) {
+  h1.container-h1 { margin-top: 15vh;  margin-bottom: 20px; }
+}
+
 
 div.container-head {
   position: fixed;
@@ -594,11 +607,23 @@ div.cont-btns-alert div {
 
 div.cont-btns-alert div mat-icon { margin: 0 1rem; }
 
-
 }
 
 
-@media screen and (max-width: 650px) { div.container-head h1 { font-size: 12pt;  width: auto; } }
+@media screen and (max-width: 650px) {
+  :root {
+    --fs-title: 40pt;
+    --fs-sub: 14pt;
+    --fs-text: 11pt;
+  }
+}
+@media screen and (max-width: 400px) {
+  :root {
+    --fs-title: 35pt;
+    --fs-sub: 14pt;
+    --fs-text: 11pt;
+  }
+}
 @media screen and (max-width: 600px) { 
   div.container-head h1 { display: none; }
   div.container-head { justify-content: space-evenly; }

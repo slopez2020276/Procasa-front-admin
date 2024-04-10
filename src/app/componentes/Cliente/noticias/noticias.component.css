@@ -137,7 +137,66 @@ div.arrow {
   text-align: center;
   font-size: 14pt;
   position: relative;
-  color: #AAA;
+  background: #FAFAFA;
+  color: #252525;
+  padding: .3rem 1rem;
+  border-radius: 10px;
+  font-size: 12pt;
+  transition: .2s;
+  transform: scale(1);
+  cursor: pointer;
+  opacity: 1;
 }
 
-div.cont-text:hover h6.timeof, div.cont-text:hover div.arrow { display: none; }
+div.descubre:active { transform: scale(.9); }
+div.descubre:hover { opacity: .8; }
+
+div.fecha-noticia {
+  width: 90%;
+  position: relative;
+  margin-left: 10%;
+  font-size: var(--fs-text);
+  color: #FFF;
+  text-shadow: 3px 1px 3px rgba(0,0,0,.4);
+  text-align: left;
+}
+
+
+@media screen and (max-width: 850px ) {
+  
+div.noticia {
+  width: 270px;
+  position: relative;
+  text-align: right;
+  height: 294px;
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  flex-wrap: wrap;
+  margin: 0 10px;
+}
+
+div.cont-datos-noticia h1 { font-size: 20pt; }
+
+
+
+}
+
+
+@media screen and (max-width: 650px) {
+  
+  div.noticia {
+    width: 229.5px;
+    height: 249.5px;
+    position: relative;
+    text-align: right;
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    flex-wrap: wrap;
+    margin: 0 10px;
+  }
+
+
+
+}

@@ -130,10 +130,10 @@ div.sub-img {
   justify-content: center;
   align-items: center;
 }
+div.cont-ubicacion:nth-child(2) { height: auto; max-height: 400px; }
 
-
-div.sub-img img {
-  width: 100%;
+div.cont-ubicacion:nth-child(1) img {
+  width: 90%;
   height: auto;
   border-radius: 4px;
 }
