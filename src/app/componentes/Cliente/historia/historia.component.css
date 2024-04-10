@@ -1,22 +1,9 @@
 
 
-div#section-1 {
-    position: relative;
-    width: 100%;
-    height: auto;
-    overflow: hidden;
-    color: #FFF;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-}
-
-
 
 div#sub {
-    margin-top: 2rem;
-    width: 100%;
+    width: 90vw;
+    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -24,7 +11,7 @@ div#sub {
 }
 
 div#sub div#video {
-    width: 40%;
+    width: 50%;
     height: 400px;
     box-shadow: 1px 1px 15px rgba(0,0,0,.1);
 }
@@ -42,15 +29,14 @@ div#sub div#quote {
 div#sub div#quote h1 {
     width: 100%;
     text-align: center;
-    padding: 50px;
     display: block;
-    font-size: 19pt;
+    font-size: var(--fs-title);
     color: #FAFAFA;
 }
 
 div#sub div#quote p {
     padding: 0px 50px 0 50px;
-    font-size: 14pt;
+    font-size: var(--fs-sub);
     color: #FAFAFA;
 }
 

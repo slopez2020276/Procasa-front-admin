@@ -1,16 +1,6 @@
 
 * {color: #FAFAFA;}
 
-div#section-1 {
-    position: relative;
-    width: 100%;
-    height: auto;
-    overflow: hidden;
-    color: #FFF;
-    background: transparent;
-    margin-top: 10rem;
-}
-
 div#sub-section-1 {
     position: relative;
     width: 100%;
@@ -18,10 +8,12 @@ div#sub-section-1 {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
+    margin-top: 15vh;
+    margin-bottom: 15vh;
 }
 
 div.sub-mv {
-    width: 350px;
+    width: 400px;
     min-width: 350px;
     height: auto;
     display: flex;
@@ -34,11 +26,12 @@ div.sub-mv {
     position: relative;
 }
 
-div.sub-mv p {font-size: 14pt; margin-top: 1rem;}
+div.sub-mv p {font-size: var(--fs-sub); margin-top: 1rem;}
 
 div#sub-section-1 div.sub-mv img {
     display: block;
-    width: 100px;
+    width: 140px;
+    height: auto;
     position: relative;
 }
 
@@ -54,29 +47,23 @@ div#sub-section-1 p {
 }
 
 
-div#sub-section-1 div.sub-mv h1 {
+div.sub-mv h1 {
     background-color: #AA182C;
     border-radius: 10px;
     display: block;
     height: 40px;
-    width: 200px;
+    width: auto;
     position: relative;
-    font-size: 18pt;
+    font-size: 30pt;
     display: flex;
+    padding: 1rem 4rem;
     justify-content: center;
     align-items: center;
 }
 
-div#sub-section-2 {
-    position: relative;
-    width: 100%;
-    margin-left: 0;
-    height: auto;
-    min-height: 50vh;
-}
 
-div#sub-section-2 div#sub-valores div img {
-    width: 120px;
+div#sub-valores div img {
+    width: 140px;
     height: auto;
     display: block;
 }
@@ -93,32 +80,39 @@ div#sub-valores {
     display: flex;
     flex-wrap: wrap;
     position: static;
-    justify-content: space-around;
-}
+    justify-content: space-evenly;
+    align-items: center;
+    align-content: center;
+    margin-top: 10vh;
+  }
 
-div#sub-valores div {
+  div#sub-valores * {transition: .2s ease-out;}
+
+  div#sub-valores div {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   transform: scale(1);
   transition: .5s ease;
-  width: 260px;
-  margin-bottom: 50px;
+  width: 300px;
   position: static;
   cursor: pointer;
 }
 
-div#sub-valores div:hover  {
+/* div#sub-valores div:hover  {
     transform: scale(1.1);
-}
+} */
+
+div#sub-valores div:hover h6 { font-size: 20pt; }
 
 div#sub-valores div img {
     position: relative;
     display: block;
+    z-index: 0;
 }
 
 div#sub-valores h6 {
-    font-size: 19pt;
+    font-size: 30pt;
     padding: 0;
     width: 100%;
     min-width: 100%;
@@ -136,75 +130,20 @@ div#sub-valores h6 {
     left: 0;
     background: transparent;
     z-index: 0;
+    font-size: var(--fs-text);
+    color: #252525;
+    background: rgba(255,255,255,.6);
+    margin-top: .5rem;
+    padding: 1rem;
+    border-radius: 4px;
 }
 
-div#sub-valores div:hover p {
-    opacity: 1;
-}
-
-div#valor-def {
-  position: fixed;
-  width: 100%;
-  height: 100%;
-  background: rgba(0,0,0,.1);
-  z-index: 500;
-  top: 0;
-  left: 0;
-  z-index: -10;
-}
-
-
-div#open-val {
-  position: fixed;
-  top: 25%;
-  border-radius: 5px;
-  left: 5%;
-  width: 90%;
-  height: 50%;
-  z-index: 200;
-  background: rgba(0,0,0,.8);
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
-  padding: 1rem;
-  display: none;
-  border: 1px solid #555555;
-}
-
-div#open-val.show {display: flex;}
-
-div#open-val { font-size: 12pt; }
-div#open-val h1 { font-size: 14pt; padding-bottom: 1rem;}
-
-div.valhide { display: none; }
-div.valhide.show { display: block; }
-
-h1#valores-h1 {margin-bottom: 4rem;}
-
-
-div#close-valor-def {
-  position: absolute;
-  width: auto;
-  height: auto;
-  background: whitesmoke;
-  right: 1rem;
-  top: 1rem;
-  cursor: pointer;
-  border-radius: 4px;
-  padding: .3rem .5rem;
-  color: #222;
-  transform: scale(1);
-  transition: .2s;
-}
-
-div#close-valor-def:active {
-  transform: scale(.9);
-}
-
+div#sub-valores div:hover p { opacity: 1; }
+div#sub-valores div:hover img { width: 80px; }
 
 @media (max-width: 680px) {
 
-  div#sub-section-2 div#sub-valores div img {
+   div#sub-valores div img {
     width: 80px;
     height: auto;
     min-height: 80px;
@@ -230,17 +169,16 @@ div#sub-valores h6 {
   }
 
   div#sub-valores p {
-    width: 300px;
-    background: navy;
+    width: 260px;
     padding: 0 1rem;
     text-align: center;
     opacity: 0;
     transition: .5s ease;
     top: 0;
-    left: 0;
-    /* background: transparent; */
+    left: auto;
     position: absolute;
-    display: none;
+    background: rgba(255,255,255,1);
+    z-index: 49;
   }
 
 }

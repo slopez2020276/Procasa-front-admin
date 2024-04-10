@@ -32,16 +32,27 @@
       <input formControlName="nombreTienda" id="name" title="input" type="text" class="normal">
     </div>
     <div class="item">
+      <label class="normal">Direción</label>
+      <input formControlName="direccion" id="name" title="input" type="text" class="normal">
+    </div>
+    <div class="item">
       <label class="normal">sucursal</label>
       <select formControlName="tipoTienda" name="tipoTienda" class="normal" id="sucursal">
         <option value="procasa">Procasa</option>
-        <option value="meathouse">Meat House</option>
-        <option value="eco">Econocarnes</option>
+        <option value="procasacdd">Procasa Centro De distribución</option>
+        <option value="mtgr">Meat House Grab & Go</option>
+        <option value="mtCarniceria">Meat House Tiendas con Carniceria</option>
+        <option value="econo">Econocarnes</option>
+
       </select>
     </div>
     <div class="item">
         <label class="normal">teléfono</label>
         <input formControlName="telefono" id="telefono" title="input" type="text" class="normal">
+    </div>
+    <div class="item">
+        <label class="normal">whatsapp</label>
+        <input formControlName="whatsapp" id="whatsapp" title="input" type="text" class="normal">
     </div>
     <div class="item">
         <label class="normal">horario de atención</label>
@@ -85,14 +96,20 @@
   <div class="ubicacion">
     <div class="dato-ubicacion imgpath"><img src="{{os.imgPath}}" alt=""></div>
       <div class="dato-ubicacion"><p class="normal">Nombre: </p><p>{{os.nombreTienda}}</p></div>
+      <div class="dato-ubicacion"><p class="normal">Direción: <p>{{os.direccion}}</p></div>
       <div class="dato-ubicacion"><p class="normal">Tienda: <p>{{os.tipoTienda}}</p></div>
-      <div class="dato-ubicacion"><p class="normal">Teléfono<p>{{os.telefono}}</p></div>
+      @if(ecostate){
+        <div class="dato-ubicacion"><p class="normal">Teléfono<p>{{os.telefono}}</p></div>
+      }
       <div class="dato-ubicacion"><p class="normal">Horario: <p>{{os.horario}}</p></div>
+      @if(ecostate){
+        <div class="dato-ubicacion"><p class="normal">whatsapp: <p>{{os.whatsapp}}</p></div>
+      }
       <div class="dato-ubicacion"><p class="normal">Google Maps: <p><a href="{{os.enlaceMaps}}">enlace</a></p></div>
       <div class="dato-ubicacion"><p class="normal">Waze: <p><a href="{{os.enlaceWaze}}">enlace</a></p></div>
       <div class="dato-ubicacion"><p class="normal">Descripción: <p>{{os.descripcion}}</p></div>
-      <button class="btn-click" (click)="ObtenerUbixId(os.id)" (click)="editLocation()"><mat-icon>edit</mat-icon></button>
-      <button class="btn-click btn-red" (click)="deleteProduct(os.id)"><mat-icon>delete</mat-icon></button>
+      <button class="btn-click" (click)="ObtenerUbixId(os._id)" (click)="editLocation()"><mat-icon>edit</mat-icon></button>
+      <button class="btn-click btn-red" (click)="deleteProduct(os._id)"><mat-icon>delete</mat-icon></button>
 </div>
   }
 </div>
@@ -131,15 +148,28 @@
       <input [(ngModel)]="nombreTienda" formControlName="nombreTienda" id="name" title="input" type="text" class="normal">
     </div>
     <div class="item">
+      <label class="normal">Dirección</label>
+      <input [(ngModel)]="direccion" formControlName="direccion" id="name" title="input" type="text" class="normal">
+    </div>
+    <div class="item">
       <label for="tipoTienda">Tipo</label>
       <select formControlName="tipoTienda" name="tipoTienda" class="normal">
         <option value="procasa">Procasa</option>
-        <option value="meathouse">Meat House</option>
+        <option value="procasacdd">Procasa Centro De distribución</option>
+        <option value="mtgr">Meat House Grab & Go</option>
+        <option value="mtCarniceria">Meat House Tiendas con Carniceria</option>
+        <option value="econo">Econocarnes</option>
+
       </select>
     </div>    
     <div class="item">
       <label class="normal">Teléfono</label>
       <input type="text" [(ngModel)]="telefono" formControlName="telefono" class="normal">
+    </div>
+
+    <div class="item">
+      <label class="normal">WhatsApp</label>
+      <input type="text" [(ngModel)]="whatsapp" formControlName="whatsapp" class="normal">
     </div>
 
     <div class="item">

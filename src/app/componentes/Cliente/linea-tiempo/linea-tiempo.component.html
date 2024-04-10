@@ -1,22 +1,22 @@
-<div id="container-2" class="containers">
-    <h1 class="container-h1 bold">LÍNEA DEL TIEMPO</h1>
-
-    <!-- <h1> hola</h1> -->
-
-
 
     <div id="cont-column">
       <div id="line-center"></div>
         <div id="cont-2-column">
 
           @for (os of data; track os.id) {
+            <div class="block-time-line">
 
-            <div class="cont-2-column-item">
-              <div class="bar-connect"></div>
-                <img [ngSrc]="os.ImgPathLineaTiempo" [width]="500" [height]="500">
-           <h2 class="bold" style="color: #FAFAFA; font-size: 16pt;"> {{os.fechaFormateada}} </h2> <br> {{os.descriptionLineaTiempo}}
-          </div>
+              <div *ngFor="let evento of os.eventos; let i = index" class="cont-bar-connect">
+                <div class="bar-connect bold">{{os.anio}}</div>
+            </div>
+            
+            <div *ngFor="let evento of os.eventos; let i = index" class="cont-2-column-item" [ngClass]="{'impar': i % 2 !== 0}">
+              <div class="cont-img-tl">
+                <img [src]="evento.ImgPathLineaTiempo" [width]="500" [height]="500">
+              </div>  
+                <p>{{evento.descriptionLineaTiempo}}</p>
+            </div>
+                      </div>
           }
         </div>
-</div>
 </div>

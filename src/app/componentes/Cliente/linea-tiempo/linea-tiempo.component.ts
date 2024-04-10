@@ -1,5 +1,6 @@
 import { Component, OnInit, inject,HostListener,Renderer2 } from '@angular/core';
 import { LineaTiempoService } from '../../../services/linea-tiempo.service';
+import { LogoControl } from '@maptiler/sdk';
 
 
 @Component({
@@ -9,21 +10,22 @@ import { LineaTiempoService } from '../../../services/linea-tiempo.service';
 })
 
 export class LineaTiempoComponent implements OnInit {
+  data:any
 
   lineaService = inject(LineaTiempoService)
   direccion: string ='';
 
   constructor(private renderer: Renderer2) {
-    this.obtenerTamanioVentana();
+    this.obtenerTamanioVentana()
   }
-
+  
   async ngOnInit(){
     const response = await this.lineaService.obtenerLineaTiempo()
-    this.data = response[1].lineas
+    this.data = response.registros
     console.log(this.data)
   }
+  
 
-  data:any
 
   onMouseOver(osName:string): void{
     console.log(osName)

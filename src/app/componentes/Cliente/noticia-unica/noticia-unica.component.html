@@ -1,0 +1,22 @@
+@if (tipoBack == true ) { <img title="imagen de muestra" [src]="imgFondo"  id="background-texture" > }@else{ <img title="imagen de muestra"  id="background-texture"[style.background-color]="colorn" > }
+
+<app-navbar-white/>
+
+<div id="arrow-back" (click)="backPage()"><mat-icon>keyboard_arrow_left</mat-icon></div>
+
+<section id="noticia-unica">
+    <h1 class="bold">{{title}}</h1>
+
+    <div id="cont-data-notice">
+        <div class="data-notice">
+            <p>
+                {{descripcion}}
+            </p>
+        </div>
+        <div class="data-notice">
+            <img src="{{imgPhat}}">
+        </div>
+    </div>
+</section>
+
+<app-footer></app-footer>

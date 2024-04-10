@@ -13,8 +13,9 @@ import { UneteEquipoService } from '../../../services/unete-equipo.service';
 export class UbicacionesComponent {
 
   UbicacionService = inject(UbicacionServiceService)
+  ecostate = true;
 
-  constructor(){ }
+  constructor(){  }
   data
   imgPrincipal
   imgFondo
@@ -23,18 +24,30 @@ export class UbicacionesComponent {
   dataUbicaciones
   filtro
   filtroIMG
-
   colorn
-  tipoBack 
+  tipoBack
+  mostrarlista = true
+  dataId
 
+  direccion
+  telefono
+  nombreTienda
+  descripcion
+  enlaceMaps
+  enlaceWaze
+  horario
+  imgPath
+  whatsapp
 
   async onSubmit(){ }
 
  async ngOnInit() {
+
+  this.checkLogo(0)
+
    document.getElementById('cont-slide')?.classList.add('a')
    const response = await this.HistoriaService.obtenerHistoria()
    document.getElementsByClassName('title-sucs')[0]?.classList.add('select')
-   const elements = document.getElementsByClassName('title-sucs') as HTMLCollectionOf<HTMLElement>; elements[0].style.background = '#656565'
 
 
     this.data = response.historia
@@ -55,46 +68,147 @@ export class UbicacionesComponent {
     }
   }
 
+  mostrarwts(){
+    this.ecostate = true
+    console.log('mostrar')
+  }
+  
+  ocultarwts(){
+    this.ecostate = false
+    console.log('oculto')
+  }
+  
+
+
+
+  async selecStore(id:any){
+    const respuestaId = await this.UbicacionService.ObtenerUbicaionesxid(id)
+    this.direccion = respuestaId.ubi.direccion
+    this.telefono = respuestaId.ubi.telefono
+    this.nombreTienda = respuestaId.ubi.nombreTienda
+    this.descripcion = respuestaId.ubi.descripcion
+    this.enlaceMaps = respuestaId.ubi.enlaceMaps
+    this.enlaceWaze = respuestaId.ubi.enlaceWaze
+    this.horario = respuestaId.ubi.horario
+    this.imgPath = respuestaId.ubi.imgPath
+    this.whatsapp = respuestaId.ubi.whatsapp
+  }
+
+  
+
+
+
   async ObtenerUbicaciones(){
-    const respuesta = await this.UbicacionService.ObtenerUbicaionesAdmin()
+    const respuesta = await this.UbicacionService.obtenerProcas()
 
-    this.dataUbicaciones = respuesta.ubi
-console.log(respuesta, this.dataUbicaciones)
+    this.dataUbicaciones = respuesta.ubicaciones
+
+    this.direccion = respuesta.ubicaciones[0].direccion
+    this.telefono = respuesta.ubicaciones[0].telefono
+    this.nombreTienda = respuesta.ubicaciones[0].nombreTienda
+    this.descripcion = respuesta.ubicaciones[0].descripcion
+    this.enlaceMaps = respuesta.ubicaciones[0].enlaceMaps
+    this.enlaceWaze = respuesta.ubicaciones[0].enlaceWaze
+    this.horario = respuesta.ubicaciones[0].horario
+    this.imgPath = respuesta.ubicaciones[0].imgPath
+    this.whatsapp = respuesta.ubicaciones[0].whatsapp
+    console.log(respuesta, this.dataUbicaciones)
   }
 
-
-ShowContSucursales(c:any, h:number){
-  this.removeClass()
-    document.getElementById('cont-slide')?.classList.add(c)
-    const elements = document.getElementsByClassName('title-sucs') as HTMLCollectionOf<HTMLElement>
-    elements[h].style.background = '#656565'
-
-
-
-
-
-
-  }
 
   showfilterImg(tipoTienda:string){
     this.filtroIMG = tipoTienda
     console.log(this.filtroIMG)
-
-  }
-  removeClass(){
-    document.getElementById('cont-slide')?.classList.remove('a')
-    document.getElementById('cont-slide')?.classList.remove('b')
-    document.getElementById('cont-slide')?.classList.remove('c')
-      document.getElementsByClassName('title-sucs')[0]?.classList.remove('select')
-      document.getElementsByClassName('title-sucs')[1]?.classList.remove('select')
-      document.getElementsByClassName('title-sucs')[2]?.classList.remove('select')
-    const elements = document.getElementsByClassName('title-sucs') as HTMLCollectionOf<HTMLElement>
-    elements[0].style.background = '#252525'
-    elements[1].style.background = '#252525'
-    elements[2].style.background = '#252525'
 }
 
 
+
+async obtenerProcas(){
+
+
+  const respuesta = await this.UbicacionService.obtenerProcas()
+  this.dataUbicaciones = respuesta.ubicaciones
+  console.log('procasa')
+  console.log(respuesta)
+
+  this.direccion = respuesta.ubicaciones[0].direccion
+    this.telefono = respuesta.ubicaciones[0].telefono
+    this.nombreTienda = respuesta.ubicaciones[0].nombreTienda
+    this.descripcion = respuesta.ubicaciones[0].descripcion
+    this.enlaceMaps = respuesta.ubicaciones[0].enlaceMaps
+    this.enlaceWaze = respuesta.ubicaciones[0].enlaceWaze
+    this.horario = respuesta.ubicaciones[0].horario
+    this.imgPath = respuesta.ubicaciones[0].imgPath
+    this.whatsapp = respuesta.ubicaciones[0].whatsapp
+}
+async obtenerprocasacdd(){
+  const respuesta = await this.UbicacionService.obtenerprocasacdd()
+  this.dataUbicaciones = respuesta.ubicaciones
+  this.direccion = respuesta.ubicaciones[0].direccion
+  this.telefono = respuesta.ubicaciones[0].telefono
+  this.nombreTienda = respuesta.ubicaciones[0].nombreTienda
+  this.descripcion = respuesta.ubicaciones[0].descripcion
+  this.enlaceMaps = respuesta.ubicaciones[0].enlaceMaps
+  this.enlaceWaze = respuesta.ubicaciones[0].enlaceWaze
+  this.horario = respuesta.ubicaciones[0].horario
+  this.imgPath = respuesta.ubicaciones[0].imgPath
+  this.whatsapp = respuesta.ubicaciones[0].whatsapp
+  console.log('cdd')
+
+}
+async obtenermeatousegrab(){
+  const respuesta = await this.UbicacionService.obtenermeatousegrab()
+  this.dataUbicaciones = respuesta.ubicaciones
+  this.direccion = respuesta.ubicaciones[0].direccion
+  this.telefono = respuesta.ubicaciones[0].telefono
+  this.nombreTienda = respuesta.ubicaciones[0].nombreTienda
+  this.descripcion = respuesta.ubicaciones[0].descripcion
+  this.enlaceMaps = respuesta.ubicaciones[0].enlaceMaps
+  this.enlaceWaze = respuesta.ubicaciones[0].enlaceWaze
+  this.horario = respuesta.ubicaciones[0].horario
+  this.imgPath = respuesta.ubicaciones[0].imgPath
+  this.whatsapp = respuesta.ubicaciones[0].whatsapp
+  console.log('grab')
+}
+async obtenermeatHouseCarnicera(){
+  const respuesta = await this.UbicacionService.obtenermeatHouseCarnicera()
+  this.dataUbicaciones = respuesta.ubicaciones
+  this.direccion = respuesta.ubicaciones[0].direccion
+  this.telefono = respuesta.ubicaciones[0].telefono
+  this.nombreTienda = respuesta.ubicaciones[0].nombreTienda
+  this.descripcion = respuesta.ubicaciones[0].descripcion
+  this.enlaceMaps = respuesta.ubicaciones[0].enlaceMaps
+  this.enlaceWaze = respuesta.ubicaciones[0].enlaceWaze
+  this.horario = respuesta.ubicaciones[0].horario
+  this.imgPath = respuesta.ubicaciones[0].imgPath
+  this.whatsapp = respuesta.ubicaciones[0].whatsapp
+  console.log('carni')
+}
+async obtenerEconocarnes(){
+  const respuesta = await this.UbicacionService.obtenerEconocarnes()
+  this.dataUbicaciones = respuesta.ubicaciones
+  this.direccion = respuesta.ubicaciones[0].direccion
+  this.telefono = respuesta.ubicaciones[0].telefono
+  this.nombreTienda = respuesta.ubicaciones[0].nombreTienda
+  this.descripcion = respuesta.ubicaciones[0].descripcion
+  this.enlaceMaps = respuesta.ubicaciones[0].enlaceMaps
+  this.enlaceWaze = respuesta.ubicaciones[0].enlaceWaze
+  this.horario = respuesta.ubicaciones[0].horario
+  this.imgPath = respuesta.ubicaciones[0].imgPath
+  this.whatsapp = respuesta.ubicaciones[0].whatsapp
+  console.log('eco')
+}
+
+
+
+checkLogo(item: number) {
+    const btns: HTMLElement[] | any = Array.from(document.getElementsByClassName('cont-check'))
+    btns.forEach((btn: HTMLElement, index: number) => {
+      btn.classList.remove('enabled')
+      if (index === item) { btn.classList.add('enabled') }
+    })
+  }
+  
 
 
 }

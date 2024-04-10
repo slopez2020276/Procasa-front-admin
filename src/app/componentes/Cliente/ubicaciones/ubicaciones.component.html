@@ -1,89 +1,45 @@
-@if (tipoBack == true ) { <img title="imagen de muestra" [src]="imgFondo"  id="background-texture" > }@else{ <img title="imagen de muestra"  id="background-texture"[style.background-color]="colorn" > }
+@if (tipoBack == true ) {
+  <img title="imagen de muestra" [src]="imgFondo" id="background-texture">
+}@else{
+  <img title="imagen de muestra" id="background-texture" [style.background-color]="colorn">
+}
 
-<!-- @if (tipoBack == true ) { <img title="imagen de muestra" [src]="imgFondo"  id="background-texture" > }@else{ <img title="imagen de muestra"  id="background-texture" [style.background-color]="colorn" > } -->
-<app-navbar></app-navbar>
+<app-navbar-white/>
 
 <div id="container-main">
-  <div id="container-ubicaciones">
-    <div id="cont-search">
-      <input type="text" [(ngModel)]="filtro" class="bold" placeholder="Buscar sucursal" title="buscar sucursal">
+  <!-- <div id="cont-search"><input type="text" [(ngModel)]="filtro" class="bold" placeholder="Buscar sucursal" title="buscar sucursal"></div> -->
+
+<div id="container-ubicaciones">
+    <div id="cont-logos-head">
+      <div class="logo-head"><div class="cont-check" (click)="mostrarwts()" (click)="obtenerProcas()" (click)="checkLogo(0)"><div class="checked"></div></div><img src="../../../../assets/img/Logo Procasa original vertocal B.png"></div>
+      <div class="logo-head"><div class="cont-check"  (click)="mostrarwts()" (click)="obtenerprocasacdd()"  (click)="checkLogo(1)"><div class="checked"></div></div><img src="../../../../assets/img/Logo Procasa original vertocal B.png"><p>CENTRO DE DISTRIBUCIÓN</p></div>
+      <div class="logo-head"><div class="cont-check" (click)="mostrarwts()" (click)="obtenermeatousegrab()" (click)="checkLogo(2)"><div class="checked"></div></div><img src="../../../../assets/img/Logo MH original blanco.png"><p>Grab & Go</p></div>
+      <div class="logo-head"><div class="cont-check" (click)="mostrarwts()" (click)="obtenermeatHouseCarnicera()" (click)="checkLogo(3)"><div class="checked"></div></div><img src="../../../../assets/img/Logo MH original blanco.png"><p>TIENDAS CON CARNICERÍA</p></div>
+      <div class="logo-head"><div class="cont-check" (click)="ocultarwts()" (click)="obtenerEconocarnes()" (click)="checkLogo(4)"><div class="checked"></div></div><img src="../../../../assets/img/Econo Carnes blanco.png"></div>
     </div>
 
-    <div id="cont-title">
-      <h1  (click)="showfilterImg('procasa')" class="title-sucs"> <img src="../../../assets/img/Logo Procasa orginal Blanco.png" alt="logo procasa"> </h1>
-      <h1  (click)="showfilterImg('meat')" class="title-sucs"> <img src="../../../assets/img/Logo MH original blanco.png" alt="logo procasa"></h1>
-      <h1  (click)="showfilterImg('eco')" class="title-sucs"> <img src="../../../assets/img/Logo Procasa orginal Blanco.png" alt="logo procasa"></h1>
-    </div>
+    <div id="cont-data-ubicaciones">
+          <div class="cont-ubicacion">
+            <img [src]="imgPath">
+          </div>
+          <div class="cont-ubicacion">
+            <div class="datos-ubi">
 
-
-
-    <div id="cont-all-sucursales">
-      <div id="cont-slide">
-
-        @for (os of dataUbicaciones | MostrarPorUbiPipe: filtro | mostrarimgsUbicacion:filtroIMG  ; track os.id) {
-          <div class="cont-sucursal">
-            <div class="sucursal">
-              <div class="sub-img"><img  [src]=" os.imgPath"  alt=""></div>
-              <div class="sub-info">
-                <h1 class="bold">{{os.nombreTienda}}</h1>
-                  <p>{{os.direccion}}</p>
-                  <p>{{os.telefono}}</p>
-                  <p>{{os.descripcion}}</p>
-                  <p>{{os.horario}}</p>
-                  <div class="locations">
-                    <span class="location"><a href="{{os.enlaceWaze}}"><img src="../../../assets/img/waze.png" alt=""></a></span>
-                    <span class="location"><a href="{{os.enlaceMaps}}"><img src="../../../assets/img/maps.png" alt=""></a></span>
+                <div class="dato-u"><p class="bold">Dirección:</p><p>{{direccion}}</p></div>
+                @if(ecostate){
+                  <div class="dato-u"><p class="bold">Teléfono:</p><p>{{telefono}}</p></div>
+                <div class="dato-u"><p class="bold">WhatsApp:</p><p> {{whatsapp}}</p></div>
+                }
+                <div class="dato-u"><p class="bold">Horario:</p><p>{{horario}}</p></div>
+                  <div class="cont-ma-wa">
+                    <a href="{{enlaceMaps}}" target="_blank"><img src="../../../../assets/img/maps.png"></a>
+                    <a href="{{enlaceWaze}}" target="_blank"><img src="../../../../assets/img/waze.png"></a>
                   </div>
-              </div>
-      </div>
-
-
-    </div>
-    }
-
-
-
-
-<!-- -------------------------------------------------------------------------------------------- -->
-            <div class="cont-sucursal">
-              <div class="sucursal">
-                <div class="sub-img"><img src="../../../assets/img/textura-defult.png" alt=""></div>
-                <div class="sub-info">
-                  <h1 class="bold">SUCURSALES MEAT HOUSE</h1>
-                    <p>dirección completa</p>
-                    <p>+502 0000-0000</p>
-                    <p>procasa gmail.com</p>
-                    <p>Lunes a viernes 1:00 am - 8:00 am</p>
-                    <div class="locations">
-                      <span class="location"><a href="#"><img src="../../../assets/img/waze.png" alt=""></a></span>
-                      <span class="location"><a href="#"><img src="../../../assets/img/maps.png" alt=""></a></span>
-                    </div>
-                </div>
-        </div>
             </div>
-<!-- ------------------------------------------------------------------------------------------ -->
-            <div class="cont-sucursal">
-              <div class="sucursal">
-                <div class="sub-img"><img src="../../../assets/img/textura-defult.png" alt=""></div>
-                <div class="sub-info">
-                  <h1 class="bold">SUCURSALES OTRO</h1>
-                    <p>dirección completa</p>
-                    <p>+502 0000-0000</p>
-                    <p>procasa gmail.com</p>
-                    <p>Lunes a viernes 1:00 am - 8:00 am</p>
-                    <div class="locations">
-                      <span class="location"><a href="#"><img src="../../../assets/img/waze.png" alt=""></a></span>
-                      <span class="location"><a href="#"><img src="../../../assets/img/maps.png" alt=""></a></span>
-                    </div>
-                </div>
-        </div>
-        </div>
-<!-- ------------------------------------------------------------------------------------------ -->
-
-      </div>
+          </div>
+          <div class="cont-ubicacion">@for (item of dataUbicaciones; track $index) { <h1 class="select-ubicacion" (click)="selecStore(item._id)" > {{item.nombreTienda}}</h1> }</div>
     </div>
-
-  </div>
 </div>
-
+</div>
 <app-footer></app-footer>
+ 

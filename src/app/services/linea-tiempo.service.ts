@@ -10,7 +10,7 @@ export class LineaTiempoService {
   private baseUrl: string;
 
   constructor() {
-    this.baseUrl = 'http://localhost:3002/api'
+    this.baseUrl = 'https://enchanting-kilt-pike.cyclic.app/api'
   }
 
 
@@ -20,10 +20,10 @@ export class LineaTiempoService {
     )
   }
 
-  obtenerLineaxID(idLinea:any){
+  obtenerLineaxID(idAnio:any,idLinea:any){
 
     return firstValueFrom(
-      this.httpClient.get<any>(`${this.baseUrl}/obtenerLineaXid/${idLinea}`,this.createHeaders())
+      this.httpClient.get<any>(`${this.baseUrl}/obtenerEventoXid/${idAnio}/${idLinea}`,this.createHeaders())
     )
 
   }
@@ -40,9 +40,9 @@ export class LineaTiempoService {
     )
   }
 
-  eliminarLineaTIempo(idLinea:any){
+  eliminarLineaTIempo(idAnio:any,idLinea:any){
     return firstValueFrom(
-      this.httpClient.delete<any>(`${this.baseUrl}/eliminarLineaTiempo/${idLinea}`,this.createHeaders())
+      this.httpClient.delete<any>(`${this.baseUrl}/eliminarEventoLineaTiempo/${idAnio}/${idLinea}`,this.createHeaders())
     )
   }
 
@@ -54,14 +54,20 @@ export class LineaTiempoService {
    }
  }
 
- sendPost(body:FormData):Observable<any>{
-  return this.httpClient.post(`${this.baseUrl}/agregarEventoLineadeTiempo`, body)
+ sendPost(idAnio:any,body:FormData):Observable<any>{
+  return this.httpClient.put(`${this.baseUrl}/agregarEventoLineaTiempo/${idAnio}`, body)
 }
 
-sendEdit(body:FormData,id):Observable<any>{
-  return this.httpClient.put(`${this.baseUrl}/editarLineaTiempo/${id}`, body)
+sendEdit(body:FormData,idanio:any,id:any):Observable<any>{
+  return this.httpClient.put(`${this.baseUrl}/editarEventoLineaTiempo/${idanio}/${id}`, body)
 }
+
+crearAnio(fromValue:any){
+  return firstValueFrom(
+    this.httpClient.post<any>(`${this.baseUrl}/CrearAnio`,fromValue,this.createHeaders())
+  )
 
 }
 
+}
 

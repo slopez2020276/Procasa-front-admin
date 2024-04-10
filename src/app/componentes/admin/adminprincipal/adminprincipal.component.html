@@ -52,8 +52,8 @@
 
         <h4>requisitos recomendados</h4>
         <ul>
-          <li> Ancho: <span class="bold">1920 px</span></li>
-          <li> Alto:  <span class="bold">1080 px</span></li>
+          <li> Ancho: <span class="bold">1366 px</span></li>
+          <li> Alto:  <span class="bold">768 px</span></li>
           <li> Peso: <span class="bold">2 MB</span></li>
         </ul>
       </div>
@@ -108,8 +108,8 @@
 
         <h4>requisitos recomendados</h4>
         <ul>
-          <li> Ancho: <span class="bold">1250 px</span></li>
-          <li> Alto:  <span class="bold">875 px</span></li>
+          <li> Ancho: <span class="bold">1366 px</span></li>
+          <li> Alto:  <span class="bold">768 px</span></li>
           <li> Peso: <span class="bold">2 MB</span></li>
         </ul>
       </div>
@@ -190,23 +190,51 @@
 
 <div class="container scroll-cont" id="container-3">
   <h1 class="bold title-bg">LÍNEA DE TIEMPO</h1>
+  <div class="cont-add-year">
+
+    <form [formGroup]="formularioCrearAnio" >
+      <input  formControlName="anio" class="normal" type="number" min="0" placeholder="año">
+    </form>
+    <div class="normal btn-click btn-red" (click)="CrearAnio()"><mat-icon>save</mat-icon> guardar</div>
+  </div>
   <div id="sub-cont-3">
-  @for (os of dataLinea; track os.id) {
-    <div class="cont-3-timeline">
-      <img class="img-linetiempo" [src]="os.ImgPathLineaTiempo" [width]="100" [height]="100" alt="item 1" title="item 1">
-      <p class="input-to-text bold">{{os.titleLineaTiempo}}</p>
-      <p class="input-to-text">{{os.descriptionLineaTiempo}}</p>
-      <p class="input-to-text">{{os.fechaFormateada}}</p>
-                  <div class="btn-click normal" (click)="editarModal(os.id)" (click)="Modal()"><mat-icon>edit</mat-icon></div>
-                  <div class="btn-click btn-red normal" (click)="eliminarLineaTiempo(os.id)"><mat-icon>delete</mat-icon></div>
-                </div>
-              }
+
+
+    @for (os of dataLinea; track os.id) {
+
+    <div class="year-title bold" style="color: #FFF;">
+      <h1 class="bold">{{os.anio}}</h1>
+      <div class="btn-click btn-gray normal" (click)="sentIdAni(os._id)" (click)="addYearEvent()"><mat-icon>add</mat-icon></div>
+      <div class="btn-click btn-gray" (click)="editYear()"><mat-icon>edit</mat-icon></div>
+      <div class="btn-click btn-gray" (click)="deleteYear()"><mat-icon>delete</mat-icon></div>
+    </div>
+    @for (item of os.eventos; track $index) {
+      <div class="cont-3-timeline">
+        <img class="img-linetiempo" [src]="item.ImgPathLineaTiempo" [width]="100" [height]="100" alt="item 1" title="item 1">
+        <p class="input-to-text bold">{{item.titleLineaTiempo}}</p>
+        <p class="input-to-text">{{item.descriptionLineaTiempo}}</p>
+        <p class="input-to-text">{{item.fechaFormateada}}</p>
+                    <div class="btn-click normal" (click)="sentIdAni(os._id)" (click)="editarModal(item._id)" (click)="Modal()"><mat-icon>edit</mat-icon></div>
+                    <div class="btn-click btn-red normal" (click)="sentIdAni(os._id)"  (click)="eliminarLineaTiempo(item._id)"><mat-icon>delete</mat-icon></div>
+      </div> 
+    }
+}
             </div>
-            <div id="cont-3-see-all" class="normal btn-click btn-red" (click)="ModalAddTimeLine()"><mat-icon>launch</mat-icon> agregar</div>
+            <!-- <div id="cont-3-see-all" class="normal btn-click btn-red" (click)="ModalAddTimeLine()"><mat-icon>launch</mat-icon> agregar</div> -->
 </div>
 
 
 
+<div id="modal-add-event-year" class="global-modal">
+  <h1 class="title-modal">Agregar Evento</h1>
+  <button class="btn-click close-modal"  (click)="addYearEvent()" (click)="cleanForms()"><mat-icon>close</mat-icon></button>
+
+  
+
+</div>
+
+
+        
 <!-- ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ -->
 <div class="container scroll-cont" id="container-4">
   <h1 class="bold title-bg">MISIÓN y VISIÓN</h1>
@@ -284,18 +312,15 @@
 <div class="container scroll-cont" id="container-6">
   <h1 class="bold title-bg">NOTICIAS</h1>
 
-
-  
   <div id="cont-6-noticias">
     @for (os of dataLineaRespuesta; track os.id) {
-      
-      
+            
     <div class="noticia">
       <img [src]="os.imgPhat"  alt="noticia">
     <h2>{{os.title}}</h2>
     <p>{{os.descripcion}}</p>
-          <div class="btn-click normal" (click)="obtenerxidNoticias(os.id)" (click)="ModalEditNotice()"><mat-icon>edit</mat-icon></div>
-          <div class="btn-red btn-click normal" (click)="eliminarNoticia(os.id)" ><mat-icon>delete</mat-icon></div>
+          <div class="btn-click normal" (click)="obtenerxidNoticias(os._id)" (click)="ModalEditNotice()"><mat-icon>edit</mat-icon></div>
+          <div class="btn-red btn-click normal" (click)="eliminarNoticia(os._id)" ><mat-icon>delete</mat-icon></div>
         </div>
       }
   </div>
@@ -320,13 +345,13 @@
 
 
 
-
 <!--///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////-->
 <!-- M O D A L E S -->
 
 <div id="modal-time-line-add" class="global-modal">
 <h1 class="title-modal">Agregar Línea de Tiempo</h1>
-    <button class="btn-click close-modal" (click)="ModalAddTimeLine()" (click)="cleanForms()"><mat-icon>close</mat-icon></button>
+    <!-- <button class="btn-click close-modal" (click)="ModalAddTimeLine()" (click)="cleanForms()"><mat-icon>close</mat-icon></button> -->
+    <button class="btn-click close-modal"  (click)="addYearEvent()" (click)="cleanForms()"><mat-icon>close</mat-icon></button>
 
 <form [formGroup]="formularioAgregarLineaTiempo">
 <div class="cont">
@@ -341,6 +366,7 @@
           <li>alto:  <span class="normal danger-red"></span></li>
           <li>peso:  <span class="normal danger-red"></span></li>
         </ul>
+
       </div>
       <div class="cont-details-img"><img alt="" src=""></div>
 </div>
@@ -348,18 +374,14 @@
 
 
 <div class="cont">
-<div class="item">
-  <label for="title">Título</label>
-  <input type="text" id="new-titulo-tl" formControlName="titleLineaTiempo" name="title" title="título">
-</div>
 
 <div class="item">
   <label for="description">Descripción</label>
   <input type="text" id="new-desc-tl" formControlName="descriptionLineaTiempo" title="description">
 </div>
 
-<div class="item">
-  <label for="fecha-new-lt">fecha</label>
+<!-- <div class="item">
+  <label for="fecha-new-lt">Fecha</label>
   <input type="date" formControlName="fecha" >
 </div>
 
@@ -370,7 +392,7 @@
     <option value="anioyMes">año - mes</option>
     <option value="anioMesDia">año - mes - día</option>
   </select>
-</div>
+</div> -->
 
 </div>
 <div class="action-center"><div (click)="saveNewTimeLine()" class="btn-click btn-red normal" id="save-new-tili"><mat-icon>save</mat-icon> guardar</div></div>
@@ -407,17 +429,14 @@
 </div>
 
 <div class="cont">
-<div class="item">
-  <label class="normal">título</label>
-  <input class="normal" type="text" formControlName="titleLineaTiempo" [(ngModel)]="tituloModal">
-</div>
+
 
 <div class="item">
   <label class="normal">descripción</label>
   <input class="normal" type="text" formControlName="descriptionLineaTiempo" [(ngModel)]="descripcionModal">
 </div>
 
-<div class="item">
+<!-- <div class="item">
   <label class="normal">fecha</label>
   <input class="normal" formControlName="fecha" [(ngModel)]="fechaModal" [value]="fechaModal" type="date">
 </div>
@@ -430,7 +449,7 @@
       <option value="aniomes">año - mes</option>
       <option value="mesdia">mes - día</option>
     </select>
-</div>
+</div> -->
   </div>
 </form>
 <div class="action-center"><div class="btn-click btn-red normal" (click)="saveUpdateTimeLine()"><mat-icon>save</mat-icon> guardar</div></div>
@@ -537,6 +556,22 @@
 
 </form>
 </div>
+
+
+
+
+
+<div class="global-modal" id="modal-edit-year">
+    <h1 class="title-modal">Editar Año</h1>
+    <button class="btn-click close-modal" (click)="editYear()" (click)="cleanForms()"><mat-icon>close</mat-icon></button>
+
+<div class="cont-input-btn">
+  <input type="number" placeholder="año">
+  <div class="btn-click btn-red" (click)="saveEditedYear()"><mat-icon>save</mat-icon> guardar</div>
+</div>
+</div>
+
+
 
 
 
