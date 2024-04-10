@@ -69,5 +69,20 @@ crearAnio(fromValue:any){
 
 }
 
+
+eliminarAnio(id:any){
+  return firstValueFrom(
+    this.httpClient.delete<any>(`${this.baseUrl}/EliminarAnio/${id}`,this.createHeaders())
+   
+  )
+}
+
+
+editarAnio(id:any,fromValue:any){
+  return firstValueFrom(
+    this.httpClient.put<any>(`${this.baseUrl}/ediatarAnio/${id}`,fromValue)
+  )
+}
+
 }
 

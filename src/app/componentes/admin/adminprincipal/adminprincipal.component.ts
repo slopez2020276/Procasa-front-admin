@@ -36,6 +36,7 @@ export class AdminprincipalComponent implements OnInit {
   formularioAgregarNoticias: FormGroup
   formularioEditarFondoColor: FormGroup
   formularioCrearAnio: FormGroup
+  formularioEditarAnio: FormGroup
   
   colorBg:any
 
@@ -152,6 +153,10 @@ constructor(){
   anio: new FormControl((''),[Validators.required]),
 
     })
+
+    this.formularioEditarAnio = new FormGroup({
+      anio: new FormControl((''),[Validators.required]),
+      })
 
 
 
@@ -1338,7 +1343,7 @@ inputRangeState() {
 }
 
 
-deleteYear(){
+deleteYear(id:any){
     this.AlertOption("¿Desea eliminar el Año?")
     const parent: HTMLElement | any = this.containerAlert
     const btn: HTMLElement | any = parent?.childNodes[0]?.childNodes[0]?.childNodes[1]?.childNodes[0]
@@ -1347,7 +1352,7 @@ deleteYear(){
 
 // ACCIÓN DE BORRAR AÑO--------------------------
     this.AlertMessage('Año borrado exitosamente', 1500)
-    
+    this.elimimaranio(id)
   } } }
   
   editYear(){
@@ -1365,9 +1370,23 @@ deleteYear(){
     
     // ACCIÓN DE GUARDAR AÑO EDITADO --------------------------
     this.AlertMessage('Año actualizado exitosamente', 1500)
-  
-
+    
+    this.editarAnio()
 } }
+}
+
+
+elimimaranio(id:any){
+  const respuesta = this.lineaService.eliminarAnio(id)
+  this.obtenerLinea()
+  console.log(respuesta)
+}
+
+editarAnio(){
+  const respuesta = this.lineaService.editarAnio(this.idAnio,this.formularioEditarAnio.value)
+  
+  console.log(respuesta)
+  this.obtenerLinea()
 }
 
 

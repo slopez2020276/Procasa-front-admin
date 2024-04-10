@@ -205,13 +205,12 @@
     <div class="year-title bold" style="color: #FFF;">
       <h1 class="bold">{{os.anio}}</h1>
       <div class="btn-click btn-gray normal" (click)="sentIdAni(os._id)" (click)="addYearEvent()"><mat-icon>add</mat-icon></div>
-      <div class="btn-click btn-gray" (click)="editYear()"><mat-icon>edit</mat-icon></div>
-      <div class="btn-click btn-gray" (click)="deleteYear()"><mat-icon>delete</mat-icon></div>
+      <div class="btn-click btn-gray" (click)="sentIdAni(os._id)" (click)="editYear()"><mat-icon>edit</mat-icon></div>
+      <div class="btn-click btn-gray" (click)="deleteYear(os._id)"><mat-icon>delete</mat-icon></div>
     </div>
     @for (item of os.eventos; track $index) {
       <div class="cont-3-timeline">
         <img class="img-linetiempo" [src]="item.ImgPathLineaTiempo" [width]="100" [height]="100" alt="item 1" title="item 1">
-        <p class="input-to-text bold">{{item.titleLineaTiempo}}</p>
         <p class="input-to-text">{{item.descriptionLineaTiempo}}</p>
         <p class="input-to-text">{{item.fechaFormateada}}</p>
                     <div class="btn-click normal" (click)="sentIdAni(os._id)" (click)="editarModal(item._id)" (click)="Modal()"><mat-icon>edit</mat-icon></div>
@@ -566,8 +565,12 @@
     <button class="btn-click close-modal" (click)="editYear()" (click)="cleanForms()"><mat-icon>close</mat-icon></button>
 
 <div class="cont-input-btn">
-  <input type="number" placeholder="año">
-  <div class="btn-click btn-red" (click)="saveEditedYear()"><mat-icon>save</mat-icon> guardar</div>
+ <form [formGroup]="formularioEditarAnio">
+  <input formControlName="anio" form type="number" placeholder="año">
+</form>
+
+
+  <div class="btn-click btn-red" (click)="editYear()" (click)="saveEditedYear()"><mat-icon>save</mat-icon> guardar</div>
 </div>
 </div>
 
