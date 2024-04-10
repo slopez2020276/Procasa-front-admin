@@ -10,13 +10,16 @@ div#container-2 {
   position: relative;
 }
 
+/* div#cont-column * {border: 1px solid whitesmoke;} */
+
 div#cont-column {
   width: 100%;
   height: auto;
   display: flex;
   justify-content: center;
   align-items: start;
-  flex-wrap: nowrap;
+  align-content: start;
+  flex-wrap: wrap;
   position: relative;
 }
 
@@ -45,26 +48,15 @@ z-index: 0;
 top: -20px;
 }
 
-div.block-time-line {
-  width: 100%;
-  position: relative;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  align-content: center;
-  flex-wrap: wrap;
-  padding-bottom: 110px;
-}
 
 div.cont-2-column-item {
   width: 340px;
-  height: 310px;
+  height: auto;
   text-align: left;
-  margin-bottom: 1rem;
+  margin-top: 2rem;
   transition: .2s ease;
   padding: 2px;
   border-radius: .5rem;
-  box-shadow: 0px 0px 20px rgba(0,0,0,0);
   transform: scale(1);
   margin: 1rem;
   z-index: 100;
@@ -77,13 +69,9 @@ div.cont-2-column-item {
   opacity: 1;
   position: relative;
 }
-div.cont-2-column-item.impar { top: 150px; }
 
+div.cont-2-column-item:nth-child(even) { opacity: .2; }
 
-
-div.cont-2-column-item:hover {
-  box-shadow: 0px 0px 10px rgba(255,255,255,.4);
-}
 
 div.cont-2-column-item h2 {
   width: 100%;
@@ -125,70 +113,22 @@ div.cont-img-tl img {
 }
 
 
-div.cont-bar-connect {
+div.cont-year {
+  width: 100%;
   display: flex;
   justify-content: center;
-  align-items: center;
-  align-items: center;
-  width: 100%;
-  position: absolute;
-  top: 40px;
-  left: 0;
 }
 
-div.bar-connect {
+div.year-text {
   width: 100px;
   height: 100px;
-  background: #F4F4F4;
-  top: initial;
-  z-index: 0;
-  transition: .2s;
-  z-index: 10;
-  position: relative;
   border-radius: 200px;
+  background: #FAFAFA;
   color: var(--main);
   display: flex;
   justify-content: center;
   align-items: center;
   align-content: center;
-  font-size: 30pt;
-  opacity: 1;
-}
-
-
-@media (max-width: 760px) {
-
-
-  div#cont-2-column {
-    width: 96%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-    color: #FFF;
-    height: 100%;
-  }
-
-  div.cont-2-column-item {
-    width: 250px;
-    height: auto;
-    margin-bottom: 1rem;
-}
-
-div.cont-bar-connect {
-  width: 100%;
-  margin-top: 10vh;
-  position: relative;
-}
-
-div.bar-connect {
-  background: transparent;
-  width: 0px;
-}
+  font-size: 25pt;
 
 }
-
-@media (max-width: 714px) {
-  div.cont-2-column-item:nth-child(even) {transform: translateY(0px);}
-}
-
