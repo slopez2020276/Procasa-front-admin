@@ -11,7 +11,7 @@ export class HistoriaService {
   private httpClient = inject(HttpClient)
   private baseUrl: string ;
   constructor() {
-    this.baseUrl = 'https://enchanting-kilt-pike.cyclic.app/api'
+    this.baseUrl = 'https://clever-rugby-shirt-bear.cyclic.app/api'
    }
 
 

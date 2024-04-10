@@ -14,7 +14,7 @@ export class MarcasService {
 
 
   constructor() { 
-    this.baseUrl = 'https://enchanting-kilt-pike.cyclic.app/api'
+    this.baseUrl = 'https://clever-rugby-shirt-bear.cyclic.app/api'
   }
 
   obtenerMarcas(){
