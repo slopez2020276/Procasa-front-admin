@@ -87,6 +87,8 @@ div.cont-2-column-item p {
   height: auto;
 }
 
+.impar {opacity: .2;}
+
 div.cont-2-column-item {color: #FAFAFA;}
 
 div.cont-img-tl {
