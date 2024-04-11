@@ -15,6 +15,8 @@ export class LineaTiempoComponent implements OnInit {
   lineaService = inject(LineaTiempoService)
   direccion: string ='';
 
+
+  
   constructor(private renderer: Renderer2) {
     this.obtenerTamanioVentana()
   }
