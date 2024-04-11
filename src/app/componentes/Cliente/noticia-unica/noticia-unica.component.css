@@ -60,11 +60,12 @@ div.data-notice:nth-child(1) { width: 60%; }
 div.data-notice:nth-child(2) { width: 40%; }
 
 div.data-notice p {
-    text-align: justify;
+    text-align: left;
     position: relative;
     width: 95%;
     color: #FFF;
     font-size: var(--fs-text);
+    white-space: pre-line;
 }
 
 div.data-notice img {

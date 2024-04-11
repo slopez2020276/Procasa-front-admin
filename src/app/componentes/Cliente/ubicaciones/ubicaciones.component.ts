@@ -14,6 +14,7 @@ export class UbicacionesComponent {
 
   UbicacionService = inject(UbicacionServiceService)
   ecostate = true;
+trackByFn:any;
 
   constructor(){  }
   data
@@ -80,8 +81,21 @@ export class UbicacionesComponent {
   
 
 
+h1Selected(event) {
+    const elemento = event.target;
+    const elementosConClase = document.querySelectorAll('.selected-h1')
+  
+    elementosConClase.forEach((el) => { el.classList.remove('selected-h1') })
+  
+    elemento?.classList.add('selected-h1')
+  }
+  
 
-  async selecStore(id:any){
+async selecStore(id: any){
+
+
+
+
     const respuestaId = await this.UbicacionService.ObtenerUbicaionesxid(id)
     this.direccion = respuestaId.ubi.direccion
     this.telefono = respuestaId.ubi.telefono

@@ -119,6 +119,7 @@ div#cont-data-ubicaciones {
   margin-top: 5vh;
 }
 
+
 div.cont-ubicacion {
   width: 380px;
   height: auto;
@@ -231,4 +232,12 @@ div.cont-ma-wa img {
     align-items: center;
     margin-bottom: 2rem;
   }
+}
+
+
+
+
+h1.select-ubicacion.selected-h1 {
+  background: var(--main);
+  color: #FFF;
 }

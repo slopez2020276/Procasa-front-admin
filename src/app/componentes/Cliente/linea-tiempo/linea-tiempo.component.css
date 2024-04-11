@@ -144,7 +144,7 @@ div.year-text {
   align-items: center;
   align-content: center;
   font-size: 25pt;
-  top: 30px;
+  top: 80px;
 }
 
 /* -------------------------------------------------------------------------------------------------------------------------------------------------------- */
@@ -170,7 +170,7 @@ div.year-text {
   div#cont-2-column div.cont-2-column-item:nth-child(odd) div.year-text { right: -135px; }
   div#cont-2-column div.cont-2-column-item:nth-child(even) div.year-text { left: -135px; }
   div.cont-2-column-item { width: 180px; }
-  div.year-text { width: 70px; height: 70px; font-size: 20pt; }
+  div.year-text { width: 70px; height: 70px; font-size: 20pt; top: 50px;}
   div.cont-img-tl { width: 220px; height: 160px; }
 }
 

@@ -59,6 +59,9 @@ async obtenerNoticia(id:any){
   this.title = respuesta.noticia.title
   this.descripcion = respuesta.noticia.descripcion
   this.imgPhat = respuesta.noticia.imgPhat
+
+  console.log(this.descripcion)
+  
 }
 
 }

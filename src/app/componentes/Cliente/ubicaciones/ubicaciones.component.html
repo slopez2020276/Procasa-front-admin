@@ -37,7 +37,12 @@
                   </div>
             </div>
           </div>
-          <div class="cont-ubicacion">@for (item of dataUbicaciones; track $index) { <h1 class="select-ubicacion" (click)="selecStore(item._id)" > {{item.nombreTienda}}</h1> }</div>
+          <div class="cont-ubicacion">
+            <h1 *ngFor="let item of dataUbicaciones; trackBy: trackByFn" class="select-ubicacion" (click)="selecStore(item._id)" (click)="h1Selected($event)">
+              {{ item.nombreTienda }}
+            </h1>
+          </div>
+          
     </div>
 </div>
 </div>

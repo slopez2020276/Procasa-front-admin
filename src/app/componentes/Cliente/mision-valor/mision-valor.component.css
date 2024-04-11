@@ -13,8 +13,8 @@ div#sub-section-1 {
 }
 
 div.sub-mv {
-    width: 400px;
-    min-width: 350px;
+    width: auto;
+    max-width: 400px;
     height: auto;
     display: flex;
     flex-wrap: wrap;
