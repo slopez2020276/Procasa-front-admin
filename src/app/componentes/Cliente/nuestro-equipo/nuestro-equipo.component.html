@@ -14,14 +14,20 @@
 <div class="container-plazas">
 
 
-  <div class="cont-plaza" routerLink="/informacion-plaza">
-    <div class="cont-img"><img src="../../../../assets/img/pilotos.jpg"></div>
+  
+  
+  
+  @for ( item of dataUnete; track $index) {
+  <div class="cont-plaza" routerLink="/informacion-plaza" (click)="ObbtenerPlazaId(item._id)" >
+    <div class="cont-img"><img src="{{item.imgPath}}"></div>
     
     <div class="foo-data">
-      <h1 class="bold">Plaza <p>día mes año</p></h1>
-      <h2 class="bold"><mat-icon>room</mat-icon> Ubicación</h2>
+      <h1 class="bold">{{item.titulo}} <p>{{item.fechaCreacion}}</p></h1>
+      <h2 class="bold"><mat-icon>room</mat-icon> {{item.ubicacion}}</h2>
     </div>
   </div>
+}
+
 
 
 </div>
@@ -29,7 +35,7 @@
 
 <div id="container-data-texto">
   <p>si no encontraste plaza de tu interés puedes enviar tu CV al correo: <b class="bold">{{correo}} o aplicar al siguiente enlace </b></p>
-  <button class="btn-red btn-click">aplica aquí</button>
+   <a href="https://docs.google.com/forms/d/e/1FAIpQLSe1Zz_5GxketXWhk8Ke6YKFPYv9-FpdbMQIRFafKIMGUnDc3g/viewform"><button   class="btn-red btn-click">aplica aquí</button></a>
 
 
   <h6>“Calidad de servicio no es lo que tu das. Es lo que el cliente recibe”. <br> Peter Drucker</h6>

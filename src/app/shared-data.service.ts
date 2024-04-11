@@ -5,6 +5,7 @@ import { Injectable } from '@angular/core';
 })
 export class SharedDataService {
   private sharedId: any;
+  private sharedData: any;
   constructor() { }
 
   setSharedId(id: string): void {
@@ -13,5 +14,13 @@ export class SharedDataService {
 
   getSharedId(): string {
     return this.sharedId;
+  }
+
+  setSharedData(data: any) {
+    this.sharedData = data;
+  }
+
+  getSharedData(): any {
+    return this.sharedData;
   }
 }

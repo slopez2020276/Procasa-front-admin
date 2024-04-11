@@ -1,6 +1,7 @@
 import { Component, Inject, OnInit, inject } from '@angular/core';
 import { UneteEquipoService } from '../../../services/unete-equipo.service';
 import { HistoriaService } from '../../../services/historia.service';
+import { SharedDataService } from '../../../shared-data.service';
 
 @Component({
   selector: 'app-nuestro-equipo',
@@ -12,14 +13,17 @@ export class NuestroEquipoComponent implements OnInit {
   uneteEquipoService = inject(UneteEquipoService)
    dataUnete
 
-   constructor(){ }
+   constructor(private sharedDataService: SharedDataService){ }
 data
 imgPrincipal
 imgFondo
 tipoBack
 colorn
+dataId:any
+dataID:any
 correo:any = "contrataciones@procasa.com.gt"
 HistoriaService = inject(HistoriaService)
+
 
 toScrollPlaza(i:any){ document.getElementsByClassName('cont-area')[i]?.scrollIntoView({behavior:"smooth"}) }
 
@@ -46,12 +50,25 @@ evaluarTipoBack(){
   }
 }
 
+
+
+enviarData(id: any): void {
+  this.sharedDataService.setSharedData(id);
+}
+
 async getDataUneteEquipo(){
  const data = await this.uneteEquipoService.otenerUneteEquipo()
  this.dataUnete = data.unete
-  console.log(data.unete[0].funciones)
+  console.log(data)
 }
 
+
+async ObbtenerPlazaId(id:any){
+  const dataId = await this.uneteEquipoService.ObtenerPlazaid(id)
+  this.dataID = dataId.plaza
+  this.sharedDataService.setSharedData(this.dataID)
+  
+}
 
 obtenerItemd(index:any){
   console.log(index)
