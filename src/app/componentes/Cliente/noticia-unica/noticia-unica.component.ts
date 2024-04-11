@@ -35,11 +35,16 @@ backPage(): void { window.history.back() }
     this.imgFondo = this.data[0].imgPathFondo
     this.colorn = this.data[0].colorFondo
     this.evaluarTipoBack()
+
+
+  const respuesta = await this.NoticiaSevices.obtenerxID(this.idNotica)
+  console.log(respuesta.noticia)
+
+  this.title = respuesta.noticia.title
+  this.descripcion = respuesta.noticia.descripcion
+  this.imgPhat = respuesta.noticia.imgPhat
     
-    console.log(this.sharedId)
-    console.log(this.data)
-    console.log(this.colorn)
-    this.obtenerNoticia()
+    
   }
 
 
@@ -53,12 +58,14 @@ evaluarTipoBack(){
 
 
 async obtenerNoticia(){
-  const respuesta = await this.NoticiaSevices.obtenerxID(this.idNotica)
-  console.log(respuesta.noticia.title)
 
-  this.title = respuesta.noticia.title
-  this.descripcion = respuesta.noticia.descripcion
-  this.imgPhat = respuesta.noticia.imgPhat
+  
+  const respuesta = await this.NoticiaSevices.obtenerxID(this.idNotica)
+  console.log(respuesta)
+
+  this.title = respuesta[0].title
+  this.descripcion = respuesta.descripcion
+  this.imgPhat = respuesta.imgPhat
 }
 
 }
