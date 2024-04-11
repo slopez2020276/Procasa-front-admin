@@ -10,7 +10,6 @@ div#container-2 {
   position: relative;
 }
 
-/* div#cont-column * {border: 1px solid whitesmoke;} */
 
 div#cont-column {
   width: 100%;
@@ -23,11 +22,15 @@ div#cont-column {
   position: relative;
 }
 
+
+
 div#cont-2-column {
-  width: 900px;
+  width: 90%;
+  max-width: 900px;
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: start;
+  align-content: start;
   flex-wrap: wrap;
   color: #FFF;
   height: auto;
@@ -38,40 +41,35 @@ div#cont-2-column {
 
 div#line-center {
 width: 3px;
-height: 90%;
+height: 100%;
 background: #F4F4F4;
 position: absolute;
 border-radius: 100px;
 display: block;
 transition: .2s;
-transform: translateY(60px);
 z-index: 0;
-top: -20px;
+top: 0;
 }
 
 
 div.cont-2-column-item {
-  width: 340px;
-  height: auto;
+  width: 100%;
+  height: 350px;
   text-align: left;
-  margin-top: 2rem;
   transition: .2s ease;
-  padding: 2px;
   border-radius: .5rem;
   transform: scale(1);
-  margin: 1rem;
   z-index: 100;
   color: #FAFAFA;
   display: flex;
-  justify-content: center;
-  align-items: start;
-  align-content: start;
+  justify-content: left;
+  align-items: center;
+  align-content: center;
   flex-wrap: wrap;
   opacity: 1;
   position: relative;
 }
 
-div.cont-2-column-item:nth-child(even) { margin-top: 300px; top: 100px; }
 
 
 div.cont-2-column-item h2 {
@@ -82,16 +80,20 @@ div.cont-2-column-item h2 {
 }
 
 div.cont-2-column-item p {
-  width: 90%;
+  width: 100%;
   font-size: var(--fs-text);
   margin-top: .5rem;
   height: auto;
+  display: flex;
+  position: relative;
+  display: flex;
+  justify-content: center;
 }
 
-.css-elem {display: none; opacity: 0;}
-.css-par {border: 2px solid red;}
-.css-impar {border: 2px solid blue;}
-
+div.cont-2-column-item p span {
+  width: 100%;
+  max-width: 300px;
+}
 
 div.cont-2-column-item {color: #FAFAFA;}
 
@@ -124,14 +126,17 @@ div.cont-year {
   display: flex;
   justify-content: center;
   position: absolute;
-  top: 0;
+  top: auto;
   left: auto;
   z-index: 0;
 }
 
 
-div#cont-2-column div.cont-2-column-item:nth-child(odd) div.year-text { right: -264px; }
-div#cont-2-column div.cont-2-column-item:nth-child(even) div.year-text { left: -264px; }
+div.cont-2-column-item:nth-child(even) {justify-content: end;}
+div#cont-2-column div.cont-2-column-item:nth-child(even) {justify-content: end;}
+div#cont-2-column div.cont-2-column-item:nth-child(odd) p {justify-content: start; text-align: left;}
+div#cont-2-column div.cont-2-column-item:nth-child(even) p {justify-content: end; text-align: left;}
+
 
 div.year-text {
   width: 100px;
@@ -144,46 +149,48 @@ div.year-text {
   align-items: center;
   align-content: center;
   font-size: 25pt;
-  top: 80px;
+  /* top: 80px; */
 }
+
+.css-elem {opacity: 0;} 
 
 /* -------------------------------------------------------------------------------------------------------------------------------------------------------- */
 
-@media screen and (max-width: 850px) {
-  div#cont-2-column { width: 750px; }
-  div#cont-2-column div.cont-2-column-item:nth-child(odd) div.year-text { right: -210px; }
-  div#cont-2-column div.cont-2-column-item:nth-child(even) div.year-text { left: -210px; }
-  div.cont-2-column-item { width: 300px; }
-}
-
 @media screen and (max-width: 800px) {
-  div#cont-2-column { width: 600px; }
-  div#cont-2-column div.cont-2-column-item:nth-child(odd) div.year-text { right: -175px; }
-  div#cont-2-column div.cont-2-column-item:nth-child(even) div.year-text { left: -175px; }
-  div.cont-2-column-item { width: 220px; }
-  div.year-text { width: 70px; height: 70px; font-size: 20pt; }
-  div.cont-img-tl { width: 220px; height: 200px; }
+  div.cont-img-tl { width: 270px;  height: 225px;  z-index: 0; }
+  div.year-text { width: 80px;  height: 80px;  font-size: 20pt;  z-index: 2;}
+  div.cont-2-column-item p span { width: 100%; max-width: 270px; }
 }
 
-@media screen and (max-width: 600px) {
-  div#cont-2-column { width: 480px; }
-  div#cont-2-column div.cont-2-column-item:nth-child(odd) div.year-text { right: -135px; }
-  div#cont-2-column div.cont-2-column-item:nth-child(even) div.year-text { left: -135px; }
-  div.cont-2-column-item { width: 180px; }
-  div.year-text { width: 70px; height: 70px; font-size: 20pt; top: 50px;}
-  div.cont-img-tl { width: 220px; height: 160px; }
+@media screen and (max-width: 700px) {
+  div.cont-img-tl { width: 216px;  height: 180px;  z-index: 0; }
+  div.year-text { width: 80px;  height: 80px;  font-size: 20pt;  z-index: 2;}
+  div.cont-2-column-item p span { width: 100%; max-width: 216px; }
+  div.cont-2-column-item {height: 250px ;}
 }
 
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 580px) {
+  div.cont-img-tl { width: 194px;  height: 162px;  z-index: 0; }
+  div.year-text { width: 70px;  height: 70px;  font-size: 18pt;  z-index: 2;}
+  div.cont-2-column-item p span { width: 100%; max-width: 194px; }
+}
+
+
+
+
+@media screen and (max-width: 520px) {
+  div.cont-2-column-item p span { width: 90%; max-width: 100%; text-align: center; }
+  div.cont-2-column-item p { justify-content: center; text-align: center;}
   div#cont-2-column { width: 100%; justify-content: center;}
-  div#cont-2-column div.cont-2-column-item:nth-child(odd) div.year-text { right: auto; }
-  div#cont-2-column div.cont-2-column-item:nth-child(even) div.year-text { left: auto; }
-  div.cont-2-column-item { width: 80%; }
-  div.year-text { width: 90%; height: auto; font-size: 20pt; top: 0; padding: .5rem 0; transform: translateY(-50px);}
+  div.cont-2-column-item { width: 100%; justify-content: center; margin-top: 2rem; height: auto; align-items: start; align-content: start;}
+  div.year-text { width: 80%; height: auto; font-size: 20pt; top: 0; padding: .5rem 0; transform: translateY(0px); position: relative;}
+  div.cont-year { position: relative; margin: 2rem 0 1rem 0;}
   div.cont-img-tl { width: 320px; height: 300px; }
-  div#line-center {display: none;}  
-  div.cont-2-column-item:nth-child(even) { margin-top: 100px; top: 0px; }
-  div.cont-2-column-item {margin-top: 100px;}
+  div#line-center {display: none;}
+  div.cont-2-column-item:nth-child(even) {justify-content: center;}
+  div#cont-2-column div.cont-2-column-item:nth-child(even) {justify-content: center;}
+  div#cont-2-column div.cont-2-column-item:nth-child(even) p {justify-content: center;}
+  div#cont-2-column div.cont-2-column-item:nth-child(odd) p {justify-content: center;}
 }
 
 

@@ -278,6 +278,9 @@ div.product {
   margin: 2rem 0;
 }
 
+
+
+
 div.product img { width: 100%; }
 
   div.product h2 {
@@ -302,6 +305,38 @@ div.cont-details { width: 80%; left: 10%; top: 20%;}
   }
 
 }
+
+
+div#btns-arrow {
+  position: relative;
+  width: 96%;
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  align-content: center;
+  flex-wrap: nowrap;
+}
+
+div#btns-arrow mat-icon {
+  background: #AAA;
+  position: relative;
+  padding: .5rem;
+  height: auto;
+  width: auto;
+  border-radius: 5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  flex-wrap: nowrap;
+  font-size: 20pt;
+  color: #FFF;
+  cursor: pointer;
+  transition: .2s;
+  transform: scale(1);
+}
+
+
 
 
 

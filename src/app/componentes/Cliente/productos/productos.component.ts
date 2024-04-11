@@ -21,6 +21,8 @@ export class ProductosComponent implements OnInit {
   MarcasServices = inject(MarcasService)
   HistoriaService = inject(HistoriaService)
   dataMarcas
+  carrousel:HTMLElement | any
+  count:any = 0
 
   async ngOnInit(): Promise<void> {
     this.ObtenerProductos()
@@ -59,6 +61,19 @@ export class ProductosComponent implements OnInit {
  
 
 
+  arrowRight() {
+    this.count -= 60
+    console.log(this.count)
+    this.carrousel = document.querySelector('div#carrousel-noticias')
+    this.carrousel.style.left = this.count+"vw"
+  }
+  
+  arrowLeft() {
+    this.count += 60
+    if(this.count >= 0){ this.count = 0;  console.log(this.count) }
+    this.carrousel = document.querySelector('div#carrousel-noticias')
+    this.carrousel.style.left = this.count+"vw"
+  }
 
 
 
