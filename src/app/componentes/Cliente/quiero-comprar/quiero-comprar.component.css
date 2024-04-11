@@ -89,6 +89,7 @@ a {text-decoration: none;}
     color: white;
 }
 
+
 div#img1 h6 {
     font-size: var(--fs-sub);
     width: 60%;
@@ -96,7 +97,7 @@ div#img1 h6 {
     margin-left: 20%;
 }
 
-div#img1 a {
+a#enlace-whatsapp, a#enlace-tel {
     width: 60%;
     position: relative;
     display: flex;
@@ -114,11 +115,12 @@ div#img1 a {
 }
 
 div#img1 a img {
-    width: 50px;
+    width: 40px;
     height: auto;
     position: relative;
 }
 
+a#enlace-tel {background: var(--main); color: #FFF; padding: 1rem 2rem;}
 
 @media (max-width: 550px) {
   .column { width: 400px; }

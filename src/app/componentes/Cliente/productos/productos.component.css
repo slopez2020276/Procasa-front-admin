@@ -230,7 +230,7 @@ div.info-product p {
 div#cont-whatsapp {
   position: fixed;
   right: 2rem;
-  bottom: 2rem;
+  bottom: 10rem;
   background: #fafafa;
   color: #252525;
   z-index: 700;

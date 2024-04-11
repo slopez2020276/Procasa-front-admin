@@ -8,8 +8,8 @@ div#sub-section-1 {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
-    margin-top: 15vh;
-    margin-bottom: 15vh;
+    padding-top: 15vh;
+    margin-bottom: 50vh;
 }
 
 div.sub-mv {

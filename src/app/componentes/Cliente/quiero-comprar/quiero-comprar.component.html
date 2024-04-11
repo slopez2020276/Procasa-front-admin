@@ -1,4 +1,4 @@
-@if (tipoBack == true ) { <img title="imagen de muestra" [src]="imgFondo"  id="background-texture" > }@else{ <img title="imagen de muestra"  id="background-texture"[style.background-color]="colorn" > }
+@if (tipoBack == true ) { <img  [src]="imgFondo"  id="background-texture" > }@else{ <img   id="background-texture"[style.background-color]="colorn" > }
 <app-navbar-white/>
 
     <div id="section-2" class="section">
@@ -6,16 +6,13 @@
                   <!-- <h2>CLIENTE MAYORISTA</h2> -->
                   <img class="logo-img" src="../../../assets/img/Logo Procasa original vertocal B.png" alt="Imagen 1">
                   <h6>ASESORÍA Y COMPRA POR WHATSAPP</h6>
-                  <a class="bold" href="https://api.whatsapp.com/send/?phone=50230107381&text&type=phone_number&app_absent=0" target="_blank">
-                    <img src="../../../../assets/img/whatsapp.png">WHATSAPP
-                </a>
-                  <button class="button red-button"><i class="fas fa-times"></i><mat-icon>call</mat-icon> PBX: 2310 6000 </button>
+                  <a class="bold" id="enlace-whatsapp" href="https://api.whatsapp.com/send/?phone=50230107381&text&type=phone_number&app_absent=0" target="_blank"><img src="../../../../assets/img/whatsapp.png">WHATSAPP</a>
+                  <a id="enlace-tel" href="tel:+50223106000" target="_blank"><mat-icon>call</mat-icon> PBX: 2310 6000 </a>
               </div>
 
               <div class="column" id="img2">
-              <!-- <h2>CLIENTE MINORISTA</h2> -->
-              <img class="logo-img" src="../../../assets/img/Logo MH original blanco.png " alt="Imagen 2">
-              <a href="https://www.meathouse.com.gt/"><button class="button red-button">COMPRA ONLINE</button></a>
+              <img class="logo-img" src="../../../assets/img/Logo MH original blanco.png">
+              <a href="https://www.meathouse.com.gt/" target="_blank"><button class="button red-button">COMPRA ONLINE</button></a>
           </div>
 </div>
 

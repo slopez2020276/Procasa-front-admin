@@ -16,7 +16,7 @@ div#navbar {
 
 div#navbar * {transition: .2s;}
 
-div#navbar.scroll {background: rgba(255,255,255,.9); top: 0; height: 70px; left: 0; width: 100vw;}
+div#navbar.scroll {background: rgba(255,255,255,.7); top: 0; height: 70px; left: 0; width: 100vw;}
 div#navbar.scroll div.navbar-items a {font-size: 12pt;}
 
 

@@ -9,7 +9,7 @@ div#navbar {
     justify-content: right;
     color: #FFF;
     z-index: 800;
-    background: rgb(255,255,255,.9);
+    background: rgb(255,255,255,.7);
     position: fixed;
     transition: .4s ease-in-out;
 }
