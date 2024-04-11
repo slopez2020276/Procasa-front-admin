@@ -28,7 +28,7 @@ export class NoticasService {
   }
   obtenerxID(id:any){
     return firstValueFrom(
-      this.httpClient.get<any>(`${this.baseUrl}/obtenernoticiasid/${id}`,this.createHeaders())
+      this.httpClient.get<any>(`${this.baseUrl}/obtenernoticiasid/${id}`)
     )
   }
   obtnenerNoticasAll(){
