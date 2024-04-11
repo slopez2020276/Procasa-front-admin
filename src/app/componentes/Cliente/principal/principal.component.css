@@ -76,6 +76,7 @@ img#img-principal {
   height: auto;
   top: auto;
   left: auto;
+  animation: introduction 2s ease-out;
 }
 
 
