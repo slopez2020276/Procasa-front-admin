@@ -20,6 +20,7 @@ import { EquipoComponent } from './componentes/admin/equipo/equipo.component';
 import { NoticiaUnicaComponent } from './componentes/Cliente/noticia-unica/noticia-unica.component';
 import { GeneralesComponent } from './componentes/admin/generales/generales.component';
 import { NuestrasMarcasComponent } from './componentes/admin/nuestras-marcas/nuestras-marcas.component';
+import { EquipoUnicoComponent } from './componentes/Cliente/equipo-unico/equipo-unico.component';
 
 const routes: Routes = [
   {path:'',redirectTo:'Inicio', pathMatch:'full'},
@@ -43,6 +44,7 @@ const routes: Routes = [
   {path:'noticia', component:NoticiaUnicaComponent},
   {path:'admin/generales', component:GeneralesComponent},
   {path:'admin/nuestras-marcas', component:NuestrasMarcasComponent},
+  {path:'informacion-plaza', component:EquipoUnicoComponent},
 ]
 
 @NgModule({

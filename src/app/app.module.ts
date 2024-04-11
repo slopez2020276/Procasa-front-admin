@@ -48,6 +48,7 @@ import { NavbarWhiteComponent } from './componentes/Complements/navbar-white/nav
 import { NoticiaUnicaComponent } from './componentes/Cliente/noticia-unica/noticia-unica.component';
 import { GeneralesComponent } from './componentes/admin/generales/generales.component';
 import { NuestrasMarcasComponent } from './componentes/admin/nuestras-marcas/nuestras-marcas.component';
+import { EquipoUnicoComponent } from './componentes/Cliente/equipo-unico/equipo-unico.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -87,6 +88,7 @@ import { NuestrasMarcasComponent } from './componentes/admin/nuestras-marcas/nue
     NoticiaUnicaComponent,
     GeneralesComponent,
     NuestrasMarcasComponent,
+    EquipoUnicoComponent,
   ],
   imports: [
     BrowserModule,

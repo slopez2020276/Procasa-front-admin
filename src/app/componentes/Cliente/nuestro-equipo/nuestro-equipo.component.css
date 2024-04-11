@@ -176,61 +176,6 @@ div#container-data-texto h6 {
 
 
 
-
-div#container-data-select {
-  width: 1000px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  align-content: center;
-  flex-wrap: wrap;
-  margin-top: 20vh;
-}
-
-div#container-data-select div.cont-data-sel {
-  width: 500px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  align-content: center;
-  flex-wrap: wrap;
-}
-
-div.cont-data-sel:nth-child(1) { justify-content: start; }
-
-div.cont-data-sel h1 {
-  font-size: 30pt;
-  color: #FFF;
-  width: 90%;
-  text-align: left;
-}
-
-div#cont-btn-plaza {
-  width: 90%;
-  display: flex;
-  justify-content: start;
-  align-content: center;
-  align-items: center;
-  margin-top: 2rem;
-}
-
-div#cont-btn-plaza button {
-  font-size: 15pt;
-  position: relative;
-}
-
-
-div.cont-data-sel p {
-  margin-top: 1rem;
-  color: #FFF;
-  font-size: 14pt;
-  width: 90%;
-  text-align: left;
-}
-
-div.cont-data-sel img { width: 100%;  height: auto;  border-radius: 4px; }
-
-
 @media screen and (max-width: 1000px) {
 div#container-data-select { width: 800px }
 div#container-data-select div.cont-data-sel { width: 400px }
