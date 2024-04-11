@@ -71,7 +71,7 @@ div.cont-2-column-item {
   position: relative;
 }
 
-div.cont-2-column-item:nth-child(even) { margin-top: 100px; top: 100px; }
+div.cont-2-column-item:nth-child(even) { margin-top: 300px; top: 100px; }
 
 
 div.cont-2-column-item h2 {
@@ -144,6 +144,7 @@ div.year-text {
   align-items: center;
   align-content: center;
   font-size: 25pt;
+  top: 30px;
 }
 
 /* -------------------------------------------------------------------------------------------------------------------------------------------------------- */
