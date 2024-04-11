@@ -98,5 +98,6 @@ section#news {
 
 
 
-@media screen and (max-width: 850px) { img#img-principal { width: 130%; left: -15%;} }
-@media screen and (max-width: 500px) { img#img-principal { width: 170%; left: -35%;} }
+@media screen and (max-width: 850px) { img#img-principal { width: 115%; left: -7.5%;} }
+@media screen and (max-width: 600px) { img#img-principal { width: 130%; left: -15%;} }
+@media screen and (max-width: 500px) { img#img-principal { width: 140%; left: -20%;} }
