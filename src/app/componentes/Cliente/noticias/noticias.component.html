@@ -11,7 +11,7 @@
               <div class="cont-img"><img [src]="os.imgPhat" alt=""></div>
               <div class="cont-datos-noticia">
                 <h1 class="bold">{{os.title}}</h1>
-                <div class="descubre bold" routerLink="/noticia" (click)="enviarId(os._id)"> DESCUBRE</div>
+                <div class="descubre bold" routerLink="/noticia/{{os._id}}" (click)="enviarId(os._id)"> DESCUBRE</div>
                 <div class="fecha-noticia bold">{{os.fechaFormateada}}</div>
               </div>
             </div>

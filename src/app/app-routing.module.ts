@@ -42,13 +42,16 @@ const routes: Routes = [
   {path:'admin/Productos', component:AdminproductosComponent},
   {path:'admin/Equipo', component:EquipoComponent},
   {path:'noticia', component:NoticiaUnicaComponent},
+  {path:'noticia/:id', component:NoticiaUnicaComponent},
+
   {path:'admin/generales', component:GeneralesComponent},
   {path:'admin/nuestras-marcas', component:NuestrasMarcasComponent},
   {path:'informacion-plaza', component:EquipoUnicoComponent},
 ]
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes,
+  )],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

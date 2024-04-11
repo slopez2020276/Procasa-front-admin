@@ -2,7 +2,7 @@ import { Component, OnInit, inject } from '@angular/core';
 import { HistoriaService } from '../../../services/historia.service';
 import { NoticasService } from '../../../services/noticas.service';
 import { SharedDataService } from '../../../shared-data.service';
-
+import { ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-noticia-unica',
   templateUrl: './noticia-unica.component.html',
@@ -21,8 +21,9 @@ export class NoticiaUnicaComponent implements OnInit {
   descripcion
   imgPhat
 
-constructor(private sharedDataService: SharedDataService){
-  this.sharedId = this.sharedDataService.getSharedId();
+  idNotica:any
+constructor( private route: ActivatedRoute){
+  this.route.params.subscribe(params => this.idNotica = params['id']);
 }
 
 backPage(): void { window.history.back() }
@@ -35,11 +36,10 @@ backPage(): void { window.history.back() }
     this.colorn = this.data[0].colorFondo
     this.evaluarTipoBack()
     
-    this.sharedId = this.sharedDataService.getSharedId();
     console.log(this.sharedId)
     console.log(this.data)
     console.log(this.colorn)
-    this.obtenerNoticia(this.sharedId)
+    this.obtenerNoticia()
   }
 
 
@@ -52,16 +52,13 @@ evaluarTipoBack(){
 }
 
 
-async obtenerNoticia(id:any){
-  const respuesta = await this.NoticiaSevices.obtenerxID(this.sharedId)
+async obtenerNoticia(){
+  const respuesta = await this.NoticiaSevices.obtenerxID(this.idNotica)
   console.log(respuesta.noticia.title)
 
   this.title = respuesta.noticia.title
   this.descripcion = respuesta.noticia.descripcion
   this.imgPhat = respuesta.noticia.imgPhat
-
-  console.log(this.descripcion)
-  
 }
 
 }
