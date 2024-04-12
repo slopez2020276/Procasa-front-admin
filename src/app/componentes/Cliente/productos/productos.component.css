@@ -1,4 +1,6 @@
 
+* { transition: .6s ease-out }
+
 
 div#container-main {
   width: 100vw;
@@ -151,27 +153,31 @@ div.cont-promesa:nth-child(1) img {border-left: 1px solid transparent;}
 
 
 div#container-marcas {
-  width: 100%;
+  width: 100vw;
   height: auto;
   display: flex;
-  justify-content: center;
+  justify-content: start;
   align-items: center;
   align-content: center;
   flex-wrap: wrap;
   margin-top: 4rem;
   position: relative;
+  overflow: visible;
 }
 
+
 div#carrousel-marcas {
-  width: 95%;
+  width: auto;
   position: relative;
   height: auto;
   display: flex;
   justify-content: start;
   align-items: center;
   flex-wrap: nowrap;
-  overflow-x: auto;
-  overflow-y: hidden;
+  overflow-x: visible;
+  overflow-y: visible;
+  left: 0;
+  padding-right: 10rem;
 }
 
 
@@ -337,7 +343,12 @@ div#btns-arrow mat-icon {
 }
 
 
+div#btns-arrow mat-icon:active { transform: scale(0.9); }
 
+div#btns-arrow mat-icon:hover {
+  background: #FFF;
+  color: #252525;
+}
 
 
 
@@ -359,6 +370,8 @@ div#btns-arrow mat-icon {
   div#container-promesa { width: 550px; justify-content: space-evenly;}
   div.cont-promesa { width: 180px; }
   
+div#cont-whatsapp a h2 {display: none;}
+
   div.cont-promesa img {border: 1px solid transparent;}
   div.cont-promesa:nth-child(1) img {border-left: 1px solid transparent;}
   div.cont-promesa:nth-child(3) img {border-right: 1px solid transparent;}

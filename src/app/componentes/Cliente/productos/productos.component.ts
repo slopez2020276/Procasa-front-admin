@@ -33,6 +33,8 @@ export class ProductosComponent implements OnInit {
     this.colorn = this.data[0].colorFondo
     this.evaluarTipoBack()
     this.obtnerMarcas()
+
+    this.carrousel = document.querySelector('div#carrousel-marcas')
   }
   
   ObtenerProductos(){
@@ -61,19 +63,16 @@ export class ProductosComponent implements OnInit {
  
 
 
-  arrowRight() {
-    this.count -= 60
-    console.log(this.count)
-    this.carrousel = document.querySelector('div#carrousel-noticias')
+arrowRight() {
+    this.count -= 30
     this.carrousel.style.left = this.count+"vw"
-  }
+}
   
-  arrowLeft() {
-    this.count += 60
-    if(this.count >= 0){ this.count = 0;  console.log(this.count) }
-    this.carrousel = document.querySelector('div#carrousel-noticias')
+arrowLeft() {
+    this.count += 30
+    if(this.count >= 0){ this.count = 0 }
     this.carrousel.style.left = this.count+"vw"
-  }
+}
 
 
 
