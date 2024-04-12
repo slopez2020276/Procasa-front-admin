@@ -12,10 +12,10 @@
       <div class="navbar-items" id="container-list">
               <a class="normal" routerLink="/Inicio" id="quienes-somos">Quiénes somos</a>
               <div id="list">
-                  <div routerLink="/Inicio" (click)="ToScrollView('historia')" class="list-a" id="window-historia">Historia <mat-icon>keyboard_arrow_right</mat-icon></div>
-                  <div routerLink="/Inicio" (click)="ToScrollView('linea-tiempo')" class="list-a" id="window-linea">Línea de tiempo <mat-icon>keyboard_arrow_right</mat-icon></div>
-                  <div routerLink="/Inicio" (click)="ToScrollView('valores')" class="list-a" id="window-vmv">Visión, Misión, Valores <mat-icon>keyboard_arrow_right</mat-icon></div>
-                  <div routerLink="/Inicio" (click)="ToScrollView('news')" class="list-a" id="window-noticia">Noticias <mat-icon>keyboard_arrow_right</mat-icon></div>
+                  <div (click)="ToScrollView('historia')" class="list-a" id="window-historia">Historia <mat-icon>keyboard_arrow_right</mat-icon></div>
+                  <div (click)="ToScrollView('linea-tiempo')" class="list-a" id="window-linea">Línea del tiempo <mat-icon>keyboard_arrow_right</mat-icon></div>
+                  <div (click)="ToScrollView('mision-vision-valores')" class="list-a" id="window-vmv">Visión, Misión, Valores <mat-icon>keyboard_arrow_right</mat-icon></div>
+                  <div (click)="ToScrollView('news')" class="list-a" id="window-noticia">Noticias <mat-icon>keyboard_arrow_right</mat-icon></div>
               </div>
           </div>
 
@@ -23,9 +23,9 @@
           <div class="navbar-items" id="container-list-pro">
             <a class="normal" routerLink="/productos">Productos</a>
             <div id="list-products">
-              <div routerLink="/productos" (click)="ToScrollView('h1-promesa')" class="list-a" id="window-promesa">Nuestra Promesa <mat-icon>keyboard_arrow_right</mat-icon></div>
-              <div routerLink="/productos" (click)="ToScrollView('h1-marcas')" class="list-a" id="window-marca">Nuestras Marcas <mat-icon>keyboard_arrow_right</mat-icon></div>
-              <div routerLink="/productos" (click)="ToScrollView('h1-catalogo')" class="list-a" id="window-catalogo">Catálogo <mat-icon>keyboard_arrow_right</mat-icon></div>
+              <div [routerLink]="['/productos', 'por-que-procasa']" (click)="ToScrollView('por-que-procasa')" class="list-a" id="window-promesa">Nuestra Promesa <mat-icon>keyboard_arrow_right</mat-icon></div>
+              <div [routerLink]="['/productos', 'nuestras-marcas']" (click)="ToScrollView('nuestras-marcas')" class="list-a" id="window-marca">Nuestras Marcas <mat-icon>keyboard_arrow_right</mat-icon></div>
+              <div [routerLink]="['/productos', 'catalogo']" (click)="ToScrollView('catalogo')" class="list-a" id="window-catalogo">Catálogo <mat-icon>keyboard_arrow_right</mat-icon></div>
           </div>
           </div>
           <!-- <div class="navbar-items"><a class="normal" routerLink="/nuestros-clientes">Nuestros clientes</a></div> -->

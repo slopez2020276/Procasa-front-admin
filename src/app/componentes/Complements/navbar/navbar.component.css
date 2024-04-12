@@ -173,7 +173,7 @@ div#container-list-pro:hover div#list-products div.list-a {
   display: block;
 }
 
-div.list-a:hover { padding-left: 1.4rem; }
+div.list-a:hover { padding-left: .5rem; }
 
 div#container-list:hover, div#container-list-pro:hover { background: var(--main); }
 div#container-list:hover a, div#container-list-pro:hover a { color: #FFF; }

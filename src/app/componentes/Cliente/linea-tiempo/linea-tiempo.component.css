@@ -176,24 +176,20 @@ div.year-text {
 }
 
 
-
-
 @media screen and (max-width: 520px) {
-  div.cont-2-column-item p span { width: 90%; max-width: 100%; text-align: center; }
-  div.cont-2-column-item p { justify-content: center; text-align: center;}
-  div#cont-2-column { width: 100%; justify-content: center;}
-  div.cont-2-column-item { width: 100%; justify-content: center; margin-top: 2rem; height: auto; align-items: start; align-content: start;}
-  div.year-text { width: 80%; height: auto; font-size: 20pt; top: 0; padding: .5rem 0; transform: translateY(0px); position: relative;}
-  div.cont-year { position: relative; margin: 2rem 0 1rem 0;}
-  div.cont-img-tl { width: 320px; height: 300px; }
-  div#line-center {display: none;}
-  div.cont-2-column-item:nth-child(even) {justify-content: center;}
-  div#cont-2-column div.cont-2-column-item:nth-child(even) {justify-content: center;}
-  div#cont-2-column div.cont-2-column-item:nth-child(even) p {justify-content: center;}
-  div#cont-2-column div.cont-2-column-item:nth-child(odd) p {justify-content: center;}
+  div.cont-img-tl { width: 300px; height: 250px; }
+  div.cont-2-column-item { height: 370px;}
+  div.cont-year {justify-content: start; transform: translateY(-40px);}
+  div.cont-2-column-item:nth-child(even) {justify-content: end;}
+  div.cont-2-column-item:nth-child(odd) {justify-content: end;}
+  div#cont-2-column div.cont-2-column-item:nth-child(odd) p {justify-content: end; text-align: left;}
+  div.year-text { width: 80px;  height: 80px;  font-size: 18pt;  z-index: 2; margin-left: 1rem;}
+  div#line-center {left: 55px;}
+  div#cont-column { justify-content: start;}
+  div#cont-2-column { width: 96%; }
+  div.cont-2-column-item p span {max-width: 300px;}
 }
 
-
-@media screen and (max-width: 350px) { div#cont-2-column { width: 90%; } div.cont-img-tl { width: 256px; height: 240px; } }
-@media screen and (max-width: 280px) { div#cont-2-column { width: 80%; } div.cont-img-tl { width: 90%; height: 220px; } }
-
+@media screen and (max-width: 425px) { div.cont-img-tl { width: 255px; height: 212px; } div.cont-2-column-item p span {max-width: 255px;} div.cont-2-column-item { height: 320px;}}
+@media screen and (max-width: 365px) { div#cont-2-column { width: 96%; } div.cont-img-tl { width: 194px;  height: 162px;  z-index: 0; } div.cont-2-column-item p span {max-width: 194px;} div.cont-2-column-item { height: 280px;}}
+@media screen and (max-width: 330px) { div.year-text { width: 60px;  height: 60px;  font-size: 14pt; } div#line-center {left: 45px;} }

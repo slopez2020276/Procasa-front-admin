@@ -38,18 +38,15 @@ export class ProductosComponent implements OnInit {
 
     this.carrousel = document.querySelector('div#carrousel-marcas')
 
+    this.route.params.subscribe(params => { this.id = params['por-que-procasa']; this.desplazarElemento(this.id) })
+    this.route.params.subscribe(params => { this.id = params['nuestras-marcas']; this.desplazarElemento(this.id) })
+    this.route.params.subscribe(params => { this.id = params['catalogo']; this.desplazarElemento(this.id) })
+
+}
 
 
-    this.route.params.subscribe(params => {
-      this.id = params['h1-marcas']
-      const elemento:HTMLElement | any = document.getElementById(this.id)
-      console.log(this.id)
-      console.log(elemento)
-      if (elemento) { elemento.scrollIntoView({ behavior: 'smooth' }) } })
 
-  }
-  
-  ObtenerProductos(){
+ObtenerProductos(){
     this.productorService.obtenerProductos().subscribe(
       (res:any) => {
         this.dataProductos = res.productosEncontrados
@@ -58,10 +55,8 @@ export class ProductosComponent implements OnInit {
     )
   }
 
-
-  constructor(private route: ActivatedRoute) {}
-
-
+  
+  
 
 
 
@@ -103,6 +98,11 @@ arrowLeft() {
     this.carrousel.style.left = this.count+"vw"
 }
 
+
+
+
+desplazarElemento(id) { const elemento:HTMLElement | any = document.getElementById(id); if (elemento) { const desplazamientoEnPX = 60; window.scrollTo({ top: elemento.offsetTop - desplazamientoEnPX,  behavior: 'smooth' }) } }
+  constructor(private route: ActivatedRoute) {}
 
 
 }

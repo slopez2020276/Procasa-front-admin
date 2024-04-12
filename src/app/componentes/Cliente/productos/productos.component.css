@@ -343,6 +343,7 @@ div#btns-arrow mat-icon {
 }
 
 
+
 div#btns-arrow mat-icon:active { transform: scale(0.9); }
 
 div#btns-arrow mat-icon:hover {
@@ -369,7 +370,7 @@ div#btns-arrow mat-icon:hover {
 @media screen and (max-width: 550px) {
   div#container-promesa { width: 550px; justify-content: space-evenly;}
   div.cont-promesa { width: 180px; }
-  
+
 div#cont-whatsapp a h2 {display: none;}
 
   div.cont-promesa img {border: 1px solid transparent;}

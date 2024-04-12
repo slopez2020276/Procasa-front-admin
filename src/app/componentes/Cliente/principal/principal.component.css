@@ -8,7 +8,6 @@ section.container-principal {
   opacity: .99;
   height: auto;
   min-height: 90vh;
-  /* border: 2px dotted springgreen; */
   overflow-x: hidden;
   overflow-y: scroll;
 }
@@ -23,7 +22,7 @@ div#cont-introduction {
   left: 0;
   background: transparent;
   z-index: -999;
-  overflow: hidden;
+  overflow: visible;
   animation: intro 1.5s ease-in-out;
   opacity: 0;
   transition: .2s ease;
