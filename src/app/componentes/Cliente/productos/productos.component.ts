@@ -2,6 +2,7 @@ import { Component, OnInit, inject } from '@angular/core';
 import { ProductosService } from '../../../services/productos.service';
 import { HistoriaService } from '../../../services/historia.service';
 import { MarcasService } from '../../../services/marcas.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-productos',
@@ -23,6 +24,7 @@ export class ProductosComponent implements OnInit {
   dataMarcas
   carrousel:HTMLElement | any
   count:any = 0
+  id:any
 
   async ngOnInit(): Promise<void> {
     this.ObtenerProductos()
@@ -35,6 +37,16 @@ export class ProductosComponent implements OnInit {
     this.obtnerMarcas()
 
     this.carrousel = document.querySelector('div#carrousel-marcas')
+
+
+
+    this.route.params.subscribe(params => {
+      this.id = params['h1-marcas']
+      const elemento:HTMLElement | any = document.getElementById(this.id)
+      console.log(this.id)
+      console.log(elemento)
+      if (elemento) { elemento.scrollIntoView({ behavior: 'smooth' }) } })
+
   }
   
   ObtenerProductos(){
@@ -45,6 +57,23 @@ export class ProductosComponent implements OnInit {
       }
     )
   }
+
+
+  constructor(private route: ActivatedRoute) {}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
   async obtnerMarcas(){

@@ -47,6 +47,7 @@ const routes: Routes = [
   {path:'admin/generales', component:GeneralesComponent},
   {path:'admin/nuestras-marcas', component:NuestrasMarcasComponent},
   {path:'informacion-plaza', component:EquipoUnicoComponent},
+  {path:'productos/:h1-marcas', component:ProductosComponent},
 ]
 
 @NgModule({
