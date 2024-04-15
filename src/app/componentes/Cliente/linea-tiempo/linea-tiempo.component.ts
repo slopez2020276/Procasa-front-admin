@@ -18,7 +18,7 @@ export class LineaTiempoComponent implements OnInit {
 
   
   constructor(private renderer: Renderer2) {
-    this.obtenerTamanioVentana()
+    
   }
   
   async ngOnInit(){
@@ -33,20 +33,7 @@ export class LineaTiempoComponent implements OnInit {
     console.log(osName)
   }
 
-  @HostListener('window:resize', ['$event'])
-  obtenerTamanioVentana() {
-    const anchoVentana = window.innerWidth;
-
-    // Define tu lógica para elegir la dirección basada en el tamaño de la pantalla
-    if (anchoVentana <= 768) {
-      this.direccion = 'direccion-pequena';
-      console.log(this.direccion)
-    } else {
-      this.direccion = 'direccion-grande';
-      console.log(this.direccion)
-
-    }
-  }
+ 
 
 
 }
