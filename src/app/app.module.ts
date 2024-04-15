@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, NgModel } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-
+import { CarouselModule } from 'ngx-owl-carousel-o';
 import { PrincipalComponent } from './componentes/Cliente/principal/principal.component';
 import { HistoriaComponent } from './componentes/Cliente/historia/historia.component';
 import { NoticiasComponent } from './componentes/Cliente/noticias/noticias.component';
@@ -96,6 +96,7 @@ import { EquipoUnicoComponent } from './componentes/Cliente/equipo-unico/equipo-
     ReactiveFormsModule,
     HttpClientModule,
     FormsModule,
+    CarouselModule,
     NgOptimizedImage,
     MatIconModule,
     NgxUiLoaderModule.forRoot({

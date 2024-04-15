@@ -10,13 +10,25 @@ export class HistoriaService {
 
   private httpClient = inject(HttpClient)
   private baseUrl: string ;
+  private baseUrlLocal: string;
+  private conexion = 'local'
+
   constructor() {
+
+    
     this.baseUrl = 'https://enchanting-kilt-pike.cyclic.app/api'
+    this.baseUrlLocal = 'http://localhost:3002/api'
+
    }
 
 
 
    obtenerMainPage(){
+
+  if(this.conexion == 'local'){
+    this.baseUrl = this.baseUrlLocal
+    }
+
     return firstValueFrom(
       this.httpClient.get<any>(`${this.baseUrl}/mostrarPaginaPrincipal`)
     )

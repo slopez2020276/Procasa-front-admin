@@ -35,7 +35,7 @@ telefono:any
 imgPath:any
 whatsapp:any
 direccion:any
-
+valorDefecto:any = 'ania'
 ecostate
 
 containerAlert: HTMLElement | any
@@ -337,6 +337,7 @@ async ObtenerUbixId(id){
   this.descripcion = Ubicacion.ubi.descripcion
   this.imgPath =Ubicacion.ubi.imgPath
   this.direccion = Ubicacion.ubi.direccion
+  this.whatsapp = Ubicacion.ubi.whatsapp
 }
 
 editLocation(){ document.getElementById('modal-edit-ubicacion')?.classList.toggle('toggle') }
