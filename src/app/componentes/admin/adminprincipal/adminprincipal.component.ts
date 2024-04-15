@@ -46,7 +46,9 @@ export class AdminprincipalComponent implements OnInit {
   sizeLimit
 
   imgPrincipal: any
+  imgPrincipalMobil: any
   imgfondo:any
+  imgfondoBgMob:any
   fileBg
 
   dataValores
@@ -96,9 +98,11 @@ file: File | undefined;
 private fileTmp:any;
 private fileTmpNoticia :any;
 private imgPathPrincipal : any;
+private imgPathPrincipalMobil : any;
 private fileUpdateLineaTiempo: any;
 private fileUpdateNoticia:any;
 private fileBackgrud:any
+private fileBackgrudMob:any
 
 constructor(){
 
@@ -372,7 +376,9 @@ async obtenerHistoria(){
   this.EncalceVideo = responsivehistoria.historia[0].EncalceVideo
   this.idhistoria = responsivehistoria.historia[0]._id
   this.imgPrincipal =  responsivehistoria.historia[0].imgPathPrincipal
+  this.imgPrincipalMobil =  responsivehistoria.historia[0].imgPathPrincipalMobil
   this.imgfondo = responsivehistoria.historia[0].imgPathFondo
+  this.imgfondoBgMob = responsivehistoria.historia[0].imgPathFondoMob
    console.log(this.idhistoria)
 
   document.getElementById('iframe-value')?.setAttribute('disabled', 'true')
@@ -919,7 +925,118 @@ eliminarNoticia(id: any) {
     }
   }
   
+
+
+
+
+
+
+  ChangeFileBackgroundMob(event: Event): void {
+    const fileInput = event.target as HTMLInputElement | any
+    const archivo:any = fileInput.files?.[0]
+
+    if (archivo && fileInput) {
+      const lector = new FileReader()
+      lector.onload = (eventoLectura: any) => {
+        const imagen = new Image()
+        imagen.src = eventoLectura.target.result as string
+  
+        imagen.onload = () => {
+          const fileSize: number = archivo.size
+          const size: any = fileSize.toFixed(2)
+          let medida: string
+          let sizemedida: any
+  
+          if ((size / 1024 / 1024) < 1.0) {
+            medida = " KB"
+            sizemedida = (size / 1024).toFixed(2).toString() + medida
+          } else {
+            medida = " MB"
+            sizemedida = (size / 1024 / 1024).toFixed(2).toString() + medida
+          }
+  
+          const fileName: string = archivo.name
+          let img = new Image()
+          const objectURL = URL.createObjectURL(archivo)
+          img.src = objectURL
+          this.anchoimg = imagen.width
+          this.altoimg = imagen.height
+  
+          const dangerRedElements = document.getElementsByClassName('danger-red')
+          dangerRedElements[3]?.classList.remove('limit')
+          dangerRedElements[4]?.classList.remove('limit')
+          dangerRedElements[5]?.classList.remove('limit')
+  
+          if (this.anchoimg > 1080) {
+            dangerRedElements[3]?.classList.add('limit')
+          }
+          if (this.altoimg > 1920) {
+            dangerRedElements[4]?.classList.add('limit')
+          }
+          if ((size / 1024) > 800) {
+            dangerRedElements[5]?.classList.add('limit')
+          }
+  
+
+          document.getElementById('innersize-bg-mob')!.innerHTML = sizemedida
+          document.getElementById('innerwidth-bg-mob')!.innerHTML = this.anchoimg + " px"
+          document.getElementById('innerheight-bg-mob')!.innerHTML = this.altoimg + " px"
+          document.getElementById('file-bgmob')?.setAttribute('data-content', fileName)
+          document.getElementById('pre-bgmob')?.removeAttribute('src')
+          document.getElementById('preview-bgmob')?.removeAttribute('src')
+          document.getElementById('preview-bgmob')?.setAttribute('src', img.src)
+          document.getElementById('pre-bgmob')?.setAttribute('src', img.src)
+          document.getElementById('endpreview-bgmob')?.setAttribute('src', img.src)
+        }
+      }
+      lector.readAsDataURL(archivo)
+  
+      const btnSaveBg: HTMLElement | any = document.querySelector('#saveBgImgMob')
+      btnSaveBg?.classList.add('show')
+      btnSaveBg.onclick = () => { this.sendFileBackgroundMob() }
+    }
+  }
+  
+
+
+
+
+
+
+
+
+
   sendFileBackground(): void {
+    this.AlertOption("¿Desea guardar la nueva imagen de fondo para móvil?")
+    const parent: HTMLElement | any = this.containerAlert
+    const btn: HTMLElement | any = parent?.childNodes[0]?.childNodes[0]?.childNodes[1]?.childNodes[0]
+  
+    if (btn) { btn.onclick = () => {
+        const body = new FormData()
+        if (this.fileBackgrudMob) {
+          body.append('imgPathFondoMob', this.fileBackgrudMob.fileRaw, this.fileBackgrudMob.fileName)
+          try {
+            this.historiaService.sendback(body, this.idhistoria).subscribe(res => {
+              this.AlertMessage("¡Nueva imagen de fondo con éxito!", 1500)
+              console.log(res)
+              this.obtenerHistoria()
+              this.cleanForms()
+            })
+          } catch (error) {
+            this.AlertMessage("Error :(", 1500)
+          }
+        } else {
+          this.AlertMessage("Selecciona una imagen de fondo por favor", 1500)
+        }
+      }
+    }
+  }
+  
+
+
+
+
+  sendFileBackgroundMob(): void {
     this.AlertOption("¿Desea guardar la nueva imagen de fondo?")
     const parent: HTMLElement | any = this.containerAlert
     const btn: HTMLElement | any = parent?.childNodes[0]?.childNodes[0]?.childNodes[1]?.childNodes[0]
@@ -950,6 +1067,14 @@ eliminarNoticia(id: any) {
 getFileBack($event: any): void {
   const [ file ] = $event.target.files
   this.fileBackgrud = {
+    fileRaw:file,
+    fileName:file.name
+  }
+}
+
+getFileBackBgMob($event: any): void {
+  const [ file ] = $event.target.files
+  this.fileBackgrudMob = {
     fileRaw:file,
     fileName:file.name
   }
@@ -1003,6 +1128,16 @@ getFilePortada($event: any): void {
 }
 
 
+getFilePortadaMobil($event: any): void {
+  //TODO esto captura el archivo!
+  const [ file ] = $event.target.files;
+  this.imgPathPrincipalMobil = {
+    fileRaw:file,
+    fileName:file.name
+  }
+}
+
+
 
 
 
@@ -1037,6 +1172,40 @@ sendFilePortada(): void {
     }
   }
 }
+
+
+
+
+
+
+sendFilePortadaMobil(): void {
+  this.AlertOption("¿Desea guardar la nueva imagen de Portada para Móvil?")
+  const parent: HTMLElement | any = this.containerAlert
+  const btn: HTMLElement | any = parent?.childNodes[0]?.childNodes[0]?.childNodes[1]?.childNodes[0]
+
+  if (btn) {
+    btn.onclick = () => {
+      const body = new FormData()
+      if (this.imgPathPrincipalMobil) {
+        try {
+          body.append('imgPathPortadaMobil', this.imgPathPrincipalMobil.fileRaw, this.imgPathPrincipalMobil.fileName)
+          this.historiaService.sendPost(body, this.idhistoria)
+            .subscribe(res => {
+              this.AlertMessage("¡Fondo actualizado exitosamente!", 1500)
+              console.log(res)
+              this.obtenerHistoria()
+              this.cleanForms()
+            })
+        } catch (error) {
+          this.AlertMessage("Error :(", 1500)
+        }
+      } else {
+        this.AlertMessage("No hay archivo seleccionado", 1500)
+      }
+    }
+  }
+}
+
 
 
 preSavePortada(event: Event): void  {
@@ -1085,31 +1254,69 @@ preSavePortada(event: Event): void  {
     lector.readAsDataURL(archivo)
   }
 
-  document.getElementById('btn-save-portada')?.addEventListener('click', () => {
-
-    if(archivo!==null || archivo!==undefined){
-
-  const innerMessage = document.getElementsByClassName('innermsg')[1]
-  if (innerMessage) { innerMessage.innerHTML = "¿Desea guardar los cambios?"
+}
 
 
-  document.getElementsByClassName('container-alert')[1]?.classList.add('show')
-  document.getElementsByClassName('message')[1]?.classList.add('show')
-  document.getElementsByClassName('cont-btns-alert')[1]?.classList.add('show')
 
-  document.getElementsByClassName('cancel')[1]?.addEventListener('click', function(){
-    document.getElementsByClassName('container-alert')[1]?.classList.remove('show')
-    document.getElementsByClassName('message')[1]?.classList.remove('show')
-    document.getElementsByClassName('cont-btns-alert')[1]?.classList.remove('show')
-  },false)
-  document.getElementsByClassName('confirm')[1]?.addEventListener('click', function(){
-    document.getElementsByClassName('cont-btns-alert')[1]?.classList.remove('show')
-    document.getElementsByClassName('container-alert')[1]?.classList.remove('show')
-  },false)
+
+
+
+
+
+preSavePortadaMobil(event: Event): void  {
+
+  const fileInput = event.target as HTMLInputElement
+  const archivo = fileInput.files?.[0]
+
+  if (archivo) { const lector = new FileReader()
+
+    lector.onload = (eventoLectura:any) => {
+      const imagen = new Image()
+      imagen.src = eventoLectura.target.result as string
+
+      imagen.onload = () => {
+        const fileSize: number = archivo.size
+        const size: any = fileSize.toFixed(2)
+        let medida: string
+        let sizemedida: any
+        if((size/1024/1024) < 1.0) {medida = " KB"; sizemedida = (size/1024).toFixed(2).toString() + medida }else{ medida = " MB"; sizemedida = (size/1024/1024).toFixed(2).toString() + medida }
+        const fileName: string = archivo.name
+        let img = new Image()
+        const objectURL = URL.createObjectURL(archivo)
+        img.src = objectURL
+        this.anchoimg = imagen.width, this.altoimg = imagen.height
+
+
+        document.getElementsByClassName('danger-red')[6]?.classList.remove('limit')
+        document.getElementsByClassName('danger-red')[7]?.classList.remove('limit')
+        document.getElementsByClassName('danger-red')[8]?.classList.remove('limit')
+
+        if(this.anchoimg > 1080){  document.getElementsByClassName('danger-red')[6].classList.add('limit') }
+        if(this.altoimg > 1920){ document.getElementsByClassName('danger-red')[7].classList.add('limit') }
+        if((size/1024) > 800 ){  document.getElementsByClassName('danger-red')[8].classList.add('limit') }
+
+        document.getElementById('innersize-mobile')!.innerHTML = sizemedida
+        document.getElementById('innerwidth-mobile')!.innerHTML = this.anchoimg + " px"
+        document.getElementById('innerheight-mobile')!.innerHTML = this.altoimg + " px"
+        document.getElementById('file-portada-mobile')?.setAttribute('data-content', fileName)
+        document.getElementById('preview-portada-mobile')?.removeAttribute('src')
+        document.getElementById('pre-portada-mobile')?.removeAttribute('src')
+        document.getElementById('preview-portada-mobile')?.setAttribute('src', img.src)
+        document.getElementById('pre-portada-mobile')?.setAttribute('src', img.src)
+        document.getElementById('endpreview-portada')?.setAttribute('src', img.src)
+      }
+    }
+    lector.readAsDataURL(archivo)
   }
+
 }
-}, false)
-}
+
+
+
+
+
+
+
 
 testEmptyPortada(){
    let prefile: any | null = (document.getElementById('file-portada') as HTMLInputElement).value
@@ -1162,14 +1369,32 @@ onClick() {
 
 toggleImgColor(status:number, cont:string){
   document.getElementById('sub-cont-img')?.classList.remove('selected')
+  document.getElementById('sub-cont-bgmob')?.classList.remove('selected')
   document.getElementById('sub-cont-color')?.classList.remove('selected')
+
   document.getElementsByClassName('sl-img')[0]?.classList.remove('selected')
+  document.getElementsByClassName('sl-bgmob')[0]?.classList.remove('selected')
   document.getElementsByClassName('sl-color')[0]?.classList.remove('selected')
 
   document.getElementsByClassName('sl-'+cont)[0]?.classList.add('selected')
   document.getElementById('sub-cont-'+cont)?.classList.add('selected')
   this.statusBackground = status
 }
+
+
+
+togglePortada(status:number, cont:string){
+  document.getElementById('sub-cont-desktop')?.classList.remove('selected')
+  document.getElementById('sub-cont-mobile')?.classList.remove('selected')
+  document.getElementsByClassName('sl-desktop')[0]?.classList.remove('selected')
+  document.getElementsByClassName('sl-mobile')[0]?.classList.remove('selected')
+
+  document.getElementsByClassName('sl-'+cont)[0]?.classList.add('selected')
+  document.getElementById('sub-cont-'+cont)?.classList.add('selected')
+  this.statusBackground = status
+}
+
+
 
 
 

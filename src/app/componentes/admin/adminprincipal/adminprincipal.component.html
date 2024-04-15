@@ -15,24 +15,27 @@
 <div id="cont-btn-preview">
   <div class="btn-scroll normal" (click)="toScrollAdmin(0)">Fondo</div>
   <div class="btn-scroll normal" (click)="toScrollAdmin(1)">Portada</div>
-  <div class="btn-scroll normal" (click)="toScrollAdmin(2)">Previsualización</div>
-  <div class="btn-scroll normal" (click)="toScrollAdmin(3)">Historia</div>
-  <div class="btn-scroll normal" (click)="toScrollAdmin(4)">Línea de Tiempo</div>
-  <div class="btn-scroll normal" (click)="toScrollAdmin(5)">Misión y Visión</div>
-  <div class="btn-scroll normal" (click)="toScrollAdmin(6)">Valores</div>
-  <div class="btn-scroll normal" (click)="toScrollAdmin(7)">Noticias</div>
+  <!-- <div class="btn-scroll normal" (click)="toScrollAdmin(2)">Previsualización</div> -->
+  <div class="btn-scroll normal" (click)="toScrollAdmin(2)">Historia</div>
+  <div class="btn-scroll normal" (click)="toScrollAdmin(3)">Línea de Tiempo</div>
+  <div class="btn-scroll normal" (click)="toScrollAdmin(4)">Misión y Visión</div>
+  <div class="btn-scroll normal" (click)="toScrollAdmin(5)">Valores</div>
+  <div class="btn-scroll normal" (click)="toScrollAdmin(6)">Noticias</div>
 </div>
 
 
 <div class="container scroll-cont" id="container-bg">
 
   <h1 class="bold title-bg">FONDO DE LA PÁGINA</h1>
-  <div id="cont-separador">
-    <div id="separador">
-      <div class="normal sl-img btn-click" (click)="toggleImgColor(0, 'img')">IMAGEN</div>
-      <div class="normal sl-color btn-click" (click)="toggleImgColor(1, 'color')">COLOR</div>
+  <div class="cont-separador">
+    <div class="separador">
+      <div class="normal sl-img btn-click sl-option" (click)="toggleImgColor(0, 'img')" title="Imagen de fondo"><mat-icon>desktop_windows</mat-icon></div>
+      <div class="normal sl-bgmob btn-click sl-option" (click)="toggleImgColor(2, 'bgmob')" title="Imagen de fondo móvil"><mat-icon>stay_primary_portrait</mat-icon></div>
+      <div class="normal sl-color btn-click sl-option" (click)="toggleImgColor(1, 'color')" title="Color de fondo"><mat-icon>format_color_fill</mat-icon></div>
     </div>
   </div>
+
+
 
   <div class="sub-container-items" id="sub-cont-img">
     <div id="cont-input-file-bg" class="sub-items">
@@ -41,9 +44,7 @@
     </div>
 
     <div class="prewiew sub-items">
-      <!-- <img id="navbar-pre-bg" src="../../../assets/img/navbar.png" alt="navbar" title="navbar preview"> -->
       <img id="preview-bg" [src]="imgfondo" alt="fondo" title="previsualización del archivo">
-      <!-- <img id="footer-bg" src="../../../assets/img/footer.png" alt="footer" title="footer preview"> -->
     </div>
 
     <div id="cont-caracteristics-bg" class="sub-items">
@@ -72,6 +73,60 @@
     <div class="action-center"><div class="btn-click btn-red normal" id="saveBgImg"><mat-icon>save</mat-icon> guardar</div></div>
   </div>
 
+
+
+
+<!-- ----- M O B I L E   I M G -->
+
+  <div class="sub-container-items" id="sub-cont-bgmob">
+    <div id="cont-input-file-bgmob" class="sub-items">
+      <input (change)="ChangeFileBackgroundMob($event)" (change)="getFileBackBgMob($event)" accept="image/png, image/jpeg, image/jpg" id="file-bgmob" type="file" title="seleccionar archivo" data-content="seleccionar archivo">
+      <img id="pre-bgmob" [src]="imgfondoBgMob" title="previsualización del archivo">
+    </div>
+
+    <div class="prewiew sub-items">
+      <img id="preview-bgmob" [src]="imgfondoBgMob" alt="fondo" title="previsualización del archivo">
+    </div>
+
+    <div id="cont-caracteristics-bgmob" class="sub-items">
+
+      <div class="cont-carac">
+
+        <h4>requisitos recomendados</h4>
+        <ul>
+          <li> Ancho: <span class="bold">1080 px</span></li>
+          <li> Alto:  <span class="bold">1920 px</span></li>
+          <li> Peso: <span class="bold">800 KB</span></li>
+        </ul>
+      </div>
+
+      <div class="cont-carac">
+
+        <h4>detalles del archivo</h4>
+        <ul>
+          <li>ancho: <span class="normal danger-red" id="innerwidth-bg-mob"></span></li>
+          <li>alto:  <span class="normal danger-red" id="innerheight-bg-mob"></span></li>
+          <li>peso:  <span class="normal danger-red" id="innersize-bg-mob"></span></li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="action-center"><div class="btn-click btn-red normal" id="saveBgImgMob"><mat-icon>save</mat-icon> guardar</div></div>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <div id="sub-cont-color">
   <p class="normal">Seleccionar color de fondo</p>
   <input type="color" title="color de fondo" [(ngModel)]="colorBg" data-color="">
@@ -86,12 +141,19 @@
 <!-- ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- -->
 <div class="container scroll-cont" id="container-1">
   <h1 class="bold title-bg">PORTADA PRINCIPAL</h1>
-  <div class="sub-container-items">
+              <div class="cont-separador">
+                <div class="separador">
+                  <div class="normal sl-desktop btn-click sl-option" id="sl-desktop" (click)="togglePortada(0, 'desktop')" title="Escritorio"><mat-icon>desktop_windows</mat-icon></div>
+                  <div class="normal sl-mobile btn-click sl-option" id="sl-mobile" (click)="togglePortada(1, 'mobile')" title="Móvil"><mat-icon>stay_primary_portrait</mat-icon></div>
+                </div>
+              </div>
+
+
+
+  <div class="sub-container-items" id="sub-cont-desktop">
     <div id="cont-input-file">
       <input (change)="preSavePortada($event)" (change)="getFilePortada($event)" accept="image/png, image/jpeg, image/jpg" id="file-portada" type="file" title="seleccionar archivo" data-content="seleccionar archivo">
-      <!-- <input type="file" (change)="manejarCambioArchivo($event)" title="input for demo"> -->
       <img id="pre-portada" [src]="imgPrincipal" alt="portada" title="previsualización del archivo">
-
     </div>
 
     <div class="prewiew">
@@ -99,7 +161,7 @@
         <div id="contpreimg">
           <img id="preview-portada" [src]="imgPrincipal" alt="portada" title="previsualización del archivo">
         </div>
-      <img id="footer-pre" src="../../../assets/img/footer.png" alt="footer" title="footer preview">
+      <!-- <img id="footer-pre" src="../../../assets/img/footer.png" alt="footer" title="footer preview"> -->
     </div>
 
     <div id="cont-caracteristics">
@@ -127,15 +189,58 @@
     </div>
   </div>
 
+
+
+<!-- ------- M O B I L E ------- -->
+
+
+<div id="sub-cont-mobile">
+      <div id="cont-input-file-mobile">
+      <input (change)="preSavePortadaMobil($event)" (change)="getFilePortadaMobil($event)" accept="image/png, image/jpeg, image/jpg" id="file-portada-mobile" type="file" title="seleccionar archivo" data-content="seleccionar archivo">
+      <img id="pre-portada-mobile" [src]="imgPrincipalMobil" title="previsualización del archivo">
+    </div>
+
+    <div class="prewiew-mobile">
+        <div id="contpreimg-mobile">
+          <img id="preview-portada-mobile" [src]="imgPrincipalMobil" title="previsualización del archivo">
+        </div>
+    </div>
+
+    <div id="cont-caracteristics-mobile">
+
+      <div class="cont-carac">
+
+        <h4>requisitos recomendados</h4>
+        <ul>
+          <li> Ancho: <span class="bold">1080 px</span></li>
+          <li> Alto:  <span class="bold">1920 px</span></li>
+          <li> Peso: <span class="bold">800 KB</span></li>
+        </ul>
+      </div>
+
+      <div class="cont-carac">
+
+        <h4>detalles del archivo</h4>
+        <ul>
+          <li>ancho: <span class="normal danger-red" id="innerwidth-mobile"></span></li>
+          <li>alto:  <span class="normal danger-red" id="innerheight-mobile"></span></li>
+          <li>peso:  <span class="normal danger-red" id="innersize-mobile"></span></li>
+        </ul>
+      </div>
+
+    </div>
+</div>
+
+
     <div class="action-center">
-      <div (click)="testEmptyPortada()" class="normal btn-red btn-click" id="btn-save-portada" (click)="sendFilePortada()"><mat-icon>save</mat-icon> guardar</div>
+      <div (click)="testEmptyPortada()" class="normal btn-red btn-click" id="btn-save-portada-mobile" (click)="sendFilePortadaMobil()"><mat-icon>save</mat-icon> guardar</div>
     </div>
 
 </div>
 
+<!-- --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- -->
 
-
-<div id="container-preview" class="container scroll-cont">
+<!-- <div id="container-preview" class="container scroll-cont">
   <h1 class="bold title-bg">PREVISUALIZACIÓN FINAL</h1>
   <div id="sub-cont-preview-end">
     <img id="nav-end" src="../../../assets/img/navbar.png" alt="navbar" title="navbar preview">
@@ -143,9 +248,8 @@
         <img id="endpreview-bg" [src]="imgfondo" alt="">
         <img id="endpreview-portada" [src]=" imgPrincipal" alt="">
       </div>
-    <img id="foo-end" src="../../../assets/img/footer.png" alt="footer" title="footer preview">
   </div>
-</div>
+</div> -->
 
 <!-- ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ -->
 
