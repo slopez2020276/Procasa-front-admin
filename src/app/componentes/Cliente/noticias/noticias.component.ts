@@ -2,12 +2,16 @@ import { Component, OnInit, inject } from '@angular/core';
 import { MisionService } from '../../../services/mision.service';
 import { NoticasService } from '../../../services/noticas.service';
 import { SharedDataService } from '../../../shared-data.service';
+import { OwlOptions } from 'ngx-owl-carousel-o';
+
 
 @Component({
   selector: 'app-noticias',
   templateUrl: './noticias.component.html',
   styleUrl: './noticias.component.css'
 })
+
+
 
 
 export class NoticiasComponent implements OnInit {
@@ -43,6 +47,17 @@ arrowLeft() {
   this.carrousel = document.querySelector('div#carrousel-noticias')
   this.carrousel.style.left = this.count+"vw"
 }
+
+
+  customOptions: OwlOptions = {
+    loop: true,
+    autoplay: true,
+    autoplayTimeout: 3000,
+    items: 1,
+    dots: false,
+    nav: false
+  };
+
 
 
 }
