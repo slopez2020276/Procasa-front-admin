@@ -1,5 +1,5 @@
 
-* {color: #FAFAFA; border: 1px solid red;}
+* {color: #FAFAFA;}
 
 div#noticias {
   width: 100vw;
@@ -39,29 +39,6 @@ div#btns-arrow mat-icon {
   transition: .2s;
   transform: scale(1);
 }
-
-
-owl-carousel-o {
-  border: 2px solid greenyellow;
-  display: flex;
-  justify-content: start;
-  align-content: center;
-  flex-wrap: nowrap;
-  position: relative;
-  width: 100%;
-}
-
-ng-container {border: 2px solid blue;}
-
-owl-carousel-o, ng-container, ng-template {
-  display: flex;
-  justify-content: start;
-  align-content: center;
-  align-items: center;
-  flex-wrap: nowrap;
-}
-
-
 
 div#carrousel-noticias {
   position: relative;
@@ -205,23 +182,3 @@ div.noticia {
 }
   
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
