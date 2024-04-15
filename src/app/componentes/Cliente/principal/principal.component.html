@@ -1,5 +1,18 @@
 
-@if (tipoBack == true ) { <img  [src]="imgFondo"  id="background-texture">
+@if (tipoBack == true ) {
+  
+  @if(TamanioPantalla == 'direccion-grande'){
+
+    <img  [src]="imgFondo"  id="background-texture">
+    <img [src]="imgPrincipal" id="img-principal">
+
+  }
+  @else if(TamanioPantalla == 'direccion-pequena') {
+    <img  [src]="imgFondoMovil"  id="background-texture">
+    <img [src]="imgPrincipalMovil" id="img-principal">
+  }
+
+
 }@else{
   <img   id="background-texture" [style.background-color]="colorn">
 }
@@ -11,7 +24,6 @@
 </div>
 
 
-  <img [src]="imgPrincipal" id="img-principal">
 
 <section id="historia" class="container-principal">
   <h1 class="container-h1 bold">HISTORIA</h1>

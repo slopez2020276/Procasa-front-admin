@@ -164,6 +164,7 @@ constructor(){
 
 
 
+
   }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -378,7 +379,7 @@ async obtenerHistoria(){
   this.imgPrincipal =  responsivehistoria.historia[0].imgPathPrincipal
   this.imgPrincipalMobil =  responsivehistoria.historia[0].imgPathPrincipalMobil
   this.imgfondo = responsivehistoria.historia[0].imgPathFondo
-  this.imgfondoBgMob = responsivehistoria.historia[0].imgPathFondoMob
+  this.imgfondoBgMob = responsivehistoria.historia[0].imgPathFondoMobil
    console.log(this.idhistoria)
 
   document.getElementById('iframe-value')?.setAttribute('disabled', 'true')
@@ -528,6 +529,25 @@ getFileUpdateTiempo($event: any): void {
     fileRaw:file,
     fileName:file.name
   }
+}
+
+getFileUpdateFondoMobile($event: any): void {
+  const [ file ] = $event.target.files;
+  this.fileUpdateLineaTiempo = {
+    fileRaw:file,
+    fileName:file.name
+  }
+}
+
+sendFileUpdateFondoMobile():void{
+
+  let id = this.dataLieneaxId._id
+  const body = new FormData()
+  if(this.fileUpdateLineaTiempo){
+    body.append('ImgPathLineaTiempo', this.fileUpdateLineaTiempo.fileRaw, this.fileUpdateLineaTiempo.fileName)
+  }
+  this.lineaService.sendEdit(body,this.idAnio,id)
+  .subscribe(res =>{console.log(res), this.obtenerLinea(),this.fileUpdateLineaTiempo = null})
 }
 
 sendFileUpdateTiempo():void{
@@ -1013,8 +1033,8 @@ eliminarNoticia(id: any) {
   
     if (btn) { btn.onclick = () => {
         const body = new FormData()
-        if (this.fileBackgrudMob) {
-          body.append('imgPathFondoMob', this.fileBackgrudMob.fileRaw, this.fileBackgrudMob.fileName)
+        if (this.fileBackgrud) {
+          body.append('imgPathFondoMob', this.fileBackgrud.fileRaw, this.fileBackgrud.fileName)
           try {
             this.historiaService.sendback(body, this.idhistoria).subscribe(res => {
               this.AlertMessage("¡Nueva imagen de fondo con éxito!", 1500)
@@ -1043,10 +1063,10 @@ eliminarNoticia(id: any) {
   
     if (btn) { btn.onclick = () => {
         const body = new FormData()
-        if (this.fileBackgrud) {
-          body.append('imgPathFondo', this.fileBackgrud.fileRaw, this.fileBackgrud.fileName)
+        if (this.fileBackgrudMob) {
+          body.append('imgPathMobilFondo', this.fileBackgrudMob.fileRaw, this.fileBackgrudMob.fileName)
           try {
-            this.historiaService.sendback(body, this.idhistoria).subscribe(res => {
+            this.historiaService.sendFondoMovil(body, this.idhistoria).subscribe(res => {
               this.AlertMessage("¡Nueva imagen de fondo con éxito!", 1500)
               console.log(res)
               this.obtenerHistoria()
@@ -1188,8 +1208,8 @@ sendFilePortadaMobil(): void {
       const body = new FormData()
       if (this.imgPathPrincipalMobil) {
         try {
-          body.append('imgPathPortadaMobil', this.imgPathPrincipalMobil.fileRaw, this.imgPathPrincipalMobil.fileName)
-          this.historiaService.sendPost(body, this.idhistoria)
+          body.append('imgPathMobilPortada', this.imgPathPrincipalMobil.fileRaw, this.imgPathPrincipalMobil.fileName)
+          this.historiaService.sendPortadaMovil(body, this.idhistoria)
             .subscribe(res => {
               this.AlertMessage("¡Fondo actualizado exitosamente!", 1500)
               console.log(res)

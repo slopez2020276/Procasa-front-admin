@@ -10,14 +10,12 @@ export class HistoriaService {
 
   private httpClient = inject(HttpClient)
   private baseUrl: string ;
-  private baseUrlLocal: string;
   private conexion = 'local'
 
   constructor() {
 
     
-    this.baseUrl = 'https://enchanting-kilt-pike.cyclic.app/api'
-    this.baseUrlLocal = 'http://localhost:3002/api'
+    this.baseUrl = 'http://localhost:3002/api'
 
    }
 
@@ -25,10 +23,7 @@ export class HistoriaService {
 
    obtenerMainPage(){
 
-  if(this.conexion == 'local'){
-    this.baseUrl = this.baseUrlLocal
-    }
-
+ 
     return firstValueFrom(
       this.httpClient.get<any>(`${this.baseUrl}/mostrarPaginaPrincipal`)
     )
@@ -53,6 +48,15 @@ export class HistoriaService {
   sendback(body:FormData,id:any):Observable<any>{
     return this.httpClient.put(`${this.baseUrl}/editarFondo/${id}`, body)
   }
+  sendPortadaMovil(body:FormData,id:any):Observable<any>{
+    return this.httpClient.put(`${this.baseUrl}/editarMobilPortada/${id}`, body)
+  }
+  sendFondoMovil(body:FormData,id:any):Observable<any>{
+    return this.httpClient.put(`${this.baseUrl}/editarMobilFondo/${id}`, body)
+
+  }
+
+
   createHeaders(){
      return   {
       headers: new HttpHeaders ({
