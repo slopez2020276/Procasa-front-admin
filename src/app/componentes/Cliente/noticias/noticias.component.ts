@@ -50,12 +50,12 @@ arrowLeft() {
 
 
   customOptions: OwlOptions = {
-    loop: true,
+   loop: true,
     autoplay: true,
-    autoplayTimeout: 3000,
-    items: 1,
+    center: true,
     dots: false,
-    nav: false
+    autoHeight: true,
+    autoWidth: true,
   };
 
 
