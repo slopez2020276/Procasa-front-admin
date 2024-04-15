@@ -273,10 +273,25 @@ a#enlace-tel {
   text-decoration: none;
 }
 
-
-
-
 div#f-sub-4 p {cursor: pointer;}
+
+
+a#link-forms {
+  text-decoration: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: nowrap;
+}
+
+a#link-forms mat-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+}
+
+
 
   /* ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||| */
 
