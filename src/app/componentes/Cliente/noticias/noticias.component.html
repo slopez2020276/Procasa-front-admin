@@ -1,21 +1,22 @@
 <div id="noticias">
   <div id="btns-arrow">
       <div id="btn-left-ca" (click)="arrowLeft()"><mat-icon>keyboard_arrow_left</mat-icon></div>
-      <div id="btn-right-ca" (click)="arrowRight()"><mat-icon>keyboard_arrow_right</mat-icon></div>
+      <!-- <div id="btn-right-ca" (click)="arrowRight()"><mat-icon>keyboard_arrow_right</mat-icon></div> -->
+      <div id="btn-right-ca" (click)="shiftArray()"><mat-icon>keyboard_arrow_right</mat-icon></div>
   </div>
   
   
   <div id="carrousel-noticias">
-    @for (os of data; track os.id) {
-              <div class="noticia">
-                <div class="cont-img"><img [src]="os.imgPhat" alt=""></div>
-                <div class="cont-datos-noticia">
-                  <h1 class="bold">{{os.title}}</h1>
-                  <div class="descubre bold" routerLink="/noticia/{{os._id}}" (click)="enviarId(os._id)"> DESCUBRE</div>
-                  <div class="fecha-noticia bold">{{os.fechaFormateada}}</div>
-                </div>
-              </div>
-          }
+    <!-- index.html -->
+<div *ngFor="let os of noticiasArray" class="noticia">
+  <div class="cont-img"><img [src]="os.imgPhat" alt=""></div>
+  <div class="cont-datos-noticia">
+      <h1 class="bold">{{ os.title }}</h1>
+      <div class="descubre bold" [routerLink]="'/noticia/' + os._id" (click)="enviarId(os._id)">DESCUBRE</div>
+      <div class="fecha-noticia bold">{{ os.fechaFormateada }}</div>
   </div>
-  
-  </div>
+</div>
+
+</div>
+
+</div>

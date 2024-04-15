@@ -23,11 +23,55 @@ export class NoticiasComponent implements OnInit {
   carrousel:HTMLElement | any
   count:any = 0
 
-constructor(private sharedDataService: SharedDataService){}
+
+
+
+noticiasArray: any[] = []
+
+cargarNoticias() { this.noticiasArray = this.data }
+
+ShiftArray(){}
+PushArray(){}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+constructor(private sharedDataService: SharedDataService){
+
+  
+}
+
+shiftArray() {
+const firstElement = this.noticiasArray.shift()
+this.noticiasArray.push(firstElement)
+}
+
+
+
+
+
+
+
 
   async ngOnInit() {
+    
+    
     const response = await this.NoticiasService.obtenerNoticas()
     this.data = response.noticias 
+    this.cargarNoticias()
+    console.log(this.data)
   }
 
   enviarId(id: any): void {
@@ -35,14 +79,14 @@ constructor(private sharedDataService: SharedDataService){}
   }
 
 arrowRight() {
-  this.count -= 60
+  this.count -= 40
   console.log(this.count)
   this.carrousel = document.querySelector('div#carrousel-noticias')
   this.carrousel.style.left = this.count+"vw"
 }
 
 arrowLeft() {
-  this.count += 60
+  this.count += 40
   if(this.count >= 0){ this.count = 0;  console.log(this.count) }
   this.carrousel = document.querySelector('div#carrousel-noticias')
   this.carrousel.style.left = this.count+"vw"

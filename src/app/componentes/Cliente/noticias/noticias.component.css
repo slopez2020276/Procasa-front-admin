@@ -158,6 +158,12 @@ div.fecha-noticia {
 }
 
 
+/* div#carrousel-1 { border: 2px solid springgreen; }
+div#carrousel-2 { border: 2px solid orangered; } */
+
+
+div.noticia:first-child { margin-left: 1rem; }
+
 @media screen and (max-width: 850px ) {  
 div.noticia {
   width: 270px;
