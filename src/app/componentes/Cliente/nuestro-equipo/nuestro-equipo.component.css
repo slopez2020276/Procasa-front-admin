@@ -76,11 +76,14 @@ div.container-plazas {
 
 div.cont-plaza {
   position: relative;
-  width: 220px;
-  height: 220px;
+  width: 240px;
+  height: 240px;
   overflow: hidden;
   margin: 10px 10px;
+  cursor: pointer;
 }
+
+div.cont-plaza * {word-wrap: break-word;}
 
 div.cont-img {
   position: relative;
@@ -93,14 +96,36 @@ div.cont-img {
   align-content: center;
 }
 
+div.state-plaza {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0; left: 0;
+  z-index: 10;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  color: var(--main);
+  text-transform: uppercase;
+  font-size: 16pt;
+  background: rgba(255,255,255,.7);
+  opacity: 0;
+}
+
+div.state-plaza.yes {opacity: 1;}
+
 div.cont-img img {
   width: auto;
   height: 100%;
   top: auto;
   left: auto;
   position: absolute;
+  transform: scale(1);
+  transition: .2s;
 }
 
+div.cont-plaza:hover div.cont-img img {transform: scale(1.1);}
 
 
 
