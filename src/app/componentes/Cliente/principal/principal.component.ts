@@ -37,6 +37,9 @@ import { ActivatedRoute } from '@angular/router';
      this.imgFondo = this.data[0].imgPathFondo
      this.colorn = this.data[0].colorFondo
      this.evaluarTipoBack()
+    
+
+
      this.imgPrincipalMovil = this.data[0].imgPathPrincipalMobil
      this.imgFondoMovil = this.data[0].imgPathFondoMobil
      console.log(this.data)
