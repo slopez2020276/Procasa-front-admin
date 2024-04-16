@@ -260,10 +260,10 @@ div.logo-head {
   }
 
   div.checked {
-    width: 14px;
-    height: 14px;
-    top: 1px;
-    left: 1px;
+    width: 16px;
+    height: 16px;
+    top: 2px;
+    left: 2px;
   }
 
   div.logo-head p {
