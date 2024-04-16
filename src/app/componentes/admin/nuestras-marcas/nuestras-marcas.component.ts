@@ -69,7 +69,11 @@ getFileEditReal($event: any): void {
 
 
 sendFile():void{
+  this.AlertOption("¿Guardar la nueva Marca?")
+  const parent: HTMLElement | any = this.containerAlert
+  const btn: HTMLElement | any = parent?.childNodes[0]?.childNodes[0]?.childNodes[1]?.childNodes[0]
 
+  btn.onclick = () => {
   const body = new FormData()
 console.log(body)
 
@@ -78,18 +82,23 @@ console.log(body)
     body.append('textMarca', this.formularioAgregarMarca.value.textMarca)
   }else{
     body.append('textMarca', this.formularioAgregarMarca.value.textMarca)
-
   }
 
   this.MarcasServices.CrearMarca(body)
   .subscribe(res =>{
     this.formularioAgregarMarca.reset()
     console.log(res), this.obtenerMarcas()})
-
+  }
 }
 
 
 sendFileEditReal():void{
+  this.AlertOption("¿Guardar cambios de Marca?")
+  const parent: HTMLElement | any = this.containerAlert
+  const btn: HTMLElement | any = parent?.childNodes[0]?.childNodes[0]?.childNodes[1]?.childNodes[0]
+
+  btn.onclick = () => {
+
 
   const body = new FormData()
 console.log(body)
@@ -97,17 +106,21 @@ console.log(body)
   if(this.fileTmpEditReal){
     body.append('imgPath', this.fileTmpEditReal.fileRaw, this.fileTmpEditReal.fileName)
     body.append('textMarca', this.formularioEditarMarca.value.textMarca)
-  }else{
-    body.append('textMarca', this.formularioEditarMarca.value.textMarca)
+  }else{ body.append('textMarca', this.formularioEditarMarca.value.textMarca) }
 
-  }
 
-  this.MarcasServices.editarMarca(this.marcaid,body)
-  .subscribe(res =>{
-    this.formularioEditarMarca.reset()
-    console.log(res), this.obtenerMarcas()})
-
+  if (btn) {
+          this.MarcasServices.editarMarca(this.marcaid,body)
+          .subscribe(res =>{
+            this.formularioEditarMarca.reset()
+            console.log(res), this.obtenerMarcas()})
 }
+}
+}
+
+
+
+
 
 async obtenermarcaId(id:any){
   const respuesta = await this.MarcasServices.ObtenerMarcaId(id)
@@ -118,7 +131,7 @@ async obtenermarcaId(id:any){
 
 
 async ngOnInit(){
-
+this.containerAlert = document.getElementById('background-alert')
   this.obtenerMarcas()
 }
 
@@ -148,9 +161,16 @@ getFileEdit($event: any): void {
 }
 
 async eliminarMarca(id:any){
-  const respuesta = await this.MarcasServices.eliminarMarca(id)
-  console.log(respuesta)
-  this.obtenerMarcas()
+  this.AlertOption("¿Desea eliminar la Marca seleccionada?")
+  const parent: HTMLElement | any = this.containerAlert
+  const btn: HTMLElement | any = parent?.childNodes[0]?.childNodes[0]?.childNodes[1]?.childNodes[0]
+  
+          if (btn) { btn.onclick = async () => {
+              this.AlertMessage("Marca eliminada con éxito", 1500)
+              const respuesta = await this.MarcasServices.eliminarMarca(id)
+              console.log(respuesta)
+              this.obtenerMarcas()
+            }}
 }
 
 
@@ -185,21 +205,6 @@ clearInputs() {
     }
   }
 }
-
-
-
-
-
-DeleteMarca(){
-  this.AlertOption("¿Desea eliminar la Marca seleccionada?")
-  const parent: HTMLElement | any = this.containerAlert
-  const btn: HTMLElement | any = parent?.childNodes[0]?.childNodes[0]?.childNodes[1]?.childNodes[0]
-  
-  if (btn) { btn.onclick = () => {
-    this.AlertMessage("...", 1500)
-  }}
-}
-
 
 
 

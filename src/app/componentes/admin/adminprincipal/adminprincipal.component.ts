@@ -1050,8 +1050,8 @@ eliminarNoticia(id: any) {
         }
       }
     }
-  }
-  
+}
+
 
 
 

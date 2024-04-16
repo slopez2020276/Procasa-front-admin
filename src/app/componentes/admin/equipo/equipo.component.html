@@ -56,7 +56,7 @@
 
 </form>
 </div>
-      </div> <!-- DATOS -->
+      </div>
 
 
       </div>
@@ -87,7 +87,7 @@
 
 
 <div class="cont start">
-  <div class="item">
+  <!-- <div class="item">
     <label class="normal">plaza / vacante</label>
     <input type="text"  formControlName="titulo" class="normal">
   </div>
@@ -120,10 +120,15 @@
   <div class="item">
     <label class="normal">Experiencia laboral</label>
     <textarea formControlName="experiencia"  class="normal"></textarea>
+  </div> -->
+
+  <div class="cont-tt">
+    <label class="bold">Desarrollo de plaza</label>
+    <textarea class="text-desarrollo" cols="1" rows="1"></textarea>
   </div>
 
-  <div class="item">
-    <label class="normal">Estado</label>
+  <div class="item item-estado">
+    <label class="bold">Estado</label>
     <select formControlName="estado">
       <option value="true">activo</option>
       <option value="false">inactivo</option>
@@ -163,7 +168,7 @@
 
 
     <div class="cont">
-      <div class="item">
+      <!-- <div class="item">
         <label class="normal">plaza / vacante</label>
         <input type="text" [(ngModel)]="NombrePlaza" formControlName="titulo" class="normal">
       </div>
@@ -191,13 +196,19 @@
       <div class="item">
         <label class="normal">experiencia laboral</label>
         <textarea [(ngModel)]="ExperienciaPlaza" formControlName="experiencia" class="normal"></textarea>
-      </div>
+      </div> -->
 
-      <div class="item">
-        <label class="normal">Estado</label>
+
+      <div class="cont-tt">
+        <label class="bold">Desarrollo de plaza</label>
+        <textarea class="text-desarrollo" cols="1" rows="1"></textarea>
+      </div>
+    
+      <div class="item item-estado">
+        <label class="bold">Estado</label>
         <select [(ngModel)]="EstadoPlaza" formControlName="estado">
-          <option value="activo">activo</option>
-          <option value="inactivo">inactivo</option>
+          <option value="true">activo</option>
+          <option value="false">inactivo</option>
         </select>
       </div>
 

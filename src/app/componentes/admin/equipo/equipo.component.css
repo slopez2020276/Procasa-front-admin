@@ -446,9 +446,41 @@ div#save-edit-fn {
 }
 
 
+div.cont-tt {
+  width: 70%;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  flex-wrap: wrap;
+  margin-left: 15%;
+}
 
+div.cont-tt label {
+  width: 100%;
+  margin-bottom: 4px;
+}
 
+textarea.text-desarrollo {
+  width: 100%;
+  padding: 1rem;
+  height: 200px;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  border-radius: 4px;
+}
 
+div.item-estado {
+  width: 70%;
+  margin-left: 15%;
+  justify-content: center;
+}
+
+div.item-estado label {
+  width: 70%;
+  margin-top: 1rem;
+}
 
 
 div#cont-modal-inputs {

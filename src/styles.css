@@ -34,6 +34,9 @@ body {
     overflow-x: hidden;
     overflow-y: scroll;
     position: relative;
+    width: 100vw;
+    height: auto;
+    min-height: 100vh;
 }
 
 .bold {font-family: realeway_bold;}
