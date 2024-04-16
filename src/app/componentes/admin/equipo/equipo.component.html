@@ -7,8 +7,8 @@
       <button class="btn-click btn-white normal" (click)="ModalProduct('modal-add-plaza')"><mat-icon>add</mat-icon> Agregar</button>
     </span>
   </div>
-
-
+  
+  
 <div class="admin-main">
   <div class="shadow-main"></div>
 <div id="container">
@@ -18,27 +18,16 @@
       <img [src]="os.imgPath" alt="">
 
       <h2 class="bold">{{os.titulo}}</h2>
-      <div class="datos">
+      <div class="datos datos-textarea">
 
       <ul class="ul-data">
           <li class="bold">Ubicación: <span>{{os.ubicacion}}</span></li>
-          <li class="bold">Departamento: <span>{{os.departamento}}</span></li>
-          <li class="bold">Empresa: <span>{{os.empresa}}</span></li>
-          <li class="bold">Funciones Principales:
-              <ul>
-                @for (ositems of os.funciones; track $index) {
-                  <li  (click)="obtenerItemd($index)" >  {{ositems}}</li>
-                }
-              </ul>
-          </li>
-          <li class="bold">Educación: <span>{{os.educacion}}</span></li>
-          <li class="bold">Experiencia laboral: <span>{{os.experiencia}}</span></li>
           <li class="bold">estado: <span>{{os.estado}}</span></li>
 
+          <div class="cont-tt-data"><!-- ACÁ LA DESCRIPCIÓN DEL TEXTAREA --></div>
       </ul>
 
       <div class="cont-buttons">
-        <div class="actions btn-click btn-red" (click)="ModalFunctions($index)"><mat-icon>add</mat-icon></div>
           <div class="actions btn-click btn-red" (click)="ModalProduct('modal-edit-plaza')" (click)="obtenerPlazaId(os._id)"  ><mat-icon>edit</mat-icon></div>
           <div class="actions btn-click btn-red" (click)="EliminarP(os._id)"><mat-icon>delete</mat-icon></div>
       </div>
@@ -87,53 +76,30 @@
 
 
 <div class="cont start">
-  <!-- <div class="item">
-    <label class="normal">plaza / vacante</label>
-    <input type="text"  formControlName="titulo" class="normal">
-  </div>
+  <div id="subcont-plaza">
 
-  <div class="item">
-    <label class="normal">departamento</label>
-    <input type="text" formControlName="departamento" class="normal">
-  </div>
-
-  <div class="item">
-    <label class="normal">empresa</label>
-    <input type="text" formControlName="empresa" class="normal">
-  </div>
+    <div class="item">
+      <label class="normal">plaza / vacante</label>
+      <input type="text"  formControlName="titulo" class="normal">
+    </div>
 
   <div class="item">
     <label class="normal">ubicación</label>
     <input type="text" formControlName="ubicacion" class="normal">
   </div>
-
   <div class="item">
-    <label class="normal">educación requerida</label>
-    <input type="text" formControlName="educacion" class="normal">
-  </div>
-
-  <div class="item">
-    <label class="normal">enlace formulario</label>
-    <input type="text" formControlName="formulario" class="normal">
-  </div>
-
-  <div class="item">
-    <label class="normal">Experiencia laboral</label>
-    <textarea formControlName="experiencia"  class="normal"></textarea>
-  </div> -->
-
-  <div class="cont-tt">
-    <label class="bold">Desarrollo de plaza</label>
-    <textarea class="text-desarrollo" cols="1" rows="1"></textarea>
-  </div>
-
-  <div class="item item-estado">
     <label class="bold">Estado</label>
     <select formControlName="estado">
       <option value="true">activo</option>
       <option value="false">inactivo</option>
     </select>
   </div>
+  
+  <div class="cont-tt">
+    <label class="bold">Desarrollo de plaza</label>
+    <textarea class="text-desarrollo" cols="1" rows="1"></textarea>
+  </div>
+</div>
 
 </div>
 
@@ -168,57 +134,42 @@
 
 
     <div class="cont">
-      <!-- <div class="item">
-        <label class="normal">plaza / vacante</label>
-        <input type="text" [(ngModel)]="NombrePlaza" formControlName="titulo" class="normal">
-      </div>
-
-      <div class="item">
-        <label class="normal">departamento</label>
-        <input type="text" [(ngModel)]="DepartamentoPlaza" formControlName="departamento" class="normal">
-      </div>
-
-      <div class="item">
-        <label class="normal">empresa</label>
-        <input type="text"  [(ngModel)]="EmpresaPlaza"   formControlName="empresa" class="normal">
-      </div>
-
-      <div class="item">
-        <label class="normal">ubicación</label>
-        <input type="text"  [(ngModel)]="UbicacionPlaza" formControlName="ubicacion" class="normal">
-      </div>
-
-      <div class="item">
-        <label class="normal">educación requerida</label>
-        <input type="text" [(ngModel)]="EducacionPlaza" formControlName="educacion" class="normal">
-      </div>
-
-      <div class="item">
-        <label class="normal">experiencia laboral</label>
-        <textarea [(ngModel)]="ExperienciaPlaza" formControlName="experiencia" class="normal"></textarea>
-      </div> -->
-
-
-      <div class="cont-tt">
-        <label class="bold">Desarrollo de plaza</label>
-        <textarea class="text-desarrollo" cols="1" rows="1"></textarea>
-      </div>
     
-      <div class="item item-estado">
-        <label class="bold">Estado</label>
+      <div class="item">
+        <label class="normal">Estado</label>
         <select [(ngModel)]="EstadoPlaza" formControlName="estado">
           <option value="true">activo</option>
           <option value="false">inactivo</option>
         </select>
       </div>
 
-      <div id="open-modal-edit-fn" class="btn-click" (click)="ModalEditFunctions()" (click)="obtenerFunciones()" >editar funciones</div>
+
+      <div id="subcont-plaza">
+        <div class="item">
+          <label class="normal">plaza / vacante</label>
+          <input type="text" [(ngModel)]="NombrePlaza"  formControlName="titulo" class="normal">
+        </div>
+    
+      <div class="item">
+        <label class="normal">ubicación</label>
+        <input type="text" [(ngModel)]="UbicacionPlaza" formControlName="ubicacion" class="normal">
+      </div>
+      
+      <div class="cont-tt">
+        <label class="bold">Desarrollo de plaza</label>
+        <textarea class="text-desarrollo" cols="1" rows="1"></textarea>
+      </div>
+    </div>
+
+
+
+      <!-- <div id="open-modal-edit-fn" class="btn-click" (click)="ModalEditFunctions()" (click)="obtenerFunciones()" >editar funciones</div> -->
 
       </div>
   </form>
 
 
-<div class="action-center"><div class="btn-click btn-red" (click)="Edit()" (click)="EditPlaza()" ><mat-icon>save</mat-icon> guardaraaa</div></div>
+<div class="action-center"><div class="btn-click btn-red" (click)="Edit()" (click)="EditPlaza()" ><mat-icon>save</mat-icon> guardar</div></div>
 <!--  -->
 
 
