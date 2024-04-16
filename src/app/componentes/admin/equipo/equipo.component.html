@@ -134,16 +134,8 @@
 
 
     <div class="cont">
-    
-      <div class="item">
-        <label class="normal">Estado</label>
-        <select [(ngModel)]="EstadoPlaza" formControlName="estado">
-          <option value="true">activo</option>
-          <option value="false">inactivo</option>
-        </select>
-      </div>
-
-
+      
+      
       <div id="subcont-plaza">
         <div class="item">
           <label class="normal">plaza / vacante</label>
@@ -154,6 +146,14 @@
         <label class="normal">ubicación</label>
         <input type="text" [(ngModel)]="UbicacionPlaza" formControlName="ubicacion" class="normal">
       </div>
+      
+        <div class="item">
+          <label class="normal">Estado</label>
+          <select [(ngModel)]="EstadoPlaza" formControlName="estado">
+            <option value="true">activo</option>
+            <option value="false">inactivo</option>
+          </select>
+        </div>
       
       <div class="cont-tt">
         <label class="bold">Desarrollo de plaza</label>
