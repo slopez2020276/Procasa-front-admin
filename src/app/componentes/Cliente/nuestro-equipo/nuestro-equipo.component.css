@@ -69,7 +69,8 @@ div.container-plazas {
   align-content: center;
   flex-wrap: wrap;
   position: relative;
-  width: 960px;
+  width: auto;
+  max-width: 1000px;
   height: auto;
   margin-top: 2rem;
 }
