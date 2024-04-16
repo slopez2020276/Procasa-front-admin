@@ -234,14 +234,20 @@ div.logo-head {
 }
 
 @media screen and (max-width: 600px) {
-  div#cont-ubicacion-3:first-child {display: flex; justify-content: space-between;}
+  div#cont-ubicacion-3:first-child {display: flex; justify-content: space-between; margin-bottom: 2rem;}
   div#cont-ubicacion-3:last-child {display: none;}
+
+
 
   h1.select-ubicacion {
     width: 45%;
-    padding: 1rem 2rem;
+    padding: .7rem .5rem;
     margin: 4px 0;
+    font-size: 12pt;
   }
+
+  h1.select-ubicacion:first-child {margin-top: 4rem;}
+  h1.select-ubicacion:nth-child(2) {margin-top: 4rem;}
 
   div.logo-head {
     width: 120px;

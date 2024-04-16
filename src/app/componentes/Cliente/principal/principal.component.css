@@ -12,6 +12,12 @@ section.container-principal {
   overflow-y: scroll;
 }
 
+img#img-mobile {
+  width: 100vw;
+  height: auto;
+  position: relative;
+}
+
 section#noticias { opacity: 1; }
 
 div#cont-introduction {
