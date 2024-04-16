@@ -1,7 +1,7 @@
 
 * { transition: .6s ease-out }
 
-
+h1.container-h1 {width: 90%;}
 div#container-main {
   width: 100vw;
   height: auto;
@@ -365,13 +365,20 @@ div#btns-arrow mat-icon:hover {
   div.cont-promesa:nth-child(5) img {border-right: 1px solid #FFF;}
 }
 
+@media screen and (max-width: 700px) {
+  div#cont-whatsapp a h2 {display: none;}
+  div#cont-whatsapp {background: transparent;}
+  div.cont-details {display: none;} div#cont-products {justify-content: space-evenly;} div.product { width: 180px; } div.cont-img-product { width: 180px; height: 180px; } }
+@media screen and (max-width: 530px) {div#cont-products { width: 90vw; } div.product { width: 180px;} div.cont-img-product { width: 180px; height: 180px; } }
+@media screen and (max-width: 475px) {div#cont-products { width: 100vw; } div.product { width: 160px;} div.cont-img-product { width: 160px; height: 160px; } }
+@media screen and (max-width: 375px) {div.product { width: 140px;} div.cont-img-product { width: 140px; height: 140px; } }
+@media screen and (max-width: 280px) {div.product { width: 120px;} div.cont-img-product { width: 120px; height: 120px; } }
 
 
 @media screen and (max-width: 550px) {
   div#container-promesa { width: 550px; justify-content: space-evenly;}
   div.cont-promesa { width: 180px; }
 
-div#cont-whatsapp a h2 {display: none;}
 
   div.cont-promesa img {border: 1px solid transparent;}
   div.cont-promesa:nth-child(1) img {border-left: 1px solid transparent;}

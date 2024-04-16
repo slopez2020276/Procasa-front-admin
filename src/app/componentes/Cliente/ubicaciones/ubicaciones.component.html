@@ -18,7 +18,15 @@
       <div class="logo-head"><div class="cont-check" (click)="ocultarwts()" (click)="obtenerEconocarnes()" (click)="checkLogo(4)"><div class="checked"></div></div><img src="../../../../assets/img/Econo Carnes blanco.png"></div>
     </div>
 
+
+
     <div id="cont-data-ubicaciones">
+      <div class="cont-ubicacion" id="cont-ubicacion-3">
+        <h1 *ngFor="let item of dataUbicaciones; trackBy: trackByFn" class="select-ubicacion" (click)="selecStore(item._id)" (click)="h1Selected($event)">
+          {{ item.nombreTienda }}
+        </h1>
+      </div>
+
           <div class="cont-ubicacion">
             <img [src]="imgPath">
           </div>
@@ -37,12 +45,14 @@
                   </div>
             </div>
           </div>
-          <div class="cont-ubicacion">
+
+
+
+          <div class="cont-ubicacion" id="cont-ubicacion-3">
             <h1 *ngFor="let item of dataUbicaciones; trackBy: trackByFn" class="select-ubicacion" (click)="selecStore(item._id)" (click)="h1Selected($event)">
               {{ item.nombreTienda }}
             </h1>
           </div>
-          
     </div>
 </div>
 </div>

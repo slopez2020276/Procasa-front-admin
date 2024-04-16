@@ -26,39 +26,33 @@ export class NoticiasComponent implements OnInit {
 
 
 
+  
+  cargarNoticias() { this.noticiasArray = this.data }
+
+
 noticiasArray: any[] = []
 
-cargarNoticias() { this.noticiasArray = this.data }
+private firstTouchX: number = 0
+private readonly swipeThreshold: number = 50
 
-ShiftArray(){}
-PushArray(){}
+constructor(private sharedDataService: SharedDataService){ }
 
+shiftArray() { const firstElement = this.noticiasArray.shift(); this.noticiasArray.push(firstElement) }
 
+revertShiftArray() { const lastElement = this.noticiasArray.pop(); this.noticiasArray.unshift(lastElement) }
 
+handleSwipeLeft(): void { this.revertShiftArray() }
 
+handleSwipeRight(): void { this.shiftArray() }
 
+onTouchStart(event: TouchEvent): void { this.firstTouchX = event.touches[0].clientX }
 
+onTouchMove(event: TouchEvent): void {
+  const currentX = event.touches[0].clientX
+  const deltaX = currentX - this.firstTouchX
 
-
-
-
-
-
-
-
-
-
-constructor(private sharedDataService: SharedDataService){
-
-  
+  if (Math.abs(deltaX) > this.swipeThreshold) { if (deltaX > 0) { alert('RIGHT') } else { alert('LEFT') } }
 }
-
-shiftArray() {
-const firstElement = this.noticiasArray.shift()
-this.noticiasArray.push(firstElement)
-}
-
-
 
 
 

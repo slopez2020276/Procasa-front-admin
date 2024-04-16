@@ -21,7 +21,7 @@ export class ProductosComponent implements OnInit {
   productorService = inject(ProductosService)
   MarcasServices = inject(MarcasService)
   HistoriaService = inject(HistoriaService)
-  dataMarcas
+  dataMarcas: any[] = []
   carrousel:HTMLElement | any
   count:any = 0
   id:any
@@ -55,12 +55,6 @@ ObtenerProductos(){
     )
   }
 
-  
-  
-
-
-
-
 
 
 
@@ -76,6 +70,35 @@ ObtenerProductos(){
     this.dataMarcas = response.marcas
     console.log(this.dataMarcas)
   }
+
+
+
+
+private firstTouchX: number = 0
+private readonly swipeThreshold: number = 50
+  
+shiftArray() { const firstElement = this.dataMarcas.shift(); this.dataMarcas.push(firstElement) }
+  
+revertShiftArray() { const lastElement = this.dataMarcas.pop(); this.dataMarcas.unshift(lastElement) }
+  
+handleSwipeLeft(): void { this.revertShiftArray() }
+  
+handleSwipeRight(): void { this.shiftArray() }
+  
+onTouchStart(event: TouchEvent): void { this.firstTouchX = event.touches[0].clientX }
+  
+onTouchMove(event: TouchEvent): void {
+    const currentX = event.touches[0].clientX
+    const deltaX = currentX - this.firstTouchX
+  
+    if (Math.abs(deltaX) > this.swipeThreshold) { if (deltaX > 0) { alert('RIGHT') } else { alert('LEFT') } }
+  }
+
+
+
+
+
+
 
   evaluarTipoBack(){
     if(this.data[0].backgroundTipo == true){

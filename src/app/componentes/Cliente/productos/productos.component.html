@@ -21,13 +21,12 @@
 <div id="container-marcas">
 
 <div id="btns-arrow">
-    <div id="btn-left-ca" (click)="arrowLeft()"><mat-icon>keyboard_arrow_left</mat-icon></div>
-    <div id="btn-right-ca" (click)="arrowRight()"><mat-icon>keyboard_arrow_right</mat-icon></div>
+    <div id="btn-left-ca" (click)="revertShiftArray()"><mat-icon>keyboard_arrow_left</mat-icon></div>
+    <div id="btn-left-ca" (click)="shiftArray()"><mat-icon>keyboard_arrow_right</mat-icon></div>
 </div>
 
   <div id="carrousel-marcas">
     @for (os of dataMarcas ; track $index){
-
       <div class="marca-item"><img src={{os.imgPath}}><div class="info-product"><p class="normal">{{os.textMarca}}</p></div></div>
     }
     </div>
