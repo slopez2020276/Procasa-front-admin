@@ -21,10 +21,12 @@
       <div class="datos datos-textarea">
 
       <ul class="ul-data">
+        <li class="bold">Nombre de la  plaza<span>{{os.titulo}}</span></li>
+
           <li class="bold">Ubicación: <span>{{os.ubicacion}}</span></li>
           <li class="bold">estado: <span>{{os.estado}}</span></li>
 
-          <div class="cont-tt-data"><!-- ACÁ LA DESCRIPCIÓN DEL TEXTAREA --></div>
+          <div class="cont-tt-data">{{os.descripcion}} </div>
       </ul>
 
       <div class="cont-buttons">
@@ -134,8 +136,16 @@
 
 
     <div class="cont">
-      
-      
+    
+      <div class="item">
+        <label class="normal">Estado</label>
+        <select [(ngModel)]="estado" formControlName="estado">
+          <option value="activo">activo</option>
+          <option value="inactivo">inactivo</option>
+        </select>
+      </div>
+
+
       <div id="subcont-plaza">
         <div class="item">
           <label class="normal">plaza / vacante</label>
@@ -149,15 +159,15 @@
       
         <div class="item">
           <label class="normal">Estado</label>
-          <select [(ngModel)]="EstadoPlaza" formControlName="estado">
-            <option value="true">activo</option>
-            <option value="false">inactivo</option>
+          <select [(ngModel)]="estado" formControlName="estado">
+            <option value="activo">activo</option>
+            <option value="inactivo">inactivo</option>
           </select>
         </div>
       
       <div class="cont-tt">
         <label class="bold">Desarrollo de plaza</label>
-        <textarea class="text-desarrollo" cols="1" rows="1"></textarea>
+        <textarea  [(ngModel)]="descripcion" formControlName="descripcion" class="text-desarrollo" cols="1" rows="1"></textarea>
       </div>
     </div>
 

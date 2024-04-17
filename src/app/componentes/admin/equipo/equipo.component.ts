@@ -37,6 +37,7 @@ export class EquipoComponent {
   idPlaza:any
   funciones:any
   estado:any
+  descripcion:any
 
   formAgregarFuncion: FormGroup
   fomrumarioAgregarPlaza : FormGroup
@@ -65,6 +66,7 @@ constructor(){
     titulo : new FormControl(),
     formulario : new FormControl(),
     estado : new FormControl(),
+    descripcion : new FormControl()
   })
   this.fomrumarioAgregarPlaza = new FormGroup({
     ubicacion : new FormControl(),
@@ -75,6 +77,7 @@ constructor(){
     experiencia : new FormControl(),
     titulo : new FormControl(),
     estado : new FormControl(),
+    descripcion: new FormControl()
   })
 
   this.formEditarPlaza = new FormGroup({
@@ -86,6 +89,7 @@ constructor(){
     experiencia : new FormControl(),
     titulo : new FormControl(),
     estado : new FormControl(),
+    descripcion : new FormControl()
   })
 
 
@@ -268,6 +272,7 @@ EditPlaza():void{
     body.append('experiencia',this.formEditarPlaza.value.experiencia)
     body.append('fecha',this.formEditarPlaza.value.fecha)
     body.append('estado',this.formEditarPlaza.value.estado)
+    body.append('descripcion',this.formEditarPlaza.value.descripcion)
 
 
   }else{
@@ -279,6 +284,7 @@ EditPlaza():void{
     body.append('experiencia',this.formEditarPlaza.value.experiencia)
     body.append('fecha',this.formEditarPlaza.value.fecha)
     body.append('estado',this.formEditarPlaza.value.estado)
+    body.append('descripcion',this.formEditarPlaza.value.descripcion)
 
   }
   this.uneterService.sendEditPlaza(this.idPlaza,body)
@@ -351,10 +357,8 @@ sendFileEditplaza(id:any): void {
       body.append('ubicacion', this.formAgregarPlaza.value.ubicacion)
       body.append('departamento',this.formAgregarPlaza.value.departamento)
       body.append('empresa',this.formAgregarPlaza.value.empresa)
-      body.append('educacion',this.formAgregarPlaza.value.educacion)
-      body.append('experiencia',this.formAgregarPlaza.value.experiencia)
-      body.append('fecha',this.formAgregarPlaza.value.fecha)
       body.append('estado',this.formAgregarPlaza.value.estado)
+      body.append('descripcion',this.formEditarPlaza.value.descripcion)
 
       console.log('con imagen')
   
@@ -368,6 +372,7 @@ sendFileEditplaza(id:any): void {
       body.append('experiencia',this.formAgregarPlaza.value.experiencia)
       body.append('fecha',this.formAgregarPlaza.value.fecha)
       body.append('estado',this.formAgregarPlaza.value.estado)
+      body.append('descripcion',this.formEditarPlaza.value.descripcion)
 
   }
   
@@ -413,7 +418,8 @@ async obtenerPlazaId(id:any){
   this.data = respuestaid.plaza
   this.funciones = respuestaid.plaza.funciones
   this.estado = respuestaid.plaza.estado
-  console.log(this.NombrePlaza)
+  this.descripcion = respuestaid.plaza.descripcion
+  console.log(this.descripcion)
   this.obtenerFunciones()
 }
 

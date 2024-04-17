@@ -46,6 +46,8 @@ const routes: Routes = [
   {path:'admin/generales', component:GeneralesComponent},
   {path:'admin/nuestras-marcas', component:NuestrasMarcasComponent},
   {path:'informacion-plaza',title:'PROCASA | Información de Plaza',component:EquipoUnicoComponent},
+  {path:'informacion-plaza/:id',title:'PROCASA | Información de Plaza',component:EquipoUnicoComponent},
+
   {path:'productos/:nuestras-marcas',title:'PROCASA | Nuestras Marcas',component:ProductosComponent},
   {path:'productos/:por-que-procasa',title:'PROCASA | ¿Por qué Procasa?',component:ProductosComponent},
   {path:'productos/:catalogo',title:'PROCASA | Catálogo',component:ProductosComponent},

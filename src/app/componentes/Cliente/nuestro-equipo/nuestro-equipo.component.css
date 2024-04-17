@@ -114,7 +114,7 @@ div.state-plaza {
   opacity: 0;
 }
 
-div.state-plaza.yes {opacity: 1;}
+div.state-plaza.inactivo {opacity: 1;}
 
 div.cont-img img {
   width: auto;
