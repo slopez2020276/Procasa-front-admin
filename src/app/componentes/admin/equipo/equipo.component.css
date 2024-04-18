@@ -110,8 +110,7 @@ div.conta {
 
 div.conta img {
     width: auto;
-    max-width: 90%;
-    min-width: 70%;
+    max-width: 60%;
     height: auto;
     border-radius: 4px;
 }
