@@ -81,6 +81,7 @@ div#container-data-select {
     font-size: 14pt;
     width: 90%;
     text-align: left;
+    white-space: pre;
   }
   
   div.cont-data-sel img { width: 100%;  height: auto;  border-radius: 4px; }

@@ -68,6 +68,8 @@ constructor(){
     estado : new FormControl(),
     descripcion : new FormControl()
   })
+
+
   this.fomrumarioAgregarPlaza = new FormGroup({
     ubicacion : new FormControl(),
     departamento : new FormControl(),
@@ -321,27 +323,11 @@ sendFileplaza(): void {
       body.append('experiencia',this.formAgregarPlaza.value.experiencia)
       body.append('fecha',this.formAgregarPlaza.value.fecha)
       body.append('estado',this.formAgregarPlaza.value.estado)
-      body.append('estado',this.formAgregarPlaza.value.descripcion)
       body.append('descripcion',this.formAgregarPlaza.value.descripcion)
-      console.log('con imagen')
-  
-    }else{
-      console.log('sin img')
-      body.append('titulo', this.formAgregarPlaza.value.titulo)
-      body.append('ubicacion', this.formAgregarPlaza.value.ubicacion)
-      body.append('departamento',this.formAgregarPlaza.value.departamento)
-      body.append('empresa',this.formAgregarPlaza.value.empresa)
-      body.append('educacion',this.formAgregarPlaza.value.educacion)
-      body.append('experiencia',this.formAgregarPlaza.value.experiencia)
-      body.append('fecha',this.formAgregarPlaza.value.fecha)
-      body.append('estado',this.formAgregarPlaza.value.estado)
-      body.append('descripcion',this.formAgregarPlaza.value.descripcion)
-
-  }
-  
-    this.uneterService.sendCreatePlaza(body)
-    .subscribe(res => {console.log(res), console.log(body) ,this.formAgregarPlaza.reset(),this.obtenerUnete(),this.fileTmp = null, this.AlertMessage('¡Plaza guardada exitosamente!', 1500)})
-  }
+      console.log('con imagen')  
+      this.uneterService.sendCreatePlaza(body).subscribe(res => {console.log(res), console.log(body) ,this.formAgregarPlaza.reset(),this.obtenerUnete(),this.fileTmp = null, this.AlertMessage('¡Plaza guardada exitosamente!', 1500)}) 
+    }else{ this.AlertMessage("Todos los campos son requeridos", 1500) }
+    }
 }
 
 

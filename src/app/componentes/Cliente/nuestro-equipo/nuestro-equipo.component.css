@@ -64,7 +64,7 @@ div.cont-search mat-icon {
 
 div.container-plazas {
   display: flex;
-  justify-content: start;
+  justify-content: center;
   align-items: center;
   align-content: center;
   flex-wrap: wrap;
@@ -217,7 +217,7 @@ div#container-data-select div.cont-data-sel:nth-child(2) { width: 300px;  margin
 
 @media screen and (max-width: 960px) { div.container-plazas { width: 720px; } }
 @media screen and (max-width: 720px) { 
-  div.container-plazas { width: 480px;}
+  div.container-plazas { width: 100%;}
   div#container-data-texto { width: auto;  max-width: 90%;}
 }
 @media screen and (max-width: 479px) { div.container-plazas { width: 100%; justify-content: center;} }

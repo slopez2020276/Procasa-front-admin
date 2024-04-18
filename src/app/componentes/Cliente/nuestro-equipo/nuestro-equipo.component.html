@@ -11,11 +11,9 @@
     <mat-icon>search</mat-icon>
   </div>
 </div>
+
+
 <div class="container-plazas">
-
-
-  
-  
   
   @for ( item of dataUnete; track $index) {
   <div class="cont-plaza" routerLink="/informacion-plaza/{{item._id}}" (click)="ObbtenerPlazaId(item._id)" >
