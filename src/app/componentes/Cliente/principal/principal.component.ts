@@ -2,7 +2,6 @@ import { Component, OnInit, inject,AfterViewInit, HostListener,Renderer2 } from 
 import { MainpageService } from '../../../services/mainpage.service';
 import { HistoriaService } from '../../../services/historia.service';
 import { NgOptimizedImage } from '@angular/common';
-
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -45,8 +44,9 @@ import { ActivatedRoute } from '@angular/router';
      console.log(this.data)
      console.log(this.colorn)
 
-}
+    //  this.scrollTopService.setScrollTop()
 
+}
 
 
 

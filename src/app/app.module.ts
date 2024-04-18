@@ -8,7 +8,6 @@ import { PrincipalComponent } from './componentes/Cliente/principal/principal.co
 import { HistoriaComponent } from './componentes/Cliente/historia/historia.component';
 import { NoticiasComponent } from './componentes/Cliente/noticias/noticias.component';
 import { InterceptorService } from './interceptor.service';
-
 import { LineaTiempoComponent } from './componentes/Cliente/linea-tiempo/linea-tiempo.component';
 import { FooterComponent } from './componentes/Complements/footer/footer.component';
 import { NavbarComponent } from './componentes/Complements/navbar/navbar.component';
@@ -49,6 +48,10 @@ import { NoticiaUnicaComponent } from './componentes/Cliente/noticia-unica/notic
 import { GeneralesComponent } from './componentes/admin/generales/generales.component';
 import { NuestrasMarcasComponent } from './componentes/admin/nuestras-marcas/nuestras-marcas.component';
 import { EquipoUnicoComponent } from './componentes/Cliente/equipo-unico/equipo-unico.component';
+import { ScrollTopService } from './services/scroll.service'
+
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -107,7 +110,7 @@ import { EquipoUnicoComponent } from './componentes/Cliente/equipo-unico/equipo-
     })
 
   ],
-  providers: [NgModel,{provide: HTTP_INTERCEPTORS,useClass: InterceptorService,multi: true,},provideAnimationsAsync('noop')],
+  providers: [ScrollTopService,NgModel,{provide: HTTP_INTERCEPTORS,useClass: InterceptorService,multi: true,},provideAnimationsAsync('noop')],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

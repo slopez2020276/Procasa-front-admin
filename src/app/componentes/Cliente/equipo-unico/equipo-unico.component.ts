@@ -23,7 +23,7 @@ export class EquipoUnicoComponent implements OnInit {
 
 
 
-  description 
+  description
   NombrePlaza
   imgPlaza
 
