@@ -321,6 +321,8 @@ sendFileplaza(): void {
       body.append('experiencia',this.formAgregarPlaza.value.experiencia)
       body.append('fecha',this.formAgregarPlaza.value.fecha)
       body.append('estado',this.formAgregarPlaza.value.estado)
+      body.append('estado',this.formAgregarPlaza.value.descripcion)
+      body.append('descripcion',this.formAgregarPlaza.value.descripcion)
       console.log('con imagen')
   
     }else{
@@ -333,6 +335,7 @@ sendFileplaza(): void {
       body.append('experiencia',this.formAgregarPlaza.value.experiencia)
       body.append('fecha',this.formAgregarPlaza.value.fecha)
       body.append('estado',this.formAgregarPlaza.value.estado)
+      body.append('descripcion',this.formAgregarPlaza.value.descripcion)
 
   }
   

@@ -26,7 +26,7 @@
           <li class="bold">Ubicación: <span>{{os.ubicacion}}</span></li>
           <li class="bold">estado: <span>{{os.estado}}</span></li>
 
-          <div class="cont-tt-data">{{os.descripcion}} </div>
+          <textarea class="cont-tt-data" disabled>{{os.descripcion}} </textarea>
       </ul>
 
       <div class="cont-buttons">
@@ -92,14 +92,14 @@
   <div class="item">
     <label class="bold">Estado</label>
     <select formControlName="estado">
-      <option value="true">activo</option>
-      <option value="false">inactivo</option>
+      <option value="activo">activo</option>
+      <option value="inactivo">inactivo</option>
     </select>
   </div>
-  
+
   <div class="cont-tt">
     <label class="bold">Desarrollo de plaza</label>
-    <textarea class="text-desarrollo" cols="1" rows="1"></textarea>
+    <textarea formControlName="descripcion" class="text-desarrollo" cols="1" rows="1"></textarea>
   </div>
 </div>
 
@@ -156,14 +156,6 @@
         <label class="normal">ubicación</label>
         <input type="text" [(ngModel)]="UbicacionPlaza" formControlName="ubicacion" class="normal">
       </div>
-      
-        <div class="item">
-          <label class="normal">Estado</label>
-          <select [(ngModel)]="estado" formControlName="estado">
-            <option value="activo">activo</option>
-            <option value="inactivo">inactivo</option>
-          </select>
-        </div>
       
       <div class="cont-tt">
         <label class="bold">Desarrollo de plaza</label>
