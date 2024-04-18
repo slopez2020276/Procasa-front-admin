@@ -15,9 +15,9 @@
 
 <div class="container-plazas">
   
-  @for ( item of dataUnete; track $index) {
+  @for ( item of dataUnete; track item._id) {
   <div class="cont-plaza" routerLink="/informacion-plaza/{{item._id}}" (click)="ObbtenerPlazaId(item._id)" >
-    <div class="cont-img"><img src="{{item.imgPath}}"></div>
+    <div class="cont-img"><img [src]="item.imgPath"></div>
     <div class="state-plaza bold {{item.estado}} ">contratado</div>
 
     <div class="foo-data">

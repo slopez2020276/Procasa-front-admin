@@ -17,7 +17,7 @@ export class UneteEquipoService {
 
    otenerUneteEquipo(){
     return firstValueFrom(
-      this.httClient.get<any>(`${this.baseUrl}/obtenerEmpleo`,this.createHeaders())
+      this.httClient.get<any>(`${this.baseUrl}/obtenerEmpleo`)
     )
    }
 

@@ -14,6 +14,24 @@ export class NuestroEquipoComponent implements OnInit {
    dataUnete
 
    constructor(private sharedDataService: SharedDataService){ }
+
+
+  async ngOnInit() {
+    const response = await this.HistoriaService.obtenerHistoria()
+    this.data = response.historia
+    this.imgPrincipal = this.data[0].imgPathPrincipal
+    this.imgFondo = this.data[0].imgPathFondo
+    this.colorn = this.data[0].colorFondo
+
+    this.evaluarTipoBack()
+    const data = await this.uneteEquipoService.otenerUneteEquipo()
+ this.dataUnete = data.unete
+  console.log(data)
+  
+  
+    console.log(this.dataUnete)
+
+  }
 data
 imgPrincipal
 imgFondo
@@ -27,20 +45,7 @@ HistoriaService = inject(HistoriaService)
 
 toScrollPlaza(i:any){ document.getElementsByClassName('cont-area')[i]?.scrollIntoView({behavior:"smooth"}) }
 
-async ngOnInit() {
-  const response = await this.HistoriaService.obtenerHistoria()
-  this.data = response.historia
-  this.imgPrincipal = this.data[0].imgPathPrincipal
-  this.imgFondo = this.data[0].imgPathFondo
-  this.colorn = this.data[0].colorFondo
-  this.evaluarTipoBack()
 
-
-
-  this.getDataUneteEquipo()
-  this.evaluarTipoBack()
-
-}
 
 evaluarTipoBack(){
   if(this.data[0].backgroundTipo == true){
@@ -55,6 +60,8 @@ evaluarTipoBack(){
 enviarData(id: any): void {
   this.sharedDataService.setSharedData(id);
 }
+
+
 
 async getDataUneteEquipo(){
  const data = await this.uneteEquipoService.otenerUneteEquipo()
