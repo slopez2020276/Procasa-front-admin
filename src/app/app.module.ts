@@ -48,7 +48,8 @@ import { NoticiaUnicaComponent } from './componentes/Cliente/noticia-unica/notic
 import { GeneralesComponent } from './componentes/admin/generales/generales.component';
 import { NuestrasMarcasComponent } from './componentes/admin/nuestras-marcas/nuestras-marcas.component';
 import { EquipoUnicoComponent } from './componentes/Cliente/equipo-unico/equipo-unico.component';
-import { ScrollTopService } from './services/scroll.service'
+import { ScrollTopService } from './services/scroll.service';
+import { MostrarNombrePlazaPipe } from './pipes/mostrar-nombre-plaza.pipe'
 
 
 
@@ -92,6 +93,7 @@ import { ScrollTopService } from './services/scroll.service'
     GeneralesComponent,
     NuestrasMarcasComponent,
     EquipoUnicoComponent,
+    MostrarNombrePlazaPipe,
   ],
   imports: [
     BrowserModule,

@@ -3,7 +3,7 @@
 <div class="container-head">
     <h1>Plazas</h1>
     <span>
-      <input class="bold" type="text" name="search" placeholder="buscar plaza">
+      <input [(ngModel)]="nombreTiendaFiltro"  class="bold" type="text" name="search" placeholder="buscar plaza">
       <button class="btn-click btn-white normal" (click)="ModalProduct('modal-add-plaza')"><mat-icon>add</mat-icon> Agregar</button>
     </span>
   </div>
@@ -12,7 +12,7 @@
 <div class="admin-main">
   <div class="shadow-main"></div>
 <div id="container">
-  @for (os of dataUnete; track os.id  ) {
+  @for (os of dataUnete| mostrarNombrePlaza: nombreTiendaFiltro ; track os.id  ) {
 
     <div class="conta">
       <img [src]="os.imgPath" alt="">
@@ -171,7 +171,7 @@
   </form>
 
 
-<div class="action-center"><div class="btn-click btn-red" (click)="Edit()" (click)="EditPlaza()" ><mat-icon>save</mat-icon> guardar</div></div>
+<div class="action-center"><div class="btn-click btn-red" (click)="Edit()" ><mat-icon>save</mat-icon> guardar</div></div>
 <!--  -->
 
 

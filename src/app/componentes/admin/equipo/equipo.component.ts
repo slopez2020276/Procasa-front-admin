@@ -21,6 +21,8 @@ export class EquipoComponent {
   widthLimit
   heightLimit
   sizeLimit
+  nombreTiendaFiltro: string = '';
+
   
 
   data:any
@@ -265,7 +267,7 @@ EditPlaza():void{
   const body = new FormData()
 
   if(this.fileTmpFileEdit){
-    body.append('imagePath', this.fileTmpFileEdit.fileRaw, this.fileTmpFileEdit.fileName)
+    body.append('imgPath', this.fileTmpFileEdit.fileRaw, this.fileTmpFileEdit.fileName)
     body.append('titulo', this.formEditarPlaza.value.titulo)
     body.append('ubicacion', this.formEditarPlaza.value.ubicacion)
     body.append('departamento',this.formEditarPlaza.value.departamento)
@@ -482,11 +484,19 @@ async eliminarId(id: number){
 
 Edit() {
   let id = this.idPlaza
+
+
   this.AlertOption("¿Desea guardar los cambios?")
   const parent: HTMLElement | any = this.containerAlert
   const btn: HTMLElement | any = parent?.childNodes[0]?.childNodes[0]?.childNodes[1]?.childNodes[0]
 
-  if (btn) { btn.onclick = () => { this.editarPlaza() } }
+  if (btn) { btn.onclick = () => { 
+    
+    this.EditPlaza()
+  
+  } 
+  
+  }
 }
 
 
