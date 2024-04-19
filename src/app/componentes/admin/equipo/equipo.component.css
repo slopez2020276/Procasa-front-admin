@@ -585,23 +585,34 @@ div.datos-textarea {
 
 div.subcont-plaza {
   position: relative;
-  justify-content: space-between;
+  justify-content: center;
   align-items: start;
   align-content: start;
   flex-wrap: wrap;
-  width: 100%;
+  width: 90%;
 }
+
 
 .item select {
   position: relative;
-  border: 1px solid darkgreen;
 }
 
 
 div.subcont-plaza .item label {
-  width: 80%;
+  width: 100%;
 }
 
+
+div.item {
+  position: relative;
+  display: inline-block;
+  width: 40%;
+  max-width: 40%;
+}
+
+div.item input, div.item select {
+  max-width: 96%;
+}
 
 textarea.cont-tt-data {
   width: 90%;
