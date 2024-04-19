@@ -40,6 +40,7 @@ export class EquipoComponent {
   funciones:any
   estado:any
   descripcion:any
+  imgPath:any
 
   formAgregarFuncion: FormGroup
   fomrumarioAgregarPlaza : FormGroup
@@ -326,7 +327,7 @@ sendFileplaza(): void {
       body.append('fecha',this.formAgregarPlaza.value.fecha)
       body.append('estado',this.formAgregarPlaza.value.estado)
       body.append('descripcion',this.formAgregarPlaza.value.descripcion)
-      console.log('con imagen')  
+      console.log('con imagen')
       this.uneterService.sendCreatePlaza(body).subscribe(res => {console.log(res), console.log(body) ,this.formAgregarPlaza.reset(),this.obtenerUnete(),this.fileTmp = null, this.AlertMessage('¡Plaza guardada exitosamente!', 1500)}) 
     }else{ this.AlertMessage("Todos los campos son requeridos", 1500) }
     }
@@ -410,7 +411,9 @@ async obtenerPlazaId(id:any){
   this.funciones = respuestaid.plaza.funciones
   this.estado = respuestaid.plaza.estado
   this.descripcion = respuestaid.plaza.descripcion
+  this.imgPath = respuestaid.plaza.imgPath
   console.log(this.descripcion)
+  console.log(this.imgPath)
   this.obtenerFunciones()
 }
 

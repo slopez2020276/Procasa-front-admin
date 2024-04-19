@@ -49,7 +49,7 @@ import { GeneralesComponent } from './componentes/admin/generales/generales.comp
 import { NuestrasMarcasComponent } from './componentes/admin/nuestras-marcas/nuestras-marcas.component';
 import { EquipoUnicoComponent } from './componentes/Cliente/equipo-unico/equipo-unico.component';
 import { ScrollTopService } from './services/scroll.service';
-import { MostrarNombrePlazaPipe } from './pipes/mostrar-nombre-plaza.pipe'
+import { MostrarNombrePlazaPipe } from './pipes/mostrar-nombre-plaza.pipe';
 
 
 
@@ -93,7 +93,7 @@ import { MostrarNombrePlazaPipe } from './pipes/mostrar-nombre-plaza.pipe'
     GeneralesComponent,
     NuestrasMarcasComponent,
     EquipoUnicoComponent,
-    MostrarNombrePlazaPipe,
+    MostrarNombrePlazaPipe
   ],
   imports: [
     BrowserModule,

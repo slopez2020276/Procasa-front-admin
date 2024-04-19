@@ -117,8 +117,9 @@ div.state-plaza {
 div.state-plaza.inactivo {opacity: 1;}
 
 div.cont-img img {
-  width: auto;
+  width: 100%;
   height: 100%;
+  object-fit: cover;
   top: auto;
   left: auto;
   position: absolute;
