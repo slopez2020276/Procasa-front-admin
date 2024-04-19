@@ -592,6 +592,11 @@ div.subcont-plaza {
   width: 100%;
 }
 
+.item select {
+  position: relative;
+  border: 1px solid darkgreen;
+}
+
 
 div.subcont-plaza .item label {
   width: 80%;

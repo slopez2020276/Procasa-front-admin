@@ -98,7 +98,7 @@
       <option value="">Etc...</option>
     </select>
   </div>
-  
+
   <!-- <div class="item">
     <label class="normal">cantidad</label>
     <select formControlName="cantidad">
@@ -155,9 +155,13 @@
         </div>
     
         <div class="item">
-          <label class="normal">ubicación</label>
-          <input type="text" [(ngModel)]="UbicacionPlaza" formControlName="ubicacion" class="normal">
-        </div>
+          <label class="normal">Ubicación</label>
+        <select formControlName="ubicacion">
+          <option value="">CDP</option>
+          <option value="">Zona 10</option>
+          <option value="">Etc...</option>
+        </select>
+      </div>
 
         <div class="item">
           <label class="normal">Estado</label>
