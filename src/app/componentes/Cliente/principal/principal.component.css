@@ -93,7 +93,7 @@ img#img-principal {
 }
 
 
-section#news {
+section#news, section#news-movil {
   position: relative;
   width: 100vw;
   height: auto;
@@ -102,8 +102,11 @@ section#news {
   margin-bottom: 200px;
 }
 
+section#news {display: flex;}
+section#news-movil {display: none;}
 
 
 @media screen and (max-width: 850px) { img#img-principal { width: 115%; left: -7.5%;} }
 @media screen and (max-width: 600px) { img#img-principal { width: 130%; left: -15%;} }
 @media screen and (max-width: 500px) { img#img-principal { width: 140%; left: -20%;} }
+@media screen and (max-width: 766px) { section#news {display: none;}  section#news-movil {display: flex;} }

@@ -23,6 +23,7 @@ import { NuestrasMarcasComponent } from './componentes/admin/nuestras-marcas/nue
 import { EquipoUnicoComponent } from './componentes/Cliente/equipo-unico/equipo-unico.component';
 import { loginGuard } from './guards/login.guard';
 import { agenteMerting } from './guards/agenteMerting.guard';
+import { NoticiasMovilComponent } from './componentes/Cliente/noticias-movil/noticias-movil.component';
 
 const routes: Routes = [
   {path:'',redirectTo:'Inicio', pathMatch:'full'},
@@ -57,6 +58,7 @@ const routes: Routes = [
   {path:'Inicio/:linea-tiempo',title:'PROCASA | Línea del Tiempo',component:PrincipalComponent},
   {path:'Inicio/:mision-vision-valores',title:'PROCASA | Misión, Visión y Valores',component:PrincipalComponent},
   {path:'Inicio/:noticias',title:'PROCASA | Noticias',component:PrincipalComponent},
+  {path:'noti',title:'DELETE',component:NoticiasMovilComponent},
 ]
 
 @NgModule({

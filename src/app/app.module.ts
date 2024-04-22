@@ -50,6 +50,7 @@ import { NuestrasMarcasComponent } from './componentes/admin/nuestras-marcas/nue
 import { EquipoUnicoComponent } from './componentes/Cliente/equipo-unico/equipo-unico.component';
 import { ScrollTopService } from './services/scroll.service';
 import { MostrarNombrePlazaPipe } from './pipes/mostrar-nombre-plaza.pipe';
+import { NoticiasMovilComponent } from './componentes/Cliente/noticias-movil/noticias-movil.component';
 
 
 
@@ -93,7 +94,8 @@ import { MostrarNombrePlazaPipe } from './pipes/mostrar-nombre-plaza.pipe';
     GeneralesComponent,
     NuestrasMarcasComponent,
     EquipoUnicoComponent,
-    MostrarNombrePlazaPipe
+    MostrarNombrePlazaPipe,
+    NoticiasMovilComponent
   ],
   imports: [
     BrowserModule,

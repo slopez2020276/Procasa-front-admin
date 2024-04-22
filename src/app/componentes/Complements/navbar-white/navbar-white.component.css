@@ -29,8 +29,8 @@ div#navbar * {transition: .8s;}
 
 
 div#cont-menu {
-  width: 45px;
-  height: 35px;
+  width: 50px;
+  height: 37px;
   position: relative;
   display: none;
   margin-top: 10px;
@@ -179,8 +179,6 @@ div#container-list:hover a, div#container-list-pro:hover a { color: #FFF; }
 @media screen and (max-width:950px) {
 
   div#cont-menu {
-    width: 65px;
-    height: 47px;
     background: var(--main);
     margin-bottom: 12px;
     display: flex;

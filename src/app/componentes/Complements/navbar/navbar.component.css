@@ -33,8 +33,6 @@ div#navbar.scroll div.navbar-items a {font-size: 12pt;}
 
 
 div#cont-menu {
-  width: 45px;
-  height: 35px;
   margin-top: 10px;
   position: relative;
   display: none;
@@ -184,8 +182,8 @@ div#container-list:hover a, div#container-list-pro:hover a { color: #FFF; }
 @media screen and (max-width:950px) {
 
   div#cont-menu {
-    width: 65px;
-    height: 47px;
+    width: 50px;
+    height: 37px;
     background: var(--main);
     margin-bottom: 12px;
     display: flex;
