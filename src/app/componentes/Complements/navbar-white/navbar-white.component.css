@@ -14,6 +14,7 @@ div#navbar {
     transition: .4s ease-in-out;
 }
 
+div#navbar * {transition: .8s;}
 
   div#cont-menu-list {
     width: 100%;
@@ -28,10 +29,11 @@ div#navbar {
 
 
 div#cont-menu {
-  width: 60px;
-  height: 45px;
+  width: 45px;
+  height: 35px;
   position: relative;
   display: none;
+  margin-top: 10px;
   justify-content: center;
   align-content: space-between;
   flex-wrap: wrap;
@@ -48,7 +50,6 @@ div#cont-menu:active {
 div#cont-menu div {
   width: 100%;
   height: 20%;
-  border-radius: 2px;
   background: #888;
 }
 
@@ -70,13 +71,14 @@ div#navbar-logo img {
 }
 
 div#navbar-cont-items {
+  width: auto;
     width: auto;
     position: relative;
     height: auto;
     display: flex;
     justify-content: center;
     align-items: start;
-  }
+}
 
 div.navbar-items {
     width: 150px;
@@ -86,7 +88,6 @@ div.navbar-items {
     position: relative;
     flex-wrap: wrap;
     margin: 0 1rem;
-    border-radius: 4px 4px 0 0;
     height: 60%;
   }
 
@@ -132,14 +133,13 @@ div#container-list, div#container-list-pro {
     background: var(--main);
     color: #252525;
     font-size: var(--fs-text);
-    border-radius: 4px;
   }
   
   /* div#list {display: none;} */
   
   div.list-a {
     position: relative;
-    width: 200px;
+    width: 250px;
     padding: 10px 0 10px 1rem;
     text-align: left;
     transition: .2s;
@@ -157,7 +157,7 @@ div.list-a:hover {background: rgba(0,0,0,.4);}
 div.list-a:last-child {margin-bottom: 1rem;}
 
 div.list-a mat-icon {
-  float: right;
+  float: left;
 }
 
 div#container-list:hover div#list div.list-a,
@@ -167,7 +167,7 @@ div#container-list-pro:hover div#list-products div.list-a {
   display: block;
 }
 
-div.list-a:hover { padding-left: .5rem; }
+/* div.list-a:hover { padding-left: .5rem; } */
 
 div#container-list:hover, div#container-list-pro:hover { background: var(--main); }
 div#container-list:hover a, div#container-list-pro:hover a { color: #FFF; }
@@ -178,6 +178,32 @@ div#container-list:hover a, div#container-list-pro:hover a { color: #FFF; }
 
 @media screen and (max-width:950px) {
 
+  div#cont-menu {
+    width: 65px;
+    height: 47px;
+    background: var(--main);
+    margin-bottom: 12px;
+    display: flex;
+    opacity: 1;
+    z-index: 500;
+    float: right;
+    position: relative;
+    align-content: space-evenly;
+    padding: 0 4px;
+    transition: .1s;
+    border-radius: 4px;
+}
+  
+div#cont-menu:active { transform: scale(0.6); }
+  
+div#cont-menu div {
+  width: 100%;
+  height: 10%;
+  background: #FFF;
+  border-radius: 2px;
+}
+
+
 
   div#cont-menu-list {
     width: 100%;
@@ -187,10 +213,11 @@ div#container-list:hover a, div#container-list-pro:hover a { color: #FFF; }
     height: auto;
     transform: translateY(-500px);
     opacity: 0;
+    z-index: 0;
   }
   
   div#cont-menu-list.activate {
-    transform: translateY(0px);
+    transform: translateY(65px);
     opacity: 1;
     animation: menu .4s ease-out;
   }
@@ -199,32 +226,31 @@ div#container-list:hover a, div#container-list-pro:hover a { color: #FFF; }
   div.navbar-items {
     min-width: 200px;
     display: flex;
-    justify-content: center;
+    justify-content: start;
     align-items: center;
     position: relative;
     flex-wrap: wrap;
     margin: 0 1rem;
-    border-radius: 4px 4px 0 0;
     height: 60%;
     background: var(--main);
-    padding: 1rem 0;
+    padding: 1rem;
     color: #FFF;
     margin-top: 10px;
   }
   
-  div.navbar-items a {color: #FFF;}
+  div.navbar-items a {color: #FFF; justify-content: start; text-align: left;}
   
   @keyframes menu {
-    0% {transform: translateY(-500px); opacity: 0;}
-    70% {transform: translateY(30px); opacity: .3;}
-    100% {transform: translateY(0px); opacity: 1;}
+    0% {transform: translateY(-400px); opacity: 0;}
+    70% {transform: translateY(90px); opacity: .1;}
+    100% {transform: translateY(65px); opacity: 1;}
   }
   
   div#navbar-cont-items {
     width: 300px;
     height: auto;
     display: block;
-    margin-top: 10px;
+    margin-top: 0px;
     margin-right: 10px;
   }
   
@@ -244,15 +270,7 @@ div#container-list:hover a, div#container-list-pro:hover a { color: #FFF; }
     justify-content: center;
     flex-wrap: wrap;
   }
-  
-  div#cont-menu {
-    margin-bottom: 12px;
-    display: flex;
-    opacity: 1;
-    z-index: 500;
-    float: right;
-    position: relative;
-  }
+
 }
 
 
@@ -269,3 +287,6 @@ div#container-list:hover a, div#container-list-pro:hover a { color: #FFF; }
   div.navbar-items { margin: 0 0; }
 }
 
+
+
+@media screen and (min-width:951px) { mat-icon {display: none;} }

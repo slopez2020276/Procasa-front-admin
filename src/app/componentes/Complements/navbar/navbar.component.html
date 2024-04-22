@@ -10,25 +10,25 @@
 
     <div id="cont-menu-list">
       <div class="navbar-items" id="container-list">
-              <a class="normal" routerLink="/Inicio" id="quienes-somos">Quiénes somos</a>
+              <a class="normal" routerLink="/Inicio" id="quienes-somos"><mat-icon>add</mat-icon> Quiénes somos</a>
               <div id="list">
-                  <div (click)="ToScrollView('historia')" class="list-a" id="window-historia">Historia <mat-icon>keyboard_arrow_right</mat-icon></div>
-                  <div (click)="ToScrollView('linea-tiempo')" class="list-a" id="window-linea">Línea del tiempo <mat-icon>keyboard_arrow_right</mat-icon></div>
-                  <div (click)="ToScrollView('mision-vision-valores')" class="list-a" id="window-vmv">Visión, Misión, Valores <mat-icon>keyboard_arrow_right</mat-icon></div>
-                  <div (click)="ToScrollView('news')" class="list-a" id="window-noticia">Noticias <mat-icon>keyboard_arrow_right</mat-icon></div>
+                  <div (click)="ToScrollView('historia')" class="list-a" id="window-historia"><mat-icon>add</mat-icon> Historia</div>
+                  <div (click)="ToScrollView('linea-tiempo')" class="list-a" id="window-linea"><mat-icon>add</mat-icon> Línea del tiempo</div>
+                  <div (click)="ToScrollView('mision-vision-valores')" class="list-a" id="window-vmv"><mat-icon>add</mat-icon> Visión, Misión, Valores</div>
+                  <div (click)="ToScrollView('news')" class="list-a" id="window-noticia"><mat-icon>add</mat-icon> Noticias</div>
               </div>
           </div>
 
           <div class="navbar-items"><a class="normal" routerLink="/ubicaciones">Ubicaciones</a></div>
           <div class="navbar-items" id="container-list-pro">
-            <a class="normal" routerLink="/productos">Productos</a>
+            <a class="normal" routerLink="/productos"><mat-icon>add</mat-icon> Productos</a>
             <div id="list-products">
-              <div [routerLink]="['/productos', 'por-que-procasa']" (click)="ToScrollView('por-que-procasa')" class="list-a" id="window-promesa">¿Por qué Procasa? <mat-icon>keyboard_arrow_right</mat-icon></div>
-              <div [routerLink]="['/productos', 'nuestras-marcas']" (click)="ToScrollView('nuestras-marcas')" class="list-a" id="window-marca">Nuestras Marcas <mat-icon>keyboard_arrow_right</mat-icon></div>
-              <div [routerLink]="['/productos', 'catalogo']" (click)="ToScrollView('catalogo')" class="list-a" id="window-catalogo">Catálogo <mat-icon>keyboard_arrow_right</mat-icon></div>
+              <div [routerLink]="['/productos', 'por-que-procasa']" (click)="ToScrollView('por-que-procasa')" class="list-a" id="window-promesa"><mat-icon>add</mat-icon> ¿Por qué Procasa?</div>
+              <div [routerLink]="['/productos', 'nuestras-marcas']" (click)="ToScrollView('nuestras-marcas')" class="list-a" id="window-marca"><mat-icon>add</mat-icon> Nuestras Marcas</div>
+              <div [routerLink]="['/productos', 'catalogo']" (click)="ToScrollView('catalogo')" class="list-a" id="window-catalogo"><mat-icon>add</mat-icon> Catálogo</div>
           </div>
           </div>
-          <!-- <div class="navbar-items"><a class="normal" routerLink="/nuestros-clientes">Nuestros clientes</a></div> -->
+          <div class="navbar-items"><a class="normal" routerLink="/nuestros-clientes">Nuestros clientes</a></div>
           <div class="navbar-items"><a class="normal" routerLink="/quiero-comprar">Quiero comprar</a></div>
           <div class="navbar-items"><a class="normal" routerLink="/unete-nuestro-equipo">Únete a nuestro equipo</a></div>
         </div>

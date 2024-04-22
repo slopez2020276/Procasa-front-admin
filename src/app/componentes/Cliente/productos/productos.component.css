@@ -360,17 +360,29 @@ div#btns-arrow mat-icon:hover {
 }
 
 @media screen and (max-width: 900px) {
-  div#container-promesa { width: 550px; justify-content: start;}
-  div.cont-promesa { width: 180px; }
-  div.cont-promesa:nth-child(1) img {border-left: 1px solid #FFF;}
-  div.cont-promesa:nth-child(3) img {border-right: 1px solid #FFF;}
-  div.cont-promesa:nth-child(5) img {border-right: 1px solid #FFF;}
+  div#container-promesa { width: 550px; justify-content: center;}
+  div.cont-promesa { width: 250px; border: none;}
+  div.cont-promesa:nth-child(1) img {border-left: 1px solid transparent;}
+  div.cont-promesa:nth-child(3) img {border-right: 1px solid transparent;}
+  div.cont-promesa:nth-child(5) img {border-right: 1px solid transparent;}
+  div.cont-promesa img {border: 1px solid transparent;}
 }
 
 @media screen and (max-width: 700px) {
+  
+  div.cont-promesa { width: 250px; }
+  div.cont-promesa:nth-child(1) img {border-left: 1px solid transparent;}
+  div.cont-promesa:nth-child(3) img {border-right: 1px solid transparent;}
+  div.cont-promesa:nth-child(5) img {border-right: 1px solid transparent;}
+
+div.cont-promesa img {
+  border-left: 1px solid transparent;
+}
+
+
   div#cont-whatsapp a h2 {display: none;}
   div#cont-whatsapp {background: transparent;}
-  div.cont-details {display: none;} div#cont-products {justify-content: space-evenly;} div.product { width: 180px; } div.cont-img-product { width: 180px; height: 180px; } }
+ div#cont-products {justify-content: space-evenly;} div.product { width: 180px; } div.cont-img-product { width: 180px; height: 180px; } }
 @media screen and (max-width: 530px) {div#cont-products { width: 90vw; } div.product { width: 180px;} div.cont-img-product { width: 180px; height: 180px; } }
 @media screen and (max-width: 475px) {div#cont-products { width: 100vw; } div.product { width: 160px;} div.cont-img-product { width: 160px; height: 160px; } }
 @media screen and (max-width: 375px) {div.product { width: 140px;} div.cont-img-product { width: 140px; height: 140px; } }

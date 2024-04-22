@@ -22,6 +22,6 @@ div#to-home-scroll:active {
 }
 
 div#to-home-scroll.toshow {
-  bottom: 5vh;
+  bottom: 15vh;
 }
 

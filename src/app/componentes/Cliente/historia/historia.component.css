@@ -69,10 +69,14 @@ div#section-2 {
 
 
 @media screen and (max-width: 650px) {
-div#sub div#quote {
-    text-align: justify;
-    width: 100%;
+    div#sub div#quote {
+        text-align: justify;
+        width: 100%;
+    }
+    div#sub div#quote p {padding: 0px;}
+    
 }
-div#sub div#quote p {padding: 0px;}
 
+@media screen and (max-width: 550px) {
+    div#sub div#quote h1 { display: none; }
 }

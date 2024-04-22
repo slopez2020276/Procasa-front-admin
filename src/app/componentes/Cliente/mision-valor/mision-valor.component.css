@@ -100,9 +100,7 @@ div#sub-valores {
   cursor: pointer;
 }
 
-/* div#sub-valores div:hover  {
-    transform: scale(1.1);
-} */
+
 
 div#sub-valores div:hover h6 { font-size: 20pt; }
 
@@ -110,25 +108,27 @@ div#sub-valores div img {
     position: relative;
     display: block;
     z-index: 0;
+    z-index: 0;
 }
 
 div#sub-valores h6 {
-    font-size: 30pt;
+  font-size: 30pt;
     padding: 0;
     width: 100%;
     min-width: 100%;
     text-align: center;
   }
 
-  div#sub-valores p {
+div#sub-valores p {
     position: relative;
     width: 100%;
     padding: 0 1rem;
-    text-align: center;
+    text-align: justify;
     opacity: 0;
     transition: .5s ease;
     top: 0;
     left: 0;
+    bottom: 0;
     background: transparent;
     z-index: 0;
     font-size: var(--fs-text);
@@ -137,48 +137,52 @@ div#sub-valores h6 {
     margin-top: .5rem;
     padding: 1rem;
     border-radius: 4px;
+    z-index: 0;
 }
+
+div.sub-mv p {text-align: justify;}
 
 div#sub-valores div:hover p { opacity: 1; }
-div#sub-valores div:hover img { width: 80px; }
+div#sub-valores div:hover img { width: 140px; }
 
-@media (max-width: 680px) {
+
+
+
+@media (max-width: 766px) {
+
+  div#sub-valores {overflow: visible;}
+  div#sub-valores * {overflow: visible;}
+  div#sub-valores p {
+    position: absolute;
+    color: #252525;
+    background: rgba(255,255,255,1);
+    margin-top: .5rem;
+    bottom: -100px;
+    z-index: 40;
+    top: 30px;
+    height: 230px;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+}
+
+div#sub-valores div {
+  height: auto;
+  overflow: visible;
+  margin-bottom: 100px;
+}
+
 
 div#sub-valores h6 {
-  font-size: 14pt;
+  font-size: 20pt;
 }
 
-
-  div#sub-valores div {
-    margin-bottom: 1rem;
-    width: 200px;
-    position: relative;
-  }
-
-  div#sub-valores p {
-    width: 220px;
-    text-align: left;
-    position: relative;
-    padding: 1rem;
-    height: auto;
-    max-height: 120px;
-    overflow-x: hidden;
-    overflow-y: scroll;
-  }
 }
+
 
 
 @media screen and (max-width: 480px ) {
   div#sub-valores div { width: 90%; }
 }
 
-
-@media screen and (max-width:570px ) {
-  div#sub-valores div p {height: 0px; transition: .4s;}
-  div#sub-valores div:hover p {height: auto; max-height: 150px;}
-
-  div#sub-section-1 div.sub-mv img { width: 110px; }
-  div.sub-mv h1 { font-size: 20pt; }
-  div#sub-valores div img { width: 180px; }
-  div#sub-valores div:hover img { width: 130px; }
-}
