@@ -13,3 +13,5 @@ export class MostrarNombrePlazaPipe implements PipeTransform {
     return items.filter(item => item.titulo.toLowerCase().includes(titulo.toLowerCase()));
   }
 }
+
+

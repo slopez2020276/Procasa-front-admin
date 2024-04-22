@@ -93,9 +93,12 @@
     <label class="normal">ubicación</label>
 
     <select formControlName="ubicacion">
-      <option value="">CDP</option>
-      <option value="">Zona 10</option>
-      <option value="">Etc...</option>
+      @for (item of dataUbicacion; track $index) {
+
+        <option value="">{{item}}</option>
+
+      }
+
     </select>
   </div>
 
@@ -157,9 +160,11 @@
         <div class="item">
           <label class="normal">Ubicación</label>
         <select formControlName="ubicacion">
-          <option value="">CDP</option>
-          <option value="">Zona 10</option>
-          <option value="">Etc...</option>
+          @for (item of dataUbicacion; track $index) {
+
+            <option value="">{{item}}</option>
+    
+          }
         </select>
       </div>
 

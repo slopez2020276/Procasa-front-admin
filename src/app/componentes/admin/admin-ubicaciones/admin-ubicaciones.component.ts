@@ -19,7 +19,7 @@ formularioEditUbicacion: FormGroup
 private fileTmp:any
 private fileTmpEdit: any
 nombreTiendaFiltro: string = '';
-
+dataUbicaion :any
 
 //Datos para el modal de editar
 
@@ -187,6 +187,8 @@ if(img!=="" && nombre!=="" && sucursal!=="" && horario!=="" && maps!=="" && waze
 }else{ this.AlertMessage("Todos los campos son requeridos", 1500) }
 
 }
+
+
 
 
 

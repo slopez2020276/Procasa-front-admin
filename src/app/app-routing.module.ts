@@ -21,6 +21,8 @@ import { NoticiaUnicaComponent } from './componentes/Cliente/noticia-unica/notic
 import { GeneralesComponent } from './componentes/admin/generales/generales.component';
 import { NuestrasMarcasComponent } from './componentes/admin/nuestras-marcas/nuestras-marcas.component';
 import { EquipoUnicoComponent } from './componentes/Cliente/equipo-unico/equipo-unico.component';
+import { loginGuard } from './guards/login.guard';
+import { agenteMerting } from './guards/agenteMerting.guard';
 
 const routes: Routes = [
   {path:'',redirectTo:'Inicio', pathMatch:'full'},
@@ -28,23 +30,23 @@ const routes: Routes = [
   {path:'ubicaciones',title:'PROCASA | Ubicaciones',component:UbicacionesComponent},
   {path:'quiero-comprar',title:'PROCASA | Quiero Comprar',component:QuieroComprarComponent},
   {path:'admin',title:'Administrador',component: AdminloginComponent},
-  {path:'admin/Ubicaciones',title:'Administrador-Ubicaciones', component:AdminUbicacionesComponent},
-  {path:'admin/Principal',title:'Principal-Admin',component:AdminprincipalComponent},
-  {path:'admin/Promociones',title:'Principal-Admin',component:PromocionesComponent},
+  {path:'admin/Ubicaciones',title:'Administrador-Ubicaciones', component:AdminUbicacionesComponent, canActivate: [loginGuard,agenteMerting]},
+  {path:'admin/Principal',title:'Principal-Admin',component:AdminprincipalComponent, canActivate: [loginGuard]},
+  {path:'admin/Promociones',title:'Principal-Admin',component:PromocionesComponent, canActivate: [loginGuard]},
   {path:'alert',title:'alert',component:AlertComponent},
-  {path:'admin/suscripciones',title:'suscripciones',component:SuscripcionesComponent},
+  {path:'admin/suscripciones',title:'suscripciones',component:SuscripcionesComponent, canActivate: [loginGuard]},
   {path:'youtube',title:'youtube',component:YoutubeComponent},
-  {path:'admin/usuarios',title:'usuarios',component:UsuariosComponent},
+  {path:'admin/usuarios',title:'usuarios',component:UsuariosComponent, canActivate: [loginGuard]},
   {path:'noticas',component:NoticiasComponent},
   {path:'nuestros-clientes',title:'PROCASA | Nuestros Clientes',component:NuestrosClientesComponent},
   {path:'productos',title:'PROCASA | Productos', component:ProductosComponent},
   {path:'unete-nuestro-equipo',title:'PROCASA | Únete a Nuestro Equipo',component:NuestroEquipoComponent},
-  {path:'admin/Productos', component:AdminproductosComponent},
-  {path:'admin/Equipo', component:EquipoComponent},
+  {path:'admin/Productos', component:AdminproductosComponent, canActivate: [loginGuard]},
+  {path:'admin/Equipo', component:EquipoComponent, canActivate: [loginGuard]},
   {path:'noticia',title:'PROCASA | Noticia',component:NoticiaUnicaComponent},
   {path:'noticia/:id', component:NoticiaUnicaComponent},
-  {path:'admin/generales', component:GeneralesComponent},
-  {path:'admin/nuestras-marcas', component:NuestrasMarcasComponent},
+  {path:'admin/generales', component:GeneralesComponent, canActivate: [loginGuard]},
+  {path:'admin/nuestras-marcas', component:NuestrasMarcasComponent, canActivate: [loginGuard]},
   {path:'informacion-plaza',title:'PROCASA | Información de Plaza',component:EquipoUnicoComponent},
   {path:'informacion-plaza/:id',title:'PROCASA | Información de Plaza',component:EquipoUnicoComponent},
 

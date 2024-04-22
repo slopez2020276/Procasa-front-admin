@@ -7,7 +7,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
   templateUrl: './equipo.component.html',
   styleUrl: './equipo.component.css'
 })
-export class EquipoComponent {
+export class EquipoComponent  {
 
   uneterService = inject(UneteEquipoService)
   dataUnete
@@ -22,7 +22,7 @@ export class EquipoComponent {
   heightLimit
   sizeLimit
   nombreTiendaFiltro: string = '';
-
+  dataUbicacion
   
 
   data:any
@@ -105,6 +105,7 @@ constructor(){
   ngOnInit(): void {
     this.containerAlert = document.getElementById('background-alert')
     this.obtenerUnete()
+    this.obtenerNombreUbi()
   }
 
   ModalProduct(type:string){
@@ -306,7 +307,11 @@ EditPlaza():void{
  */
 
  
+async obtenerNombreUbi(){
+  const ubicacion = await this.uneterService.obtenerNombreUbiacion()
+  this.dataUbicacion = ubicacion.nombres
 
+}
 
 
 sendFileplaza(): void {
