@@ -1,17 +1,17 @@
 import { inject } from "@angular/core"
 import { Router } from "@angular/router"
+import { UsersService } from "../services/users.service"
 
-export const loginGuard = () =>{
+export const agenteMerting = () =>{
 
     const router = inject(Router)
-    var identidad2 = JSON.parse(localStorage.getItem('identidad') as string)
-    console.log(identidad2.rol)
-    if(localStorage.getItem('token')){
+    const userService = inject(UsersService)
+
+
+    if(userService.getIdentidad().rol === 'user'){
         return true
     }else{
         router.navigate(['/admin'])
         return false
     }
-
-
 }

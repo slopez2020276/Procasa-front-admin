@@ -14,7 +14,7 @@
     <img src="../../../assets/img/Logo MH original.png" alt="">
       <h2>¡Bienvenido al Administrador de Procasa!</h2>
       <p>Escribe tus credenciales para ingresar a tu cuenta.</p>
-<form [formGroup]="formulario" (ngSubmit)="onSubmit()" >
+<form [formGroup]="formulario"  >
   <div class="cont-input">
     <!-- <label for="mail">Correo</label> -->
     <input placeholder="usuario" title="ingrese los datos" class="bold" type="gmail" name="mail" formControlName="email" >
@@ -27,7 +27,7 @@
   <!-- <a href="#">Solicitar nueva contraseña</a> -->
   <br>
   
-  <button type="submit" >Ingresar</button>
+  <button (click)="login()" >Ingresar</button>
 </form>
 
   </div>

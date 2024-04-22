@@ -20,7 +20,7 @@ export class AdminloginComponent {
     this.formulario = new FormGroup({
       email: new FormControl(),
       password: new FormControl(),
-      obtenerToken: new FormControl('true')
+      obtenerToken: new FormControl()
 
     })
 
@@ -67,6 +67,40 @@ export class AdminloginComponent {
     }
 
 
+  }
+
+
+
+  
+  getTokenPromesa(): Promise<any> {
+    return new Promise((resolve, reject) => {
+      this.usersService.logintrie(this.formulario.value, 'true').subscribe(
+        (response) => {
+          resolve(response);
+        },
+        (error) => {
+          console.log(<any>error);
+        }
+      );
+    });
+  }
+
+  login() {
+    this.usersService.logintrie(this.formulario.value).subscribe(
+      (response) => {
+        this.getTokenPromesa().then((respuesta) => {
+
+          let identidad = this.usersService.getIdentidad();
+              if(identidad.rol === 'marketing'|| identidad.rol === 'Admin' ){
+                this.router.navigate(['admin/Principal'])
+
+              }if(identidad.rol === 'rh'){
+                this.router.navigate(['admin/Equipo'])
+
+              }
+        });
+      }
+    );
   }
 
 

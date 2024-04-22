@@ -22,6 +22,7 @@ import { GeneralesComponent } from './componentes/admin/generales/generales.comp
 import { NuestrasMarcasComponent } from './componentes/admin/nuestras-marcas/nuestras-marcas.component';
 import { EquipoUnicoComponent } from './componentes/Cliente/equipo-unico/equipo-unico.component';
 import { loginGuard } from './guards/login.guard';
+import { agenteMerting } from './guards/agenteMerting.guard';
 
 const routes: Routes = [
   {path:'',redirectTo:'Inicio', pathMatch:'full'},
@@ -29,7 +30,7 @@ const routes: Routes = [
   {path:'ubicaciones',title:'PROCASA | Ubicaciones',component:UbicacionesComponent},
   {path:'quiero-comprar',title:'PROCASA | Quiero Comprar',component:QuieroComprarComponent},
   {path:'admin',title:'Administrador',component: AdminloginComponent},
-  {path:'admin/Ubicaciones',title:'Administrador-Ubicaciones', component:AdminUbicacionesComponent, canActivate: [loginGuard]},
+  {path:'admin/Ubicaciones',title:'Administrador-Ubicaciones', component:AdminUbicacionesComponent, canActivate: [loginGuard,agenteMerting]},
   {path:'admin/Principal',title:'Principal-Admin',component:AdminprincipalComponent, canActivate: [loginGuard]},
   {path:'admin/Promociones',title:'Principal-Admin',component:PromocionesComponent, canActivate: [loginGuard]},
   {path:'alert',title:'alert',component:AlertComponent},
