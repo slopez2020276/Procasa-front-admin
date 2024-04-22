@@ -83,6 +83,12 @@ export class UneteEquipoService {
       )
     }
 
+    obtenerNombreUbiacion(){
+      return firstValueFrom(
+        this.httClient.get<any>(`${this.baseUrl}/obtnerUbiAllForUnete`)
+      )
+    }
+
     createHeaders(){
       return   {
        headers: new HttpHeaders ({

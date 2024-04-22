@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-admin-navbar',
@@ -7,6 +8,7 @@ import { Component } from '@angular/core';
 })
 export class AdminNavbarComponent {
 
+  router = inject(Router)
 MenuShow(){
     document.getElementById('container-menu')?.classList.toggle('openmenu')
 
@@ -22,7 +24,7 @@ CloseSession(){
 let response = confirm('¿Desea cerrar sesión?')
   if(response===true){
     localStorage.removeItem('token')
-    location.href ="http://localhost:4200/admin"
+    this.router.navigate(['/admin'])
   }
 }
 
