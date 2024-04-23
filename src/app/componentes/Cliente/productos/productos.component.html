@@ -30,6 +30,12 @@
       <div class="marca-item"><img src={{os.imgPath}}><div class="info-product"><p class="normal">{{os.textMarca}}</p></div></div>
     }
     </div>
+
+<div id="carrousel-marcas-movil">
+  @for (os of dataMarcas; track $index){
+    <div class="marca-item"><img src={{os.imgPath}}><div class="info-product"><p class="normal">{{os.textMarca}}</p></div></div>
+  }
+</div>
 </div>
 
 

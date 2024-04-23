@@ -168,7 +168,7 @@ div#container-marcas {
 }
 
 
-div#carrousel-marcas {
+div#carrousel-marcas, div#carrousel-marcas-movil {
   width: auto;
   position: relative;
   height: auto;
@@ -180,6 +180,12 @@ div#carrousel-marcas {
   overflow-y: visible;
   left: 0;
   padding-right: 10rem;
+}
+
+div#carrousel-marcas-movil {
+  overflow-x: scroll;
+  overflow-y: hidden;
+  display: none;
 }
 
 
@@ -404,3 +410,4 @@ div.cont-promesa img {
 
 
 @media screen and (max-width: 380px) { div.cont-promesa { width: 300px; } }
+@media screen and (max-width: 766px) { div#carrousel-marcas-movil {display: flex;} div#carrousel-marcas {display: none;} div#btns-arrow {display: none;} }

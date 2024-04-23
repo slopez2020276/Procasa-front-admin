@@ -65,6 +65,9 @@ ObtenerProductos(){
 
 
 
+
+
+
   async obtnerMarcas(){
     const response = await this.MarcasServices.obtenerMarcas()
     this.dataMarcas = response.marcas

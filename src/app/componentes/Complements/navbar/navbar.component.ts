@@ -18,7 +18,7 @@ MenuToggle(){
   this.menu?.classList.toggle('activate')
   this.menuList?.classList.toggle('activate')
   }
-  
+
 ngOnInit() {
     const navbar:HTMLElement | any = document.querySelector('#navbar')
     window.addEventListener('scroll', () => { if (window.scrollY > 50) { navbar.classList.add('scroll') } else { navbar.classList.remove('scroll') } })
