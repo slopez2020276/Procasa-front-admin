@@ -6,7 +6,7 @@ div#sub {
     position: relative;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: start;
     flex-wrap: wrap;
 }
 
@@ -77,6 +77,6 @@ div#section-2 {
     
 }
 
-@media screen and (max-width: 550px) {
+@media screen and (max-width: 766px) {
     div#sub div#quote h1 { display: none; }
 }

@@ -315,7 +315,6 @@ h1.select-ubicacion.selected-h1 {
 
 
 
-@media screen and (max-width: 480px) { h1.select-ubicacion { width: 180px; } }
-@media screen and (max-width: 435px) { h1.select-ubicacion { width: 150px; } }
+@media screen and (max-width: 480px) { h1.select-ubicacion { width: 110px; } }
 @media screen and (max-width: 370px) { h1.select-ubicacion { width: 100%; }  h1.select-ubicacion:nth-child(2) {margin-top: 4px;} h1.select-ubicacion:nth-child(1) {margin-top: 4px;} }
 

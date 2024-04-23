@@ -278,7 +278,6 @@ div#cont-whatsapp a h2 {
   text-align: center;
 }
 
-
 @media screen and (max-width: 400px) {
 
 div#cont-products {
@@ -292,9 +291,6 @@ div.product {
   margin: 2rem 0;
 }
 
-
-
-
 div.product img { width: 100%; }
 
   div.product h2 {
@@ -303,7 +299,7 @@ div.product img { width: 100%; }
     color: #F4F4F4;
   }
 
-div.cont-details { width: 80%; left: 10%; top: 20%;}
+div.cont-details { width: 100%; top: 20%;}
 
   div.cont-details h1 {
     text-align: center;
@@ -400,14 +396,18 @@ div.cont-promesa img {
 @media screen and (max-width: 550px) {
   div#container-promesa { width: 550px; justify-content: space-evenly;}
   div.cont-promesa { width: 180px; }
-
-
+  
+  
   div.cont-promesa img {border: 1px solid transparent;}
   div.cont-promesa:nth-child(1) img {border-left: 1px solid transparent;}
   div.cont-promesa:nth-child(3) img {border-right: 1px solid transparent;}
   div.cont-promesa:nth-child(5) img {border-right: 1px solid transparent;}
 }
 
+@media screen and (max-width: 500px) {
+  div#cont-products div.product:nth-child(odd) div.cont-details { transform: translateX(60px); min-width: 250px; width: 250px;}
+  div#cont-products div.product:nth-child(even) div.cont-details { transform: translateX(-80px); min-width: 250px; width: 250px;}
+}
 
 @media screen and (max-width: 380px) { div.cont-promesa { width: 300px; } }
 @media screen and (max-width: 766px) { div#carrousel-marcas-movil {display: flex;} div#carrousel-marcas {display: none;} div#btns-arrow {display: none;} }

@@ -26,6 +26,7 @@ div#navbar.scroll div.navbar-items a {font-size: 12pt;}
     height: 100%;
     position: relative;
     z-index: 300;
+    border-radius: 4px;
 }
 
 
@@ -133,10 +134,9 @@ div#container-list, div#container-list-pro {
     background: var(--main);
     color: #252525;
     font-size: var(--fs-text);
+    border-radius: 4px;
   }
-  
-  /* div#list {display: none;} */
-  
+ 
   div.list-a {
     position: relative;
     width: 250px;
@@ -149,7 +149,7 @@ div#container-list, div#container-list-pro {
     font-size: var(--fs-text);
     color: #FFF;
     background: rgba(0,0,0,.0);
-    border-bottom: 2px solid #FFF;
+    border-bottom: 1px solid #FAFAFA;
 }
 
 div.list-a:hover {background: rgba(0,0,0,.4);}
@@ -193,7 +193,7 @@ div#container-list:hover a, div#container-list-pro:hover a { color: #FFF; }
     padding: 0 4px;
     transition: .1s;
     border-radius: 4px;
-    z-index: 0;
+    z-index: 20;
 }
   
 div#cont-menu:active { transform: scale(0.6); }
@@ -211,21 +211,22 @@ div#cont-menu-list {
   width: 100%;
   display: block;
   align-items: center;
-  justify-content: space-between;
+  justify-content: end;
   height: auto;
   transform: translateY(-500px);
   opacity: 0;
 }
 
 div#cont-menu-list.activate {
-  transform: translateY(65px);
+  transform: translateY(0px);
   opacity: 1;
   animation: menu .4s ease-out;
+  z-index: 0;
 }
 
 
 div.navbar-items {
-  min-width: 200px;
+  min-width: 100%;
   display: flex;
   justify-content: start;
   align-items: center;
@@ -237,14 +238,18 @@ div.navbar-items {
   padding: 1rem;
   color: #FFF;
   margin-top: 10px;
+  border-bottom: 1px solid #FAFAFA;
 }
+
+div.navbar-items:first-child {border-radius: 4px 4px 0 0;}
+div.navbar-items:last-child {border-radius: 0 0 4px 4px;}
 
 div.navbar-items a {color: #FFF; justify-content: start; text-align: left;}
 
 @keyframes menu {
   0% {transform: translateY(-400px); opacity: 0;}
-  70% {transform: translateY(90px); opacity: .1;}
-  100% {transform: translateY(65px); opacity: 1;}
+  60% {transform: translateY(50px); opacity: .1;}
+  100% {transform: translateY(0px); opacity: 1;}
 }
 
 div#navbar-cont-items {
@@ -270,7 +275,14 @@ div#list, div#list-products {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
+  border: none;
 }
+
+div#list:first-child { border-radius: 4px 4px 0 0;}
+div#list:last-child { border-radius: 0 0 4px 4px;}
+div#list-products:first-child { border-radius: 4px 4px 0 0;}
+div#list-products:last-child { border-radius: 0 0 4px 4px;}
+
 
 
 }

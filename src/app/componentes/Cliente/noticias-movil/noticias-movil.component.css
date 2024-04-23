@@ -189,8 +189,11 @@ div.cont-datos-noticia h1 { font-size: 20pt; }
 
 @media screen and (max-width: 650px ) {
 div.noticia {
-  width: 229px;
+  width: 100px;
+  max-width: 100px;
   height: 249px;
 }
+
+div.noticia img { object-fit: cover; }
   
 }
