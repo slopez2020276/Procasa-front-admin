@@ -4,6 +4,7 @@
 h1.container-h1 {width: 90%;}
 div#container-main {
   width: 100vw;
+  max-width: 100vw;
   height: auto;
   min-height: 90vh;
   padding-bottom: 200px;
@@ -14,6 +15,7 @@ div#container-main {
   align-items: start;
   align-content: start;
   flex-wrap: wrap;
+  overflow-x: hidden;
 }
 
 div#cont-products {

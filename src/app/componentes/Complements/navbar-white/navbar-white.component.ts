@@ -6,14 +6,20 @@ import { Component, OnInit } from '@angular/core';
   styleUrl: './navbar-white.component.css'
 })
 export class NavbarWhiteComponent {
-
+  menu:HTMLElement | any
+  menuList:HTMLElement | any
 ToScrollView(id:string){ document.getElementById(id)?.scrollIntoView({behavior:"smooth"}); }
 
 
-
 MenuToggle(){
-    document.getElementById('cont-menu')?.classList.toggle('activate');
-    document.getElementById('cont-menu-list')?.classList.toggle('activate');
+  this.menu?.classList.toggle('activate')
+  this.menuList?.classList.toggle('activate')
   }
+
+ngOnInit(){
+  this.menu = document.getElementById('cont-menu')
+  this.menuList = document.getElementById('cont-menu-list')
+}
+
 
 }
