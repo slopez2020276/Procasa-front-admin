@@ -260,7 +260,11 @@ agregarPlaza():void{
   this.uneterService.sendCreatePlaza(body)
 
 
-  .subscribe(res =>{console.log(res),  console.log(body), this.obtenerUnete(),this.fileTmp = null})
+  .subscribe(res =>{
+    console.log(res),  console.log(body), this.obtenerUnete(),this.fileTmp = null
+    this.AlertMessage("Plaza editada con éxito", 1500)
+    this.ModalProduct('modal-add-plaza')
+  })
 
 }
 
@@ -296,7 +300,11 @@ EditPlaza():void{
   this.uneterService.sendEditPlaza(this.idPlaza,body)
 
 
-  .subscribe(res =>{console.log(res),  console.log(body), this.obtenerUnete(),this.fileTmp = null})
+  .subscribe(res =>{
+    console.log(res),  console.log(body), this.obtenerUnete(),this.fileTmp = null
+    this.AlertMessage("Plaza editada con éxito", 1500)
+    this.ModalProduct('modal-edit-plaza')
+  })
 
 }
 
@@ -493,15 +501,12 @@ async eliminarId(id: number){
 Edit() {
   let id = this.idPlaza
 
-
   this.AlertOption("¿Desea guardar los cambios?")
   const parent: HTMLElement | any = this.containerAlert
   const btn: HTMLElement | any = parent?.childNodes[0]?.childNodes[0]?.childNodes[1]?.childNodes[0]
 
-  if (btn) { btn.onclick = () => { 
-    
+  if (btn) { btn.onclick = () => {
     this.EditPlaza()
-  
   } 
   
   }
