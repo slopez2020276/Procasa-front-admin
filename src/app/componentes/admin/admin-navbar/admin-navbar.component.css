@@ -12,7 +12,6 @@ div#container-menu {
   align-items: start;
   flex-wrap: wrap;
   align-content: flex-start;
-  border-right: 4px solid #656565;
 }
 
 div#container-menu > * { opacity: 1; transition: opacity .8s ease-in-out; }

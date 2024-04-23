@@ -24,6 +24,7 @@ import { EquipoUnicoComponent } from './componentes/Cliente/equipo-unico/equipo-
 import { loginGuard } from './guards/login.guard';
 import { agenteMerting } from './guards/agenteMerting.guard';
 import { NoticiasMovilComponent } from './componentes/Cliente/noticias-movil/noticias-movil.component';
+import { NuestrosClienteComponent } from './componentes/admin/nuestros-cliente/nuestros-cliente.component';
 
 const routes: Routes = [
   {path:'',redirectTo:'Inicio', pathMatch:'full'},
@@ -59,6 +60,7 @@ const routes: Routes = [
   {path:'Inicio/:mision-vision-valores',title:'PROCASA | Misión, Visión y Valores',component:PrincipalComponent},
   {path:'Inicio/:noticias',title:'PROCASA | Noticias',component:PrincipalComponent},
   {path:'noti',title:'DELETE',component:NoticiasMovilComponent},
+  {path:'admin/nuestros-clientes',component:NuestrosClienteComponent},
 ]
 
 @NgModule({

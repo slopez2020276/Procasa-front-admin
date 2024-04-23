@@ -32,7 +32,9 @@
   @if(identidad === 'marketing'||identidad === 'Admin'){
     <a class="normal" [routerLink]="['/admin/nuestras-marcas']"><mat-icon>stars</mat-icon> Marcas</a>
   }
-  <!-- <a class="normal" routerLink="/admin/generales"><mat-icon>settings</mat-icon> Generales</a> -->
+  <!-- @if(identidad === 'marketing'||identidad === 'Admin'){
+    <a class="normal" [routerLink]="['/admin/nuestros-clientes']"><mat-icon>person_pin</mat-icon> Clientes</a>
+  } -->
 </div>
       <div id="cont-btn">
         <button class="bold btn-click btn-red" id="close-session" (click)="CloseSession()"><mat-icon>exit_to_app</mat-icon> cerrar sesión</button>

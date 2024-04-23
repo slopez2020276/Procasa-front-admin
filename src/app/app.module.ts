@@ -51,6 +51,7 @@ import { EquipoUnicoComponent } from './componentes/Cliente/equipo-unico/equipo-
 import { ScrollTopService } from './services/scroll.service';
 import { MostrarNombrePlazaPipe } from './pipes/mostrar-nombre-plaza.pipe';
 import { NoticiasMovilComponent } from './componentes/Cliente/noticias-movil/noticias-movil.component';
+import { NuestrosClienteComponent } from './componentes/admin/nuestros-cliente/nuestros-cliente.component';
 
 
 
@@ -95,7 +96,8 @@ import { NoticiasMovilComponent } from './componentes/Cliente/noticias-movil/not
     NuestrasMarcasComponent,
     EquipoUnicoComponent,
     MostrarNombrePlazaPipe,
-    NoticiasMovilComponent
+    NoticiasMovilComponent,
+    NuestrosClienteComponent
   ],
   imports: [
     BrowserModule,
