@@ -341,7 +341,7 @@ sendFileplaza(): void {
       body.append('estado',this.formAgregarPlaza.value.estado)
       body.append('descripcion',this.formAgregarPlaza.value.descripcion)
       console.log('con imagen')
-      this.uneterService.sendCreatePlaza(body).subscribe(res => {console.log(res), console.log(body) ,this.formAgregarPlaza.reset(),this.obtenerUnete(),this.fileTmp = null, this.AlertMessage('¡Plaza guardada exitosamente!', 1500); this.ModalProduct('modal-add-plaza')}) 
+      this.uneterService.sendCreatePlaza(body).subscribe(res => {console.log(res), console.log(body) ,this.formAgregarPlaza.reset(),this.obtenerUnete(),this.fileTmp = null, this.AlertMessage('¡Plaza guardada exitosamente!', 1500); this.ModalProduct('modal-add-plaza') }) 
     }else{ this.AlertMessage("Todos los campos son requeridos", 1500) }
     }
 }

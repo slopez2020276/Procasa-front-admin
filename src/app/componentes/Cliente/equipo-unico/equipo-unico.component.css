@@ -2,6 +2,7 @@
 div#container-main {
   width: 100vw;
   height: auto;
+  min-height: 100vh;
   padding-bottom: 10rem;
   position: relative;
   margin-top: 65px;
@@ -84,7 +85,13 @@ div#container-data-select {
     white-space: pre;
   }
   
-  div.cont-data-sel img { width: 100%;  height: auto;  border-radius: 4px; }
+  div.cont-data-sel img { 
+    width: auto;
+    max-width: 100%;
+    height: auto;
+    border-radius: 4px;
+    max-height: 500px;
+}
   
   
   @media screen and (max-width: 1000px) {
