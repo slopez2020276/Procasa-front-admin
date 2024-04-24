@@ -153,7 +153,7 @@
     
       <div class="item">
           <label class="normal">Ubicación</label>
-        <select [(ngModel)]="UbicacionPlaza" formControlName="ubicacion" [(ngModel)]="UbicacionPlaza">
+        <select [(ngModel)]="UbicacionPlaza" formControlName="ubicacion" >
           @for (item of dataUbicacion; track $index) { <option value="{{item}}{{item}}">{{item}}</option>}
         </select>
       </div>
