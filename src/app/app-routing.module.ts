@@ -25,6 +25,7 @@ import { loginGuard } from './guards/login.guard';
 import { agenteMerting } from './guards/agenteMerting.guard';
 import { NoticiasMovilComponent } from './componentes/Cliente/noticias-movil/noticias-movil.component';
 import { NuestrosClienteComponent } from './componentes/admin/nuestros-cliente/nuestros-cliente.component';
+import { agenteRH } from './guards/rh.guard';
 
 const routes: Routes = [
   {path:'',redirectTo:'Inicio', pathMatch:'full'},
@@ -33,22 +34,22 @@ const routes: Routes = [
   {path:'quiero-comprar',title:'PROCASA | Quiero Comprar',component:QuieroComprarComponent},
   {path:'admin',title:'Administrador',component: AdminloginComponent},
   {path:'admin/Ubicaciones',title:'Administrador-Ubicaciones', component:AdminUbicacionesComponent, canActivate: [loginGuard,agenteMerting]},
-  {path:'admin/Principal',title:'Principal-Admin',component:AdminprincipalComponent, canActivate: [loginGuard]},
-  {path:'admin/Promociones',title:'Principal-Admin',component:PromocionesComponent, canActivate: [loginGuard]},
+  {path:'admin/Principal',title:'Principal-Admin',component:AdminprincipalComponent, canActivate: [loginGuard,agenteMerting]},
+  {path:'admin/Promociones',title:'Principal-Admin',component:PromocionesComponent, canActivate: [loginGuard,agenteMerting]},
   {path:'alert',title:'alert',component:AlertComponent},
-  {path:'admin/suscripciones',title:'suscripciones',component:SuscripcionesComponent, canActivate: [loginGuard]},
+  {path:'admin/suscripciones',title:'suscripciones',component:SuscripcionesComponent, canActivate: [loginGuard,agenteMerting]},
   {path:'youtube',title:'youtube',component:YoutubeComponent},
-  {path:'admin/usuarios',title:'usuarios',component:UsuariosComponent, canActivate: [loginGuard]},
+  {path:'admin/usuarios',title:'usuarios',component:UsuariosComponent, canActivate: [loginGuard,agenteMerting]},
   {path:'noticas',component:NoticiasComponent},
   {path:'nuestros-clientes',title:'PROCASA | Nuestros Clientes',component:NuestrosClientesComponent},
   {path:'productos',title:'PROCASA | Productos', component:ProductosComponent},
   {path:'unete-nuestro-equipo',title:'PROCASA | Únete a Nuestro Equipo',component:NuestroEquipoComponent},
-  {path:'admin/Productos', component:AdminproductosComponent, canActivate: [loginGuard]},
-  {path:'admin/Equipo', component:EquipoComponent, canActivate: [loginGuard]},
+  {path:'admin/Productos', component:AdminproductosComponent, canActivate: [loginGuard,agenteMerting]},
+  {path:'admin/Equipo', component:EquipoComponent, canActivate: [loginGuard,agenteRH]},
   {path:'noticia',title:'PROCASA | Noticia',component:NoticiaUnicaComponent},
   {path:'noticia/:id', component:NoticiaUnicaComponent},
-  {path:'admin/generales', component:GeneralesComponent, canActivate: [loginGuard]},
-  {path:'admin/nuestras-marcas', component:NuestrasMarcasComponent, canActivate: [loginGuard]},
+  {path:'admin/generales', component:GeneralesComponent, canActivate: [loginGuard,agenteMerting]},
+  {path:'admin/nuestras-marcas', component:NuestrasMarcasComponent, canActivate: [loginGuard,agenteMerting]},
   {path:'informacion-plaza',title:'PROCASA | Información de Plaza',component:EquipoUnicoComponent},
   {path:'informacion-plaza/:id',title:'PROCASA | Información de Plaza',component:EquipoUnicoComponent},
 
@@ -61,6 +62,7 @@ const routes: Routes = [
   {path:'Inicio/:noticias',title:'PROCASA | Noticias',component:PrincipalComponent},
   {path:'noti',title:'DELETE',component:NoticiasMovilComponent},
   {path:'admin/nuestros-clientes',component:NuestrosClienteComponent},
+  {path:'**',redirectTo:'Inicio', pathMatch:'full'}
 ]
 
 @NgModule({

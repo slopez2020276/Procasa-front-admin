@@ -92,7 +92,9 @@
   <div class="item">
     <label class="normal">ubicación</label>
 
-    <select formControlName="ubicacion">
+    <select formControlName="ubicacion" >
+
+
       @for (item of dataUbicacion; track $index) {
 
         <option value="{{item}}">{{item}}</option>
@@ -151,8 +153,8 @@
     
       <div class="item">
           <label class="normal">Ubicación</label>
-        <select formControlName="ubicacion" [(ngModel)]="UbicacionPlaza">
-          @for (item of dataUbicacion; track $index) { <option value="{{item}}">{{item}}</option>}
+        <select [(ngModel)]="UbicacionPlaza" formControlName="ubicacion" [(ngModel)]="UbicacionPlaza">
+          @for (item of dataUbicacion; track $index) { <option value="{{item}}{{item}}">{{item}}</option>}
         </select>
       </div>
 
@@ -205,7 +207,7 @@
 
       <div class="message"> <h1 class="innermsg"></h1></div>
       <div class="cont-btns-alert">
-        <button class="confirm" (click)="editarPlaza()" (click)="closeAlert($event)"><mat-icon>done</mat-icon></button>
+        <button class="confirm" (click)="EditPlaza()" (click)="closeAlert($event)"><mat-icon>done</mat-icon></button>
         <div class="replace-button cancel" (click)="closeAlert($event)"><mat-icon>close</mat-icon></div>
       </div>
     </div>
