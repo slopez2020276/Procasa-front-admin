@@ -1,7 +1,7 @@
 <app-admin-navbar></app-admin-navbar>
 
 <div class="container-head">
-    <h1>Plazas</h1>
+    <h1>Nuestro Equipo</h1>
     <span>
       <input [(ngModel)]="nombreTiendaFiltro"  class="bold" type="text" name="search" placeholder="buscar plaza">
       <button class="btn-click btn-white normal" (click)="ModalProduct('modal-add-plaza')"><mat-icon>add</mat-icon> Agregar</button>
@@ -102,14 +102,6 @@
     </select>
   </div>
 
-  <!-- <div class="item">
-    <label class="normal">cantidad</label>
-    <select formControlName="cantidad">
-      <option value="1">1 plaza</option>
-      <option value="varias">varias plazas</option>
-    </select>
-  </div> -->
-
   <div class="cont-tt">
     <label class="bold">Desarrollo de plaza</label>
     <textarea formControlName="descripcion" class="text-desarrollo" cols="1" rows="1"></textarea>
@@ -134,7 +126,7 @@
 <div id="sub-cont-details-img">
       <div class="sub-details">
           <div class="sub-img-btn">
-            <input class="to-clean" type="file" (change)="getFileEdit($event)" (change)="InputChange($event)" title="seleccionar archivo" accept=".jpg, .png, .jpeg, .avi, .webp" data-content="seleccionar archivo">
+            <input [value]="imgPath" class="to-clean" type="file" (change)="getFileEdit($event)" (change)="InputChange($event)" title="seleccionar archivo" accept=".jpg, .png, .jpeg, .avi, .webp">
             <mat-icon (click)="clearInputs()">delete</mat-icon>
           </div>
         <ul>
@@ -155,36 +147,29 @@
         <div class="item">
           <label class="normal">plaza / vacante</label>
           <input type="text" [(ngModel)]="NombrePlaza"  formControlName="titulo" class="normal">
-        </div>
+      </div>
     
-        <div class="item">
+      <div class="item">
           <label class="normal">Ubicación</label>
-        <select formControlName="ubicacion">
-          @for (item of dataUbicacion; track $index) {
-
-            <option value="">{{item}}</option>
-    
-          }
+        <select formControlName="ubicacion" [(ngModel)]="UbicacionPlaza">
+          @for (item of dataUbicacion; track $index) { <option value="{{item}}">{{item}}</option>}
         </select>
       </div>
 
-        <div class="item">
+      <div class="item">
           <label class="normal">Estado</label>
           <select [(ngModel)]="estado" formControlName="estado">
             <option value="activo">activo</option>
             <option value="inactivo">inactivo</option>
           </select>
-        </div>
+      </div>
       
-      <div class="cont-tt">
+    <div class="cont-tt">
         <label class="bold">Desarrollo de plaza</label>
         <textarea  [(ngModel)]="descripcion" formControlName="descripcion" class="text-desarrollo" cols="1" rows="1"></textarea>
       </div>
     </div>
 
-
-
-      <!-- <div id="open-modal-edit-fn" class="btn-click" (click)="ModalEditFunctions()" (click)="obtenerFunciones()" >editar funciones</div> -->
 
       </div>
   </form>

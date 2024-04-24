@@ -23,7 +23,7 @@ export class EquipoComponent  {
   sizeLimit
   nombreTiendaFiltro: string = '';
   dataUbicacion
-  
+
 
   data:any
 
