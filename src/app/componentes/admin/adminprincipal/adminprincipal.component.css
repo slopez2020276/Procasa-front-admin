@@ -621,6 +621,19 @@ div#sub-cont-3 {
   flex-wrap: wrap;
 }
 
+
+div.con-btns-linea {
+  border: 1px solid blue;
+  display: flex;
+  justify-content: center;
+  align-content: start;
+  align-items: start;
+  flex-wrap: wrap;
+  position: relative;
+  width: 100%;
+  padding: 1rem;
+}
+
 div.cont-3-timeline {
   width: 300px;
   display: flex;
@@ -894,6 +907,23 @@ span#width-new-n.limit, span#height-new-n.limit, span#size-new-n.limit { color: 
 span#width-update-lt.limit, span#height-update-lt.limit, span#size-update-lt.limit { color: #FF182C; }
 span#width-edit-n.limit, span#height-edit-n.limit, span#size-edit-n.limit { color: #FF182C; }
 
+
+div#cont-caracteristics-bgmob ul {  list-style: none; }
+
+div#cont-caracteristics-bgmob ul li {
+  display: flex;
+  justify-content: space-between;
+  align-content: center;
+  align-items: center;
+  flex-wrap: nowrap;
+  width: 80%;
+}
+
+
+ul#list-mob-img {
+  list-style: none;
+}
+
 h1.innermsg {
   background: transparent;
 }
@@ -1086,7 +1116,7 @@ div#toScrollTop img {
 div.year-title {
   width: 90%;
   padding: 4px 0 4px 1rem;
-  margin-top: 4rem;
+  margin-top: 0rem;
   background: var(--second);
   border-radius: 4px;
   color: #FFF;

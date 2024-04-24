@@ -19,7 +19,6 @@ interface HtmlInputEvent extends Event { target: HTMLInputElement }
 
 export class AdminprincipalComponent implements OnInit {
 
-
   statusBackground
   anchoimg:any
   altoimg:any
@@ -172,16 +171,15 @@ toScrollAdmin(elem:number){ document.getElementsByClassName("scroll-cont")[elem]
 toScrollTop(){ document.getElementById("space-esp")?.scrollIntoView({behavior: "smooth"}) }
 
 // AL INICIAR
-  async ngOnInit()  {
-
+async ngOnInit()  {
     this.inputRangeState()
 
     this.containerAlert = document.getElementById('background-alert')
     this.fileBg = document.querySelector('#file-bg')
-
-      const inputfileBefore: any = (document.getElementById('file-portada') as HTMLInputElement | null)?.value
-      const inputfileBefbg: any = (document.getElementById('file-bg') as HTMLInputElement | null)?.value
-
+    
+    const inputfileBefore: any = (document.getElementById('file-portada') as HTMLInputElement | null)?.value
+    const inputfileBefbg: any = (document.getElementById('file-bg') as HTMLInputElement | null)?.value
+    
 if(inputfileBefore==""){
     document.getElementById('preview-portada')?.setAttribute('src', "../../../assets/img/empty.jpg")
     document.getElementById('pre-portada')?.setAttribute('src', "../../../assets/img/empty.jpg")
@@ -189,7 +187,7 @@ if(inputfileBefore==""){
 }
 
 if(inputfileBefbg==""){
-    document.getElementById('preview-bg')?.setAttribute('src', "../../../assets/img/empty.jpg")
+  document.getElementById('preview-bg')?.setAttribute('src', "../../../assets/img/empty.jpg")
     document.getElementById('pre-bg')?.setAttribute('src', "../../../assets/img/empty.jpg")
     document.getElementById('file-bg')?.setAttribute('data-content', 'seleccionar archivo')
 }
@@ -1017,11 +1015,6 @@ eliminarNoticia(id: any) {
     }
   }
   
-
-
-
-
-
 
 
 

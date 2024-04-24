@@ -14,6 +14,11 @@ div#container-main {
 
 div#cont-ubicacion-3:first-child {display: none;}
 
+div#cont-ubicacion-3 {
+  align-content: start;
+  align-items: start;
+}
+
 div#container-ubicaciones {
   width: 100%;
   height: auto;

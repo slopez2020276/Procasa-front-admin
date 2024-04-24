@@ -147,7 +147,7 @@
     </div>
 
     <div class="prewiew">
-      <img id="navbar-pre" src="../../../assets/img/navbar.png" alt="navbar" title="navbar preview">
+      <!-- <img id="navbar-pre" src="../../../assets/img/navbar.png" alt="navbar" title="navbar preview"> -->
         <div id="contpreimg">
           <img id="preview-portada" [src]="imgPrincipal" alt="portada" title="previsualización del archivo">
         </div>
@@ -292,12 +292,13 @@
 
 
     @for (os of dataLinea; track os.id) {
-
-    <div class="year-title bold" style="color: #FFF;">
-      <h1 class="bold">{{os.anio}}</h1>
+<div class="con-btns-linea">
+  <div class="year-title bold" style="color: #FFF;">
+    <h1 class="bold">{{os.anio}}</h1>
       <div class="btn-click btn-gray normal" (click)="sentIdAni(os._id)" (click)="addYearEvent()"><mat-icon>add</mat-icon></div>
       <div class="btn-click btn-gray" (click)="sentIdAni(os._id)" (click)="editYear()"><mat-icon>edit</mat-icon></div>
       <div class="btn-click btn-gray" (click)="deleteYear(os._id)"><mat-icon>delete</mat-icon></div>
+      <div class="btn-click btn-gray"><mat-icon>keyboard_arrow_down</mat-icon></div>
     </div>
     @for (item of os.eventos; track $index) {
       <div class="cont-3-timeline">
@@ -308,8 +309,9 @@
                     <div class="btn-click btn-red normal" (click)="sentIdAni(os._id)"  (click)="eliminarLineaTiempo(item._id)"><mat-icon>delete</mat-icon></div>
       </div> 
     }
-}
-            </div>
+</div>
+  }
+</div>
             <!-- <div id="cont-3-see-all" class="normal btn-click btn-red" (click)="ModalAddTimeLine()"><mat-icon>launch</mat-icon> agregar</div> -->
 </div>
 
