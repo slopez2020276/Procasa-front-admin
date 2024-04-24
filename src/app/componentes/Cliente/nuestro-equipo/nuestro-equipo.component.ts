@@ -13,6 +13,7 @@ export class NuestroEquipoComponent implements OnInit {
   uneteEquipoService = inject(UneteEquipoService)
    dataUnete
 
+   nombreTiendaFiltro
    constructor(private sharedDataService: SharedDataService){ }
 
 
