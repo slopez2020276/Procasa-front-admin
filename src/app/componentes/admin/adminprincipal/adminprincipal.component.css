@@ -623,7 +623,6 @@ div#sub-cont-3 {
 
 
 div.con-btns-linea {
-  border: 1px solid blue;
   display: flex;
   justify-content: center;
   align-content: start;
@@ -632,6 +631,8 @@ div.con-btns-linea {
   position: relative;
   width: 100%;
   padding: 1rem;
+  overflow-x: hidden;
+  overflow-y: scroll;
 }
 
 div.cont-3-timeline {
