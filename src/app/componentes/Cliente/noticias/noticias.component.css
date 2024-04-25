@@ -120,11 +120,11 @@ div.cont-datos-noticia {
 div.cont-datos-noticia h1 {
   width: 100%;
   text-align: left;
-  font-size: 30pt;
+  font-size: 25pt;
   color: #FFF;
   padding: 0 0 0 .5rem;
   text-shadow: 3px 1px 3px rgba(0,0,0,.4);
-
+  word-wrap: break-word;
 }
 
 div.descubre {
