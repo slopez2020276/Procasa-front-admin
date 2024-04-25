@@ -292,13 +292,13 @@
 
 
     @for (os of dataLinea; track os.id) {
-<div class="con-btns-linea">
+<div class="con-btns-linea" id="{{os.id}}">
   <div class="year-title bold" style="color: #FFF;">
     <h1 class="bold">{{os.anio}}</h1>
       <div class="btn-click btn-gray normal" (click)="sentIdAni(os._id)" (click)="addYearEvent()"><mat-icon>add</mat-icon></div>
       <div class="btn-click btn-gray" (click)="sentIdAni(os._id)" (click)="editYear()"><mat-icon>edit</mat-icon></div>
       <div class="btn-click btn-gray" (click)="deleteYear(os._id)"><mat-icon>delete</mat-icon></div>
-      <div class="btn-click btn-gray"><mat-icon>keyboard_arrow_down</mat-icon></div>
+      <div class="btn-click btn-gray" (click)="TimeLineDown(os.id)"><mat-icon>keyboard_arrow_down</mat-icon></div>
     </div>
     @for (item of os.eventos; track $index) {
       <div class="cont-3-timeline">

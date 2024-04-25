@@ -101,11 +101,16 @@ constructor(){
   this.formEditarFuncion = new FormGroup({
     funciones: new FormControl(),
   })
+
+
+
 }
   ngOnInit(): void {
     this.containerAlert = document.getElementById('background-alert')
     this.obtenerUnete()
     this.obtenerNombreUbi()
+    
+  this.allHideBtns()
   }
 
   ModalProduct(type:string){
@@ -496,6 +501,38 @@ async eliminarId(id: number){
     this.AlertMessage('Error :(',1500)
 }
 }
+
+
+
+
+allHideBtns() {
+  const hides:HTMLElement | any = document.getElementsByClassName('close-hide')
+  for (let i = 0; i <= hides.length; i++) {
+    if(hides){
+      hides[i].style.display = "block"
+    }
+  }
+}
+
+
+toggleHideShow(event: Event) {
+  const element = event.target as HTMLElement | any;
+  if (element) {
+    element.style.display = "none";
+    element.parentElement.parentElement.children[0].style.display = "block"
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
 
 
 Edit() {

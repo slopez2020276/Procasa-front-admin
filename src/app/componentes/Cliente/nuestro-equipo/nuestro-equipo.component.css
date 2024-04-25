@@ -208,7 +208,15 @@ div#container-data-texto h6 {
 }
 
 
-
+div#empty-plazas {
+  width: 100%;
+  height: auto;
+  font-size: 20pt;
+  color: #FFF;
+  text-align: center;
+  padding: 5rem;
+  border-radius: 4px;
+}
 
 
 @media screen and (max-width: 1000px) {

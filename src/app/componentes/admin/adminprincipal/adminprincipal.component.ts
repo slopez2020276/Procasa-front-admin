@@ -994,7 +994,7 @@ eliminarNoticia(id: any) {
           if ((size / 1024) > 800) {
             dangerRedElements[5]?.classList.add('limit')
           }
-  
+
 
           document.getElementById('innersize-bg-mob')!.innerHTML = sizemedida
           document.getElementById('innerwidth-bg-mob')!.innerHTML = this.anchoimg + " px"
@@ -1008,13 +1008,18 @@ eliminarNoticia(id: any) {
         }
       }
       lector.readAsDataURL(archivo)
-  
+
       const btnSaveBg: HTMLElement | any = document.querySelector('#saveBgImgMob')
       btnSaveBg?.classList.add('show')
       btnSaveBg.onclick = () => { this.sendFileBackgroundMob() }
     }
   }
   
+
+
+TimeLineDown(id: any){
+  console.log(id)
+}
 
 
 

@@ -144,6 +144,11 @@ div.cont-buttons {
     flex-wrap: nowrap;
 }
 
+
+div.close-hide, div.done-show { display: none; }
+div.close-hide.cl-hi, div.done-show.do-sh { opacity: .1; }
+
+
 /*===========================================================================================================*/
 
 

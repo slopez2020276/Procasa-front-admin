@@ -30,7 +30,9 @@
       </ul>
 
       <div class="cont-buttons">
-          <div class="actions btn-click btn-red" (click)="ModalProduct('modal-edit-plaza')" (click)="obtenerPlazaId(os._id)"  ><mat-icon>edit</mat-icon></div>
+          <div class="actions btn-click" class="close-hide" (click)="toggleHideShow($event)"><mat-icon>close</mat-icon></div>
+          <div class="actions btn-click" class="done-show" (click)="toggleHideShow($event)"><mat-icon>done</mat-icon></div>
+          <div class="actions btn-click btn-red" (click)="ModalProduct('modal-edit-plaza')" (click)="obtenerPlazaId(os._id)"><mat-icon>edit</mat-icon></div>
           <div class="actions btn-click btn-red" (click)="EliminarP(os._id)"><mat-icon>delete</mat-icon></div>
       </div>
 
