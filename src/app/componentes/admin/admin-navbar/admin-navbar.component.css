@@ -10,8 +10,8 @@ div#container-menu {
   display: flex;
   justify-content: center;
   align-items: start;
+  align-content: start;
   flex-wrap: wrap;
-  align-content: flex-start;
 }
 
 div#container-menu > * { opacity: 1; transition: opacity .8s ease-in-out; }
@@ -74,7 +74,7 @@ div#list-menu a {
   text-decoration: none;
   color: #FFF;
   transition: .2s ease;
-  padding: 1rem;
+  padding: .8rem 1rem;
   text-align: left;
   width: 100%;
   background: rgba(255,255,255,0);
@@ -117,7 +117,7 @@ button#close-session:active {
 img#logo-menu {
   width: 100px;
   position: relative;
-  margin-top: 4rem;
+  margin-top: 8vh;
 }
 
 
