@@ -32,6 +32,11 @@ export class NuestroEquipoComponent implements OnInit {
   
     console.log(this.dataUnete)
 
+    if(this.dataUnete.length == 0){
+      this.mostrarSinplazas = false
+      console.log('dentro')
+    }
+    console.log('fuera')
   }
 data
 imgPrincipal
@@ -41,6 +46,8 @@ colorn
 dataId:any
 dataID:any
 correo:any = "contrataciones@procasa.com.gt"
+
+mostrarSinplazas = true
 HistoriaService = inject(HistoriaService)
 
 
@@ -64,9 +71,14 @@ enviarData(id: any): void {
 
 
 
+
 async getDataUneteEquipo(){
  const data = await this.uneteEquipoService.otenerUneteEquipo()
  this.dataUnete = data.unete
+
+ if(data.unete.length == 0){
+  this.mostrarSinplazas = true
+ }
   console.log(data)
 }
 
