@@ -30,10 +30,8 @@
       </ul>
 
       <div class="cont-buttons">
-          <!-- <div class="actions btn-click" class="close-hide" (click)="toggleHideShow($event)"><mat-icon>close</mat-icon></div>
-          <div class="actions btn-click" class="done-show" (click)="toggleHideShow($event)"><mat-icon>done</mat-icon></div> -->
-          <div class="actions btn-click btn-red" (click)="ModalProduct('modal-edit-plaza')" (click)="obtenerPlazaId(os._id)"><mat-icon>edit</mat-icon></div>
-          <div class="actions btn-click btn-red" (click)="EliminarP(os._id)"><mat-icon>delete</mat-icon></div>
+        <div class="actions btn-click btn-red" (click)="ModalProduct('modal-edit-plaza')" (click)="obtenerPlazaId(os._id)"><mat-icon>edit</mat-icon></div>
+        <div class="actions btn-click btn-red" (click)="EliminarP(os._id)"><mat-icon>delete</mat-icon></div>
       </div>
 
 
@@ -90,21 +88,24 @@
       <label class="normal">plaza / vacante</label>
       <input type="text"  formControlName="titulo" class="normal">
     </div>
-
+    
+      <div class="item">
+        <label class="normal">ubicación</label>
+        <select formControlName="ubicacion" >
+          @for (item of dataUbicacion; track $index) { <option value="{{item}}">{{item}}</option> }
+        </select>
+      </div>
+<!--     
   <div class="item">
-    <label class="normal">ubicación</label>
-
-    <select formControlName="ubicacion" >
-
-
-      @for (item of dataUbicacion; track $index) {
-
-        <option value="{{item}}">{{item}}</option>
-
-      }
-
-    </select>
+      <label class="normal">Visibilidad</label>
+      <select formControlName="visibilidad">
+        <option value="visible">visible</option>
+        <option value="oculto">oculto</option>
+      </select>
   </div>
+  
+<div class="item"></div> -->
+
 
   <div class="cont-tt">
     <label class="bold">Desarrollo de plaza</label>
@@ -152,13 +153,21 @@
           <label class="normal">plaza / vacante</label>
           <input type="text" [(ngModel)]="NombrePlaza"  formControlName="titulo" class="normal">
       </div>
-    
+
       <div class="item">
           <label class="normal">Ubicación</label>
         <select [(ngModel)]="UbicacionPlaza" formControlName="ubicacion" >
           @for (item of dataUbicacion; track $index) { <option value="{{item}}{{item}}">{{item}}</option>}
         </select>
       </div>
+      
+            <!-- <div class="item">
+                <label class="normal">Visibilidad</label>
+                <select [(ngModel)]="visibilidad" formControlName="visibilidad">
+                  <option value="visible">visible</option>
+                  <option value="oculto">oculto</option>
+                </select>
+            </div> -->
 
       <div class="item">
           <label class="normal">Estado</label>
@@ -167,7 +176,9 @@
             <option value="inactivo">inactivo</option>
           </select>
       </div>
-      
+
+      <div class="item"></div>
+
     <div class="cont-tt">
         <label class="bold">Desarrollo de plaza</label>
         <textarea  [(ngModel)]="descripcion" formControlName="descripcion" class="text-desarrollo" cols="1" rows="1"></textarea>

@@ -23,7 +23,7 @@ export class EquipoComponent  {
   sizeLimit
   nombreTiendaFiltro: string = '';
   dataUbicacion
-
+  visibilidad
 
   data:any
 
@@ -69,10 +69,11 @@ constructor(){
     titulo : new FormControl(),
     formulario : new FormControl(),
     estado : new FormControl(),
-    descripcion : new FormControl()
+    descripcion : new FormControl(),
+    visibilidad : new FormControl()
   })
-
-
+  
+  
   this.fomrumarioAgregarPlaza = new FormGroup({
     ubicacion : new FormControl(),
     departamento : new FormControl(),
@@ -82,9 +83,10 @@ constructor(){
     experiencia : new FormControl(),
     titulo : new FormControl(),
     estado : new FormControl(),
-    descripcion: new FormControl()
+    descripcion: new FormControl(),
+    visibilidad : new FormControl()
   })
-
+  
   this.formEditarPlaza = new FormGroup({
     ubicacion : new FormControl(),
     departamento : new FormControl(),
@@ -94,7 +96,8 @@ constructor(){
     experiencia : new FormControl(),
     titulo : new FormControl(),
     estado : new FormControl(),
-    descripcion : new FormControl()
+    descripcion : new FormControl(),
+    visibilidad : new FormControl()
   })
 
 
@@ -109,8 +112,6 @@ constructor(){
     this.containerAlert = document.getElementById('background-alert')
     this.obtenerUnete()
     this.obtenerNombreUbi()
-    
-  this.allHideBtns()
   }
 
   ModalProduct(type:string){
@@ -505,28 +506,6 @@ async eliminarId(id: number){
 
 
 
-allHideBtns() {
-  const hides:HTMLElement | any = document.getElementsByClassName('close-hide')
-  for (let i = 0; i <= hides.length; i++) {
-    if(hides){
-      hides[i].style.display = "block"
-    }
-  }
-}
-
-
-toggleHideShow(event: Event) {
-  const element = event.target as HTMLElement | any;
-  if (element) {
-    element.style.display = "none";
-    element.parentElement.parentElement.children[0].style.display = "block"
-  }
-}
-
-
-
-
-
 
 
 
@@ -690,23 +669,6 @@ clearInputs() {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
 }
-
-
-
-
-
-
 
 
