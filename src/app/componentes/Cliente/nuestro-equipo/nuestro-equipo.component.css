@@ -1,7 +1,7 @@
 
 
 h1.container-h1 {
-  width: 100%;
+  width: 90%;
   position: relative;
   margin-top: 5vh;
 }
@@ -64,15 +64,15 @@ div.cont-search mat-icon {
 
 div.container-plazas {
   display: flex;
-  justify-content: center;
+  justify-content: start;
   align-items: center;
   align-content: center;
   flex-wrap: wrap;
   position: relative;
-  width: auto;
-  max-width: 1000px;
+  max-width: 1044px;
   height: auto;
   margin-top: 2rem;
+  width: auto;
 }
 
 div.cont-plaza {
@@ -219,11 +219,28 @@ div#empty-plazas {
 }
 
 
-@media screen and (max-width: 1000px) {
-div#container-data-select { width: 800px }
+@media screen and (max-width: 1080px) {
+
+  div.container-plazas {
+    justify-content: start;
+    max-width: 922px;
+  }
+  
 div#container-data-select div.cont-data-sel { width: 400px }
+div.cont-plaza {
+  width: 220px;
+  height: 220px;
+  margin: 5px 5px;
+}
 }
 
+
+@media screen and (max-width: 930px) {
+  div.container-plazas {
+    max-width: auto;
+    justify-content: center;
+  }
+}
 
 @media screen and (max-width: 800px) {
   div#container-data-select { width: 90% }
@@ -231,10 +248,18 @@ div#container-data-select div.cont-data-sel { width: 400px }
 div#container-data-select div.cont-data-sel:nth-child(2) { width: 300px;  margin-top: 4rem;}
 }
 
-@media screen and (max-width: 960px) { div.container-plazas { width: 720px; } }
 @media screen and (max-width: 720px) { 
   div.container-plazas { width: 100%;}
   div#container-data-texto { width: auto;  max-width: 90%;}
 }
 @media screen and (max-width: 479px) { div.container-plazas { width: 100%; justify-content: center;} }
+
+@media screen and (max-width: 460px) { div.cont-plaza { width: 300px;  height: 300px; } }
+@media screen and (max-width: 320px) {
+  div.cont-plaza { width: 250px;  height: 250px; }
+  
+h1.container-h1 {font-size: 25pt;}
+
+}
+@media screen and (max-width: 270px) { div.cont-plaza { width: 220px;  height: 220px; } }
 
