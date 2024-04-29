@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
 import { Observable, first, firstValueFrom } from 'rxjs';
+import { environment } from '../environments/environments';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +13,7 @@ export class UneteEquipoService {
   private httClient = inject(HttpClient)
 
   constructor() {
-    this.baseUrl = 'https://enchanting-kilt-pike.cyclic.app/api'
+    this.baseUrl = environment.baseUrl
    }
 
    otenerUneteEquipo(){

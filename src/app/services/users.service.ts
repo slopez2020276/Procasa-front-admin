@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
 import { BehaviorSubject, Observable, firstValueFrom, map } from 'rxjs';
+import { environment } from '../environments/environments';
 
 @Injectable({
   providedIn: 'root'
@@ -23,7 +24,7 @@ export class UsersService {
   public roleUpdated: Observable<any>;
   
   constructor(public _http: HttpClient) { 
-    this.baseUrl = 'https://enchanting-kilt-pike.cyclic.app/api'
+    this.baseUrl =  environment.baseUrl;
     var token = localStorage.getItem('token');
     var identidad = localStorage.getItem('identidad');
     var usuario = identidad ? JSON.parse(identidad) : null;
