@@ -668,17 +668,19 @@ clearInputs() {
 
 
 
-
-VisivilityShow(id: any){
-  console.log(id)
-}
-
-
-
 VisivilityHide(id: any){
-  console.log(id)
-}
+  this.AlertOption("¿Cambiar la visibilidad de la plaza?")
+  const parent: HTMLElement | any = this.containerAlert
+  const btn: HTMLElement | any = parent?.childNodes[0]?.childNodes[0]?.childNodes[1]?.childNodes[0]
 
+  if (btn) { 
+    btn.onclick = () => {
+
+          // A C T I O N 
+
+  }  
+}
+}
 
 
 
