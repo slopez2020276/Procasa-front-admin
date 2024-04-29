@@ -23,7 +23,8 @@ export class EquipoComponent  {
   sizeLimit
   nombreTiendaFiltro: string = '';
   dataUbicacion
-  visibilidad
+  visibility:string = "visibility_off"
+  // visibility:string = "visibility_off" | "visibility"
 
   data:any
 
@@ -70,7 +71,7 @@ constructor(){
     formulario : new FormControl(),
     estado : new FormControl(),
     descripcion : new FormControl(),
-    visibilidad : new FormControl()
+    visibility : new FormControl()
   })
   
   
@@ -84,7 +85,7 @@ constructor(){
     titulo : new FormControl(),
     estado : new FormControl(),
     descripcion: new FormControl(),
-    visibilidad : new FormControl()
+    visibility : new FormControl()
   })
   
   this.formEditarPlaza = new FormGroup({
@@ -97,7 +98,7 @@ constructor(){
     titulo : new FormControl(),
     estado : new FormControl(),
     descripcion : new FormControl(),
-    visibilidad : new FormControl()
+    visibility : new FormControl()
   })
 
 
@@ -289,8 +290,6 @@ EditPlaza():void{
     body.append('fecha',this.formEditarPlaza.value.fecha)
     body.append('estado',this.formEditarPlaza.value.estado)
     body.append('descripcion',this.formEditarPlaza.value.descripcion)
-
-
   }else{
     body.append('titulo', this.formEditarPlaza.value.titulo)
     body.append('ubicacion', this.formEditarPlaza.value.ubicacion)
@@ -430,6 +429,7 @@ async obtenerPlazaId(id:any){
   this.funciones = respuestaid.plaza.funciones
   this.estado = respuestaid.plaza.estado
   this.descripcion = respuestaid.plaza.descripcion
+  this.imgPath = respuestaid.plaza.imgPath
   this.imgPath = respuestaid.plaza.imgPath
   console.log(this.descripcion)
   console.log(this.imgPath)
@@ -669,6 +669,30 @@ clearInputs() {
 
 
 
+VisivilityShow(id: any){
+  console.log(id)
 }
 
 
+
+VisivilityHide(id: any){
+  console.log(id)
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}
