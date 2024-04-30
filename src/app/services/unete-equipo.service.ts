@@ -22,6 +22,12 @@ export class UneteEquipoService {
     )
    }
 
+   obtenerPlazasFiltradas(){
+    return firstValueFrom(
+      this.httClient.get<any>(`${this.baseUrl}/obtenerPlazasFiltradas`)
+    )
+   }
+
     crearUneteEquipo(fromValue:any){
       console.log(fromValue)
       return firstValueFrom(
@@ -87,6 +93,13 @@ export class UneteEquipoService {
     obtenerNombreUbiacion(){
       return firstValueFrom(
         this.httClient.get<any>(`${this.baseUrl}/obtnerUbiAllForUnete`)
+      )
+    }
+
+
+    editarVisibiidad(id:any){
+      return firstValueFrom(
+        this.httClient.put<any>(`${this.baseUrl}/cambiarVisibilidad/${id}`,{})
       )
     }
 

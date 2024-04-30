@@ -436,6 +436,18 @@ async obtenerPlazaId(id:any){
   this.obtenerFunciones()
 }
 
+async editarVisibilidad(id:any){
+  try{
+    await this.uneterService.editarVisibiidad(id)
+    this.obtenerUnete()
+    this.AlertMessage("¡Datos actualizados exitosamente!", 1500)
+  } catch(error) {
+    console.log(error)
+    this.AlertMessage("Error :(", 1500)
+  }
+
+}
+
 
 
 async editarPlaza(){
@@ -676,7 +688,7 @@ VisivilityHide(id: any){
   if (btn) { 
     btn.onclick = () => {
 
-          // A C T I O N 
+        this.editarVisibilidad(id)
 
   }  
 }

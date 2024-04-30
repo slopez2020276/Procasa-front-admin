@@ -25,8 +25,8 @@ export class NuestroEquipoComponent implements OnInit {
     this.colorn = this.data[0].colorFondo
 
     this.evaluarTipoBack()
-    const data = await this.uneteEquipoService.otenerUneteEquipo()
- this.dataUnete = data.unete
+    const data = await this.uneteEquipoService.obtenerPlazasFiltradas()
+ this.dataUnete = data.plazas
   console.log(data)
   
   
