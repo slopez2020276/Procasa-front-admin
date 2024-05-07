@@ -1,3 +1,3 @@
 export const environment = {
-    baseUrl : 'https://enchanting-kilt-pike.cyclic.app/api',
+    baseUrl : 'https://192.168.22.90/api',
 }
