@@ -105,14 +105,6 @@ export class AdminloginComponent {
 
 
 ngOnInit(){
-  this.toLowercaseMail()
-}
-
-
-
-toLowercaseMail(){
-  const inputTexto = document.getElementById("inputmail") as HTMLInputElement;
-  inputTexto.addEventListener("input", () => { inputTexto.value = inputTexto.value.toLowerCase() })
 }
 
 }
