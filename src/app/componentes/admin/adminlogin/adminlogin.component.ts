@@ -105,7 +105,7 @@ export class AdminloginComponent {
 
 
 ngOnInit(){
-  // this.toLowercaseMail()
+  this.toLowercaseMail()
 }
 
 
