@@ -306,8 +306,8 @@
         <p class="input-to-text">{{item.descriptionLineaTiempo}}</p>
         <p class="input-to-text">{{item.fechaFormateada}}</p>
                     <div class="btn-click normal" (click)="sentIdAni(os._id)" (click)="editarModal(item._id)" (click)="Modal()"><mat-icon>edit</mat-icon></div>
-                    <div class="btn-click btn-red normal" (click)="sentIdAni(os._id)"  (click)="eliminarLineaTiempo(item._id)"><mat-icon>delete</mat-icon></div>
-      </div> 
+                    <div class="btn-click btn-red normal" (click)="sentIdAni(os._id)" (click)="eliminarLineaTiempo(item._id)"><mat-icon>delete</mat-icon></div>
+      </div>
     }
 </div>
   }
@@ -516,7 +516,7 @@
       <li>peso:  <span class="normal danger-red"></span></li>
     </ul>
   </div>
-  <div class="cont-details-img"><img alt="" src=""></div>
+  <div class="cont-details-img"><img src="{{imgTimeLine}}"></div>
 </div>
 </div>
 
@@ -619,7 +619,7 @@
         <li>peso:  <span class="normal danger-red"></span></li>
       </ul>
     </div>
-    <div class="cont-details-img"><img alt="" src=""></div>
+    <div class="cont-details-img"><img src="{{imgNotice}}"></div>
 </div>
 </div>
 

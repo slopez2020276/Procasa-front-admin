@@ -12,8 +12,9 @@ export class NuestrasMarcasComponent implements OnInit {
   widthLimit
   heightLimit
   sizeLimit
-  private fileTmp:any;
-  private fileTmpFileEdit:any;
+  private fileTmp:any
+  private fileTmpFileEdit:any
+  imgMarcas
 
   private fileTmpReal:any
   private fileTmpEditReal: any
@@ -127,6 +128,7 @@ async obtenermarcaId(id:any){
   console.log(respuesta)
   this.marcaid = respuesta._id
   this.textMarca = respuesta.textMarca
+  this.imgMarcas = respuesta.imgPath
 }
 
 

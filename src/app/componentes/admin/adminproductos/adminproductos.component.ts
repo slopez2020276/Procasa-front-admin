@@ -44,7 +44,7 @@ export class AdminproductosComponent implements OnInit {
   inputEmptyB
   srcPreviewEdit
   inputControl
-
+  imgProd
   containerAlert: HTMLElement | any
   widthLimit
   heightLimit
@@ -428,6 +428,7 @@ async getProductToSearch(id:any){
   console.log(product)
   this.nombreProducto = product.productoFinded.nombreProducto
   this.IdProducto = product.productoFinded._id
+  this.imgProd = product.imgPath
 }
   async agregarCateoria(){
     const res = await this.productosServices.CrearCategoria(this.IdProducto,this.formularioCategoria.value)

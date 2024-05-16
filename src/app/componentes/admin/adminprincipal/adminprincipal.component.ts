@@ -59,6 +59,7 @@ lineaService = inject(LineaTiempoService)
 misionService = inject(MisionService)
 noticiasService = inject(NoticasService)
 MarcasServie = inject(MarcasService)
+imgNoticia = inject(NoticasService)
 
 idAnio:any
 
@@ -87,6 +88,8 @@ descripcionModal: string = ''
 dataLineaRespuesta: any
 fechaModal
 mostrarPorModal
+imgTimeLine
+imgNotice
 
 tituloNoticia:string = ''
 descripcionNoticia:string = ''
@@ -658,6 +661,7 @@ saveUpdateTimeLine(){
     this.descripcionModal = this.dataLieneaxId.descriptionLineaTiempo
     this.fechaModal = this.dataLieneaxId.fecha
     this.mostrarPorModal = this.dataLieneaxId.mostrarPor
+    this.imgTimeLine = this.dataLieneaxId.ImgPathLineaTiempo
   }
 
 
@@ -693,6 +697,7 @@ async obtenerxidNoticias(id:any){
   console.log(this.dataNoticiasxID)
   this.tituloNoticia = this.dataNoticiasxID.title
   this.descripcionNoticia = this.dataNoticiasxID.descripcion
+  this.imgNotice = this.dataNoticiasxID.imgPhat
 }
 
 
