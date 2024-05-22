@@ -26,6 +26,7 @@ import { agenteMerting } from './guards/agenteMerting.guard';
 import { NoticiasMovilComponent } from './componentes/Cliente/noticias-movil/noticias-movil.component';
 import { NuestrosClienteComponent } from './componentes/admin/nuestros-cliente/nuestros-cliente.component';
 import { agenteRH } from './guards/rh.guard';
+import { LoginPruebaComponent } from './componentes/Complements/login-prueba/login-prueba.component';
 
 const routes: Routes = [
   {path:'',redirectTo:'Inicio', pathMatch:'full'},
@@ -62,7 +63,8 @@ const routes: Routes = [
   {path:'Inicio/:noticias',title:'PROCASA | Noticias',component:PrincipalComponent},
   {path:'noti',title:'DELETE',component:NoticiasMovilComponent},
   {path:'admin/nuestros-clientes',component:NuestrosClienteComponent},
-  {path:'**',redirectTo:'Inicio', pathMatch:'full'}
+  {path:'login-prueba',title:'Login de pruebas de Desarrollo',component:LoginPruebaComponent},
+  {path:'**',redirectTo:'Inicio', pathMatch:'full'},
 ]
 
 @NgModule({

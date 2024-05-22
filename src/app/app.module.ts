@@ -52,6 +52,7 @@ import { ScrollTopService } from './services/scroll.service';
 import { MostrarNombrePlazaPipe } from './pipes/mostrar-nombre-plaza.pipe';
 import { NoticiasMovilComponent } from './componentes/Cliente/noticias-movil/noticias-movil.component';
 import { NuestrosClienteComponent } from './componentes/admin/nuestros-cliente/nuestros-cliente.component';
+import { LoginPruebaComponent } from './componentes/Complements/login-prueba/login-prueba.component';
 
 
 
@@ -97,7 +98,8 @@ import { NuestrosClienteComponent } from './componentes/admin/nuestros-cliente/n
     EquipoUnicoComponent,
     MostrarNombrePlazaPipe,
     NoticiasMovilComponent,
-    NuestrosClienteComponent
+    NuestrosClienteComponent,
+    LoginPruebaComponent
   ],
   imports: [
     BrowserModule,

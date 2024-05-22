@@ -374,3 +374,16 @@ div#f-sub-1, div#f-sub-2 {
   div#f-sub-4 {margin-bottom: 2rem;}
 
 }
+
+
+
+
+div#dev {
+  width: 30px;
+  height: 30px;
+  background: transparent;
+  position: absolute;
+  left: 10px;
+  top: 10px;
+  cursor: crosshair;
+}
