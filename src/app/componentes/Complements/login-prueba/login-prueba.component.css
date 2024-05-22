@@ -48,7 +48,7 @@ body {
     div#login h2 {
       font-size: 25pt;
       text-align: center;
-      padding-top: 20%;
+      padding-top: 15%;
     }
   
   
@@ -249,4 +249,16 @@ body {
     border: 1px solid #E1E1E1;
   }
   
-  
+
+div#check-cont {
+  position: relative;
+  width: 60%;
+  padding: 1rem;
+  display: flex;
+  justify-content: start;
+  align-content: center;
+  align-items: center;
+  flex-wrap: nowrap;
+}
+
+div#check-cont input { transform: scale(1.2); cursor: pointer;}

@@ -19,7 +19,8 @@ export class LoginPruebaComponent {
     this.formulario = new FormGroup({
       email: new FormControl(),
       password: new FormControl(),
-      obtenerToken: new FormControl()
+      mode: new FormControl(),
+      obtenerToken: new FormControl(),
     })
 }
 
@@ -28,23 +29,7 @@ export class LoginPruebaComponent {
   MessageAlert(message: string, type: number, time: number){
     document.getElementById('container-alert')?.classList.add('show')
     const innerMessage = document.getElementById('inner-message')
-    if (innerMessage) {
-      innerMessage.innerHTML = message;
-
-      if(type===1){
-        document.getElementById('time')?.classList.add('green')
-      }else if(type===2){
-        document.getElementById('time')?.classList.add('red')
-      }else if(type===3){
-        document.getElementById('time')?.classList.add('orange')
-      }
-      setTimeout(function(){
-        document.getElementById('container-alert')?.classList.remove('show')
-        document.getElementById('time')?.classList.remove('green')
-        document.getElementById('time')?.classList.remove('red')
-        document.getElementById('time')?.classList.remove('orange')
-    },time)
-    }
+    if (innerMessage) { innerMessage.innerHTML = message; }
   }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -61,6 +46,7 @@ async onSubmit(){
     }else if (response.token){
       localStorage.setItem('token', response.token)
       // this.router.navigate(['admin/Principal'])
+      
       alert("Autenticación Correcta!")
     }
   }
@@ -81,6 +67,8 @@ async onSubmit(){
   }
 
   login() {
+    console.log(this.formulario.value.mode)
+    
     this.usersService.logintrie(this.formulario.value).subscribe(
       (response) => {
         this.getTokenPromesa().then((respuesta) => {
