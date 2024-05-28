@@ -35,6 +35,11 @@ export class LoginPruebaComponent {
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 async onSubmit(){
+
+  
+
+
+
   const response = await this.usersService.login(this.formulario.value)
   this.data = response.token
   
@@ -67,26 +72,53 @@ async onSubmit(){
   }
 
   login() {
-    console.log(this.formulario.value.mode)
+
+
+    if(this.formulario.value.mode){
+  console.log(this.formulario.value.mode)
     
-    this.usersService.logintrie(this.formulario.value).subscribe(
-      (response) => {
-        this.getTokenPromesa().then((respuesta) => {
+      this.usersService.logintrien(this.formulario.value).subscribe(
+        (response) => {
+          this.getTokenPromesa().then((respuesta) => {
+  
+            let identidad = this.usersService.getIdentidad()
+                if(identidad.rol === 'marketing'|| identidad.rol === 'Admin' ){
+                  // this.router.navigate(['admin/Principal'])
+                  alert("Autenticación Correcta!")
+  
+                }if(identidad.rol === 'rh'){
+                  // this.router.navigate(['admin/Equipo'])
+                  alert("Autenticación Correcta!")
+  
+                }
+          })
+        }
+      )
 
-          let identidad = this.usersService.getIdentidad()
-              if(identidad.rol === 'marketing'|| identidad.rol === 'Admin' ){
-                // this.router.navigate(['admin/Principal'])
-                alert("Autenticación Correcta!")
 
-              }if(identidad.rol === 'rh'){
-                // this.router.navigate(['admin/Equipo'])
-                alert("Autenticación Correcta!")
-
-              }
-        })
-      }
-    )
-  }
+    }else {
+      console.log(this.formulario.value.mode)
+    
+      this.usersService.logintrie(this.formulario.value).subscribe(
+        (response) => {
+          this.getTokenPromesa().then((respuesta) => {
+  
+            let identidad = this.usersService.getIdentidad()
+                if(identidad.rol === 'marketing'|| identidad.rol === 'Admin' ){
+                  // this.router.navigate(['admin/Principal'])
+                  alert("Autenticación Correcta!")
+  
+                }if(identidad.rol === 'rh'){
+                  // this.router.navigate(['admin/Equipo'])
+                  alert("Autenticación Correcta!")
+  
+                }
+          })
+        }
+      )
+    }
+    }
+   
 
 
 }

@@ -67,6 +67,33 @@ export class UserPruebaService {
     }));
   }
 
+  logintrien(usuario, obtenerToken:any = null): Observable<any> {
+    if (obtenerToken != null) {
+      usuario.obtenerToken = obtenerToken;
+    }
+
+    let params = JSON.stringify(usuario);
+
+    return this._http.post(this.baseUrl + '/loginnn', params, {
+      headers: this.headersVariable,
+    })
+    .pipe(map((res: any) => {
+      if (obtenerToken) {
+        localStorage.setItem('token', res.token);
+
+        this.sesionSubject.next(res.token);
+      } else {
+        localStorage.setItem('identidad', JSON.stringify(res.usuario));
+
+        this.roleSubject.next(res.usuario.rol);
+      }
+
+      return res;
+    }));
+  }
+
+
+  
   obtener(){
     return firstValueFrom(
       this.httClient.get<any>(`${this.baseUrl}/obtenerUsuarios`)
