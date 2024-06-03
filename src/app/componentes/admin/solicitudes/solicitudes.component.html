@@ -1,0 +1,72 @@
+<app-admin-navbar></app-admin-navbar>
+
+<div class="container-head">
+    <h1>Solicitudes</h1>
+    <span>
+      <input class="bold" type="text" name="search" placeholder="buscar solicitud">
+      <button class="btn-click btn-white normal" (click)="modalAddSolicitud()"><mat-icon>add</mat-icon> Agregar</button>
+    </span>
+  </div>
+  <!-- ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ -->
+
+
+  <div class="admin-main">
+    <div class="shadow-main"></div>
+    
+    <div id="cont-users">
+<h1 class="t-s">USER X</h1>
+        <!-- <div class="user">
+          <p>USERRRRRRRRRRR</p>
+          <p>DATEEEE</p>
+        </div> -->
+
+    </div>
+
+
+
+    <div id="cont-lista">
+      <h1 class="t-s">SOLICITUDES</h1>
+      <div class="item-list pendiente">solicitud pendiente X</div>
+      <div class="item-list guardado">solicitud guardada X</div>
+      <div class="item-list proceso">solicitud proceso X</div>
+    </div>
+  </div>
+
+
+
+<!-- ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ -->
+<div id="modal-add-solicitud" class="global-modal">
+    <h1 class="title-modal">Nueva Solicitud</h1>
+    <div class="btn-click normal close-modal" (click)="modalAddSolicitud()"><mat-icon>close</mat-icon></div>
+
+<form [formGroup]="formularioSolicitud">
+  <div class="cont">
+            <div class="item max-w">
+                <label class="normal">usuario</label>
+                <input formControlName="user" class="normal" type="text">
+            </div>
+
+            <div class="item max-w">
+              <label class="normal">fecha</label>
+              <input class="normal" name="date" formControlName="date" type="date">
+            </div>
+</div>
+</form>
+<div class="action-center"><div class="btn-click btn-red normal" (click)="submitSolicitud()">generar</div></div>
+</div>
+
+
+
+<!-------- A L E R T ---------------------------------------------------------------------------------------------------------------------------------------------------->
+<div id="background-alert">
+  <div class="container-alert" id="container-alert">
+    <div class="alert-model">
+      <p class="message bold"></p>
+      <div class="cont-btns-alert" id="btns">
+        <div class="btn-click btn-red" id="confirm-alert"><mat-icon>done</mat-icon> confirmar</div>
+        <div class="btn-click btn-gray" (click)="AlertClose()"><mat-icon>close</mat-icon> cancelar</div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- -->

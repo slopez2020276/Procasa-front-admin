@@ -53,6 +53,7 @@ import { MostrarNombrePlazaPipe } from './pipes/mostrar-nombre-plaza.pipe';
 import { NoticiasMovilComponent } from './componentes/Cliente/noticias-movil/noticias-movil.component';
 import { NuestrosClienteComponent } from './componentes/admin/nuestros-cliente/nuestros-cliente.component';
 import { LoginPruebaComponent } from './componentes/Complements/login-prueba/login-prueba.component';
+import { SolicitudesComponent } from './componentes/admin/solicitudes/solicitudes.component';
 
 
 
@@ -99,7 +100,8 @@ import { LoginPruebaComponent } from './componentes/Complements/login-prueba/log
     MostrarNombrePlazaPipe,
     NoticiasMovilComponent,
     NuestrosClienteComponent,
-    LoginPruebaComponent
+    LoginPruebaComponent,
+    SolicitudesComponent
   ],
   imports: [
     BrowserModule,
