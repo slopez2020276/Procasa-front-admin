@@ -28,8 +28,8 @@ export class NuestroEquipoComponent implements OnInit {
     const data = await this.uneteEquipoService.obtenerPlazasFiltradas()
  this.dataUnete = data.plazas
   console.log(data)
-  
-  
+
+
     console.log(this.dataUnete)
 
     if(this.dataUnete.length == 0){
@@ -37,7 +37,7 @@ export class NuestroEquipoComponent implements OnInit {
       console.log('dentro')
     }
     console.log('fuera')
-  }
+}
 data
 imgPrincipal
 imgFondo
