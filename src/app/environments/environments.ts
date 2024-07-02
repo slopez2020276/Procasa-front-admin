@@ -1,3 +1,3 @@
 export const environment = {
-    baseUrl : 'http://192.168.22.90:3009/api',
+    baseUrl : 'https://github.com/slopez2020276/Procasa-front-admin.git',
 }
