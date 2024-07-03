@@ -1,3 +1,3 @@
 export const environment = {
-    baseUrl : 'https://github.com/slopez2020276/Procasa-front-admin.git',
+    baseUrl : 'https://back-endprocas-1.onrender.com/api',
 }
